@@ -15,6 +15,7 @@ import { useAuth } from './hooks/useAuth.js'
 
 function ProtectedLayout() {
   const { session, loading } = useAuth()
+  const isPC = window.innerWidth >= 768
 
   if (loading) {
     return (
@@ -25,6 +26,7 @@ function ProtectedLayout() {
   }
 
   if (!session) return <Navigate to="/login" replace />
+  if (isPC) return <Navigate to="/dashboard" replace />
 
   return (
     <div className="flex flex-col min-h-screen max-w-md mx-auto">
@@ -49,6 +51,7 @@ function Home() {
 
 function DashboardGuard() {
   const { session, loading } = useAuth()
+  const isMobile = window.innerWidth < 768
 
   if (loading) {
     return (
@@ -59,6 +62,7 @@ function DashboardGuard() {
   }
 
   if (!session) return <Navigate to="/login" replace />
+  if (isMobile) return <Navigate to="/input" replace />
   return <DashboardLayout />
 }
 
