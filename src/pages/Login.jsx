@@ -1,7 +1,9 @@
 import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { supabase } from '../lib/supabase.js'
 
 export default function Login() {
+  const navigate = useNavigate()
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [isSignUp, setIsSignUp] = useState(false)
@@ -22,6 +24,7 @@ export default function Login() {
     } else {
       const { error } = await supabase.auth.signInWithPassword({ email, password })
       if (error) setError('이메일 또는 비밀번호를 확인해 주세요.')
+      else navigate('/input')
     }
 
     setLoading(false)
