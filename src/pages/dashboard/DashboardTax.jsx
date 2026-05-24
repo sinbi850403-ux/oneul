@@ -26,11 +26,11 @@ export default function DashboardTax() {
       const mStart = `${year}-${pad(month)}-01`
       const mEnd   = `${year}-${pad(month)}-${pad(new Date(year, month, 0).getDate())}`
       const { data: mData } = await supabase
-        .from('sales').select('total').gte('sale_date', mStart).lte('sale_date', mEnd)
+        .from('sales').select('total').eq('user_id', user.id).gte('sale_date', mStart).lte('sale_date', mEnd)
       setMonthTotal(mData?.reduce((a, r) => a + (r.total ?? 0), 0) ?? 0)
 
       const { data: yData } = await supabase
-        .from('sales').select('total').gte('sale_date', `${year}-01-01`).lte('sale_date', `${year}-12-31`)
+        .from('sales').select('total').eq('user_id', user.id).gte('sale_date', `${year}-01-01`).lte('sale_date', `${year}-12-31`)
       setYearTotal(yData?.reduce((a, r) => a + (r.total ?? 0), 0) ?? 0)
     }
     load()

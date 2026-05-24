@@ -25,6 +25,7 @@ export default function Tax() {
       const { data } = await supabase
         .from('sales')
         .select('total')
+        .eq('user_id', user.id)
         .gte('sale_date', start)
         .lte('sale_date', end)
 

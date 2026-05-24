@@ -29,14 +29,21 @@ export default function ExcelExport() {
   const pad    = (n) => String(n).padStart(2, '0')
 
   async function handleExport() {
-    setLoading(true)
     const start = `${startYear}-${pad(startMonth)}-01`
     const endDay = new Date(endYear, endMonth, 0).getDate()
     const end   = `${endYear}-${pad(endMonth)}-${pad(endDay)}`
 
+    if (start > end) {
+      alert('시작일이 종료일보다 늦습니다.')
+      return
+    }
+
+    setLoading(true)
+    const { data: { user } } = await supabase.auth.getUser()
     const { data } = await supabase
       .from('sales')
       .select('*')
+      .eq('user_id', user.id)
       .gte('sale_date', start)
       .lte('sale_date', end)
       .order('sale_date')

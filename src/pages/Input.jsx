@@ -28,9 +28,11 @@ export default function Input() {
   const total = Object.values(values).reduce((a, b) => a + b, 0)
 
   const load = useCallback(async (d) => {
+    const { data: { user } } = await supabase.auth.getUser()
     const { data } = await supabase
       .from('sales')
       .select('*')
+      .eq('user_id', user.id)
       .eq('sale_date', d)
       .maybeSingle()
 

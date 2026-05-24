@@ -15,17 +15,19 @@ export default function Calendar() {
 
   const todayYear = parseInt(today.slice(0, 4))
   const todayMonth = parseInt(today.slice(5, 7))
-  const minYear = todayMonth <= 12 ? todayYear - 1 : todayYear
-  const minMonth = todayMonth === 12 ? 1 : todayMonth + 1
+  const minYear = todayYear - 1
+  const minMonth = todayMonth
   const isAtMin = year < minYear || (year === minYear && month <= minMonth)
   const isAtMax = year === todayYear && month === todayMonth
 
   useEffect(() => {
     async function load() {
+      const { data: { user } } = await supabase.auth.getUser()
       const { start, end } = getMonthRange(year, month)
       const { data } = await supabase
         .from('sales')
         .select('sale_date, total')
+        .eq('user_id', user.id)
         .gte('sale_date', start)
         .lte('sale_date', end)
 

@@ -24,6 +24,7 @@ export default function MonthlyReport() {
 
   useEffect(() => {
     async function load() {
+      const { data: { user } } = await supabase.auth.getUser()
       const pad = (n) => String(n).padStart(2, '0')
       const start = `${year}-${pad(month)}-01`
       const end = new Date(year, month, 0)
@@ -31,6 +32,7 @@ export default function MonthlyReport() {
       const { data } = await supabase
         .from('sales')
         .select('*')
+        .eq('user_id', user.id)
         .gte('sale_date', start)
         .lte('sale_date', endStr)
         .order('sale_date')
