@@ -4,12 +4,10 @@ import { keywords } from './keywords.js'
 
 const anthropic = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY })
 
-// 하루 2회 (오전/오후) 키워드 순환
+// 하루 2회 (오전/오후) 키워드 순환 - 12시간 단위 슬롯으로 순환
 function pickKeyword() {
-  const now = new Date()
-  const dayOfYear = Math.floor((now - new Date(now.getFullYear(), 0, 0)) / 86400000)
-  const slot = now.getUTCHours() < 4 ? 0 : 1  // UTC 01:00 → slot 0 (오전), UTC 06:00 → slot 1 (오후)
-  const index = (dayOfYear * 2 + slot) % keywords.length
+  const totalSlots = Math.floor(Date.now() / (1000 * 60 * 60 * 12))
+  const index = totalSlots % keywords.length
   return keywords[index]
 }
 
