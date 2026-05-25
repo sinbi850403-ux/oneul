@@ -168,6 +168,8 @@ export default function Landing() {
         <div className="max-w-4xl mx-auto px-6 py-6 flex justify-between items-center text-xs text-gray-400">
           <span>© 2026 오늘장부</span>
           <div className="flex gap-4">
+            <button onClick={() => navigate('/privacy')} className="hover:text-gray-600 transition-colors">개인정보처리방침</button>
+            <button onClick={() => navigate('/terms')} className="hover:text-gray-600 transition-colors">이용약관</button>
             <span>문의: sinbi850403@gmail.com</span>
           </div>
         </div>
