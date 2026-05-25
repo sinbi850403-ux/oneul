@@ -10,10 +10,10 @@ function pickKeyword() {
   return keywords[dayOfYear % keywords.length]
 }
 
-// Unsplash 무료 이미지 URL 생성
+// Picsum 무료 이미지 URL 생성 (키워드 기반 시드로 일관성 유지)
 function getImageUrl(query, width = 800, height = 450) {
-  const encoded = encodeURIComponent(query)
-  return `https://source.unsplash.com/featured/${width}x${height}/?${encoded}`
+  const seed = encodeURIComponent(query).slice(0, 20)
+  return `https://picsum.photos/seed/${seed}/${width}/${height}`
 }
 
 // Claude로 블로그 글 생성
