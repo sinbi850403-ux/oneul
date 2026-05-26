@@ -10,6 +10,9 @@ importers:
 
   apps/jaego:
     dependencies:
+      '@oneul/supabase':
+        specifier: workspace:*
+        version: link:../../packages/supabase
       '@supabase/supabase-js':
         specifier: ^2.106.2
         version: 2.106.2
@@ -56,6 +59,9 @@ importers:
 
   apps/jangbu:
     dependencies:
+      '@oneul/supabase':
+        specifier: workspace:*
+        version: link:../../packages/supabase
       '@supabase/supabase-js':
         specifier: ^2.49.4
         version: 2.106.2
@@ -93,6 +99,12 @@ importers:
       vite:
         specifier: ^6.3.5
         version: 6.4.2(jiti@1.21.7)(lightningcss@1.32.0)
+
+  packages/supabase:
+    dependencies:
+      '@supabase/supabase-js':
+        specifier: ^2.49.4
+        version: 2.106.2
 
 packages:
 

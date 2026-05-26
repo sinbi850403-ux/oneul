@@ -1,0 +1,12 @@
+{
+  "name": "@oneul/supabase",
+  "version": "0.0.1",
+  "type": "module",
+  "main": "./index.js",
+  "exports": {
+    ".": "./index.js"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.49.4"
+  }
+}

@@ -12,6 +12,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@oneul/supabase": "workspace:*",
     "@supabase/supabase-js": "^2.106.2",
     "react": "^19.2.6",
     "react-dom": "^19.2.6",
