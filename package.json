@@ -1,0 +1,18 @@
+{
+  "name": "oneul",
+  "private": true,
+  "version": "0.0.0",
+  "description": "오늘 시리즈 모노레포 (재고, 장부)",
+  "scripts": {
+    "dev:jaego": "pnpm --filter @oneul/jaego dev",
+    "dev:jangbu": "pnpm --filter @oneul/jangbu dev",
+    "build:jaego": "pnpm --filter @oneul/jaego build",
+    "build:jangbu": "pnpm --filter @oneul/jangbu build",
+    "build": "pnpm -r build",
+    "lint": "pnpm -r --if-present lint"
+  },
+  "packageManager": "pnpm@9.12.3",
+  "engines": {
+    "node": ">=20"
+  }
+}
