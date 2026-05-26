@@ -1,5 +1,6 @@
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
 import { AuthProvider, useAuth } from './lib/AuthContext'
+import SuiteBar from './components/SuiteBar'
 import './styles/global.css'
 
 import Home            from './pages/Home'
@@ -27,6 +28,8 @@ function PrivateRoute({ children }) {
 export default function App() {
   return (
     <AuthProvider>
+      <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
+      <SuiteBar />
       <BrowserRouter>
         <Routes>
           <Route path="/login" element={<Login />} />
@@ -46,6 +49,7 @@ export default function App() {
           <Route path="/orders/:id"    element={<PrivateRoute><OrderDetail /></PrivateRoute>} />
         </Routes>
       </BrowserRouter>
+      </div>
     </AuthProvider>
   )
 }

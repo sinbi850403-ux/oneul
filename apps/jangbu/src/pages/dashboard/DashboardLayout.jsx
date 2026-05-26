@@ -52,9 +52,18 @@ export default function DashboardLayout() {
   return (
     <div className="flex min-h-screen bg-gray-50">
       <aside className="w-56 bg-white border-r border-gray-100 flex flex-col">
-        <div className="px-6 py-6 border-b border-gray-100">
-          <h1 className="text-2xl font-bold text-brand">오늘장부</h1>
-          <p className="text-sm font-medium text-gray-700 mt-1">{shopName || '내 가게'}</p>
+        <div className="px-6 py-5 border-b border-gray-100">
+          <div className="flex items-center gap-1.5 mb-2">
+            <span className="text-lg font-bold text-brand">오늘장부</span>
+            <span className="text-gray-300 text-sm">/</span>
+            <a
+              href={import.meta.env.VITE_JAEGO_URL || '#'}
+              className="text-lg font-semibold text-gray-400 hover:text-blue-500 transition-colors"
+            >
+              오늘재고
+            </a>
+          </div>
+          <p className="text-sm font-medium text-gray-700">{shopName || '내 가게'}</p>
           <p className="text-xs text-gray-400">관리자 대시보드</p>
         </div>
 

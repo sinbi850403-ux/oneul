@@ -36,6 +36,17 @@ function ProtectedLayout() {
 
   return (
     <div className="flex flex-col min-h-screen max-w-md mx-auto">
+      {/* 앱 스위처 */}
+      <div className="bg-gray-900 flex items-center gap-2 px-4 h-8 shrink-0">
+        <span className="text-sm font-bold text-brand">오늘장부</span>
+        <span className="text-gray-600 text-sm">/</span>
+        <a
+          href={import.meta.env.VITE_JAEGO_URL || '#'}
+          className="text-sm font-medium text-gray-400 hover:text-blue-400 transition-colors"
+        >
+          오늘재고
+        </a>
+      </div>
       <div className="flex-1 pb-20">
         <Routes>
           <Route path="/input"    element={<Input />} />
