@@ -6,6 +6,7 @@ import { useProductSearch } from '../hooks/useProducts'
 import { useIsMobile } from '../hooks/useIsMobile'
 import { supabase } from '../lib/supabase'
 import { ORDER_STATUS_LABEL } from '../lib/constants'
+import { exportOrderToExcel } from '../lib/excel'
 
 const STATUS_COLOR = { pending: '#2563EB', completed: '#059669', cancelled: '#9CA3AF' }
 const STATUS_BG    = { pending: '#EFF6FF', completed: '#ECFDF5', cancelled: '#F9FAFB' }
@@ -108,6 +109,12 @@ export default function OrderDetail() {
             padding: '3px 10px', borderRadius: 4,
           }}>{ORDER_STATUS_LABEL[order.status]}</span>
         </div>
+        <div style={{ display: 'flex', gap: 8 }}>
+          <button onClick={() => exportOrderToExcel(order, items)} style={{
+            padding: '7px 14px', borderRadius: 'var(--radius)', fontSize: 13, fontWeight: 600,
+            border: '1px solid var(--color-border)', background: 'var(--color-white)',
+            color: 'var(--color-primary)', cursor: 'pointer',
+          }}>📊 엑셀</button>
         {isPending && (
           <button onClick={handleComplete} disabled={completing || items.length === 0} style={{
             background: '#059669', color: 'var(--color-white)',
@@ -116,6 +123,7 @@ export default function OrderDetail() {
             opacity: items.length === 0 ? 0.5 : 1,
           }}>{completing ? '처리 중...' : '발주 완료'}</button>
         )}
+        </div>
       </header>
 
       <div style={{

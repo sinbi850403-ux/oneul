@@ -8,6 +8,7 @@ import StockOut        from './pages/StockOut'
 import Return          from './pages/Return'
 import Products        from './pages/Products'
 import ProductAdd      from './pages/ProductAdd'
+import ProductDetail   from './pages/ProductDetail'
 import Stocktake       from './pages/Stocktake'
 import StocktakeDetail from './pages/StocktakeDetail'
 import StockStatus     from './pages/StockStatus'
@@ -35,6 +36,7 @@ export default function App() {
           <Route path="/return"        element={<PrivateRoute><Return /></PrivateRoute>} />
           <Route path="/products"      element={<PrivateRoute><Products /></PrivateRoute>} />
           <Route path="/products/add"  element={<PrivateRoute><ProductAdd /></PrivateRoute>} />
+          <Route path="/products/:id"  element={<PrivateRoute><ProductDetail /></PrivateRoute>} />
           <Route path="/stocktake"     element={<PrivateRoute><Stocktake /></PrivateRoute>} />
           <Route path="/stocktake/:id" element={<PrivateRoute><StocktakeDetail /></PrivateRoute>} />
           <Route path="/stock-status"  element={<PrivateRoute><StockStatus /></PrivateRoute>} />

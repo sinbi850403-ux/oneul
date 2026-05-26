@@ -31,6 +31,20 @@ export function exportStockToExcel(products, filename = '재고현황') {
   XLSX.writeFile(wb, `${filename}_${new Date().toISOString().slice(0, 10)}.xlsx`)
 }
 
+export function exportOrderToExcel(order, items) {
+  const rows = items.map(item => ({
+    '상품명':   item.products?.name ?? '-',
+    '단위':     item.products?.unit ?? '',
+    '발주수량': item.quantity,
+    '현재재고': item.products?.stock?.[0]?.quantity ?? 0,
+  }))
+  const ws = XLSX.utils.json_to_sheet(rows)
+  const wb = XLSX.utils.book_new()
+  XLSX.utils.book_append_sheet(wb, ws, '발주서')
+  const supplier = order?.suppliers?.name ?? '거래처미지정'
+  XLSX.writeFile(wb, `발주서_${supplier}_${new Date().toISOString().slice(0, 10)}.xlsx`)
+}
+
 // 엑셀 파일 → 상품 배열 변환
 // A열: name, B열: unit, C열: quantity
 export function parseProductsExcel(file) {

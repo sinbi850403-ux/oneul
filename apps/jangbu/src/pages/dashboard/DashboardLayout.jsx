@@ -3,11 +3,13 @@ import { NavLink, Outlet, useNavigate } from 'react-router-dom'
 import { supabase } from '../../lib/supabase.js'
 
 const menus = [
-  { to: '/dashboard/input',  label: '매출 입력' },
-  { to: '/dashboard/report', label: '월별 리포트' },
-  { to: '/dashboard/excel',  label: '엑셀 다운로드' },
-  { to: '/dashboard/tax',    label: '세금 요약' },
-  { to: '/dashboard/biz',    label: '사업자 정보' },
+  { to: '/dashboard/input',     label: '매출 입력' },
+  { to: '/dashboard/report',    label: '월별 손익' },
+  { to: '/dashboard/purchases', label: '매입 내역' },
+  { to: '/dashboard/sales',     label: '매출 내역' },
+  { to: '/dashboard/excel',     label: '엑셀 다운로드' },
+  { to: '/dashboard/tax',       label: '세금 요약' },
+  { to: '/dashboard/biz',       label: '사업자 정보' },
 ]
 
 export default function DashboardLayout() {

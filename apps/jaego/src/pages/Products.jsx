@@ -94,7 +94,10 @@ function MobileProducts({ navigate, products, loading, keyword, setKeyword, filt
                   borderBottom: i < filtered.length - 1 ? '1px solid var(--color-border)' : 'none',
                 }}>
                   <div style={{ flex: 1 }}>
-                    <div style={{ fontWeight: 600, fontSize: 15, color: 'var(--color-text)' }}>{p.name}</div>
+                    <button onClick={() => navigate(`/products/${p.id}`)}
+                      style={{ background: 'none', border: 'none', cursor: 'pointer', fontWeight: 600, fontSize: 15, color: 'var(--color-primary)', padding: 0, textAlign: 'left', display: 'block' }}>
+                      {p.name}
+                    </button>
                     <div style={{ fontSize: 13, color: 'var(--color-text-sub)', marginTop: 2 }}>
                       재고 <strong style={{ color: 'var(--color-text)' }}>{stock.toLocaleString()}</strong>{p.unit}
                       {p.selling_price > 0 && (
@@ -289,7 +292,12 @@ function PCProducts({ navigate, products, loading, keyword, setKeyword, filtered
                       <td style={{ padding: '12px 16px', color: 'var(--color-text-sub)', fontSize: 13 }}>
                         {i + 1}
                       </td>
-                      <td style={{ padding: '12px 16px', fontWeight: 600 }}>{p.name}</td>
+                      <td style={{ padding: '12px 16px', fontWeight: 600 }}>
+                        <button onClick={() => navigate(`/products/${p.id}`)}
+                          style={{ background: 'none', border: 'none', cursor: 'pointer', fontWeight: 600, fontSize: 14, color: 'var(--color-primary)', padding: 0, textAlign: 'left' }}>
+                          {p.name}
+                        </button>
+                      </td>
                       <td style={{ padding: '12px 16px', color: 'var(--color-text-sub)' }}>{p.unit}</td>
                       <td style={{
                         padding: '12px 16px', fontWeight: 700, textAlign: 'right',

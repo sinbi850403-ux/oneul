@@ -12,6 +12,8 @@ import MonthlyReport from './pages/dashboard/MonthlyReport.jsx'
 import ExcelExport from './pages/dashboard/ExcelExport.jsx'
 import DashboardTax from './pages/dashboard/DashboardTax.jsx'
 import DashboardInput from './pages/dashboard/DashboardInput.jsx'
+import Purchases     from './pages/dashboard/Purchases.jsx'
+import SalesItems    from './pages/dashboard/SalesItems.jsx'
 import Privacy from './pages/Privacy.jsx'
 import Terms from './pages/Terms.jsx'
 import { useAuth } from './hooks/useAuth.js'
@@ -79,11 +81,13 @@ export default function App() {
         <Route path="/terms" element={<Terms />} />
         <Route path="/dashboard" element={<DashboardGuard />}>
           <Route index element={<Navigate to="/dashboard/input" replace />} />
-          <Route path="input"  element={<DashboardInput />} />
-          <Route path="biz"    element={<BizInfo />} />
-          <Route path="report" element={<MonthlyReport />} />
-          <Route path="excel"  element={<ExcelExport />} />
-          <Route path="tax"    element={<DashboardTax />} />
+          <Route path="input"     element={<DashboardInput />} />
+          <Route path="biz"       element={<BizInfo />} />
+          <Route path="report"    element={<MonthlyReport />} />
+          <Route path="excel"     element={<ExcelExport />} />
+          <Route path="tax"       element={<DashboardTax />} />
+          <Route path="purchases" element={<Purchases />} />
+          <Route path="sales"     element={<SalesItems />} />
         </Route>
         <Route path="/*" element={<ProtectedLayout />} />
       </Routes>

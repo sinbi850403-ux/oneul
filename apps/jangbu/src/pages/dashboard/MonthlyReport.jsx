@@ -22,6 +22,9 @@ export default function MonthlyReport() {
   const [month, setMonth] = useState(now.getMonth() + 1)
   const [rows, setRows] = useState([])
 
+  const [purchaseTotal, setPurchaseTotal] = useState(0)
+  const [salesItemTotal, setSalesItemTotal] = useState(0)
+
   useEffect(() => {
     async function load() {
       const { data: { user } } = await supabase.auth.getUser()
@@ -29,14 +32,19 @@ export default function MonthlyReport() {
       const start = `${year}-${pad(month)}-01`
       const end = new Date(year, month, 0)
       const endStr = `${year}-${pad(month)}-${pad(end.getDate())}`
-      const { data } = await supabase
-        .from('sales')
-        .select('*')
-        .eq('user_id', user.id)
-        .gte('sale_date', start)
-        .lte('sale_date', endStr)
-        .order('sale_date')
-      setRows(data ?? [])
+
+      const [{ data: salesData }, { data: purchasesData }, { data: salesItemsData }] = await Promise.all([
+        supabase.from('sales').select('*').eq('user_id', user.id)
+          .gte('sale_date', start).lte('sale_date', endStr).order('sale_date'),
+        supabase.from('purchases').select('total_amount').eq('user_id', user.id)
+          .gte('purchase_date', start).lte('purchase_date', endStr),
+        supabase.from('sales_items').select('total_amount').eq('user_id', user.id)
+          .gte('sale_date', start).lte('sale_date', endStr),
+      ])
+
+      setRows(salesData ?? [])
+      setPurchaseTotal((purchasesData ?? []).reduce((a, r) => a + (r.total_amount ?? 0), 0))
+      setSalesItemTotal((salesItemsData ?? []).reduce((a, r) => a + (r.total_amount ?? 0), 0))
     }
     load()
   }, [year, month])
@@ -70,9 +78,9 @@ export default function MonthlyReport() {
         </select>
       </div>
 
-      <div className="grid grid-cols-3 gap-4 mb-6">
+      <div className="grid grid-cols-3 gap-4 mb-4">
         <div className="bg-orange-50 rounded-2xl p-5">
-          <p className="text-sm text-gray-500 mb-1">월 누계</p>
+          <p className="text-sm text-gray-500 mb-1">월 매출 누계</p>
           <p className="text-2xl font-bold text-brand">{won(monthTotal)}</p>
         </div>
         <div className="bg-white rounded-2xl p-5 shadow-sm">
@@ -80,12 +88,42 @@ export default function MonthlyReport() {
           <p className="text-2xl font-bold text-gray-800">{rows.length}일</p>
         </div>
         <div className="bg-white rounded-2xl p-5 shadow-sm">
-          <p className="text-sm text-gray-500 mb-1">일평균</p>
+          <p className="text-sm text-gray-500 mb-1">일평균 매출</p>
           <p className="text-2xl font-bold text-gray-800">
             {won(rows.length ? Math.round(monthTotal / rows.length) : 0)}
           </p>
         </div>
       </div>
+
+      {/* 손익 요약 */}
+      {(purchaseTotal > 0 || salesItemTotal > 0) && (() => {
+        const profit     = salesItemTotal - purchaseTotal
+        const marginRate = salesItemTotal > 0 ? Math.round((profit / salesItemTotal) * 100) : 0
+        return (
+          <div className="grid grid-cols-4 gap-4 mb-6">
+            <div className="bg-blue-50 rounded-2xl p-5">
+              <p className="text-sm text-gray-500 mb-1">매입 합계</p>
+              <p className="text-xl font-bold text-blue-600">{won(purchaseTotal)}</p>
+            </div>
+            <div className="bg-orange-50 rounded-2xl p-5">
+              <p className="text-sm text-gray-500 mb-1">재고앱 매출</p>
+              <p className="text-xl font-bold text-brand">{won(salesItemTotal)}</p>
+            </div>
+            <div className={`${profit >= 0 ? 'bg-green-50' : 'bg-red-50'} rounded-2xl p-5`}>
+              <p className="text-sm text-gray-500 mb-1">순이익</p>
+              <p className={`text-xl font-bold ${profit >= 0 ? 'text-green-600' : 'text-red-500'}`}>
+                {profit >= 0 ? '+' : ''}{won(profit)}
+              </p>
+            </div>
+            <div className={`${marginRate >= 0 ? 'bg-green-50' : 'bg-red-50'} rounded-2xl p-5`}>
+              <p className="text-sm text-gray-500 mb-1">마진율</p>
+              <p className={`text-xl font-bold ${marginRate >= 0 ? 'text-green-600' : 'text-red-500'}`}>
+                {marginRate}%
+              </p>
+            </div>
+          </div>
+        )
+      })()}
 
       <div className="bg-white rounded-2xl shadow-sm overflow-hidden mb-6">
         <table className="w-full text-sm">
