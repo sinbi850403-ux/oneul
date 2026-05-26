@@ -1,1 +1,6 @@
-export { supabase } from '@oneul/supabase'
+import { createSupabaseClient } from '@oneul/supabase'
+
+export const supabase = createSupabaseClient(
+  import.meta.env.VITE_SUPABASE_URL,
+  import.meta.env.VITE_SUPABASE_ANON_KEY
+)

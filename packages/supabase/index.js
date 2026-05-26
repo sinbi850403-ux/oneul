@@ -1,10 +1,8 @@
 import { createClient } from '@supabase/supabase-js'
 
-const SUPABASE_URL  = import.meta.env.VITE_SUPABASE_URL
-const SUPABASE_KEY  = import.meta.env.VITE_SUPABASE_ANON_KEY
-
-if (!SUPABASE_URL || !SUPABASE_KEY) {
-  throw new Error('VITE_SUPABASE_URL 또는 VITE_SUPABASE_ANON_KEY 환경변수가 없습니다.')
+export function createSupabaseClient(url, key) {
+  if (!url || !key) {
+    throw new Error('Supabase URL과 Key가 필요합니다.')
+  }
+  return createClient(url, key)
 }
-
-export const supabase = createClient(SUPABASE_URL, SUPABASE_KEY)
