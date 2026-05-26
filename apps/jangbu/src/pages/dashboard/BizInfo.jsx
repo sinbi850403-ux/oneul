@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import { useOutletContext } from 'react-router-dom'
 import { supabase } from '../../lib/supabase.js'
 import Toast from '../../components/Toast.jsx'
 
@@ -19,6 +20,7 @@ export default function BizInfo() {
   })
   const [toast, setToast] = useState('')
   const [saving, setSaving] = useState(false)
+  const { setShopName } = useOutletContext() ?? {}
 
   useEffect(() => {
     async function load() {
@@ -42,7 +44,10 @@ export default function BizInfo() {
       .eq('user_id', user.id)
     setSaving(false)
     if (error) setToast('저장에 실패했어요')
-    else setToast('저장됐어요')
+    else {
+      setToast('저장됐어요')
+      setShopName?.(values.shop_name || '')
+    }
   }
 
   return (

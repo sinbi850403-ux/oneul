@@ -94,7 +94,7 @@ export default function DashboardLayout() {
       </aside>
 
       <main className="flex-1 p-8 overflow-y-auto">
-        <Outlet />
+        <Outlet context={{ setShopName }} />
       </main>
     </div>
   )

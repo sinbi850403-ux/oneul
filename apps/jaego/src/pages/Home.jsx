@@ -1,9 +1,10 @@
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { useNavigate, useLocation } from 'react-router-dom'
 import { useAuth } from '../lib/AuthContext'
 import { useStockLog } from '../hooks/useStock'
 import { useAllProducts } from '../hooks/useProducts'
 import { useIsMobile } from '../hooks/useIsMobile'
+import { supabase } from '../lib/supabase'
 
 const ACTIONS = [
   { label: '입고', path: '/stock-in',  color: 'var(--color-in)',     bg: 'var(--color-in-light)' },
@@ -53,7 +54,7 @@ function isThisMonth(iso) {
 }
 
 /* ───────────────────── Mobile ───────────────────── */
-function MobileHome({ user, signOut, logs, loading, lowStock = [] }) {
+function MobileHome({ user, signOut, logs, loading, lowStock = [], shopName = '' }) {
   const navigate = useNavigate()
   return (
     <div style={{ minHeight: '100vh', background: 'var(--color-bg)', paddingBottom: 40 }}>
@@ -66,7 +67,14 @@ function MobileHome({ user, signOut, logs, loading, lowStock = [] }) {
         alignItems: 'center',
         justifyContent: 'space-between',
       }}>
-        <span style={{ fontSize: 20, fontWeight: 800, color: 'var(--color-primary)' }}>오늘재고</span>
+        <div>
+          <span style={{ fontSize: 20, fontWeight: 800, color: 'var(--color-primary)' }}>오늘재고</span>
+          {shopName && (
+            <span style={{ fontSize: 13, color: 'var(--color-text-sub)', marginLeft: 8, fontWeight: 500 }}>
+              {shopName}
+            </span>
+          )}
+        </div>
         <div style={{ display: 'flex', gap: 12 }}>
           {[['재고현황', '/stock-status'], ['이력', '/history'], ['상품관리', '/products'], ['거래처', '/suppliers'], ['발주', '/orders'], ['재고실사', '/stocktake']].map(([label, path]) => (
             <button key={path} onClick={() => navigate(path)}
@@ -132,7 +140,7 @@ function MobileHome({ user, signOut, logs, loading, lowStock = [] }) {
 }
 
 /* ───────────────────── PC ───────────────────── */
-function PCHome({ user, signOut, logs, loading, products, lowStock = [] }) {
+function PCHome({ user, signOut, logs, loading, products, lowStock = [], shopName = '' }) {
   const navigate  = useNavigate()
   const location  = useLocation()
 
@@ -200,6 +208,13 @@ function PCHome({ user, signOut, logs, loading, products, lowStock = [] }) {
           flexDirection: 'column',
           gap: 4,
         }}>
+          {/* 상호명 */}
+          <div style={{ padding: '0 20px 16px', borderBottom: '1px solid var(--color-border)', marginBottom: 8 }}>
+            <div style={{ fontSize: 18, fontWeight: 800, color: 'var(--color-primary)' }}>오늘재고</div>
+            <div style={{ fontSize: 13, fontWeight: 600, color: 'var(--color-text)', marginTop: 2 }}>
+              {shopName || '내 가게'}
+            </div>
+          </div>
           {SIDEBAR_ITEMS.map((item, i) => {
             if (item.divider) return (
               <div key={`divider-${i}`} style={{ height: 1, background: 'var(--color-border)', margin: '8px 16px' }} />
@@ -415,6 +430,7 @@ export default function Home() {
   const { logs, loading, fetchLogs } = useStockLog()
   const { products } = useAllProducts()
   const isMobile = useIsMobile()
+  const [shopName, setShopName] = useState('')
 
   const lowStockProducts = products.filter(p =>
     (p.min_quantity ?? 0) > 0 && (p.stock?.[0]?.quantity ?? 0) <= p.min_quantity
@@ -422,7 +438,17 @@ export default function Home() {
 
   useEffect(() => { fetchLogs() }, [])
 
+  useEffect(() => {
+    async function loadShopName() {
+      const { data: { user: u } } = await supabase.auth.getUser()
+      if (!u) return
+      const { data } = await supabase.from('profiles').select('shop_name').eq('user_id', u.id).single()
+      if (data?.shop_name) setShopName(data.shop_name)
+    }
+    loadShopName()
+  }, [])
+
   return isMobile
-    ? <MobileHome user={user} signOut={signOut} logs={logs} loading={loading} lowStock={lowStockProducts} />
-    : <PCHome user={user} signOut={signOut} logs={logs} loading={loading} products={products} lowStock={lowStockProducts} />
+    ? <MobileHome user={user} signOut={signOut} logs={logs} loading={loading} lowStock={lowStockProducts} shopName={shopName} />
+    : <PCHome user={user} signOut={signOut} logs={logs} loading={loading} products={products} lowStock={lowStockProducts} shopName={shopName} />
 }
