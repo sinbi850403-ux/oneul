@@ -44,8 +44,8 @@ export default function DashboardInput() {
       { onConflict: 'user_id,sale_date' }
     )
     setSaving(false)
-    if (error) setToast('저장에 실패했어요 ❌')
-    else setToast('저장됐어요 ✅')
+    if (error) setToast('저장에 실패했어요')
+    else setToast('저장됐어요')
   }
 
   function handleReset() {

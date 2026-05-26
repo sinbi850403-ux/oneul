@@ -63,7 +63,7 @@ export default function SalesItems() {
         <h2 className="text-2xl font-bold text-gray-800">매출 내역</h2>
         <button onClick={handleExcel}
           className="px-4 py-2 text-sm font-semibold border border-gray-200 rounded-xl text-orange-500 hover:bg-orange-50">
-          📊 엑셀 다운로드
+          엑셀 다운로드
         </button>
       </div>
 

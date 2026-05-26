@@ -114,7 +114,7 @@ export default function OrderDetail() {
             padding: '7px 14px', borderRadius: 'var(--radius)', fontSize: 13, fontWeight: 600,
             border: '1px solid var(--color-border)', background: 'var(--color-white)',
             color: 'var(--color-primary)', cursor: 'pointer',
-          }}>📊 엑셀</button>
+          }}>엑셀</button>
         {isPending && (
           <button onClick={handleComplete} disabled={completing || items.length === 0} style={{
             background: '#059669', color: 'var(--color-white)',

@@ -30,7 +30,7 @@ function StockTable({ products, loading, keyword, setKeyword, sortBy, setSortBy,
           borderRadius: 'var(--radius)', padding: '12px 16px',
           marginBottom: 16, fontSize: 14, color: '#92400E', fontWeight: 600,
         }}>
-          ⚠️ 안전재고 부족 상품이 {lowCount}개 있어요
+          안전재고 부족 상품이 {lowCount}개 있어요
         </div>
       )}
 
@@ -61,7 +61,7 @@ function StockTable({ products, loading, keyword, setKeyword, sortBy, setSortBy,
           padding: '8px 14px', borderRadius: 'var(--radius)', fontSize: 13, fontWeight: 600,
           border: '1px solid var(--color-border)', background: 'var(--color-white)',
           color: 'var(--color-primary)', cursor: 'pointer',
-        }}>📊 엑셀</button>
+        }}>엑셀</button>
       </div>
 
       <div style={{ fontSize: 13, color: 'var(--color-text-sub)', marginBottom: 12 }}>
@@ -89,7 +89,7 @@ function StockTable({ products, loading, keyword, setKeyword, sortBy, setSortBy,
                 background: low ? WARN_BG : 'transparent',
               }}>
                 <div style={{ flex: 1 }}>
-                  <div style={{ fontWeight: 600, fontSize: 15 }}>{p.name} {low && '⚠️'}</div>
+                  <div style={{ fontWeight: 600, fontSize: 15 }}>{p.name}</div>
                   <div style={{ fontSize: 12, color: 'var(--color-text-sub)', marginTop: 2 }}>
                     안전재고: {p.min_quantity ?? 0}{p.unit}
                   </div>

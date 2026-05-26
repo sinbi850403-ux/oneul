@@ -40,8 +40,8 @@ export default function Settings() {
       .update({ shop_name: shopName, tax_type: taxType })
       .eq('user_id', user.id)
     setSaving(false)
-    if (error) setToast('저장에 실패했어요 ❌')
-    else setToast('저장됐어요 ✅')
+    if (error) setToast('저장에 실패했어요')
+    else setToast('저장됐어요')
   }
 
   async function handleLogout() {
@@ -55,11 +55,11 @@ export default function Settings() {
     try {
       if (subscribed) {
         await unsubscribe(userId)
-        setToast('알림을 껐어요 🔕')
+        setToast('알림을 껐어요')
       } else {
         const ok = await subscribe(userId)
-        if (ok) setToast('매일 저녁 매출 입력 알림을 보내드려요 🔔')
-        else setToast('알림 설정에 실패했어요. 브라우저 설정을 확인해주세요 ❌')
+        if (ok) setToast('매일 저녁 매출 입력 알림을 보내드려요')
+        else setToast('알림 설정에 실패했어요. 브라우저 설정을 확인해주세요')
       }
     } finally {
       setPushLoading(false)
@@ -77,7 +77,7 @@ export default function Settings() {
     const json = await res.json()
     if (!res.ok) {
       setDeleting(false)
-      setToast(json.error || '탈퇴 처리 중 오류가 발생했어요 ❌')
+      setToast(json.error || '탈퇴 처리 중 오류가 발생했어요')
       return
     }
     await supabase.auth.signOut()

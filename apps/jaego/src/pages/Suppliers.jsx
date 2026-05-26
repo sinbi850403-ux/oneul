@@ -167,10 +167,10 @@ export default function Suppliers() {
                     <div>
                       <div style={{ fontWeight: 600, fontSize: 15 }}>{s.name}</div>
                       <div style={{ fontSize: 13, color: 'var(--color-text-sub)', marginTop: 3, display: 'flex', gap: 12, flexWrap: 'wrap' }}>
-                        {s.contact_name && <span>👤 {s.contact_name}</span>}
-                        {s.phone        && <span>📞 {s.phone}</span>}
-                        {s.email        && <span>✉️ {s.email}</span>}
-                        {s.memo         && <span>📝 {s.memo}</span>}
+                        {s.contact_name && <span>{s.contact_name}</span>}
+                        {s.phone        && <span>{s.phone}</span>}
+                        {s.email        && <span>{s.email}</span>}
+                        {s.memo         && <span>{s.memo}</span>}
                       </div>
                     </div>
                     <div style={{ display: 'flex', gap: 6, flexShrink: 0 }}>

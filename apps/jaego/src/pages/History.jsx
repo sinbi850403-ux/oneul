@@ -49,7 +49,7 @@ export default function History() {
           padding: '7px 14px', borderRadius: 'var(--radius)', fontSize: 13, fontWeight: 600,
           border: '1px solid var(--color-border)', background: 'var(--color-white)',
           color: 'var(--color-primary)', cursor: 'pointer',
-        }}>📊 엑셀 다운로드</button>
+        }}>엑셀 다운로드</button>
       </header>
 
       <div style={{

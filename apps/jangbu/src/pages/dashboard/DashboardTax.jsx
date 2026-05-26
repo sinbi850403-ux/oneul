@@ -45,7 +45,7 @@ export default function DashboardTax() {
     <div className="max-w-2xl">
       <h2 className="text-2xl font-bold text-gray-800 mb-1">세금 요약</h2>
       <p className="text-xs text-gray-400 mb-6">
-        ⚠️ 참고용 추정치입니다. 정확한 신고는 세무사와 상담하세요.
+        참고용 추정치입니다. 정확한 신고는 세무사와 상담하세요.
       </p>
 
       <div className="flex gap-3 mb-6">

@@ -91,7 +91,7 @@ export default function ProductDetail() {
           padding: '7px 14px', borderRadius: 'var(--radius)', fontSize: 13, fontWeight: 600,
           border: '1px solid var(--color-border)', background: 'var(--color-white)',
           color: 'var(--color-primary)', cursor: 'pointer',
-        }}>📊 엑셀</button>
+        }}>엑셀</button>
       </header>
 
       <div style={{

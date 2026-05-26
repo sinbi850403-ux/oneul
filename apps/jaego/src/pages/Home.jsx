@@ -6,23 +6,23 @@ import { useAllProducts } from '../hooks/useProducts'
 import { useIsMobile } from '../hooks/useIsMobile'
 
 const ACTIONS = [
-  { label: '입고', icon: '📦', path: '/stock-in',  color: 'var(--color-in)',     bg: 'var(--color-in-light)' },
-  { label: '출고', icon: '🚚', path: '/stock-out', color: 'var(--color-out)',    bg: 'var(--color-out-light)' },
-  { label: '반품', icon: '↩️', path: '/return',    color: 'var(--color-return)', bg: 'var(--color-return-light)' },
+  { label: '입고', path: '/stock-in',  color: 'var(--color-in)',     bg: 'var(--color-in-light)' },
+  { label: '출고', path: '/stock-out', color: 'var(--color-out)',    bg: 'var(--color-out-light)' },
+  { label: '반품', path: '/return',    color: 'var(--color-return)', bg: 'var(--color-return-light)' },
 ]
 
 const SIDEBAR_ITEMS = [
-  { label: '입고',    icon: '📦', path: '/stock-in' },
-  { label: '출고',    icon: '🚚', path: '/stock-out' },
-  { label: '반품',    icon: '↩️', path: '/return' },
+  { label: '입고',     path: '/stock-in' },
+  { label: '출고',     path: '/stock-out' },
+  { label: '반품',     path: '/return' },
   { divider: true },
-  { label: '재고 현황', icon: '📊', path: '/stock-status' },
-  { label: '재고실사',  icon: '📋', path: '/stocktake' },
+  { label: '재고 현황', path: '/stock-status' },
+  { label: '재고실사',  path: '/stocktake' },
   { divider: true },
-  { label: '전체 이력', icon: '📑', path: '/history' },
-  { label: '상품관리',  icon: '📦', path: '/products' },
-  { label: '거래처',   icon: '🏢', path: '/suppliers' },
-  { label: '발주 관리', icon: '🛒', path: '/orders' },
+  { label: '전체 이력', path: '/history' },
+  { label: '상품관리',  path: '/products' },
+  { label: '거래처',   path: '/suppliers' },
+  { label: '발주 관리', path: '/orders' },
 ]
 
 const TYPE_LABEL = { in: '입고', out: '출고', return: '반품' }
@@ -83,7 +83,7 @@ function MobileHome({ user, signOut, logs, loading, lowStock = [] }) {
 
       <div style={{ maxWidth: 480, margin: '0 auto', padding: '24px 20px' }}>
         <p style={{ fontSize: 14, color: 'var(--color-text-sub)', marginBottom: 20 }}>
-          안녕하세요 👋 오늘도 꼼꼼하게 기록해요
+          안녕하세요, 오늘도 꼼꼼하게 기록해요
         </p>
 
         {/* 재고 부족 알림 */}
@@ -97,7 +97,7 @@ function MobileHome({ user, signOut, logs, loading, lowStock = [] }) {
             }}
           >
             <div style={{ fontSize: 13, fontWeight: 700, color: '#92400E', marginBottom: 4 }}>
-              ⚠️ 안전재고 부족 {lowStock.length}개
+              안전재고 부족 {lowStock.length}개
             </div>
             <div style={{ fontSize: 12, color: '#B45309' }}>
               {lowStock.slice(0, 3).map(p => p.name).join(', ')}
@@ -108,7 +108,7 @@ function MobileHome({ user, signOut, logs, loading, lowStock = [] }) {
 
         {/* 빠른 액션 */}
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3,1fr)', gap: 12, marginBottom: 32 }}>
-          {ACTIONS.map(({ label, icon, path, color, bg }) => (
+          {ACTIONS.map(({ label, path, color, bg }) => (
             <button key={path} onClick={() => navigate(path)}
               style={{
                 background: bg, border: 'none', borderRadius: 'var(--radius-lg)',
@@ -118,7 +118,6 @@ function MobileHome({ user, signOut, logs, loading, lowStock = [] }) {
               onMouseEnter={e => e.currentTarget.style.opacity = '0.8'}
               onMouseLeave={e => e.currentTarget.style.opacity = '1'}
             >
-              <span style={{ fontSize: 28, lineHeight: 1 }}>{icon}</span>
               <span style={{ fontSize: 15, fontWeight: 700, color }}>{label}</span>
             </button>
           ))}
@@ -205,7 +204,7 @@ function PCHome({ user, signOut, logs, loading, products, lowStock = [] }) {
             if (item.divider) return (
               <div key={`divider-${i}`} style={{ height: 1, background: 'var(--color-border)', margin: '8px 16px' }} />
             )
-            const { label, icon, path } = item
+            const { label, path } = item
             const isActive = location.pathname === path
             return (
               <button
@@ -230,7 +229,6 @@ function PCHome({ user, signOut, logs, loading, products, lowStock = [] }) {
                 onMouseEnter={e => { if (!isActive) e.currentTarget.style.background = 'var(--color-bg)' }}
                 onMouseLeave={e => { if (!isActive) e.currentTarget.style.background = 'transparent' }}
               >
-                <span style={{ fontSize: 16 }}>{icon}</span>
                 {label}
               </button>
             )
@@ -252,14 +250,14 @@ function PCHome({ user, signOut, logs, loading, products, lowStock = [] }) {
             >
               <div>
                 <span style={{ fontSize: 14, fontWeight: 700, color: '#92400E' }}>
-                  ⚠️ 안전재고 부족 {lowStock.length}개
+                  안전재고 부족 {lowStock.length}개
                 </span>
                 <span style={{ fontSize: 13, color: '#B45309', marginLeft: 12 }}>
                   {lowStock.slice(0, 5).map(p => p.name).join(', ')}
                   {lowStock.length > 5 && ` 외 ${lowStock.length - 5}개`}
                 </span>
               </div>
-              <span style={{ fontSize: 13, color: '#B45309', fontWeight: 600 }}>재고 현황 →</span>
+              <span style={{ fontSize: 13, color: '#B45309', fontWeight: 600 }}>재고 현황</span>
             </div>
           )}
 

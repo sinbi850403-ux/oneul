@@ -71,7 +71,6 @@ export default function Stocktake() {
             gap: 8,
           }}
         >
-          <span style={{ fontSize: 20 }}>📋</span>
           새 실사 시작
         </button>
 

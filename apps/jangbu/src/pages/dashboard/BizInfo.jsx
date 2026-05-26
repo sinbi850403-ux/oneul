@@ -41,8 +41,8 @@ export default function BizInfo() {
       .update(values)
       .eq('user_id', user.id)
     setSaving(false)
-    if (error) setToast('저장에 실패했어요 ❌')
-    else setToast('저장됐어요 ✅')
+    if (error) setToast('저장에 실패했어요')
+    else setToast('저장됐어요')
   }
 
   return (

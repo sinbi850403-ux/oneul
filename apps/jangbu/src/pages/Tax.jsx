@@ -45,7 +45,7 @@ export default function Tax() {
     <div className="px-5 pt-6">
       <h2 className="text-xl font-bold text-gray-800 mb-1">세금 안내</h2>
       <p className="text-xs text-gray-400 mb-6">
-        ⚠️ 참고용 추정치입니다. 정확한 신고는 세무사와 상담하세요.
+        참고용 추정치입니다. 정확한 신고는 세무사와 상담하세요.
       </p>
 
       <div className="bg-white rounded-2xl shadow-sm p-5 mb-4">

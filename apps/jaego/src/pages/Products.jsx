@@ -136,7 +136,7 @@ function MobileProducts({ navigate, products, loading, keyword, setKeyword, filt
             cursor: uploading ? 'not-allowed' : 'pointer',
           }}
         >
-          {uploading ? '업로드 중...' : '📊 엑셀로 일괄 등록'}
+          {uploading ? '업로드 중...' : '엑셀로 일괄 등록'}
         </button>
       </div>
     </div>
@@ -193,7 +193,7 @@ function PCProducts({ navigate, products, loading, keyword, setKeyword, filtered
               cursor: uploading ? 'not-allowed' : 'pointer',
             }}
           >
-            {uploading ? '업로드 중...' : '📊 엑셀 일괄 등록'}
+            {uploading ? '업로드 중...' : '엑셀 일괄 등록'}
           </button>
           <button
             onClick={() => navigate('/products/add')}
