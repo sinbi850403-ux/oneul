@@ -41,7 +41,7 @@ function ProtectedLayout() {
         <span className="text-sm font-bold text-brand">오늘장부</span>
         <span className="text-gray-600 text-sm">/</span>
         <a
-          href={import.meta.env.VITE_JAEGO_URL || '#'}
+          href={'https://oneul-jaego.vercel.app'}
           className="text-sm font-medium text-gray-400 hover:text-blue-400 transition-colors"
         >
           오늘재고

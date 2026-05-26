@@ -57,7 +57,7 @@ export default function DashboardLayout() {
             <span className="text-lg font-bold text-brand">오늘장부</span>
             <span className="text-gray-300 text-sm">/</span>
             <a
-              href={import.meta.env.VITE_JAEGO_URL || '#'}
+              href={'https://oneul-jaego.vercel.app'}
               className="text-lg font-semibold text-gray-400 hover:text-blue-500 transition-colors"
             >
               오늘재고
