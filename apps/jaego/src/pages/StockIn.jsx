@@ -28,6 +28,7 @@ function StockInForm({ user, onSuccess }) {
   const [keyword, setKeyword] = useState('')
   const [selected, setSelected] = useState(null)
   const [qty, setQty] = useState(1)
+  const [unitPrice, setUnitPrice] = useState('')
   const [note, setNote] = useState('')
   const [submitting, setSubmitting] = useState(false)
   const [success, setSuccess] = useState('')
@@ -61,6 +62,7 @@ function StockInForm({ user, onSuccess }) {
     setSelected(null)
     setKeyword('')
     setQty(1)
+    setUnitPrice('')
     setNote('')
     setShowDrop(false)
     clear()
@@ -74,7 +76,7 @@ function StockInForm({ user, onSuccess }) {
     setError('')
     setSuccess('')
     try {
-      await stockIn(user.id, selected.id, qty, note || null)
+      await stockIn(user.id, selected.id, qty, note || null, Number(unitPrice) || 0)
       setSuccess(`"${selected.name}" ${qty}${selected.unit} 입고 완료!`)
       resetForm()
       onSuccess?.()
@@ -229,6 +231,35 @@ function StockInForm({ user, onSuccess }) {
           />
         </div>
 
+        <div style={{ marginBottom: 16 }}>
+          <label style={{ fontSize: 13, color: 'var(--color-text-sub)', display: 'block', marginBottom: 6 }}>
+            단가 (선택) — 입력 시 장부에 매입 기록됨
+          </label>
+          <input
+            type="number"
+            min={0}
+            placeholder="0"
+            value={unitPrice}
+            onChange={e => setUnitPrice(e.target.value)}
+            style={{
+              width: '100%',
+              padding: '12px 14px',
+              border: '1px solid var(--color-border)',
+              borderRadius: 'var(--radius)',
+              fontSize: 18,
+              fontWeight: 600,
+              background: 'var(--color-white)',
+              boxSizing: 'border-box',
+              outline: 'none',
+            }}
+          />
+          {unitPrice > 0 && qty > 0 && (
+            <p style={{ fontSize: 12, color: 'var(--color-text-sub)', marginTop: 4 }}>
+              총 매입액: ₩{(Number(unitPrice) * qty).toLocaleString()}
+            </p>
+          )}
+        </div>
+
         <div style={{ marginBottom: 24 }}>
           <label style={{ fontSize: 13, color: 'var(--color-text-sub)', display: 'block', marginBottom: 6 }}>메모 (선택)</label>
           <input
@@ -320,7 +351,7 @@ function LogTable({ logs, loading }) {
         <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: 14 }}>
           <thead>
             <tr style={{ background: 'var(--color-bg)' }}>
-              {['일시', '상품명', '수량', '메모'].map(col => (
+              {['일시', '상품명', '수량', '단가', '메모'].map(col => (
                 <th key={col} style={{
                   padding: '10px 16px',
                   textAlign: 'left',
@@ -343,6 +374,9 @@ function LogTable({ logs, loading }) {
                 </td>
                 <td style={{ padding: '12px 16px', color: 'var(--color-in)', fontWeight: 700 }}>
                   +{l.quantity}{l.products?.unit ?? ''}
+                </td>
+                <td style={{ padding: '12px 16px', color: 'var(--color-text-sub)' }}>
+                  {l.unit_price > 0 ? `₩${l.unit_price.toLocaleString()}` : '-'}
                 </td>
                 <td style={{ padding: '12px 16px', color: 'var(--color-text-sub)' }}>
                   {l.note ?? '-'}

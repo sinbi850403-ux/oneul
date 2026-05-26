@@ -3,11 +3,12 @@ import { supabase } from '../lib/supabase'
 import { STOCK_TYPES, STOCK_SOURCES, LOG_LIMIT, HISTORY_LIMIT } from '../lib/constants'
 
 // 입고
-export async function stockIn(userId, productId, quantity, note = null) {
+export async function stockIn(userId, productId, quantity, note = null, unitPrice = 0) {
   const { error } = await supabase.rpc('handle_stock_in', {
     p_user_id:    userId,
     p_product_id: productId,
     p_quantity:   quantity,
+    p_unit_price: unitPrice,
     p_note:       note,
   })
   if (error) throw new Error(error.message)
