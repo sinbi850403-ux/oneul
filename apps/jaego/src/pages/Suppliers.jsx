@@ -94,10 +94,8 @@ export default function Suppliers() {
         position: 'sticky', top: 0, zIndex: 10,
       }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-          {isMobile && (
-            <button onClick={() => navigate(-1)}
-              style={{ fontSize: 22, color: 'var(--color-text)', padding: '4px 8px', marginLeft: -8 }}>←</button>
-          )}
+          <button onClick={() => navigate(-1)}
+            style={{ fontSize: 22, color: 'var(--color-text)', padding: '4px 8px', marginLeft: -8, background: 'none', border: 'none', cursor: 'pointer' }}>←</button>
           <span style={{ fontWeight: 700, fontSize: 18 }}>거래처 관리</span>
         </div>
         <button onClick={() => { setShowAdd(true); setEditId(null) }} style={{

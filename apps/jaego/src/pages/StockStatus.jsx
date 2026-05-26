@@ -199,12 +199,10 @@ export default function StockStatus() {
         height: 56, display: 'flex', alignItems: 'center',
         position: 'sticky', top: 0, zIndex: 10,
       }}>
-        {isMobile && (
-          <button onClick={() => navigate(-1)}
-            style={{ fontSize: 22, color: 'var(--color-text)', padding: '4px 8px', marginLeft: -8, marginRight: 8 }}>
-            ←
-          </button>
-        )}
+        <button onClick={() => navigate(-1)}
+          style={{ fontSize: 22, color: 'var(--color-text)', padding: '4px 8px', marginLeft: -8, marginRight: 8, background: 'none', border: 'none', cursor: 'pointer' }}>
+          ←
+        </button>
         <span style={{ fontWeight: 700, fontSize: 18 }}>재고 현황</span>
       </header>
 
