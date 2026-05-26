@@ -1,0 +1,17 @@
+name: WeeklyReport - 주간 매출 리포트 이메일
+
+on:
+  schedule:
+    - cron: '0 0 * * 1'   # 매주 월요일 오전 9시 KST (UTC 00:00)
+  workflow_dispatch:
+
+jobs:
+  report:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Supabase Edge Function 호출
+        run: |
+          curl -s -o /dev/null -w "%{http_code}" \
+            -X POST "${{ secrets.SUPABASE_URL }}/functions/v1/weekly-report" \
+            -H "Authorization: Bearer ${{ secrets.SUPABASE_SERVICE_KEY }}" \
+            | grep -q "^2" && echo "✅ 리포트 발송 완료" || (echo "❌ 발송 실패" && exit 1)

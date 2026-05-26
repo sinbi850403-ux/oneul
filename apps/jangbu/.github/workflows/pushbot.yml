@@ -1,0 +1,28 @@
+name: PushBot - 매일 저녁 매출 입력 알림
+
+on:
+  schedule:
+    - cron: '0 11 * * *'   # 매일 저녁 8시 KST (UTC 11:00)
+  workflow_dispatch:
+
+jobs:
+  push:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: 패키지 설치
+        working-directory: pushbot
+        run: npm install
+
+      - name: 푸시 알림 발송
+        working-directory: pushbot
+        env:
+          VAPID_PRIVATE_KEY: ${{ secrets.VAPID_PRIVATE_KEY }}
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_SERVICE_KEY: ${{ secrets.SUPABASE_SERVICE_KEY }}
+        run: node index.js

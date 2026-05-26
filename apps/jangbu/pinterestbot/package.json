@@ -1,0 +1,7 @@
+{
+  "name": "pinterestbot",
+  "type": "module",
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.30.0"
+  }
+}

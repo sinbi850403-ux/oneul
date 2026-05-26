@@ -1,0 +1,29 @@
+name: PinterestBot - 핀 자동 업로드
+
+on:
+  schedule:
+    - cron: '0 2 * * *'   # 매일 오전 11시 KST (UTC 02:00)
+    - cron: '0 7 * * *'   # 매일 오후 4시 KST (UTC 07:00)
+  workflow_dispatch:
+
+jobs:
+  pin:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: 패키지 설치
+        working-directory: pinterestbot
+        run: npm install
+
+      - name: Pinterest 핀 업로드
+        working-directory: pinterestbot
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          PINTEREST_ACCESS_TOKEN: ${{ secrets.PINTEREST_ACCESS_TOKEN }}
+          PINTEREST_BOARD_ID: ${{ secrets.PINTEREST_BOARD_ID }}
+        run: node index.js

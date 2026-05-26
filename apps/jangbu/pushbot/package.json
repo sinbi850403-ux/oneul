@@ -1,0 +1,8 @@
+{
+  "name": "pushbot",
+  "type": "module",
+  "dependencies": {
+    "web-push": "^3.6.7",
+    "@supabase/supabase-js": "^2.45.0"
+  }
+}

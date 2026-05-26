@@ -1,0 +1,32 @@
+name: AdBot - 자동 블로그 포스팅
+
+on:
+  schedule:
+    - cron: '0 1 * * *'   # 매일 오전 10시 KST (UTC 01:00)
+    - cron: '0 6 * * *'   # 매일 오후 3시 KST (UTC 06:00)
+  workflow_dispatch:       # 수동 실행 버튼
+
+jobs:
+  post:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: 패키지 설치
+        working-directory: adbot
+        run: npm install
+
+      - name: 블로그 포스팅
+        working-directory: adbot
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          GOOGLE_CLIENT_ID: ${{ secrets.GOOGLE_CLIENT_ID }}
+          GOOGLE_CLIENT_SECRET: ${{ secrets.GOOGLE_CLIENT_SECRET }}
+          GOOGLE_REFRESH_TOKEN: ${{ secrets.GOOGLE_REFRESH_TOKEN }}
+          BLOGGER_BLOG_ID: ${{ secrets.BLOGGER_BLOG_ID }}
+          GOOGLE_INDEXING_SA_KEY: ${{ secrets.GOOGLE_INDEXING_SA_KEY }}
+        run: node index.js
