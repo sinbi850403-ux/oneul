@@ -3,6 +3,7 @@ import { NavLink } from 'react-router-dom'
 const tabs = [
   { to: '/input',    icon: '✏️', label: '입력' },
   { to: '/calendar', icon: '📅', label: '달력' },
+  { to: '/history',  icon: '📋', label: '내역' },
   { to: '/tax',      icon: '💰', label: '세금' },
   { to: '/settings', icon: '⚙️', label: '설정' },
 ]

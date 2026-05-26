@@ -96,30 +96,44 @@ export default function MonthlyReport() {
       </div>
 
       {/* 손익 요약 */}
-      {(purchaseTotal > 0 || salesItemTotal > 0) && (() => {
-        const profit     = salesItemTotal - purchaseTotal
-        const marginRate = salesItemTotal > 0 ? Math.round((profit / salesItemTotal) * 100) : 0
+      {(purchaseTotal > 0 || salesItemTotal > 0 || monthTotal > 0) && (() => {
+        const totalSales = salesItemTotal + monthTotal   // 재고앱 출고 매출 + 장부앱 수동 매출
+        const profit     = totalSales - purchaseTotal
+        const marginRate = totalSales > 0 ? Math.round((profit / totalSales) * 100) : 0
         return (
-          <div className="grid grid-cols-4 gap-4 mb-6">
-            <div className="bg-blue-50 rounded-2xl p-5">
-              <p className="text-sm text-gray-500 mb-1">매입 합계</p>
-              <p className="text-xl font-bold text-blue-600">{won(purchaseTotal)}</p>
+          <div className="mb-6">
+            <p className="text-xs text-gray-400 font-medium mb-2 uppercase tracking-wide">손익 요약</p>
+            <div className="grid grid-cols-3 gap-3 mb-3">
+              <div className="bg-blue-50 rounded-2xl p-4">
+                <p className="text-xs text-gray-500 mb-1">매입 합계</p>
+                <p className="text-lg font-bold text-blue-600">{won(purchaseTotal)}</p>
+              </div>
+              <div className="bg-orange-50 rounded-2xl p-4">
+                <p className="text-xs text-gray-500 mb-1">수동 매출</p>
+                <p className="text-lg font-bold text-brand">{won(monthTotal)}</p>
+              </div>
+              <div className="bg-orange-50 rounded-2xl p-4">
+                <p className="text-xs text-gray-500 mb-1">재고앱 매출</p>
+                <p className="text-lg font-bold text-brand">{won(salesItemTotal)}</p>
+              </div>
             </div>
-            <div className="bg-orange-50 rounded-2xl p-5">
-              <p className="text-sm text-gray-500 mb-1">재고앱 매출</p>
-              <p className="text-xl font-bold text-brand">{won(salesItemTotal)}</p>
-            </div>
-            <div className={`${profit >= 0 ? 'bg-green-50' : 'bg-red-50'} rounded-2xl p-5`}>
-              <p className="text-sm text-gray-500 mb-1">순이익</p>
-              <p className={`text-xl font-bold ${profit >= 0 ? 'text-green-600' : 'text-red-500'}`}>
-                {profit >= 0 ? '+' : ''}{won(profit)}
-              </p>
-            </div>
-            <div className={`${marginRate >= 0 ? 'bg-green-50' : 'bg-red-50'} rounded-2xl p-5`}>
-              <p className="text-sm text-gray-500 mb-1">마진율</p>
-              <p className={`text-xl font-bold ${marginRate >= 0 ? 'text-green-600' : 'text-red-500'}`}>
-                {marginRate}%
-              </p>
+            <div className="grid grid-cols-3 gap-3">
+              <div className="bg-orange-100 rounded-2xl p-4">
+                <p className="text-xs text-gray-500 mb-1">통합 매출</p>
+                <p className="text-lg font-bold text-brand">{won(totalSales)}</p>
+              </div>
+              <div className={`${profit >= 0 ? 'bg-green-50' : 'bg-red-50'} rounded-2xl p-4`}>
+                <p className="text-xs text-gray-500 mb-1">순이익</p>
+                <p className={`text-lg font-bold ${profit >= 0 ? 'text-green-600' : 'text-red-500'}`}>
+                  {profit >= 0 ? '+' : ''}{won(profit)}
+                </p>
+              </div>
+              <div className={`${marginRate >= 0 ? 'bg-green-50' : 'bg-red-50'} rounded-2xl p-4`}>
+                <p className="text-xs text-gray-500 mb-1">마진율</p>
+                <p className={`text-lg font-bold ${marginRate >= 0 ? 'text-green-600' : 'text-red-500'}`}>
+                  {marginRate}%
+                </p>
+              </div>
             </div>
           </div>
         )

@@ -53,7 +53,7 @@ function isThisMonth(iso) {
 }
 
 /* ───────────────────── Mobile ───────────────────── */
-function MobileHome({ user, signOut, logs, loading }) {
+function MobileHome({ user, signOut, logs, loading, lowStock = [] }) {
   const navigate = useNavigate()
   return (
     <div style={{ minHeight: '100vh', background: 'var(--color-bg)', paddingBottom: 40 }}>
@@ -86,6 +86,26 @@ function MobileHome({ user, signOut, logs, loading }) {
           안녕하세요 👋 오늘도 꼼꼼하게 기록해요
         </p>
 
+        {/* 재고 부족 알림 */}
+        {lowStock.length > 0 && (
+          <div
+            onClick={() => navigate('/stock-status')}
+            style={{
+              background: '#FFFBEB', border: '1px solid #F59E0B',
+              borderRadius: 'var(--radius-lg)', padding: '12px 16px',
+              marginBottom: 20, cursor: 'pointer',
+            }}
+          >
+            <div style={{ fontSize: 13, fontWeight: 700, color: '#92400E', marginBottom: 4 }}>
+              ⚠️ 안전재고 부족 {lowStock.length}개
+            </div>
+            <div style={{ fontSize: 12, color: '#B45309' }}>
+              {lowStock.slice(0, 3).map(p => p.name).join(', ')}
+              {lowStock.length > 3 && ` 외 ${lowStock.length - 3}개`}
+            </div>
+          </div>
+        )}
+
         {/* 빠른 액션 */}
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3,1fr)', gap: 12, marginBottom: 32 }}>
           {ACTIONS.map(({ label, icon, path, color, bg }) => (
@@ -113,7 +133,7 @@ function MobileHome({ user, signOut, logs, loading }) {
 }
 
 /* ───────────────────── PC ───────────────────── */
-function PCHome({ user, signOut, logs, loading, products }) {
+function PCHome({ user, signOut, logs, loading, products, lowStock = [] }) {
   const navigate  = useNavigate()
   const location  = useLocation()
 
@@ -219,6 +239,30 @@ function PCHome({ user, signOut, logs, loading, products }) {
 
         {/* 메인 */}
         <main style={{ flex: 1, padding: '28px 32px', overflowY: 'auto' }}>
+          {/* 재고 부족 알림 */}
+          {lowStock.length > 0 && (
+            <div
+              onClick={() => navigate('/stock-status')}
+              style={{
+                background: '#FFFBEB', border: '1px solid #F59E0B',
+                borderRadius: 'var(--radius-lg)', padding: '12px 20px',
+                marginBottom: 20, cursor: 'pointer',
+                display: 'flex', alignItems: 'center', justifyContent: 'space-between',
+              }}
+            >
+              <div>
+                <span style={{ fontSize: 14, fontWeight: 700, color: '#92400E' }}>
+                  ⚠️ 안전재고 부족 {lowStock.length}개
+                </span>
+                <span style={{ fontSize: 13, color: '#B45309', marginLeft: 12 }}>
+                  {lowStock.slice(0, 5).map(p => p.name).join(', ')}
+                  {lowStock.length > 5 && ` 외 ${lowStock.length - 5}개`}
+                </span>
+              </div>
+              <span style={{ fontSize: 13, color: '#B45309', fontWeight: 600 }}>재고 현황 →</span>
+            </div>
+          )}
+
           {/* 요약 카드 */}
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4,1fr)', gap: 16, marginBottom: 28 }}>
             {SUMMARY_CARDS.map(({ label, value, unit }) => (
@@ -374,9 +418,13 @@ export default function Home() {
   const { products } = useAllProducts()
   const isMobile = useIsMobile()
 
+  const lowStockProducts = products.filter(p =>
+    (p.min_quantity ?? 0) > 0 && (p.stock?.[0]?.quantity ?? 0) <= p.min_quantity
+  )
+
   useEffect(() => { fetchLogs() }, [])
 
   return isMobile
-    ? <MobileHome user={user} signOut={signOut} logs={logs} loading={loading} />
-    : <PCHome user={user} signOut={signOut} logs={logs} loading={loading} products={products} />
+    ? <MobileHome user={user} signOut={signOut} logs={logs} loading={loading} lowStock={lowStockProducts} />
+    : <PCHome user={user} signOut={signOut} logs={logs} loading={loading} products={products} lowStock={lowStockProducts} />
 }

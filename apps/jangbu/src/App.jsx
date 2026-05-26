@@ -3,6 +3,7 @@ import Input from './pages/Input.jsx'
 import Calendar from './pages/Calendar.jsx'
 import Tax from './pages/Tax.jsx'
 import Settings from './pages/Settings.jsx'
+import History from './pages/History.jsx'
 import Login from './pages/Login.jsx'
 import Landing from './pages/Landing.jsx'
 import NavBar from './components/NavBar.jsx'
@@ -37,9 +38,10 @@ function ProtectedLayout() {
     <div className="flex flex-col min-h-screen max-w-md mx-auto">
       <div className="flex-1 pb-20">
         <Routes>
-          <Route path="/input" element={<Input />} />
+          <Route path="/input"    element={<Input />} />
           <Route path="/calendar" element={<Calendar />} />
-          <Route path="/tax" element={<Tax />} />
+          <Route path="/history"  element={<History />} />
+          <Route path="/tax"      element={<Tax />} />
           <Route path="/settings" element={<Settings />} />
         </Routes>
       </div>
