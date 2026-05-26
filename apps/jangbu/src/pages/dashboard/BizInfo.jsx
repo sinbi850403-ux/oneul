@@ -40,8 +40,7 @@ export default function BizInfo() {
     const { data: { user } } = await supabase.auth.getUser()
     const { error } = await supabase
       .from('profiles')
-      .update(values)
-      .eq('user_id', user.id)
+      .upsert({ ...values, user_id: user.id }, { onConflict: 'user_id' })
     setSaving(false)
     if (error) setToast('저장에 실패했어요')
     else {
