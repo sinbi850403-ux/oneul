@@ -9,6 +9,7 @@ export default function ProductAdd() {
   const [name, setName] = useState('')
   const [unit, setUnit] = useState('개')
   const [quantity, setQuantity] = useState(0)
+  const [price, setPrice] = useState('')
   const [submitting, setSubmitting] = useState(false)
   const [error, setError] = useState('')
 
@@ -18,7 +19,7 @@ export default function ProductAdd() {
     setSubmitting(true)
     setError('')
     try {
-      await addProduct({ name: name.trim(), unit: unit.trim() || '개', quantity: Number(quantity) })
+      await addProduct({ name: name.trim(), unit: unit.trim() || '개', quantity: Number(quantity), price: Number(price) || 0 })
       navigate('/products')
     } catch (err) {
       setError('상품 추가 중 오류가 발생했습니다.')
@@ -91,6 +92,18 @@ export default function ProductAdd() {
               value={unit}
               onChange={e => setUnit(e.target.value)}
               style={inputStyle}
+            />
+          </div>
+
+          <div style={{ marginBottom: 20 }}>
+            <label style={labelStyle}>기본 단가 (선택) — 입고 시 자동 적용됩니다</label>
+            <input
+              type="number"
+              min={0}
+              placeholder="0"
+              value={price}
+              onChange={e => setPrice(e.target.value)}
+              style={{ ...inputStyle, fontSize: 18, fontWeight: 600 }}
             />
           </div>
 

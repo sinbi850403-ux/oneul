@@ -85,12 +85,12 @@ export function useAllProducts() {
     fetchAll()
   }
 
-  async function addProduct({ name, unit, quantity }) {
+  async function addProduct({ name, unit, quantity, price = 0 }) {
     const { data: { user } } = await supabase.auth.getUser()
 
     const { data: product } = await supabase
       .from('products')
-      .insert({ user_id: user.id, name, unit })
+      .insert({ user_id: user.id, name, unit, price })
       .select()
       .single()
 
