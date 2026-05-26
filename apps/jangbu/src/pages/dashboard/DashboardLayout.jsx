@@ -67,9 +67,8 @@ export default function DashboardLayout() {
       <div className="flex flex-1 bg-gray-50">
       <aside className="w-56 bg-white border-r border-gray-100 flex flex-col">
         <div className="px-6 py-5 border-b border-gray-100">
-          <h1 className="text-xl font-bold text-brand">오늘장부</h1>
-          <p className="text-sm font-medium text-gray-700 mt-0.5">{shopName || '내 가게'}</p>
-          <p className="text-xs text-gray-400">관리자 대시보드</p>
+          <p className="text-base font-bold text-gray-800">{shopName || '내 가게'}</p>
+          <p className="text-xs text-gray-400 mt-0.5">관리자 대시보드</p>
         </div>
 
         <nav className="flex-1 px-3 py-4 flex flex-col gap-1">
