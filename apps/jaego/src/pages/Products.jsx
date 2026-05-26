@@ -165,7 +165,14 @@ function PCProducts({ navigate, products, loading, keyword, setKeyword, filtered
         top: 0,
         zIndex: 10,
       }}>
-        <span style={{ fontWeight: 700, fontSize: 18 }}>상품 관리</span>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
+          <button
+            onClick={() => navigate(-1)}
+            style={{ background: 'none', border: 'none', cursor: 'pointer', fontSize: 22, color: 'var(--color-text)', padding: '4px 8px' }}
+            aria-label="뒤로가기"
+          >←</button>
+          <span style={{ fontWeight: 700, fontSize: 18 }}>상품 관리</span>
+        </div>
         <div style={{ display: 'flex', gap: 8 }}>
           <ExcelInput fileRef={fileRef} onChange={handleFileChange} />
           <button
