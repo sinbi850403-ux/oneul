@@ -20,8 +20,6 @@ create table if not exists profiles (
 );
 
 alter table profiles enable row level security;
-create policy "own profile" on profiles
-  for all using (auth.uid() = user_id);
 
 -- 신규 가입 시 profiles row 자동 생성
 create or replace function handle_new_user()
@@ -99,6 +97,12 @@ alter table stock_log      enable row level security;
 alter table stocktake      enable row level security;
 alter table stocktake_item enable row level security;
 
+drop policy if exists "own products"       on products;
+drop policy if exists "own stock"          on stock;
+drop policy if exists "own stock_log"      on stock_log;
+drop policy if exists "own stocktake"      on stocktake;
+drop policy if exists "own stocktake_item" on stocktake_item;
+
 create policy "own products"       on products       for all using (auth.uid() = user_id);
 create policy "own stock"          on stock          for all using (auth.uid() = user_id);
 create policy "own stock_log"      on stock_log      for all using (auth.uid() = user_id);
@@ -161,9 +165,15 @@ alter table sales              enable row level security;
 alter table purchases          enable row level security;
 alter table push_subscriptions enable row level security;
 
+drop policy if exists "own sales"              on sales;
+drop policy if exists "own purchases"          on purchases;
+drop policy if exists "own push_subscriptions" on push_subscriptions;
+drop policy if exists "own profile"            on profiles;
+
 create policy "own sales"              on sales              for all using (auth.uid() = user_id);
 create policy "own purchases"          on purchases          for all using (auth.uid() = user_id);
 create policy "own push_subscriptions" on push_subscriptions for all using (auth.uid() = user_id);
+create policy "own profile"            on profiles           for all using (auth.uid() = user_id);
 
 
 -- ================================================
