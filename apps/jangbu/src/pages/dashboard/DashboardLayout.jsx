@@ -50,22 +50,25 @@ export default function DashboardLayout() {
   }
 
   return (
-    <div className="flex min-h-screen bg-gray-50">
+    <div className="flex flex-col min-h-screen">
+      {/* 앱 스위처 바 */}
+      <div className="bg-gray-900 flex items-center gap-2 px-5 h-8 shrink-0">
+        <span className="text-sm font-bold text-brand">오늘장부</span>
+        <span className="text-gray-600 text-sm">/</span>
+        <a
+          href="https://oneul-jaego.vercel.app"
+          onClick={() => { window.location.href = 'https://oneul-jaego.vercel.app' }}
+          className="text-sm font-medium text-gray-400 hover:text-blue-400 transition-colors cursor-pointer"
+        >
+          오늘재고
+        </a>
+      </div>
+
+      <div className="flex flex-1 bg-gray-50">
       <aside className="w-56 bg-white border-r border-gray-100 flex flex-col">
         <div className="px-6 py-5 border-b border-gray-100">
-          <div className="flex items-center gap-1.5 mb-2">
-            <span className="text-lg font-bold text-brand">오늘장부</span>
-            <span className="text-gray-300 text-sm">/</span>
-            <a
-              href="https://oneul-jaego.vercel.app"
-              rel="noopener noreferrer"
-              onClick={e => { e.stopPropagation(); window.location.href = 'https://oneul-jaego.vercel.app' }}
-              className="text-lg font-semibold text-gray-400 hover:text-blue-500 transition-colors cursor-pointer"
-            >
-              오늘재고
-            </a>
-          </div>
-          <p className="text-sm font-medium text-gray-700">{shopName || '내 가게'}</p>
+          <h1 className="text-xl font-bold text-brand">오늘장부</h1>
+          <p className="text-sm font-medium text-gray-700 mt-0.5">{shopName || '내 가게'}</p>
           <p className="text-xs text-gray-400">관리자 대시보드</p>
         </div>
 
@@ -107,6 +110,7 @@ export default function DashboardLayout() {
       <main className="flex-1 p-8 overflow-y-auto">
         <Outlet context={{ setShopName }} />
       </main>
+      </div>
     </div>
   )
 }
