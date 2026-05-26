@@ -38,13 +38,15 @@ export default function BizInfo() {
   async function handleSave() {
     setSaving(true)
     const { data: { user } } = await supabase.auth.getUser()
-    const { error } = await supabase
+    const { data: updated, error } = await supabase
       .from('profiles')
       .update(values)
       .eq('user_id', user.id)
+      .select()
     setSaving(false)
-    if (error) setToast('저장에 실패했어요')
-    else {
+    if (error || !updated?.length) {
+      setToast(`저장에 실패했어요 (${error?.message ?? '0행 업데이트 — RLS 정책 확인 필요'})`)
+    } else {
       setToast('저장됐어요')
       setShopName?.(values.shop_name || '')
     }
