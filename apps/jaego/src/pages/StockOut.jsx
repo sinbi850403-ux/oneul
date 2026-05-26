@@ -28,6 +28,7 @@ function StockOutForm({ user, onSuccess }) {
   const [keyword, setKeyword] = useState('')
   const [selected, setSelected] = useState(null)
   const [qty, setQty] = useState(1)
+  const [sellingPrice, setSellingPrice] = useState('')
   const [note, setNote] = useState('')
   const [submitting, setSubmitting] = useState(false)
   const [success, setSuccess] = useState('')
@@ -40,6 +41,7 @@ function StockOutForm({ user, onSuccess }) {
   function selectProduct(p) {
     setSelected(p)
     setKeyword(p.name)
+    setSellingPrice(p.selling_price > 0 ? String(p.selling_price) : '')
     setShowDrop(false)
     clear()
     setError('')
@@ -63,6 +65,7 @@ function StockOutForm({ user, onSuccess }) {
     setSelected(null)
     setKeyword('')
     setQty(1)
+    setSellingPrice('')
     setNote('')
     setShowDrop(false)
     clear()
@@ -77,7 +80,7 @@ function StockOutForm({ user, onSuccess }) {
     setError('')
     setSuccess('')
     try {
-      await stockOut(user.id, selected.id, qty, note || null)
+      await stockOut(user.id, selected.id, qty, note || null, Number(sellingPrice) || 0)
       setSuccess(`"${selected.name}" ${qty}${selected.unit} 출고 완료!`)
       resetForm()
       onSuccess?.()
@@ -247,6 +250,40 @@ function StockOutForm({ user, onSuccess }) {
           />
         </div>
 
+        <div style={{ marginBottom: 16 }}>
+          <label style={{ fontSize: 13, color: 'var(--color-text-sub)', display: 'block', marginBottom: 6 }}>
+            판가 (선택)
+            {selected?.selling_price > 0 && (
+              <span style={{ marginLeft: 8, color: 'var(--color-text-sub)' }}>
+                기본 ₩{selected.selling_price.toLocaleString()}
+              </span>
+            )}
+          </label>
+          <input
+            type="number"
+            min={0}
+            placeholder="0"
+            value={sellingPrice}
+            onChange={e => setSellingPrice(e.target.value)}
+            style={{
+              width: '100%',
+              padding: '12px 14px',
+              border: '1px solid var(--color-border)',
+              borderRadius: 'var(--radius)',
+              fontSize: 18,
+              fontWeight: 600,
+              background: 'var(--color-white)',
+              boxSizing: 'border-box',
+              outline: 'none',
+            }}
+          />
+          {sellingPrice > 0 && qty >= 1 && (
+            <div style={{ marginTop: 6, fontSize: 13, color: 'var(--color-out)', fontWeight: 600 }}>
+              총 매출액: ₩{(Number(sellingPrice) * qty).toLocaleString()}
+            </div>
+          )}
+        </div>
+
         <div style={{ marginBottom: 24 }}>
           <label style={{ fontSize: 13, color: 'var(--color-text-sub)', display: 'block', marginBottom: 6 }}>메모 (선택)</label>
           <input
@@ -338,7 +375,7 @@ function LogTable({ logs, loading }) {
         <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: 14 }}>
           <thead>
             <tr style={{ background: 'var(--color-bg)' }}>
-              {['일시', '상품명', '수량', '메모'].map(col => (
+              {['일시', '상품명', '수량', '판가', '메모'].map(col => (
                 <th key={col} style={{
                   padding: '10px 16px',
                   textAlign: 'left',
@@ -361,6 +398,9 @@ function LogTable({ logs, loading }) {
                 </td>
                 <td style={{ padding: '12px 16px', color: 'var(--color-out)', fontWeight: 700 }}>
                   -{l.quantity}{l.products?.unit ?? ''}
+                </td>
+                <td style={{ padding: '12px 16px', color: 'var(--color-text-sub)', whiteSpace: 'nowrap' }}>
+                  {l.selling_price > 0 ? `₩${l.selling_price.toLocaleString()}` : '-'}
                 </td>
                 <td style={{ padding: '12px 16px', color: 'var(--color-text-sub)' }}>
                   {l.note ?? '-'}

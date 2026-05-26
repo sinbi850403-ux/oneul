@@ -15,12 +15,13 @@ export async function stockIn(userId, productId, quantity, note = null, unitPric
 }
 
 // 출고
-export async function stockOut(userId, productId, quantity, note = null) {
+export async function stockOut(userId, productId, quantity, note = null, sellingPrice = 0) {
   const { error } = await supabase.rpc('handle_stock_out', {
-    p_user_id:    userId,
-    p_product_id: productId,
-    p_quantity:   quantity,
-    p_note:       note,
+    p_user_id:       userId,
+    p_product_id:    productId,
+    p_quantity:      quantity,
+    p_selling_price: sellingPrice,
+    p_note:          note,
   })
   if (error) throw new Error(error.message)
 }
@@ -45,7 +46,7 @@ export function useStockLog(productId = null) {
     setLoading(true)
     let query = supabase
       .from('stock_log')
-      .select('id, type, quantity, source, note, created_at, products(name, unit)')
+      .select('id, type, quantity, selling_price, source, note, created_at, products(name, unit)')
       .order('created_at', { ascending: false })
       .limit(LOG_LIMIT)
 

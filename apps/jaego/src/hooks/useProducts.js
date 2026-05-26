@@ -16,7 +16,7 @@ export function useFavoriteProducts() {
     setLoading(true)
     const { data, error } = await supabase
       .from('products')
-      .select('id, name, unit, is_favorite, min_quantity, stock(quantity)')
+      .select('id, name, unit, price, selling_price, is_favorite, min_quantity, stock(quantity)')
       .eq('is_favorite', true)
       .order('name')
       .limit(FAVORITE_LIMIT)
@@ -43,7 +43,7 @@ export function useProductSearch() {
     setLoading(true)
     const { data, error } = await supabase
       .from('products')
-      .select('id, name, unit, min_quantity, stock(quantity)')
+      .select('id, name, unit, price, selling_price, min_quantity, stock(quantity)')
       .ilike('name', `${keyword}%`)
       .limit(SEARCH_LIMIT)
 
@@ -69,7 +69,7 @@ export function useAllProducts() {
     setLoading(true)
     const { data } = await supabase
       .from('products')
-      .select('id, name, unit, is_favorite, min_quantity, stock(quantity)')
+      .select('id, name, unit, price, selling_price, is_favorite, min_quantity, stock(quantity)')
       .order('name')
 
     if (data) setProducts(data)
@@ -85,12 +85,12 @@ export function useAllProducts() {
     fetchAll()
   }
 
-  async function addProduct({ name, unit, quantity, price = 0 }) {
+  async function addProduct({ name, unit, quantity, price = 0, sellingPrice = 0 }) {
     const { data: { user } } = await supabase.auth.getUser()
 
     const { data: product } = await supabase
       .from('products')
-      .insert({ user_id: user.id, name, unit, price })
+      .insert({ user_id: user.id, name, unit, price, selling_price: sellingPrice })
       .select()
       .single()
 

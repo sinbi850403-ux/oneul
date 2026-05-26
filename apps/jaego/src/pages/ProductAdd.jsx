@@ -10,6 +10,7 @@ export default function ProductAdd() {
   const [unit, setUnit] = useState('개')
   const [quantity, setQuantity] = useState(0)
   const [price, setPrice] = useState('')
+  const [sellingPrice, setSellingPrice] = useState('')
   const [submitting, setSubmitting] = useState(false)
   const [error, setError] = useState('')
 
@@ -19,7 +20,7 @@ export default function ProductAdd() {
     setSubmitting(true)
     setError('')
     try {
-      await addProduct({ name: name.trim(), unit: unit.trim() || '개', quantity: Number(quantity), price: Number(price) || 0 })
+      await addProduct({ name: name.trim(), unit: unit.trim() || '개', quantity: Number(quantity), price: Number(price) || 0, sellingPrice: Number(sellingPrice) || 0 })
       navigate('/products')
     } catch (err) {
       setError('상품 추가 중 오류가 발생했습니다.')
@@ -105,6 +106,23 @@ export default function ProductAdd() {
               onChange={e => setPrice(e.target.value)}
               style={{ ...inputStyle, fontSize: 18, fontWeight: 600 }}
             />
+          </div>
+
+          <div style={{ marginBottom: 20 }}>
+            <label style={labelStyle}>판가 (선택) — 출고 시 자동 적용됩니다</label>
+            <input
+              type="number"
+              min={0}
+              placeholder="0"
+              value={sellingPrice}
+              onChange={e => setSellingPrice(e.target.value)}
+              style={{ ...inputStyle, fontSize: 18, fontWeight: 600 }}
+            />
+            {price > 0 && sellingPrice > 0 && (
+              <div style={{ marginTop: 6, fontSize: 13, color: 'var(--color-text-sub)' }}>
+                마진율 {Math.round((1 - Number(price) / Number(sellingPrice)) * 100)}%
+              </div>
+            )}
           </div>
 
           <div style={{ marginBottom: 28 }}>

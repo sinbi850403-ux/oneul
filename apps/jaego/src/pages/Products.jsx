@@ -97,6 +97,9 @@ function MobileProducts({ navigate, products, loading, keyword, setKeyword, filt
                     <div style={{ fontWeight: 600, fontSize: 15, color: 'var(--color-text)' }}>{p.name}</div>
                     <div style={{ fontSize: 13, color: 'var(--color-text-sub)', marginTop: 2 }}>
                       재고 <strong style={{ color: 'var(--color-text)' }}>{stock.toLocaleString()}</strong>{p.unit}
+                      {p.selling_price > 0 && (
+                        <span style={{ marginLeft: 8 }}>· 판가 ₩{p.selling_price.toLocaleString()}</span>
+                      )}
                     </div>
                   </div>
                   <button
@@ -260,12 +263,13 @@ function PCProducts({ navigate, products, loading, keyword, setKeyword, filtered
             <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: 14 }}>
               <thead>
                 <tr style={{ background: 'var(--color-bg)', textAlign: 'left' }}>
-                  {['#', '상품명', '단위', '재고 수량', '즐겨찾기'].map(col => (
+                  {['#', '상품명', '단위', '재고 수량', '단가', '판가', '마진율', '즐겨찾기'].map(col => (
                     <th key={col} style={{
                       padding: '10px 16px', fontSize: 12, fontWeight: 600,
                       color: 'var(--color-text-sub)',
                       borderBottom: '1px solid var(--color-border)',
-                      width: col === '#' ? 48 : col === '즐겨찾기' ? 80 : 'auto',
+                      width: col === '#' ? 48 : col === '즐겨찾기' ? 80 : col === '마진율' ? 80 : 'auto',
+                      textAlign: ['단가', '판가', '마진율', '재고 수량'].includes(col) ? 'right' : 'left',
                     }}>
                       {col}
                     </th>
@@ -288,10 +292,28 @@ function PCProducts({ navigate, products, loading, keyword, setKeyword, filtered
                       <td style={{ padding: '12px 16px', fontWeight: 600 }}>{p.name}</td>
                       <td style={{ padding: '12px 16px', color: 'var(--color-text-sub)' }}>{p.unit}</td>
                       <td style={{
-                        padding: '12px 16px', fontWeight: 700,
+                        padding: '12px 16px', fontWeight: 700, textAlign: 'right',
                         color: stock === 0 ? '#DC2626' : 'var(--color-text)',
                       }}>
                         {stock.toLocaleString()}
+                      </td>
+                      <td style={{ padding: '12px 16px', textAlign: 'right', color: 'var(--color-text-sub)' }}>
+                        {p.price > 0 ? `₩${p.price.toLocaleString()}` : '-'}
+                      </td>
+                      <td style={{ padding: '12px 16px', textAlign: 'right', color: 'var(--color-text-sub)' }}>
+                        {p.selling_price > 0 ? `₩${p.selling_price.toLocaleString()}` : '-'}
+                      </td>
+                      <td style={{ padding: '12px 16px', textAlign: 'right' }}>
+                        {p.price > 0 && p.selling_price > 0 ? (
+                          <span style={{
+                            fontSize: 12, fontWeight: 600, padding: '2px 8px',
+                            borderRadius: 20,
+                            background: p.selling_price > p.price ? '#DCFCE7' : '#FEE2E2',
+                            color: p.selling_price > p.price ? '#16A34A' : '#DC2626',
+                          }}>
+                            {Math.round((1 - p.price / p.selling_price) * 100)}%
+                          </span>
+                        ) : '-'}
                       </td>
                       <td style={{ padding: '12px 16px', textAlign: 'center' }}>
                         <button
