@@ -20,7 +20,7 @@ export default function DashboardLayout() {
   useEffect(() => {
     async function loadShopName() {
       const { data: { user } } = await supabase.auth.getUser()
-      const { data } = await supabase.from('profiles').select('shop_name').eq('user_id', user.id).single()
+      const { data } = await supabase.from('profiles').select('shop_name').eq('user_id', user.id).maybeSingle()
       if (data?.shop_name) setShopName(data.shop_name)
     }
     loadShopName()
