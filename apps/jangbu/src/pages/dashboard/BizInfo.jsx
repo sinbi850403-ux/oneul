@@ -29,7 +29,7 @@ export default function BizInfo() {
         .from('profiles')
         .select('*')
         .eq('user_id', user.id)
-        .single()
+        .maybeSingle()
       if (data) setValues(v => ({ ...v, ...data }))
     }
     load()
