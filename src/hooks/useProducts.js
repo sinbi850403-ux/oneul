@@ -16,7 +16,7 @@ export function useFavoriteProducts() {
     setLoading(true)
     const { data, error } = await supabase
       .from('products')
-      .select('id, name, unit, is_favorite, stock(quantity)')
+      .select('id, name, unit, is_favorite, min_quantity, stock(quantity)')
       .eq('is_favorite', true)
       .order('name')
       .limit(FAVORITE_LIMIT)
@@ -43,7 +43,7 @@ export function useProductSearch() {
     setLoading(true)
     const { data, error } = await supabase
       .from('products')
-      .select('id, name, unit, stock(quantity)')
+      .select('id, name, unit, min_quantity, stock(quantity)')
       .ilike('name', `${keyword}%`)
       .limit(SEARCH_LIMIT)
 
@@ -69,7 +69,7 @@ export function useAllProducts() {
     setLoading(true)
     const { data } = await supabase
       .from('products')
-      .select('id, name, unit, is_favorite, stock(quantity)')
+      .select('id, name, unit, is_favorite, min_quantity, stock(quantity)')
       .order('name')
 
     if (data) setProducts(data)
@@ -103,5 +103,10 @@ export function useAllProducts() {
     fetchAll()
   }
 
-  return { products, loading, toggleFavorite, addProduct, refetch: fetchAll }
+  async function updateMinQuantity(productId, minQty) {
+    await supabase.from('products').update({ min_quantity: minQty }).eq('id', productId)
+    fetchAll()
+  }
+
+  return { products, loading, toggleFavorite, addProduct, updateMinQuantity, refetch: fetchAll }
 }

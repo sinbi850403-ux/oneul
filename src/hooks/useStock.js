@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { supabase } from '../lib/supabase'
-import { STOCK_TYPES, STOCK_SOURCES, LOG_LIMIT } from '../lib/constants'
+import { STOCK_TYPES, STOCK_SOURCES, LOG_LIMIT, HISTORY_LIMIT } from '../lib/constants'
 
 // 입고
 export async function stockIn(userId, productId, quantity, note = null) {
@@ -56,6 +56,31 @@ export function useStockLog(productId = null) {
   }
 
   return { logs, loading, fetchLogs }
+}
+
+// 이력 조회 (필터 지원, History 페이지용)
+export function useStockLogFiltered() {
+  const [logs,    setLogs]    = useState([])
+  const [loading, setLoading] = useState(false)
+
+  async function fetchFiltered({ type = '', dateFrom = '', dateTo = '' } = {}) {
+    setLoading(true)
+    let query = supabase
+      .from('stock_log')
+      .select('id, type, quantity, note, created_at, products(name, unit)')
+      .order('created_at', { ascending: false })
+      .limit(HISTORY_LIMIT)
+
+    if (type)     query = query.eq('type', type)
+    if (dateFrom) query = query.gte('created_at', dateFrom)
+    if (dateTo)   query = query.lte('created_at', dateTo + 'T23:59:59')
+
+    const { data } = await query
+    if (data) setLogs(data)
+    setLoading(false)
+  }
+
+  return { logs, loading, fetchFiltered }
 }
 
 // 엑셀 업로드 → products + stock 일괄 INSERT

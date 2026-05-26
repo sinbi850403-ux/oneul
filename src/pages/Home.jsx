@@ -15,8 +15,14 @@ const SIDEBAR_ITEMS = [
   { label: '입고',    icon: '📦', path: '/stock-in' },
   { label: '출고',    icon: '🚚', path: '/stock-out' },
   { label: '반품',    icon: '↩️', path: '/return' },
-  { label: '재고실사', icon: '📋', path: '/stocktake' },
-  { label: '상품관리', icon: '📦', path: '/products' },
+  { divider: true },
+  { label: '재고 현황', icon: '📊', path: '/stock-status' },
+  { label: '재고실사',  icon: '📋', path: '/stocktake' },
+  { divider: true },
+  { label: '전체 이력', icon: '📑', path: '/history' },
+  { label: '상품관리',  icon: '📦', path: '/products' },
+  { label: '거래처',   icon: '🏢', path: '/suppliers' },
+  { label: '발주 관리', icon: '🛒', path: '/orders' },
 ]
 
 const TYPE_LABEL = { in: '입고', out: '출고', return: '반품' }
@@ -62,7 +68,7 @@ function MobileHome({ user, signOut, logs, loading }) {
       }}>
         <span style={{ fontSize: 20, fontWeight: 800, color: 'var(--color-primary)' }}>오늘재고</span>
         <div style={{ display: 'flex', gap: 12 }}>
-          {[['상품관리', '/products'], ['재고실사', '/stocktake']].map(([label, path]) => (
+          {[['재고현황', '/stock-status'], ['이력', '/history'], ['상품관리', '/products'], ['거래처', '/suppliers'], ['발주', '/orders'], ['재고실사', '/stocktake']].map(([label, path]) => (
             <button key={path} onClick={() => navigate(path)}
               style={{ fontSize: 13, color: 'var(--color-text-sub)', padding: '4px 8px' }}>
               {label}
@@ -141,7 +147,7 @@ function PCHome({ user, signOut, logs, loading, products }) {
       }}>
         <span style={{ fontSize: 20, fontWeight: 800, color: 'var(--color-primary)' }}>오늘재고</span>
         <div style={{ display: 'flex', gap: 8 }}>
-          {[['상품관리', '/products'], ['재고실사', '/stocktake']].map(([label, path]) => (
+          {[['상품관리', '/products'], ['재고실사', '/stocktake'], ['거래처', '/suppliers'], ['발주', '/orders']].map(([label, path]) => (
             <button key={path} onClick={() => navigate(path)}
               style={{
                 fontSize: 13, color: 'var(--color-text-sub)', padding: '6px 14px',
@@ -175,39 +181,38 @@ function PCHome({ user, signOut, logs, loading, products }) {
           flexDirection: 'column',
           gap: 4,
         }}>
-          {SIDEBAR_ITEMS.map(({ label, icon, path }, i) => {
+          {SIDEBAR_ITEMS.map((item, i) => {
+            if (item.divider) return (
+              <div key={`divider-${i}`} style={{ height: 1, background: 'var(--color-border)', margin: '8px 16px' }} />
+            )
+            const { label, icon, path } = item
             const isActive = location.pathname === path
-            const isDivider = i === 2 // 반품 다음에 구분선
             return (
-              <div key={path}>
-                {isDivider && (
-                  <div style={{ height: 1, background: 'var(--color-border)', margin: '8px 16px' }} />
-                )}
-                <button
-                  onClick={() => navigate(path)}
-                  style={{
-                    width: '100%',
-                    display: 'flex',
-                    alignItems: 'center',
-                    gap: 10,
-                    padding: '10px 20px',
-                    fontSize: 14,
-                    fontWeight: isActive ? 700 : 500,
-                    color: isActive ? 'var(--color-primary)' : 'var(--color-text)',
-                    background: isActive ? '#EFF6FF' : 'transparent',
-                    border: 'none',
-                    cursor: 'pointer',
-                    textAlign: 'left',
-                    borderRadius: 0,
-                    transition: 'background 0.1s',
-                  }}
-                  onMouseEnter={e => { if (!isActive) e.currentTarget.style.background = 'var(--color-bg)' }}
-                  onMouseLeave={e => { if (!isActive) e.currentTarget.style.background = 'transparent' }}
-                >
-                  <span style={{ fontSize: 16 }}>{icon}</span>
-                  {label}
-                </button>
-              </div>
+              <button
+                key={path}
+                onClick={() => navigate(path)}
+                style={{
+                  width: '100%',
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: 10,
+                  padding: '10px 20px',
+                  fontSize: 14,
+                  fontWeight: isActive ? 700 : 500,
+                  color: isActive ? 'var(--color-primary)' : 'var(--color-text)',
+                  background: isActive ? '#EFF6FF' : 'transparent',
+                  border: 'none',
+                  cursor: 'pointer',
+                  textAlign: 'left',
+                  borderRadius: 0,
+                  transition: 'background 0.1s',
+                }}
+                onMouseEnter={e => { if (!isActive) e.currentTarget.style.background = 'var(--color-bg)' }}
+                onMouseLeave={e => { if (!isActive) e.currentTarget.style.background = 'transparent' }}
+              >
+                <span style={{ fontSize: 16 }}>{icon}</span>
+                {label}
+              </button>
             )
           })}
         </aside>
