@@ -428,10 +428,10 @@ function LogTable({ logs, loading }) {
         <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: 14 }}>
           <thead>
             <tr style={{ background: 'var(--color-bg)' }}>
-              {['일시', '상품명', '수량', '판가', '메모'].map(col => (
+              {['일시', '상품명', '수량', '판가', '합계', '메모'].map(col => (
                 <th key={col} style={{
                   padding: '10px 16px',
-                  textAlign: 'left',
+                  textAlign: ['수량', '판가', '합계'].includes(col) ? 'right' : 'left',
                   fontWeight: 600,
                   fontSize: 12,
                   color: 'var(--color-text-sub)',
@@ -452,8 +452,11 @@ function LogTable({ logs, loading }) {
                 <td style={{ padding: '12px 16px', color: 'var(--color-out)', fontWeight: 700 }}>
                   -{l.quantity}{l.products?.unit ?? ''}
                 </td>
-                <td style={{ padding: '12px 16px', color: 'var(--color-text-sub)', whiteSpace: 'nowrap' }}>
+                <td style={{ padding: '12px 16px', color: 'var(--color-text-sub)', whiteSpace: 'nowrap', textAlign: 'right' }}>
                   {l.selling_price > 0 ? `₩${l.selling_price.toLocaleString()}` : '-'}
+                </td>
+                <td style={{ padding: '12px 16px', fontWeight: 600, color: 'var(--color-text)', textAlign: 'right' }}>
+                  {l.selling_price > 0 ? `₩${(l.selling_price * l.quantity).toLocaleString()}` : '-'}
                 </td>
                 <td style={{ padding: '12px 16px', color: 'var(--color-text-sub)' }}>
                   {l.note ?? '-'}
@@ -466,10 +469,11 @@ function LogTable({ logs, loading }) {
               <td colSpan={2} style={{ padding: '10px 16px', fontWeight: 700, fontSize: 13, color: 'var(--color-text)' }}>
                 합계 {logs.length}건
               </td>
-              <td style={{ padding: '10px 16px', fontWeight: 700, color: 'var(--color-out)' }}>
+              <td style={{ padding: '10px 16px', fontWeight: 700, color: 'var(--color-out)', textAlign: 'right' }}>
                 -{logs.reduce((a, l) => a + l.quantity, 0).toLocaleString()}
               </td>
-              <td style={{ padding: '10px 16px', fontWeight: 700, color: 'var(--color-text)' }}>
+              <td style={{ padding: '10px 16px', fontWeight: 700, color: 'var(--color-text-sub)', textAlign: 'right' }}>—</td>
+              <td style={{ padding: '10px 16px', fontWeight: 700, color: 'var(--color-text)', textAlign: 'right' }}>
                 ₩{logs.reduce((a, l) => a + (l.selling_price * l.quantity), 0).toLocaleString()}
               </td>
               <td />
