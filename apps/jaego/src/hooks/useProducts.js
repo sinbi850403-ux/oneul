@@ -67,12 +67,11 @@ export function useAllProducts() {
 
   async function fetchAll() {
     setLoading(true)
-    const { data, error } = await supabase
+    const { data } = await supabase
       .from('products')
       .select('id, name, unit, price, selling_price, is_favorite, min_quantity, stock(quantity)')
       .order('name')
 
-    if (error) console.error('[useAllProducts error]', error)
     if (data) setProducts(data)
     setLoading(false)
   }
