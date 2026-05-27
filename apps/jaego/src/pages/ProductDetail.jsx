@@ -24,6 +24,9 @@ export default function ProductDetail() {
   const [product, setProduct] = useState(null)
   const [logs,    setLogs]    = useState([])
   const [loading, setLoading] = useState(true)
+  const [editing, setEditing] = useState(false)
+  const [editForm, setEditForm] = useState({})
+  const [saving,  setSaving]  = useState(false)
 
   useEffect(() => {
     async function load() {
@@ -73,6 +76,43 @@ export default function ProductDetail() {
     )
   }
 
+  function handleEditOpen() {
+    setEditForm({
+      name:          product.name,
+      unit:          product.unit,
+      price:         product.price ?? 0,
+      selling_price: product.selling_price ?? 0,
+    })
+    setEditing(true)
+  }
+
+  async function handleEditSave() {
+    setSaving(true)
+    const { error } = await supabase
+      .from('products')
+      .update({
+        name:          editForm.name,
+        unit:          editForm.unit,
+        price:         Number(editForm.price) || 0,
+        selling_price: Number(editForm.selling_price) || 0,
+      })
+      .eq('id', id)
+    setSaving(false)
+    if (!error) {
+      setProduct(p => ({ ...p, ...editForm, price: Number(editForm.price) || 0, selling_price: Number(editForm.selling_price) || 0 }))
+      setEditing(false)
+    } else {
+      alert('수정에 실패했어요.')
+    }
+  }
+
+  async function handleDelete() {
+    if (!window.confirm(`'${product.name}' 상품을 삭제할까요?\n입출고 이력도 모두 삭제됩니다.`)) return
+    const { error } = await supabase.from('products').delete().eq('id', id)
+    if (!error) navigate(-1)
+    else alert('삭제에 실패했어요.')
+  }
+
   return (
     <div style={{ background: 'var(--color-bg)', minHeight: '100vh' }}>
       {/* 헤더 */}
@@ -87,11 +127,23 @@ export default function ProductDetail() {
             style={{ fontSize: 22, color: 'var(--color-text)', padding: '4px 8px', marginLeft: -8, background: 'none', border: 'none', cursor: 'pointer' }}>←</button>
           <span style={{ fontWeight: 700, fontSize: 18 }}>{product.name}</span>
         </div>
-        <button onClick={handleExcel} style={{
-          padding: '7px 14px', borderRadius: 'var(--radius)', fontSize: 13, fontWeight: 600,
-          border: '1px solid var(--color-border)', background: 'var(--color-white)',
-          color: 'var(--color-primary)', cursor: 'pointer',
-        }}>엑셀</button>
+        <div style={{ display: 'flex', gap: 8 }}>
+          <button onClick={handleExcel} style={{
+            padding: '7px 14px', borderRadius: 'var(--radius)', fontSize: 13, fontWeight: 600,
+            border: '1px solid var(--color-border)', background: 'var(--color-white)',
+            color: 'var(--color-primary)', cursor: 'pointer',
+          }}>엑셀</button>
+          <button onClick={handleEditOpen} style={{
+            padding: '7px 14px', borderRadius: 'var(--radius)', fontSize: 13, fontWeight: 600,
+            border: '1px solid var(--color-border)', background: 'var(--color-white)',
+            color: 'var(--color-text)', cursor: 'pointer',
+          }}>수정</button>
+          <button onClick={handleDelete} style={{
+            padding: '7px 14px', borderRadius: 'var(--radius)', fontSize: 13, fontWeight: 600,
+            border: '1px solid #FCA5A5', background: 'var(--color-white)',
+            color: '#DC2626', cursor: 'pointer',
+          }}>삭제</button>
+        </div>
       </header>
 
       <div style={{
@@ -231,5 +283,54 @@ export default function ProductDetail() {
         </div>
       </div>
     </div>
+
+    {/* 수정 모달 */}
+    {editing && (
+      <div style={{
+        position: 'fixed', inset: 0, background: 'rgba(0,0,0,0.4)',
+        display: 'flex', alignItems: 'center', justifyContent: 'center', zIndex: 100,
+      }}>
+        <div style={{
+          background: 'var(--color-white)', borderRadius: 'var(--radius-lg)',
+          padding: '28px 28px 24px', width: 360, boxShadow: '0 8px 32px rgba(0,0,0,0.15)',
+        }}>
+          <h3 style={{ fontWeight: 700, fontSize: 18, marginBottom: 20 }}>상품 수정</h3>
+
+          {[
+            { label: '상품명',      key: 'name',          type: 'text'   },
+            { label: '단위',        key: 'unit',          type: 'text'   },
+            { label: '단가 (매입)', key: 'price',         type: 'number' },
+            { label: '판가 (매출)', key: 'selling_price', type: 'number' },
+          ].map(({ label, key, type }) => (
+            <div key={key} style={{ marginBottom: 14 }}>
+              <label style={{ fontSize: 12, color: 'var(--color-text-sub)', display: 'block', marginBottom: 4 }}>{label}</label>
+              <input
+                type={type}
+                value={editForm[key]}
+                onChange={e => setEditForm(f => ({ ...f, [key]: e.target.value }))}
+                style={{
+                  width: '100%', padding: '9px 12px', boxSizing: 'border-box',
+                  border: '1px solid var(--color-border)', borderRadius: 'var(--radius)',
+                  fontSize: 14, outline: 'none',
+                }}
+              />
+            </div>
+          ))}
+
+          <div style={{ display: 'flex', gap: 8, marginTop: 20 }}>
+            <button onClick={() => setEditing(false)} style={{
+              flex: 1, padding: '10px', borderRadius: 'var(--radius)', fontSize: 14,
+              border: '1px solid var(--color-border)', background: 'var(--color-white)',
+              color: 'var(--color-text-sub)', cursor: 'pointer',
+            }}>취소</button>
+            <button onClick={handleEditSave} disabled={saving} style={{
+              flex: 2, padding: '10px', borderRadius: 'var(--radius)', fontSize: 14, fontWeight: 700,
+              border: 'none', background: 'var(--color-primary)',
+              color: '#fff', cursor: saving ? 'not-allowed' : 'pointer', opacity: saving ? 0.7 : 1,
+            }}>{saving ? '저장 중...' : '저장'}</button>
+          </div>
+        </div>
+      </div>
+    )}
   )
 }
