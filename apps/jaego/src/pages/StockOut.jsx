@@ -305,7 +305,7 @@ function StockOutForm({ user, onSuccess }) {
 
         <div style={{ marginBottom: 16 }}>
           <label style={{ fontSize: 13, color: 'var(--color-text-sub)', display: 'block', marginBottom: 6 }}>
-            판가 (선택)
+            판가 — 이번 출고 판가가 다르면 수정해주세요
             {selected?.selling_price > 0 && (
               <span style={{ marginLeft: 8, color: 'var(--color-text-sub)' }}>
                 기본 ₩{selected.selling_price.toLocaleString()}
