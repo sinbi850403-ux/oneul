@@ -29,6 +29,7 @@ import History         from './pages/History'
 import Suppliers       from './pages/Suppliers'
 import Orders          from './pages/Orders'
 import OrderDetail     from './pages/OrderDetail'
+import Settings        from './pages/Settings'
 import Login           from './pages/Login'
 
 function PrivateRoute({ children }) {
@@ -59,6 +60,7 @@ export default function App() {
           <Route path="/suppliers"     element={<PrivateRoute><Suppliers /></PrivateRoute>} />
           <Route path="/orders"        element={<PrivateRoute><Orders /></PrivateRoute>} />
           <Route path="/orders/:id"    element={<PrivateRoute><OrderDetail /></PrivateRoute>} />
+          <Route path="/settings"      element={<PrivateRoute><Settings /></PrivateRoute>} />
         </Routes>
       </BrowserRouter>
       </div>

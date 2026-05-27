@@ -24,6 +24,8 @@ const SIDEBAR_ITEMS = [
   { label: '상품관리',  path: '/products' },
   { label: '거래처',   path: '/suppliers' },
   { label: '발주 관리', path: '/orders' },
+  { divider: true },
+  { label: '⚙️ 설정',  path: '/settings' },
 ]
 
 const TYPE_LABEL = { in: '입고', out: '출고', return: '반품' }
