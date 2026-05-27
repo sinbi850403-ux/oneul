@@ -550,13 +550,15 @@ export default function Home() {
       const pad = n => String(n).padStart(2, '0')
       const start = `${y}-${pad(m)}-01`
       const end   = `${y}-${pad(m)}-${pad(new Date(y, m, 0).getDate())}`
-      const [{ data: salesRows }, { data: purchaseRows }] = await Promise.all([
+      const [{ data: salesRows }, { data: purchaseRows }, { data: salesItemRows }] = await Promise.all([
         supabase.from('sales').select('total').eq('user_id', u.id).gte('sale_date', start).lte('sale_date', end),
         supabase.from('purchases').select('total_amount').eq('user_id', u.id).gte('purchase_date', start).lte('purchase_date', end),
+        supabase.from('sales_items').select('total_amount').eq('user_id', u.id).gte('sale_date', start).lte('sale_date', end),
       ])
-      const salesSum   = (salesRows    ?? []).reduce((a, r) => a + (r.total        ?? 0), 0)
-      const purchaseSum = (purchaseRows ?? []).reduce((a, r) => a + (r.total_amount ?? 0), 0)
-      setMonthProfit(salesSum - purchaseSum)
+      const salesSum     = (salesRows     ?? []).reduce((a, r) => a + (r.total        ?? 0), 0)
+      const purchaseSum  = (purchaseRows  ?? []).reduce((a, r) => a + (r.total_amount ?? 0), 0)
+      const salesItemSum = (salesItemRows ?? []).reduce((a, r) => a + (r.total_amount ?? 0), 0)
+      setMonthProfit(salesSum + salesItemSum - purchaseSum)
     }
     loadProfit()
   }, [])
