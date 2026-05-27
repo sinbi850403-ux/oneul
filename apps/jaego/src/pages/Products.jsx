@@ -4,6 +4,7 @@ import { useAllProducts } from '../hooks/useProducts'
 import { uploadProductsFromExcel } from '../hooks/useStock'
 import { parseProductsExcel } from '../lib/excel'
 import { useIsMobile } from '../hooks/useIsMobile'
+import { supabase } from '../lib/supabase'
 
 /* ───────────────────── 공통 유틸 ───────────────────── */
 function ExcelInput({ fileRef, onChange }) {
@@ -144,8 +145,30 @@ function MobileProducts({ navigate, products, loading, keyword, setKeyword, filt
 }
 
 /* ───────────────────── PC ───────────────────── */
-function PCProducts({ navigate, products, loading, keyword, setKeyword, filtered, toggleFavorite, uploading, fileRef, handleFileChange }) {
-  const [sortBy, setSortBy] = useState('name') // 'name' | 'stock'
+function PCProducts({ navigate, products, loading, keyword, setKeyword, filtered, toggleFavorite, uploading, fileRef, handleFileChange, refetch }) {
+  const [sortBy,   setSortBy]   = useState('name')
+  const [editTarget, setEditTarget] = useState(null)   // { id, name, unit, price, selling_price }
+  const [saving,   setSaving]   = useState(false)
+
+  async function handleEditSave() {
+    setSaving(true)
+    const { error } = await supabase.from('products').update({
+      name:          editTarget.name,
+      unit:          editTarget.unit,
+      price:         Number(editTarget.price) || 0,
+      selling_price: Number(editTarget.selling_price) || 0,
+    }).eq('id', editTarget.id)
+    setSaving(false)
+    if (!error) { setEditTarget(null); refetch() }
+    else alert('수정에 실패했어요.')
+  }
+
+  async function handleDelete(p) {
+    if (!window.confirm(`'${p.name}' 상품을 삭제할까요?\n입출고 이력도 모두 삭제됩니다.`)) return
+    const { error } = await supabase.from('products').delete().eq('id', p.id)
+    if (!error) refetch()
+    else alert('삭제에 실패했어요.')
+  }
 
   const sorted = [...filtered].sort((a, b) => {
     if (sortBy === 'stock') {
@@ -157,6 +180,7 @@ function PCProducts({ navigate, products, loading, keyword, setKeyword, filtered
   })
 
   return (
+    <>
     <div style={{ background: 'var(--color-bg)', minHeight: '100vh' }}>
       {/* 헤더 */}
       <header style={{
@@ -266,12 +290,12 @@ function PCProducts({ navigate, products, loading, keyword, setKeyword, filtered
             <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: 14 }}>
               <thead>
                 <tr style={{ background: 'var(--color-bg)', textAlign: 'left' }}>
-                  {['#', '상품명', '단위', '재고 수량', '단가', '판가', '마진율', '즐겨찾기'].map(col => (
+                  {['#', '상품명', '단위', '재고 수량', '단가', '판가', '마진율', '즐겨찾기', ''].map(col => (
                     <th key={col} style={{
                       padding: '10px 16px', fontSize: 12, fontWeight: 600,
                       color: 'var(--color-text-sub)',
                       borderBottom: '1px solid var(--color-border)',
-                      width: col === '#' ? 48 : col === '즐겨찾기' ? 80 : col === '마진율' ? 80 : 'auto',
+                      width: col === '#' ? 48 : col === '즐겨찾기' ? 80 : col === '마진율' ? 80 : col === '' ? 120 : 'auto',
                       textAlign: ['단가', '판가', '마진율', '재고 수량'].includes(col) ? 'right' : 'left',
                     }}>
                       {col}
@@ -336,6 +360,18 @@ function PCProducts({ navigate, products, loading, keyword, setKeyword, filtered
                           {p.is_favorite ? '★' : '☆'}
                         </button>
                       </td>
+                      <td style={{ padding: '12px 16px', textAlign: 'center' }}>
+                        <div style={{ display: 'flex', gap: 6, justifyContent: 'center' }}>
+                          <button
+                            onClick={() => setEditTarget({ id: p.id, name: p.name, unit: p.unit, price: p.price ?? 0, selling_price: p.selling_price ?? 0 })}
+                            style={{ padding: '4px 10px', fontSize: 12, borderRadius: 6, border: '1px solid var(--color-border)', background: 'var(--color-white)', color: 'var(--color-text)', cursor: 'pointer' }}
+                          >수정</button>
+                          <button
+                            onClick={() => handleDelete(p)}
+                            style={{ padding: '4px 10px', fontSize: 12, borderRadius: 6, border: '1px solid #FCA5A5', background: 'var(--color-white)', color: '#DC2626', cursor: 'pointer' }}
+                          >삭제</button>
+                        </div>
+                      </td>
                     </tr>
                   )
                 })}
@@ -345,6 +381,38 @@ function PCProducts({ navigate, products, loading, keyword, setKeyword, filtered
         </div>
       </div>
     </div>
+
+    {/* 수정 모달 */}
+    {editTarget && (
+      <div style={{ position: 'fixed', inset: 0, background: 'rgba(0,0,0,0.4)', display: 'flex', alignItems: 'center', justifyContent: 'center', zIndex: 100 }}>
+        <div style={{ background: '#fff', borderRadius: 16, padding: '28px 28px 24px', width: 360, boxShadow: '0 8px 32px rgba(0,0,0,0.15)' }}>
+          <h3 style={{ fontWeight: 700, fontSize: 18, marginBottom: 20 }}>상품 수정</h3>
+          {[
+            { label: '상품명',      key: 'name',          type: 'text'   },
+            { label: '단위',        key: 'unit',          type: 'text'   },
+            { label: '단가 (매입)', key: 'price',         type: 'number' },
+            { label: '판가 (매출)', key: 'selling_price', type: 'number' },
+          ].map(({ label, key, type }) => (
+            <div key={key} style={{ marginBottom: 14 }}>
+              <label style={{ fontSize: 12, color: 'var(--color-text-sub)', display: 'block', marginBottom: 4 }}>{label}</label>
+              <input
+                type={type}
+                value={editTarget[key]}
+                onChange={e => setEditTarget(t => ({ ...t, [key]: e.target.value }))}
+                style={{ width: '100%', padding: '9px 12px', boxSizing: 'border-box', border: '1px solid var(--color-border)', borderRadius: 8, fontSize: 14, outline: 'none' }}
+              />
+            </div>
+          ))}
+          <div style={{ display: 'flex', gap: 8, marginTop: 20 }}>
+            <button onClick={() => setEditTarget(null)} style={{ flex: 1, padding: '10px', borderRadius: 8, fontSize: 14, border: '1px solid var(--color-border)', background: '#fff', color: 'var(--color-text-sub)', cursor: 'pointer' }}>취소</button>
+            <button onClick={handleEditSave} disabled={saving} style={{ flex: 2, padding: '10px', borderRadius: 8, fontSize: 14, fontWeight: 700, border: 'none', background: 'var(--color-primary)', color: '#fff', cursor: saving ? 'not-allowed' : 'pointer', opacity: saving ? 0.7 : 1 }}>
+              {saving ? '저장 중...' : '저장'}
+            </button>
+          </div>
+        </div>
+      </div>
+    )}
+  </>
   )
 }
 
@@ -379,7 +447,7 @@ export default function Products() {
 
   const shared = {
     navigate, products, loading, keyword, setKeyword,
-    filtered, toggleFavorite, uploading, fileRef, handleFileChange,
+    filtered, toggleFavorite, uploading, fileRef, handleFileChange, refetch,
   }
 
   return isMobile ? <MobileProducts {...shared} /> : <PCProducts {...shared} />
