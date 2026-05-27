@@ -257,7 +257,7 @@ function StockInForm({ user, onSuccess }) {
 
         <div style={{ marginBottom: 16 }}>
           <label style={{ fontSize: 13, color: 'var(--color-text-sub)', display: 'block', marginBottom: 6 }}>
-            단가 (선택) — 입력 시 장부에 매입 기록됨
+            단가 — 이번 입고 단가가 다르면 수정해주세요
           </label>
           <input
             type="number"
