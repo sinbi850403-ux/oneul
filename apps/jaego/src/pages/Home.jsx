@@ -116,19 +116,20 @@ function MobileHome({ user, signOut, logs, loading, lowStock = [], shopName = ''
         {/* 이번달 순이익 카드 */}
         {monthProfit !== null && (
           <div style={{
-            background: monthProfit >= 0 ? '#F0FDF4' : '#FEF2F2',
-            border: `1px solid ${monthProfit >= 0 ? '#86EFAC' : '#FECACA'}`,
-            borderRadius: 'var(--radius-lg)', padding: '14px 16px',
+            background: 'var(--color-white)',
+            border: '1px solid var(--color-border)',
+            borderRadius: 'var(--radius-lg)', padding: '16px 18px',
             marginBottom: 16,
-            display: 'flex', justifyContent: 'space-between', alignItems: 'center',
           }}>
-            <span style={{ fontSize: 13, color: 'var(--color-text-sub)' }}>이번달 순이익</span>
-            <span style={{ fontSize: 18, fontWeight: 800, color: monthProfit >= 0 ? '#16A34A' : '#EF4444' }}>
-              {monthProfit >= 0 ? '+' : ''}
-              {Math.abs(monthProfit) >= 10000
-                ? `${(monthProfit / 10000).toFixed(0)}만원`
-                : `${monthProfit.toLocaleString()}원`}
-            </span>
+            <div style={{ fontSize: 13, color: 'var(--color-text-sub)', marginBottom: 6 }}>이번달 순이익</div>
+            <div style={{ fontSize: 22, fontWeight: 800, color: monthProfit >= 0 ? '#16A34A' : '#EF4444' }}>
+              {monthProfit >= 0 ? '+' : ''}₩ {Math.abs(monthProfit).toLocaleString()}
+            </div>
+            {monthSales > 0 && (
+              <div style={{ fontSize: 12, marginTop: 5, color: 'var(--color-text-sub)' }}>
+                마진율 {Math.round((monthProfit / monthSales) * 100)}%
+              </div>
+            )}
           </div>
         )}
 
@@ -415,16 +416,19 @@ function PCHome({ user, signOut, logs, loading, products, lowStock = [], shopNam
               {monthProfit === null ? (
                 <div style={{ fontSize: 14, color: 'var(--color-text-sub)' }}>불러오는 중...</div>
               ) : (
-                <div style={{
-                  fontSize: 22, fontWeight: 800,
-                  color: monthProfit >= 0 ? '#16A34A' : '#EF4444',
-                }}>
-                  {monthProfit >= 0 ? '+' : ''}
-                  {Math.abs(monthProfit) >= 10000
-                    ? `${(monthProfit / 10000).toFixed(0)}만`
-                    : monthProfit.toLocaleString()}
-                  <span style={{ fontSize: 13, fontWeight: 500, marginLeft: 4 }}>원</span>
-                </div>
+                <>
+                  <div style={{
+                    fontSize: 22, fontWeight: 800,
+                    color: monthProfit >= 0 ? '#16A34A' : '#EF4444',
+                  }}>
+                    {monthProfit >= 0 ? '+' : ''}₩ {Math.abs(monthProfit).toLocaleString()}
+                  </div>
+                  {monthSales > 0 && (
+                    <div style={{ fontSize: 12, marginTop: 6, color: 'var(--color-text-sub)' }}>
+                      마진율 {Math.round((monthProfit / monthSales) * 100)}%
+                    </div>
+                  )}
+                </>
               )}
             </div>
           </div>
