@@ -291,22 +291,30 @@ function PCProducts({ navigate, products, loading, keyword, setKeyword, filtered
             <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: 14 }}>
               <thead>
                 <tr style={{ background: 'var(--color-bg)', textAlign: 'left' }}>
-                  {['#', '상품명', '단위', '재고 수량', '단가', '판가', '마진율', '즐겨찾기', ''].map(col => (
+                  {['#', '상품명', '단위', '재고 수량', '기본단가', '평균원가', '판가', '마진율', '즐겨찾기', ''].map(col => (
                     <th key={col} style={{
                       padding: '10px 16px', fontSize: 12, fontWeight: 600,
                       color: 'var(--color-text-sub)',
                       borderBottom: '1px solid var(--color-border)',
                       width: col === '#' ? 48 : col === '즐겨찾기' ? 80 : col === '마진율' ? 80 : col === '' ? 120 : 'auto',
-                      textAlign: ['단가', '판가', '마진율', '재고 수량'].includes(col) ? 'right' : 'left',
+                      textAlign: ['기본단가', '평균원가', '판가', '마진율', '재고 수량'].includes(col) ? 'right' : 'left',
                     }}>
-                      {col}
+                      {col === '평균원가'
+                        ? <span title="이동평균법&#10;입고 시마다 자동 재계산&#10;= (현재재고 × 현재평균 + 입고수량 × 입고단가) ÷ 총수량" style={{ cursor: 'help', borderBottom: '1px dashed var(--color-text-sub)' }}>평균원가</span>
+                        : col}
                     </th>
                   ))}
                 </tr>
               </thead>
               <tbody>
                 {sorted.map((p, i) => {
-                  const stock = p.stock?.[0]?.quantity ?? 0
+                  const stock    = p.stock?.[0]?.quantity ?? 0
+                  const avgCost  = p.stock?.[0]?.avg_cost ?? 0
+                  // 마진율: 평균원가 있으면 평균원가 기준, 없으면 기본단가 기준
+                  const costBase = avgCost > 0 ? avgCost : (p.price ?? 0)
+                  const margin   = costBase > 0 && p.selling_price > 0
+                    ? Math.round((1 - costBase / p.selling_price) * 100)
+                    : null
                   return (
                     <tr
                       key={p.id}
@@ -330,21 +338,32 @@ function PCProducts({ navigate, products, loading, keyword, setKeyword, filtered
                       }}>
                         {stock.toLocaleString()}
                       </td>
+                      {/* 기본단가 (상품에 등록된 고정 단가) */}
                       <td style={{ padding: '12px 16px', textAlign: 'right', color: 'var(--color-text-sub)' }}>
                         {p.price > 0 ? `₩${p.price.toLocaleString()}` : '-'}
+                      </td>
+                      {/* 평균원가 (이동평균법 자동 계산) */}
+                      <td style={{ padding: '12px 16px', textAlign: 'right' }}>
+                        {avgCost > 0 ? (
+                          <span style={{ fontWeight: 600, color: '#1D4ED8' }}>
+                            ₩{Math.round(avgCost).toLocaleString()}
+                          </span>
+                        ) : (
+                          <span style={{ color: 'var(--color-text-sub)', fontSize: 12 }}>입고 후 계산</span>
+                        )}
                       </td>
                       <td style={{ padding: '12px 16px', textAlign: 'right', color: 'var(--color-text-sub)' }}>
                         {p.selling_price > 0 ? `₩${p.selling_price.toLocaleString()}` : '-'}
                       </td>
                       <td style={{ padding: '12px 16px', textAlign: 'right' }}>
-                        {p.price > 0 && p.selling_price > 0 ? (
+                        {margin !== null ? (
                           <span style={{
                             fontSize: 12, fontWeight: 600, padding: '2px 8px',
                             borderRadius: 20,
-                            background: p.selling_price > p.price ? '#DCFCE7' : '#FEE2E2',
-                            color: p.selling_price > p.price ? '#16A34A' : '#DC2626',
+                            background: margin >= 0 ? '#DCFCE7' : '#FEE2E2',
+                            color: margin >= 0 ? '#16A34A' : '#DC2626',
                           }}>
-                            {Math.round((1 - p.price / p.selling_price) * 100)}%
+                            {margin}%
                           </span>
                         ) : '-'}
                       </td>

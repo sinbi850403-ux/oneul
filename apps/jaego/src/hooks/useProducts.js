@@ -16,7 +16,7 @@ export function useFavoriteProducts() {
     setLoading(true)
     const { data, error } = await supabase
       .from('products')
-      .select('id, name, unit, price, selling_price, is_favorite, min_quantity, stock(quantity)')
+      .select('id, name, unit, price, selling_price, is_favorite, min_quantity, stock(quantity, avg_cost)')
       .eq('is_favorite', true)
       .order('name')
       .limit(FAVORITE_LIMIT)
@@ -43,7 +43,7 @@ export function useProductSearch() {
     setLoading(true)
     const { data, error } = await supabase
       .from('products')
-      .select('id, name, unit, price, selling_price, min_quantity, stock(quantity)')
+      .select('id, name, unit, price, selling_price, min_quantity, stock(quantity, avg_cost)')
       .ilike('name', `${keyword}%`)
       .limit(SEARCH_LIMIT)
 
@@ -69,7 +69,7 @@ export function useAllProducts() {
     setLoading(true)
     const { data } = await supabase
       .from('products')
-      .select('id, name, unit, price, selling_price, is_favorite, min_quantity, stock(quantity)')
+      .select('id, name, unit, price, selling_price, is_favorite, min_quantity, stock(quantity, avg_cost)')
       .order('name')
 
     if (data) setProducts(data)
