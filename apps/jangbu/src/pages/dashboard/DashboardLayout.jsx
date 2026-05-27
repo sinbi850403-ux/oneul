@@ -2,6 +2,16 @@ import { useState, useEffect } from 'react'
 import { NavLink, Outlet, useNavigate } from 'react-router-dom'
 import { supabase } from '../../lib/supabase.js'
 
+async function goToJaego() {
+  const { data: { session } } = await supabase.auth.getSession()
+  const base = 'https://oneul-jaego.vercel.app'
+  if (session?.access_token) {
+    window.location.href = `${base}?access_token=${session.access_token}&refresh_token=${session.refresh_token}`
+  } else {
+    window.location.href = base
+  }
+}
+
 const menus = [
   { to: '/dashboard/input',     label: '매출 입력' },
   { to: '/dashboard/report',    label: '월별 손익' },
@@ -55,13 +65,12 @@ export default function DashboardLayout() {
       <div className="bg-gray-900 flex items-center gap-2 px-5 h-8 shrink-0">
         <span className="text-sm font-bold text-brand">오늘장부</span>
         <span className="text-gray-600 text-sm">/</span>
-        <a
-          href="https://oneul-jaego.vercel.app"
-          onClick={() => { window.location.href = 'https://oneul-jaego.vercel.app' }}
-          className="text-sm font-medium text-gray-400 hover:text-blue-400 transition-colors cursor-pointer"
+        <button
+          onClick={goToJaego}
+          className="text-sm font-medium text-gray-400 hover:text-blue-400 transition-colors cursor-pointer bg-transparent border-0 p-0"
         >
           오늘재고
-        </a>
+        </button>
       </div>
 
       <div className="flex flex-1 bg-gray-50">

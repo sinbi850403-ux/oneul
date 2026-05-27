@@ -1,7 +1,19 @@
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
 import { AuthProvider, useAuth } from './lib/AuthContext'
 import SuiteBar from './components/SuiteBar'
+import { supabase } from './lib/supabase'
 import './styles/global.css'
+
+// 다른 앱에서 넘어온 경우 SSO 토큰으로 자동 로그인
+;(async () => {
+  const p = new URLSearchParams(window.location.search)
+  const at = p.get('access_token')
+  const rt = p.get('refresh_token')
+  if (at && rt) {
+    await supabase.auth.setSession({ access_token: at, refresh_token: rt })
+    window.history.replaceState({}, '', window.location.pathname)
+  }
+})()
 
 import Home            from './pages/Home'
 import StockIn         from './pages/StockIn'

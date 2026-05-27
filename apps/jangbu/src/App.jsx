@@ -1,4 +1,5 @@
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
+import { supabase } from './lib/supabase.js'
 import Input from './pages/Input.jsx'
 import Calendar from './pages/Calendar.jsx'
 import Tax from './pages/Tax.jsx'
@@ -18,6 +19,27 @@ import SalesItems    from './pages/dashboard/SalesItems.jsx'
 import Privacy from './pages/Privacy.jsx'
 import Terms from './pages/Terms.jsx'
 import { useAuth } from './hooks/useAuth.js'
+
+// 다른 앱에서 넘어온 경우 SSO 토큰으로 자동 로그인
+;(async () => {
+  const p = new URLSearchParams(window.location.search)
+  const at = p.get('access_token')
+  const rt = p.get('refresh_token')
+  if (at && rt) {
+    await supabase.auth.setSession({ access_token: at, refresh_token: rt })
+    window.history.replaceState({}, '', window.location.pathname)
+  }
+})()
+
+async function goToJaego() {
+  const { data: { session } } = await supabase.auth.getSession()
+  const base = 'https://oneul-jaego.vercel.app'
+  if (session?.access_token) {
+    window.location.href = `${base}?access_token=${session.access_token}&refresh_token=${session.refresh_token}`
+  } else {
+    window.location.href = base
+  }
+}
 
 function ProtectedLayout() {
   const { session, loading } = useAuth()
@@ -40,14 +62,12 @@ function ProtectedLayout() {
       <div className="bg-gray-900 flex items-center gap-2 px-4 h-8 shrink-0">
         <span className="text-sm font-bold text-brand">오늘장부</span>
         <span className="text-gray-600 text-sm">/</span>
-        <a
-          href="https://oneul-jaego.vercel.app"
-          rel="noopener noreferrer"
-          onClick={e => { e.stopPropagation(); window.location.href = 'https://oneul-jaego.vercel.app' }}
-          className="text-sm font-medium text-gray-400 hover:text-blue-400 transition-colors cursor-pointer"
+        <button
+          onClick={goToJaego}
+          className="text-sm font-medium text-gray-400 hover:text-blue-400 transition-colors cursor-pointer bg-transparent border-0 p-0"
         >
           오늘재고
-        </a>
+        </button>
       </div>
       <div className="flex-1 pb-20">
         <Routes>
