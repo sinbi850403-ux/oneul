@@ -114,6 +114,7 @@ export default function ProductDetail() {
   }
 
   return (
+    <>
     <div style={{ background: 'var(--color-bg)', minHeight: '100vh' }}>
       {/* 헤더 */}
       <header style={{
@@ -332,5 +333,6 @@ export default function ProductDetail() {
         </div>
       </div>
     )}
+    </>
   )
 }
