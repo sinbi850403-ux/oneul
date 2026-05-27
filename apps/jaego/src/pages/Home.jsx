@@ -64,9 +64,16 @@ const MOBILE_TABS = [
 ]
 
 /* ───────────────────── Mobile ───────────────────── */
-function MobileHome({ user, signOut, logs, loading, lowStock = [], shopName = '', monthProfit = null }) {
+function MobileHome({ user, signOut, logs, loading, lowStock = [], shopName = '', monthProfit = null, monthlyTarget = 0, monthSales = 0 }) {
   const navigate = useNavigate()
   const location = useLocation()
+  const now = new Date()
+  const daysInMonth   = new Date(now.getFullYear(), now.getMonth() + 1, 0).getDate()
+  const remainingDays = daysInMonth - now.getDate() + 1
+  const targetProgress = monthlyTarget > 0 ? Math.min(Math.round((monthSales / monthlyTarget) * 100), 100) : 0
+  const requiredDaily  = monthlyTarget > monthSales && remainingDays > 0
+    ? Math.ceil((monthlyTarget - monthSales) / remainingDays)
+    : 0
   return (
     <div style={{ minHeight: '100vh', background: 'var(--color-bg)', paddingBottom: 72 }}>
       {/* 헤더 */}
@@ -121,6 +128,44 @@ function MobileHome({ user, signOut, logs, loading, lowStock = [], shopName = ''
                 ? `${(monthProfit / 10000).toFixed(0)}만원`
                 : `${monthProfit.toLocaleString()}원`}
             </span>
+          </div>
+        )}
+
+        {/* 월 매출 목표 */}
+        {monthlyTarget > 0 && (
+          <div style={{
+            background: 'var(--color-white)',
+            border: '1px solid var(--color-border)',
+            borderRadius: 'var(--radius-lg)', padding: '14px 16px',
+            marginBottom: 16,
+          }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 8 }}>
+              <span style={{ fontSize: 13, fontWeight: 600, color: 'var(--color-text)' }}>이달 매출 목표</span>
+              <span style={{ fontSize: 12, color: 'var(--color-text-sub)' }}>
+                {monthSales >= 10000 ? `${Math.round(monthSales / 10000)}만` : monthSales.toLocaleString()}원
+                {' / '}
+                {monthlyTarget >= 10000 ? `${Math.round(monthlyTarget / 10000)}만` : monthlyTarget.toLocaleString()}원
+              </span>
+            </div>
+            <div style={{
+              width: '100%', height: 8, background: '#F3F4F6',
+              borderRadius: 4, overflow: 'hidden', marginBottom: 6,
+            }}>
+              <div style={{
+                height: 8, borderRadius: 4,
+                width: `${targetProgress}%`,
+                background: targetProgress >= 100 ? '#16A34A' : 'var(--color-primary)',
+                transition: 'width 0.4s ease',
+              }} />
+            </div>
+            <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: 12 }}>
+              <span style={{ fontWeight: 700, color: 'var(--color-primary)' }}>{targetProgress}% 달성</span>
+              <span style={{ color: 'var(--color-text-sub)' }}>
+                {monthSales >= monthlyTarget
+                  ? '목표 달성!'
+                  : `남은 ${remainingDays}일 · 하루 ${requiredDaily >= 10000 ? `${Math.round(requiredDaily / 10000)}만` : requiredDaily.toLocaleString()}원`}
+              </span>
+            </div>
           </div>
         )}
 
@@ -202,13 +247,21 @@ function MobileHome({ user, signOut, logs, loading, lowStock = [], shopName = ''
 }
 
 /* ───────────────────── PC ───────────────────── */
-function PCHome({ user, signOut, logs, loading, products, lowStock = [], shopName = '', monthProfit = null }) {
+function PCHome({ user, signOut, logs, loading, products, lowStock = [], shopName = '', monthProfit = null, monthlyTarget = 0, monthSales = 0 }) {
   const navigate  = useNavigate()
   const location  = useLocation()
 
   const todayCount   = logs.filter(l => isToday(l.created_at)).length
   const monthCount   = logs.filter(l => isThisMonth(l.created_at)).length
   const productCount = products.length
+
+  const now = new Date()
+  const daysInMonth   = new Date(now.getFullYear(), now.getMonth() + 1, 0).getDate()
+  const remainingDays = daysInMonth - now.getDate() + 1
+  const targetProgress = monthlyTarget > 0 ? Math.min(Math.round((monthSales / monthlyTarget) * 100), 100) : 0
+  const requiredDaily  = monthlyTarget > monthSales && remainingDays > 0
+    ? Math.ceil((monthlyTarget - monthSales) / remainingDays)
+    : 0
 
   return (
     <div style={{ minHeight: '100vh', background: 'var(--color-bg)', display: 'flex', flexDirection: 'column' }}>
@@ -375,6 +428,45 @@ function PCHome({ user, signOut, logs, loading, products, lowStock = [], shopNam
             </div>
           </div>
 
+          {/* 월 매출 목표 */}
+          {monthlyTarget > 0 && (
+            <div style={{
+              background: 'var(--color-white)',
+              border: '1px solid var(--color-border)',
+              borderRadius: 'var(--radius-lg)',
+              padding: '20px 24px',
+              marginBottom: 24,
+            }}>
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 10 }}>
+                <span style={{ fontSize: 14, fontWeight: 700, color: 'var(--color-text)' }}>이달 매출 목표</span>
+                <span style={{ fontSize: 13, color: 'var(--color-text-sub)' }}>
+                  {monthSales >= 10000 ? `${Math.round(monthSales / 10000)}만` : monthSales.toLocaleString()}원
+                  {' / '}
+                  {monthlyTarget >= 10000 ? `${Math.round(monthlyTarget / 10000)}만` : monthlyTarget.toLocaleString()}원
+                </span>
+              </div>
+              <div style={{
+                width: '100%', height: 10, background: '#F3F4F6',
+                borderRadius: 5, overflow: 'hidden', marginBottom: 8,
+              }}>
+                <div style={{
+                  height: 10, borderRadius: 5,
+                  width: `${targetProgress}%`,
+                  background: targetProgress >= 100 ? '#16A34A' : 'var(--color-primary)',
+                  transition: 'width 0.4s ease',
+                }} />
+              </div>
+              <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: 13 }}>
+                <span style={{ fontWeight: 700, color: 'var(--color-primary)' }}>{targetProgress}% 달성</span>
+                <span style={{ color: 'var(--color-text-sub)' }}>
+                  {monthSales >= monthlyTarget
+                    ? '목표 달성!'
+                    : `남은 ${remainingDays}일 · 하루 ${requiredDaily >= 10000 ? `${Math.round(requiredDaily / 10000)}만` : requiredDaily.toLocaleString()}원 더`}
+                </span>
+              </div>
+            </div>
+          )}
+
           {/* 이력 테이블 */}
           <div style={{
             background: 'var(--color-white)',
@@ -514,6 +606,8 @@ export default function Home() {
   const navigate  = useNavigate()
   const [shopName, setShopName] = useState('')
   const [monthProfit, setMonthProfit] = useState(null)
+  const [monthlyTarget, setMonthlyTarget] = useState(0)
+  const [monthSales, setMonthSales] = useState(0)
 
   const lowStockProducts = products.filter(p =>
     (p.min_quantity ?? 0) > 0 && (p.stock?.[0]?.quantity ?? 0) <= p.min_quantity
@@ -528,7 +622,7 @@ export default function Home() {
       if (!u) return
       const { data } = await supabase
         .from('profiles')
-        .select('shop_name, onboarded')
+        .select('shop_name, onboarded, monthly_target')
         .eq('user_id', u.id)
         .maybeSingle()
       if (!data || !data.onboarded) {
@@ -536,6 +630,7 @@ export default function Home() {
         return
       }
       if (data.shop_name) setShopName(data.shop_name)
+      setMonthlyTarget(data.monthly_target ?? 0)
     }
     loadProfile()
   }, [])
@@ -558,12 +653,14 @@ export default function Home() {
       const salesSum     = (salesRows     ?? []).reduce((a, r) => a + (r.total        ?? 0), 0)
       const purchaseSum  = (purchaseRows  ?? []).reduce((a, r) => a + (r.total_amount ?? 0), 0)
       const salesItemSum = (salesItemRows ?? []).reduce((a, r) => a + (r.total_amount ?? 0), 0)
-      setMonthProfit(salesSum + salesItemSum - purchaseSum)
+      const totalSales   = salesSum + salesItemSum
+      setMonthSales(totalSales)
+      setMonthProfit(totalSales - purchaseSum)
     }
     loadProfit()
   }, [])
 
   return isMobile
-    ? <MobileHome user={user} signOut={signOut} logs={logs} loading={loading} lowStock={lowStockProducts} shopName={shopName} monthProfit={monthProfit} />
-    : <PCHome user={user} signOut={signOut} logs={logs} loading={loading} products={products} lowStock={lowStockProducts} shopName={shopName} monthProfit={monthProfit} />
+    ? <MobileHome user={user} signOut={signOut} logs={logs} loading={loading} lowStock={lowStockProducts} shopName={shopName} monthProfit={monthProfit} monthlyTarget={monthlyTarget} monthSales={monthSales} />
+    : <PCHome user={user} signOut={signOut} logs={logs} loading={loading} products={products} lowStock={lowStockProducts} shopName={shopName} monthProfit={monthProfit} monthlyTarget={monthlyTarget} monthSales={monthSales} />
 }

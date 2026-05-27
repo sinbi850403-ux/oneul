@@ -14,6 +14,7 @@ export default function DashboardHome() {
   const [recentDays,     setRecentDays]     = useState([])
   const [lowStock,       setLowStock]       = useState([])
   const [shopName,       setShopName]       = useState('')
+  const [monthlyTarget,  setMonthlyTarget]  = useState(0)
 
   useEffect(() => {
     async function load() {
@@ -44,7 +45,7 @@ export default function DashboardHome() {
         supabase.from('purchases').select('total_amount').eq('user_id', user.id).gte('purchase_date', monthStart).lte('purchase_date', monthEnd),
         supabase.from('sales').select('sale_date, total').eq('user_id', user.id).gte('sale_date', ago7Str).order('sale_date'),
         supabase.from('stock').select('quantity, products(name, min_quantity)').eq('user_id', user.id),
-        supabase.from('profiles').select('shop_name').eq('user_id', user.id).maybeSingle(),
+        supabase.from('profiles').select('shop_name, monthly_target').eq('user_id', user.id).maybeSingle(),
       ])
 
       setTodaySales(todayRow?.total ?? 0)
@@ -56,6 +57,7 @@ export default function DashboardHome() {
         (s.products?.min_quantity ?? 0) > 0 && s.quantity <= s.products.min_quantity
       ))
       setShopName(profileRow?.shop_name ?? '')
+      setMonthlyTarget(profileRow?.monthly_target ?? 0)
       setLoading(false)
     }
     load()
@@ -66,6 +68,14 @@ export default function DashboardHome() {
     ? Math.round(((monthSales - lastMonthSales) / lastMonthSales) * 100)
     : null
   const maxBar = Math.max(...recentDays.map(r => r.total ?? 0), 1)
+
+  // 월 목표 계산
+  const targetProgress   = monthlyTarget > 0 ? Math.min(Math.round((monthSales / monthlyTarget) * 100), 100) : 0
+  const daysInMonth      = new Date(now.getFullYear(), now.getMonth() + 1, 0).getDate()
+  const remainingDays    = daysInMonth - now.getDate() + 1
+  const requiredDaily    = monthlyTarget > monthSales && remainingDays > 0
+    ? Math.ceil((monthlyTarget - monthSales) / remainingDays)
+    : 0
 
   if (loading) {
     return (
@@ -145,6 +155,37 @@ export default function DashboardHome() {
           )}
         </div>
       </div>
+
+      {/* 월 매출 목표 진행률 */}
+      {monthlyTarget > 0 && (
+        <div className="bg-white rounded-2xl shadow-sm p-5 mb-6">
+          <div className="flex items-center justify-between mb-3">
+            <p className="text-sm font-semibold text-gray-700">이달 매출 목표</p>
+            <p className="text-sm text-gray-400">
+              {monthSales >= 10000 ? `${Math.round(monthSales / 10000)}만` : monthSales.toLocaleString()}원
+              {' / '}
+              {monthlyTarget >= 10000 ? `${Math.round(monthlyTarget / 10000)}만` : monthlyTarget.toLocaleString()}원
+            </p>
+          </div>
+          <div className="w-full bg-gray-100 rounded-full h-3 mb-2.5 overflow-hidden">
+            <div
+              className="h-3 rounded-full transition-all duration-500"
+              style={{
+                width: `${targetProgress}%`,
+                background: targetProgress >= 100 ? '#16A34A' : 'var(--color-brand, #F97316)',
+              }}
+            />
+          </div>
+          <div className="flex justify-between items-center text-xs">
+            <span className="font-bold text-orange-500">{targetProgress}% 달성</span>
+            <span className="text-gray-400">
+              {monthSales >= monthlyTarget
+                ? '🎉 목표 달성!'
+                : `남은 ${remainingDays}일 · 하루 ${requiredDaily >= 10000 ? `${Math.round(requiredDaily / 10000)}만` : requiredDaily.toLocaleString()}원 더!`}
+            </span>
+          </div>
+        </div>
+      )}
 
       {/* 최근 7일 바 차트 */}
       <div className="bg-white rounded-2xl shadow-sm p-6 mb-6">

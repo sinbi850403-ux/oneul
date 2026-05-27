@@ -18,6 +18,7 @@ export default function BizInfo() {
     shop_name: '', owner_name: '', biz_number: '',
     biz_category: '', biz_type: '', address: '',
     tax_type: 'general',
+    monthly_target: 0,
   })
   const [toast, setToast] = useState('')
   const [saving, setSaving] = useState(false)
@@ -116,6 +117,29 @@ export default function BizInfo() {
             ))}
           </div>
         </div>
+      </div>
+
+      {/* 월 매출 목표 */}
+      <div className="bg-white rounded-2xl shadow-sm p-6 mb-6">
+        <h3 className="text-base font-bold text-gray-800 mb-1">월 매출 목표</h3>
+        <p className="text-sm text-gray-400 mb-4">대시보드에 진행률로 표시돼요. 0이면 숨겨져요.</p>
+        <div className="flex items-center gap-3">
+          <input
+            type="number"
+            min="0"
+            step="10000"
+            value={values.monthly_target ?? 0}
+            onChange={(e) => setValues(v => ({ ...v, monthly_target: Number(e.target.value) }))}
+            placeholder="예) 5000000"
+            className="flex-1 border border-gray-200 rounded-xl px-4 py-2.5 text-sm outline-none focus:border-brand"
+          />
+          <span className="text-sm text-gray-500 whitespace-nowrap">원</span>
+        </div>
+        {(values.monthly_target ?? 0) > 0 && (
+          <p className="text-xs text-gray-400 mt-2">
+            월 {((values.monthly_target ?? 0) / 10000).toLocaleString()}만원 목표
+          </p>
+        )}
       </div>
 
       <button
