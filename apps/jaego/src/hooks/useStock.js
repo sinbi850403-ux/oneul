@@ -46,7 +46,7 @@ export function useStockLog(productId = null) {
     setLoading(true)
     let query = supabase
       .from('stock_log')
-      .select('id, type, quantity, selling_price, source, note, created_at, products(name, unit)')
+      .select('id, type, quantity, unit_price, selling_price, source, note, created_at, products(name, unit)')
       .order('created_at', { ascending: false })
       .limit(LOG_LIMIT)
 
