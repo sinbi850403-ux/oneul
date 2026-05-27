@@ -18,6 +18,7 @@ import DashboardInput from './pages/dashboard/DashboardInput.jsx'
 import DashboardHome from './pages/dashboard/DashboardHome.jsx'
 import Purchases     from './pages/dashboard/Purchases.jsx'
 import SalesItems    from './pages/dashboard/SalesItems.jsx'
+import Workers       from './pages/dashboard/Workers.jsx'
 import Privacy from './pages/Privacy.jsx'
 import Terms from './pages/Terms.jsx'
 import Onboarding from './pages/Onboarding.jsx'
@@ -144,6 +145,7 @@ export default function App() {
           <Route path="tax"       element={<DashboardTax />} />
           <Route path="purchases" element={<Purchases />} />
           <Route path="sales"     element={<SalesItems />} />
+          <Route path="workers"   element={<Workers />} />
         </Route>
         <Route path="/*" element={<ProtectedLayout />} />
       </Routes>

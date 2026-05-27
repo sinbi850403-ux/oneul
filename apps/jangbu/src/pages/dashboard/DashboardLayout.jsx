@@ -20,6 +20,7 @@ const menus = [
   { to: '/dashboard/sales',     label: '매출 내역' },
   { to: '/dashboard/excel',     label: '엑셀 다운로드' },
   { to: '/dashboard/tax',       label: '세금 요약' },
+  { to: '/dashboard/workers',   label: '👷 알바 급여' },
   { to: '/dashboard/biz',       label: '⚙️ 설정' },
 ]
 
