@@ -34,6 +34,7 @@ function StockOutForm({ user, onSuccess }) {
   const [success, setSuccess] = useState('')
   const [error, setError] = useState('')
   const [showDrop, setShowDrop] = useState(false)
+  const [activeIndex, setActiveIndex] = useState(-1)
   const searchRef = useRef(null)
 
   const currentStock = selected?.stock?.[0]?.quantity ?? 0
@@ -52,12 +53,30 @@ function StockOutForm({ user, onSuccess }) {
     const v = e.target.value
     setKeyword(v)
     setSelected(null)
+    setActiveIndex(-1)
     if (v.length >= 1) {
       search(v)
       setShowDrop(true)
     } else {
       clear()
       setShowDrop(false)
+    }
+  }
+
+  function handleKeyDown(e) {
+    if (!showDrop || results.length === 0) return
+    if (e.key === 'ArrowDown') {
+      e.preventDefault()
+      setActiveIndex(i => Math.min(i + 1, results.length - 1))
+    } else if (e.key === 'ArrowUp') {
+      e.preventDefault()
+      setActiveIndex(i => Math.max(i - 1, 0))
+    } else if (e.key === 'Enter') {
+      e.preventDefault()
+      if (activeIndex >= 0 && results[activeIndex]) selectProduct(results[activeIndex])
+    } else if (e.key === 'Escape') {
+      setShowDrop(false)
+      setActiveIndex(-1)
     }
   }
 
@@ -137,6 +156,7 @@ function StockOutForm({ user, onSuccess }) {
           placeholder="상품명 입력..."
           value={keyword}
           onChange={handleKeywordChange}
+          onKeyDown={handleKeyDown}
           onFocus={() => { if (results.length > 0) setShowDrop(true) }}
           style={{
             width: '100%',
@@ -164,16 +184,17 @@ function StockOutForm({ user, onSuccess }) {
             overflowY: 'auto',
           }}>
             {searchLoading && <div style={{ padding: '10px 14px', fontSize: 13, color: 'var(--color-text-sub)' }}>검색 중...</div>}
-            {results.map(p => (
+            {results.map((p, idx) => (
               <button
                 key={p.id}
                 onMouseDown={() => selectProduct(p)}
+                onMouseEnter={() => setActiveIndex(idx)}
                 style={{
                   width: '100%',
                   display: 'flex',
                   justifyContent: 'space-between',
                   padding: '10px 14px',
-                  background: 'none',
+                  background: idx === activeIndex ? 'var(--color-out-light)' : 'none',
                   border: 'none',
                   borderBottom: '1px solid var(--color-border)',
                   cursor: 'pointer',
@@ -181,7 +202,7 @@ function StockOutForm({ user, onSuccess }) {
                   fontSize: 14,
                 }}
               >
-                <span style={{ color: 'var(--color-text)' }}>{p.name}</span>
+                <span style={{ color: 'var(--color-text)', fontWeight: idx === activeIndex ? 600 : 400 }}>{p.name}</span>
                 <span style={{ color: 'var(--color-text-sub)', fontSize: 12 }}>재고 {p.stock?.[0]?.quantity ?? 0}{p.unit}</span>
               </button>
             ))}
