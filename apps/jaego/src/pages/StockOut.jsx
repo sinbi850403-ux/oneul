@@ -472,7 +472,7 @@ export default function StockOut() {
   const navigate = useNavigate()
   const { user } = useAuth()
   const isMobile = useIsMobile()
-  const { logs, loading: logLoading, fetchLogs } = useStockLog()
+  const { logs, loading: logLoading, fetchLogs } = useStockLog(null, 'out')
 
   useEffect(() => {
     if (!isMobile) fetchLogs()

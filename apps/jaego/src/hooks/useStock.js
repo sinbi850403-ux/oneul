@@ -38,7 +38,7 @@ export async function stockReturn(userId, productId, quantity, note = null) {
 }
 
 // 입출고 이력 조회
-export function useStockLog(productId = null) {
+export function useStockLog(productId = null, type = null) {
   const [logs,    setLogs]    = useState([])
   const [loading, setLoading] = useState(false)
 
@@ -51,6 +51,7 @@ export function useStockLog(productId = null) {
       .limit(LOG_LIMIT)
 
     if (productId) query = query.eq('product_id', productId)
+    if (type)      query = query.eq('type', type)
 
     const { data } = await query
     if (data) setLogs(data)

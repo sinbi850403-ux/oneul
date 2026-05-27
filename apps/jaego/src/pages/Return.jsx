@@ -361,7 +361,7 @@ export default function Return() {
   const navigate = useNavigate()
   const { user } = useAuth()
   const isMobile = useIsMobile()
-  const { logs, loading: logLoading, fetchLogs } = useStockLog()
+  const { logs, loading: logLoading, fetchLogs } = useStockLog(null, 'return')
 
   useEffect(() => {
     if (!isMobile) fetchLogs()
