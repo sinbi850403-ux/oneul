@@ -461,6 +461,20 @@ function LogTable({ logs, loading }) {
               </tr>
             ))}
           </tbody>
+          <tfoot>
+            <tr style={{ background: '#FFF1F2', borderTop: '2px solid var(--color-out)' }}>
+              <td colSpan={2} style={{ padding: '10px 16px', fontWeight: 700, fontSize: 13, color: 'var(--color-text)' }}>
+                합계 {logs.length}건
+              </td>
+              <td style={{ padding: '10px 16px', fontWeight: 700, color: 'var(--color-out)' }}>
+                -{logs.reduce((a, l) => a + l.quantity, 0).toLocaleString()}
+              </td>
+              <td style={{ padding: '10px 16px', fontWeight: 700, color: 'var(--color-text)' }}>
+                ₩{logs.reduce((a, l) => a + (l.selling_price * l.quantity), 0).toLocaleString()}
+              </td>
+              <td />
+            </tr>
+          </tfoot>
         </table>
       )}
     </div>

@@ -408,6 +408,20 @@ function LogTable({ logs, loading }) {
               </tr>
             ))}
           </tbody>
+          <tfoot>
+            <tr style={{ background: 'var(--color-in-light)', borderTop: '2px solid var(--color-in)' }}>
+              <td colSpan={2} style={{ padding: '10px 16px', fontWeight: 700, fontSize: 13, color: 'var(--color-text)' }}>
+                합계 {logs.length}건
+              </td>
+              <td style={{ padding: '10px 16px', fontWeight: 700, color: 'var(--color-in)' }}>
+                +{logs.reduce((a, l) => a + l.quantity, 0).toLocaleString()}
+              </td>
+              <td style={{ padding: '10px 16px', fontWeight: 700, color: 'var(--color-text)' }}>
+                ₩{logs.reduce((a, l) => a + (l.unit_price * l.quantity), 0).toLocaleString()}
+              </td>
+              <td />
+            </tr>
+          </tfoot>
         </table>
       )}
     </div>
