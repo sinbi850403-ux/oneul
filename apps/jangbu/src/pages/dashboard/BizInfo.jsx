@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import { useOutletContext } from 'react-router-dom'
 import { supabase } from '../../lib/supabase.js'
 import Toast from '../../components/Toast.jsx'
+import { usePush } from '../../hooks/usePush.js'
 
 const FIELDS = [
   { key: 'shop_name',    label: '상호명',    placeholder: '예) 홍길동 분식' },
@@ -20,11 +21,15 @@ export default function BizInfo() {
   })
   const [toast, setToast] = useState('')
   const [saving, setSaving] = useState(false)
+  const [pushLoading, setPushLoading] = useState(false)
+  const [userId, setUserId] = useState(null)
   const { setShopName } = useOutletContext() ?? {}
+  const { permission, subscribed, subscribe, unsubscribe } = usePush()
 
   useEffect(() => {
     async function load() {
       const { data: { user } } = await supabase.auth.getUser()
+      setUserId(user.id)
       const { data } = await supabase
         .from('profiles')
         .select('*')
@@ -34,6 +39,23 @@ export default function BizInfo() {
     }
     load()
   }, [])
+
+  async function handlePushToggle() {
+    if (!userId) return
+    setPushLoading(true)
+    try {
+      if (subscribed) {
+        await unsubscribe(userId)
+        setToast('알림을 껐어요')
+      } else {
+        const ok = await subscribe(userId)
+        if (ok) setToast('재고부족 알림이 켜졌어요 🔔')
+        else setToast('알림 설정 실패 — 브라우저 설정에서 알림을 허용해주세요')
+      }
+    } finally {
+      setPushLoading(false)
+    }
+  }
 
   async function handleSave() {
     setSaving(true)
@@ -99,10 +121,38 @@ export default function BizInfo() {
       <button
         onClick={handleSave}
         disabled={saving}
-        className="bg-brand text-white px-8 py-3 rounded-xl font-semibold hover:opacity-90 disabled:opacity-50"
+        className="bg-brand text-white px-8 py-3 rounded-xl font-semibold hover:opacity-90 disabled:opacity-50 mb-6"
       >
         {saving ? '저장 중...' : '저장하기'}
       </button>
+
+      {/* 알림 설정 */}
+      {'Notification' in window && (
+        <div className="bg-white rounded-2xl shadow-sm p-6 max-w-2xl">
+          <h3 className="text-base font-bold text-gray-800 mb-1">푸시 알림</h3>
+          <p className="text-sm text-gray-400 mb-5">재고 부족 시 알림을 받아요</p>
+          <div className="flex items-center justify-between">
+            <div>
+              <p className="text-sm font-medium text-gray-700">재고부족 알림</p>
+              <p className="text-xs text-gray-400 mt-0.5">안전재고 이하로 떨어지면 즉시 알림</p>
+            </div>
+            <button
+              onClick={handlePushToggle}
+              disabled={pushLoading || permission === 'denied'}
+              className={`relative w-12 h-6 rounded-full transition-colors duration-200 disabled:opacity-50 ${
+                subscribed ? 'bg-brand' : 'bg-gray-200'
+              }`}
+            >
+              <span className={`absolute top-0.5 left-0.5 w-5 h-5 bg-white rounded-full shadow transition-transform duration-200 ${
+                subscribed ? 'translate-x-6' : 'translate-x-0'
+              }`} />
+            </button>
+          </div>
+          {permission === 'denied' && (
+            <p className="text-xs text-red-400 mt-3">브라우저에서 알림을 차단했어요. 브라우저 설정에서 허용해주세요.</p>
+          )}
+        </div>
+      )}
 
       {toast && <Toast message={toast} onClose={() => setToast('')} />}
     </div>

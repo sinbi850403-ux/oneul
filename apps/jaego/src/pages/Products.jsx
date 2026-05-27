@@ -157,6 +157,7 @@ function PCProducts({ navigate, products, loading, keyword, setKeyword, filtered
       unit:          editTarget.unit,
       price:         Number(editTarget.price) || 0,
       selling_price: Number(editTarget.selling_price) || 0,
+      min_quantity:  Number(editTarget.min_quantity) || 0,
     }).eq('id', editTarget.id)
     setSaving(false)
     if (!error) { setEditTarget(null); refetch() }
@@ -363,7 +364,7 @@ function PCProducts({ navigate, products, loading, keyword, setKeyword, filtered
                       <td style={{ padding: '12px 16px', textAlign: 'center' }}>
                         <div style={{ display: 'flex', gap: 6, justifyContent: 'center' }}>
                           <button
-                            onClick={() => setEditTarget({ id: p.id, name: p.name, unit: p.unit, price: p.price ?? 0, selling_price: p.selling_price ?? 0 })}
+                            onClick={() => setEditTarget({ id: p.id, name: p.name, unit: p.unit, price: p.price ?? 0, selling_price: p.selling_price ?? 0, min_quantity: p.min_quantity ?? 0 })}
                             style={{ padding: '4px 10px', fontSize: 12, borderRadius: 6, border: '1px solid var(--color-border)', background: 'var(--color-white)', color: 'var(--color-text)', cursor: 'pointer' }}
                           >수정</button>
                           <button
@@ -388,10 +389,11 @@ function PCProducts({ navigate, products, loading, keyword, setKeyword, filtered
         <div style={{ background: '#fff', borderRadius: 16, padding: '28px 28px 24px', width: 360, boxShadow: '0 8px 32px rgba(0,0,0,0.15)' }}>
           <h3 style={{ fontWeight: 700, fontSize: 18, marginBottom: 20 }}>상품 수정</h3>
           {[
-            { label: '상품명',      key: 'name',          type: 'text'   },
-            { label: '단위',        key: 'unit',          type: 'text'   },
-            { label: '단가 (매입)', key: 'price',         type: 'number' },
-            { label: '판가 (매출)', key: 'selling_price', type: 'number' },
+            { label: '상품명',         key: 'name',          type: 'text'   },
+            { label: '단위',           key: 'unit',          type: 'text'   },
+            { label: '단가 (매입)',    key: 'price',         type: 'number' },
+            { label: '판가 (매출)',    key: 'selling_price', type: 'number' },
+            { label: '안전재고 (최소)', key: 'min_quantity',  type: 'number' },
           ].map(({ label, key, type }) => (
             <div key={key} style={{ marginBottom: 14 }}>
               <label style={{ fontSize: 12, color: 'var(--color-text-sub)', display: 'block', marginBottom: 4 }}>{label}</label>
