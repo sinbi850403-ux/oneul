@@ -44,6 +44,9 @@ function StockInForm({ user, onSuccess }) {
     clear()
     setError('')
     setSuccess('')
+    // 상품에 기본 단가가 있으면 자동 입력 (직접 수정 가능)
+    if (p.price > 0) setUnitPrice(String(p.price))
+    else setUnitPrice('')
   }
 
   function handleKeywordChange(e) {
