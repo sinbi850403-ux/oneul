@@ -24,6 +24,7 @@ export default function MonthlyReport() {
 
   const [purchaseTotal, setPurchaseTotal] = useState(0)
   const [salesItemTotal, setSalesItemTotal] = useState(0)
+  const [taxType, setTaxType] = useState('general')
 
   useEffect(() => {
     async function load() {
@@ -33,18 +34,20 @@ export default function MonthlyReport() {
       const end = new Date(year, month, 0)
       const endStr = `${year}-${pad(month)}-${pad(end.getDate())}`
 
-      const [{ data: salesData }, { data: purchasesData }, { data: salesItemsData }] = await Promise.all([
+      const [{ data: salesData }, { data: purchasesData }, { data: salesItemsData }, { data: profile }] = await Promise.all([
         supabase.from('sales').select('*').eq('user_id', user.id)
           .gte('sale_date', start).lte('sale_date', endStr).order('sale_date'),
         supabase.from('purchases').select('total_amount').eq('user_id', user.id)
           .gte('purchase_date', start).lte('purchase_date', endStr),
         supabase.from('sales_items').select('total_amount').eq('user_id', user.id)
           .gte('sale_date', start).lte('sale_date', endStr),
+        supabase.from('profiles').select('tax_type').eq('user_id', user.id).maybeSingle(),
       ])
 
       setRows(salesData ?? [])
       setPurchaseTotal((purchasesData ?? []).reduce((a, r) => a + (r.total_amount ?? 0), 0))
       setSalesItemTotal((salesItemsData ?? []).reduce((a, r) => a + (r.total_amount ?? 0), 0))
+      setTaxType(profile?.tax_type ?? 'general')
     }
     load()
   }, [year, month])
@@ -58,7 +61,10 @@ export default function MonthlyReport() {
   const years = [now.getFullYear() - 1, now.getFullYear()]
 
   async function handleShare() {
-    const totalSales = salesItemTotal + monthTotal
+    const totalSales   = salesItemTotal + monthTotal
+    const estimatedVat = taxType === 'simple'
+      ? Math.round(totalSales * 0.015)
+      : Math.round(totalSales / 11)
     const profit     = totalSales - purchaseTotal
     const marginRate = totalSales > 0 ? Math.round((profit / totalSales) * 100) : 0
     const text = [
@@ -66,6 +72,7 @@ export default function MonthlyReport() {
       ``,
       `💰 매출 합계   ${won(totalSales)}`,
       `📦 매입 합계   ${won(purchaseTotal)}`,
+      `🧾 예상 부가세  - ${won(estimatedVat)}`,
       `🎯 순이익      ${profit >= 0 ? '+' : ''}${won(profit)}`,
       `📈 마진율      ${marginRate}%`,
       ``,
@@ -132,7 +139,10 @@ export default function MonthlyReport() {
 
       {/* 손익 요약 */}
       {(purchaseTotal > 0 || salesItemTotal > 0 || monthTotal > 0) && (() => {
-        const totalSales = salesItemTotal + monthTotal
+        const totalSales  = salesItemTotal + monthTotal
+        const estimatedVat = taxType === 'simple'
+          ? Math.round(totalSales * 0.015)
+          : Math.round(totalSales / 11)
         const profit     = totalSales - purchaseTotal
         const marginRate = totalSales > 0 ? Math.round((profit / totalSales) * 100) : 0
         return (
@@ -152,10 +162,19 @@ export default function MonthlyReport() {
                 <p className="text-lg font-semibold text-gray-700">{won(salesItemTotal)}</p>
               </div>
             </div>
-            <div className="border-t border-gray-100 pt-4 grid grid-cols-3 divide-x divide-gray-100">
+            <div className="border-t border-gray-100 pt-4 grid grid-cols-4 divide-x divide-gray-100">
               <div className="pr-5">
                 <p className="text-xs text-gray-400 mb-1">통합 매출</p>
                 <p className="text-lg font-bold text-brand">{won(totalSales)}</p>
+              </div>
+              <div className="px-5">
+                <p className="text-xs text-gray-400 mb-1">
+                  예상 부가세
+                  <span className="ml-1 text-gray-300">
+                    ({taxType === 'simple' ? '간이 1.5%' : '일반 ÷11'})
+                  </span>
+                </p>
+                <p className="text-lg font-bold text-red-400">- {won(estimatedVat)}</p>
               </div>
               <div className="px-5">
                 <p className="text-xs text-gray-400 mb-1">순이익</p>
