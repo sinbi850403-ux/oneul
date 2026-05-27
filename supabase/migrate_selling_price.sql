@@ -3,9 +3,11 @@
 -- Supabase 대시보드 → SQL Editor에서 실행
 -- ================================================
 
--- 1. products 테이블에 판가 추가
+-- 1. products 테이블에 판가 + 안전재고 추가
 alter table products
   add column if not exists selling_price int not null default 0;
+alter table products
+  add column if not exists min_quantity int not null default 0;
 
 -- 2. stock_log에 출고 시 적용된 판가 추가
 alter table stock_log
