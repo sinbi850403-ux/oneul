@@ -55,16 +55,25 @@ function isThisMonth(iso) {
   return d.getFullYear() === now.getFullYear() && d.getMonth() === now.getMonth()
 }
 
+const MOBILE_TABS = [
+  { label: '홈',    path: '/',             icon: '🏠' },
+  { label: '입고',  path: '/stock-in',     icon: '📥' },
+  { label: '출고',  path: '/stock-out',    icon: '📤' },
+  { label: '재고',  path: '/stock-status', icon: '📊' },
+  { label: '설정',  path: '/settings',     icon: '⚙️' },
+]
+
 /* ───────────────────── Mobile ───────────────────── */
 function MobileHome({ user, signOut, logs, loading, lowStock = [], shopName = '', monthProfit = null }) {
   const navigate = useNavigate()
+  const location = useLocation()
   return (
-    <div style={{ minHeight: '100vh', background: 'var(--color-bg)', paddingBottom: 40 }}>
+    <div style={{ minHeight: '100vh', background: 'var(--color-bg)', paddingBottom: 72 }}>
       {/* 헤더 */}
       <header style={{
         background: 'var(--color-white)',
         borderBottom: '1px solid var(--color-border)',
-        padding: '16px 20px',
+        padding: '14px 20px',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'space-between',
@@ -77,21 +86,21 @@ function MobileHome({ user, signOut, logs, loading, lowStock = [], shopName = ''
             </span>
           )}
         </div>
-        <div style={{ display: 'flex', gap: 12 }}>
-          {[['재고현황', '/stock-status'], ['이력', '/history'], ['상품관리', '/products'], ['거래처', '/suppliers'], ['발주', '/orders'], ['재고실사', '/stocktake']].map(([label, path]) => (
+        <div style={{ display: 'flex', gap: 8 }}>
+          {[['이력', '/history'], ['상품', '/products'], ['실사', '/stocktake']].map(([label, path]) => (
             <button key={path} onClick={() => navigate(path)}
-              style={{ fontSize: 13, color: 'var(--color-text-sub)', padding: '4px 8px' }}>
+              style={{
+                fontSize: 12, color: 'var(--color-text-sub)', padding: '5px 10px',
+                border: '1px solid var(--color-border)', borderRadius: 8,
+                background: 'var(--color-white)', cursor: 'pointer',
+              }}>
               {label}
             </button>
           ))}
-          <button onClick={signOut}
-            style={{ fontSize: 13, color: 'var(--color-text-sub)', padding: '4px 8px' }}>
-            로그아웃
-          </button>
         </div>
       </header>
 
-      <div style={{ maxWidth: 480, margin: '0 auto', padding: '24px 20px' }}>
+      <div style={{ maxWidth: 480, margin: '0 auto', padding: '20px 20px' }}>
         <p style={{ fontSize: 14, color: 'var(--color-text-sub)', marginBottom: 20 }}>
           안녕하세요, 오늘도 꼼꼼하게 기록해요
         </p>
@@ -156,6 +165,33 @@ function MobileHome({ user, signOut, logs, loading, lowStock = [], shopName = ''
         <h2 style={{ fontSize: 15, fontWeight: 700, marginBottom: 12 }}>최근 이력</h2>
         <LogList logs={logs} loading={loading} />
       </div>
+
+      {/* 하단 탭바 */}
+      <nav style={{
+        position: 'fixed', bottom: 0, left: 0, right: 0,
+        background: 'var(--color-white)',
+        borderTop: '1px solid var(--color-border)',
+        display: 'flex', height: 58, zIndex: 100,
+        boxShadow: '0 -2px 12px rgba(0,0,0,0.06)',
+      }}>
+        {MOBILE_TABS.map(({ label, path, icon }) => {
+          const isActive = location.pathname === path
+          return (
+            <button key={path} onClick={() => navigate(path)}
+              style={{
+                flex: 1, display: 'flex', flexDirection: 'column',
+                alignItems: 'center', justifyContent: 'center', gap: 2,
+                border: 'none', background: 'transparent', cursor: 'pointer',
+                color: isActive ? 'var(--color-primary)' : '#9CA3AF',
+                transition: 'color 0.15s',
+              }}
+            >
+              <span style={{ fontSize: 22 }}>{icon}</span>
+              <span style={{ fontSize: 10, fontWeight: isActive ? 700 : 400 }}>{label}</span>
+            </button>
+          )
+        })}
+      </nav>
     </div>
   )
 }
@@ -470,6 +506,7 @@ export default function Home() {
   const { logs, loading, fetchLogs } = useStockLog()
   const { products } = useAllProducts()
   const isMobile = useIsMobile()
+  const navigate  = useNavigate()
   const [shopName, setShopName] = useState('')
   const [monthProfit, setMonthProfit] = useState(null)
 
@@ -478,6 +515,25 @@ export default function Home() {
   )
 
   useEffect(() => { fetchLogs() }, [])
+
+  // 프로필 로드 + 온보딩 미완료 시 리다이렉트
+  useEffect(() => {
+    async function loadProfile() {
+      const { data: { user: u } } = await supabase.auth.getUser()
+      if (!u) return
+      const { data } = await supabase
+        .from('profiles')
+        .select('shop_name, onboarded')
+        .eq('user_id', u.id)
+        .maybeSingle()
+      if (!data || !data.onboarded) {
+        navigate('/onboarding', { replace: true })
+        return
+      }
+      if (data.shop_name) setShopName(data.shop_name)
+    }
+    loadProfile()
+  }, [])
 
   // 이번달 순이익 (장부 데이터)
   useEffect(() => {
@@ -498,16 +554,6 @@ export default function Home() {
       setMonthProfit(salesSum - purchaseSum)
     }
     loadProfit()
-  }, [])
-
-  useEffect(() => {
-    async function loadShopName() {
-      const { data: { user: u } } = await supabase.auth.getUser()
-      if (!u) return
-      const { data } = await supabase.from('profiles').select('shop_name').eq('user_id', u.id).single()
-      if (data?.shop_name) setShopName(data.shop_name)
-    }
-    loadShopName()
   }, [])
 
   return isMobile

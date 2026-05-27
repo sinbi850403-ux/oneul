@@ -1,3 +1,4 @@
+import { useState, useEffect } from 'react'
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
 import { supabase } from './lib/supabase.js'
 import Input from './pages/Input.jsx'
@@ -19,6 +20,7 @@ import Purchases     from './pages/dashboard/Purchases.jsx'
 import SalesItems    from './pages/dashboard/SalesItems.jsx'
 import Privacy from './pages/Privacy.jsx'
 import Terms from './pages/Terms.jsx'
+import Onboarding from './pages/Onboarding.jsx'
 import { useAuth } from './hooks/useAuth.js'
 
 // 다른 앱에서 넘어온 경우 SSO 토큰으로 자동 로그인
@@ -45,8 +47,15 @@ async function goToJaego() {
 function ProtectedLayout() {
   const { session, loading } = useAuth()
   const isPC = window.innerWidth >= 768
+  const [onboarded, setOnboarded] = useState(null)
 
-  if (loading) {
+  useEffect(() => {
+    if (!session) return
+    supabase.from('profiles').select('onboarded').eq('user_id', session.user.id).maybeSingle()
+      .then(({ data }) => setOnboarded(data?.onboarded ?? false))
+  }, [session])
+
+  if (loading || (session && onboarded === null)) {
     return (
       <div className="flex items-center justify-center min-h-screen">
         <span className="text-gray-400 text-lg">불러오는 중...</span>
@@ -56,6 +65,7 @@ function ProtectedLayout() {
 
   if (!session) return <Navigate to="/login" replace />
   if (isPC) return <Navigate to="/dashboard" replace />
+  if (!onboarded) return <Navigate to="/onboarding" replace />
 
   return (
     <div className="flex flex-col min-h-screen max-w-md mx-auto">
@@ -93,8 +103,15 @@ function Home() {
 function DashboardGuard() {
   const { session, loading } = useAuth()
   const isMobile = window.innerWidth < 768
+  const [onboarded, setOnboarded] = useState(null)
 
-  if (loading) {
+  useEffect(() => {
+    if (!session) return
+    supabase.from('profiles').select('onboarded').eq('user_id', session.user.id).maybeSingle()
+      .then(({ data }) => setOnboarded(data?.onboarded ?? false))
+  }, [session])
+
+  if (loading || (session && onboarded === null)) {
     return (
       <div className="flex items-center justify-center min-h-screen">
         <span className="text-gray-400 text-lg">불러오는 중...</span>
@@ -104,6 +121,7 @@ function DashboardGuard() {
 
   if (!session) return <Navigate to="/login" replace />
   if (isMobile) return <Navigate to="/input" replace />
+  if (!onboarded) return <Navigate to="/onboarding" replace />
   return <DashboardLayout />
 }
 
@@ -113,6 +131,7 @@ export default function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/onboarding" element={<Onboarding />} />
         <Route path="/privacy" element={<Privacy />} />
         <Route path="/terms" element={<Terms />} />
         <Route path="/dashboard" element={<DashboardGuard />}>
