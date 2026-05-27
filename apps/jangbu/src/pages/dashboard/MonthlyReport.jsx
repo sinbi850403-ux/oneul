@@ -65,7 +65,7 @@ export default function MonthlyReport() {
     const estimatedVat = taxType === 'simple'
       ? Math.round(totalSales * 0.015)
       : Math.round(totalSales / 11)
-    const profit     = totalSales - purchaseTotal
+    const profit     = totalSales - purchaseTotal - estimatedVat
     const marginRate = totalSales > 0 ? Math.round((profit / totalSales) * 100) : 0
     const text = [
       `📊 ${year}년 ${month}월 손익 리포트`,
@@ -143,7 +143,7 @@ export default function MonthlyReport() {
         const estimatedVat = taxType === 'simple'
           ? Math.round(totalSales * 0.015)
           : Math.round(totalSales / 11)
-        const profit     = totalSales - purchaseTotal
+        const profit     = totalSales - purchaseTotal - estimatedVat
         const marginRate = totalSales > 0 ? Math.round((profit / totalSales) * 100) : 0
         return (
           <div className="bg-white rounded-2xl shadow-sm p-5 mb-6">
