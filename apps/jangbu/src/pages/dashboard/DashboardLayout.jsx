@@ -13,6 +13,7 @@ async function goToJaego() {
 }
 
 const menus = [
+  { to: '/dashboard/home',      label: '🏠 대시보드' },
   { to: '/dashboard/input',     label: '매출 입력' },
   { to: '/dashboard/report',    label: '월별 손익' },
   { to: '/dashboard/purchases', label: '매입 내역' },

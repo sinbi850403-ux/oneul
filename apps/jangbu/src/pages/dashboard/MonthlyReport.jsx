@@ -57,9 +57,44 @@ export default function MonthlyReport() {
   const months = Array.from({ length: 12 }, (_, i) => i + 1)
   const years = [now.getFullYear() - 1, now.getFullYear()]
 
+  async function handleShare() {
+    const totalSales = salesItemTotal + monthTotal
+    const profit     = totalSales - purchaseTotal
+    const marginRate = totalSales > 0 ? Math.round((profit / totalSales) * 100) : 0
+    const text = [
+      `📊 ${year}년 ${month}월 손익 리포트`,
+      ``,
+      `💰 매출 합계   ${won(totalSales)}`,
+      `📦 매입 합계   ${won(purchaseTotal)}`,
+      `🎯 순이익      ${profit >= 0 ? '+' : ''}${won(profit)}`,
+      `📈 마진율      ${marginRate}%`,
+      ``,
+      `— 오늘장부로 관리 중 💪`,
+    ].join('\n')
+
+    try {
+      if (navigator.share) {
+        await navigator.share({ title: `${year}년 ${month}월 손익 리포트`, text })
+      } else {
+        await navigator.clipboard.writeText(text)
+        alert('클립보드에 복사됐어요!')
+      }
+    } catch (e) {
+      // 사용자가 취소한 경우 무시
+    }
+  }
+
   return (
     <div>
-      <h2 className="text-2xl font-bold text-gray-800 mb-6">월별 리포트</h2>
+      <div className="flex items-center justify-between mb-6">
+        <h2 className="text-2xl font-bold text-gray-800">월별 리포트</h2>
+        <button
+          onClick={handleShare}
+          className="flex items-center gap-1.5 px-4 py-2 text-sm font-semibold border border-gray-200 rounded-xl text-gray-600 hover:bg-gray-50"
+        >
+          <span>↗</span> 공유
+        </button>
+      </div>
 
       <div className="flex gap-3 mb-6">
         <select

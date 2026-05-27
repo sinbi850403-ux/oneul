@@ -4,6 +4,36 @@ import { useAuth } from '../lib/AuthContext'
 import { useFavoriteProducts, useProductSearch } from '../hooks/useProducts'
 import { stockOut, useStockLog } from '../hooks/useStock'
 import { useIsMobile } from '../hooks/useIsMobile'
+import { supabase } from '../lib/supabase'
+
+// 재고부족 시 푸시 알림 발송
+async function notifyIfLowStock(userId, productId, productName, outQty) {
+  try {
+    const { data } = await supabase
+      .from('stock')
+      .select('quantity, products(min_quantity)')
+      .eq('user_id', userId)
+      .eq('product_id', productId)
+      .maybeSingle()
+    if (!data) return
+    const current = data.quantity ?? 0
+    const minQty  = data.products?.min_quantity ?? 0
+    if (minQty > 0 && current <= minQty) {
+      // Service Worker 등록 (없으면)
+      if ('serviceWorker' in navigator) {
+        await navigator.serviceWorker.register('/sw.js')
+      }
+      await fetch(`${import.meta.env.VITE_SUPABASE_URL}/functions/v1/notify-low-stock`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${import.meta.env.VITE_SUPABASE_ANON_KEY}`,
+        },
+        body: JSON.stringify({ userId, productName, currentStock: current, minQuantity: minQty }),
+      })
+    }
+  } catch { /* 알림 실패는 무시 */ }
+}
 
 // ── 날짜 포맷 MM/DD HH:mm ───────────────────────────────────────────────────
 function fmtDateTime(iso) {
@@ -101,6 +131,8 @@ function StockOutForm({ user, onSuccess }) {
     try {
       await stockOut(user.id, selected.id, qty, note || null, Number(sellingPrice) || 0)
       setSuccess(`"${selected.name}" ${qty}${selected.unit} 출고 완료!`)
+      // 재고부족 알림 (비동기, 실패해도 무시)
+      notifyIfLowStock(user.id, selected.id, selected.name, qty)
       resetForm()
       onSuccess?.()
     } catch {

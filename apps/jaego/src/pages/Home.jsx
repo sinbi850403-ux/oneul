@@ -54,7 +54,7 @@ function isThisMonth(iso) {
 }
 
 /* ───────────────────── Mobile ───────────────────── */
-function MobileHome({ user, signOut, logs, loading, lowStock = [], shopName = '' }) {
+function MobileHome({ user, signOut, logs, loading, lowStock = [], shopName = '', monthProfit = null }) {
   const navigate = useNavigate()
   return (
     <div style={{ minHeight: '100vh', background: 'var(--color-bg)', paddingBottom: 40 }}>
@@ -94,6 +94,25 @@ function MobileHome({ user, signOut, logs, loading, lowStock = [], shopName = ''
           안녕하세요, 오늘도 꼼꼼하게 기록해요
         </p>
 
+        {/* 이번달 순이익 카드 */}
+        {monthProfit !== null && (
+          <div style={{
+            background: monthProfit >= 0 ? '#F0FDF4' : '#FEF2F2',
+            border: `1px solid ${monthProfit >= 0 ? '#86EFAC' : '#FECACA'}`,
+            borderRadius: 'var(--radius-lg)', padding: '14px 16px',
+            marginBottom: 16,
+            display: 'flex', justifyContent: 'space-between', alignItems: 'center',
+          }}>
+            <span style={{ fontSize: 13, color: 'var(--color-text-sub)' }}>이번달 순이익</span>
+            <span style={{ fontSize: 18, fontWeight: 800, color: monthProfit >= 0 ? '#16A34A' : '#EF4444' }}>
+              {monthProfit >= 0 ? '+' : ''}
+              {Math.abs(monthProfit) >= 10000
+                ? `${(monthProfit / 10000).toFixed(0)}만원`
+                : `${monthProfit.toLocaleString()}원`}
+            </span>
+          </div>
+        )}
+
         {/* 재고 부족 알림 */}
         {lowStock.length > 0 && (
           <div
@@ -105,7 +124,7 @@ function MobileHome({ user, signOut, logs, loading, lowStock = [], shopName = ''
             }}
           >
             <div style={{ fontSize: 13, fontWeight: 700, color: '#92400E', marginBottom: 4 }}>
-              안전재고 부족 {lowStock.length}개
+              ⚠️ 안전재고 부족 {lowStock.length}개
             </div>
             <div style={{ fontSize: 12, color: '#B45309' }}>
               {lowStock.slice(0, 3).map(p => p.name).join(', ')}
@@ -140,21 +159,13 @@ function MobileHome({ user, signOut, logs, loading, lowStock = [], shopName = ''
 }
 
 /* ───────────────────── PC ───────────────────── */
-function PCHome({ user, signOut, logs, loading, products, lowStock = [], shopName = '' }) {
+function PCHome({ user, signOut, logs, loading, products, lowStock = [], shopName = '', monthProfit = null }) {
   const navigate  = useNavigate()
   const location  = useLocation()
 
-  const totalCount    = logs.length
-  const todayCount    = logs.filter(l => isToday(l.created_at)).length
-  const monthCount    = logs.filter(l => isThisMonth(l.created_at)).length
-  const productCount  = products.length
-
-  const SUMMARY_CARDS = [
-    { label: '전체 이력', value: totalCount,   unit: '건' },
-    { label: '오늘 이력', value: todayCount,   unit: '건' },
-    { label: '이번달 이력', value: monthCount, unit: '건' },
-    { label: '등록 상품', value: productCount, unit: '개' },
-  ]
+  const todayCount   = logs.filter(l => isToday(l.created_at)).length
+  const monthCount   = logs.filter(l => isThisMonth(l.created_at)).length
+  const productCount = products.length
 
   return (
     <div style={{ minHeight: '100vh', background: 'var(--color-bg)', display: 'flex', flexDirection: 'column' }}>
@@ -278,7 +289,11 @@ function PCHome({ user, signOut, logs, loading, products, lowStock = [], shopNam
 
           {/* 요약 카드 */}
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4,1fr)', gap: 16, marginBottom: 28 }}>
-            {SUMMARY_CARDS.map(({ label, value, unit }) => (
+            {[
+              { label: '오늘 이력',    value: todayCount,   unit: '건',  color: 'var(--color-text)' },
+              { label: '이번달 이력',  value: monthCount,   unit: '건',  color: 'var(--color-text)' },
+              { label: '등록 상품',    value: productCount, unit: '개',  color: 'var(--color-text)' },
+            ].map(({ label, value, unit, color }) => (
               <div key={label} style={{
                 background: 'var(--color-white)',
                 border: '1px solid var(--color-border)',
@@ -286,12 +301,35 @@ function PCHome({ user, signOut, logs, loading, products, lowStock = [], shopNam
                 padding: '20px 24px',
               }}>
                 <div style={{ fontSize: 12, color: 'var(--color-text-sub)', marginBottom: 8 }}>{label}</div>
-                <div style={{ fontSize: 28, fontWeight: 800, color: 'var(--color-text)' }}>
+                <div style={{ fontSize: 28, fontWeight: 800, color }}>
                   {value.toLocaleString()}
                   <span style={{ fontSize: 14, fontWeight: 500, marginLeft: 4 }}>{unit}</span>
                 </div>
               </div>
             ))}
+            {/* 이번달 순이익 (장부 연동) */}
+            <div style={{
+              background: 'var(--color-white)',
+              border: '1px solid var(--color-border)',
+              borderRadius: 'var(--radius-lg)',
+              padding: '20px 24px',
+            }}>
+              <div style={{ fontSize: 12, color: 'var(--color-text-sub)', marginBottom: 8 }}>이번달 순이익</div>
+              {monthProfit === null ? (
+                <div style={{ fontSize: 14, color: 'var(--color-text-sub)' }}>불러오는 중...</div>
+              ) : (
+                <div style={{
+                  fontSize: 22, fontWeight: 800,
+                  color: monthProfit >= 0 ? '#16A34A' : '#EF4444',
+                }}>
+                  {monthProfit >= 0 ? '+' : ''}
+                  {Math.abs(monthProfit) >= 10000
+                    ? `${(monthProfit / 10000).toFixed(0)}만`
+                    : monthProfit.toLocaleString()}
+                  <span style={{ fontSize: 13, fontWeight: 500, marginLeft: 4 }}>원</span>
+                </div>
+              )}
+            </div>
           </div>
 
           {/* 이력 테이블 */}
@@ -431,12 +469,34 @@ export default function Home() {
   const { products } = useAllProducts()
   const isMobile = useIsMobile()
   const [shopName, setShopName] = useState('')
+  const [monthProfit, setMonthProfit] = useState(null)
 
   const lowStockProducts = products.filter(p =>
     (p.min_quantity ?? 0) > 0 && (p.stock?.[0]?.quantity ?? 0) <= p.min_quantity
   )
 
   useEffect(() => { fetchLogs() }, [])
+
+  // 이번달 순이익 (장부 데이터)
+  useEffect(() => {
+    async function loadProfit() {
+      const { data: { user: u } } = await supabase.auth.getUser()
+      if (!u) return
+      const now = new Date()
+      const y = now.getFullYear(), m = now.getMonth() + 1
+      const pad = n => String(n).padStart(2, '0')
+      const start = `${y}-${pad(m)}-01`
+      const end   = `${y}-${pad(m)}-${pad(new Date(y, m, 0).getDate())}`
+      const [{ data: salesRows }, { data: purchaseRows }] = await Promise.all([
+        supabase.from('sales').select('total').eq('user_id', u.id).gte('sale_date', start).lte('sale_date', end),
+        supabase.from('purchases').select('total_amount').eq('user_id', u.id).gte('purchase_date', start).lte('purchase_date', end),
+      ])
+      const salesSum   = (salesRows    ?? []).reduce((a, r) => a + (r.total        ?? 0), 0)
+      const purchaseSum = (purchaseRows ?? []).reduce((a, r) => a + (r.total_amount ?? 0), 0)
+      setMonthProfit(salesSum - purchaseSum)
+    }
+    loadProfit()
+  }, [])
 
   useEffect(() => {
     async function loadShopName() {
@@ -449,6 +509,6 @@ export default function Home() {
   }, [])
 
   return isMobile
-    ? <MobileHome user={user} signOut={signOut} logs={logs} loading={loading} lowStock={lowStockProducts} shopName={shopName} />
-    : <PCHome user={user} signOut={signOut} logs={logs} loading={loading} products={products} lowStock={lowStockProducts} shopName={shopName} />
+    ? <MobileHome user={user} signOut={signOut} logs={logs} loading={loading} lowStock={lowStockProducts} shopName={shopName} monthProfit={monthProfit} />
+    : <PCHome user={user} signOut={signOut} logs={logs} loading={loading} products={products} lowStock={lowStockProducts} shopName={shopName} monthProfit={monthProfit} />
 }

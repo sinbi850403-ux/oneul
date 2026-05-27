@@ -14,6 +14,7 @@ import MonthlyReport from './pages/dashboard/MonthlyReport.jsx'
 import ExcelExport from './pages/dashboard/ExcelExport.jsx'
 import DashboardTax from './pages/dashboard/DashboardTax.jsx'
 import DashboardInput from './pages/dashboard/DashboardInput.jsx'
+import DashboardHome from './pages/dashboard/DashboardHome.jsx'
 import Purchases     from './pages/dashboard/Purchases.jsx'
 import SalesItems    from './pages/dashboard/SalesItems.jsx'
 import Privacy from './pages/Privacy.jsx'
@@ -115,7 +116,8 @@ export default function App() {
         <Route path="/privacy" element={<Privacy />} />
         <Route path="/terms" element={<Terms />} />
         <Route path="/dashboard" element={<DashboardGuard />}>
-          <Route index element={<Navigate to="/dashboard/input" replace />} />
+          <Route index element={<Navigate to="/dashboard/home" replace />} />
+          <Route path="home"      element={<DashboardHome />} />
           <Route path="input"     element={<DashboardInput />} />
           <Route path="biz"       element={<BizInfo />} />
           <Route path="report"    element={<MonthlyReport />} />
