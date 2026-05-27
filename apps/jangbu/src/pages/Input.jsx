@@ -54,8 +54,12 @@ export default function Input() {
       { onConflict: 'user_id,sale_date' }
     )
     setSaving(false)
-    if (error) setToast('저장에 실패했어요')
-    else setToast('저장됐어요')
+    if (error) {
+      console.error('[sales upsert]', error)
+      setToast(`저장 실패: ${error.message}`)
+    } else {
+      setToast('저장됐어요')
+    }
   }
 
   function handleReset() {

@@ -77,7 +77,18 @@ export default function DashboardTax() {
       </div>
 
       <div className="bg-white rounded-2xl shadow-sm p-6 mb-4">
-        <h3 className="font-semibold text-gray-700 mb-4">부가세 예상</h3>
+        <div className="flex items-center gap-2 mb-4">
+          <h3 className="font-semibold text-gray-700">부가세 예상</h3>
+          <div className="relative group">
+            <span className="w-4 h-4 rounded-full bg-gray-200 text-gray-500 text-xs flex items-center justify-center cursor-default select-none">?</span>
+            <div className="absolute left-1/2 -translate-x-1/2 bottom-full mb-2 w-64 bg-gray-800 text-white text-xs rounded-xl px-3 py-2.5 leading-relaxed opacity-0 group-hover:opacity-100 pointer-events-none transition-opacity z-10">
+              <p className="font-semibold mb-1">계산 근거 (참고용 추정치)</p>
+              <p>· 일반과세자: 매출 ÷ 11</p>
+              <p>· 간이과세자: 매출 × 1.5%</p>
+              <p className="mt-1.5 text-gray-400">매입세액 공제 미반영 금액입니다. 실제 납부액은 다를 수 있어요.</p>
+            </div>
+          </div>
+        </div>
         <div className="flex justify-between items-center mb-2">
           <span className="text-gray-600">
             {month}월 매출 기준
