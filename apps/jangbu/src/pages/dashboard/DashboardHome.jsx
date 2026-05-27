@@ -32,25 +32,35 @@ export default function DashboardHome() {
 
       const [
         { data: todayRow },
+        { data: todayItemRows },
         { data: monthRows },
+        { data: monthItemRows },
         { data: lastMonthRows },
+        { data: lastMonthItemRows },
         { data: purchaseRows },
         { data: recentRows },
         { data: stockRows },
         { data: profileRow },
       ] = await Promise.all([
         supabase.from('sales').select('total').eq('user_id', user.id).eq('sale_date', todayStr).maybeSingle(),
+        supabase.from('sales_items').select('total_amount').eq('user_id', user.id).eq('sale_date', todayStr),
         supabase.from('sales').select('total').eq('user_id', user.id).gte('sale_date', monthStart).lte('sale_date', monthEnd),
+        supabase.from('sales_items').select('total_amount').eq('user_id', user.id).gte('sale_date', monthStart).lte('sale_date', monthEnd),
         supabase.from('sales').select('total').eq('user_id', user.id).gte('sale_date', lastMonthStart).lte('sale_date', lastMonthEnd),
+        supabase.from('sales_items').select('total_amount').eq('user_id', user.id).gte('sale_date', lastMonthStart).lte('sale_date', lastMonthEnd),
         supabase.from('purchases').select('total_amount').eq('user_id', user.id).gte('purchase_date', monthStart).lte('purchase_date', monthEnd),
         supabase.from('sales').select('sale_date, total').eq('user_id', user.id).gte('sale_date', ago7Str).order('sale_date'),
         supabase.from('stock').select('quantity, products(name, min_quantity)').eq('user_id', user.id),
         supabase.from('profiles').select('shop_name, monthly_target').eq('user_id', user.id).maybeSingle(),
       ])
 
-      setTodaySales(todayRow?.total ?? 0)
-      setMonthSales((monthRows ?? []).reduce((a, r) => a + (r.total ?? 0), 0))
-      setLastMonthSales((lastMonthRows ?? []).reduce((a, r) => a + (r.total ?? 0), 0))
+      const todayItemSum     = (todayItemRows     ?? []).reduce((a, r) => a + (r.total_amount ?? 0), 0)
+      const monthItemSum     = (monthItemRows     ?? []).reduce((a, r) => a + (r.total_amount ?? 0), 0)
+      const lastMonthItemSum = (lastMonthItemRows ?? []).reduce((a, r) => a + (r.total_amount ?? 0), 0)
+
+      setTodaySales((todayRow?.total ?? 0) + todayItemSum)
+      setMonthSales((monthRows ?? []).reduce((a, r) => a + (r.total ?? 0), 0) + monthItemSum)
+      setLastMonthSales((lastMonthRows ?? []).reduce((a, r) => a + (r.total ?? 0), 0) + lastMonthItemSum)
       setMonthPurchase((purchaseRows ?? []).reduce((a, r) => a + (r.total_amount ?? 0), 0))
       setRecentDays(recentRows ?? [])
       setLowStock((stockRows ?? []).filter(s =>
