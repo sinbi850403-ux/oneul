@@ -47,7 +47,7 @@ function won(n) {
   return '₩' + Math.round(n ?? 0).toLocaleString('ko-KR')
 }
 
-const MIN_WAGE_2025 = 10320
+const MIN_WAGE_2026 = 10320
 
 // ── 메인 컴포넌트 ─────────────────────────────────────────────────────────────
 export default function Workers() {
@@ -57,7 +57,7 @@ export default function Workers() {
 
   // 알바생 추가 폼
   const [newName, setNewName]   = useState('')
-  const [newWage, setNewWage]   = useState(MIN_WAGE_2025)
+  const [newWage, setNewWage]   = useState(MIN_WAGE_2026)
   const [adding, setAdding]     = useState(false)
   const [showAddForm, setShowAddForm] = useState(false)
 
@@ -120,7 +120,7 @@ export default function Workers() {
     const { data } = await supabase.from('workers').insert({
       user_id: user.id,
       name: newName.trim(),
-      hourly_wage: Number(newWage) || MIN_WAGE_2025,
+      hourly_wage: Number(newWage) || MIN_WAGE_2026,
     }).select().single()
     if (data) {
       setWorkers(prev => [...prev, data])
@@ -128,7 +128,7 @@ export default function Workers() {
       setTab('log')
     }
     setNewName('')
-    setNewWage(MIN_WAGE_2025)
+    setNewWage(MIN_WAGE_2026)
     setAdding(false)
     setShowAddForm(false)
   }
@@ -228,11 +228,11 @@ export default function Workers() {
                     placeholder="시급"
                     value={newWage}
                     onChange={e => setNewWage(e.target.value)}
-                    min={MIN_WAGE_2025}
+                    min={MIN_WAGE_2026}
                   />
                   <span className="text-xs text-gray-400 whitespace-nowrap">원/h</span>
                 </div>
-                <p className="text-xs text-gray-400 mb-2">2025 최저시급 {MIN_WAGE_2025.toLocaleString()}원</p>
+                <p className="text-xs text-gray-400 mb-2">2026 최저시급 {MIN_WAGE_2026.toLocaleString()}원</p>
                 <button
                   type="submit"
                   disabled={adding}
