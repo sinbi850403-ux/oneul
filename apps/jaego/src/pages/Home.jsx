@@ -25,7 +25,7 @@ const SIDEBAR_ITEMS = [
   { label: '거래처',   path: '/suppliers' },
   { label: '발주 관리', path: '/orders' },
   { divider: true },
-  { label: '⚙️ 설정',  path: '/settings' },
+  { label: '설정',      path: '/settings' },
 ]
 
 const TYPE_LABEL = { in: '입고', out: '출고', return: '반품' }
@@ -56,11 +56,11 @@ function isThisMonth(iso) {
 }
 
 const MOBILE_TABS = [
-  { label: '홈',    path: '/',             icon: '🏠' },
-  { label: '입고',  path: '/stock-in',     icon: '📥' },
-  { label: '출고',  path: '/stock-out',    icon: '📤' },
-  { label: '재고',  path: '/stock-status', icon: '📊' },
-  { label: '설정',  path: '/settings',     icon: '⚙️' },
+  { label: '홈',    path: '/' },
+  { label: '입고',  path: '/stock-in' },
+  { label: '출고',  path: '/stock-out' },
+  { label: '재고',  path: '/stock-status' },
+  { label: '설정',  path: '/settings' },
 ]
 
 /* ───────────────────── Mobile ───────────────────── */
@@ -174,20 +174,25 @@ function MobileHome({ user, signOut, logs, loading, lowStock = [], shopName = ''
         display: 'flex', height: 58, zIndex: 100,
         boxShadow: '0 -2px 12px rgba(0,0,0,0.06)',
       }}>
-        {MOBILE_TABS.map(({ label, path, icon }) => {
+        {MOBILE_TABS.map(({ label, path }) => {
           const isActive = location.pathname === path
           return (
             <button key={path} onClick={() => navigate(path)}
               style={{
                 flex: 1, display: 'flex', flexDirection: 'column',
-                alignItems: 'center', justifyContent: 'center', gap: 2,
+                alignItems: 'center', justifyContent: 'center',
                 border: 'none', background: 'transparent', cursor: 'pointer',
                 color: isActive ? 'var(--color-primary)' : '#9CA3AF',
                 transition: 'color 0.15s',
               }}
             >
-              <span style={{ fontSize: 22 }}>{icon}</span>
-              <span style={{ fontSize: 10, fontWeight: isActive ? 700 : 400 }}>{label}</span>
+              {isActive && (
+                <div style={{
+                  width: 20, height: 3, borderRadius: 2,
+                  background: 'var(--color-primary)', marginBottom: 4,
+                }} />
+              )}
+              <span style={{ fontSize: 13, fontWeight: isActive ? 700 : 500 }}>{label}</span>
             </button>
           )
         })}
