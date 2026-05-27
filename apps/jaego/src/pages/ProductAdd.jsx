@@ -21,7 +21,7 @@ export default function ProductAdd() {
     setError('')
     try {
       await addProduct({ name: name.trim(), unit: unit.trim() || '개', quantity: Number(quantity), price: Number(price) || 0, sellingPrice: Number(sellingPrice) || 0 })
-      navigate('/products')
+      navigate('/products', { replace: true })
     } catch (err) {
       setError('상품 추가 중 오류가 발생했습니다.')
     } finally {
