@@ -23,7 +23,7 @@ async function notifyIfLowStock(userId, productId, productName, outQty) {
       if ('serviceWorker' in navigator) {
         await navigator.serviceWorker.register('/sw.js')
       }
-      await fetch(`${import.meta.env.VITE_SUPABASE_URL}/functions/v1/notify-low-stock`, {
+      await fetch(`${import.meta.env.VITE_SUPABASE_URL}/functions/v1/smooth-function`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
