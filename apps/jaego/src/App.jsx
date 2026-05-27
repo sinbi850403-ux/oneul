@@ -30,6 +30,7 @@ import Suppliers       from './pages/Suppliers'
 import Orders          from './pages/Orders'
 import OrderDetail     from './pages/OrderDetail'
 import Settings        from './pages/Settings'
+import Board           from './pages/Board'
 import Onboarding      from './pages/Onboarding'
 import Login           from './pages/Login'
 
@@ -62,6 +63,7 @@ export default function App() {
           <Route path="/orders"        element={<PrivateRoute><Orders /></PrivateRoute>} />
           <Route path="/orders/:id"    element={<PrivateRoute><OrderDetail /></PrivateRoute>} />
           <Route path="/settings"      element={<PrivateRoute><Settings /></PrivateRoute>} />
+          <Route path="/board"         element={<PrivateRoute><Board /></PrivateRoute>} />
           <Route path="/onboarding"    element={<Onboarding />} />
         </Routes>
       </BrowserRouter>

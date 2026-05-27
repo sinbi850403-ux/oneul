@@ -25,6 +25,7 @@ const SIDEBAR_ITEMS = [
   { label: '거래처',   path: '/suppliers' },
   { label: '발주 관리', path: '/orders' },
   { divider: true },
+  { label: '게시판',    path: '/board' },
   { label: '설정',      path: '/settings' },
 ]
 
@@ -94,7 +95,7 @@ function MobileHome({ user, signOut, logs, loading, lowStock = [], shopName = ''
           )}
         </div>
         <div style={{ display: 'flex', gap: 8 }}>
-          {[['이력', '/history'], ['상품', '/products'], ['실사', '/stocktake']].map(([label, path]) => (
+          {[['이력', '/history'], ['상품', '/products'], ['실사', '/stocktake'], ['게시판', '/board']].map(([label, path]) => (
             <button key={path} onClick={() => navigate(path)}
               style={{
                 fontSize: 12, color: 'var(--color-text-sub)', padding: '5px 10px',
