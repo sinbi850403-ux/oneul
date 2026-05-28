@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { supabase } from '../../lib/supabase.js'
 
 const FIELDS = [
@@ -22,7 +22,8 @@ function pad(n) {
 
 /* ── 일별 막대 차트 ── */
 function DailyChart({ year, month, salesRows, salesItemsRows }) {
-  const [hovered, setHovered] = useState(null)  // { day, total, manual, items, x }
+  const [hovered, setHovered] = useState(null)  // { day, total, manual, items, barH, x }
+  const scrollRef = useRef(null)
   const daysInMonth = new Date(year, month, 0).getDate()
 
   // 날짜별 합산: sales(manual) + sales_items(재고앱)
@@ -58,94 +59,102 @@ function DailyChart({ year, month, salesRows, salesItemsRows }) {
         </div>
       </div>
 
-      {/* 차트 영역 */}
-      <div style={{ overflowX: 'auto' }}>
-        <div
-          style={{ minWidth: Math.max(daysInMonth * 28, 320), display: 'flex', alignItems: 'flex-end', gap: 3, height: 100, position: 'relative' }}
-          onMouseLeave={() => setHovered(null)}
-        >
-          {/* 툴팁 */}
-          {hovered && (
-            <div style={{
-              position: 'absolute',
-              left: Math.max(0, Math.min(hovered.x, Math.max(daysInMonth * 28, 320) - 120)),
-              bottom: 20 + hovered.barH + 8,
-              background: '#fff',
-              border: '1px solid #E5E7EB',
-              borderRadius: 8,
-              padding: '6px 12px',
-              pointerEvents: 'none',
-              zIndex: 10,
-              whiteSpace: 'nowrap',
-              boxShadow: '0 2px 8px rgba(0,0,0,0.10)',
-            }}>
-              <div style={{ fontSize: 11, color: '#9CA3AF', marginBottom: 1 }}>
-                {month}월 {hovered.day}일 매출
-              </div>
-              <div style={{ fontSize: 16, fontWeight: 800, color: '#1F2937' }}>
-                {hovered.total >= 10000
-                  ? `${(hovered.total / 10000).toFixed(1)}만원`
-                  : `${hovered.total.toLocaleString()}원`}
-              </div>
-              {hovered.manual > 0 && hovered.items > 0 && (
-                <div style={{ fontSize: 10, color: '#D1D5DB', marginTop: 2, display: 'flex', gap: 6 }}>
-                  <span>수동 {hovered.manual >= 10000 ? `${(hovered.manual/10000).toFixed(1)}만` : hovered.manual.toLocaleString()}</span>
-                  <span>재고앱 {hovered.items >= 10000 ? `${(hovered.items/10000).toFixed(1)}만` : hovered.items.toLocaleString()}</span>
-                </div>
-              )}
+      {/* 차트 영역 — 툴팁은 스크롤 div 밖(wrapper)에 위치 */}
+      <div style={{ position: 'relative' }}>
+        {/* 툴팁: scrollRef 기준 절대 위치 */}
+        {hovered && (
+          <div style={{
+            position: 'absolute',
+            left: Math.max(0, Math.min(
+              hovered.x,
+              (scrollRef.current?.offsetWidth ?? 320) - 130
+            )),
+            bottom: 20 + hovered.barH + 8,
+            background: '#fff',
+            border: '1px solid #E5E7EB',
+            borderRadius: 8,
+            padding: '6px 12px',
+            pointerEvents: 'none',
+            zIndex: 20,
+            whiteSpace: 'nowrap',
+            boxShadow: '0 2px 8px rgba(0,0,0,0.10)',
+          }}>
+            <div style={{ fontSize: 11, color: '#9CA3AF', marginBottom: 1 }}>
+              {month}월 {hovered.day}일 매출
             </div>
-          )}
+            <div style={{ fontSize: 16, fontWeight: 800, color: '#1F2937' }}>
+              {hovered.total >= 10000
+                ? `${(hovered.total / 10000).toFixed(1)}만원`
+                : `${hovered.total.toLocaleString()}원`}
+            </div>
+            {hovered.manual > 0 && hovered.items > 0 && (
+              <div style={{ fontSize: 10, color: '#D1D5DB', marginTop: 2, display: 'flex', gap: 6 }}>
+                <span>수동 {hovered.manual >= 10000 ? `${(hovered.manual/10000).toFixed(1)}만` : hovered.manual.toLocaleString()}</span>
+                <span>재고앱 {hovered.items >= 10000 ? `${(hovered.items/10000).toFixed(1)}만` : hovered.items.toLocaleString()}</span>
+              </div>
+            )}
+          </div>
+        )}
 
-          {dailyData.map(({ day, total, manual, items }, idx) => {
-            if (total === 0) {
+        {/* 스크롤 컨테이너 */}
+        <div ref={scrollRef} style={{ overflowX: 'auto' }}>
+          <div
+            style={{ minWidth: Math.max(daysInMonth * 28, 320), display: 'flex', alignItems: 'flex-end', gap: 3, height: 100 }}
+            onMouseLeave={() => setHovered(null)}
+          >
+            {dailyData.map(({ day, total, manual, items }) => {
+              if (total === 0) {
+                return (
+                  <div
+                    key={day}
+                    style={{ flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 3, height: '100%', justifyContent: 'flex-end', cursor: 'default' }}
+                    onMouseEnter={() => setHovered(null)}
+                  >
+                    <div style={{ width: '100%', height: 3, background: '#F3F4F6', borderRadius: 2 }} />
+                    <span style={{ fontSize: 9, color: day === todayDay ? '#F97316' : '#D1D5DB', fontWeight: day === todayDay ? 700 : 400 }}>
+                      {pad(day)}
+                    </span>
+                  </div>
+                )
+              }
+              const barH    = Math.max((total / maxVal) * 76, 6)
+              const manualH = items > 0 ? Math.round((manual / total) * barH) : barH
+              const itemsH  = barH - manualH
+              const isToday = day === todayDay
+              const isHov   = hovered?.day === day
               return (
                 <div
                   key={day}
-                  style={{ flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 3, height: '100%', justifyContent: 'flex-end', cursor: 'default' }}
-                  onMouseEnter={(e) => setHovered(null)}
+                  style={{ flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 3, height: '100%', justifyContent: 'flex-end', cursor: 'pointer' }}
+                  onMouseEnter={(e) => {
+                    // getBoundingClientRect: 스크롤과 무관하게 현재 화면 기준 위치 계산
+                    const barRect = e.currentTarget.getBoundingClientRect()
+                    const containerRect = scrollRef.current.getBoundingClientRect()
+                    const x = barRect.left - containerRect.left + barRect.width / 2 - 55
+                    setHovered({ day, total, manual, items, barH, x })
+                  }}
                 >
-                  <div style={{ width: '100%', height: 3, background: '#F3F4F6', borderRadius: 2 }} />
-                  <span style={{ fontSize: 9, color: day === todayDay ? '#F97316' : '#D1D5DB', fontWeight: day === todayDay ? 700 : 400 }}>
+                  <div style={{ width: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'flex-end', transition: 'opacity 0.1s', opacity: isHov ? 0.8 : 1 }}>
+                    {/* 재고앱 (위) */}
+                    {itemsH > 0 && (
+                      <div style={{ width: '100%', height: itemsH, background: isToday || isHov ? '#fed7aa' : '#FEF3C7', borderRadius: '2px 2px 0 0' }} />
+                    )}
+                    {/* 수동 (아래) */}
+                    {manualH > 0 && (
+                      <div style={{
+                        width: '100%', height: manualH,
+                        background: isToday || isHov ? 'var(--color-brand, #F97316)' : '#FDBA74',
+                        borderRadius: itemsH > 0 ? 0 : '2px 2px 0 0',
+                      }} />
+                    )}
+                  </div>
+                  <span style={{ fontSize: 9, color: isToday ? '#F97316' : isHov ? '#374151' : '#9CA3AF', fontWeight: isToday || isHov ? 700 : 400 }}>
                     {pad(day)}
                   </span>
                 </div>
               )
-            }
-            const barH    = Math.max((total / maxVal) * 76, 6)
-            const manualH = items > 0 ? Math.round((manual / total) * barH) : barH
-            const itemsH  = barH - manualH
-            const isToday = day === todayDay
-            const isHov   = hovered?.day === day
-            return (
-              <div
-                key={day}
-                style={{ flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 3, height: '100%', justifyContent: 'flex-end', cursor: 'pointer' }}
-                onMouseEnter={(e) => {
-                  // offsetLeft: 스크롤 컨테이너 기준 절대 위치
-                  const x = e.currentTarget.offsetLeft + e.currentTarget.offsetWidth / 2 - 55
-                  setHovered({ day, total, manual, items, barH, x })
-                }}
-              >
-                <div style={{ width: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'flex-end', transition: 'opacity 0.1s', opacity: isHov ? 0.8 : 1 }}>
-                  {/* 재고앱 (위) */}
-                  {itemsH > 0 && (
-                    <div style={{ width: '100%', height: itemsH, background: isToday || isHov ? '#fed7aa' : '#FEF3C7', borderRadius: '2px 2px 0 0' }} />
-                  )}
-                  {/* 수동 (아래) */}
-                  {manualH > 0 && (
-                    <div style={{
-                      width: '100%', height: manualH,
-                      background: isToday || isHov ? 'var(--color-brand, #F97316)' : '#FDBA74',
-                      borderRadius: itemsH > 0 ? 0 : '2px 2px 0 0',
-                    }} />
-                  )}
-                </div>
-                <span style={{ fontSize: 9, color: isToday ? '#F97316' : isHov ? '#374151' : '#9CA3AF', fontWeight: isToday || isHov ? 700 : 400 }}>
-                  {pad(day)}
-                </span>
-              </div>
-            )
-          })}
+            })}
+          </div>
         </div>
       </div>
 
