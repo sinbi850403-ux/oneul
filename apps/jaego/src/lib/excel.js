@@ -45,6 +45,51 @@ export function exportOrderToExcel(order, items) {
   XLSX.writeFile(wb, `발주서_${supplier}_${new Date().toISOString().slice(0, 10)}.xlsx`)
 }
 
+// 재고 일괄 수정 템플릿 다운로드
+export function exportBulkStockTemplate(products, filename = '재고일괄수정') {
+  const rows = products.map(p => ({
+    '상품명':    p.name,
+    '카테고리':  p.category ?? '일반',
+    '단위':      p.unit,
+    '수정 재고': p.stock?.[0]?.quantity ?? 0,
+  }))
+  const ws = XLSX.utils.json_to_sheet(rows)
+  // D열 너비 조정 안내
+  ws['!cols'] = [{ wch: 24 }, { wch: 10 }, { wch: 6 }, { wch: 10 }]
+  const wb = XLSX.utils.book_new()
+  XLSX.utils.book_append_sheet(wb, ws, '재고수정')
+  XLSX.writeFile(wb, `${filename}_${new Date().toISOString().slice(0, 10)}.xlsx`)
+}
+
+// 재고 일괄 수정 엑셀 파싱
+// A열: 상품명, B열: 카테고리(무시), C열: 단위(무시), D열: 수정 재고
+export function parseBulkStockExcel(file) {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader()
+    reader.onload = (e) => {
+      try {
+        const wb   = XLSX.read(e.target.result, { type: 'array' })
+        const ws   = wb.Sheets[wb.SheetNames[0]]
+        const rows = XLSX.utils.sheet_to_json(ws, { header: 1 })
+
+        const result = rows
+          .slice(1)
+          .filter(row => row[0])
+          .map(row => ({
+            name:   String(row[0]).trim(),
+            newQty: row[3] != null ? parseInt(row[3]) : null,
+          }))
+
+        resolve(result)
+      } catch (err) {
+        reject(new Error('엑셀 파싱 실패: ' + err.message))
+      }
+    }
+    reader.onerror = () => reject(new Error('파일 읽기 실패'))
+    reader.readAsArrayBuffer(file)
+  })
+}
+
 // 엑셀 파일 → 상품 배열 변환
 // A열: name, B열: unit, C열: quantity
 export function parseProductsExcel(file) {

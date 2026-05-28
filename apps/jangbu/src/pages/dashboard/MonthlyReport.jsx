@@ -16,42 +16,142 @@ function won(n) {
   return '₩ ' + (n ?? 0).toLocaleString('ko-KR')
 }
 
+function pad(n) {
+  return String(n).padStart(2, '0')
+}
+
+/* ── 일별 막대 차트 ── */
+function DailyChart({ year, month, salesRows, salesItemsRows }) {
+  const daysInMonth = new Date(year, month, 0).getDate()
+
+  // 날짜별 합산: sales(manual) + sales_items(재고앱)
+  const dailyData = Array.from({ length: daysInMonth }, (_, i) => {
+    const d = i + 1
+    const dateStr = `${year}-${pad(month)}-${pad(d)}`
+    const manual  = salesRows.find(r => r.sale_date === dateStr)?.total ?? 0
+    const items   = salesItemsRows
+      .filter(r => r.sale_date === dateStr)
+      .reduce((a, r) => a + (r.total_amount ?? 0), 0)
+    return { day: d, dateStr, manual, items, total: manual + items }
+  })
+
+  const maxVal = Math.max(...dailyData.map(d => d.total), 1)
+  const today  = new Date()
+  const isCurrentMonth = today.getFullYear() === year && today.getMonth() + 1 === month
+  const todayDay = isCurrentMonth ? today.getDate() : -1
+
+  const totalSales = dailyData.reduce((a, d) => a + d.total, 0)
+  const salesDays  = dailyData.filter(d => d.total > 0).length
+
+  return (
+    <div className="bg-white rounded-2xl shadow-sm p-5 mb-6">
+      <div className="flex items-center justify-between mb-4">
+        <p className="text-sm font-semibold text-gray-700">일별 매출 현황</p>
+        <div className="flex items-center gap-3 text-xs text-gray-400">
+          <span className="flex items-center gap-1">
+            <span className="inline-block w-3 h-3 rounded-sm bg-brand opacity-80" />수동
+          </span>
+          <span className="flex items-center gap-1">
+            <span className="inline-block w-3 h-3 rounded-sm bg-orange-200" />재고앱
+          </span>
+        </div>
+      </div>
+
+      {/* 차트 영역 */}
+      <div style={{ overflowX: 'auto' }}>
+        <div style={{ minWidth: Math.max(daysInMonth * 28, 320), display: 'flex', alignItems: 'flex-end', gap: 3, height: 100 }}>
+          {dailyData.map(({ day, total, manual, items }) => {
+            if (total === 0) {
+              return (
+                <div key={day} style={{ flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 3, height: '100%', justifyContent: 'flex-end' }}>
+                  <div style={{ width: '100%', height: 3, background: '#F3F4F6', borderRadius: 2 }} />
+                  <span style={{ fontSize: 9, color: day === todayDay ? '#F97316' : '#D1D5DB', fontWeight: day === todayDay ? 700 : 400 }}>
+                    {pad(day)}
+                  </span>
+                </div>
+              )
+            }
+            const barH    = Math.max((total / maxVal) * 76, 6)
+            const manualH = items > 0 ? Math.round((manual / total) * barH) : barH
+            const itemsH  = barH - manualH
+            const isToday = day === todayDay
+            return (
+              <div key={day} style={{ flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 3, height: '100%', justifyContent: 'flex-end' }}>
+                <div style={{ width: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'flex-end' }}>
+                  {/* 재고앱 (위) */}
+                  {itemsH > 0 && (
+                    <div style={{ width: '100%', height: itemsH, background: isToday ? '#fed7aa' : '#FEF3C7', borderRadius: '2px 2px 0 0' }} />
+                  )}
+                  {/* 수동 (아래) */}
+                  {manualH > 0 && (
+                    <div style={{
+                      width: '100%', height: manualH,
+                      background: isToday ? 'var(--color-brand, #F97316)' : '#FDBA74',
+                      borderRadius: itemsH > 0 ? 0 : '2px 2px 0 0',
+                    }} />
+                  )}
+                </div>
+                <span style={{ fontSize: 9, color: isToday ? '#F97316' : '#9CA3AF', fontWeight: isToday ? 700 : 400 }}>
+                  {pad(day)}
+                </span>
+              </div>
+            )
+          })}
+        </div>
+      </div>
+
+      {/* 요약 */}
+      <div className="flex gap-4 mt-3 pt-3 border-t border-gray-100 text-xs text-gray-500">
+        <span>영업일 <strong className="text-gray-700">{salesDays}일</strong></span>
+        <span>일평균 <strong className="text-gray-700">{salesDays > 0 ? (totalSales / salesDays / 10000).toFixed(1) : 0}만원</strong></span>
+        {(() => {
+          const best = dailyData.reduce((a, b) => b.total > a.total ? b : a, dailyData[0])
+          if (best.total > 0) return (
+            <span>최고 <strong className="text-brand">{best.day}일 {(best.total / 10000).toFixed(1)}만원</strong></span>
+          )
+          return null
+        })()}
+      </div>
+    </div>
+  )
+}
+
 export default function MonthlyReport() {
   const now = new Date()
   const [year, setYear] = useState(now.getFullYear())
   const [month, setMonth] = useState(now.getMonth() + 1)
   const [rows, setRows] = useState([])
 
-  const [purchaseTotal, setPurchaseTotal] = useState(0)
-  const [salesItemTotal, setSalesItemTotal] = useState(0)
-  const [taxType, setTaxType] = useState('general')
+  const [purchaseTotal,    setPurchaseTotal]    = useState(0)
+  const [salesItemsRows,   setSalesItemsRows]   = useState([])
+  const [taxType,          setTaxType]          = useState('general')
 
   useEffect(() => {
     async function load() {
       const { data: { user } } = await supabase.auth.getUser()
-      const pad = (n) => String(n).padStart(2, '0')
-      const start = `${year}-${pad(month)}-01`
-      const end = new Date(year, month, 0)
-      const endStr = `${year}-${pad(month)}-${pad(end.getDate())}`
+      const start  = `${year}-${pad(month)}-01`
+      const endObj = new Date(year, month, 0)
+      const endStr = `${year}-${pad(month)}-${pad(endObj.getDate())}`
 
-      const [{ data: salesData }, { data: purchasesData }, { data: salesItemsData }, { data: profile }] = await Promise.all([
+      const [{ data: salesData }, { data: purchasesData }, { data: siData }, { data: profile }] = await Promise.all([
         supabase.from('sales').select('*').eq('user_id', user.id)
           .gte('sale_date', start).lte('sale_date', endStr).order('sale_date'),
         supabase.from('purchases').select('total_amount').eq('user_id', user.id)
           .gte('purchase_date', start).lte('purchase_date', endStr),
-        supabase.from('sales_items').select('total_amount').eq('user_id', user.id)
+        supabase.from('sales_items').select('sale_date, total_amount').eq('user_id', user.id)
           .gte('sale_date', start).lte('sale_date', endStr),
         supabase.from('profiles').select('tax_type').eq('user_id', user.id).maybeSingle(),
       ])
 
       setRows(salesData ?? [])
       setPurchaseTotal((purchasesData ?? []).reduce((a, r) => a + (r.total_amount ?? 0), 0))
-      setSalesItemTotal((salesItemsData ?? []).reduce((a, r) => a + (r.total_amount ?? 0), 0))
+      setSalesItemsRows(siData ?? [])
       setTaxType(profile?.tax_type ?? 'general')
     }
     load()
   }, [year, month])
 
+  const salesItemTotal = salesItemsRows.reduce((a, r) => a + (r.total_amount ?? 0), 0)
   const monthTotal = rows.reduce((a, r) => a + (r.total ?? 0), 0)
   const fieldTotals = Object.fromEntries(
     FIELDS.map(f => [f.key, rows.reduce((a, r) => a + (r[f.key] ?? 0), 0)])
@@ -123,7 +223,7 @@ export default function MonthlyReport() {
       <div className="grid grid-cols-3 gap-4 mb-6">
         <div className="bg-white rounded-2xl p-5 shadow-sm">
           <p className="text-sm text-gray-400 mb-1">월 매출 누계</p>
-          <p className="text-2xl font-bold text-brand">{won(monthTotal)}</p>
+          <p className="text-2xl font-bold text-brand">{won(monthTotal + salesItemTotal)}</p>
         </div>
         <div className="bg-white rounded-2xl p-5 shadow-sm">
           <p className="text-sm text-gray-400 mb-1">영업일</p>
@@ -132,10 +232,18 @@ export default function MonthlyReport() {
         <div className="bg-white rounded-2xl p-5 shadow-sm">
           <p className="text-sm text-gray-400 mb-1">일평균 매출</p>
           <p className="text-2xl font-bold text-gray-800">
-            {won(rows.length ? Math.round(monthTotal / rows.length) : 0)}
+            {won(rows.length ? Math.round((monthTotal + salesItemTotal) / rows.length) : 0)}
           </p>
         </div>
       </div>
+
+      {/* 일별 차트 */}
+      <DailyChart
+        year={year}
+        month={month}
+        salesRows={rows}
+        salesItemsRows={salesItemsRows}
+      />
 
       {/* 손익 요약 */}
       {(purchaseTotal > 0 || salesItemTotal > 0 || monthTotal > 0) && (() => {

@@ -2,17 +2,20 @@ import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useAllProducts } from '../hooks/useProducts'
 
+const CATEGORIES = ['일반', '식품', '음료', '주류', '냉동', '생활용품', '문구', '기타']
+
 export default function ProductAdd() {
   const navigate = useNavigate()
   const { addProduct } = useAllProducts()
 
-  const [name, setName] = useState('')
-  const [unit, setUnit] = useState('개')
-  const [quantity, setQuantity] = useState(0)
-  const [price, setPrice] = useState('')
+  const [name,         setName]         = useState('')
+  const [unit,         setUnit]         = useState('개')
+  const [quantity,     setQuantity]     = useState(0)
+  const [price,        setPrice]        = useState('')
   const [sellingPrice, setSellingPrice] = useState('')
-  const [submitting, setSubmitting] = useState(false)
-  const [error, setError] = useState('')
+  const [category,     setCategory]     = useState('일반')
+  const [submitting,   setSubmitting]   = useState(false)
+  const [error,        setError]        = useState('')
 
   async function handleSubmit(e) {
     e.preventDefault()
@@ -20,9 +23,16 @@ export default function ProductAdd() {
     setSubmitting(true)
     setError('')
     try {
-      await addProduct({ name: name.trim(), unit: unit.trim() || '개', quantity: Number(quantity), price: Number(price) || 0, sellingPrice: Number(sellingPrice) || 0 })
+      await addProduct({
+        name: name.trim(),
+        unit: unit.trim() || '개',
+        quantity: Number(quantity),
+        price: Number(price) || 0,
+        sellingPrice: Number(sellingPrice) || 0,
+        category,
+      })
       navigate('/products', { replace: true })
-    } catch (err) {
+    } catch {
       setError('상품 추가 중 오류가 발생했습니다.')
     } finally {
       setSubmitting(false)
@@ -37,6 +47,7 @@ export default function ProductAdd() {
     fontSize: 15,
     background: 'var(--color-white)',
     outline: 'none',
+    boxSizing: 'border-box',
   }
 
   const labelStyle = {
@@ -72,6 +83,7 @@ export default function ProductAdd() {
 
       <div style={{ maxWidth: 480, margin: '0 auto', padding: '24px 16px 40px' }}>
         <form onSubmit={handleSubmit}>
+
           <div style={{ marginBottom: 20 }}>
             <label style={labelStyle}>상품명 *</label>
             <input
@@ -83,6 +95,33 @@ export default function ProductAdd() {
               style={inputStyle}
               autoFocus
             />
+          </div>
+
+          {/* 카테고리 */}
+          <div style={{ marginBottom: 20 }}>
+            <label style={labelStyle}>카테고리</label>
+            <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8 }}>
+              {CATEGORIES.map(cat => (
+                <button
+                  key={cat}
+                  type="button"
+                  onClick={() => setCategory(cat)}
+                  style={{
+                    padding: '7px 14px',
+                    borderRadius: 20,
+                    fontSize: 13,
+                    fontWeight: category === cat ? 700 : 500,
+                    border: `1px solid ${category === cat ? 'var(--color-primary)' : 'var(--color-border)'}`,
+                    background: category === cat ? 'var(--color-primary)' : 'var(--color-white)',
+                    color: category === cat ? '#fff' : 'var(--color-text-sub)',
+                    cursor: 'pointer',
+                    transition: 'all 0.15s',
+                  }}
+                >
+                  {cat}
+                </button>
+              ))}
+            </div>
           </div>
 
           <div style={{ marginBottom: 20 }}>

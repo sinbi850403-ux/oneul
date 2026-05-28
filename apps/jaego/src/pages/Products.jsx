@@ -6,6 +6,31 @@ import { parseProductsExcel } from '../lib/excel'
 import { useIsMobile } from '../hooks/useIsMobile'
 import { supabase } from '../lib/supabase'
 
+const CATEGORIES = ['전체', '일반', '식품', '음료', '주류', '냉동', '생활용품', '문구', '기타']
+
+const CATEGORY_COLORS = {
+  '일반':    { bg: '#F3F4F6', color: '#374151' },
+  '식품':    { bg: '#FEF3C7', color: '#92400E' },
+  '음료':    { bg: '#DBEAFE', color: '#1E40AF' },
+  '주류':    { bg: '#EDE9FE', color: '#5B21B6' },
+  '냉동':    { bg: '#E0F2FE', color: '#075985' },
+  '생활용품': { bg: '#DCFCE7', color: '#166534' },
+  '문구':    { bg: '#FFF7ED', color: '#9A3412' },
+  '기타':    { bg: '#F1F5F9', color: '#475569' },
+}
+
+function CategoryBadge({ cat }) {
+  const style = CATEGORY_COLORS[cat] ?? CATEGORY_COLORS['기타']
+  return (
+    <span style={{
+      padding: '2px 8px', borderRadius: 20, fontSize: 11, fontWeight: 600,
+      background: style.bg, color: style.color,
+    }}>
+      {cat}
+    </span>
+  )
+}
+
 /* ───────────────────── 공통 유틸 ───────────────────── */
 function ExcelInput({ fileRef, onChange }) {
   return (
@@ -20,7 +45,7 @@ function ExcelInput({ fileRef, onChange }) {
 }
 
 /* ───────────────────── Mobile ───────────────────── */
-function MobileProducts({ navigate, products, loading, keyword, setKeyword, filtered, toggleFavorite, uploading, fileRef, handleFileChange }) {
+function MobileProducts({ navigate, products, loading, keyword, setKeyword, filtered, toggleFavorite, uploading, fileRef, handleFileChange, activeCategory, setActiveCategory }) {
   return (
     <div style={{ background: 'var(--color-bg)', minHeight: '100vh' }}>
       {/* 헤더 */}
@@ -47,6 +72,7 @@ function MobileProducts({ navigate, products, loading, keyword, setKeyword, filt
           style={{
             background: 'var(--color-primary)', color: 'var(--color-white)',
             padding: '7px 16px', borderRadius: 'var(--radius)', fontWeight: 600, fontSize: 14,
+            border: 'none', cursor: 'pointer',
           }}
         >
           추가
@@ -63,10 +89,29 @@ function MobileProducts({ navigate, products, loading, keyword, setKeyword, filt
           style={{
             width: '100%', padding: '12px 14px',
             border: '1px solid var(--color-border)', borderRadius: 'var(--radius)',
-            fontSize: 15, background: 'var(--color-white)', marginBottom: 16, outline: 'none',
+            fontSize: 15, background: 'var(--color-white)', marginBottom: 12, outline: 'none',
             boxSizing: 'border-box',
           }}
         />
+
+        {/* 카테고리 필터 */}
+        <div style={{ display: 'flex', gap: 6, overflowX: 'auto', marginBottom: 16, paddingBottom: 2 }}>
+          {CATEGORIES.map(cat => (
+            <button
+              key={cat}
+              onClick={() => setActiveCategory(cat)}
+              style={{
+                padding: '5px 12px', borderRadius: 20, fontSize: 12, fontWeight: activeCategory === cat ? 700 : 500,
+                border: `1px solid ${activeCategory === cat ? 'var(--color-primary)' : 'var(--color-border)'}`,
+                background: activeCategory === cat ? 'var(--color-primary)' : 'var(--color-white)',
+                color: activeCategory === cat ? '#fff' : 'var(--color-text-sub)',
+                cursor: 'pointer', whiteSpace: 'nowrap', flexShrink: 0,
+              }}
+            >
+              {cat}
+            </button>
+          ))}
+        </div>
 
         {/* 상품 리스트 */}
         {loading ? (
@@ -95,11 +140,14 @@ function MobileProducts({ navigate, products, loading, keyword, setKeyword, filt
                   borderBottom: i < filtered.length - 1 ? '1px solid var(--color-border)' : 'none',
                 }}>
                   <div style={{ flex: 1 }}>
-                    <button onClick={() => navigate(`/products/${p.id}`)}
-                      style={{ background: 'none', border: 'none', cursor: 'pointer', fontWeight: 600, fontSize: 15, color: 'var(--color-primary)', padding: 0, textAlign: 'left', display: 'block' }}>
-                      {p.name}
-                    </button>
-                    <div style={{ fontSize: 13, color: 'var(--color-text-sub)', marginTop: 2 }}>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginBottom: 3 }}>
+                      <button onClick={() => navigate(`/products/${p.id}`)}
+                        style={{ background: 'none', border: 'none', cursor: 'pointer', fontWeight: 600, fontSize: 15, color: 'var(--color-primary)', padding: 0, textAlign: 'left' }}>
+                        {p.name}
+                      </button>
+                      {p.category && p.category !== '일반' && <CategoryBadge cat={p.category} />}
+                    </div>
+                    <div style={{ fontSize: 13, color: 'var(--color-text-sub)' }}>
                       재고 <strong style={{ color: 'var(--color-text)' }}>{stock.toLocaleString()}</strong>{p.unit}
                       {p.selling_price > 0 && (
                         <span style={{ marginLeft: 8 }}>· 판가 ₩{p.selling_price.toLocaleString()}</span>
@@ -111,7 +159,7 @@ function MobileProducts({ navigate, products, loading, keyword, setKeyword, filt
                     style={{
                       fontSize: 22,
                       color: p.is_favorite ? '#FBBF24' : 'var(--color-border)',
-                      padding: '4px 8px', lineHeight: 1,
+                      padding: '4px 8px', lineHeight: 1, background: 'none', border: 'none', cursor: 'pointer',
                     }}
                     aria-label={p.is_favorite ? '즐겨찾기 해제' : '즐겨찾기 등록'}
                   >
@@ -139,16 +187,31 @@ function MobileProducts({ navigate, products, loading, keyword, setKeyword, filt
         >
           {uploading ? '업로드 중...' : '엑셀로 일괄 등록'}
         </button>
+
+        {/* 재고 일괄 수정 */}
+        <button
+          onClick={() => navigate('/bulk-stock-edit')}
+          style={{
+            width: '100%', padding: '13px', marginTop: 8,
+            border: '1px solid var(--color-border)', borderRadius: 'var(--radius)',
+            background: 'var(--color-white)',
+            color: 'var(--color-text-sub)',
+            fontWeight: 600, fontSize: 14,
+            cursor: 'pointer',
+          }}
+        >
+          📊 재고 일괄 수정
+        </button>
       </div>
     </div>
   )
 }
 
 /* ───────────────────── PC ───────────────────── */
-function PCProducts({ navigate, products, loading, keyword, setKeyword, filtered, toggleFavorite, uploading, fileRef, handleFileChange, refetch }) {
-  const [sortBy,   setSortBy]   = useState('name')
-  const [editTarget, setEditTarget] = useState(null)   // { id, name, unit, price, selling_price }
-  const [saving,   setSaving]   = useState(false)
+function PCProducts({ navigate, products, loading, keyword, setKeyword, filtered, toggleFavorite, uploading, fileRef, handleFileChange, refetch, activeCategory, setActiveCategory }) {
+  const [sortBy,     setSortBy]     = useState('name')
+  const [editTarget, setEditTarget] = useState(null)
+  const [saving,     setSaving]     = useState(false)
 
   async function handleEditSave() {
     setSaving(true)
@@ -158,6 +221,7 @@ function PCProducts({ navigate, products, loading, keyword, setKeyword, filtered
       price:         Number(editTarget.price) || 0,
       selling_price: Number(editTarget.selling_price) || 0,
       min_quantity:  Number(editTarget.min_quantity) || 0,
+      category:      editTarget.category,
     }).eq('id', editTarget.id)
     setSaving(false)
     if (!error) { setEditTarget(null); refetch() }
@@ -207,6 +271,19 @@ function PCProducts({ navigate, products, loading, keyword, setKeyword, filtered
         <div style={{ display: 'flex', gap: 8 }}>
           <ExcelInput fileRef={fileRef} onChange={handleFileChange} />
           <button
+            onClick={() => navigate('/bulk-stock-edit')}
+            style={{
+              padding: '7px 16px', borderRadius: 'var(--radius)',
+              border: '1px solid var(--color-border)',
+              background: 'var(--color-white)',
+              color: 'var(--color-text-sub)',
+              fontWeight: 600, fontSize: 14,
+              cursor: 'pointer',
+            }}
+          >
+            재고 일괄 수정
+          </button>
+          <button
             onClick={() => fileRef.current?.click()}
             disabled={uploading}
             style={{
@@ -235,7 +312,7 @@ function PCProducts({ navigate, products, loading, keyword, setKeyword, filtered
 
       <div style={{ maxWidth: 960, margin: '0 auto', padding: '28px 32px 48px' }}>
         {/* 검색 + 정렬 */}
-        <div style={{ display: 'flex', gap: 12, marginBottom: 16, alignItems: 'center' }}>
+        <div style={{ display: 'flex', gap: 12, marginBottom: 12, alignItems: 'center' }}>
           <input
             type="text"
             placeholder="상품명 검색..."
@@ -267,9 +344,29 @@ function PCProducts({ navigate, products, loading, keyword, setKeyword, filtered
           </div>
         </div>
 
+        {/* 카테고리 필터 */}
+        <div style={{ display: 'flex', gap: 6, marginBottom: 16, flexWrap: 'wrap' }}>
+          {CATEGORIES.map(cat => (
+            <button
+              key={cat}
+              onClick={() => setActiveCategory(cat)}
+              style={{
+                padding: '5px 14px', borderRadius: 20, fontSize: 12, fontWeight: activeCategory === cat ? 700 : 500,
+                border: `1px solid ${activeCategory === cat ? 'var(--color-primary)' : 'var(--color-border)'}`,
+                background: activeCategory === cat ? 'var(--color-primary)' : 'var(--color-white)',
+                color: activeCategory === cat ? '#fff' : 'var(--color-text-sub)',
+                cursor: 'pointer',
+              }}
+            >
+              {cat}
+            </button>
+          ))}
+        </div>
+
         {/* 상품 수 */}
         <div style={{ fontSize: 13, color: 'var(--color-text-sub)', marginBottom: 12 }}>
           총 <strong style={{ color: 'var(--color-text)' }}>{products.length}</strong>개 상품
+          {activeCategory !== '전체' && <span style={{ marginLeft: 6, color: 'var(--color-primary)' }}>· {activeCategory} {filtered.length}개</span>}
         </div>
 
         {/* 테이블 */}
@@ -291,7 +388,7 @@ function PCProducts({ navigate, products, loading, keyword, setKeyword, filtered
             <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: 14 }}>
               <thead>
                 <tr style={{ background: 'var(--color-bg)', textAlign: 'left' }}>
-                  {['#', '상품명', '단위', '재고 수량', '기본단가', '평균원가', '판가', '마진율', '즐겨찾기', ''].map(col => (
+                  {['#', '상품명', '카테고리', '단위', '재고 수량', '기본단가', '평균원가', '판가', '마진율', '즐겨찾기', ''].map(col => (
                     <th key={col} style={{
                       padding: '10px 16px', fontSize: 12, fontWeight: 600,
                       color: 'var(--color-text-sub)',
@@ -310,7 +407,6 @@ function PCProducts({ navigate, products, loading, keyword, setKeyword, filtered
                 {sorted.map((p, i) => {
                   const stock    = p.stock?.[0]?.quantity ?? 0
                   const avgCost  = p.stock?.[0]?.avg_cost ?? 0
-                  // 마진율: 평균원가 있으면 평균원가 기준, 없으면 기본단가 기준
                   const costBase = avgCost > 0 ? avgCost : (p.price ?? 0)
                   const margin   = costBase > 0 && p.selling_price > 0
                     ? Math.round((1 - costBase / p.selling_price) * 100)
@@ -322,14 +418,15 @@ function PCProducts({ navigate, products, loading, keyword, setKeyword, filtered
                       onMouseEnter={e => e.currentTarget.style.background = 'var(--color-bg)'}
                       onMouseLeave={e => e.currentTarget.style.background = 'transparent'}
                     >
-                      <td style={{ padding: '12px 16px', color: 'var(--color-text-sub)', fontSize: 13 }}>
-                        {i + 1}
-                      </td>
+                      <td style={{ padding: '12px 16px', color: 'var(--color-text-sub)', fontSize: 13 }}>{i + 1}</td>
                       <td style={{ padding: '12px 16px', fontWeight: 600 }}>
                         <button onClick={() => navigate(`/products/${p.id}`)}
                           style={{ background: 'none', border: 'none', cursor: 'pointer', fontWeight: 600, fontSize: 14, color: 'var(--color-primary)', padding: 0, textAlign: 'left' }}>
                           {p.name}
                         </button>
+                      </td>
+                      <td style={{ padding: '12px 16px' }}>
+                        <CategoryBadge cat={p.category ?? '일반'} />
                       </td>
                       <td style={{ padding: '12px 16px', color: 'var(--color-text-sub)' }}>{p.unit}</td>
                       <td style={{
@@ -338,16 +435,12 @@ function PCProducts({ navigate, products, loading, keyword, setKeyword, filtered
                       }}>
                         {stock.toLocaleString()}
                       </td>
-                      {/* 기본단가 (상품에 등록된 고정 단가) */}
                       <td style={{ padding: '12px 16px', textAlign: 'right', color: 'var(--color-text-sub)' }}>
                         {p.price > 0 ? `₩${p.price.toLocaleString()}` : '-'}
                       </td>
-                      {/* 평균원가 (이동평균법 자동 계산) */}
                       <td style={{ padding: '12px 16px', textAlign: 'right' }}>
                         {avgCost > 0 ? (
-                          <span style={{ fontWeight: 600, color: '#1D4ED8' }}>
-                            ₩{Math.round(avgCost).toLocaleString()}
-                          </span>
+                          <span style={{ fontWeight: 600, color: '#1D4ED8' }}>₩{Math.round(avgCost).toLocaleString()}</span>
                         ) : (
                           <span style={{ color: 'var(--color-text-sub)', fontSize: 12 }}>입고 후 계산</span>
                         )}
@@ -358,8 +451,7 @@ function PCProducts({ navigate, products, loading, keyword, setKeyword, filtered
                       <td style={{ padding: '12px 16px', textAlign: 'right' }}>
                         {margin !== null ? (
                           <span style={{
-                            fontSize: 12, fontWeight: 600, padding: '2px 8px',
-                            borderRadius: 20,
+                            fontSize: 12, fontWeight: 600, padding: '2px 8px', borderRadius: 20,
                             background: margin >= 0 ? '#DCFCE7' : '#FEE2E2',
                             color: margin >= 0 ? '#16A34A' : '#DC2626',
                           }}>
@@ -383,7 +475,7 @@ function PCProducts({ navigate, products, loading, keyword, setKeyword, filtered
                       <td style={{ padding: '12px 16px', textAlign: 'center' }}>
                         <div style={{ display: 'flex', gap: 6, justifyContent: 'center' }}>
                           <button
-                            onClick={() => setEditTarget({ id: p.id, name: p.name, unit: p.unit, price: p.price ?? 0, selling_price: p.selling_price ?? 0, min_quantity: p.min_quantity ?? 0 })}
+                            onClick={() => setEditTarget({ id: p.id, name: p.name, unit: p.unit, price: p.price ?? 0, selling_price: p.selling_price ?? 0, min_quantity: p.min_quantity ?? 0, category: p.category ?? '일반' })}
                             style={{ padding: '4px 10px', fontSize: 12, borderRadius: 6, border: '1px solid var(--color-border)', background: 'var(--color-white)', color: 'var(--color-text)', cursor: 'pointer' }}
                           >수정</button>
                           <button
@@ -405,8 +497,25 @@ function PCProducts({ navigate, products, loading, keyword, setKeyword, filtered
     {/* 수정 모달 */}
     {editTarget && (
       <div style={{ position: 'fixed', inset: 0, background: 'rgba(0,0,0,0.4)', display: 'flex', alignItems: 'center', justifyContent: 'center', zIndex: 100 }}>
-        <div style={{ background: '#fff', borderRadius: 16, padding: '28px 28px 24px', width: 360, boxShadow: '0 8px 32px rgba(0,0,0,0.15)' }}>
+        <div style={{ background: '#fff', borderRadius: 16, padding: '28px 28px 24px', width: 380, boxShadow: '0 8px 32px rgba(0,0,0,0.15)' }}>
           <h3 style={{ fontWeight: 700, fontSize: 18, marginBottom: 20 }}>상품 수정</h3>
+
+          {/* 카테고리 */}
+          <div style={{ marginBottom: 16 }}>
+            <label style={{ fontSize: 12, color: 'var(--color-text-sub)', display: 'block', marginBottom: 8 }}>카테고리</label>
+            <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6 }}>
+              {CATEGORIES.filter(c => c !== '전체').map(cat => (
+                <button key={cat} type="button" onClick={() => setEditTarget(t => ({ ...t, category: cat }))}
+                  style={{
+                    padding: '5px 12px', borderRadius: 20, fontSize: 12, fontWeight: editTarget.category === cat ? 700 : 500,
+                    border: `1px solid ${editTarget.category === cat ? 'var(--color-primary)' : 'var(--color-border)'}`,
+                    background: editTarget.category === cat ? 'var(--color-primary)' : '#fff',
+                    color: editTarget.category === cat ? '#fff' : 'var(--color-text-sub)', cursor: 'pointer',
+                  }}>{cat}</button>
+              ))}
+            </div>
+          </div>
+
           {[
             { label: '상품명',         key: 'name',          type: 'text'   },
             { label: '단위',           key: 'unit',          type: 'text'   },
@@ -441,14 +550,17 @@ function PCProducts({ navigate, products, loading, keyword, setKeyword, filtered
 export default function Products() {
   const navigate = useNavigate()
   const { products, loading, toggleFavorite, refetch } = useAllProducts()
-  const [keyword, setKeyword] = useState('')
-  const [uploading, setUploading] = useState(false)
+  const [keyword,        setKeyword]        = useState('')
+  const [activeCategory, setActiveCategory] = useState('전체')
+  const [uploading,      setUploading]      = useState(false)
   const fileRef = useRef(null)
   const isMobile = useIsMobile()
 
-  const filtered = products.filter(p =>
-    p.name.toLowerCase().includes(keyword.toLowerCase())
-  )
+  const filtered = products.filter(p => {
+    const matchKeyword  = p.name.toLowerCase().includes(keyword.toLowerCase())
+    const matchCategory = activeCategory === '전체' || (p.category ?? '일반') === activeCategory
+    return matchKeyword && matchCategory
+  })
 
   async function handleFileChange(e) {
     const file = e.target.files?.[0]
@@ -469,6 +581,7 @@ export default function Products() {
   const shared = {
     navigate, products, loading, keyword, setKeyword,
     filtered, toggleFavorite, uploading, fileRef, handleFileChange, refetch,
+    activeCategory, setActiveCategory,
   }
 
   return isMobile ? <MobileProducts {...shared} /> : <PCProducts {...shared} />

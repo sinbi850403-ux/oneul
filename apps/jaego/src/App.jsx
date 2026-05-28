@@ -32,6 +32,7 @@ import OrderDetail     from './pages/OrderDetail'
 import Settings        from './pages/Settings'
 import Board           from './pages/Board'
 import SalesRanking    from './pages/SalesRanking'
+import BulkStockEdit   from './pages/BulkStockEdit'
 import Onboarding      from './pages/Onboarding'
 import Login           from './pages/Login'
 
@@ -63,7 +64,8 @@ export default function App() {
           <Route path="/suppliers"     element={<PrivateRoute><Suppliers /></PrivateRoute>} />
           <Route path="/orders"        element={<PrivateRoute><Orders /></PrivateRoute>} />
           <Route path="/orders/:id"    element={<PrivateRoute><OrderDetail /></PrivateRoute>} />
-          <Route path="/settings"      element={<PrivateRoute><Settings /></PrivateRoute>} />
+          <Route path="/settings"       element={<PrivateRoute><Settings /></PrivateRoute>} />
+          <Route path="/bulk-stock-edit" element={<PrivateRoute><BulkStockEdit /></PrivateRoute>} />
           <Route path="/board"          element={<PrivateRoute><Board /></PrivateRoute>} />
           <Route path="/sales-ranking" element={<PrivateRoute><SalesRanking /></PrivateRoute>} />
           <Route path="/onboarding"    element={<Onboarding />} />
