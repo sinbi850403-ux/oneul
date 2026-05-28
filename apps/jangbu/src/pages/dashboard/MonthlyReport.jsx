@@ -22,6 +22,7 @@ function pad(n) {
 
 /* ── 일별 막대 차트 ── */
 function DailyChart({ year, month, salesRows, salesItemsRows }) {
+  const [hovered, setHovered] = useState(null)  // { day, total, manual, items, x }
   const daysInMonth = new Date(year, month, 0).getDate()
 
   // 날짜별 합산: sales(manual) + sales_items(재고앱)
@@ -59,11 +60,43 @@ function DailyChart({ year, month, salesRows, salesItemsRows }) {
 
       {/* 차트 영역 */}
       <div style={{ overflowX: 'auto' }}>
-        <div style={{ minWidth: Math.max(daysInMonth * 28, 320), display: 'flex', alignItems: 'flex-end', gap: 3, height: 100 }}>
-          {dailyData.map(({ day, total, manual, items }) => {
+        <div
+          style={{ minWidth: Math.max(daysInMonth * 28, 320), display: 'flex', alignItems: 'flex-end', gap: 3, height: 100, position: 'relative' }}
+          onMouseLeave={() => setHovered(null)}
+        >
+          {/* 툴팁 */}
+          {hovered && (
+            <div style={{
+              position: 'absolute',
+              left: Math.min(hovered.x, Math.max(daysInMonth * 28, 320) - 140),
+              top: 0,
+              background: '#1F2937',
+              color: '#fff',
+              borderRadius: 8,
+              padding: '7px 11px',
+              fontSize: 12,
+              fontWeight: 600,
+              pointerEvents: 'none',
+              zIndex: 10,
+              whiteSpace: 'nowrap',
+              boxShadow: '0 4px 12px rgba(0,0,0,0.2)',
+              lineHeight: 1.7,
+            }}>
+              <div style={{ color: '#FCD34D', marginBottom: 2 }}>{month}월 {hovered.day}일</div>
+              <div>합계 {hovered.total >= 10000 ? `${(hovered.total / 10000).toFixed(1)}만원` : `${hovered.total.toLocaleString()}원`}</div>
+              {hovered.manual > 0 && <div style={{ color: '#FDBA74', fontSize: 11 }}>수동 {hovered.manual >= 10000 ? `${(hovered.manual / 10000).toFixed(1)}만` : hovered.manual.toLocaleString()}원</div>}
+              {hovered.items  > 0 && <div style={{ color: '#FEF3C7', fontSize: 11 }}>재고앱 {hovered.items >= 10000 ? `${(hovered.items / 10000).toFixed(1)}만` : hovered.items.toLocaleString()}원</div>}
+            </div>
+          )}
+
+          {dailyData.map(({ day, total, manual, items }, idx) => {
             if (total === 0) {
               return (
-                <div key={day} style={{ flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 3, height: '100%', justifyContent: 'flex-end' }}>
+                <div
+                  key={day}
+                  style={{ flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 3, height: '100%', justifyContent: 'flex-end', cursor: 'default' }}
+                  onMouseEnter={(e) => setHovered(null)}
+                >
                   <div style={{ width: '100%', height: 3, background: '#F3F4F6', borderRadius: 2 }} />
                   <span style={{ fontSize: 9, color: day === todayDay ? '#F97316' : '#D1D5DB', fontWeight: day === todayDay ? 700 : 400 }}>
                     {pad(day)}
@@ -75,23 +108,32 @@ function DailyChart({ year, month, salesRows, salesItemsRows }) {
             const manualH = items > 0 ? Math.round((manual / total) * barH) : barH
             const itemsH  = barH - manualH
             const isToday = day === todayDay
+            const isHov   = hovered?.day === day
             return (
-              <div key={day} style={{ flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 3, height: '100%', justifyContent: 'flex-end' }}>
-                <div style={{ width: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'flex-end' }}>
+              <div
+                key={day}
+                style={{ flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 3, height: '100%', justifyContent: 'flex-end', cursor: 'pointer' }}
+                onMouseEnter={(e) => {
+                  const rect = e.currentTarget.getBoundingClientRect()
+                  const parentRect = e.currentTarget.parentElement.getBoundingClientRect()
+                  setHovered({ day, total, manual, items, x: rect.left - parentRect.left - 20 })
+                }}
+              >
+                <div style={{ width: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'flex-end', transition: 'opacity 0.1s', opacity: isHov ? 0.8 : 1 }}>
                   {/* 재고앱 (위) */}
                   {itemsH > 0 && (
-                    <div style={{ width: '100%', height: itemsH, background: isToday ? '#fed7aa' : '#FEF3C7', borderRadius: '2px 2px 0 0' }} />
+                    <div style={{ width: '100%', height: itemsH, background: isToday || isHov ? '#fed7aa' : '#FEF3C7', borderRadius: '2px 2px 0 0' }} />
                   )}
                   {/* 수동 (아래) */}
                   {manualH > 0 && (
                     <div style={{
                       width: '100%', height: manualH,
-                      background: isToday ? 'var(--color-brand, #F97316)' : '#FDBA74',
+                      background: isToday || isHov ? 'var(--color-brand, #F97316)' : '#FDBA74',
                       borderRadius: itemsH > 0 ? 0 : '2px 2px 0 0',
                     }} />
                   )}
                 </div>
-                <span style={{ fontSize: 9, color: isToday ? '#F97316' : '#9CA3AF', fontWeight: isToday ? 700 : 400 }}>
+                <span style={{ fontSize: 9, color: isToday ? '#F97316' : isHov ? '#374151' : '#9CA3AF', fontWeight: isToday || isHov ? 700 : 400 }}>
                   {pad(day)}
                 </span>
               </div>
