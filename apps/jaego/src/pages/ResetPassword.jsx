@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { supabase } from '../lib/supabase'
 
@@ -10,14 +10,24 @@ export default function ResetPassword() {
   const [error,     setError]     = useState('')
   const [message,   setMessage]   = useState('')
   const [ready,     setReady]     = useState(false)
+  const timerRef = useRef(null)
 
   useEffect(() => {
+    // PASSWORD_RECOVERY 이벤트가 구독 전에 발생한 경우를 대비해 세션 확인
+    supabase.auth.getSession().then(({ data: { session } }) => {
+      if (session) setReady(true)
+    })
     const { data: { subscription } } = supabase.auth.onAuthStateChange((event) => {
       if (event === 'PASSWORD_RECOVERY') {
         setReady(true)
       }
     })
     return () => subscription.unsubscribe()
+  }, [])
+
+  // 타이머 정리 (언마운트 시 navigate 실행 방지)
+  useEffect(() => {
+    return () => { if (timerRef.current) clearTimeout(timerRef.current) }
   }, [])
 
   async function handleSubmit(e) {
@@ -37,8 +47,9 @@ export default function ResetPassword() {
     if (error) {
       setError('비밀번호 변경에 실패했습니다. 링크가 만료됐을 수 있어요.')
     } else {
-      setMessage('비밀번호가 변경됐어요! 다시 로그인해 주세요.')
-      setTimeout(() => navigate('/login'), 2000)
+      setMessage('비밀번호가 변경됐어요! 잠시 후 로그인 페이지로 이동합니다.')
+      await supabase.auth.signOut()
+      timerRef.current = setTimeout(() => navigate('/login'), 2000)
     }
   }
 

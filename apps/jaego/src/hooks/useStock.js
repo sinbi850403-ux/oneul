@@ -68,19 +68,27 @@ export function useStockLogFiltered() {
 
   async function fetchFiltered({ type = '', dateFrom = '', dateTo = '' } = {}) {
     setLoading(true)
-    let query = supabase
-      .from('stock_log')
-      .select('id, type, quantity, note, created_at, products(name, unit)')
-      .order('created_at', { ascending: false })
-      .limit(HISTORY_LIMIT)
+    try {
+      const { data: { user } } = await supabase.auth.getUser()
+      let query = supabase
+        .from('stock_log')
+        .select('id, type, quantity, note, created_at, products(name, unit)')
+        .eq('user_id', user.id)
+        .order('created_at', { ascending: false })
+        .limit(HISTORY_LIMIT)
 
-    if (type)     query = query.eq('type', type)
-    if (dateFrom) query = query.gte('created_at', dateFrom)
-    if (dateTo)   query = query.lte('created_at', dateTo + 'T23:59:59')
+      if (type)     query = query.eq('type', type)
+      if (dateFrom) query = query.gte('created_at', dateFrom)
+      if (dateTo)   query = query.lte('created_at', dateTo + 'T23:59:59')
 
-    const { data } = await query
-    if (data) setLogs(data)
-    setLoading(false)
+      const { data, error } = await query
+      if (error) throw error
+      if (data) setLogs(data)
+    } catch (err) {
+      console.error('fetchFiltered error:', err)
+    } finally {
+      setLoading(false)
+    }
   }
 
   return { logs, loading, fetchFiltered }
