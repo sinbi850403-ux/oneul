@@ -69,7 +69,7 @@ function DailyChart({ year, month, salesRows, salesItemsRows }) {
             <div style={{
               position: 'absolute',
               left: Math.min(hovered.x, Math.max(daysInMonth * 28, 320) - 140),
-              top: 0,
+              bottom: 20 + hovered.barH + 6,
               background: '#1F2937',
               color: '#fff',
               borderRadius: 8,
@@ -116,7 +116,7 @@ function DailyChart({ year, month, salesRows, salesItemsRows }) {
                 onMouseEnter={(e) => {
                   const rect = e.currentTarget.getBoundingClientRect()
                   const parentRect = e.currentTarget.parentElement.getBoundingClientRect()
-                  setHovered({ day, total, manual, items, x: rect.left - parentRect.left - 20 })
+                  setHovered({ day, total, manual, items, barH, x: rect.left - parentRect.left - 20 })
                 }}
               >
                 <div style={{ width: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'flex-end', transition: 'opacity 0.1s', opacity: isHov ? 0.8 : 1 }}>
