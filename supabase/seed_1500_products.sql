@@ -164,57 +164,72 @@ CROSS JOIN generate_series(1, 4) AS gs
 WHERE p.user_id = v_uid;
 
 -- ──────────────────────────────────────────────────────────
--- 9. sales_items (출고와 연동)
+-- 9. sales_items (출고와 연동) — 테이블 없으면 스킵
 -- ──────────────────────────────────────────────────────────
-INSERT INTO sales_items (user_id, product_id, product_name, quantity, unit_price, total_amount, sale_date)
-SELECT
-  sl.user_id,
-  sl.product_id,
-  p.name,
-  sl.quantity,
-  sl.selling_price,
-  sl.quantity * sl.selling_price,
-  sl.created_at::date
-FROM stock_log sl
-JOIN products p ON p.id = sl.product_id
-WHERE sl.user_id = v_uid
-  AND sl.type    = 'out'
-  AND sl.source  = 'pos';
-
--- ──────────────────────────────────────────────────────────
--- 10. 장부앱 매출 180일
--- ──────────────────────────────────────────────────────────
-INSERT INTO sales (user_id, sale_date, card, cash, npay, kpay, total)
-SELECT
-  v_uid,
-  (CURRENT_DATE - n)::date,
-  floor(base * 0.50)::int,
-  floor(base * 0.10)::int,
-  floor(base * 0.30)::int,
-  floor(base * 0.10)::int,
-  base
-FROM (
+BEGIN
+  INSERT INTO sales_items (user_id, product_id, product_name, quantity, unit_price, total_amount, sale_date)
   SELECT
-    n,
-    CASE WHEN EXTRACT(DOW FROM CURRENT_DATE - n) IN (0,6)
-      THEN floor(1500000 + random() * 2000000)::int
-      ELSE floor(700000  + random() * 1000000)::int
-    END AS base
-  FROM generate_series(0, 179) n
-) sub
-ON CONFLICT (user_id, sale_date) DO NOTHING;
+    sl.user_id,
+    sl.product_id,
+    p.name,
+    sl.quantity,
+    sl.selling_price,
+    sl.quantity * sl.selling_price,
+    sl.created_at::date
+  FROM stock_log sl
+  JOIN products p ON p.id = sl.product_id
+  WHERE sl.user_id = v_uid
+    AND sl.type    = 'out'
+    AND sl.source  = 'pos';
+EXCEPTION WHEN others THEN
+  RAISE NOTICE '⚠️ sales_items 스킵: %', SQLERRM;
+END;
 
 -- ──────────────────────────────────────────────────────────
--- 11. 매입 내역 60건
+-- 10. 장부앱 매출 180일 — 테이블 없으면 스킵
 -- ──────────────────────────────────────────────────────────
-INSERT INTO purchases (user_id, purchase_date, supplier_name, total_amount, note)
-SELECT
-  v_uid,
-  (CURRENT_DATE - n * 3)::date,
-  (ARRAY['CJ대한통운','롯데물산','한국코카콜라','농심','해태제과','오리온','하이트진로','동서식품','아모레퍼시픽','LG생활건강'])[floor(random()*10)::int + 1],
-  floor(500000 + random() * 2000000)::int,
-  (ARRAY['정기 매입','특가 매입','긴급 발주','신상품 입고','판촉행사 재고','대량 할인'])[floor(random()*6)::int + 1]
-FROM generate_series(0, 59) AS n;
+BEGIN
+  INSERT INTO sales (user_id, sale_date, card, cash, npay, kpay, total)
+  SELECT
+    v_uid,
+    (CURRENT_DATE - n)::date,
+    floor(base * 0.50)::int,
+    floor(base * 0.10)::int,
+    floor(base * 0.30)::int,
+    floor(base * 0.10)::int,
+    base
+  FROM (
+    SELECT
+      n,
+      CASE WHEN EXTRACT(DOW FROM CURRENT_DATE - n) IN (0,6)
+        THEN floor(1500000 + random() * 2000000)::int
+        ELSE floor(700000  + random() * 1000000)::int
+      END AS base
+    FROM generate_series(0, 179) n
+  ) sub
+  ON CONFLICT (user_id, sale_date) DO NOTHING;
+EXCEPTION WHEN others THEN
+  RAISE NOTICE '⚠️ sales 스킵: %', SQLERRM;
+END;
+
+-- ──────────────────────────────────────────────────────────
+-- 11. 매입 내역 60건 — 컬럼명 수정 + 테이블 없으면 스킵
+-- ──────────────────────────────────────────────────────────
+BEGIN
+  INSERT INTO purchases (user_id, product_name, quantity, unit_price, total_amount, purchase_date, source, note)
+  SELECT
+    v_uid,
+    (ARRAY['CJ대한통운','롯데물산','한국코카콜라','농심','해태제과','오리온','하이트진로','동서식품','아모레퍼시픽','LG생활건강'])[floor(random()*10)::int + 1] || ' 정기매입',
+    floor(10 + random() * 100)::int,
+    floor(1000 + random() * 9000)::int,
+    floor(500000 + random() * 2000000)::int,
+    (CURRENT_DATE - n * 3)::date,
+    'manual',
+    (ARRAY['정기 매입','특가 매입','긴급 발주','신상품 입고','판촉행사 재고','대량 할인'])[floor(random()*6)::int + 1]
+  FROM generate_series(0, 59) AS n;
+EXCEPTION WHEN others THEN
+  RAISE NOTICE '⚠️ purchases 스킵: %', SQLERRM;
+END;
 
 RAISE NOTICE '✅ 완료! 상품 1,500개 · 재고 초기화 · 입출고 ~6,000건 · 매출 180일 · 매입 60건';
 END $$;
