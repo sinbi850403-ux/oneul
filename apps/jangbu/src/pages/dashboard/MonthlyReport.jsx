@@ -68,24 +68,31 @@ function DailyChart({ year, month, salesRows, salesItemsRows }) {
           {hovered && (
             <div style={{
               position: 'absolute',
-              left: Math.min(hovered.x, Math.max(daysInMonth * 28, 320) - 140),
-              bottom: 20 + hovered.barH + 6,
-              background: '#1F2937',
-              color: '#fff',
+              left: Math.min(hovered.x, Math.max(daysInMonth * 28, 320) - 110),
+              bottom: 20 + hovered.barH + 8,
+              background: '#fff',
+              border: '1px solid #E5E7EB',
               borderRadius: 8,
-              padding: '7px 11px',
-              fontSize: 12,
-              fontWeight: 600,
+              padding: '6px 12px',
               pointerEvents: 'none',
               zIndex: 10,
               whiteSpace: 'nowrap',
-              boxShadow: '0 4px 12px rgba(0,0,0,0.2)',
-              lineHeight: 1.7,
+              boxShadow: '0 2px 8px rgba(0,0,0,0.10)',
             }}>
-              <div style={{ color: '#FCD34D', marginBottom: 2 }}>{month}월 {hovered.day}일</div>
-              <div>합계 {hovered.total >= 10000 ? `${(hovered.total / 10000).toFixed(1)}만원` : `${hovered.total.toLocaleString()}원`}</div>
-              {hovered.manual > 0 && <div style={{ color: '#FDBA74', fontSize: 11 }}>수동 {hovered.manual >= 10000 ? `${(hovered.manual / 10000).toFixed(1)}만` : hovered.manual.toLocaleString()}원</div>}
-              {hovered.items  > 0 && <div style={{ color: '#FEF3C7', fontSize: 11 }}>재고앱 {hovered.items >= 10000 ? `${(hovered.items / 10000).toFixed(1)}만` : hovered.items.toLocaleString()}원</div>}
+              <div style={{ fontSize: 11, color: '#9CA3AF', marginBottom: 1 }}>
+                {month}월 {hovered.day}일 매출
+              </div>
+              <div style={{ fontSize: 16, fontWeight: 800, color: '#1F2937' }}>
+                {hovered.total >= 10000
+                  ? `${(hovered.total / 10000).toFixed(1)}만원`
+                  : `${hovered.total.toLocaleString()}원`}
+              </div>
+              {hovered.manual > 0 && hovered.items > 0 && (
+                <div style={{ fontSize: 10, color: '#D1D5DB', marginTop: 2, display: 'flex', gap: 6 }}>
+                  <span>수동 {hovered.manual >= 10000 ? `${(hovered.manual/10000).toFixed(1)}만` : hovered.manual.toLocaleString()}</span>
+                  <span>재고앱 {hovered.items >= 10000 ? `${(hovered.items/10000).toFixed(1)}만` : hovered.items.toLocaleString()}</span>
+                </div>
+              )}
             </div>
           )}
 
