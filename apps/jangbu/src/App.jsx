@@ -24,6 +24,7 @@ import FixedExpenses from './pages/dashboard/FixedExpenses.jsx'
 import Privacy from './pages/Privacy.jsx'
 import Terms from './pages/Terms.jsx'
 import Onboarding from './pages/Onboarding.jsx'
+import ResetPassword from './pages/ResetPassword.jsx'
 import { useAuth } from './hooks/useAuth.js'
 
 // 다른 앱에서 넘어온 경우 SSO 토큰으로 자동 로그인
@@ -134,6 +135,7 @@ export default function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/reset-password" element={<ResetPassword />} />
         <Route path="/onboarding" element={<Onboarding />} />
         <Route path="/privacy" element={<Privacy />} />
         <Route path="/terms" element={<Terms />} />

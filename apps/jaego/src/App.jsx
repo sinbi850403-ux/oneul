@@ -35,6 +35,7 @@ import SalesRanking    from './pages/SalesRanking'
 import BulkStockEdit   from './pages/BulkStockEdit'
 import Onboarding      from './pages/Onboarding'
 import Login           from './pages/Login'
+import ResetPassword   from './pages/ResetPassword'
 
 function PrivateRoute({ children }) {
   const { user, loading } = useAuth()
@@ -50,6 +51,7 @@ export default function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/login" element={<Login />} />
+          <Route path="/reset-password" element={<ResetPassword />} />
           <Route path="/"              element={<PrivateRoute><Home /></PrivateRoute>} />
           <Route path="/stock-in"      element={<PrivateRoute><StockIn /></PrivateRoute>} />
           <Route path="/stock-out"     element={<PrivateRoute><StockOut /></PrivateRoute>} />
