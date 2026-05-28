@@ -13,22 +13,34 @@ function fmt(iso) {
   return `${String(d.getMonth()+1).padStart(2,'0')}/${String(d.getDate()).padStart(2,'0')} ${String(d.getHours()).padStart(2,'0')}:${String(d.getMinutes()).padStart(2,'0')}`
 }
 
+const PAGE_SIZE = 100
+
 export default function History() {
   const navigate  = useNavigate()
   const isMobile  = useIsMobile()
   const { logs, loading, fetchFiltered } = useStockLogFiltered()
 
   const today = new Date().toISOString().slice(0, 10)
-  const [type,     setType]     = useState('')
-  const [dateFrom, setDateFrom] = useState('')
-  const [dateTo,   setDateTo]   = useState('')
-  const [keyword,  setKeyword]  = useState('')
+  const [type,         setType]         = useState('')
+  const [dateFrom,     setDateFrom]     = useState('')
+  const [dateTo,       setDateTo]       = useState('')
+  const [keyword,      setKeyword]      = useState('')
+  const [displayLimit, setDisplayLimit] = useState(PAGE_SIZE)
 
-  useEffect(() => { fetchFiltered({ type, dateFrom, dateTo }) }, [type, dateFrom, dateTo])
+  // 필터 바뀌면 페이지 초기화
+  useEffect(() => {
+    fetchFiltered({ type, dateFrom, dateTo })
+    setDisplayLimit(PAGE_SIZE)
+  }, [type, dateFrom, dateTo])
+
+  useEffect(() => { setDisplayLimit(PAGE_SIZE) }, [keyword])
 
   const filtered = keyword
     ? logs.filter(l => l.products?.name?.toLowerCase().includes(keyword.toLowerCase()))
     : logs
+
+  const visible  = filtered.slice(0, displayLimit)
+  const hasMore  = filtered.length > displayLimit
 
   return (
     <div style={{ background: 'var(--color-bg)', minHeight: '100vh' }}>
@@ -107,8 +119,13 @@ export default function History() {
             }} />
         </div>
 
-        <div style={{ fontSize: 13, color: 'var(--color-text-sub)', marginBottom: 12 }}>
-          <strong style={{ color: 'var(--color-text)' }}>{filtered.length}</strong>건
+        <div style={{ fontSize: 13, color: 'var(--color-text-sub)', marginBottom: 12, display: 'flex', alignItems: 'center', gap: 8 }}>
+          총 <strong style={{ color: 'var(--color-text)' }}>{filtered.length}</strong>건
+          {filtered.length > PAGE_SIZE && (
+            <span style={{ color: 'var(--color-text-sub)' }}>
+              · {Math.min(displayLimit, filtered.length)}건 표시 중
+            </span>
+          )}
         </div>
 
         {/* 테이블 / 리스트 */}
@@ -121,11 +138,11 @@ export default function History() {
           ) : filtered.length === 0 ? (
             <p style={{ padding: 40, textAlign: 'center', color: 'var(--color-text-sub)', fontSize: 14 }}>이력이 없습니다.</p>
           ) : isMobile ? (
-            filtered.map((l, i) => (
+            visible.map((l, i) => (
               <div key={l.id} style={{
                 display: 'flex', alignItems: 'center', justifyContent: 'space-between',
                 padding: '14px 16px',
-                borderBottom: i < filtered.length - 1 ? '1px solid var(--color-border)' : 'none',
+                borderBottom: i < visible.length - 1 ? '1px solid var(--color-border)' : 'none',
               }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
                   <span style={{
@@ -158,9 +175,9 @@ export default function History() {
                 </tr>
               </thead>
               <tbody>
-                {filtered.map((l, i) => (
+                {visible.map((l, i) => (
                   <tr key={l.id}
-                    style={{ borderBottom: i < filtered.length - 1 ? '1px solid var(--color-border)' : 'none' }}
+                    style={{ borderBottom: i < visible.length - 1 ? '1px solid var(--color-border)' : 'none' }}
                     onMouseEnter={e => e.currentTarget.style.background = 'var(--color-bg)'}
                     onMouseLeave={e => e.currentTarget.style.background = 'transparent'}
                   >
@@ -182,6 +199,21 @@ export default function History() {
             </table>
           )}
         </div>
+
+        {/* 더 불러오기 */}
+        {hasMore && (
+          <button
+            onClick={() => setDisplayLimit(l => l + PAGE_SIZE)}
+            style={{
+              width: '100%', padding: '13px', marginTop: 12,
+              border: '1px solid var(--color-border)', borderRadius: 'var(--radius)',
+              background: 'var(--color-white)', color: 'var(--color-primary)',
+              fontSize: 14, fontWeight: 600, cursor: 'pointer',
+            }}
+          >
+            더 불러오기 ({filtered.length - displayLimit}건 남음)
+          </button>
+        )}
       </div>
     </div>
   )
