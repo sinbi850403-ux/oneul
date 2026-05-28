@@ -25,6 +25,7 @@ const SIDEBAR_ITEMS = [
   { label: '거래처',   path: '/suppliers' },
   { label: '발주 관리', path: '/orders' },
   { divider: true },
+  { label: '매출 순위',  path: '/sales-ranking' },
   { label: '게시판',    path: '/board' },
   { label: '설정',      path: '/settings' },
 ]
@@ -650,17 +651,19 @@ export default function Home() {
       const pad = n => String(n).padStart(2, '0')
       const start = `${y}-${pad(m)}-01`
       const end   = `${y}-${pad(m)}-${pad(new Date(y, m, 0).getDate())}`
-      const [{ data: salesRows }, { data: purchaseRows }, { data: salesItemRows }] = await Promise.all([
+      const [{ data: salesRows }, { data: purchaseRows }, { data: salesItemRows }, { data: fixedRows }] = await Promise.all([
         supabase.from('sales').select('total').eq('user_id', u.id).gte('sale_date', start).lte('sale_date', end),
         supabase.from('purchases').select('total_amount').eq('user_id', u.id).gte('purchase_date', start).lte('purchase_date', end),
         supabase.from('sales_items').select('total_amount').eq('user_id', u.id).gte('sale_date', start).lte('sale_date', end),
+        supabase.from('fixed_expenses').select('amount').eq('user_id', u.id),
       ])
       const salesSum     = (salesRows     ?? []).reduce((a, r) => a + (r.total        ?? 0), 0)
       const purchaseSum  = (purchaseRows  ?? []).reduce((a, r) => a + (r.total_amount ?? 0), 0)
       const salesItemSum = (salesItemRows ?? []).reduce((a, r) => a + (r.total_amount ?? 0), 0)
+      const fixedSum     = (fixedRows     ?? []).reduce((a, r) => a + (r.amount       ?? 0), 0)
       const totalSales   = salesSum + salesItemSum
       setMonthSales(totalSales)
-      setMonthProfit(totalSales - purchaseSum)
+      setMonthProfit(totalSales - purchaseSum - fixedSum)
     }
     loadProfit()
   }, [])

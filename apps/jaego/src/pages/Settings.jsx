@@ -152,6 +152,34 @@ export default function Settings() {
           </div>
         )}
 
+        {/* 앱 공유 */}
+        <div style={cardStyle}>
+          <p style={{ fontSize: 13, color: 'var(--color-text-sub)', marginBottom: 10, fontWeight: 600 }}>앱 공유하기</p>
+          <p style={{ fontSize: 12, color: 'var(--color-text-sub)', marginBottom: 12, lineHeight: 1.6 }}>
+            주변 사장님들께 오늘재고를 소개해주세요!
+          </p>
+          <button
+            onClick={async () => {
+              const url = 'https://oneul-jaego.vercel.app'
+              const text = '재고관리 앱 써봐요! 입출고·순이익·매출목표 한눈에 관리돼요 📦'
+              if (navigator.share) {
+                await navigator.share({ title: '오늘재고', text, url })
+              } else {
+                await navigator.clipboard.writeText(url)
+                setToast('링크가 복사됐어요!')
+              }
+            }}
+            style={{
+              width: '100%', padding: '11px',
+              border: 'none', borderRadius: 'var(--radius)',
+              background: 'var(--color-primary)', color: '#fff',
+              fontSize: 14, fontWeight: 700, cursor: 'pointer',
+            }}
+          >
+            친구에게 공유하기
+          </button>
+        </div>
+
         {/* 로그아웃 */}
         <button
           onClick={signOut}

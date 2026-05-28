@@ -15,6 +15,7 @@ export default function DashboardHome() {
   const [lowStock,       setLowStock]       = useState([])
   const [shopName,       setShopName]       = useState('')
   const [monthlyTarget,  setMonthlyTarget]  = useState(0)
+  const [fixedTotal,     setFixedTotal]     = useState(0)
 
   useEffect(() => {
     async function load() {
@@ -41,6 +42,7 @@ export default function DashboardHome() {
         { data: recentRows },
         { data: stockRows },
         { data: profileRow },
+        { data: fixedRows },
       ] = await Promise.all([
         supabase.from('sales').select('total').eq('user_id', user.id).eq('sale_date', todayStr).maybeSingle(),
         supabase.from('sales_items').select('total_amount').eq('user_id', user.id).eq('sale_date', todayStr),
@@ -52,6 +54,7 @@ export default function DashboardHome() {
         supabase.from('sales').select('sale_date, total').eq('user_id', user.id).gte('sale_date', ago7Str).order('sale_date'),
         supabase.from('stock').select('quantity, products(name, min_quantity)').eq('user_id', user.id),
         supabase.from('profiles').select('shop_name, monthly_target').eq('user_id', user.id).maybeSingle(),
+        supabase.from('fixed_expenses').select('amount').eq('user_id', user.id),
       ])
 
       const todayItemSum     = (todayItemRows     ?? []).reduce((a, r) => a + (r.total_amount ?? 0), 0)
@@ -68,12 +71,13 @@ export default function DashboardHome() {
       ))
       setShopName(profileRow?.shop_name ?? '')
       setMonthlyTarget(profileRow?.monthly_target ?? 0)
+      setFixedTotal((fixedRows ?? []).reduce((a, r) => a + (r.amount ?? 0), 0))
       setLoading(false)
     }
     load()
   }, [])
 
-  const monthProfit  = monthSales - monthPurchase
+  const monthProfit  = monthSales - monthPurchase - fixedTotal
   const growthRate   = lastMonthSales > 0
     ? Math.round(((monthSales - lastMonthSales) / lastMonthSales) * 100)
     : null
@@ -161,6 +165,11 @@ export default function DashboardHome() {
           {monthSales > 0 && (
             <p className="text-xs mt-1.5 text-gray-400">
               마진율 {Math.round((monthProfit / monthSales) * 100)}%
+            </p>
+          )}
+          {fixedTotal > 0 && (
+            <p className="text-xs mt-0.5 text-red-400">
+              고정비 {won(fixedTotal)} 차감
             </p>
           )}
         </div>

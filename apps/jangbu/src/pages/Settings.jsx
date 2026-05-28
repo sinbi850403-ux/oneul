@@ -152,10 +152,31 @@ export default function Settings() {
       <button
         onClick={handleSave}
         disabled={saving}
-        className="w-full bg-brand text-white rounded-2xl py-4 text-lg font-bold mb-3 active:opacity-80 disabled:opacity-50"
+        className="w-full bg-brand text-white rounded-2xl py-4 text-lg font-bold mb-4 active:opacity-80 disabled:opacity-50"
       >
         {saving ? '저장 중...' : '저장하기'}
       </button>
+
+      {/* 앱 공유 */}
+      <div className="bg-white rounded-2xl shadow-sm p-5 mb-4">
+        <p className="text-sm font-semibold text-gray-700 mb-1">앱 공유하기</p>
+        <p className="text-xs text-gray-400 mb-3">주변 사장님들께 오늘장부를 소개해주세요!</p>
+        <button
+          onClick={async () => {
+            const url = 'https://oneul-jangbu.vercel.app'
+            const text = '매출 장부 앱 써봐요! 달력 매출·세금·알바 급여 한번에 관리 돼요 📒'
+            if (navigator.share) {
+              await navigator.share({ title: '오늘장부', text, url })
+            } else {
+              await navigator.clipboard.writeText(url)
+              setToast('링크가 복사됐어요!')
+            }
+          }}
+          className="w-full bg-brand text-white rounded-xl py-3 text-sm font-bold active:opacity-80"
+        >
+          친구에게 공유하기
+        </button>
+      </div>
 
       <a
         href="/dashboard"
