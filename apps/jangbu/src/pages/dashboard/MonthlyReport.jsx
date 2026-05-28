@@ -68,7 +68,7 @@ function DailyChart({ year, month, salesRows, salesItemsRows }) {
           {hovered && (
             <div style={{
               position: 'absolute',
-              left: Math.min(hovered.x, Math.max(daysInMonth * 28, 320) - 110),
+              left: Math.max(0, Math.min(hovered.x, Math.max(daysInMonth * 28, 320) - 120)),
               bottom: 20 + hovered.barH + 8,
               background: '#fff',
               border: '1px solid #E5E7EB',
@@ -121,9 +121,9 @@ function DailyChart({ year, month, salesRows, salesItemsRows }) {
                 key={day}
                 style={{ flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 3, height: '100%', justifyContent: 'flex-end', cursor: 'pointer' }}
                 onMouseEnter={(e) => {
-                  const rect = e.currentTarget.getBoundingClientRect()
-                  const parentRect = e.currentTarget.parentElement.getBoundingClientRect()
-                  setHovered({ day, total, manual, items, barH, x: rect.left - parentRect.left - 20 })
+                  // offsetLeft: 스크롤 컨테이너 기준 절대 위치
+                  const x = e.currentTarget.offsetLeft + e.currentTarget.offsetWidth / 2 - 55
+                  setHovered({ day, total, manual, items, barH, x })
                 }}
               >
                 <div style={{ width: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'flex-end', transition: 'opacity 0.1s', opacity: isHov ? 0.8 : 1 }}>
