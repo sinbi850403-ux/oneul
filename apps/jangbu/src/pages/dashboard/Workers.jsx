@@ -668,7 +668,7 @@ export default function Workers() {
                         <div className="flex items-center justify-between">
                           <span className="text-gray-800 font-medium">
                             {selectedWorker.hire_date
-                              ? new Date(selectedWorker.hire_date + 'T00:00:00').toLocaleDateString('ko-KR')
+                              ? selectedWorker.hire_date
                               : <span className="text-gray-400 text-sm">미입력</span>}
                           </span>
                           <button
