@@ -20,6 +20,7 @@ import Purchases     from './pages/dashboard/Purchases.jsx'
 import SalesItems    from './pages/dashboard/SalesItems.jsx'
 import Workers        from './pages/dashboard/Workers.jsx'
 import Board         from './pages/dashboard/Board.jsx'
+import MobileBoard   from './pages/MobileBoard.jsx'
 import FixedExpenses from './pages/dashboard/FixedExpenses.jsx'
 import Privacy from './pages/Privacy.jsx'
 import Terms from './pages/Terms.jsx'
@@ -90,6 +91,7 @@ function ProtectedLayout() {
           <Route path="/calendar" element={<Calendar />} />
           <Route path="/history"  element={<History />} />
           <Route path="/tax"      element={<Tax />} />
+          <Route path="/board"    element={<MobileBoard />} />
           <Route path="/settings" element={<Settings />} />
         </Routes>
       </div>
