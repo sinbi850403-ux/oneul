@@ -118,7 +118,7 @@ export default function DashboardHome() {
       {lowStock.length > 0 && (
         <div className="bg-amber-50 border border-amber-200 rounded-2xl px-5 py-3 mb-6 flex items-center justify-between">
           <span className="text-sm font-bold text-amber-700">
-            ⚠️ 재고부족 {lowStock.length}개
+            재고부족 {lowStock.length}개
             <span className="font-normal text-amber-600 ml-2">
               {lowStock.slice(0, 3).map(s => s.products?.name).join(', ')}
               {lowStock.length > 3 ? ` 외 ${lowStock.length - 3}개` : ''}
@@ -199,7 +199,7 @@ export default function DashboardHome() {
             <span className="font-bold text-orange-500">{targetProgress}% 달성</span>
             <span className="text-gray-400">
               {monthSales >= monthlyTarget
-                ? '🎉 목표 달성!'
+                ? '목표 달성!'
                 : `남은 ${remainingDays}일 · 하루 ${requiredDaily >= 10000 ? `${Math.round(requiredDaily / 10000)}만` : requiredDaily.toLocaleString()}원 더!`}
             </span>
           </div>
@@ -241,16 +241,15 @@ export default function DashboardHome() {
       {/* 빠른 액션 */}
       <div className="grid grid-cols-3 gap-4">
         {[
-          { emoji: '✏️', label: '매출 입력',   href: '/dashboard/input' },
-          { emoji: '📦', label: '매입 내역',   href: '/dashboard/purchases' },
-          { emoji: '📊', label: '월별 손익',   href: '/dashboard/report' },
-        ].map(({ emoji, label, href }) => (
+          { label: '매출 입력',   href: '/dashboard/input' },
+          { label: '매입 내역',   href: '/dashboard/purchases' },
+          { label: '월별 손익',   href: '/dashboard/report' },
+        ].map(({ label, href }) => (
           <a
             key={href}
             href={href}
             className="bg-white rounded-2xl p-5 shadow-sm hover:shadow-md transition-shadow text-center block"
           >
-            <p className="text-2xl mb-2">{emoji}</p>
             <p className="text-sm font-semibold text-gray-700">{label}</p>
           </a>
         ))}

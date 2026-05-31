@@ -50,7 +50,7 @@ export default function BizInfo() {
         setToast('알림을 껐어요')
       } else {
         const ok = await subscribe(userId)
-        if (ok) setToast('재고부족 알림이 켜졌어요 🔔')
+        if (ok) setToast('재고부족 알림이 켜졌어요')
         else setToast('알림 설정 실패 — 브라우저 설정에서 알림을 허용해주세요')
       }
     } finally {

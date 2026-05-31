@@ -377,7 +377,7 @@ export default function Workers() {
             <>
               {/* 탭 */}
               <div className="flex gap-1 mb-4 bg-gray-100 rounded-xl p-1 w-fit">
-                {[['log', '📝 근무 입력'], ['pay', '💰 급여 정산'], ['vacation', '🏖️ 연차 관리']].map(([key, label]) => (
+                {[['log', '근무 입력'], ['pay', '급여 정산'], ['vacation', '연차 관리']].map(([key, label]) => (
                   <button
                     key={key}
                     onClick={() => setTab(key)}
@@ -532,7 +532,6 @@ export default function Workers() {
                     <div className="grid grid-cols-2 gap-4">
                       <div className="bg-white rounded-2xl shadow-sm p-6">
                         <div className="flex items-center gap-2 mb-5">
-                          <span className="text-2xl">💰</span>
                           <div>
                             <p className="font-bold text-gray-800">{selectedWorker.name}</p>
                             <p className="text-xs text-gray-400">{payYear}년 {payMonth}월 급여 명세</p>
@@ -570,16 +569,16 @@ export default function Workers() {
                         <button
                           onClick={async () => {
                             const text = [
-                              `📋 ${payYear}년 ${payMonth}월 급여 명세서`,
+                              `${payYear}년 ${payMonth}월 급여 명세서`,
                               ``,
-                              `👷 ${selectedWorker.name}`,
+                              `${selectedWorker.name}`,
                               `근무 일수: ${workDays}일`,
                               `총 근무: ${fmtHours(totalWorkMins)}`,
                               `시급: ${won(hourlyWage)}`,
                               `기본급: ${won(basePay)}`,
                               weeklyAllowance > 0 ? `주휴수당: + ${won(weeklyAllowance)}` : null,
                               ``,
-                              `💰 총 급여: ${won(totalPay)}`,
+                              `총 급여: ${won(totalPay)}`,
                               `— 오늘장부`,
                             ].filter(Boolean).join('\n')
                             try {

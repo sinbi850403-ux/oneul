@@ -164,7 +164,7 @@ export default function Settings() {
         <button
           onClick={async () => {
             const url = 'https://oneul-jangbu.vercel.app'
-            const text = '매출 장부 앱 써봐요! 달력 매출·세금·알바 급여 한번에 관리 돼요 📒'
+            const text = '매출 장부 앱 써봐요! 달력 매출·세금·알바 급여 한번에 관리 돼요'
             if (navigator.share) {
               await navigator.share({ title: '오늘장부', text, url })
             } else {

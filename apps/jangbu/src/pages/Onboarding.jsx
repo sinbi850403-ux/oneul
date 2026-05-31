@@ -152,7 +152,7 @@ export default function Onboarding() {
         {step === 2 && (
           <>
             <div style={{ textAlign: 'center', marginBottom: 28 }}>
-              <div style={{ fontSize: 60, marginBottom: 16 }}>🎉</div>
+              <div style={{ marginBottom: 16 }}></div>
               <p style={{ ...s.title, textAlign: 'center' }}>준비 완료!</p>
               <p style={{ fontSize: 14, color: '#6B7280', lineHeight: 1.6 }}>
                 <strong style={{ color: '#1F2937' }}>{shopName || '내 가게'}</strong>의<br />
@@ -162,12 +162,11 @@ export default function Onboarding() {
 
             <div style={{ background: '#F9FAFB', borderRadius: 12, padding: '16px 20px', marginBottom: 8 }}>
               {[
-                { emoji: '📊', text: '매출 입력 → 카드/현금/페이 수단별 자동 집계' },
-                { emoji: '📦', text: '재고앱 연동 → 입출고가 매입/매출로 자동 기록' },
-                { emoji: '🧾', text: `부가세 예상: ${taxType === 'simple' ? '간이과세 (매출×1.5%)' : '일반과세 (매출÷11)'}` },
-              ].map(({ emoji, text }) => (
+                { text: '매출 입력 → 카드/현금/페이 수단별 자동 집계' },
+                { text: '재고앱 연동 → 입출고가 매입/매출로 자동 기록' },
+                { text: `부가세 예상: ${taxType === 'simple' ? '간이과세 (매출×1.5%)' : '일반과세 (매출÷11)'}` },
+              ].map(({ text }) => (
                 <div key={text} style={{ display: 'flex', gap: 10, alignItems: 'center', padding: '6px 0' }}>
-                  <span style={{ fontSize: 18 }}>{emoji}</span>
                   <span style={{ fontSize: 13, color: '#4B5563' }}>{text}</span>
                 </div>
               ))}

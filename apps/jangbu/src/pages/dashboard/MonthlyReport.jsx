@@ -226,15 +226,15 @@ export default function MonthlyReport() {
     const profit     = totalSales - purchaseTotal - estimatedVat
     const marginRate = totalSales > 0 ? Math.round((profit / totalSales) * 100) : 0
     const text = [
-      `📊 ${year}년 ${month}월 손익 리포트`,
+      `${year}년 ${month}월 손익 리포트`,
       ``,
-      `💰 매출 합계   ${won(totalSales)}`,
-      `📦 매입 합계   ${won(purchaseTotal)}`,
-      `🧾 예상 부가세  - ${won(estimatedVat)}`,
-      `🎯 순이익      ${profit >= 0 ? '+' : ''}${won(profit)}`,
-      `📈 마진율      ${marginRate}%`,
+      `매출 합계   ${won(totalSales)}`,
+      `매입 합계   ${won(purchaseTotal)}`,
+      `예상 부가세  - ${won(estimatedVat)}`,
+      `순이익      ${profit >= 0 ? '+' : ''}${won(profit)}`,
+      `마진율      ${marginRate}%`,
       ``,
-      `— 오늘장부로 관리 중 💪`,
+      `— 오늘장부로 관리 중`,
     ].join('\n')
 
     try {

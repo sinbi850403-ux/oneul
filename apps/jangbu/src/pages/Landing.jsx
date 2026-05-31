@@ -201,7 +201,6 @@ export default function Landing() {
       {/* CTA */}
       <Section>
         <div className="text-center bg-white rounded-3xl shadow-sm p-12">
-          <div className="text-4xl mb-4">📒</div>
           <h2 className="text-2xl font-bold text-gray-800 mb-2">
             오늘 매출, 지금 바로 기록해보세요
           </h2>
