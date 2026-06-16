@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>오늘장부 블로그 - 자영업자를 위한 매출·세금·절세 정보</title>
+  <meta name="description" content="카페, 음식점, 편의점 사장님을 위한 매출 관리, 부가세 신고, 절세 꿀팁 등 실전 자영업 정보를 제공합니다.">
+  <meta property="og:title" content="오늘장부 블로그 - 자영업자 필독 정보">
+  <meta property="og:description" content="매출 관리, 부가세, 절세, 배달앱 수수료 등 자영업자 실전 정보">
+  <meta property="og:type" content="website">
+  <link rel="canonical" href="https://xn--wh1bw0st1gbrb.kr/blog/">
+  <link rel="icon" href="/icons/icon-192.png">
+  <!-- Google AdSense -->
+  <!-- <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX" crossorigin="anonymous"></script> -->
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Noto Sans KR', sans-serif; background: #f8f9fa; color: #1a1a1a; }
+
+    /* Header */
+    header { background: #fff; border-bottom: 1px solid #eee; position: sticky; top: 0; z-index: 100; }
+    .header-inner { max-width: 1100px; margin: 0 auto; padding: 0 20px; height: 60px; display: flex; align-items: center; justify-content: space-between; }
+    .logo { display: flex; align-items: center; gap: 8px; text-decoration: none; }
+    .logo-icon { width: 32px; height: 32px; background: #FF6B35; border-radius: 8px; display: flex; align-items: center; justify-content: center; color: white; font-weight: 900; font-size: 16px; }
+    .logo-text { font-size: 18px; font-weight: 800; color: #FF6B35; }
+    .logo-sub { font-size: 13px; color: #888; margin-left: 4px; }
+    .header-cta { background: #FF6B35; color: white; border: none; padding: 8px 16px; border-radius: 8px; font-size: 13px; font-weight: 600; cursor: pointer; text-decoration: none; }
+    .header-cta:hover { background: #e55a24; }
+
+    /* Hero */
+    .hero { background: linear-gradient(135deg, #FF6B35 0%, #ff8c42 100%); color: white; padding: 48px 20px; text-align: center; }
+    .hero h1 { font-size: clamp(22px, 5vw, 36px); font-weight: 900; margin-bottom: 12px; }
+    .hero p { font-size: 15px; opacity: 0.9; max-width: 500px; margin: 0 auto; line-height: 1.6; }
+
+    /* Category tabs */
+    .category-bar { background: white; border-bottom: 1px solid #eee; overflow-x: auto; scrollbar-width: none; }
+    .category-bar::-webkit-scrollbar { display: none; }
+    .category-inner { max-width: 1100px; margin: 0 auto; padding: 0 20px; display: flex; gap: 4px; }
+    .cat-btn { padding: 14px 16px; white-space: nowrap; font-size: 13px; font-weight: 600; color: #666; border: none; background: none; cursor: pointer; border-bottom: 2px solid transparent; }
+    .cat-btn.active, .cat-btn:hover { color: #FF6B35; border-bottom-color: #FF6B35; }
+
+    /* Main layout */
+    .main-wrap { max-width: 1100px; margin: 0 auto; padding: 32px 20px; display: grid; grid-template-columns: 1fr 300px; gap: 32px; }
+    @media (max-width: 768px) { .main-wrap { grid-template-columns: 1fr; } .sidebar { display: none; } }
+
+    /* Post grid */
+    .post-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; }
+    .post-card { background: white; border-radius: 16px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.06); transition: transform .2s, box-shadow .2s; text-decoration: none; color: inherit; display: block; }
+    .post-card:hover { transform: translateY(-4px); box-shadow: 0 8px 24px rgba(0,0,0,0.1); }
+    .post-thumb { width: 100%; aspect-ratio: 16/9; object-fit: cover; background: #f0f0f0; }
+    .post-body { padding: 16px; }
+    .post-cat { font-size: 11px; font-weight: 700; color: #FF6B35; text-transform: uppercase; margin-bottom: 6px; }
+    .post-title { font-size: 15px; font-weight: 700; color: #1a1a1a; line-height: 1.5; margin-bottom: 8px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+    .post-desc { font-size: 13px; color: #666; line-height: 1.5; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+    .post-date { font-size: 12px; color: #aaa; margin-top: 10px; }
+
+    /* Ad slot */
+    .ad-slot { background: #f0f0f0; border-radius: 12px; display: flex; align-items: center; justify-content: center; color: #bbb; font-size: 12px; min-height: 90px; margin: 24px 0; }
+
+    /* Sidebar */
+    .sidebar { }
+    .sidebar-card { background: white; border-radius: 16px; padding: 20px; margin-bottom: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
+    .sidebar-card h3 { font-size: 14px; font-weight: 800; color: #1a1a1a; margin-bottom: 14px; }
+    .sidebar-cta { background: linear-gradient(135deg, #FF6B35, #ff8c42); color: white; border-radius: 16px; padding: 24px; text-align: center; }
+    .sidebar-cta h3 { font-size: 16px; font-weight: 900; margin-bottom: 8px; }
+    .sidebar-cta p { font-size: 13px; opacity: 0.9; line-height: 1.5; margin-bottom: 16px; }
+    .sidebar-cta a { background: white; color: #FF6B35; border-radius: 8px; padding: 10px 20px; font-weight: 700; font-size: 14px; text-decoration: none; display: inline-block; }
+    .popular-list { list-style: none; }
+    .popular-list li { padding: 10px 0; border-bottom: 1px solid #f0f0f0; }
+    .popular-list li:last-child { border-bottom: none; }
+    .popular-list a { font-size: 13px; color: #333; text-decoration: none; line-height: 1.4; display: block; }
+    .popular-list a:hover { color: #FF6B35; }
+    .popular-num { color: #FF6B35; font-weight: 800; margin-right: 8px; }
+
+    /* Pagination */
+    .pagination { display: flex; justify-content: center; gap: 8px; margin-top: 32px; }
+    .page-btn { width: 36px; height: 36px; border: 1px solid #ddd; border-radius: 8px; background: white; cursor: pointer; font-size: 14px; color: #444; }
+    .page-btn.active { background: #FF6B35; color: white; border-color: #FF6B35; font-weight: 700; }
+
+    /* Footer */
+    footer { background: #1a1a1a; color: #888; padding: 40px 20px; margin-top: 60px; }
+    .footer-inner { max-width: 1100px; margin: 0 auto; }
+    .footer-top { display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 24px; margin-bottom: 32px; }
+    .footer-links { display: flex; gap: 16px; flex-wrap: wrap; }
+    .footer-links a { color: #888; text-decoration: none; font-size: 13px; }
+    .footer-links a:hover { color: #FF6B35; }
+    .footer-copy { font-size: 12px; border-top: 1px solid #333; padding-top: 20px; }
+
+    /* Loading */
+    .loading { text-align: center; padding: 60px; color: #bbb; font-size: 15px; }
+    .empty { text-align: center; padding: 60px; color: #bbb; }
+
+    /* Search */
+    .search-wrap { max-width: 480px; margin: 20px auto 0; position: relative; }
+    .search-input { width: 100%; padding: 12px 44px 12px 16px; border-radius: 12px; border: none; font-size: 14px; outline: none; }
+    .search-icon { position: absolute; right: 14px; top: 50%; transform: translateY(-50%); color: #FF6B35; }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <a href="/" class="logo">
+      <div class="logo-icon">장</div>
+      <span class="logo-text">오늘장부</span>
+      <span class="logo-sub">블로그</span>
+    </a>
+    <a href="/" class="header-cta">무료로 시작하기</a>
+  </div>
+</header>
+
+<div class="hero">
+  <h1>자영업자를 위한 실전 정보</h1>
+  <p>매출 관리, 부가세 신고, 절세 꿀팁까지<br>사장님께 꼭 필요한 정보만 모았습니다</p>
+  <div class="search-wrap">
+    <input type="text" class="search-input" placeholder="궁금한 내용을 검색하세요..." id="searchInput">
+    <span class="search-icon">&#128269;</span>
+  </div>
+</div>
+
+<div class="category-bar">
+  <div class="category-inner" id="categoryBar">
+    <button class="cat-btn active" data-cat="전체">전체</button>
+    <button class="cat-btn" data-cat="매출관리">매출관리</button>
+    <button class="cat-btn" data-cat="부가세/세금">부가세/세금</button>
+    <button class="cat-btn" data-cat="절세꿀팁">절세꿀팁</button>
+    <button class="cat-btn" data-cat="배달앱">배달앱</button>
+    <button class="cat-btn" data-cat="카드수수료">카드수수료</button>
+    <button class="cat-btn" data-cat="사업자등록">사업자등록</button>
+    <button class="cat-btn" data-cat="직원관리">직원관리</button>
+  </div>
+</div>
+
+<div class="main-wrap">
+  <div>
+    <!-- 상단 광고 -->
+    <div class="ad-slot">광고 영역 (AdSense 승인 후 활성화)</div>
+
+    <div class="post-grid" id="postGrid">
+      <div class="loading">게시글을 불러오는 중...</div>
+    </div>
+
+    <div class="pagination" id="pagination"></div>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-cta">
+      <h3>매일 매출 기록,<br>30초면 끝!</h3>
+      <p>카드·현금·배달앱 한 번에<br>부가세 예상액도 자동 계산</p>
+      <a href="/">지금 무료로 시작하기</a>
+    </div>
+
+    <div class="sidebar-card" style="margin-top:20px">
+      <h3>인기 글</h3>
+      <ul class="popular-list" id="popularList">
+        <li><a href="#"><span class="popular-num">1</span>로딩 중...</a></li>
+      </ul>
+    </div>
+
+    <!-- 사이드바 광고 -->
+    <div class="ad-slot" style="min-height:250px; margin-top:20px">광고 영역</div>
+  </aside>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div>
+        <div style="font-size:18px;font-weight:800;color:#FF6B35;margin-bottom:8px">오늘장부</div>
+        <div style="font-size:13px;line-height:1.6">자영업자를 위한 매출 기록 서비스<br>카드·현금·배달앱 한 번에 관리</div>
+      </div>
+      <div class="footer-links">
+        <a href="/">서비스 홈</a>
+        <a href="/privacy">개인정보처리방침</a>
+        <a href="/terms">이용약관</a>
+      </div>
+    </div>
+    <div class="footer-copy">© 2026 오늘장부. All rights reserved.</div>
+  </div>
+</footer>
+
+<script>
+const POSTS_PER_PAGE = 9;
+let allPosts = [];
+let filtered  = [];
+let currentPage = 1;
+let currentCat  = '전체';
+
+async function loadManifest() {
+  try {
+    const res = await fetch('/blog/blog-manifest.json?' + Date.now());
+    allPosts = await res.json();
+    allPosts.sort((a, b) => new Date(b.date) - new Date(a.date));
+    applyFilter();
+    renderPopular();
+  } catch(e) {
+    document.getElementById('postGrid').innerHTML = '<div class="empty"><p style="font-size:32px;margin-bottom:12px">✍️</p><p>아직 게시글이 없습니다.<br>곧 유용한 정보가 올라옵니다!</p></div>';
+  }
+}
+
+function applyFilter() {
+  const q = document.getElementById('searchInput').value.toLowerCase();
+  filtered = allPosts.filter(p => {
+    const matchCat = currentCat === '전체' || p.category === currentCat;
+    const matchQ   = !q || p.title.toLowerCase().includes(q) || (p.description||'').toLowerCase().includes(q);
+    return matchCat && matchQ;
+  });
+  currentPage = 1;
+  render();
+}
+
+function render() {
+  const start = (currentPage - 1) * POSTS_PER_PAGE;
+  const page  = filtered.slice(start, start + POSTS_PER_PAGE);
+  const grid  = document.getElementById('postGrid');
+
+  if (!filtered.length) {
+    grid.innerHTML = '<div class="empty"><p style="font-size:32px;margin-bottom:12px">🔍</p><p>검색 결과가 없습니다.</p></div>';
+    document.getElementById('pagination').innerHTML = '';
+    return;
+  }
+
+  grid.innerHTML = page.map(p => `
+    <a href="/blog/posts/${p.slug}.html" class="post-card">
+      ${p.thumb ? `<img src="${p.thumb}" alt="${p.title}" class="post-thumb" loading="lazy">` : `<div class="post-thumb" style="background:linear-gradient(135deg,#FF6B35,#ff8c42);display:flex;align-items:center;justify-content:center;color:white;font-size:40px">📋</div>`}
+      <div class="post-body">
+        <div class="post-cat">${p.category || '자영업'}</div>
+        <div class="post-title">${p.title}</div>
+        <div class="post-desc">${p.description || ''}</div>
+        <div class="post-date">${formatDate(p.date)}</div>
+      </div>
+    </a>
+  `).join('');
+
+  renderPagination();
+}
+
+function renderPagination() {
+  const total = Math.ceil(filtered.length / POSTS_PER_PAGE);
+  if (total <= 1) { document.getElementById('pagination').innerHTML = ''; return; }
+  const btns = [];
+  for (let i = 1; i <= total; i++) {
+    btns.push(`<button class="page-btn${i===currentPage?' active':''}" onclick="goPage(${i})">${i}</button>`);
+  }
+  document.getElementById('pagination').innerHTML = btns.join('');
+}
+
+function goPage(p) { currentPage = p; render(); window.scrollTo(0,0); }
+
+function renderPopular() {
+  const top5 = [...allPosts].slice(0, 5);
+  document.getElementById('popularList').innerHTML = top5.map((p, i) =>
+    `<li><a href="/blog/posts/${p.slug}.html"><span class="popular-num">${i+1}</span>${p.title}</a></li>`
+  ).join('');
+}
+
+function formatDate(d) {
+  if (!d) return '';
+  const dt = new Date(d);
+  return `${dt.getFullYear()}.${String(dt.getMonth()+1).padStart(2,'0')}.${String(dt.getDate()).padStart(2,'0')}`;
+}
+
+// Category click
+document.getElementById('categoryBar').addEventListener('click', e => {
+  if (e.target.classList.contains('cat-btn')) {
+    document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active'));
+    e.target.classList.add('active');
+    currentCat = e.target.dataset.cat;
+    applyFilter();
+  }
+});
+
+// Search
+document.getElementById('searchInput').addEventListener('input', applyFilter);
+
+loadManifest();
+</script>
+</body>
+</html>
