@@ -8,6 +8,7 @@
     "dry-run": "node index.js --dry-run"
   },
   "dependencies": {
-    "@anthropic-ai/sdk": "^0.105.0"
+    "@anthropic-ai/sdk": "^0.105.0",
+    "googleapis": "^144.0.0"
   }
 }

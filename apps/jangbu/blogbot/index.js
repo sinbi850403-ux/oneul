@@ -141,11 +141,34 @@ async function generatePost(kw) {
 }
 
 // ── 글 HTML 템플릿 (기존 글과 동일한 인라인 스타일/구조) ──────────
-function renderPostHtml({ title, description, body, category, tags, thumb }) {
+function renderPostHtml({ title, description, body, category, tags, thumb, related }) {
   const url = `${SITE}/blog/posts/${slugGlobal}.html`
   const tagHtml = (tags || [])
     .map((t) => `<a href="/blog/?tag=${encodeURIComponent(t)}" class="tag">${esc(t)}</a>`)
     .join(' ')
+  // FAQ 리치스니펫: 본문 "자주 묻는 질문" 섹션의 Q/A를 FAQPage 스키마로 (구글 검색결과 Q&A 박스)
+  const faqLd = (() => {
+    const i = body.indexOf('자주 묻는 질문')
+    if (i === -1) return null
+    const re = /<h3>([\s\S]*?)<\/h3>\s*<p>([\s\S]*?)<\/p>/g
+    const items = []
+    let mm
+    while ((mm = re.exec(body.slice(i))) !== null) {
+      const q = mm[1].replace(/<[^>]+>/g, '').trim()
+      const a = mm[2].replace(/<[^>]+>/g, '').trim()
+      if (q && a) items.push({ '@type': 'Question', name: q, acceptedAnswer: { '@type': 'Answer', text: a } })
+    }
+    return items.length ? { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: items } : null
+  })()
+  // 관련 글 내부링크 (체류·색인 도움)
+  const relatedHtml = (related && related.length)
+    ? `<section style="background:#fff8f5;border-radius:16px;padding:24px 28px;margin-top:24px;">
+      <h2 style="font-size:18px;font-weight:800;color:#1a1a1a;margin:0 0 14px;">함께 보면 좋은 글</h2>
+      <ul style="list-style:none;padding:0;margin:0;">
+        ${related.map((r) => `<li style="padding:8px 0;border-bottom:1px solid #ffe6d9;"><a href="/blog/posts/${r.slug}.html" style="color:#FF6B35;text-decoration:none;font-weight:600;font-size:14px;">${esc(r.title)}</a></li>`).join('\n        ')}
+      </ul>
+    </section>`
+    : ''
   const ld = {
     '@context': 'https://schema.org',
     '@type': 'Article',
@@ -235,7 +258,7 @@ function renderPostHtml({ title, description, body, category, tags, thumb }) {
   </style>
   <script type="application/ld+json">
 ${JSON.stringify(ld, null, 2)}
-  </script>
+  </script>${faqLd ? `\n  <script type="application/ld+json">\n${JSON.stringify(faqLd, null, 2)}\n  </script>` : ''}
 </head>
 <body>
 
@@ -275,7 +298,7 @@ ${body}
         ${tagHtml}
       </div>
     </article>
-
+${relatedHtml ? '\n    ' + relatedHtml + '\n' : ''}
     <div class="ad-slot">광고 영역 (AdSense 승인 후 활성화)</div>
 
     <div class="cta-box">
@@ -330,6 +353,28 @@ ${urls.join('\n')}
   fs.writeFileSync(SITEMAP, xml)
 }
 
+// ── 구글 색인 요청 (GOOGLE_INDEXING_SA_KEY 있을 때만, 실패해도 발행엔 영향 없음) ──
+async function requestIndexing(url) {
+  if (DRY_RUN || !process.env.GOOGLE_INDEXING_SA_KEY) return
+  try {
+    const { google } = await import('googleapis')
+    const sa = JSON.parse(process.env.GOOGLE_INDEXING_SA_KEY)
+    const auth = new google.auth.GoogleAuth({
+      credentials: sa,
+      scopes: ['https://www.googleapis.com/auth/indexing'],
+    })
+    const client = await auth.getClient()
+    await client.request({
+      url: 'https://indexing.googleapis.com/v3/urlNotifications:publish',
+      method: 'POST',
+      data: { url, type: 'URL_UPDATED' },
+    })
+    console.log(`구글 색인 요청 완료: ${url}`)
+  } catch (err) {
+    console.warn(`구글 색인 요청 실패(무시): ${err.message}`)
+  }
+}
+
 // ── 메인 ─────────────────────────────────────────────────────────
 let slugGlobal = 'post'
 async function main() {
@@ -363,18 +408,29 @@ async function main() {
   console.log(`글: ${title}`)
   console.log(`slug: ${slugGlobal}`)
 
+  // 관련 글(같은 섹션 우선, 그다음 최근) — 내부링크 SEO
+  const manifest = JSON.parse(fs.readFileSync(MANIFEST, 'utf8'))
+  const related = [
+    ...manifest.filter((p) => p.category === category),
+    ...manifest.filter((p) => p.category !== category),
+  ]
+    .slice(0, 4)
+    .map((p) => ({ slug: p.slug, title: p.title }))
+
   // 1) 글 HTML 작성
   fs.mkdirSync(POSTS_DIR, { recursive: true })
-  const html = renderPostHtml({ title, description, body, category, tags, thumb })
+  const html = renderPostHtml({ title, description, body, category, tags, thumb, related })
   fs.writeFileSync(path.join(POSTS_DIR, `${slugGlobal}.html`), html)
 
   // 2) 매니페스트 prepend
-  const manifest = JSON.parse(fs.readFileSync(MANIFEST, 'utf8'))
   manifest.unshift({ slug: slugGlobal, title, description, category, date: dateISO, thumb, tags })
   fs.writeFileSync(MANIFEST, JSON.stringify(manifest, null, 2) + '\n')
 
   // 3) 사이트맵 갱신
   rebuildSitemap(manifest)
+
+  // 4) 구글 색인 요청 (베스트에포트 — 키 없거나 실패해도 발행은 정상)
+  await requestIndexing(`${SITE}/blog/posts/${slugGlobal}.html`)
 
   console.log(`완료: /blog/posts/${slugGlobal}.html (총 ${manifest.length}개 글)`)
 }
