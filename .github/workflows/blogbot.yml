@@ -1,0 +1,41 @@
+name: BlogBot - 오늘장부 블로그 자동 포스팅
+
+on:
+  schedule:
+    - cron: '0 1 * * *'   # 매일 오전 10시 KST (UTC 01:00)
+  workflow_dispatch:        # 수동 실행 버튼
+
+permissions:
+  contents: write           # 생성한 글을 레포에 커밋/푸시하기 위해 필요
+
+jobs:
+  post:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: 패키지 설치
+        working-directory: apps/jangbu/blogbot
+        run: npm install
+
+      - name: 글 생성
+        working-directory: apps/jangbu/blogbot
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: node index.js
+
+      - name: 커밋 & 푸시
+        run: |
+          git config user.name "blogbot"
+          git config user.email "blogbot@users.noreply.github.com"
+          git add apps/jangbu/public/blog apps/jangbu/public/sitemap.xml
+          if git diff --cached --quiet; then
+            echo "변경 없음 - 스킵"
+          else
+            git commit -m "post: 블로그 자동 발행 #${{ github.run_number }}"
+            git push
+          fi

@@ -1,0 +1,13 @@
+{
+  "name": "blogbot",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "오늘장부 정적 블로그(/blog) 자동 포스팅 봇 - 글 생성 후 레포에 커밋",
+  "scripts": {
+    "start": "node index.js",
+    "dry-run": "node index.js --dry-run"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.30.0"
+  }
+}
