@@ -1,12 +1,27 @@
 name: BlogBot - 오늘장부 블로그 자동 포스팅
 
+# 섹션(카테고리)별 하루 1편씩, 1시간 간격으로 발행 (KST 10시~16시)
 on:
   schedule:
-    - cron: '0 1 * * *'   # 매일 오전 10시 KST (UTC 01:00)
-  workflow_dispatch:        # 수동 실행 버튼
+    - cron: '0 1 * * *'   # 10:00 KST → 매출관리
+    - cron: '0 2 * * *'   # 11:00 KST → 부가세/세금
+    - cron: '0 3 * * *'   # 12:00 KST → 절세꿀팁
+    - cron: '0 4 * * *'   # 13:00 KST → 배달앱
+    - cron: '0 5 * * *'   # 14:00 KST → 카드수수료
+    - cron: '0 6 * * *'   # 15:00 KST → 사업자등록
+    - cron: '0 7 * * *'   # 16:00 KST → 직원관리
+  workflow_dispatch:        # 수동 실행 (category 비우면 날짜순환 1편)
+    inputs:
+      category:
+        description: '발행할 섹션(매출관리/부가세·세금/절세꿀팁/배달앱/카드수수료/사업자등록/직원관리). 비우면 1편.'
+        required: false
+        default: ''
 
 permissions:
   contents: write           # 생성한 글을 레포에 커밋/푸시하기 위해 필요
+
+concurrency:
+  group: blogbot-publish     # 동시 발행 직렬화 (푸시 충돌 방지)
 
 jobs:
   post:
@@ -18,6 +33,22 @@ jobs:
         with:
           node-version: '22'
 
+      - name: 발행 섹션 결정 (cron 시각 → 카테고리)
+        id: cat
+        run: |
+          case "${{ github.event.schedule }}" in
+            "0 1 * * *") C="매출관리" ;;
+            "0 2 * * *") C="부가세/세금" ;;
+            "0 3 * * *") C="절세꿀팁" ;;
+            "0 4 * * *") C="배달앱" ;;
+            "0 5 * * *") C="카드수수료" ;;
+            "0 6 * * *") C="사업자등록" ;;
+            "0 7 * * *") C="직원관리" ;;
+            *) C="${{ github.event.inputs.category }}" ;;
+          esac
+          echo "category=$C" >> "$GITHUB_OUTPUT"
+          echo "발행 섹션: ${C:-(날짜순환 1편)}"
+
       - name: 패키지 설치
         working-directory: apps/jangbu/blogbot
         run: npm install
@@ -26,7 +57,7 @@ jobs:
         working-directory: apps/jangbu/blogbot
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
-        run: node index.js
+        run: node index.js --category="${{ steps.cat.outputs.category }}"
 
       - name: 커밋 & 푸시
         run: |
@@ -35,7 +66,15 @@ jobs:
           git add apps/jangbu/public/blog apps/jangbu/public/sitemap.xml
           if git diff --cached --quiet; then
             echo "변경 없음 - 스킵"
-          else
-            git commit -m "post: 블로그 자동 발행 #${{ github.run_number }}"
-            git push
+            exit 0
+          fi
+          git commit -m "post: 자동 발행 [${{ steps.cat.outputs.category }}] #${{ github.run_number }}"
+          ok=0
+          for i in 1 2 3; do
+            if git pull --rebase origin main && git push origin main; then ok=1; break; fi
+            git rebase --abort 2>/dev/null || true
+            echo "푸시 재시도 $i..."; sleep 6
+          done
+          if [ "$ok" != 1 ]; then
+            echo "::warning::동시 실행 충돌로 이번 회차 푸시 실패 - 건너뜀"
           fi

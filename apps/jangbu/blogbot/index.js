@@ -25,17 +25,26 @@ const pad = (n) => String(n).padStart(2, '0')
 const dateISO = `${y}-${pad(m)}-${pad(day)}`
 const dateKR = `${y}년 ${pad(m)}월 ${pad(day)}일`
 
-// ── 키워드 선택 (날짜 기반 순환, --kw=<번호|문자열>로 수동 지정 가능) ──
+// ── 키워드 선택 ──────────────────────────────────────────────────
+// 우선순위: --kw=<번호|문자열>(수동) → --category=<섹션>(섹션 내 날짜 순환) → 전체 날짜 순환
 function pickKeyword() {
-  const kwArg = process.argv.find((a) => a.startsWith('--kw='))
-  if (kwArg) {
-    const v = kwArg.slice('--kw='.length)
-    const idx = Number(v)
+  const dayNum = Math.floor((Date.now() + 9 * 3600 * 1000) / 86400000)
+  const arg = (name) => {
+    const a = process.argv.find((x) => x.startsWith(name))
+    return a ? a.slice(name.length) : null
+  }
+  const kw = arg('--kw=')
+  if (kw) {
+    const idx = Number(kw)
     if (Number.isInteger(idx) && keywords[idx]) return keywords[idx]
-    const found = keywords.find((k) => k.keyword.includes(v) || k.category === v)
+    const found = keywords.find((k) => k.keyword.includes(kw) || k.category === kw)
     if (found) return found
   }
-  const dayNum = Math.floor((Date.now() + 9 * 3600 * 1000) / 86400000)
+  const cat = arg('--category=')
+  if (cat) {
+    const pool = keywords.filter((k) => k.category === cat)
+    if (pool.length) return pool[dayNum % pool.length] // 섹션 내 4개를 4일 주기로 순환
+  }
   return keywords[dayNum % keywords.length]
 }
 
