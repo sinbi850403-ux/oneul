@@ -25,8 +25,16 @@ const pad = (n) => String(n).padStart(2, '0')
 const dateISO = `${y}-${pad(m)}-${pad(day)}`
 const dateKR = `${y}년 ${pad(m)}월 ${pad(day)}일`
 
-// ── 키워드 선택 (날짜 기반 순환) ──────────────────────────────────
+// ── 키워드 선택 (날짜 기반 순환, --kw=<번호|문자열>로 수동 지정 가능) ──
 function pickKeyword() {
+  const kwArg = process.argv.find((a) => a.startsWith('--kw='))
+  if (kwArg) {
+    const v = kwArg.slice('--kw='.length)
+    const idx = Number(v)
+    if (Number.isInteger(idx) && keywords[idx]) return keywords[idx]
+    const found = keywords.find((k) => k.keyword.includes(v) || k.category === v)
+    if (found) return found
+  }
   const dayNum = Math.floor((Date.now() + 9 * 3600 * 1000) / 86400000)
   return keywords[dayNum % keywords.length]
 }
@@ -57,44 +65,70 @@ function esc(s) {
   return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;')
 }
 
-// ── Claude 로 글 생성 ────────────────────────────────────────────
+// ── Claude(Opus 4.8 + 웹검색)로 사실 확인 후 글 생성 ───────────────
+// 정확성이 최우선. 웹검색으로 2026년 한국 기준 사실을 확인한 뒤 작성한다.
 async function generatePost(kw) {
   const anthropic = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY })
-  const message = await anthropic.messages.create({
-    model: 'claude-sonnet-4-6',
-    max_tokens: 3000,
-    messages: [
-      {
-        role: 'user',
-        content: `당신은 한국 자영업자(소상공인)를 위한 실전 정보 블로그 "오늘장부 블로그"의 전문 에디터입니다.
+  const prompt = `당신은 한국 자영업자(소상공인)를 위한 실전 정보 블로그 "오늘장부 블로그"의 시니어 에디터입니다.
+정확성이 최우선입니다. 독자(사장님)는 이 글을 보고 세금·비용에 관한 실제 의사결정을 합니다.
 
 키워드: "${kw.keyword}"
 카테고리: "${kw.category}"
 앱: 오늘장부 (${SITE_KR}) — 카드·현금·배달앱 매출을 한 번에 기록하고 부가세 예상액을 자동 계산해주는 소상공인 일매출 기록 앱
 
-아래 조건으로 블로그 글 1편을 작성하세요.
-1. 제목: 키워드를 포함하고 클릭하고 싶게. 40자 이내.
-2. 본문: 한국어 900~1500자. 사장님이 실제로 써먹을 수 있는 구체적이고 정확한 정보.
-3. 구조: <h2>, <h3>, <p>, <ul>/<li>, <strong> 사용. 비교·정리는 <table>(thead/tbody) 활용 권장.
-4. 본문에 <h1> 과 <img> 는 절대 넣지 마세요 (제목·대표이미지는 템플릿이 처리).
-5. 매출·세금 주제이므로 글 중간에 "오늘장부"를 1~2회 자연스럽게 언급하고, 마지막 문단에 링크 1회: <a href="${SITE_KR}">오늘장부 무료로 시작하기</a>
-6. 세금·신고 관련 내용이면 마지막에 <p> 로 "※ 본 글은 참고용 추정 정보이며, 정확한 신고는 세무사와 상담하세요." 문구를 넣으세요.
-7. 과장·허위 금지. 2026년 기준으로 작성.
+[사실 검증 — 매우 중요]
+- 글을 쓰기 전에 web_search 도구로 2026년 현재 한국 기준 사실을 반드시 확인하세요. 특히 세율·과세 기준금액·신고 기한·카드수수료율·4대보험·주휴수당 등 숫자와 제도는 공식/신뢰 출처(국세청·홈택스, 정부 보도자료, 최신 자료)로 확인합니다.
+- 확인되지 않은 구체적 수치·날짜·제도는 단정하지 마세요. 확신이 없으면 "정확한 금액·기준은 홈택스/국세청 또는 세무사에게 확인"처럼 안내하고 일반 원칙 위주로 씁니다.
+- 추측·과장·허위·오래된 정보는 절대 금지. 거짓을 넣느니 범위를 좁혀 일반론으로 쓰는 편이 낫습니다.
+- 검색으로 확인한 사실을 본문에 자연스럽게 녹이되, 각주·인용표시([1] 등)·URL은 본문에 넣지 마세요.
 
-반드시 아래 JSON 형식 "그대로만" 출력하세요 (코드블록·설명 금지):
+[글 형식 — 예시처럼 깊이 있게]
+- 한국어 1500~2500자. 사장님이 바로 써먹을 실전 정보.
+- 구조: 도입 <p> → 여러 개의 <h2> 섹션(필요시 <h3>) → 비교·정리는 <table>(thead/tbody) 또는 <ul>/<ol> → 마지막에 짧은 FAQ(<h2>자주 묻는 질문</h2> 아래 <h3>질문</h3><p>답</p> 2~3개).
+- 사용 태그: <h2> <h3> <p> <ul> <ol> <li> <strong> <table> <thead> <tbody> <tr> <th> <td> <blockquote>. <h1>과 <img>는 절대 넣지 마세요(제목·대표사진은 템플릿이 처리).
+- 매출·세금 주제이므로 본문 중간에 "오늘장부"를 1~2회 자연스럽게 언급하고, 마지막 문단에 링크 1회: <a href="${SITE_KR}">오늘장부 무료로 시작하기</a>
+- 세금·신고·금액이 포함되면 본문 맨 끝에 <p>로: "※ 본 글은 2026년 기준 참고용 정보이며, 정확한 신고·금액은 국세청 홈택스 또는 세무사와 상담하세요."
+
+[출력 — JSON만]
+검색과 사고가 끝나면 마지막에 아래 JSON 객체 "하나만" 출력하세요. JSON 앞뒤에 설명·코드블록·인용표시를 절대 넣지 마세요.
 {
-  "title": "제목",
-  "slug": "english-lowercase-hyphen-slug-romanized-from-title",
-  "description": "카드 목록에 쓸 70~120자 요약",
+  "title": "제목 (키워드 포함, 40자 이내, 클릭 유도)",
+  "slug": "english-lowercase-hyphenated-slug",
+  "description": "카드 목록용 70~120자 요약",
   "tags": ["태그1","태그2","태그3","태그4"],
-  "body": "<h2>...</h2><p>...</p> ... 본문 HTML 전체"
-}`,
-      },
-    ],
-  })
-  const text = message.content[0].text
-  const json = JSON.parse(text.match(/\{[\s\S]*\}/)?.[0] || '{}')
-  return json
+  "body": "<h2>...</h2> ... 본문 HTML 전체"
+}`
+
+  const tools = [{ type: 'web_search_20260209', name: 'web_search' }]
+  let messages = [{ role: 'user', content: prompt }]
+  let resp
+
+  // web_search 서버 루프가 한도에 도달하면 pause_turn → 이어서 재요청
+  for (let turn = 0; turn < 6; turn++) {
+    const stream = anthropic.messages.stream({
+      model: 'claude-opus-4-8',
+      max_tokens: 20000,
+      thinking: { type: 'adaptive' },
+      output_config: { effort: 'high' },
+      tools,
+      messages,
+    })
+    resp = await stream.finalMessage()
+    if (resp.stop_reason === 'pause_turn') {
+      messages.push({ role: 'assistant', content: resp.content })
+      continue
+    }
+    break
+  }
+
+  const text = (resp.content || [])
+    .filter((b) => b.type === 'text')
+    .map((b) => b.text)
+    .join('\n')
+    .trim()
+  const match = text.match(/\{[\s\S]*\}/)
+  if (!match) throw new Error('JSON 응답 파싱 실패: ' + text.slice(0, 300))
+  return JSON.parse(match[0])
 }
 
 // ── 글 HTML 템플릿 (기존 글과 동일한 인라인 스타일/구조) ──────────
