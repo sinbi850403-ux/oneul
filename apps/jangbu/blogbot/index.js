@@ -375,6 +375,32 @@ async function requestIndexing(url) {
   }
 }
 
+// ── IndexNow (네이버·Bing 즉시 통보; 키는 공개값이라 시크릿 불필요, 실패해도 무시) ──
+const INDEXNOW_KEY = '6a0955fc5b1f45db0a7ebfee87e7cbba'
+async function submitIndexNow(url) {
+  if (DRY_RUN) return
+  const host = 'www.xn--wh1bw0st1gbrb.kr'
+  const wwwUrl = url.replace('https://xn--', 'https://www.xn--')
+  const body = JSON.stringify({
+    host,
+    key: INDEXNOW_KEY,
+    keyLocation: `https://${host}/${INDEXNOW_KEY}.txt`,
+    urlList: [wwwUrl],
+  })
+  for (const ep of ['https://api.indexnow.org/indexnow', 'https://searchadvisor.naver.com/indexnow']) {
+    try {
+      const r = await fetch(ep, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json; charset=utf-8' },
+        body,
+      })
+      console.log(`IndexNow ${ep}: ${r.status}`)
+    } catch (err) {
+      console.warn(`IndexNow ${ep} 실패(무시): ${err.message}`)
+    }
+  }
+}
+
 // ── 메인 ─────────────────────────────────────────────────────────
 let slugGlobal = 'post'
 async function main() {
@@ -431,6 +457,9 @@ async function main() {
 
   // 4) 구글 색인 요청 (베스트에포트 — 키 없거나 실패해도 발행은 정상)
   await requestIndexing(`${SITE}/blog/posts/${slugGlobal}.html`)
+
+  // 5) IndexNow — 네이버·Bing 즉시 통보
+  await submitIndexNow(`${SITE}/blog/posts/${slugGlobal}.html`)
 
   console.log(`완료: /blog/posts/${slugGlobal}.html (총 ${manifest.length}개 글)`)
 }
