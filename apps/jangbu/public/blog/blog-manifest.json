@@ -1,5 +1,19 @@
 [
   {
+    "slug": "hometax-vat-filing-step-by-step",
+    "title": "홈택스 부가세 신고 따라하기: 사장님 혼자 끝내는 법",
+    "description": "홈택스 부가세 신고를 사장님 혼자 끝내는 실전 가이드. 신고 기한, 준비물, 입력 순서, 일반·간이과세자 계산 차이와 자주 하는 실수까지 한 번에 정리했습니다.",
+    "category": "부가세/세금",
+    "date": "2026-06-23",
+    "thumb": "https://loremflickr.com/940/650/computer,screen,office?lock=47344",
+    "tags": [
+      "부가세신고",
+      "홈택스",
+      "간이과세자",
+      "일반과세자"
+    ]
+  },
+  {
     "slug": "monthly-sales-target-management-guide",
     "title": "월 매출 목표 세우고 관리하기: 사장님 실전 가이드",
     "description": "막연한 매출 목표 대신 고정비·세금·수수료를 역산해 현실적인 월 매출 목표를 세우고 일 단위로 관리하는 법을 단계별로 정리했습니다.",
