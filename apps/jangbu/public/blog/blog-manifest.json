@@ -1,5 +1,19 @@
 [
   {
+    "slug": "card-terminal-types-and-costs",
+    "title": "카드 단말기 종류와 비용, 숨은 지출까지 한눈에",
+    "description": "유선·무선·모바일·포스 카드 단말기 종류와 비용 구조를 정리했습니다. 월 이용료·통신비 등 숨은 비용과 카드사 우대수수료율까지 사장님 눈높이로 안내합니다.",
+    "category": "카드수수료",
+    "date": "2026-06-24",
+    "thumb": "https://loremflickr.com/940/650/card,terminal,device?lock=10920",
+    "tags": [
+      "카드단말기",
+      "카드수수료",
+      "VAN PG",
+      "자영업비용"
+    ]
+  },
+  {
     "slug": "how-to-set-delivery-packaging-fee",
     "title": "배달 포장비 책정하는 법: 손해 안 보는 계산 공식",
     "description": "용기 원가부터 배달앱 중개수수료, 부가세까지 한 번에 반영해 손해 보지 않는 배달 포장비 책정법을 4단계 공식과 표·예시로 쉽게 정리했습니다.",
