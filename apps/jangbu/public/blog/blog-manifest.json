@@ -1,5 +1,19 @@
 [
   {
+    "slug": "single-delivery-profitability-analysis",
+    "title": "단건배달 수익성 분석: 주문당 진짜 남는 돈 계산법",
+    "description": "단건배달의 중개수수료·배달비·결제수수료·부가세를 한 번에 분해해 주문 1건당 실제 차감액과 손익분기를 따져보는 사장님용 실전 가이드입니다.",
+    "category": "배달앱",
+    "date": "2026-06-25",
+    "thumb": "https://loremflickr.com/940/650/delivery,single,order?lock=35831",
+    "tags": [
+      "단건배달",
+      "배달앱수수료",
+      "배달수익성",
+      "소상공인부가세"
+    ]
+  },
+  {
     "slug": "tax-credit-vs-income-deduction",
     "title": "세액공제 vs 소득공제 차이, 사장님 절세의 핵심",
     "description": "헷갈리는 세액공제와 소득공제 차이를 사장님 눈높이로 정리했습니다. 어디서 세금이 줄어드는지, 어떤 게 더 유리한지 실제 예시로 확인하세요.",
