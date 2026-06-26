@@ -1,5 +1,19 @@
 [
   {
+    "slug": "card-company-settlement-dates-guide",
+    "title": "카드사별 정산일 정리 - 내 매출 언제 입금될까?",
+    "description": "카드 매출은 결제 즉시 들어오지 않습니다. 카드사별 정산 주기(D+2~3)와 영업일 기준, 체크·신용카드 차이까지 사장님 자금 관리에 꼭 필요한 핵심만 정리했습니다.",
+    "category": "카드수수료",
+    "date": "2026-06-26",
+    "thumb": "https://loremflickr.com/940/650/calendar,bank,finance?lock=65117",
+    "tags": [
+      "카드정산일",
+      "카드수수료",
+      "카드매출입금",
+      "소상공인자금관리"
+    ]
+  },
+  {
     "slug": "delivery-only-menu-strategy",
     "title": "배달 전용 메뉴 구성 전략: 수수료 빼고도 남기는 법",
     "description": "2026년 바뀐 배달앱 수수료 구조에 맞춰 배달 전용 가격·세트 구성·채널별 마진을 설계하는 실전 전략과 부가세 핵심까지 정리했습니다.",
