@@ -1,5 +1,19 @@
 [
   {
+    "slug": "day-of-week-sales-pattern",
+    "title": "요일별 매출 패턴 활용하기: 사장님이 놓치는 돈의 흐름",
+    "description": "매출이 들쭉날쭉한 이유는 '요일'에 있습니다. 요일별 매출 패턴을 읽고 인건비·재고·프로모션을 최적화하는 실전 방법을 정리했습니다.",
+    "category": "매출관리",
+    "date": "2026-06-26",
+    "thumb": "https://loremflickr.com/940/650/weekly,calendar,planning?lock=30267",
+    "tags": [
+      "요일별매출",
+      "매출관리",
+      "소상공인",
+      "매출분석"
+    ]
+  },
+  {
     "slug": "weekly-15-hours-part-time-rules",
     "title": "주 15시간 미만 알바 규정, 사장님이 꼭 알아야 할 핵심 정리",
     "description": "주 15시간 미만 초단시간 알바의 주휴수당·퇴직금·4대보험·연차 적용 여부를 사장님 입장에서 항목별로 정리했습니다. 2026년 기준 인건비 관리 가이드.",
