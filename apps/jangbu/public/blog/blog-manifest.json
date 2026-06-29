@@ -1,5 +1,19 @@
 [
   {
+    "slug": "card-fee-accounting-guide",
+    "title": "카드 수수료 회계처리 완벽 정리 — 지급수수료·부가세·절세까지",
+    "description": "카드 가맹점 수수료를 지급수수료로 올바르게 회계처리하는 방법, 부가세 면세 여부, 2025년 최신 수수료율 구간표까지 소상공인 실전 가이드.",
+    "category": "카드수수료",
+    "date": "2026-06-29",
+    "thumb": "https://loremflickr.com/940/650/accounting,card,fee?lock=69032",
+    "tags": [
+      "카드수수료",
+      "지급수수료",
+      "회계처리",
+      "소상공인절세"
+    ]
+  },
+  {
     "slug": "delivery-break-even-point-calculation",
     "title": "배달 손익분기점 계산법 — 수수료·배달비 다 빼면 진짜 얼마 남나?",
     "description": "배달앱 수수료·결제수수료·업주부담 배달비까지 모두 반영한 손익분기점 계산법을 단계별로 정리했습니다. 2026년 차등 수수료 기준으로 실전 예시를 확인하세요.",
