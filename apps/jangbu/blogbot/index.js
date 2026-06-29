@@ -117,8 +117,6 @@ async function generatePost(kw) {
     const stream = anthropic.messages.stream({
       model: 'claude-sonnet-4-6',
 max_tokens: 8000,
-      thinking: { type: 'adaptive' },
-      output_config: { effort: 'high' },
       tools,
       messages,
     })
