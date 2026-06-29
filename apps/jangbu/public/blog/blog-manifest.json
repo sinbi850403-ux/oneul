@@ -1,5 +1,19 @@
 [
   {
+    "slug": "delivery-break-even-point-calculation",
+    "title": "배달 손익분기점 계산법 — 수수료·배달비 다 빼면 진짜 얼마 남나?",
+    "description": "배달앱 수수료·결제수수료·업주부담 배달비까지 모두 반영한 손익분기점 계산법을 단계별로 정리했습니다. 2026년 차등 수수료 기준으로 실전 예시를 확인하세요.",
+    "category": "배달앱",
+    "date": "2026-06-29",
+    "thumb": "https://loremflickr.com/940/650/calculator,profit,break?lock=83616",
+    "tags": [
+      "배달앱",
+      "손익분기점",
+      "배달수수료",
+      "소상공인"
+    ]
+  },
+  {
     "slug": "rental-fee-vat-deduction-guide",
     "title": "임차료 부가세 공제, 월세에서 세금 돌려받는 실전 가이드",
     "description": "가게 월세에 붙은 부가세 10%, 제대로 공제받으면 매달 수만 원을 돌려받을 수 있습니다. 일반과세자·간이과세자별 조건과 건물주가 세금계산서를 안 줄 때 대처법까지 총정리.",
