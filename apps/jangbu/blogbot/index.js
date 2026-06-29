@@ -115,8 +115,8 @@ async function generatePost(kw) {
   // web_search 서버 루프가 한도에 도달하면 pause_turn → 이어서 재요청
   for (let turn = 0; turn < 6; turn++) {
     const stream = anthropic.messages.stream({
-      model: 'claude-opus-4-8',
-      max_tokens: 20000,
+      model: 'claude-sonnet-4-6',
+max_tokens: 8000,
       thinking: { type: 'adaptive' },
       output_config: { effort: 'high' },
       tools,
