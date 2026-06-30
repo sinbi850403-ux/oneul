@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>야간·휴일 수당 계산법 완전 정리 — 사장님이 꼭 알아야 할 2026년 기준 | 오늘장부 블로그</title>
+  <meta name="description" content="2026년 최저임금 기준, 야간·휴일·연장 수당 계산 공식과 5인 미만·5인 이상 사업장 차이점, 수당 중복 적용 사례까지 소상공인이 바로 써먹는 실전 가이드.">
+  <meta property="og:title" content="야간·휴일 수당 계산법 완전 정리 — 사장님이 꼭 알아야 할 2026년 기준">
+  <meta property="og:description" content="2026년 최저임금 기준, 야간·휴일·연장 수당 계산 공식과 5인 미만·5인 이상 사업장 차이점, 수당 중복 적용 사례까지 소상공인이 바로 써먹는 실전 가이드.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://xn--wh1bw0st1gbrb.kr/blog/posts/night-holiday-pay-calculation-guide-2026.html">
+  <meta property="og:image" content="https://loremflickr.com/940/650/night,shift,work?lock=53286">
+  <link rel="canonical" href="https://xn--wh1bw0st1gbrb.kr/blog/posts/night-holiday-pay-calculation-guide-2026.html">
+  <link rel="icon" href="/icons/icon-192.png">
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2764893290310463" crossorigin="anonymous"></script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Noto Sans KR', sans-serif; background: #f8f9fa; color: #1a1a1a; line-height: 1.7; }
+    header { background: #fff; border-bottom: 1px solid #eee; position: sticky; top: 0; z-index: 100; }
+    .header-inner { max-width: 1100px; margin: 0 auto; padding: 0 20px; height: 60px; display: flex; align-items: center; justify-content: space-between; }
+    .logo { display: flex; align-items: center; gap: 8px; text-decoration: none; }
+    .logo-icon { width: 32px; height: 32px; background: #FF6B35; border-radius: 8px; display: flex; align-items: center; justify-content: center; color: white; font-weight: 900; font-size: 16px; }
+    .logo-text { font-size: 18px; font-weight: 800; color: #FF6B35; }
+    .logo-sub { font-size: 13px; color: #888; margin-left: 4px; }
+    .header-cta { background: #FF6B35; color: white; border: none; padding: 8px 16px; border-radius: 8px; font-size: 13px; font-weight: 600; cursor: pointer; text-decoration: none; }
+    .wrap { max-width: 1100px; margin: 0 auto; padding: 32px 20px; display: grid; grid-template-columns: 1fr 300px; gap: 40px; }
+    @media (max-width: 768px) { .wrap { grid-template-columns: 1fr; } .sidebar { display: none; } }
+    article { background: white; border-radius: 20px; overflow: hidden; box-shadow: 0 2px 12px rgba(0,0,0,0.06); }
+    .article-head { padding: 32px 32px 24px; border-bottom: 1px solid #f0f0f0; }
+    .article-cat { font-size: 12px; font-weight: 700; color: #FF6B35; text-transform: uppercase; margin-bottom: 12px; }
+    .article-cat a { color: #FF6B35; text-decoration: none; }
+    .article-title { font-size: clamp(20px, 4vw, 28px); font-weight: 900; line-height: 1.4; color: #1a1a1a; margin-bottom: 16px; }
+    .article-meta { font-size: 13px; color: #aaa; display: flex; gap: 16px; align-items: center; flex-wrap: wrap; }
+    .hero-img { width: 100%; aspect-ratio: 16/9; object-fit: cover; background: #f0f0f0; }
+    .article-body { padding: 32px; }
+    .article-body h2 { font-size: 20px; font-weight: 800; color: #1a1a1a; margin: 32px 0 14px; padding-bottom: 8px; border-bottom: 2px solid #FF6B35; }
+    .article-body h3 { font-size: 16px; font-weight: 700; color: #333; margin: 20px 0 10px; }
+    .article-body p { margin-bottom: 14px; color: #333; font-size: 15px; }
+    .article-body ul, .article-body ol { padding-left: 20px; margin-bottom: 14px; }
+    .article-body li { margin-bottom: 6px; color: #333; font-size: 15px; }
+    .article-body table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 14px; }
+    .article-body th { background: #FF6B35; color: white; padding: 10px 14px; text-align: left; }
+    .article-body td { padding: 10px 14px; border-bottom: 1px solid #f0f0f0; }
+    .article-body tr:nth-child(even) td { background: #fff8f5; }
+    .article-body img { width: 100%; border-radius: 12px; margin: 16px 0; }
+    .article-body strong { color: #1a1a1a; }
+    .article-body blockquote { background: #fff8f5; border-left: 4px solid #FF6B35; padding: 16px 20px; border-radius: 0 12px 12px 0; margin: 16px 0; font-style: italic; color: #555; }
+    .article-body a { color: #FF6B35; }
+    .tags { padding: 20px 32px; border-top: 1px solid #f0f0f0; display: flex; gap: 8px; flex-wrap: wrap; }
+    .tag { background: #fff3ee; color: #FF6B35; border-radius: 20px; padding: 5px 12px; font-size: 12px; font-weight: 600; text-decoration: none; }
+    .tag:hover { background: #FF6B35; color: white; }
+    .ad-slot { background: #f0f0f0; border-radius: 12px; display: flex; align-items: center; justify-content: center; color: #bbb; font-size: 12px; min-height: 90px; margin: 24px 0; }
+    .cta-box { background: linear-gradient(135deg, #FF6B35, #ff8c42); border-radius: 20px; padding: 32px; text-align: center; color: white; margin-top: 24px; }
+    .cta-box h3 { font-size: 22px; font-weight: 900; margin-bottom: 10px; }
+    .cta-box p { font-size: 14px; opacity: 0.9; line-height: 1.6; margin-bottom: 20px; }
+    .cta-box a { background: white; color: #FF6B35; border-radius: 12px; padding: 13px 28px; font-weight: 800; font-size: 15px; text-decoration: none; display: inline-block; }
+    .nav-links { display: flex; gap: 16px; margin-top: 24px; }
+    .nav-back { color: #FF6B35; text-decoration: none; font-size: 14px; font-weight: 600; }
+    .nav-back::before { content: '\2190 '; }
+    .sidebar-cta { background: linear-gradient(135deg, #FF6B35, #ff8c42); color: white; border-radius: 16px; padding: 24px; text-align: center; position: sticky; top: 80px; }
+    .sidebar-cta h3 { font-size: 16px; font-weight: 900; margin-bottom: 8px; }
+    .sidebar-cta p { font-size: 13px; opacity: 0.9; line-height: 1.5; margin-bottom: 16px; }
+    .sidebar-cta a { background: white; color: #FF6B35; border-radius: 8px; padding: 10px 20px; font-weight: 700; font-size: 14px; text-decoration: none; display: inline-block; }
+    footer { background: #1a1a1a; color: #888; padding: 40px 20px; margin-top: 60px; }
+    .footer-inner { max-width: 1100px; margin: 0 auto; }
+    .footer-links { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 16px; }
+    .footer-links a { color: #888; text-decoration: none; font-size: 13px; }
+    .footer-copy { font-size: 12px; }
+  </style>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "야간·휴일 수당 계산법 완전 정리 — 사장님이 꼭 알아야 할 2026년 기준",
+  "description": "2026년 최저임금 기준, 야간·휴일·연장 수당 계산 공식과 5인 미만·5인 이상 사업장 차이점, 수당 중복 적용 사례까지 소상공인이 바로 써먹는 실전 가이드.",
+  "datePublished": "2026-06-30",
+  "dateModified": "2026-06-30",
+  "image": "https://loremflickr.com/940/650/night,shift,work?lock=53286",
+  "author": {
+    "@type": "Organization",
+    "name": "오늘장부",
+    "url": "https://오늘장부.kr"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "오늘장부",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://xn--wh1bw0st1gbrb.kr/icons/icon-192.png"
+    }
+  },
+  "mainEntityOfPage": "https://xn--wh1bw0st1gbrb.kr/blog/posts/night-holiday-pay-calculation-guide-2026.html",
+  "keywords": "야간수당, 휴일수당, 가산임금, 직원관리"
+}
+  </script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "알바생이 밤 10시 이후 1시간만 일해도 야간수당을 줘야 하나요?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "5인 이상 사업장이라면 오후 10시~오전 6시 사이에 근무한 시간만큼은 반드시 야간 가산(50%)을 적용해야 합니다. 1시간이라도 예외는 없습니다. 5인 미만 사업장은 현재 법적 의무는 없지만, 근로계약서에 야간수당을 명시했다면 지급해야 합니다."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "공휴일이 일요일과 겹치면 어떻게 되나요?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "관공서 공휴일 규정에 따라 대체공휴일이 지정되면, 5인 이상 사업장은 그 대체공휴일도 유급휴일로 보장해야 합니다. 대체공휴일에 근무하면 일반 휴일근로 기준(8시간 이내 1.5배, 8시간 초과 2배)이 그대로 적용됩니다."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "주휴일(일요일)에 일하면 주휴수당과 휴일근로수당을 둘 다 줘야 하나요?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "네, 별개입니다. 주휴수당은 해당 주의 소정근로일을 개근했을 때 발생하는 유급 수당이고, 휴일근로수당은 주휴일 당일에 실제로 근무한 것에 대한 가산 수당입니다. 주휴일에 근무하면 주휴수당(유급분) + 근무 시간에 대한 임금 + 가산 수당을 모두 지급해야 합니다."
+      }
+    }
+  ]
+}
+  </script>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <a href="/" class="logo">
+      <div class="logo-icon">장</div>
+      <span class="logo-text">오늘장부</span>
+      <span class="logo-sub">블로그</span>
+    </a>
+    <a href="/" class="header-cta">무료로 시작하기</a>
+  </div>
+</header>
+
+<div class="wrap">
+  <main>
+    <div class="nav-links">
+      <a href="/blog/" class="nav-back">블로그 목록으로</a>
+    </div>
+
+    <div class="ad-slot">광고 영역 (AdSense 승인 후 활성화)</div>
+
+    <article>
+      <div class="article-head">
+        <div class="article-cat"><a href="/blog/">직원관리</a></div>
+        <h1 class="article-title">야간·휴일 수당 계산법 완전 정리 — 사장님이 꼭 알아야 할 2026년 기준</h1>
+        <div class="article-meta">
+          <span>오늘장부 편집팀</span>
+          <span>2026년 06월 30일</span>
+        </div>
+      </div>
+      <img src="https://loremflickr.com/940/650/night,shift,work?lock=53286" alt="야간·휴일 수당 계산법 완전 정리 — 사장님이 꼭 알아야 할 2026년 기준" class="hero-img" loading="lazy">
+      <div class="article-body">
+<p>편의점, 식당, 카페를 운영하는 사장님이라면 야간이나 공휴일에 직원을 쓸 일이 잦습니다. 그런데 "야간에 일하면 얼마를 더 줘야 하지?", "일요일에 나오면 수당이 얼마지?"처럼 막상 계산하려면 헷갈리는 경우가 많죠. 잘못 계산하면 임금 체불이 되고, 과하게 계산하면 인건비가 불필요하게 늘어납니다. 2026년 기준 야간·휴일 수당의 기본 공식부터 5인 미만 사업장 예외까지 꼼꼼하게 정리해 드립니다.</p>
+
+<h2>야간·휴일 수당의 법적 근거</h2>
+<p>가산 수당의 근거는 <strong>근로기준법 제56조</strong>입니다. 이 조항에 따라 사용자는 연장근로, 야간근로, 휴일근로에 대해 통상임금의 50% 이상을 가산하여 지급해야 합니다. 단, 이 의무는 <strong>상시 근로자 5인 이상 사업장</strong>에만 적용되며, 5인 미만 사업장은 현재 가산 수당 지급 의무가 없습니다.</p>
+<blockquote>근로기준법 제56조: 사용자는 연장근로·야간근로(오후 10시~오전 6시)·휴일근로에 대해 통상임금의 100분의 50 이상을 가산하여 지급하여야 한다.</blockquote>
+<p>2026년 최저시급은 <strong>10,320원</strong>(인상률 2.9%)입니다. 이 시급을 기준으로 아래 계산식을 적용합니다.</p>
+
+<h2>수당별 계산 공식 한눈에 보기</h2>
+<table>
+  <thead>
+    <tr>
+      <th>수당 종류</th>
+      <th>적용 시간대 / 조건</th>
+      <th>가산율</th>
+      <th>실지급 배율</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>연장근로수당</td>
+      <td>1일 8시간·주 40시간 초과 근로</td>
+      <td>+50%</td>
+      <td>시급 × 1.5</td>
+    </tr>
+    <tr>
+      <td>야간근로수당</td>
+      <td>오후 10시 ~ 오전 6시</td>
+      <td>+50%</td>
+      <td>시급 × 1.5</td>
+    </tr>
+    <tr>
+      <td>휴일근로수당 (8시간 이내)</td>
+      <td>주휴일·법정공휴일 근로</td>
+      <td>+50%</td>
+      <td>시급 × 1.5</td>
+    </tr>
+    <tr>
+      <td>휴일근로수당 (8시간 초과분)</td>
+      <td>휴일 8시간 초과 근로</td>
+      <td>+100%</td>
+      <td>시급 × 2.0</td>
+    </tr>
+  </tbody>
+</table>
+<p>※ 위 배율은 <strong>가산 수당만</strong> 의미하는 것이 아니라, 기본임금 포함 실제 지급 배율입니다. 예를 들어 시급 × 1.5는 기본시급 100% + 가산 50%를 합한 금액입니다.</p>
+
+<h2>야간수당 계산 예시</h2>
+<p>편의점 직원이 오후 9시~오전 1시(4시간) 근무한 경우를 봅시다. 이 중 오후 10시~오전 1시(3시간)만 야간 시간대입니다.</p>
+<ul>
+  <li>오후 9시~10시 (1시간): 일반 시급 → 10,320원 × 1 = <strong>10,320원</strong></li>
+  <li>오후 10시~오전 1시 (3시간): 야간 가산 50% → 10,320원 × 1.5 × 3 = <strong>46,440원</strong></li>
+  <li><strong>합계: 56,760원</strong></li>
+</ul>
+<p>야간 구간이 시작되는 오후 10시를 경계로 나누어 계산하는 것이 핵심입니다.</p>
+
+<h2>휴일수당 계산 예시</h2>
+<p>일요일(주휴일)에 10시간 근무한 경우를 봅시다.</p>
+<ul>
+  <li>8시간 이내 구간: 10,320원 × 1.5 × 8 = <strong>123,840원</strong></li>
+  <li>8시간 초과 2시간: 10,320원 × 2.0 × 2 = <strong>41,280원</strong></li>
+  <li><strong>합계: 165,120원</strong></li>
+</ul>
+<p>법정공휴일(설날·추석·국경일·대체공휴일 등)도 5인 이상 사업장이라면 유급휴일로 보장해야 하므로 위와 같은 기준이 동일하게 적용됩니다.</p>
+
+<h2>수당이 중복될 때는 각각 가산</h2>
+<p>야간근로, 연장근로, 휴일근로가 겹치면 <strong>각 사유별로 50%씩 별도 가산</strong>됩니다. 이를 흔히 "중복 가산"이라고 합니다.</p>
+<table>
+  <thead>
+    <tr>
+      <th>상황</th>
+      <th>적용 가산율</th>
+      <th>실지급 배율</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>평일 야간 연장근무 (오후 10시 이후 초과)</td>
+      <td>연장 +50% + 야간 +50%</td>
+      <td>시급 × 2.0</td>
+    </tr>
+    <tr>
+      <td>휴일 8시간 이내 + 야간 시간대 겹침</td>
+      <td>휴일 +50% + 야간 +50%</td>
+      <td>시급 × 2.0</td>
+    </tr>
+    <tr>
+      <td>휴일 8시간 초과 + 야간 시간대 겹침</td>
+      <td>휴일 +100% + 야간 +50%</td>
+      <td>시급 × 2.5</td>
+    </tr>
+  </tbody>
+</table>
+<p>예시: 일요일 오후 10시~자정(2시간) 근무 시 → 10,320원 × 2.5 × 2 = <strong>51,600원</strong>. 사유가 많을수록 가산율이 높아지므로, 심야 휴일 근무 스케줄을 짤 때는 인건비를 미리 계산해 두는 것이 중요합니다.</p>
+
+<h2>5인 미만 사업장 사장님, 이것만은 꼭 확인하세요</h2>
+<p>현재(2026년 기준) 상시 근로자 <strong>5인 미만 사업장</strong>은 근로기준법 제56조(가산 수당) 적용 대상이 아닙니다. 즉 연장·야간·휴일 근로에 대해 50% 가산 의무는 없고, 근무한 시간만큼의 시급(최저 10,320원 이상)만 지급해도 법 위반이 아닙니다.</p>
+<p>그러나 <strong>주의해야 할 점</strong>이 있습니다.</p>
+<ul>
+  <li><strong>주휴수당</strong>: 5인 미만도 반드시 지급해야 합니다. 주 15시간 이상 소정근로일을 개근한 직원에게는 1일분 임금을 추가 지급해야 합니다.</li>
+  <li><strong>최저임금</strong>: 규모와 무관하게 2026년 최저시급 10,320원 이상을 지급해야 합니다.</li>
+  <li><strong>근로계약서</strong>: 5인 미만도 근로계약서 작성·교부 의무가 있습니다. 미교부 시 과태료 대상입니다.</li>
+  <li><strong>법 확대 흐름</strong>: 고용노동부는 5인 미만 사업장에 가산 수당 등 근로기준법을 단계적으로 확대 적용하는 로드맵을 추진 중입니다. 향후 의무화 가능성이 높으니 미리 준비하는 것이 좋습니다.</li>
+</ul>
+
+<h2>주휴수당, 헷갈리면 손해</h2>
+<p>주휴수당은 5인 이상·미만 구분 없이 모든 사업장이 지급해야 하는 <strong>의무 수당</strong>입니다. 계산 공식은 다음과 같습니다.</p>
+<ul>
+  <li><strong>주휴수당 = (주 소정근로시간 ÷ 5) × 시급</strong></li>
+  <li>예: 주 30시간 근무 알바생 → (30 ÷ 5) × 10,320 = <strong>61,920원/주</strong></li>
+</ul>
+<p>단, 주 15시간 미만 초단시간 근로자에게는 주휴수당이 발생하지 않습니다. 일부러 주 14시간으로 계약하는 사업장도 있지만, 실제 근무 시간이 15시간을 넘으면 분쟁이 생길 수 있으니 계약서와 실근무를 일치시키는 것이 중요합니다.</p>
+
+<p>수당 계산이 복잡하게 느껴질수록, 매일 매출과 지출을 꼼꼼히 기록해 두는 습관이 중요합니다. <strong>오늘장부</strong>를 활용하면 카드·현금·배달앱 매출을 한 곳에 정리하고 부가세 예상액까지 자동으로 확인할 수 있어, 세금과 인건비를 함께 관리하기 훨씬 수월해집니다.</p>
+
+<h2>자주 묻는 질문</h2>
+
+<h3>알바생이 밤 10시 이후 1시간만 일해도 야간수당을 줘야 하나요?</h3>
+<p>5인 이상 사업장이라면 오후 10시~오전 6시 사이에 근무한 시간만큼은 반드시 야간 가산(50%)을 적용해야 합니다. 1시간이라도 예외는 없습니다. 5인 미만 사업장은 현재 법적 의무는 없지만, 근로계약서에 야간수당을 명시했다면 지급해야 합니다.</p>
+
+<h3>공휴일이 일요일과 겹치면 어떻게 되나요?</h3>
+<p>관공서 공휴일 규정에 따라 대체공휴일이 지정되면, 5인 이상 사업장은 그 대체공휴일도 유급휴일로 보장해야 합니다. 대체공휴일에 근무하면 일반 휴일근로 기준(8시간 이내 1.5배, 8시간 초과 2배)이 그대로 적용됩니다.</p>
+
+<h3>주휴일(일요일)에 일하면 주휴수당과 휴일근로수당을 둘 다 줘야 하나요?</h3>
+<p>네, 별개입니다. 주휴수당은 해당 주의 소정근로일을 개근했을 때 발생하는 유급 수당이고, 휴일근로수당은 주휴일 당일에 실제로 근무한 것에 대한 가산 수당입니다. 주휴일에 근무하면 주휴수당(유급분) + 근무 시간에 대한 임금 + 가산 수당을 모두 지급해야 합니다.</p>
+
+<p>수당 계산이 처음엔 복잡해 보이지만, 공식만 익혀두면 생각보다 간단합니다. 인건비를 정확히 파악해야 이익도 정확히 보입니다. 매출부터 인건비까지 한 화면에서 관리하고 싶다면 <a href="https://오늘장부.kr">오늘장부 무료로 시작하기</a>를 통해 지금 바로 시작해 보세요.</p>
+
+<p>※ 본 글은 2026년 기준 참고용 정보이며, 정확한 신고·금액은 국세청 홈택스 또는 세무사와 상담하세요.</p>
+      </div>
+      <div class="tags">
+        <a href="/blog/?tag=%EC%95%BC%EA%B0%84%EC%88%98%EB%8B%B9" class="tag">야간수당</a> <a href="/blog/?tag=%ED%9C%B4%EC%9D%BC%EC%88%98%EB%8B%B9" class="tag">휴일수당</a> <a href="/blog/?tag=%EA%B0%80%EC%82%B0%EC%9E%84%EA%B8%88" class="tag">가산임금</a> <a href="/blog/?tag=%EC%A7%81%EC%9B%90%EA%B4%80%EB%A6%AC" class="tag">직원관리</a>
+      </div>
+    </article>
+
+    <section style="background:#fff8f5;border-radius:16px;padding:24px 28px;margin-top:24px;">
+      <h2 style="font-size:18px;font-weight:800;color:#1a1a1a;margin:0 0 14px;">함께 보면 좋은 글</h2>
+      <ul style="list-style:none;padding:0;margin:0;">
+        <li style="padding:8px 0;border-bottom:1px solid #ffe6d9;"><a href="/blog/posts/foreign-part-time-worker-hiring-guide.html" style="color:#FF6B35;text-decoration:none;font-weight:600;font-size:14px;">외국인 알바 고용 절차 완전 정리 — 비자 확인부터 4대보험까지</a></li>
+        <li style="padding:8px 0;border-bottom:1px solid #ffe6d9;"><a href="/blog/posts/hiring-family-members-cautions.html" style="color:#FF6B35;text-decoration:none;font-weight:600;font-size:14px;">가족 직원 고용 시 주의, 4대보험·인건비 핵심정리</a></li>
+        <li style="padding:8px 0;border-bottom:1px solid #ffe6d9;"><a href="/blog/posts/employee-no-show-absence-guide.html" style="color:#FF6B35;text-decoration:none;font-weight:600;font-size:14px;">직원 무단결근 대처법, 즉시 해고는 금물입니다</a></li>
+        <li style="padding:8px 0;border-bottom:1px solid #ffe6d9;"><a href="/blog/posts/severance-pay-criteria-calculation.html" style="color:#FF6B35;text-decoration:none;font-weight:600;font-size:14px;">퇴직금 지급 기준과 계산법, 사장님이 꼭 알아야 할 핵심</a></li>
+      </ul>
+    </section>
+
+    <div class="ad-slot">광고 영역 (AdSense 승인 후 활성화)</div>
+
+    <div class="cta-box">
+      <h3>매일 매출 기록, 30초면 끝!</h3>
+      <p>카드·현금·네이버페이·카카오페이<br>여러 결제수단을 한 화면에서 입력<br>부가세 예상액도 자동으로 계산해드려요</p>
+      <a href="/">지금 무료로 시작하기</a>
+    </div>
+  </main>
+
+  <aside class="sidebar">
+    <div class="sidebar-cta">
+      <h3>매일 매출 기록,<br>30초면 끝!</h3>
+      <p>카드·현금·배달앱 한 번에<br>부가세 예상액도 자동 계산</p>
+      <a href="/">무료로 시작하기</a>
+    </div>
+  </aside>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-links">
+      <a href="/">서비스 홈</a>
+      <a href="/blog/">블로그</a>
+      <a href="/privacy">개인정보처리방침</a>
+      <a href="/terms">이용약관</a>
+    </div>
+    <div class="footer-copy">© 2026 오늘장부. All rights reserved.</div>
+  </div>
+</footer>
+
+</body>
+</html>
