@@ -399,6 +399,32 @@ async function submitIndexNow(url) {
   }
 }
 
+// ── 대표 이미지 (PEXELS_API_KEY 있으면 주제 사진, 없으면 Picsum 고유 사진) ──
+// loremflickr는 태그 미매칭 시 동일한 기본이미지를 반환(사진 중복 원인)해서 폐기.
+async function resolveThumb(imageQuery, slug) {
+  const key = process.env.PEXELS_API_KEY
+  if (key) {
+    try {
+      const res = await fetch(
+        `https://api.pexels.com/v1/search?query=${encodeURIComponent(imageQuery)}&per_page=20&orientation=landscape`,
+        { headers: { Authorization: key } }
+      )
+      if (res.ok) {
+        const photos = (await res.json()).photos || []
+        if (photos.length) {
+          let h = 0
+          for (const c of slug) h = (h * 31 + c.charCodeAt(0)) >>> 0
+          return photos[h % photos.length].src.landscape
+        }
+      }
+    } catch (err) {
+      console.warn(`Pexels 실패, Picsum 폴백: ${err.message}`)
+    }
+  }
+  // 폴백: Picsum — 슬러그 시드로 글마다 고유·안정 (키 불필요)
+  return `https://picsum.photos/seed/${encodeURIComponent(slug)}/940/650`
+}
+
 // ── 메인 ─────────────────────────────────────────────────────────
 let slugGlobal = 'post'
 async function main() {
@@ -426,8 +452,7 @@ async function main() {
   const category = kw.category // 카테고리는 키워드에 고정 (탭과 일치 보장)
 
   slugGlobal = uniqueSlug(sanitizeSlug(post.slug || title))
-  const tag = kw.imageQuery.trim().split(/\s+/).join(',')
-  const thumb = `https://loremflickr.com/940/650/${tag}?lock=${seedFromSlug(slugGlobal)}`
+  const thumb = await resolveThumb(kw.imageQuery, slugGlobal)
 
   console.log(`글: ${title}`)
   console.log(`slug: ${slugGlobal}`)
