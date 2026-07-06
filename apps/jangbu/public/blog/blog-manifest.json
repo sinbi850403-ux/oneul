@@ -1,5 +1,19 @@
 [
   {
+    "slug": "cafe-daily-sales-management",
+    "title": "카페 일매출 관리하는 법 — 카드·현금·배달 한 번에 정리",
+    "description": "카드·현금·배달앱 매출을 채널별로 구분해 기록하고, 부가세·카드수수료까지 일매출에서 바로 파악하는 카페 사장님 실전 매출관리 가이드.",
+    "category": "매출관리",
+    "date": "2026-07-06",
+    "thumb": "https://images.pexels.com/photos/4473399/pexels-photo-4473399.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200",
+    "tags": [
+      "카페매출관리",
+      "일매출기록",
+      "소상공인부가세",
+      "카드수수료"
+    ]
+  },
+  {
     "slug": "working-hours-management-and-record-keeping-guide",
     "title": "근로시간 관리와 기록, 사장님이 꼭 알아야 할 실전 가이드",
     "description": "출퇴근 기록 3년 보존 의무부터 주휴수당 조건, 5인 미만 사업장 주의사항까지. 2026년 기준 소상공인 근로시간 관리 실전 핵심 정리.",
