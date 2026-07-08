@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>알바 연차 수당 계산 방법 완전 정복 — 사장님 필독 | 오늘장부 블로그</title>
+  <meta name="description" content="5인 이상 사업장 사장님이라면 알바생 연차도 법적 의무입니다. 발생 조건부터 시간 단위 계산 공식, 미사용 수당 정산까지 2026년 기준으로 한눈에 정리했습니다.">
+  <meta property="og:title" content="알바 연차 수당 계산 방법 완전 정복 — 사장님 필독">
+  <meta property="og:description" content="5인 이상 사업장 사장님이라면 알바생 연차도 법적 의무입니다. 발생 조건부터 시간 단위 계산 공식, 미사용 수당 정산까지 2026년 기준으로 한눈에 정리했습니다.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://xn--wh1bw0st1gbrb.kr/blog/posts/part-time-annual-leave-allowance-calculation.html">
+  <meta property="og:image" content="https://images.pexels.com/photos/4353591/pexels-photo-4353591.jpeg?auto=compress&amp;cs=tinysrgb&amp;fit=crop&amp;h=627&amp;w=1200">
+  <link rel="canonical" href="https://xn--wh1bw0st1gbrb.kr/blog/posts/part-time-annual-leave-allowance-calculation.html">
+  <link rel="icon" href="/icons/icon-192.png">
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2764893290310463" crossorigin="anonymous"></script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Noto Sans KR', sans-serif; background: #f8f9fa; color: #1a1a1a; line-height: 1.7; }
+    header { background: #fff; border-bottom: 1px solid #eee; position: sticky; top: 0; z-index: 100; }
+    .header-inner { max-width: 1100px; margin: 0 auto; padding: 0 20px; height: 60px; display: flex; align-items: center; justify-content: space-between; }
+    .logo { display: flex; align-items: center; gap: 8px; text-decoration: none; }
+    .logo-icon { width: 32px; height: 32px; background: #FF6B35; border-radius: 8px; display: flex; align-items: center; justify-content: center; color: white; font-weight: 900; font-size: 16px; }
+    .logo-text { font-size: 18px; font-weight: 800; color: #FF6B35; }
+    .logo-sub { font-size: 13px; color: #888; margin-left: 4px; }
+    .header-cta { background: #FF6B35; color: white; border: none; padding: 8px 16px; border-radius: 8px; font-size: 13px; font-weight: 600; cursor: pointer; text-decoration: none; }
+    .wrap { max-width: 1100px; margin: 0 auto; padding: 32px 20px; display: grid; grid-template-columns: 1fr 300px; gap: 40px; }
+    @media (max-width: 768px) { .wrap { grid-template-columns: 1fr; } .sidebar { display: none; } }
+    article { background: white; border-radius: 20px; overflow: hidden; box-shadow: 0 2px 12px rgba(0,0,0,0.06); }
+    .article-head { padding: 32px 32px 24px; border-bottom: 1px solid #f0f0f0; }
+    .article-cat { font-size: 12px; font-weight: 700; color: #FF6B35; text-transform: uppercase; margin-bottom: 12px; }
+    .article-cat a { color: #FF6B35; text-decoration: none; }
+    .article-title { font-size: clamp(20px, 4vw, 28px); font-weight: 900; line-height: 1.4; color: #1a1a1a; margin-bottom: 16px; }
+    .article-meta { font-size: 13px; color: #aaa; display: flex; gap: 16px; align-items: center; flex-wrap: wrap; }
+    .hero-img { width: 100%; aspect-ratio: 16/9; object-fit: cover; background: #f0f0f0; }
+    .article-body { padding: 32px; }
+    .article-body h2 { font-size: 20px; font-weight: 800; color: #1a1a1a; margin: 32px 0 14px; padding-bottom: 8px; border-bottom: 2px solid #FF6B35; }
+    .article-body h3 { font-size: 16px; font-weight: 700; color: #333; margin: 20px 0 10px; }
+    .article-body p { margin-bottom: 14px; color: #333; font-size: 15px; }
+    .article-body ul, .article-body ol { padding-left: 20px; margin-bottom: 14px; }
+    .article-body li { margin-bottom: 6px; color: #333; font-size: 15px; }
+    .article-body table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 14px; }
+    .article-body th { background: #FF6B35; color: white; padding: 10px 14px; text-align: left; }
+    .article-body td { padding: 10px 14px; border-bottom: 1px solid #f0f0f0; }
+    .article-body tr:nth-child(even) td { background: #fff8f5; }
+    .article-body img { width: 100%; border-radius: 12px; margin: 16px 0; }
+    .article-body strong { color: #1a1a1a; }
+    .article-body blockquote { background: #fff8f5; border-left: 4px solid #FF6B35; padding: 16px 20px; border-radius: 0 12px 12px 0; margin: 16px 0; font-style: italic; color: #555; }
+    .article-body a { color: #FF6B35; }
+    .tags { padding: 20px 32px; border-top: 1px solid #f0f0f0; display: flex; gap: 8px; flex-wrap: wrap; }
+    .tag { background: #fff3ee; color: #FF6B35; border-radius: 20px; padding: 5px 12px; font-size: 12px; font-weight: 600; text-decoration: none; }
+    .tag:hover { background: #FF6B35; color: white; }
+    .ad-slot { background: #f0f0f0; border-radius: 12px; display: flex; align-items: center; justify-content: center; color: #bbb; font-size: 12px; min-height: 90px; margin: 24px 0; }
+    .cta-box { background: linear-gradient(135deg, #FF6B35, #ff8c42); border-radius: 20px; padding: 32px; text-align: center; color: white; margin-top: 24px; }
+    .cta-box h3 { font-size: 22px; font-weight: 900; margin-bottom: 10px; }
+    .cta-box p { font-size: 14px; opacity: 0.9; line-height: 1.6; margin-bottom: 20px; }
+    .cta-box a { background: white; color: #FF6B35; border-radius: 12px; padding: 13px 28px; font-weight: 800; font-size: 15px; text-decoration: none; display: inline-block; }
+    .nav-links { display: flex; gap: 16px; margin-top: 24px; }
+    .nav-back { color: #FF6B35; text-decoration: none; font-size: 14px; font-weight: 600; }
+    .nav-back::before { content: '\2190 '; }
+    .sidebar-cta { background: linear-gradient(135deg, #FF6B35, #ff8c42); color: white; border-radius: 16px; padding: 24px; text-align: center; position: sticky; top: 80px; }
+    .sidebar-cta h3 { font-size: 16px; font-weight: 900; margin-bottom: 8px; }
+    .sidebar-cta p { font-size: 13px; opacity: 0.9; line-height: 1.5; margin-bottom: 16px; }
+    .sidebar-cta a { background: white; color: #FF6B35; border-radius: 8px; padding: 10px 20px; font-weight: 700; font-size: 14px; text-decoration: none; display: inline-block; }
+    footer { background: #1a1a1a; color: #888; padding: 40px 20px; margin-top: 60px; }
+    .footer-inner { max-width: 1100px; margin: 0 auto; }
+    .footer-links { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 16px; }
+    .footer-links a { color: #888; text-decoration: none; font-size: 13px; }
+    .footer-copy { font-size: 12px; }
+  </style>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "알바 연차 수당 계산 방법 완전 정복 — 사장님 필독",
+  "description": "5인 이상 사업장 사장님이라면 알바생 연차도 법적 의무입니다. 발생 조건부터 시간 단위 계산 공식, 미사용 수당 정산까지 2026년 기준으로 한눈에 정리했습니다.",
+  "datePublished": "2026-07-08",
+  "dateModified": "2026-07-08",
+  "image": "https://images.pexels.com/photos/4353591/pexels-photo-4353591.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200",
+  "author": {
+    "@type": "Organization",
+    "name": "오늘장부",
+    "url": "https://오늘장부.kr"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "오늘장부",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://xn--wh1bw0st1gbrb.kr/icons/icon-192.png"
+    }
+  },
+  "mainEntityOfPage": "https://xn--wh1bw0st1gbrb.kr/blog/posts/part-time-annual-leave-allowance-calculation.html",
+  "keywords": "연차수당, 알바관리, 단시간근로자, 직원관리"
+}
+  </script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "알바가 퇴직하면서 \"연차 못 썼으니 수당 달라\"고 하는데, 꼭 줘야 하나요?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "네, 5인 이상 사업장이라면 반드시 지급해야 합니다. 퇴직자의 미사용 연차는 연차사용촉진제도를 운영했더라도 수당으로 정산해야 할 법적 의무가 있습니다. 퇴직일로부터 14일 이내에 지급하지 않으면 임금체불에 해당할 수 있으니 주의하세요."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "주 15시간 미만으로 일하는 알바에게도 연차를 줘야 하나요?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "아닙니다. 4주 평균 1주 소정근로시간이 15시간 미만인 초단시간 근로자는 근로기준법 제18조에 따라 연차 적용 대상에서 제외됩니다. 다만 계약상 주 15시간 미만이더라도 실제 근로시간이 계속 15시간 이상이라면 연차가 발생할 수 있으므로 실제 근무시간을 반드시 확인하세요."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "5인 미만 사업장인데, 취업규칙이나 근로계약서에 \"연차 있음\"이라고 썼으면 어떻게 되나요?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "법 적용 대상이 아니더라도, 근로계약서·취업규칙에 연차를 부여하기로 명시했다면 그 약속은 지켜야 합니다. 법적 의무는 없더라도 계약 의무가 발생하기 때문입니다. 계약서 작성 전 내용을 꼼꼼히 확인하는 것이 좋습니다."
+      }
+    }
+  ]
+}
+  </script>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <a href="/" class="logo">
+      <div class="logo-icon">장</div>
+      <span class="logo-text">오늘장부</span>
+      <span class="logo-sub">블로그</span>
+    </a>
+    <a href="/" class="header-cta">무료로 시작하기</a>
+  </div>
+</header>
+
+<div class="wrap">
+  <main>
+    <div class="nav-links">
+      <a href="/blog/" class="nav-back">블로그 목록으로</a>
+    </div>
+
+    <div class="ad-slot">광고 영역 (AdSense 승인 후 활성화)</div>
+
+    <article>
+      <div class="article-head">
+        <div class="article-cat"><a href="/blog/">직원관리</a></div>
+        <h1 class="article-title">알바 연차 수당 계산 방법 완전 정복 — 사장님 필독</h1>
+        <div class="article-meta">
+          <span>오늘장부 편집팀</span>
+          <span>2026년 07월 08일</span>
+        </div>
+      </div>
+      <img src="https://images.pexels.com/photos/4353591/pexels-photo-4353591.jpeg?auto=compress&amp;cs=tinysrgb&amp;fit=crop&amp;h=627&amp;w=1200" alt="알바 연차 수당 계산 방법 완전 정복 — 사장님 필독" class="hero-img" loading="lazy">
+      <div class="article-body">
+<p>편의점·카페·식당을 운영하는 사장님 중에 "알바생한테도 연차를 줘야 하나요?"라고 묻는 분이 많습니다. 결론부터 말씀드리면, <strong>상시 5인 이상 사업장이라면 알바생(단시간근로자)에게도 연차유급휴가를 부여해야 합니다.</strong> 연차를 쓰지 않으면 수당으로 보상해야 하고, 퇴직 시 미사용 연차는 반드시 정산해야 합니다. 모르고 지나치면 나중에 한꺼번에 청구받는 상황이 생깁니다. 이 글에서 2026년 기준 알바 연차 발생 조건과 수당 계산법을 단계별로 정리해 드립니다.</p>
+
+<h2>1. 알바 연차, 우리 가게는 해당되나요?</h2>
+
+<p>연차는 <strong>근로기준법 제60조</strong>에 따라 적용되며, 사업장 규모와 근로시간에 따라 적용 여부가 달라집니다.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>구분</th>
+      <th>연차 적용 여부</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>상시 5인 이상 사업장 + 주 평균 15시간 이상 알바</td>
+      <td>✅ 연차 의무 적용</td>
+    </tr>
+    <tr>
+      <td>상시 5인 미만 사업장</td>
+      <td>❌ 연차 적용 제외 (원칙)</td>
+    </tr>
+    <tr>
+      <td>4주 평균 주 15시간 미만 초단시간 근로자</td>
+      <td>❌ 연차 발생 없음 (근로기준법 제18조)</td>
+    </tr>
+  </tbody>
+</table>
+
+<blockquote>⚠️ <strong>5인 미만이라도 예외 있음:</strong> 상시근로자 수 산정기간(법 적용 사유 발생일 이전 1개월) 동안 '5인 미만인 날'이 전체의 절반 미만이면, 5인 이상 사업장으로 간주돼 연차 의무가 생길 수 있습니다(근로기준법 시행령 제7조의2). 배달라이더·파트타이머를 수시로 쓰는 곳은 특히 주의하세요.</blockquote>
+
+<h2>2. 알바 연차는 언제, 얼마나 발생하나요?</h2>
+
+<p>연차 발생 기준은 근속기간과 출근율에 따라 두 가지로 나뉩니다.</p>
+
+<h3>① 입사 1년 미만 — 월 1일씩 발생</h3>
+<p>근로기준법 제60조 제2항에 따라, 입사 후 1개월을 개근하면 1일의 유급휴가가 발생합니다. 최대 11개월까지 적용되므로 1년 미만 알바생에게는 최대 <strong>11일</strong>의 연차가 생길 수 있습니다.</p>
+
+<h3>② 1년 이상 + 출근율 80% 이상 — 연 15일 발생</h3>
+<p>1년 이상 계속 근무하고 출근율이 80% 이상이면 <strong>15일</strong>의 연차가 발생합니다. 3년 이상부터는 2년마다 1일씩 가산(최대 25일)됩니다.</p>
+
+<h2>3. 알바 연차 수당, 어떻게 계산하나요?</h2>
+
+<p>풀타임 근로자는 '일(日) 단위'로 연차를 관리하지만, 단시간 근로자(알바)는 <strong>'시간 단위'</strong>로 계산합니다. 공식은 다음과 같습니다.</p>
+
+<h3>단시간 근로자 연차 시간 환산 공식</h3>
+<blockquote>
+  <strong>연차 시간 = 통상 근로자 연차일수 × (알바 소정근로시간 ÷ 40시간) × 8시간</strong>
+</blockquote>
+
+<p><strong>예시 — 주 20시간 알바, 1년 이상 근무, 시급 12,000원</strong></p>
+<ul>
+  <li>연차 시간: 15일 × (20시간 ÷ 40시간) × 8시간 = <strong>60시간</strong></li>
+  <li>미사용 연차수당: 60시간 × 시급 12,000원 = <strong>720,000원</strong></li>
+</ul>
+
+<p><strong>예시 — 주 30시간 알바, 1년 이상 근무, 시급 10,320원(2026년 최저임금)</strong></p>
+<ul>
+  <li>연차 시간: 15일 × (30시간 ÷ 40시간) × 8시간 = <strong>90시간</strong></li>
+  <li>미사용 연차수당: 90시간 × 10,320원 = <strong>928,800원</strong></li>
+</ul>
+
+<blockquote>💡 <strong>시급이 오른 경우:</strong> 미사용 연차수당의 기준임금은 연차를 청구할 수 있는 마지막 달의 임금(인상된 시급)을 적용합니다. 중간에 임금이 오른 알바생은 인상된 시급으로 계산해야 합니다.</blockquote>
+
+<h3>정규직(주 40시간) 통상임금 기준 연차수당 공식</h3>
+<blockquote>
+  <strong>연차수당 = (월 통상임금 ÷ 209시간) × 8시간 × 미사용 연차일수</strong>
+</blockquote>
+<p>2026년 최저임금(시급 10,320원) 기준으로 일급 통상임금은 <strong>82,560원</strong>입니다. 미사용 연차 5일이라면 82,560원 × 5 = <strong>412,800원</strong>이 됩니다.</p>
+
+<h2>4. 미사용 연차수당 — 언제, 어떻게 지급해야 하나요?</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>상황</th>
+      <th>지급 의무</th>
+      <th>기한</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>연차 사용기간(1년) 만료</td>
+      <td>미사용 연차를 수당으로 지급</td>
+      <td>다음 임금지급일</td>
+    </tr>
+    <tr>
+      <td>알바 퇴직 시</td>
+      <td>잔여 연차 전부 수당 정산 의무</td>
+      <td>퇴직일로부터 14일 이내</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>퇴직 시 미사용 연차수당은 <strong>연차사용촉진제도 이행 여부와 관계없이 반드시 지급</strong>해야 합니다. 연차사용촉진 면제는 재직 중인 근로자에게만 적용되기 때문입니다. 또한 미사용 연차수당은 퇴직금 평균임금 산정에는 포함되지 않으므로, 퇴직금과 별도로 계산해 지급해야 합니다.</p>
+
+<h2>5. 사장님이 꼭 챙겨야 할 연차 관리 포인트</h2>
+
+<ol>
+  <li><strong>근로계약서에 소정근로시간 명확히 기재</strong> — 연차 시간 계산의 기준이 됩니다. 중간에 근무시간이 바뀌면 변경된 시간 기준으로 연차를 다시 계산해야 합니다.</li>
+  <li><strong>연차 사용 내역 문서화</strong> — 언제 몇 시간을 사용했는지 기록해두어야 나중에 분쟁을 막을 수 있습니다.</li>
+  <li><strong>연차사용촉진제도 활용</strong> — 연차 사용기간 만료 6개월 전·2개월 전 서면으로 사용을 촉구하면, 미사용 연차수당 지급 의무(재직 중 한정)를 면할 수 있습니다.</li>
+  <li><strong>퇴직 시 14일 이내 정산</strong> — 14일 이내 미지급 시 임금체불로 진정 대상이 될 수 있습니다.</li>
+</ol>
+
+<p>매출이 바쁜 날일수록 직원 근태와 연차 관리를 놓치기 쉽습니다. <strong>오늘장부</strong>처럼 일매출을 한 눈에 기록하고 관리하는 습관을 들이면, 인건비·연차수당 등 지출 흐름도 함께 파악하기 수월해집니다.</p>
+
+<h2>자주 묻는 질문</h2>
+
+<h3>알바가 퇴직하면서 "연차 못 썼으니 수당 달라"고 하는데, 꼭 줘야 하나요?</h3>
+<p>네, 5인 이상 사업장이라면 반드시 지급해야 합니다. 퇴직자의 미사용 연차는 연차사용촉진제도를 운영했더라도 수당으로 정산해야 할 법적 의무가 있습니다. 퇴직일로부터 14일 이내에 지급하지 않으면 임금체불에 해당할 수 있으니 주의하세요.</p>
+
+<h3>주 15시간 미만으로 일하는 알바에게도 연차를 줘야 하나요?</h3>
+<p>아닙니다. 4주 평균 1주 소정근로시간이 15시간 미만인 초단시간 근로자는 근로기준법 제18조에 따라 연차 적용 대상에서 제외됩니다. 다만 계약상 주 15시간 미만이더라도 실제 근로시간이 계속 15시간 이상이라면 연차가 발생할 수 있으므로 실제 근무시간을 반드시 확인하세요.</p>
+
+<h3>5인 미만 사업장인데, 취업규칙이나 근로계약서에 "연차 있음"이라고 썼으면 어떻게 되나요?</h3>
+<p>법 적용 대상이 아니더라도, 근로계약서·취업규칙에 연차를 부여하기로 명시했다면 그 약속은 지켜야 합니다. 법적 의무는 없더라도 계약 의무가 발생하기 때문입니다. 계약서 작성 전 내용을 꼼꼼히 확인하는 것이 좋습니다.</p>
+
+<p>알바 연차수당은 한 번에 큰 금액이 나갈 수 있어 사전에 파악해두는 것이 중요합니다. 일매출과 인건비를 한 번에 관리하고 싶다면 <a href="https://오늘장부.kr">오늘장부 무료로 시작하기</a>를 통해 부담 없이 시작해 보세요.</p>
+
+<p>※ 본 글은 2026년 기준 참고용 정보이며, 정확한 신고·금액은 국세청 홈택스 또는 세무사와 상담하세요.</p>
+      </div>
+      <div class="tags">
+        <a href="/blog/?tag=%EC%97%B0%EC%B0%A8%EC%88%98%EB%8B%B9" class="tag">연차수당</a> <a href="/blog/?tag=%EC%95%8C%EB%B0%94%EA%B4%80%EB%A6%AC" class="tag">알바관리</a> <a href="/blog/?tag=%EB%8B%A8%EC%8B%9C%EA%B0%84%EA%B7%BC%EB%A1%9C%EC%9E%90" class="tag">단시간근로자</a> <a href="/blog/?tag=%EC%A7%81%EC%9B%90%EA%B4%80%EB%A6%AC" class="tag">직원관리</a>
+      </div>
+    </article>
+
+    <section style="background:#fff8f5;border-radius:16px;padding:24px 28px;margin-top:24px;">
+      <h2 style="font-size:18px;font-weight:800;color:#1a1a1a;margin:0 0 14px;">함께 보면 좋은 글</h2>
+      <ul style="list-style:none;padding:0;margin:0;">
+        <li style="padding:8px 0;border-bottom:1px solid #ffe6d9;"><a href="/blog/posts/juyu-sudang-calculation-self-employed-2026.html" style="color:#FF6B35;text-decoration:none;font-weight:600;font-size:14px;">주휴수당 계산법 자영업자 완벽 정리 (2026년 최신)</a></li>
+        <li style="padding:8px 0;border-bottom:1px solid #ffe6d9;"><a href="/blog/posts/part-time-worker-4-major-insurance-enrollment-criteria.html" style="color:#FF6B35;text-decoration:none;font-weight:600;font-size:14px;">알바 4대보험 가입 기준 완전 정리 (2026년 최신)</a></li>
+        <li style="padding:8px 0;border-bottom:1px solid #ffe6d9;"><a href="/blog/posts/working-hours-management-and-record-keeping-guide.html" style="color:#FF6B35;text-decoration:none;font-weight:600;font-size:14px;">근로시간 관리와 기록, 사장님이 꼭 알아야 할 실전 가이드</a></li>
+        <li style="padding:8px 0;border-bottom:1px solid #ffe6d9;"><a href="/blog/posts/employee-motivation-small-business-practical-tips.html" style="color:#FF6B35;text-decoration:none;font-weight:600;font-size:14px;">직원 동기부여 현실 방법 — 돈 말고도 통하는 7가지 전략</a></li>
+      </ul>
+    </section>
+
+    <div class="ad-slot">광고 영역 (AdSense 승인 후 활성화)</div>
+
+    <div class="cta-box">
+      <h3>매일 매출 기록, 30초면 끝!</h3>
+      <p>카드·현금·네이버페이·카카오페이<br>여러 결제수단을 한 화면에서 입력<br>부가세 예상액도 자동으로 계산해드려요</p>
+      <a href="/">지금 무료로 시작하기</a>
+    </div>
+  </main>
+
+  <aside class="sidebar">
+    <div class="sidebar-cta">
+      <h3>매일 매출 기록,<br>30초면 끝!</h3>
+      <p>카드·현금·배달앱 한 번에<br>부가세 예상액도 자동 계산</p>
+      <a href="/">무료로 시작하기</a>
+    </div>
+  </aside>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-links">
+      <a href="/">서비스 홈</a>
+      <a href="/blog/">블로그</a>
+      <a href="/privacy">개인정보처리방침</a>
+      <a href="/terms">이용약관</a>
+    </div>
+    <div class="footer-copy">© 2026 오늘장부. All rights reserved.</div>
+  </div>
+</footer>
+
+</body>
+</html>
