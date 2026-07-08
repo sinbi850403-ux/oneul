@@ -71,17 +71,17 @@ export default function Input() {
   return (
     <div className="px-5 pt-6 pb-4">
       <div className="flex items-center justify-between mb-6">
-        <h2 className="text-xl font-bold text-gray-800">매출 입력</h2>
+        <h2 className="text-xl font-bold text-stone-800">매출 입력</h2>
         <input
           type="date"
           value={date}
           max={todayKST()}
           onChange={(e) => setDate(toKSTDateString(new Date(e.target.value + 'T00:00:00')))}
-          className="text-brand font-semibold text-base outline-none"
+          className="text-brand font-semibold text-sm bg-orange-50 rounded-full px-3.5 py-1.5 outline-none"
         />
       </div>
 
-      <div className="bg-white rounded-2xl shadow-sm px-4 mb-4">
+      <div className="bg-white rounded-2xl shadow-card px-4 py-1 mb-4">
         {FIELDS.map(({ key, label }) => (
           <NumberInput
             key={key}
@@ -92,8 +92,8 @@ export default function Input() {
         ))}
       </div>
 
-      <div className="bg-orange-50 rounded-2xl px-5 py-4 mb-4 flex justify-between items-center">
-        <span className="text-gray-600 font-medium">오늘 합계</span>
+      <div className="bg-orange-50 rounded-2xl px-5 py-4 mb-5 flex justify-between items-center">
+        <span className="text-stone-600 font-medium">오늘 합계</span>
         <span className="text-2xl font-bold text-brand">
           ₩ {total.toLocaleString('ko-KR')}
         </span>
@@ -102,14 +102,14 @@ export default function Input() {
       <button
         onClick={handleSave}
         disabled={saving}
-        className="w-full bg-brand text-white rounded-2xl py-5 text-xl font-bold active:opacity-80 disabled:opacity-50 mb-3"
+        className="w-full bg-brand text-white rounded-2xl py-5 text-xl font-bold shadow-warm transition-transform active:scale-[0.98] active:opacity-90 disabled:opacity-50 disabled:shadow-none mb-3"
       >
         {saving ? '저장 중...' : '저장하기'}
       </button>
 
       <button
         onClick={handleReset}
-        className="w-full text-gray-400 text-sm py-2"
+        className="w-full text-stone-400 text-sm py-2"
       >
         초기화
       </button>

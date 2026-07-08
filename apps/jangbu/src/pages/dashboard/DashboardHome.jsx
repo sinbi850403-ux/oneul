@@ -93,7 +93,7 @@ export default function DashboardHome() {
 
   if (loading) {
     return (
-      <div className="flex items-center justify-center h-64 text-gray-400 text-sm">
+      <div className="flex items-center justify-center h-64 text-stone-400 text-sm">
         불러오는 중...
       </div>
     )
@@ -104,12 +104,12 @@ export default function DashboardHome() {
       {/* 헤더 */}
       <div className="flex items-end justify-between mb-6">
         <div>
-          <h2 className="text-2xl font-bold text-gray-800">대시보드</h2>
+          <h2 className="text-2xl font-bold text-stone-800">대시보드</h2>
           {shopName && (
-            <p className="text-sm text-gray-400 mt-0.5">{shopName}</p>
+            <p className="text-sm text-stone-400 mt-0.5">{shopName}</p>
           )}
         </div>
-        <p className="text-sm text-gray-400">
+        <p className="text-sm text-stone-400">
           {now.getFullYear()}년 {now.getMonth() + 1}월 {now.getDate()}일
         </p>
       </div>
@@ -137,14 +137,14 @@ export default function DashboardHome() {
 
       {/* 요약 카드 4개 */}
       <div className="grid grid-cols-4 gap-4 mb-6">
-        <div className="bg-white rounded-2xl p-5 shadow-sm">
-          <p className="text-xs text-gray-400 mb-2">오늘 매출</p>
+        <div className="bg-white rounded-2xl p-5 shadow-card">
+          <p className="text-xs text-stone-400 mb-2">오늘 매출</p>
           <p className="text-2xl font-bold text-brand">{won(todaySales)}</p>
         </div>
 
-        <div className="bg-white rounded-2xl p-5 shadow-sm">
-          <p className="text-xs text-gray-400 mb-2">이번달 매출</p>
-          <p className="text-2xl font-bold text-gray-800">{won(monthSales)}</p>
+        <div className="bg-white rounded-2xl p-5 shadow-card">
+          <p className="text-xs text-stone-400 mb-2">이번달 매출</p>
+          <p className="text-2xl font-bold text-stone-800">{won(monthSales)}</p>
           {growthRate !== null && (
             <p className={`text-xs mt-1.5 font-medium ${growthRate >= 0 ? 'text-green-500' : 'text-red-400'}`}>
               지난달 대비 {growthRate >= 0 ? '+' : ''}{growthRate}%
@@ -152,18 +152,18 @@ export default function DashboardHome() {
           )}
         </div>
 
-        <div className="bg-white rounded-2xl p-5 shadow-sm">
-          <p className="text-xs text-gray-400 mb-2">이번달 매입</p>
-          <p className="text-2xl font-bold text-gray-800">{won(monthPurchase)}</p>
+        <div className="bg-white rounded-2xl p-5 shadow-card">
+          <p className="text-xs text-stone-400 mb-2">이번달 매입</p>
+          <p className="text-2xl font-bold text-stone-800">{won(monthPurchase)}</p>
         </div>
 
-        <div className="bg-white rounded-2xl p-5 shadow-sm">
-          <p className="text-xs text-gray-400 mb-2">이번달 순이익</p>
+        <div className="bg-white rounded-2xl p-5 shadow-card">
+          <p className="text-xs text-stone-400 mb-2">이번달 순이익</p>
           <p className={`text-2xl font-bold ${monthProfit >= 0 ? 'text-green-600' : 'text-red-500'}`}>
             {monthProfit >= 0 ? '+' : ''}{won(monthProfit)}
           </p>
           {monthSales > 0 && (
-            <p className="text-xs mt-1.5 text-gray-400">
+            <p className="text-xs mt-1.5 text-stone-400">
               마진율 {Math.round((monthProfit / monthSales) * 100)}%
             </p>
           )}
@@ -177,27 +177,27 @@ export default function DashboardHome() {
 
       {/* 월 매출 목표 진행률 */}
       {monthlyTarget > 0 && (
-        <div className="bg-white rounded-2xl shadow-sm p-5 mb-6">
+        <div className="bg-white rounded-2xl shadow-card p-5 mb-6">
           <div className="flex items-center justify-between mb-3">
-            <p className="text-sm font-semibold text-gray-700">이달 매출 목표</p>
-            <p className="text-sm text-gray-400">
+            <p className="text-sm font-semibold text-stone-700">이달 매출 목표</p>
+            <p className="text-sm text-stone-400">
               {monthSales >= 10000 ? `${Math.round(monthSales / 10000)}만` : monthSales.toLocaleString()}원
               {' / '}
               {monthlyTarget >= 10000 ? `${Math.round(monthlyTarget / 10000)}만` : monthlyTarget.toLocaleString()}원
             </p>
           </div>
-          <div className="w-full bg-gray-100 rounded-full h-3 mb-2.5 overflow-hidden">
+          <div className="w-full bg-stone-100 rounded-full h-3 mb-2.5 overflow-hidden">
             <div
               className="h-3 rounded-full transition-all duration-500"
               style={{
                 width: `${targetProgress}%`,
-                background: targetProgress >= 100 ? '#16A34A' : 'var(--color-brand, #F97316)',
+                background: targetProgress >= 100 ? '#16A34A' : 'var(--color-brand, #FF6B35)',
               }}
             />
           </div>
           <div className="flex justify-between items-center text-xs">
             <span className="font-bold text-orange-500">{targetProgress}% 달성</span>
-            <span className="text-gray-400">
+            <span className="text-stone-400">
               {monthSales >= monthlyTarget
                 ? '목표 달성!'
                 : `남은 ${remainingDays}일 · 하루 ${requiredDaily >= 10000 ? `${Math.round(requiredDaily / 10000)}만` : requiredDaily.toLocaleString()}원 더!`}
@@ -207,8 +207,8 @@ export default function DashboardHome() {
       )}
 
       {/* 최근 7일 바 차트 */}
-      <div className="bg-white rounded-2xl shadow-sm p-6 mb-6">
-        <p className="text-sm font-semibold text-gray-700 mb-5">최근 7일 매출</p>
+      <div className="bg-white rounded-2xl shadow-card p-6 mb-6">
+        <p className="text-sm font-semibold text-stone-700 mb-5">최근 7일 매출</p>
         <div className="flex items-end gap-2">
           {Array.from({ length: 7 }, (_, i) => {
             const day = new Date(now)
@@ -220,7 +220,7 @@ export default function DashboardHome() {
             const isToday = i === 6
             return (
               <div key={dateStr} className="flex-1 flex flex-col items-center gap-1.5">
-                <span className="text-xs text-gray-500 h-4 text-center leading-4">
+                <span className="text-xs text-stone-500 h-4 text-center leading-4">
                   {val > 0 ? (val >= 10000 ? `${Math.round(val / 10000)}만` : val.toLocaleString()) : ''}
                 </span>
                 <div className="w-full flex flex-col justify-end" style={{ height: 80 }}>
@@ -229,7 +229,7 @@ export default function DashboardHome() {
                     style={{ height: barH, opacity: val > 0 ? 1 : 0.35 }}
                   />
                 </div>
-                <span className={`text-xs ${isToday ? 'font-bold text-brand' : 'text-gray-400'}`}>
+                <span className={`text-xs ${isToday ? 'font-bold text-brand' : 'text-stone-400'}`}>
                   {pad(day.getDate())}
                 </span>
               </div>
@@ -248,9 +248,9 @@ export default function DashboardHome() {
           <a
             key={href}
             href={href}
-            className="bg-white rounded-2xl p-5 shadow-sm hover:shadow-md transition-shadow text-center block"
+            className="bg-white rounded-2xl p-5 shadow-card hover:shadow-cardHover transition-shadow text-center block"
           >
-            <p className="text-sm font-semibold text-gray-700">{label}</p>
+            <p className="text-sm font-semibold text-stone-700">{label}</p>
           </a>
         ))}
       </div>

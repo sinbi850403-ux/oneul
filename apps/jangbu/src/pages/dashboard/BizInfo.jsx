@@ -77,27 +77,27 @@ export default function BizInfo() {
 
   return (
     <div className="max-w-2xl">
-      <h2 className="text-2xl font-bold text-gray-800 mb-1">사업자 정보</h2>
-      <p className="text-sm text-gray-400 mb-6">세금계산서, 엑셀 출력에 사용됩니다.</p>
+      <h2 className="text-2xl font-bold text-stone-800 mb-1">사업자 정보</h2>
+      <p className="text-sm text-stone-400 mb-6">세금계산서, 엑셀 출력에 사용됩니다.</p>
 
-      <div className="bg-white rounded-2xl shadow-sm p-6 mb-6">
+      <div className="bg-white rounded-2xl shadow-card p-6 mb-6">
         <div className="grid grid-cols-2 gap-4 mb-4">
           {FIELDS.map(({ key, label, placeholder }) => (
             <div key={key} className={key === 'address' ? 'col-span-2' : ''}>
-              <label className="text-sm text-gray-500 mb-1 block">{label}</label>
+              <label className="text-sm text-stone-500 mb-1 block">{label}</label>
               <input
                 type="text"
                 value={values[key] ?? ''}
                 onChange={(e) => setValues(v => ({ ...v, [key]: e.target.value }))}
                 placeholder={placeholder}
-                className="w-full border border-gray-200 rounded-xl px-4 py-2.5 text-sm outline-none focus:border-brand"
+                className="w-full border border-stone-200 rounded-xl px-4 py-2.5 text-sm outline-none focus:border-brand"
               />
             </div>
           ))}
         </div>
 
         <div>
-          <label className="text-sm text-gray-500 mb-2 block">과세 유형</label>
+          <label className="text-sm text-stone-500 mb-2 block">과세 유형</label>
           <div className="flex gap-3">
             {[
               { value: 'general', label: '일반과세자' },
@@ -109,7 +109,7 @@ export default function BizInfo() {
                 className={`px-6 py-2.5 rounded-xl text-sm font-semibold border transition-colors ${
                   values.tax_type === value
                     ? 'bg-brand text-white border-brand'
-                    : 'bg-white text-gray-600 border-gray-200 hover:bg-gray-50'
+                    : 'bg-white text-stone-600 border-stone-200 hover:bg-stone-50'
                 }`}
               >
                 {label}
@@ -120,9 +120,9 @@ export default function BizInfo() {
       </div>
 
       {/* 월 매출 목표 */}
-      <div className="bg-white rounded-2xl shadow-sm p-6 mb-6">
-        <h3 className="text-base font-bold text-gray-800 mb-1">월 매출 목표</h3>
-        <p className="text-sm text-gray-400 mb-4">대시보드에 진행률로 표시돼요. 0이면 숨겨져요.</p>
+      <div className="bg-white rounded-2xl shadow-card p-6 mb-6">
+        <h3 className="text-base font-bold text-stone-800 mb-1">월 매출 목표</h3>
+        <p className="text-sm text-stone-400 mb-4">대시보드에 진행률로 표시돼요. 0이면 숨겨져요.</p>
         <div className="flex items-center gap-3">
           <input
             type="number"
@@ -131,12 +131,12 @@ export default function BizInfo() {
             value={values.monthly_target ?? 0}
             onChange={(e) => setValues(v => ({ ...v, monthly_target: Number(e.target.value) }))}
             placeholder="예) 5000000"
-            className="flex-1 border border-gray-200 rounded-xl px-4 py-2.5 text-sm outline-none focus:border-brand"
+            className="flex-1 border border-stone-200 rounded-xl px-4 py-2.5 text-sm outline-none focus:border-brand"
           />
-          <span className="text-sm text-gray-500 whitespace-nowrap">원</span>
+          <span className="text-sm text-stone-500 whitespace-nowrap">원</span>
         </div>
         {(values.monthly_target ?? 0) > 0 && (
-          <p className="text-xs text-gray-400 mt-2">
+          <p className="text-xs text-stone-400 mt-2">
             월 {((values.monthly_target ?? 0) / 10000).toLocaleString()}만원 목표
           </p>
         )}
@@ -152,19 +152,19 @@ export default function BizInfo() {
 
       {/* 알림 설정 */}
       {'Notification' in window && (
-        <div className="bg-white rounded-2xl shadow-sm p-6 max-w-2xl">
-          <h3 className="text-base font-bold text-gray-800 mb-1">푸시 알림</h3>
-          <p className="text-sm text-gray-400 mb-5">재고 부족 시 알림을 받아요</p>
+        <div className="bg-white rounded-2xl shadow-card p-6 max-w-2xl">
+          <h3 className="text-base font-bold text-stone-800 mb-1">푸시 알림</h3>
+          <p className="text-sm text-stone-400 mb-5">재고 부족 시 알림을 받아요</p>
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-sm font-medium text-gray-700">재고부족 알림</p>
-              <p className="text-xs text-gray-400 mt-0.5">안전재고 이하로 떨어지면 즉시 알림</p>
+              <p className="text-sm font-medium text-stone-700">재고부족 알림</p>
+              <p className="text-xs text-stone-400 mt-0.5">안전재고 이하로 떨어지면 즉시 알림</p>
             </div>
             <button
               onClick={handlePushToggle}
               disabled={pushLoading || permission === 'denied'}
               className={`relative w-12 h-6 rounded-full transition-colors duration-200 disabled:opacity-50 ${
-                subscribed ? 'bg-brand' : 'bg-gray-200'
+                subscribed ? 'bg-brand' : 'bg-stone-200'
               }`}
             >
               <span className={`absolute top-0.5 left-0.5 w-5 h-5 bg-white rounded-full shadow transition-transform duration-200 ${

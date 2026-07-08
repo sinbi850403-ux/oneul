@@ -101,7 +101,7 @@ export default function History() {
     <div className="px-5 pt-6 pb-4">
       {/* 헤더 */}
       <div className="flex items-center justify-between mb-5">
-        <h2 className="text-xl font-bold text-gray-800">내역</h2>
+        <h2 className="text-xl font-bold text-stone-800">내역</h2>
         <select
           value={month}
           onChange={e => setMonth(Number(e.target.value))}
@@ -112,13 +112,13 @@ export default function History() {
       </div>
 
       {/* 탭 */}
-      <div className="flex bg-gray-100 rounded-2xl p-1 mb-5">
+      <div className="flex bg-stone-100 rounded-2xl p-1 mb-5">
         {[['sales', '매출 내역'], ['purchases', '매입 내역']].map(([key, label]) => (
           <button
             key={key}
             onClick={() => setTab(key)}
             className={`flex-1 py-2 rounded-xl text-sm font-semibold transition-colors ${
-              tab === key ? 'bg-white text-brand shadow-sm' : 'text-gray-400'
+              tab === key ? 'bg-white text-brand shadow-card' : 'text-stone-400'
             }`}
           >
             {label}
@@ -128,7 +128,7 @@ export default function History() {
 
       {/* 합계 카드 */}
       <div className={`${tab === 'sales' ? 'bg-orange-50' : 'bg-blue-50'} rounded-2xl px-5 py-4 mb-4 flex justify-between items-center`}>
-        <span className="text-gray-600 font-medium text-sm">
+        <span className="text-stone-600 font-medium text-sm">
           {month}월 {tab === 'sales' ? '매출' : '매입'} 합계
         </span>
         <span className={`text-xl font-bold ${tab === 'sales' ? 'text-brand' : 'text-blue-600'}`}>
@@ -138,28 +138,28 @@ export default function History() {
 
       {/* 목록 */}
       {loading ? (
-        <p className="text-center text-gray-400 py-10 text-sm">불러오는 중...</p>
+        <p className="text-center text-stone-400 py-10 text-sm">불러오는 중...</p>
       ) : rows.length === 0 ? (
-        <p className="text-center text-gray-400 py-10 text-sm">내역이 없습니다</p>
+        <p className="text-center text-stone-400 py-10 text-sm">내역이 없습니다</p>
       ) : (
-        <div className="bg-white rounded-2xl shadow-sm overflow-hidden">
+        <div className="bg-white rounded-2xl shadow-card overflow-hidden">
           {rows.map((r, i) => (
             <div
               key={r.id}
               className={`flex items-center justify-between px-4 py-3 ${
-                i < rows.length - 1 ? 'border-b border-gray-50' : ''
+                i < rows.length - 1 ? 'border-b border-stone-50' : ''
               }`}
             >
               <div className="flex-1 min-w-0">
                 <div className="flex items-center gap-1.5">
-                  <span className="font-semibold text-gray-800 text-sm truncate">{r.name}</span>
+                  <span className="font-semibold text-stone-800 text-sm truncate">{r.name}</span>
                   {r.type === 'manual' && (
-                    <span className="text-xs text-gray-400 bg-gray-100 px-1.5 py-0.5 rounded shrink-0">
+                    <span className="text-xs text-stone-400 bg-stone-100 px-1.5 py-0.5 rounded shrink-0">
                       수동입력
                     </span>
                   )}
                 </div>
-                <div className="text-xs text-gray-400 mt-0.5">
+                <div className="text-xs text-stone-400 mt-0.5">
                   {fmtDate(r.date)}
                   {r.unit_price != null && r.unit_price > 0 && (
                     <span className="ml-2">단가 {r.unit_price.toLocaleString()}</span>
@@ -172,7 +172,7 @@ export default function History() {
                   {won(r.total_amount)}
                 </div>
                 {r.quantity != null && (
-                  <div className="text-xs text-gray-400">{r.quantity}개</div>
+                  <div className="text-xs text-stone-400">{r.quantity}개</div>
                 )}
               </div>
             </div>

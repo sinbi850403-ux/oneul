@@ -65,47 +65,47 @@ export default function ExcelExport() {
 
   return (
     <div className="max-w-xl">
-      <h2 className="text-2xl font-bold text-gray-800 mb-1">엑셀 다운로드</h2>
-      <p className="text-sm text-gray-400 mb-6">기간을 선택하면 매출 데이터를 .xlsx 파일로 내려받습니다.</p>
+      <h2 className="text-2xl font-bold text-stone-800 mb-1">엑셀 다운로드</h2>
+      <p className="text-sm text-stone-400 mb-6">기간을 선택하면 매출 데이터를 .xlsx 파일로 내려받습니다.</p>
 
-      <div className="bg-white rounded-2xl shadow-sm p-6 mb-6">
+      <div className="bg-white rounded-2xl shadow-card p-6 mb-6">
         <div className="flex items-center gap-4 mb-4">
           <div>
-            <label className="text-sm text-gray-500 mb-1 block">시작</label>
+            <label className="text-sm text-stone-500 mb-1 block">시작</label>
             <div className="flex gap-2">
               <select
                 value={startYear}
                 onChange={(e) => setStartYear(Number(e.target.value))}
-                className="border border-gray-200 rounded-xl px-3 py-2 text-sm outline-none focus:border-brand"
+                className="border border-stone-200 rounded-xl px-3 py-2 text-sm outline-none focus:border-brand"
               >
                 {years.map(y => <option key={y} value={y}>{y}년</option>)}
               </select>
               <select
                 value={startMonth}
                 onChange={(e) => setStartMonth(Number(e.target.value))}
-                className="border border-gray-200 rounded-xl px-3 py-2 text-sm outline-none focus:border-brand"
+                className="border border-stone-200 rounded-xl px-3 py-2 text-sm outline-none focus:border-brand"
               >
                 {months.map(m => <option key={m} value={m}>{m}월</option>)}
               </select>
             </div>
           </div>
 
-          <span className="text-gray-400 mt-5">~</span>
+          <span className="text-stone-400 mt-5">~</span>
 
           <div>
-            <label className="text-sm text-gray-500 mb-1 block">종료</label>
+            <label className="text-sm text-stone-500 mb-1 block">종료</label>
             <div className="flex gap-2">
               <select
                 value={endYear}
                 onChange={(e) => setEndYear(Number(e.target.value))}
-                className="border border-gray-200 rounded-xl px-3 py-2 text-sm outline-none focus:border-brand"
+                className="border border-stone-200 rounded-xl px-3 py-2 text-sm outline-none focus:border-brand"
               >
                 {years.map(y => <option key={y} value={y}>{y}년</option>)}
               </select>
               <select
                 value={endMonth}
                 onChange={(e) => setEndMonth(Number(e.target.value))}
-                className="border border-gray-200 rounded-xl px-3 py-2 text-sm outline-none focus:border-brand"
+                className="border border-stone-200 rounded-xl px-3 py-2 text-sm outline-none focus:border-brand"
               >
                 {months.map(m => <option key={m} value={m}>{m}월</option>)}
               </select>
@@ -113,7 +113,7 @@ export default function ExcelExport() {
           </div>
         </div>
 
-        <p className="text-xs text-gray-400">
+        <p className="text-xs text-stone-400">
           날짜 / 카드 / 현금영수증 / 무통장입금 / 가상계좌 / 휴대폰결제 / 네이버페이 / 카카오페이 / 기타 / 합계 / 메모
         </p>
       </div>

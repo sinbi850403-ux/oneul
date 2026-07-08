@@ -60,9 +60,9 @@ export default function SalesItems() {
   return (
     <div>
       <div className="flex items-center justify-between mb-6">
-        <h2 className="text-2xl font-bold text-gray-800">매출 내역</h2>
+        <h2 className="text-2xl font-bold text-stone-800">매출 내역</h2>
         <button onClick={handleExcel}
-          className="px-4 py-2 text-sm font-semibold border border-gray-200 rounded-xl text-orange-500 hover:bg-orange-50">
+          className="px-4 py-2 text-sm font-semibold border border-stone-200 rounded-xl text-orange-500 hover:bg-orange-50">
           엑셀 다운로드
         </button>
       </div>
@@ -70,69 +70,69 @@ export default function SalesItems() {
       {/* 필터 */}
       <div className="flex gap-3 mb-6 flex-wrap">
         <select value={year} onChange={e => setYear(Number(e.target.value))}
-          className="border border-gray-200 rounded-xl px-4 py-2 text-sm outline-none focus:border-orange-400">
+          className="border border-stone-200 rounded-xl px-4 py-2 text-sm outline-none focus:border-orange-400">
           {years.map(y => <option key={y} value={y}>{y}년</option>)}
         </select>
         <select value={month} onChange={e => setMonth(Number(e.target.value))}
-          className="border border-gray-200 rounded-xl px-4 py-2 text-sm outline-none focus:border-orange-400">
+          className="border border-stone-200 rounded-xl px-4 py-2 text-sm outline-none focus:border-orange-400">
           {months.map(m => <option key={m} value={m}>{m}월</option>)}
         </select>
         <input type="text" placeholder="상품명 검색..." value={keyword}
           onChange={e => setKeyword(e.target.value)}
-          className="border border-gray-200 rounded-xl px-4 py-2 text-sm outline-none focus:border-orange-400 min-w-40" />
+          className="border border-stone-200 rounded-xl px-4 py-2 text-sm outline-none focus:border-orange-400 min-w-40" />
       </div>
 
       {/* 요약 카드 */}
       <div className="grid grid-cols-3 gap-4 mb-6">
         <div className="bg-orange-50 rounded-2xl p-5">
-          <p className="text-sm text-gray-500 mb-1">총 매출금액</p>
+          <p className="text-sm text-stone-500 mb-1">총 매출금액</p>
           <p className="text-2xl font-bold text-brand">{won(totalAmount)}</p>
         </div>
-        <div className="bg-white rounded-2xl p-5 shadow-sm">
-          <p className="text-sm text-gray-500 mb-1">매출 건수</p>
-          <p className="text-2xl font-bold text-gray-800">{filtered.length}건</p>
+        <div className="bg-white rounded-2xl p-5 shadow-card">
+          <p className="text-sm text-stone-500 mb-1">매출 건수</p>
+          <p className="text-2xl font-bold text-stone-800">{filtered.length}건</p>
         </div>
-        <div className="bg-white rounded-2xl p-5 shadow-sm">
-          <p className="text-sm text-gray-500 mb-1">건당 평균</p>
-          <p className="text-2xl font-bold text-gray-800">
+        <div className="bg-white rounded-2xl p-5 shadow-card">
+          <p className="text-sm text-stone-500 mb-1">건당 평균</p>
+          <p className="text-2xl font-bold text-stone-800">
             {won(filtered.length ? Math.round(totalAmount / filtered.length) : 0)}
           </p>
         </div>
       </div>
 
       {/* 테이블 */}
-      <div className="bg-white rounded-2xl shadow-sm overflow-hidden">
+      <div className="bg-white rounded-2xl shadow-card overflow-hidden">
         <table className="w-full text-sm">
-          <thead className="bg-gray-50">
+          <thead className="bg-stone-50">
             <tr>
-              <th className="text-left px-4 py-3 text-gray-500 font-medium">날짜</th>
-              <th className="text-left px-4 py-3 text-gray-500 font-medium">상품명</th>
-              <th className="text-right px-4 py-3 text-gray-500 font-medium">수량</th>
-              <th className="text-right px-4 py-3 text-gray-500 font-medium">판가</th>
-              <th className="text-right px-4 py-3 text-gray-500 font-medium">매출금액</th>
-              <th className="text-left px-4 py-3 text-gray-500 font-medium">메모</th>
+              <th className="text-left px-4 py-3 text-stone-500 font-medium">날짜</th>
+              <th className="text-left px-4 py-3 text-stone-500 font-medium">상품명</th>
+              <th className="text-right px-4 py-3 text-stone-500 font-medium">수량</th>
+              <th className="text-right px-4 py-3 text-stone-500 font-medium">판가</th>
+              <th className="text-right px-4 py-3 text-stone-500 font-medium">매출금액</th>
+              <th className="text-left px-4 py-3 text-stone-500 font-medium">메모</th>
             </tr>
           </thead>
           <tbody>
             {loading ? (
-              <tr><td colSpan={6} className="text-center py-10 text-gray-400">불러오는 중...</td></tr>
+              <tr><td colSpan={6} className="text-center py-10 text-stone-400">불러오는 중...</td></tr>
             ) : filtered.length === 0 ? (
-              <tr><td colSpan={6} className="text-center py-10 text-gray-400">데이터가 없습니다</td></tr>
+              <tr><td colSpan={6} className="text-center py-10 text-stone-400">데이터가 없습니다</td></tr>
             ) : filtered.map(r => (
-              <tr key={r.id} className="border-t border-gray-50 hover:bg-gray-50">
-                <td className="px-4 py-3 text-gray-500 whitespace-nowrap">{r.sale_date}</td>
-                <td className="px-4 py-3 font-medium text-gray-800">{r.product_name}</td>
-                <td className="px-4 py-3 text-right text-gray-600">{r.quantity?.toLocaleString()}</td>
-                <td className="px-4 py-3 text-right text-gray-600">{r.unit_price > 0 ? r.unit_price.toLocaleString() : '-'}</td>
+              <tr key={r.id} className="border-t border-stone-50 hover:bg-stone-50">
+                <td className="px-4 py-3 text-stone-500 whitespace-nowrap">{r.sale_date}</td>
+                <td className="px-4 py-3 font-medium text-stone-800">{r.product_name}</td>
+                <td className="px-4 py-3 text-right text-stone-600">{r.quantity?.toLocaleString()}</td>
+                <td className="px-4 py-3 text-right text-stone-600">{r.unit_price > 0 ? r.unit_price.toLocaleString() : '-'}</td>
                 <td className="px-4 py-3 text-right font-semibold text-brand">{(r.total_amount ?? 0).toLocaleString()}</td>
-                <td className="px-4 py-3 text-gray-400">{r.note ?? '-'}</td>
+                <td className="px-4 py-3 text-stone-400">{r.note ?? '-'}</td>
               </tr>
             ))}
           </tbody>
           {filtered.length > 0 && (
             <tfoot className="bg-orange-50 border-t-2 border-orange-100">
               <tr>
-                <td colSpan={4} className="px-4 py-3 font-semibold text-gray-700">합계</td>
+                <td colSpan={4} className="px-4 py-3 font-semibold text-stone-700">합계</td>
                 <td className="px-4 py-3 text-right font-bold text-brand">{totalAmount.toLocaleString()}</td>
                 <td />
               </tr>

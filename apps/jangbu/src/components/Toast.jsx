@@ -11,7 +11,7 @@ export default function Toast({ message, onClose }) {
   if (!visible) return null
 
   return (
-    <div className="fixed bottom-24 left-1/2 -translate-x-1/2 bg-gray-800 text-white px-5 py-3 rounded-full text-sm shadow-lg z-50 whitespace-nowrap">
+    <div className="fixed bottom-24 left-1/2 -translate-x-1/2 bg-stone-800 text-white px-5 py-3 rounded-full text-sm shadow-lg z-50 whitespace-nowrap">
       {message}
     </div>
   )

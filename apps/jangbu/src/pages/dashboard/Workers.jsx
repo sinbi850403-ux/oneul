@@ -268,21 +268,21 @@ export default function Workers() {
   const vacationPay   = Math.round(remainingDays * dailyWage)
 
   // ── 렌더 ─────────────────────────────────────────────────────────────────
-  const inputCls = 'border border-gray-200 rounded-xl px-3 py-2 text-sm outline-none focus:border-brand w-full'
+  const inputCls = 'border border-stone-200 rounded-xl px-3 py-2 text-sm outline-none focus:border-brand w-full'
   const months   = Array.from({ length: 12 }, (_, i) => i + 1)
   const years    = [now.getFullYear() - 1, now.getFullYear()]
 
   return (
     <div>
-      <h2 className="text-2xl font-bold text-gray-800 mb-6">알바 급여 관리</h2>
+      <h2 className="text-2xl font-bold text-stone-800 mb-6">알바 급여 관리</h2>
 
       <div className="flex gap-6 items-start">
 
         {/* ── 왼쪽: 알바생 목록 ── */}
         <div className="w-60 shrink-0">
-          <div className="bg-white rounded-2xl shadow-sm overflow-hidden mb-3">
-            <div className="px-4 py-3 border-b border-gray-100 flex items-center justify-between">
-              <span className="text-sm font-semibold text-gray-700">알바생</span>
+          <div className="bg-white rounded-2xl shadow-card overflow-hidden mb-3">
+            <div className="px-4 py-3 border-b border-stone-100 flex items-center justify-between">
+              <span className="text-sm font-semibold text-stone-700">알바생</span>
               <button
                 onClick={() => setShowAddForm(v => !v)}
                 className="text-xs text-brand font-semibold hover:underline"
@@ -310,10 +310,10 @@ export default function Workers() {
                     onChange={e => setNewWage(e.target.value)}
                     min={MIN_WAGE_2026}
                   />
-                  <span className="text-xs text-gray-400 whitespace-nowrap">원/h</span>
+                  <span className="text-xs text-stone-400 whitespace-nowrap">원/h</span>
                 </div>
                 <div className="mb-2">
-                  <label className="text-xs text-gray-400 block mb-1">입사일 (연차 계산용)</label>
+                  <label className="text-xs text-stone-400 block mb-1">입사일 (연차 계산용)</label>
                   <input
                     type="date"
                     className={inputCls}
@@ -321,7 +321,7 @@ export default function Workers() {
                     onChange={e => setNewHireDate(e.target.value)}
                   />
                 </div>
-                <p className="text-xs text-gray-400 mb-2">2026 최저시급 {MIN_WAGE_2026.toLocaleString()}원</p>
+                <p className="text-xs text-stone-400 mb-2">2026 최저시급 {MIN_WAGE_2026.toLocaleString()}원</p>
                 <button
                   type="submit"
                   disabled={adding}
@@ -333,7 +333,7 @@ export default function Workers() {
             )}
 
             {workers.length === 0 ? (
-              <div className="px-4 py-6 text-center text-sm text-gray-400">
+              <div className="px-4 py-6 text-center text-sm text-stone-400">
                 알바생을 추가해주세요
               </div>
             ) : (
@@ -341,22 +341,22 @@ export default function Workers() {
                 <div
                   key={w.id}
                   onClick={() => { setSelectedWorker(w); setTab('log') }}
-                  className={`px-4 py-3 cursor-pointer flex items-center justify-between border-b border-gray-50 last:border-0 hover:bg-gray-50 transition-colors ${
+                  className={`px-4 py-3 cursor-pointer flex items-center justify-between border-b border-stone-50 last:border-0 hover:bg-stone-50 transition-colors ${
                     selectedWorker?.id === w.id ? 'bg-blue-50' : ''
                   }`}
                 >
                   <div>
-                    <div className={`text-sm font-semibold ${selectedWorker?.id === w.id ? 'text-brand' : 'text-gray-800'}`}>
+                    <div className={`text-sm font-semibold ${selectedWorker?.id === w.id ? 'text-brand' : 'text-stone-800'}`}>
                       {w.name}
                     </div>
-                    <div className="text-xs text-gray-400 mt-0.5">
+                    <div className="text-xs text-stone-400 mt-0.5">
                       시급 {w.hourly_wage.toLocaleString()}원
                     </div>
                   </div>
                   <button
                     onClick={e => { e.stopPropagation(); handleDeleteWorker(w.id) }}
                     disabled={deletingId === w.id}
-                    className="text-gray-300 hover:text-red-400 text-xs transition-colors"
+                    className="text-stone-300 hover:text-red-400 text-xs transition-colors"
                   >
                     삭제
                   </button>
@@ -369,20 +369,20 @@ export default function Workers() {
         {/* ── 오른쪽: 콘텐츠 ── */}
         <div className="flex-1 min-w-0">
           {!selectedWorker ? (
-            <div className="bg-white rounded-2xl shadow-sm p-12 text-center">
+            <div className="bg-white rounded-2xl shadow-card p-12 text-center">
               <div className="text-4xl mb-4">👷</div>
-              <p className="text-gray-500 text-sm">왼쪽에서 알바생을 선택하거나 추가해주세요</p>
+              <p className="text-stone-500 text-sm">왼쪽에서 알바생을 선택하거나 추가해주세요</p>
             </div>
           ) : (
             <>
               {/* 탭 */}
-              <div className="flex gap-1 mb-4 bg-gray-100 rounded-xl p-1 w-fit">
+              <div className="flex gap-1 mb-4 bg-stone-100 rounded-xl p-1 w-fit">
                 {[['log', '근무 입력'], ['pay', '급여 정산'], ['vacation', '연차 관리']].map(([key, label]) => (
                   <button
                     key={key}
                     onClick={() => setTab(key)}
                     className={`px-5 py-2 rounded-lg text-sm font-semibold transition-all ${
-                      tab === key ? 'bg-white text-gray-800 shadow-sm' : 'text-gray-500 hover:text-gray-700'
+                      tab === key ? 'bg-white text-stone-800 shadow-card' : 'text-stone-500 hover:text-stone-700'
                     }`}
                   >
                     {label}
@@ -393,35 +393,35 @@ export default function Workers() {
               {/* ── 탭: 근무 입력 ── */}
               {tab === 'log' && (
                 <div className="grid grid-cols-2 gap-4">
-                  <div className="bg-white rounded-2xl shadow-sm p-5">
-                    <p className="text-sm font-semibold text-gray-700 mb-4">
+                  <div className="bg-white rounded-2xl shadow-card p-5">
+                    <p className="text-sm font-semibold text-stone-700 mb-4">
                       {selectedWorker.name} 근무 기록
                     </p>
                     <form onSubmit={handleAddLog} className="space-y-3">
                       <div>
-                        <label className="text-xs text-gray-400 block mb-1">날짜</label>
+                        <label className="text-xs text-stone-400 block mb-1">날짜</label>
                         <input type="date" className={inputCls} value={workDate}
                           onChange={e => setWorkDate(e.target.value)} />
                       </div>
                       <div className="grid grid-cols-2 gap-2">
                         <div>
-                          <label className="text-xs text-gray-400 block mb-1">출근</label>
+                          <label className="text-xs text-stone-400 block mb-1">출근</label>
                           <input type="time" className={inputCls} value={startTime}
                             onChange={e => setStartTime(e.target.value)} />
                         </div>
                         <div>
-                          <label className="text-xs text-gray-400 block mb-1">퇴근</label>
+                          <label className="text-xs text-stone-400 block mb-1">퇴근</label>
                           <input type="time" className={inputCls} value={endTime}
                             onChange={e => setEndTime(e.target.value)} />
                         </div>
                       </div>
                       <div>
-                        <label className="text-xs text-gray-400 block mb-1">휴게 시간 (분)</label>
+                        <label className="text-xs text-stone-400 block mb-1">휴게 시간 (분)</label>
                         <input type="number" className={inputCls} value={breakMins} min={0}
                           onChange={e => setBreakMins(e.target.value)} />
                       </div>
                       <div>
-                        <label className="text-xs text-gray-400 block mb-1">메모 (선택)</label>
+                        <label className="text-xs text-stone-400 block mb-1">메모 (선택)</label>
                         <input type="text" className={inputCls} placeholder="특이사항..."
                           value={workNote} onChange={e => setWorkNote(e.target.value)} />
                       </div>
@@ -431,10 +431,10 @@ export default function Workers() {
                         const pay = Math.round((net / 60) * hourlyWage)
                         return net > 0 ? (
                           <div className="bg-blue-50 rounded-xl px-4 py-2.5 text-sm">
-                            <span className="text-gray-500">실 근무 </span>
-                            <span className="font-semibold text-gray-800">{fmtHours(net)}</span>
-                            <span className="text-gray-400 mx-2">·</span>
-                            <span className="text-gray-500">이날 급여 </span>
+                            <span className="text-stone-500">실 근무 </span>
+                            <span className="font-semibold text-stone-800">{fmtHours(net)}</span>
+                            <span className="text-stone-400 mx-2">·</span>
+                            <span className="text-stone-500">이날 급여 </span>
                             <span className="font-bold text-brand">{won(pay)}</span>
                           </div>
                         ) : null
@@ -453,34 +453,34 @@ export default function Workers() {
                     </form>
                   </div>
 
-                  <div className="bg-white rounded-2xl shadow-sm overflow-hidden">
-                    <div className="px-5 py-3 border-b border-gray-100 flex items-center justify-between">
-                      <span className="text-sm font-semibold text-gray-700">{payMonth}월 근무 기록</span>
+                  <div className="bg-white rounded-2xl shadow-card overflow-hidden">
+                    <div className="px-5 py-3 border-b border-stone-100 flex items-center justify-between">
+                      <span className="text-sm font-semibold text-stone-700">{payMonth}월 근무 기록</span>
                       <div className="flex gap-1">
                         <select value={payYear} onChange={e => setPayYear(Number(e.target.value))}
-                          className="border border-gray-200 rounded-lg px-2 py-1 text-xs outline-none">
+                          className="border border-stone-200 rounded-lg px-2 py-1 text-xs outline-none">
                           {years.map(y => <option key={y} value={y}>{y}년</option>)}
                         </select>
                         <select value={payMonth} onChange={e => setPayMonth(Number(e.target.value))}
-                          className="border border-gray-200 rounded-lg px-2 py-1 text-xs outline-none">
+                          className="border border-stone-200 rounded-lg px-2 py-1 text-xs outline-none">
                           {months.map(m => <option key={m} value={m}>{m}월</option>)}
                         </select>
                       </div>
                     </div>
                     {logsLoading ? (
-                      <div className="p-8 text-center text-sm text-gray-400">불러오는 중...</div>
+                      <div className="p-8 text-center text-sm text-stone-400">불러오는 중...</div>
                     ) : workLogs.length === 0 ? (
-                      <div className="p-8 text-center text-sm text-gray-400">근무 기록이 없습니다</div>
+                      <div className="p-8 text-center text-sm text-stone-400">근무 기록이 없습니다</div>
                     ) : (
                       <div className="overflow-y-auto max-h-80">
                         <table className="w-full text-sm">
-                          <thead className="bg-gray-50">
+                          <thead className="bg-stone-50">
                             <tr>
-                              <th className="text-left px-4 py-2 text-xs text-gray-500 font-medium">날짜</th>
-                              <th className="text-center px-3 py-2 text-xs text-gray-500 font-medium">출근</th>
-                              <th className="text-center px-3 py-2 text-xs text-gray-500 font-medium">퇴근</th>
-                              <th className="text-right px-3 py-2 text-xs text-gray-500 font-medium">실 근무</th>
-                              <th className="text-right px-4 py-2 text-xs text-gray-500 font-medium">급여</th>
+                              <th className="text-left px-4 py-2 text-xs text-stone-500 font-medium">날짜</th>
+                              <th className="text-center px-3 py-2 text-xs text-stone-500 font-medium">출근</th>
+                              <th className="text-center px-3 py-2 text-xs text-stone-500 font-medium">퇴근</th>
+                              <th className="text-right px-3 py-2 text-xs text-stone-500 font-medium">실 근무</th>
+                              <th className="text-right px-4 py-2 text-xs text-stone-500 font-medium">급여</th>
                               <th className="px-2 py-2"></th>
                             </tr>
                           </thead>
@@ -489,15 +489,15 @@ export default function Workers() {
                               const net = Math.max(0, calcMinutes(log.start_time, log.end_time) - log.break_minutes)
                               const pay = Math.round((net / 60) * hourlyWage)
                               return (
-                                <tr key={log.id} className="border-t border-gray-50 hover:bg-gray-50">
-                                  <td className="px-4 py-2 text-gray-700 font-medium">{log.work_date.slice(5)}</td>
-                                  <td className="px-3 py-2 text-center text-gray-500">{log.start_time.slice(0, 5)}</td>
-                                  <td className="px-3 py-2 text-center text-gray-500">{log.end_time.slice(0, 5)}</td>
-                                  <td className="px-3 py-2 text-right text-gray-700">{fmtHours(net)}</td>
+                                <tr key={log.id} className="border-t border-stone-50 hover:bg-stone-50">
+                                  <td className="px-4 py-2 text-stone-700 font-medium">{log.work_date.slice(5)}</td>
+                                  <td className="px-3 py-2 text-center text-stone-500">{log.start_time.slice(0, 5)}</td>
+                                  <td className="px-3 py-2 text-center text-stone-500">{log.end_time.slice(0, 5)}</td>
+                                  <td className="px-3 py-2 text-right text-stone-700">{fmtHours(net)}</td>
                                   <td className="px-4 py-2 text-right font-semibold text-brand">{won(pay)}</td>
                                   <td className="px-2 py-2">
                                     <button onClick={() => handleDeleteLog(log.id)}
-                                      className="text-gray-300 hover:text-red-400 text-xs">✕</button>
+                                      className="text-stone-300 hover:text-red-400 text-xs">✕</button>
                                   </td>
                                 </tr>
                               )
@@ -515,26 +515,26 @@ export default function Workers() {
                 <div>
                   <div className="flex gap-2 mb-4">
                     <select value={payYear} onChange={e => setPayYear(Number(e.target.value))}
-                      className="border border-gray-200 rounded-xl px-4 py-2 text-sm outline-none focus:border-brand">
+                      className="border border-stone-200 rounded-xl px-4 py-2 text-sm outline-none focus:border-brand">
                       {years.map(y => <option key={y} value={y}>{y}년</option>)}
                     </select>
                     <select value={payMonth} onChange={e => setPayMonth(Number(e.target.value))}
-                      className="border border-gray-200 rounded-xl px-4 py-2 text-sm outline-none focus:border-brand">
+                      className="border border-stone-200 rounded-xl px-4 py-2 text-sm outline-none focus:border-brand">
                       {months.map(m => <option key={m} value={m}>{m}월</option>)}
                     </select>
                   </div>
 
                   {workLogs.length === 0 ? (
-                    <div className="bg-white rounded-2xl shadow-sm p-10 text-center text-gray-400 text-sm">
+                    <div className="bg-white rounded-2xl shadow-card p-10 text-center text-stone-400 text-sm">
                       {payMonth}월 근무 기록이 없습니다
                     </div>
                   ) : (
                     <div className="grid grid-cols-2 gap-4">
-                      <div className="bg-white rounded-2xl shadow-sm p-6">
+                      <div className="bg-white rounded-2xl shadow-card p-6">
                         <div className="flex items-center gap-2 mb-5">
                           <div>
-                            <p className="font-bold text-gray-800">{selectedWorker.name}</p>
-                            <p className="text-xs text-gray-400">{payYear}년 {payMonth}월 급여 명세</p>
+                            <p className="font-bold text-stone-800">{selectedWorker.name}</p>
+                            <p className="text-xs text-stone-400">{payYear}년 {payMonth}월 급여 명세</p>
                           </div>
                         </div>
 
@@ -545,24 +545,24 @@ export default function Workers() {
                             ['시급', won(hourlyWage)],
                             ['기본급', won(basePay)],
                           ].map(([label, value]) => (
-                            <div key={label} className="flex justify-between items-center py-2 border-b border-gray-100">
-                              <span className="text-sm text-gray-500">{label}</span>
-                              <span className="font-semibold text-gray-800">{value}</span>
+                            <div key={label} className="flex justify-between items-center py-2 border-b border-stone-100">
+                              <span className="text-sm text-stone-500">{label}</span>
+                              <span className="font-semibold text-stone-800">{value}</span>
                             </div>
                           ))}
-                          <div className="flex justify-between items-center py-2 border-b border-gray-100">
+                          <div className="flex justify-between items-center py-2 border-b border-stone-100">
                             <div>
-                              <span className="text-sm text-gray-500">주휴수당</span>
-                              <span className="text-xs text-gray-400 ml-1">(주 15h↑ 시 자동 적용)</span>
+                              <span className="text-sm text-stone-500">주휴수당</span>
+                              <span className="text-xs text-stone-400 ml-1">(주 15h↑ 시 자동 적용)</span>
                             </div>
-                            <span className={`font-semibold ${weeklyAllowance > 0 ? 'text-green-600' : 'text-gray-400'}`}>
+                            <span className={`font-semibold ${weeklyAllowance > 0 ? 'text-green-600' : 'text-stone-400'}`}>
                               {weeklyAllowance > 0 ? `+ ${won(weeklyAllowance)}` : '해당 없음'}
                             </span>
                           </div>
                         </div>
 
                         <div className="bg-brand/5 rounded-xl px-4 py-3 flex justify-between items-center">
-                          <span className="font-bold text-gray-800">이달 총 급여</span>
+                          <span className="font-bold text-stone-800">이달 총 급여</span>
                           <span className="text-2xl font-bold text-brand">{won(totalPay)}</span>
                         </div>
 
@@ -586,14 +586,14 @@ export default function Workers() {
                               else { await navigator.clipboard.writeText(text); alert('클립보드에 복사됐어요!') }
                             } catch {}
                           }}
-                          className="w-full mt-3 py-2 border border-gray-200 rounded-xl text-sm text-gray-600 hover:bg-gray-50 font-medium"
+                          className="w-full mt-3 py-2 border border-stone-200 rounded-xl text-sm text-stone-600 hover:bg-stone-50 font-medium"
                         >
                           ↗ 급여 명세 공유
                         </button>
                       </div>
 
-                      <div className="bg-white rounded-2xl shadow-sm p-5">
-                        <p className="text-sm font-semibold text-gray-700 mb-4">주차별 근무 현황</p>
+                      <div className="bg-white rounded-2xl shadow-card p-5">
+                        <p className="text-sm font-semibold text-stone-700 mb-4">주차별 근무 현황</p>
                         {(() => {
                           const weekMap = {}
                           for (const log of workLogs) {
@@ -612,11 +612,11 @@ export default function Workers() {
                                 ? Math.round((Math.min(hours, 40) / 40) * 8 * hourlyWage)
                                 : 0
                               return (
-                                <div key={monday} className={`rounded-xl p-3 mb-2 ${hasAllowance ? 'bg-green-50' : 'bg-gray-50'}`}>
+                                <div key={monday} className={`rounded-xl p-3 mb-2 ${hasAllowance ? 'bg-green-50' : 'bg-stone-50'}`}>
                                   <div className="flex justify-between items-center">
                                     <div>
-                                      <span className="text-sm font-semibold text-gray-700">{i + 1}주차</span>
-                                      <span className="text-xs text-gray-400 ml-2">{days}일 근무 · {fmtHours(mins)}</span>
+                                      <span className="text-sm font-semibold text-stone-700">{i + 1}주차</span>
+                                      <span className="text-xs text-stone-400 ml-2">{days}일 근무 · {fmtHours(mins)}</span>
                                     </div>
                                     <div className="text-right">
                                       {hasAllowance ? (
@@ -624,7 +624,7 @@ export default function Workers() {
                                           주휴수당 +{won(allowance)}
                                         </span>
                                       ) : (
-                                        <span className="text-xs text-gray-400">주 15h 미만</span>
+                                        <span className="text-xs text-stone-400">주 15h 미만</span>
                                       )}
                                     </div>
                                   </div>
@@ -644,8 +644,8 @@ export default function Workers() {
                   <div className="space-y-4">
 
                     {/* 입사일 */}
-                    <div className="bg-white rounded-2xl shadow-sm p-5">
-                      <p className="text-sm font-semibold text-gray-700 mb-3">입사일</p>
+                    <div className="bg-white rounded-2xl shadow-card p-5">
+                      <p className="text-sm font-semibold text-stone-700 mb-3">입사일</p>
                       {editHireDate ? (
                         <div className="flex gap-2">
                           <input
@@ -659,16 +659,16 @@ export default function Workers() {
                             저장
                           </button>
                           <button onClick={() => setEditHireDate(false)}
-                            className="px-3 py-2 border border-gray-200 text-gray-500 text-xs rounded-xl">
+                            className="px-3 py-2 border border-stone-200 text-stone-500 text-xs rounded-xl">
                             취소
                           </button>
                         </div>
                       ) : (
                         <div className="flex items-center justify-between">
-                          <span className="text-gray-800 font-medium">
+                          <span className="text-stone-800 font-medium">
                             {selectedWorker.hire_date
                               ? selectedWorker.hire_date
-                              : <span className="text-gray-400 text-sm">미입력</span>}
+                              : <span className="text-stone-400 text-sm">미입력</span>}
                           </span>
                           <button
                             onClick={() => { setHireDateInput(selectedWorker.hire_date || ''); setEditHireDate(true) }}
@@ -681,10 +681,10 @@ export default function Workers() {
                     </div>
 
                     {/* 연차 현황 */}
-                    <div className="bg-white rounded-2xl shadow-sm p-5">
-                      <p className="text-sm font-semibold text-gray-700 mb-4">연차 현황</p>
+                    <div className="bg-white rounded-2xl shadow-card p-5">
+                      <p className="text-sm font-semibold text-stone-700 mb-4">연차 현황</p>
                       {!selectedWorker.hire_date ? (
-                        <p className="text-sm text-gray-400 text-center py-4">
+                        <p className="text-sm text-stone-400 text-center py-4">
                           입사일을 입력해야 연차가 계산됩니다
                         </p>
                       ) : (
@@ -696,17 +696,17 @@ export default function Workers() {
                               ['잔여 연차', `${remainingDays}일`],
                               ['1일 통상임금', won(dailyWage)],
                             ].map(([label, value]) => (
-                              <div key={label} className="flex justify-between items-center py-2 border-b border-gray-100">
-                                <span className="text-sm text-gray-500">{label}</span>
-                                <span className="font-semibold text-gray-800">{value}</span>
+                              <div key={label} className="flex justify-between items-center py-2 border-b border-stone-100">
+                                <span className="text-sm text-stone-500">{label}</span>
+                                <span className="font-semibold text-stone-800">{value}</span>
                               </div>
                             ))}
                           </div>
                           <div className="bg-amber-50 rounded-xl px-4 py-3 flex justify-between items-center">
-                            <span className="font-bold text-gray-800">미사용 연차수당</span>
+                            <span className="font-bold text-stone-800">미사용 연차수당</span>
                             <span className="text-xl font-bold text-amber-600">{won(vacationPay)}</span>
                           </div>
-                          <p className="text-xs text-gray-400 mt-2 text-center">
+                          <p className="text-xs text-stone-400 mt-2 text-center">
                             ※ 참고용 추정치 — 정확한 산정은 노무사 상담
                           </p>
                         </>
@@ -714,22 +714,22 @@ export default function Workers() {
                     </div>
 
                     {/* 연차 사용 입력 */}
-                    <div className="bg-white rounded-2xl shadow-sm p-5">
-                      <p className="text-sm font-semibold text-gray-700 mb-3">연차 사용 등록</p>
+                    <div className="bg-white rounded-2xl shadow-card p-5">
+                      <p className="text-sm font-semibold text-stone-700 mb-3">연차 사용 등록</p>
                       <form onSubmit={handleAddVacation} className="space-y-3">
                         <div>
-                          <label className="text-xs text-gray-400 block mb-1">날짜</label>
+                          <label className="text-xs text-stone-400 block mb-1">날짜</label>
                           <input type="date" className={inputCls} value={vacDate}
                             onChange={e => setVacDate(e.target.value)} />
                         </div>
                         <div>
-                          <label className="text-xs text-gray-400 block mb-1">사용 일수</label>
+                          <label className="text-xs text-stone-400 block mb-1">사용 일수</label>
                           <input type="number" className={inputCls} value={vacDays}
                             min={0.5} max={5} step={0.5}
                             onChange={e => setVacDays(e.target.value)} />
                         </div>
                         <div>
-                          <label className="text-xs text-gray-400 block mb-1">메모 (선택)</label>
+                          <label className="text-xs text-stone-400 block mb-1">메모 (선택)</label>
                           <input type="text" className={inputCls} placeholder="사유..."
                             value={vacNote} onChange={e => setVacNote(e.target.value)} />
                         </div>
@@ -742,42 +742,42 @@ export default function Workers() {
                   </div>
 
                   {/* 연차 사용 내역 */}
-                  <div className="bg-white rounded-2xl shadow-sm overflow-hidden">
-                    <div className="px-5 py-3 border-b border-gray-100">
-                      <span className="text-sm font-semibold text-gray-700">연차 사용 내역</span>
+                  <div className="bg-white rounded-2xl shadow-card overflow-hidden">
+                    <div className="px-5 py-3 border-b border-stone-100">
+                      <span className="text-sm font-semibold text-stone-700">연차 사용 내역</span>
                     </div>
                     {vacationUsed.length === 0 ? (
-                      <div className="p-8 text-center text-sm text-gray-400">연차 사용 내역이 없습니다</div>
+                      <div className="p-8 text-center text-sm text-stone-400">연차 사용 내역이 없습니다</div>
                     ) : (
                       <>
                         <div className="overflow-y-auto max-h-[460px]">
                           <table className="w-full text-sm">
-                            <thead className="bg-gray-50">
+                            <thead className="bg-stone-50">
                               <tr>
-                                <th className="text-left px-4 py-2 text-xs text-gray-500 font-medium">날짜</th>
-                                <th className="text-center px-3 py-2 text-xs text-gray-500 font-medium">일수</th>
-                                <th className="text-left px-3 py-2 text-xs text-gray-500 font-medium">메모</th>
+                                <th className="text-left px-4 py-2 text-xs text-stone-500 font-medium">날짜</th>
+                                <th className="text-center px-3 py-2 text-xs text-stone-500 font-medium">일수</th>
+                                <th className="text-left px-3 py-2 text-xs text-stone-500 font-medium">메모</th>
                                 <th className="px-2 py-2"></th>
                               </tr>
                             </thead>
                             <tbody>
                               {vacationUsed.map(v => (
-                                <tr key={v.id} className="border-t border-gray-50 hover:bg-gray-50">
-                                  <td className="px-4 py-2 text-gray-700 font-medium">{v.used_date}</td>
-                                  <td className="px-3 py-2 text-center font-semibold text-gray-700">{v.days}일</td>
-                                  <td className="px-3 py-2 text-gray-400 text-xs">{v.note || '-'}</td>
+                                <tr key={v.id} className="border-t border-stone-50 hover:bg-stone-50">
+                                  <td className="px-4 py-2 text-stone-700 font-medium">{v.used_date}</td>
+                                  <td className="px-3 py-2 text-center font-semibold text-stone-700">{v.days}일</td>
+                                  <td className="px-3 py-2 text-stone-400 text-xs">{v.note || '-'}</td>
                                   <td className="px-2 py-2">
                                     <button onClick={() => handleDeleteVacation(v.id)}
-                                      className="text-gray-300 hover:text-red-400 text-xs">✕</button>
+                                      className="text-stone-300 hover:text-red-400 text-xs">✕</button>
                                   </td>
                                 </tr>
                               ))}
                             </tbody>
                           </table>
                         </div>
-                        <div className="px-4 py-3 border-t border-gray-100 bg-gray-50 flex justify-between text-sm">
-                          <span className="text-gray-500">합계</span>
-                          <span className="font-bold text-gray-800">{usedDays}일 사용</span>
+                        <div className="px-4 py-3 border-t border-stone-100 bg-stone-50 flex justify-between text-sm">
+                          <span className="text-stone-500">합계</span>
+                          <span className="font-bold text-stone-800">{usedDays}일 사용</span>
                         </div>
                       </>
                     )}

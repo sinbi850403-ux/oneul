@@ -8,7 +8,7 @@ const CATS = [
   { value: 'rent',    label: '임대료',  color: 'bg-indigo-50 text-indigo-600' },
   { value: 'utility', label: '공과금',  color: 'bg-orange-50 text-orange-600' },
   { value: 'labor',   label: '인건비',  color: 'bg-blue-50 text-blue-600'     },
-  { value: 'other',   label: '기타',    color: 'bg-gray-100 text-gray-500'     },
+  { value: 'other',   label: '기타',    color: 'bg-stone-100 text-stone-500'     },
 ]
 const catInfo = (val) => CATS.find(c => c.value === val) ?? CATS[3]
 
@@ -61,23 +61,23 @@ export default function FixedExpenses() {
 
   return (
     <div className="max-w-2xl">
-      <h2 className="text-2xl font-bold text-gray-800 mb-1">정기 고정비</h2>
-      <p className="text-sm text-gray-400 mb-6">
+      <h2 className="text-2xl font-bold text-stone-800 mb-1">정기 고정비</h2>
+      <p className="text-sm text-stone-400 mb-6">
         매월 나가는 고정 지출이에요. 대시보드 순이익에서 자동으로 차감됩니다.
       </p>
 
       {/* 합계 카드 */}
       <div className="bg-red-50 border border-red-100 rounded-2xl px-6 py-4 mb-6 flex justify-between items-center">
-        <span className="text-sm font-semibold text-gray-600">월 고정비 합계</span>
+        <span className="text-sm font-semibold text-stone-600">월 고정비 합계</span>
         <span className="text-2xl font-bold text-red-500">{won(total)}</span>
       </div>
 
       {/* 목록 */}
-      <div className="bg-white rounded-2xl shadow-sm overflow-hidden mb-6">
+      <div className="bg-white rounded-2xl shadow-card overflow-hidden mb-6">
         {loading ? (
-          <p className="text-center py-8 text-gray-400 text-sm">불러오는 중...</p>
+          <p className="text-center py-8 text-stone-400 text-sm">불러오는 중...</p>
         ) : items.length === 0 ? (
-          <p className="text-center py-8 text-gray-400 text-sm">아직 고정비가 없어요. 아래에서 추가해주세요.</p>
+          <p className="text-center py-8 text-stone-400 text-sm">아직 고정비가 없어요. 아래에서 추가해주세요.</p>
         ) : (
           items.map((item, i) => {
             const ci = catInfo(item.category)
@@ -85,20 +85,20 @@ export default function FixedExpenses() {
               <div
                 key={item.id}
                 className={`flex items-center justify-between px-5 py-4 ${
-                  i < items.length - 1 ? 'border-b border-gray-50' : ''
+                  i < items.length - 1 ? 'border-b border-stone-50' : ''
                 }`}
               >
                 <div className="flex items-center gap-3">
                   <span className={`text-xs font-bold px-2 py-0.5 rounded ${ci.color}`}>
                     {ci.label}
                   </span>
-                  <span className="text-sm font-semibold text-gray-800">{item.name}</span>
+                  <span className="text-sm font-semibold text-stone-800">{item.name}</span>
                 </div>
                 <div className="flex items-center gap-4">
                   <span className="text-sm font-bold text-red-500">{won(item.amount)}</span>
                   <button
                     onClick={() => handleDelete(item.id)}
-                    className="text-xs text-gray-300 hover:text-red-400 transition-colors"
+                    className="text-xs text-stone-300 hover:text-red-400 transition-colors"
                   >
                     삭제
                   </button>
@@ -110,8 +110,8 @@ export default function FixedExpenses() {
       </div>
 
       {/* 추가 폼 */}
-      <div className="bg-white rounded-2xl shadow-sm p-6">
-        <h3 className="text-base font-bold text-gray-800 mb-4">고정비 추가</h3>
+      <div className="bg-white rounded-2xl shadow-card p-6">
+        <h3 className="text-base font-bold text-stone-800 mb-4">고정비 추가</h3>
         <div className="grid grid-cols-2 gap-3 mb-3">
           {CATS.map(c => (
             <button
@@ -120,7 +120,7 @@ export default function FixedExpenses() {
               className={`py-2 rounded-xl text-sm font-semibold border-2 transition-all ${
                 form.category === c.value
                   ? `${c.color} border-current`
-                  : 'bg-gray-50 text-gray-400 border-transparent'
+                  : 'bg-stone-50 text-stone-400 border-transparent'
               }`}
             >
               {c.label}
@@ -133,9 +133,9 @@ export default function FixedExpenses() {
             placeholder="항목명 (예: 건물 임대료)"
             value={form.name}
             onChange={e => setForm(f => ({ ...f, name: e.target.value }))}
-            className="flex-1 border border-gray-200 rounded-xl px-4 py-2.5 text-sm outline-none focus:border-brand"
+            className="flex-1 border border-stone-200 rounded-xl px-4 py-2.5 text-sm outline-none focus:border-brand"
           />
-          <div className="flex items-center border border-gray-200 rounded-xl px-3 gap-1">
+          <div className="flex items-center border border-stone-200 rounded-xl px-3 gap-1">
             <input
               type="number"
               placeholder="금액"
@@ -143,7 +143,7 @@ export default function FixedExpenses() {
               onChange={e => setForm(f => ({ ...f, amount: e.target.value }))}
               className="w-28 py-2.5 text-sm outline-none"
             />
-            <span className="text-sm text-gray-400 whitespace-nowrap">원</span>
+            <span className="text-sm text-stone-400 whitespace-nowrap">원</span>
           </div>
         </div>
         <button

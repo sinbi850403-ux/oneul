@@ -37,14 +37,14 @@ export default function Onboarding() {
       justifyContent: 'center', padding: '24px 20px',
     },
     card: {
-      background: '#fff', borderRadius: 24,
-      boxShadow: '0 8px 40px rgba(0,0,0,0.10)',
+      background: '#fff', borderRadius: 28,
+      boxShadow: '0 20px 60px -12px rgba(194,101,45,0.18), 0 4px 16px rgba(41,33,26,0.05)',
       padding: '36px 32px', width: '100%', maxWidth: 480,
     },
     progress: { display: 'flex', gap: 6, marginBottom: 32 },
     dot: (active, done) => ({
       flex: 1, height: 4, borderRadius: 2,
-      background: done ? '#F97316' : active ? '#FED7AA' : '#E5E7EB',
+      background: done ? '#FF6B35' : active ? '#FED7AA' : '#E5E7EB',
       transition: 'background 0.3s',
     }),
     title: { fontSize: 22, fontWeight: 800, color: '#1F2937', marginBottom: 6 },
@@ -56,7 +56,7 @@ export default function Onboarding() {
     },
     btn: (disabled) => ({
       width: '100%', padding: '15px',
-      background: disabled ? '#D1D5DB' : '#F97316',
+      background: disabled ? '#D1D5DB' : '#FF6B35',
       color: '#fff', border: 'none', borderRadius: 12,
       fontSize: 16, fontWeight: 700,
       cursor: disabled ? 'not-allowed' : 'pointer',
@@ -71,7 +71,7 @@ export default function Onboarding() {
   return (
     <div style={s.wrap}>
       <div style={{ marginBottom: 24, textAlign: 'center' }}>
-        <span style={{ fontSize: 28, fontWeight: 800, color: '#F97316' }}>오늘장부</span>
+        <span style={{ fontSize: 28, fontWeight: 800, color: '#FF6B35' }}>오늘장부</span>
       </div>
 
       <div style={s.card}>
@@ -128,7 +128,7 @@ export default function Onboarding() {
                   style={{
                     padding: '16px 20px', borderRadius: 14, border: 'none',
                     background: taxType === key ? '#FFF7ED' : '#F9FAFB',
-                    outline: taxType === key ? '2px solid #F97316' : '2px solid transparent',
+                    outline: taxType === key ? '2px solid #FF6B35' : '2px solid transparent',
                     cursor: 'pointer', transition: 'all 0.15s', textAlign: 'left',
                     display: 'flex', alignItems: 'flex-start', gap: 14,
                   }}
@@ -139,7 +139,7 @@ export default function Onboarding() {
                     <div style={{ fontSize: 12, color: '#6B7280', lineHeight: 1.5 }}>{desc}</div>
                   </div>
                   {taxType === key && (
-                    <span style={{ marginLeft: 'auto', color: '#F97316', fontSize: 18, flexShrink: 0 }}>✓</span>
+                    <span style={{ marginLeft: 'auto', color: '#FF6B35', fontSize: 18, flexShrink: 0 }}>✓</span>
                   )}
                 </button>
               ))}

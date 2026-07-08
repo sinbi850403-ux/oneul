@@ -66,22 +66,27 @@ export default function DashboardLayout() {
   return (
     <div className="flex flex-col min-h-screen">
       {/* 앱 스위처 바 */}
-      <div className="bg-gray-900 flex items-center gap-2 px-5 h-8 shrink-0">
+      <div className="bg-stone-900 flex items-center gap-2 px-5 h-8 shrink-0">
         <span className="text-sm font-bold text-brand">오늘장부</span>
-        <span className="text-gray-600 text-sm">/</span>
+        <span className="text-stone-600 text-sm">/</span>
         <button
           onClick={goToJaego}
-          className="text-sm font-medium text-gray-400 hover:text-blue-400 transition-colors cursor-pointer bg-transparent border-0 p-0"
+          className="text-sm font-medium text-stone-400 hover:text-blue-400 transition-colors cursor-pointer bg-transparent border-0 p-0"
         >
           오늘재고
         </button>
       </div>
 
-      <div className="flex flex-1 bg-gray-50">
-      <aside className="w-56 bg-white border-r border-gray-100 flex flex-col">
-        <div className="px-6 py-5 border-b border-gray-100">
-          <p className="text-base font-bold text-gray-800">{shopName || '내 가게'}</p>
-          <p className="text-xs text-gray-400 mt-0.5">관리자 대시보드</p>
+      <div className="flex flex-1 bg-stone-50">
+      <aside className="w-56 bg-white border-r border-stone-100 shadow-[4px_0_20px_-8px_rgba(41,33,26,0.05)] flex flex-col">
+        <div className="px-6 py-5 border-b border-stone-100 flex items-center gap-3">
+          <div className="w-10 h-10 rounded-full bg-orange-50 text-brand font-bold flex items-center justify-center shrink-0">
+            {(shopName || '내')[0]}
+          </div>
+          <div className="min-w-0">
+            <p className="text-base font-bold text-stone-800 truncate">{shopName || '내 가게'}</p>
+            <p className="text-xs text-stone-400 mt-0.5">관리자 대시보드</p>
+          </div>
         </div>
 
         <nav className="flex-1 px-3 py-4 flex flex-col gap-1">
@@ -93,7 +98,7 @@ export default function DashboardLayout() {
                 `px-4 py-2.5 rounded-xl text-sm font-medium transition-colors ${
                   isActive
                     ? 'bg-orange-50 text-brand font-semibold'
-                    : 'text-gray-600 hover:bg-gray-50'
+                    : 'text-stone-600 hover:bg-stone-50'
                 }`
               }
             >
@@ -102,24 +107,24 @@ export default function DashboardLayout() {
           ))}
         </nav>
 
-        <div className="px-3 py-4 border-t border-gray-100 flex flex-col gap-2">
+        <div className="px-3 py-4 border-t border-stone-100 flex flex-col gap-2">
           <button
             onClick={handleLogout}
-            className="px-4 py-2.5 rounded-xl text-sm text-gray-400 hover:bg-gray-50"
+            className="px-4 py-2.5 rounded-xl text-sm text-stone-400 hover:bg-stone-50"
           >
             로그아웃
           </button>
           <button
             onClick={handleDeleteAccount}
             disabled={deleting}
-            className="text-xs text-gray-300 hover:text-red-400 py-1 disabled:opacity-50 transition-colors"
+            className="text-xs text-stone-300 hover:text-red-400 py-1 disabled:opacity-50 transition-colors"
           >
             {deleting ? '탈퇴 처리 중...' : '회원 탈퇴'}
           </button>
         </div>
       </aside>
 
-      <main className="flex-1 p-8 overflow-y-auto">
+      <main className="flex-1 p-8 lg:p-10 overflow-y-auto">
         <Outlet context={{ setShopName }} />
       </main>
       </div>

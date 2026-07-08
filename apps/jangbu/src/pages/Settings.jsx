@@ -86,22 +86,22 @@ export default function Settings() {
 
   return (
     <div className="px-5 pt-6">
-      <h2 className="text-xl font-bold text-gray-800 mb-6">설정</h2>
+      <h2 className="text-xl font-bold text-stone-800 mb-6">설정</h2>
 
-      <div className="bg-white rounded-2xl shadow-sm p-5 mb-4 flex flex-col gap-4">
+      <div className="bg-white rounded-2xl shadow-card p-5 mb-4 flex flex-col gap-4">
         <div>
-          <label className="text-sm text-gray-500 mb-1 block">가게 이름</label>
+          <label className="text-sm text-stone-500 mb-1 block">가게 이름</label>
           <input
             type="text"
             value={shopName}
             onChange={(e) => setShopName(e.target.value)}
             placeholder="예) 홍길동 분식"
-            className="w-full border border-gray-200 rounded-xl px-4 py-3 text-base outline-none focus:border-brand"
+            className="w-full bg-stone-50 border border-transparent rounded-xl px-4 py-3.5 text-base outline-none focus:bg-white focus:border-brand focus:ring-4 focus:ring-orange-100 transition-all"
           />
         </div>
 
         <div>
-          <label className="text-sm text-gray-500 mb-2 block">과세 유형</label>
+          <label className="text-sm text-stone-500 mb-2 block">과세 유형</label>
           <div className="flex gap-3">
             {[
               { value: 'general', label: '일반과세자' },
@@ -113,7 +113,7 @@ export default function Settings() {
                 className={`flex-1 py-3 rounded-xl text-sm font-semibold border transition-colors ${
                   taxType === value
                     ? 'bg-brand text-white border-brand'
-                    : 'bg-white text-gray-600 border-gray-200'
+                    : 'bg-white text-stone-600 border-stone-200'
                 }`}
               >
                 {label}
@@ -125,17 +125,17 @@ export default function Settings() {
 
       {/* 푸시 알림 설정 */}
       {'Notification' in window && (
-        <div className="bg-white rounded-2xl shadow-sm p-5 mb-4">
+        <div className="bg-white rounded-2xl shadow-card p-5 mb-4">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-sm font-semibold text-gray-800">매출 입력 알림</p>
-              <p className="text-xs text-gray-400 mt-0.5">매일 저녁 매출 기록을 알려드려요</p>
+              <p className="text-sm font-semibold text-stone-800">매출 입력 알림</p>
+              <p className="text-xs text-stone-400 mt-0.5">매일 저녁 매출 기록을 알려드려요</p>
             </div>
             <button
               onClick={handlePushToggle}
               disabled={pushLoading || permission === 'denied'}
               className={`relative w-12 h-6 rounded-full transition-colors duration-200 disabled:opacity-50 ${
-                subscribed ? 'bg-brand' : 'bg-gray-200'
+                subscribed ? 'bg-brand' : 'bg-stone-200'
               }`}
             >
               <span className={`absolute top-0.5 left-0.5 w-5 h-5 bg-white rounded-full shadow transition-transform duration-200 ${
@@ -152,15 +152,15 @@ export default function Settings() {
       <button
         onClick={handleSave}
         disabled={saving}
-        className="w-full bg-brand text-white rounded-2xl py-4 text-lg font-bold mb-4 active:opacity-80 disabled:opacity-50"
+        className="w-full bg-brand text-white rounded-2xl py-4 text-lg font-bold mb-4 shadow-warm transition-transform active:scale-[0.98] active:opacity-90 disabled:opacity-50 disabled:shadow-none"
       >
         {saving ? '저장 중...' : '저장하기'}
       </button>
 
       {/* 앱 공유 */}
-      <div className="bg-white rounded-2xl shadow-sm p-5 mb-4">
-        <p className="text-sm font-semibold text-gray-700 mb-1">앱 공유하기</p>
-        <p className="text-xs text-gray-400 mb-3">주변 사장님들께 오늘장부를 소개해주세요!</p>
+      <div className="bg-white rounded-2xl shadow-card p-5 mb-4">
+        <p className="text-sm font-semibold text-stone-700 mb-1">앱 공유하기</p>
+        <p className="text-xs text-stone-400 mb-3">주변 사장님들께 오늘장부를 소개해주세요!</p>
         <button
           onClick={async () => {
             const url = 'https://oneul-jangbu.vercel.app'
@@ -180,14 +180,14 @@ export default function Settings() {
 
       <a
         href="/dashboard"
-        className="w-full text-center text-gray-500 text-sm py-3 block"
+        className="w-full text-center text-stone-500 text-sm py-3 block"
       >
         PC 대시보드로 →
       </a>
 
       <button
         onClick={handleLogout}
-        className="w-full text-gray-400 text-sm py-3"
+        className="w-full text-stone-400 text-sm py-3"
       >
         로그아웃
       </button>
@@ -195,7 +195,7 @@ export default function Settings() {
       <button
         onClick={handleDeleteAccount}
         disabled={deleting}
-        className="w-full text-xs text-gray-300 hover:text-red-400 py-2 disabled:opacity-50 transition-colors"
+        className="w-full text-xs text-stone-300 hover:text-red-400 py-2 disabled:opacity-50 transition-colors"
       >
         {deleting ? '탈퇴 처리 중...' : '회원 탈퇴'}
       </button>

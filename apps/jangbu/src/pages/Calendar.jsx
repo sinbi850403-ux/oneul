@@ -66,15 +66,15 @@ export default function Calendar() {
         <button
           onClick={prevMonth}
           disabled={isAtMin}
-          className="text-2xl px-2 text-gray-400 disabled:opacity-20"
+          className="text-2xl px-2 text-stone-400 disabled:opacity-20"
         >
           ‹
         </button>
-        <span className="text-lg font-bold text-gray-800">{year}년 {month}월</span>
+        <span className="text-lg font-bold text-stone-800">{year}년 {month}월</span>
         <button
           onClick={nextMonth}
           disabled={isAtMax}
-          className="text-2xl px-2 text-gray-400 disabled:opacity-20"
+          className="text-2xl px-2 text-stone-400 disabled:opacity-20"
         >
           ›
         </button>
@@ -82,18 +82,18 @@ export default function Calendar() {
 
       <div className="bg-orange-50 rounded-2xl px-5 py-4 mb-4">
         <div className="flex justify-between items-center mb-1">
-          <span className="text-sm text-gray-500">이번달 누계</span>
+          <span className="text-sm text-stone-500">이번달 누계</span>
           <span className="text-2xl font-bold text-brand">₩ {monthTotal.toLocaleString('ko-KR')}</span>
         </div>
         <div className="flex justify-between items-center">
-          <span className="text-sm text-gray-500">일평균</span>
-          <span className="text-base font-semibold text-gray-700">₩ {avg.toLocaleString('ko-KR')}</span>
+          <span className="text-sm text-stone-500">일평균</span>
+          <span className="text-base font-semibold text-stone-700">₩ {avg.toLocaleString('ko-KR')}</span>
         </div>
       </div>
 
       <div className="grid grid-cols-7 mb-1">
         {DAYS.map(d => (
-          <div key={d} className="text-center text-xs text-gray-400 py-1">{d}</div>
+          <div key={d} className="text-center text-xs text-stone-400 py-1">{d}</div>
         ))}
       </div>
 

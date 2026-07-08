@@ -64,28 +64,28 @@ export default function DashboardInput() {
   return (
     <div className="max-w-2xl">
       <div className="flex items-center justify-between mb-6">
-        <h2 className="text-2xl font-bold text-gray-800">매출 입력</h2>
+        <h2 className="text-2xl font-bold text-stone-800">매출 입력</h2>
         <input
           type="date"
           value={date}
           max={todayKST()}
           onChange={(e) => setDate(toKSTDateString(new Date(e.target.value + 'T00:00:00')))}
-          className="border border-gray-200 rounded-xl px-4 py-2 text-sm text-brand font-semibold outline-none focus:border-brand"
+          className="border border-stone-200 rounded-xl px-4 py-2 text-sm text-brand font-semibold outline-none focus:border-brand"
         />
       </div>
 
-      <div className="bg-white rounded-2xl shadow-sm p-6 mb-4">
+      <div className="bg-white rounded-2xl shadow-card p-6 mb-4">
         <div className="grid grid-cols-2 gap-x-8">
           {FIELDS.map(({ key, label }) => (
-            <div key={key} className="flex items-center justify-between py-3 border-b border-gray-50">
-              <span className="text-gray-600 text-sm w-24 shrink-0">{label}</span>
+            <div key={key} className="flex items-center justify-between py-3 border-b border-stone-50">
+              <span className="text-stone-600 text-sm w-24 shrink-0">{label}</span>
               <input
                 type="text"
                 inputMode="numeric"
                 value={values[key] === 0 ? '' : values[key].toLocaleString('ko-KR')}
                 onChange={(e) => handleNumberInput(key, e.target.value)}
                 placeholder="0"
-                className="text-right text-base font-medium text-gray-900 flex-1 outline-none placeholder-gray-300"
+                className="text-right text-base font-medium text-stone-900 flex-1 outline-none placeholder-stone-300"
               />
             </div>
           ))}
@@ -93,7 +93,7 @@ export default function DashboardInput() {
       </div>
 
       <div className="bg-orange-50 rounded-2xl px-6 py-4 mb-4 flex justify-between items-center">
-        <span className="text-gray-600 font-medium">합계</span>
+        <span className="text-stone-600 font-medium">합계</span>
         <span className="text-2xl font-bold text-brand">₩ {total.toLocaleString('ko-KR')}</span>
       </div>
 
@@ -107,7 +107,7 @@ export default function DashboardInput() {
         </button>
         <button
           onClick={handleReset}
-          className="px-6 py-3 rounded-xl text-sm text-gray-400 border border-gray-200 hover:bg-gray-50"
+          className="px-6 py-3 rounded-xl text-sm text-stone-400 border border-stone-200 hover:bg-stone-50"
         >
           초기화
         </button>

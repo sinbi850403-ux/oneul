@@ -63,7 +63,7 @@ function ProtectedLayout() {
   if (loading || (session && onboarded === null)) {
     return (
       <div className="flex items-center justify-center min-h-screen">
-        <span className="text-gray-400 text-lg">불러오는 중...</span>
+        <span className="text-stone-400 text-lg">불러오는 중...</span>
       </div>
     )
   }
@@ -75,12 +75,12 @@ function ProtectedLayout() {
   return (
     <div className="flex flex-col min-h-screen max-w-md mx-auto">
       {/* 앱 스위처 */}
-      <div className="bg-gray-900 flex items-center gap-2 px-4 h-8 shrink-0">
+      <div className="bg-stone-900 flex items-center gap-2 px-4 h-8 shrink-0">
         <span className="text-sm font-bold text-brand">오늘장부</span>
-        <span className="text-gray-600 text-sm">/</span>
+        <span className="text-stone-600 text-sm">/</span>
         <button
           onClick={goToJaego}
-          className="text-sm font-medium text-gray-400 hover:text-blue-400 transition-colors cursor-pointer bg-transparent border-0 p-0"
+          className="text-sm font-medium text-stone-400 hover:text-blue-400 transition-colors cursor-pointer bg-transparent border-0 p-0"
         >
           오늘재고
         </button>
@@ -120,7 +120,7 @@ function DashboardGuard() {
   if (loading || (session && onboarded === null)) {
     return (
       <div className="flex items-center justify-center min-h-screen">
-        <span className="text-gray-400 text-lg">불러오는 중...</span>
+        <span className="text-stone-400 text-lg">불러오는 중...</span>
       </div>
     )
   }

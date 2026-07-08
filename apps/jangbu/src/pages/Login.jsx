@@ -84,31 +84,31 @@ export default function Login() {
   /* ── 비밀번호 찾기 화면 ── */
   if (showReset) {
     return (
-      <div className="min-h-screen flex flex-col items-center justify-center bg-gray-50 px-6">
+      <div className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-b from-orange-50/50 via-stone-50 to-stone-50 px-6">
         <div className="w-full max-w-sm">
           <div className="text-center mb-10">
             <h1 className="text-4xl font-bold text-brand">오늘장부</h1>
-            <p className="text-gray-500 mt-2 text-sm">비밀번호 찾기</p>
+            <p className="text-stone-500 mt-2 text-sm">비밀번호 찾기</p>
           </div>
-          <form onSubmit={handleReset} className="bg-white rounded-2xl shadow-sm p-6 flex flex-col gap-4">
-            <p className="text-sm text-gray-500 leading-relaxed">
+          <form onSubmit={handleReset} className="bg-white rounded-3xl shadow-card p-7 flex flex-col gap-4">
+            <p className="text-sm text-stone-500 leading-relaxed">
               가입한 이메일을 입력하면 비밀번호 재설정 링크를 보내드려요.
             </p>
             <input
               type="email" placeholder="이메일" value={resetEmail}
               onChange={(e) => setResetEmail(e.target.value)} required
-              className="border border-gray-200 rounded-xl px-4 py-3 text-base outline-none focus:border-brand"
+              className="bg-stone-50 border border-transparent rounded-xl px-4 py-3.5 text-base outline-none focus:bg-white focus:border-brand focus:ring-4 focus:ring-orange-100 transition-all"
             />
             {error   && <p className="text-red-500 text-sm text-center">{error}</p>}
             {message && <p className="text-green-600 text-sm text-center">{message}</p>}
             <button type="submit" disabled={resetLoading}
-              className="bg-brand text-white rounded-xl py-4 text-lg font-semibold active:opacity-80 disabled:opacity-50">
+              className="bg-brand text-white rounded-2xl py-4 text-lg font-semibold shadow-warm transition-transform active:scale-[0.98] active:opacity-90 disabled:opacity-50 disabled:shadow-none">
               {resetLoading ? '전송 중...' : '재설정 이메일 보내기'}
             </button>
           </form>
           <button
             onClick={() => { setShowReset(false); setError(''); setMessage('') }}
-            className="w-full text-center text-gray-500 text-sm mt-4 py-2"
+            className="w-full text-center text-stone-500 text-sm mt-4 py-2"
           >
             ← 로그인으로 돌아가기
           </button>
@@ -119,29 +119,29 @@ export default function Login() {
 
   /* ── 메인 로그인/회원가입 화면 ── */
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center bg-gray-50 px-6">
+    <div className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-b from-orange-50/50 via-stone-50 to-stone-50 px-6">
       <div className="w-full max-w-sm">
         <div className="text-center mb-10">
           <h1 className="text-4xl font-bold text-brand">오늘장부</h1>
-          <p className="text-gray-500 mt-2 text-sm">매일 매출, 간편하게</p>
+          <p className="text-stone-500 mt-2 text-sm">매일 매출, 간편하게</p>
         </div>
 
-        <form onSubmit={handleSubmit} className="bg-white rounded-2xl shadow-sm p-6 flex flex-col gap-4">
+        <form onSubmit={handleSubmit} className="bg-white rounded-3xl shadow-card p-7 flex flex-col gap-4">
           <input
             type="email" placeholder="이메일" value={email}
             onChange={(e) => setEmail(e.target.value)} required
-            className="border border-gray-200 rounded-xl px-4 py-3 text-base outline-none focus:border-brand"
+            className="bg-stone-50 border border-transparent rounded-xl px-4 py-3.5 text-base outline-none focus:bg-white focus:border-brand focus:ring-4 focus:ring-orange-100 transition-all"
           />
           <input
             type="password" placeholder="비밀번호" value={password}
             onChange={(e) => setPassword(e.target.value)} required
-            className="border border-gray-200 rounded-xl px-4 py-3 text-base outline-none focus:border-brand"
+            className="bg-stone-50 border border-transparent rounded-xl px-4 py-3.5 text-base outline-none focus:bg-white focus:border-brand focus:ring-4 focus:ring-orange-100 transition-all"
           />
           {isSignUp && (
             <input
               type="password" placeholder="비밀번호 확인" value={confirm}
               onChange={(e) => setConfirm(e.target.value)} required
-              className="border border-gray-200 rounded-xl px-4 py-3 text-base outline-none focus:border-brand"
+              className="bg-stone-50 border border-transparent rounded-xl px-4 py-3.5 text-base outline-none focus:bg-white focus:border-brand focus:ring-4 focus:ring-orange-100 transition-all"
             />
           )}
 
@@ -149,20 +149,20 @@ export default function Login() {
           {message && <p className="text-green-600 text-sm text-center">{message}</p>}
 
           <button type="submit" disabled={loading}
-            className="bg-brand text-white rounded-xl py-4 text-lg font-semibold active:opacity-80 disabled:opacity-50">
+            className="bg-brand text-white rounded-2xl py-4 text-lg font-semibold shadow-warm transition-transform active:scale-[0.98] active:opacity-90 disabled:opacity-50 disabled:shadow-none">
             {loading ? '처리 중...' : isSignUp ? '회원가입' : '로그인'}
           </button>
 
           {/* 구분선 */}
           <div className="flex items-center gap-2">
-            <div className="flex-1 h-px bg-gray-200" />
-            <span className="text-xs text-gray-400">또는</span>
-            <div className="flex-1 h-px bg-gray-200" />
+            <div className="flex-1 h-px bg-stone-200" />
+            <span className="text-xs text-stone-400">또는</span>
+            <div className="flex-1 h-px bg-stone-200" />
           </div>
 
           {/* Google 로그인 */}
           <button type="button" onClick={handleGoogle}
-            className="flex items-center justify-center gap-2.5 border border-gray-200 rounded-xl py-3 text-sm font-semibold text-gray-700 hover:bg-gray-50 active:opacity-80">
+            className="flex items-center justify-center gap-2.5 border border-stone-200 rounded-xl py-3 text-sm font-semibold text-stone-700 hover:bg-stone-50 active:opacity-80 transition-colors">
             <GoogleIcon />
             Google로 {isSignUp ? '회원가입' : '로그인'}
           </button>
@@ -171,7 +171,7 @@ export default function Login() {
         {!isSignUp && (
           <button
             onClick={() => { setShowReset(true); setError(''); setMessage('') }}
-            className="w-full text-center text-gray-400 text-xs mt-2 py-1"
+            className="w-full text-center text-stone-400 text-xs mt-2 py-1"
           >
             비밀번호를 잊으셨나요?
           </button>
@@ -179,7 +179,7 @@ export default function Login() {
 
         <button
           onClick={() => { setIsSignUp(!isSignUp); setError(''); setMessage(''); setConfirm('') }}
-          className="w-full text-center text-gray-500 text-sm mt-2 py-2"
+          className="w-full text-center text-stone-500 text-sm mt-2 py-2"
         >
           {isSignUp ? '이미 계정이 있어요 → 로그인' : '계정이 없어요 → 회원가입'}
         </button>

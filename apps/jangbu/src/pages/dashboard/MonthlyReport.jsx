@@ -46,10 +46,10 @@ function DailyChart({ year, month, salesRows, salesItemsRows }) {
   const salesDays  = dailyData.filter(d => d.total > 0).length
 
   return (
-    <div className="bg-white rounded-2xl shadow-sm p-5 mb-6">
+    <div className="bg-white rounded-2xl shadow-card p-5 mb-6">
       <div className="flex items-center justify-between mb-4">
-        <p className="text-sm font-semibold text-gray-700">일별 매출 현황</p>
-        <div className="flex items-center gap-3 text-xs text-gray-400">
+        <p className="text-sm font-semibold text-stone-700">일별 매출 현황</p>
+        <div className="flex items-center gap-3 text-xs text-stone-400">
           <span className="flex items-center gap-1">
             <span className="inline-block w-3 h-3 rounded-sm bg-brand opacity-80" />수동
           </span>
@@ -111,7 +111,7 @@ function DailyChart({ year, month, salesRows, salesItemsRows }) {
                     onMouseEnter={() => setHovered(null)}
                   >
                     <div style={{ width: '100%', height: 3, background: '#F3F4F6', borderRadius: 2 }} />
-                    <span style={{ fontSize: 9, color: day === todayDay ? '#F97316' : '#D1D5DB', fontWeight: day === todayDay ? 700 : 400 }}>
+                    <span style={{ fontSize: 9, color: day === todayDay ? '#FF6B35' : '#D1D5DB', fontWeight: day === todayDay ? 700 : 400 }}>
                       {pad(day)}
                     </span>
                   </div>
@@ -143,12 +143,12 @@ function DailyChart({ year, month, salesRows, salesItemsRows }) {
                     {manualH > 0 && (
                       <div style={{
                         width: '100%', height: manualH,
-                        background: isToday || isHov ? 'var(--color-brand, #F97316)' : '#FDBA74',
+                        background: isToday || isHov ? 'var(--color-brand, #FF6B35)' : '#FDBA74',
                         borderRadius: itemsH > 0 ? 0 : '2px 2px 0 0',
                       }} />
                     )}
                   </div>
-                  <span style={{ fontSize: 9, color: isToday ? '#F97316' : isHov ? '#374151' : '#9CA3AF', fontWeight: isToday || isHov ? 700 : 400 }}>
+                  <span style={{ fontSize: 9, color: isToday ? '#FF6B35' : isHov ? '#374151' : '#9CA3AF', fontWeight: isToday || isHov ? 700 : 400 }}>
                     {pad(day)}
                   </span>
                 </div>
@@ -159,9 +159,9 @@ function DailyChart({ year, month, salesRows, salesItemsRows }) {
       </div>
 
       {/* 요약 */}
-      <div className="flex gap-4 mt-3 pt-3 border-t border-gray-100 text-xs text-gray-500">
-        <span>영업일 <strong className="text-gray-700">{salesDays}일</strong></span>
-        <span>일평균 <strong className="text-gray-700">{salesDays > 0 ? (totalSales / salesDays / 10000).toFixed(1) : 0}만원</strong></span>
+      <div className="flex gap-4 mt-3 pt-3 border-t border-stone-100 text-xs text-stone-500">
+        <span>영업일 <strong className="text-stone-700">{salesDays}일</strong></span>
+        <span>일평균 <strong className="text-stone-700">{salesDays > 0 ? (totalSales / salesDays / 10000).toFixed(1) : 0}만원</strong></span>
         {(() => {
           const best = dailyData.reduce((a, b) => b.total > a.total ? b : a, dailyData[0])
           if (best.total > 0) return (
@@ -252,10 +252,10 @@ export default function MonthlyReport() {
   return (
     <div>
       <div className="flex items-center justify-between mb-6">
-        <h2 className="text-2xl font-bold text-gray-800">월별 리포트</h2>
+        <h2 className="text-2xl font-bold text-stone-800">월별 리포트</h2>
         <button
           onClick={handleShare}
-          className="flex items-center gap-1.5 px-4 py-2 text-sm font-semibold border border-gray-200 rounded-xl text-gray-600 hover:bg-gray-50"
+          className="flex items-center gap-1.5 px-4 py-2 text-sm font-semibold border border-stone-200 rounded-xl text-stone-600 hover:bg-stone-50"
         >
           <span>↗</span> 공유
         </button>
@@ -265,31 +265,31 @@ export default function MonthlyReport() {
         <select
           value={year}
           onChange={(e) => setYear(Number(e.target.value))}
-          className="border border-gray-200 rounded-xl px-4 py-2 text-sm outline-none focus:border-brand"
+          className="border border-stone-200 rounded-xl px-4 py-2 text-sm outline-none focus:border-brand"
         >
           {years.map(y => <option key={y} value={y}>{y}년</option>)}
         </select>
         <select
           value={month}
           onChange={(e) => setMonth(Number(e.target.value))}
-          className="border border-gray-200 rounded-xl px-4 py-2 text-sm outline-none focus:border-brand"
+          className="border border-stone-200 rounded-xl px-4 py-2 text-sm outline-none focus:border-brand"
         >
           {months.map(m => <option key={m} value={m}>{m}월</option>)}
         </select>
       </div>
 
       <div className="grid grid-cols-3 gap-4 mb-6">
-        <div className="bg-white rounded-2xl p-5 shadow-sm">
-          <p className="text-sm text-gray-400 mb-1">월 매출 누계</p>
+        <div className="bg-white rounded-2xl p-5 shadow-card">
+          <p className="text-sm text-stone-400 mb-1">월 매출 누계</p>
           <p className="text-2xl font-bold text-brand">{won(monthTotal + salesItemTotal)}</p>
         </div>
-        <div className="bg-white rounded-2xl p-5 shadow-sm">
-          <p className="text-sm text-gray-400 mb-1">영업일</p>
-          <p className="text-2xl font-bold text-gray-800">{rows.length}일</p>
+        <div className="bg-white rounded-2xl p-5 shadow-card">
+          <p className="text-sm text-stone-400 mb-1">영업일</p>
+          <p className="text-2xl font-bold text-stone-800">{rows.length}일</p>
         </div>
-        <div className="bg-white rounded-2xl p-5 shadow-sm">
-          <p className="text-sm text-gray-400 mb-1">일평균 매출</p>
-          <p className="text-2xl font-bold text-gray-800">
+        <div className="bg-white rounded-2xl p-5 shadow-card">
+          <p className="text-sm text-stone-400 mb-1">일평균 매출</p>
+          <p className="text-2xl font-bold text-stone-800">
             {won(rows.length ? Math.round((monthTotal + salesItemTotal) / rows.length) : 0)}
           </p>
         </div>
@@ -312,44 +312,44 @@ export default function MonthlyReport() {
         const profit     = totalSales - purchaseTotal - estimatedVat
         const marginRate = totalSales > 0 ? Math.round((profit / totalSales) * 100) : 0
         return (
-          <div className="bg-white rounded-2xl shadow-sm p-5 mb-6">
-            <p className="text-xs text-gray-400 font-medium mb-4 uppercase tracking-wide">손익 요약</p>
-            <div className="grid grid-cols-3 divide-x divide-gray-100 mb-4">
+          <div className="bg-white rounded-2xl shadow-card p-5 mb-6">
+            <p className="text-xs text-stone-400 font-medium mb-4 uppercase tracking-wide">손익 요약</p>
+            <div className="grid grid-cols-3 divide-x divide-stone-100 mb-4">
               <div className="pr-5">
-                <p className="text-xs text-gray-400 mb-1">매입 합계</p>
-                <p className="text-lg font-semibold text-gray-700">{won(purchaseTotal)}</p>
+                <p className="text-xs text-stone-400 mb-1">매입 합계</p>
+                <p className="text-lg font-semibold text-stone-700">{won(purchaseTotal)}</p>
               </div>
               <div className="px-5">
-                <p className="text-xs text-gray-400 mb-1">수동 매출</p>
-                <p className="text-lg font-semibold text-gray-700">{won(monthTotal)}</p>
+                <p className="text-xs text-stone-400 mb-1">수동 매출</p>
+                <p className="text-lg font-semibold text-stone-700">{won(monthTotal)}</p>
               </div>
               <div className="pl-5">
-                <p className="text-xs text-gray-400 mb-1">재고앱 매출</p>
-                <p className="text-lg font-semibold text-gray-700">{won(salesItemTotal)}</p>
+                <p className="text-xs text-stone-400 mb-1">재고앱 매출</p>
+                <p className="text-lg font-semibold text-stone-700">{won(salesItemTotal)}</p>
               </div>
             </div>
-            <div className="border-t border-gray-100 pt-4 grid grid-cols-4 divide-x divide-gray-100">
+            <div className="border-t border-stone-100 pt-4 grid grid-cols-4 divide-x divide-stone-100">
               <div className="pr-5">
-                <p className="text-xs text-gray-400 mb-1">통합 매출</p>
+                <p className="text-xs text-stone-400 mb-1">통합 매출</p>
                 <p className="text-lg font-bold text-brand">{won(totalSales)}</p>
               </div>
               <div className="px-5">
-                <p className="text-xs text-gray-400 mb-1">
+                <p className="text-xs text-stone-400 mb-1">
                   예상 부가세
-                  <span className="ml-1 text-gray-300">
+                  <span className="ml-1 text-stone-300">
                     ({taxType === 'simple' ? '간이 1.5%' : '일반 ÷11'})
                   </span>
                 </p>
                 <p className="text-lg font-bold text-red-400">- {won(estimatedVat)}</p>
               </div>
               <div className="px-5">
-                <p className="text-xs text-gray-400 mb-1">순이익</p>
+                <p className="text-xs text-stone-400 mb-1">순이익</p>
                 <p className={`text-lg font-bold ${profit >= 0 ? 'text-green-600' : 'text-red-500'}`}>
                   {profit >= 0 ? '+' : ''}{won(profit)}
                 </p>
               </div>
               <div className="pl-5">
-                <p className="text-xs text-gray-400 mb-1">마진율</p>
+                <p className="text-xs text-stone-400 mb-1">마진율</p>
                 <p className={`text-lg font-bold ${marginRate >= 0 ? 'text-green-600' : 'text-red-500'}`}>
                   {marginRate}%
                 </p>
@@ -359,34 +359,34 @@ export default function MonthlyReport() {
         )
       })()}
 
-      <div className="bg-white rounded-2xl shadow-sm overflow-hidden mb-6">
+      <div className="bg-white rounded-2xl shadow-card overflow-hidden mb-6">
         <table className="w-full text-sm">
-          <thead className="bg-gray-50">
+          <thead className="bg-stone-50">
             <tr>
-              <th className="text-left px-4 py-3 text-gray-500 font-medium">날짜</th>
+              <th className="text-left px-4 py-3 text-stone-500 font-medium">날짜</th>
               {FIELDS.map(f => (
-                <th key={f.key} className="text-right px-3 py-3 text-gray-500 font-medium">{f.label}</th>
+                <th key={f.key} className="text-right px-3 py-3 text-stone-500 font-medium">{f.label}</th>
               ))}
-              <th className="text-right px-4 py-3 text-gray-500 font-medium">합계</th>
+              <th className="text-right px-4 py-3 text-stone-500 font-medium">합계</th>
             </tr>
           </thead>
           <tbody>
             {rows.length === 0 ? (
               <tr>
-                <td colSpan={FIELDS.length + 2} className="text-center py-10 text-gray-400">
+                <td colSpan={FIELDS.length + 2} className="text-center py-10 text-stone-400">
                   데이터가 없습니다
                 </td>
               </tr>
             ) : (
               rows.map(row => (
-                <tr key={row.id} className="border-t border-gray-50 hover:bg-gray-50">
-                  <td className="px-4 py-3 text-gray-700">{row.sale_date}</td>
+                <tr key={row.id} className="border-t border-stone-50 hover:bg-stone-50">
+                  <td className="px-4 py-3 text-stone-700">{row.sale_date}</td>
                   {FIELDS.map(f => (
-                    <td key={f.key} className="px-3 py-3 text-right text-gray-600">
+                    <td key={f.key} className="px-3 py-3 text-right text-stone-600">
                       {row[f.key] ? row[f.key].toLocaleString() : '-'}
                     </td>
                   ))}
-                  <td className="px-4 py-3 text-right font-semibold text-gray-800">
+                  <td className="px-4 py-3 text-right font-semibold text-stone-800">
                     {(row.total ?? 0).toLocaleString()}
                   </td>
                 </tr>
@@ -396,9 +396,9 @@ export default function MonthlyReport() {
           {rows.length > 0 && (
             <tfoot className="bg-orange-50 border-t-2 border-orange-100">
               <tr>
-                <td className="px-4 py-3 font-semibold text-gray-700">합계</td>
+                <td className="px-4 py-3 font-semibold text-stone-700">합계</td>
                 {FIELDS.map(f => (
-                  <td key={f.key} className="px-3 py-3 text-right font-semibold text-gray-700">
+                  <td key={f.key} className="px-3 py-3 text-right font-semibold text-stone-700">
                     {fieldTotals[f.key] ? fieldTotals[f.key].toLocaleString() : '-'}
                   </td>
                 ))}

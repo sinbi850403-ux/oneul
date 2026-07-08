@@ -56,28 +56,28 @@ export default function ResetPassword() {
   }
 
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center bg-gray-50 px-6">
+    <div className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-b from-orange-50/50 via-stone-50 to-stone-50 px-6">
       <div className="w-full max-w-sm">
         <div className="text-center mb-10">
           <h1 className="text-4xl font-bold text-brand">오늘장부</h1>
-          <p className="text-gray-500 mt-2 text-sm">새 비밀번호 설정</p>
+          <p className="text-stone-500 mt-2 text-sm">새 비밀번호 설정</p>
         </div>
 
         {!ready ? (
-          <div className="bg-white rounded-2xl shadow-sm p-6 text-center">
-            <div className="text-gray-400 text-sm mb-3">인증 링크 확인 중...</div>
-            <div className="text-xs text-gray-300">잠시만 기다려 주세요</div>
+          <div className="bg-white rounded-3xl shadow-card p-7 text-center">
+            <div className="text-stone-400 text-sm mb-3">인증 링크 확인 중...</div>
+            <div className="text-xs text-stone-300">잠시만 기다려 주세요</div>
           </div>
         ) : (
-          <form onSubmit={handleSubmit} className="bg-white rounded-2xl shadow-sm p-6 flex flex-col gap-4">
-            <p className="text-sm text-gray-500">새로 사용할 비밀번호를 입력해 주세요.</p>
+          <form onSubmit={handleSubmit} className="bg-white rounded-3xl shadow-card p-7 flex flex-col gap-4">
+            <p className="text-sm text-stone-500">새로 사용할 비밀번호를 입력해 주세요.</p>
             <input
               type="password"
               placeholder="새 비밀번호 (6자 이상)"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               required
-              className="border border-gray-200 rounded-xl px-4 py-3 text-base outline-none focus:border-brand"
+              className="bg-stone-50 border border-transparent rounded-xl px-4 py-3.5 text-base outline-none focus:bg-white focus:border-brand focus:ring-4 focus:ring-orange-100 transition-all"
             />
             <input
               type="password"
@@ -85,14 +85,14 @@ export default function ResetPassword() {
               value={confirm}
               onChange={(e) => setConfirm(e.target.value)}
               required
-              className="border border-gray-200 rounded-xl px-4 py-3 text-base outline-none focus:border-brand"
+              className="bg-stone-50 border border-transparent rounded-xl px-4 py-3.5 text-base outline-none focus:bg-white focus:border-brand focus:ring-4 focus:ring-orange-100 transition-all"
             />
             {error   && <p className="text-red-500 text-sm text-center">{error}</p>}
             {message && <p className="text-green-600 text-sm text-center">{message}</p>}
             <button
               type="submit"
               disabled={loading}
-              className="bg-brand text-white rounded-xl py-4 text-lg font-semibold active:opacity-80 disabled:opacity-50"
+              className="bg-brand text-white rounded-2xl py-4 text-lg font-semibold shadow-warm transition-transform active:scale-[0.98] active:opacity-90 disabled:opacity-50 disabled:shadow-none"
             >
               {loading ? '변경 중...' : '비밀번호 변경'}
             </button>

@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import { supabase } from '../lib/supabase.js'
 
 const CATS = [
-  { value: '',        label: '전체',    color: 'text-gray-500',  bg: 'bg-gray-50',   border: 'border-gray-300'  },
+  { value: '',        label: '전체',    color: 'text-stone-500',  bg: 'bg-stone-50',   border: 'border-stone-300'  },
   { value: 'bug',     label: '버그신고', color: 'text-red-600',   bg: 'bg-red-50',    border: 'border-red-400'   },
   { value: 'feature', label: '기능요청', color: 'text-blue-600',  bg: 'bg-blue-50',   border: 'border-blue-400'  },
   { value: 'free',    label: '자유',    color: 'text-green-600', bg: 'bg-green-50',  border: 'border-green-400' },
@@ -12,7 +12,7 @@ const CAT_BADGE = { bug: 'bg-red-50 text-red-600', feature: 'bg-blue-50 text-blu
 const CAT_LABEL = { bug: '버그신고', feature: '기능요청', free: '자유' }
 
 const STATUS_STYLE = {
-  open:       { label: '접수',   cls: 'bg-gray-100 text-gray-500' },
+  open:       { label: '접수',   cls: 'bg-stone-100 text-stone-500' },
   processing: { label: '처리중', cls: 'bg-yellow-100 text-yellow-700' },
   done:       { label: '완료',   cls: 'bg-green-100 text-green-700' },
 }
@@ -117,18 +117,18 @@ export default function MobileBoard() {
     setReplies(prev => ({ ...prev, [postId]: (prev[postId] ?? []).filter(r => r.id !== replyId) }))
   }
 
-  const inputCls = 'w-full border border-gray-200 rounded-xl px-4 py-3 text-sm outline-none focus:border-brand'
+  const inputCls = 'w-full border border-stone-200 rounded-xl px-4 py-3 text-sm outline-none focus:border-brand'
 
   return (
     <div className="px-4 pt-5 pb-4">
       {/* 헤더 */}
       <div className="flex items-center justify-between mb-4">
         <div>
-          <h2 className="text-xl font-bold text-gray-800">
+          <h2 className="text-xl font-bold text-stone-800">
             게시판
             {isAdmin && <span className="ml-2 text-xs bg-brand text-white px-2 py-0.5 rounded-full">관리자</span>}
           </h2>
-          <p className="text-xs text-gray-400 mt-0.5">버그·기능요청·자유롭게 남겨주세요</p>
+          <p className="text-xs text-stone-400 mt-0.5">버그·기능요청·자유롭게 남겨주세요</p>
         </div>
         <button
           onClick={() => setShowWrite(true)}
@@ -147,7 +147,7 @@ export default function MobileBoard() {
             className={`px-3 py-1.5 rounded-full text-xs font-semibold border-2 whitespace-nowrap transition-all ${
               cat === c.value
                 ? `${c.bg} ${c.color} ${c.border}`
-                : 'bg-white text-gray-400 border-transparent shadow-sm'
+                : 'bg-white text-stone-400 border-transparent shadow-card'
             }`}
           >
             {c.label}
@@ -157,9 +157,9 @@ export default function MobileBoard() {
 
       {/* 게시글 목록 */}
       {loading ? (
-        <div className="text-center py-12 text-gray-400 text-sm">불러오는 중...</div>
+        <div className="text-center py-12 text-stone-400 text-sm">불러오는 중...</div>
       ) : posts.length === 0 ? (
-        <div className="bg-white rounded-2xl border border-gray-100 py-12 text-center text-gray-400 text-sm">
+        <div className="bg-white rounded-2xl border border-stone-100 py-12 text-center text-stone-400 text-sm">
           아직 글이 없어요!
         </div>
       ) : (
@@ -167,7 +167,7 @@ export default function MobileBoard() {
           {posts.map(post => {
             const isOpen     = expanded === post.id
             const isOwn      = post.user_id === userId
-            const badge      = CAT_BADGE[post.category] ?? 'bg-gray-100 text-gray-500'
+            const badge      = CAT_BADGE[post.category] ?? 'bg-stone-100 text-stone-500'
             const label      = CAT_LABEL[post.category] ?? '기타'
             const statusInfo = STATUS_STYLE[post.status] ?? STATUS_STYLE.open
             const postReplies = replies[post.id] ?? []
@@ -175,7 +175,7 @@ export default function MobileBoard() {
             return (
               <div key={post.id}
                 className={`bg-white rounded-2xl border overflow-hidden transition-colors ${
-                  isOpen ? 'border-orange-400' : 'border-gray-100'
+                  isOpen ? 'border-orange-400' : 'border-stone-100'
                 }`}
               >
                 <div
@@ -183,7 +183,7 @@ export default function MobileBoard() {
                   className="flex items-center gap-2 px-4 py-3 cursor-pointer"
                 >
                   <span className={`text-xs font-bold px-2 py-0.5 rounded shrink-0 ${badge}`}>{label}</span>
-                  <span className="flex-1 text-sm font-semibold text-gray-800 truncate">{post.title}</span>
+                  <span className="flex-1 text-sm font-semibold text-stone-800 truncate">{post.title}</span>
                   {post.status !== 'open' && (
                     <span className={`text-xs font-semibold px-1.5 py-0.5 rounded shrink-0 ${statusInfo.cls}`}>
                       {statusInfo.label}
@@ -194,26 +194,26 @@ export default function MobileBoard() {
                   )}
                 </div>
                 <div className="px-4 pb-1 flex items-center gap-2">
-                  <span className="text-xs text-gray-400">{post.nickname}</span>
-                  <span className="text-xs text-gray-300">{timeSince(post.created_at)}</span>
+                  <span className="text-xs text-stone-400">{post.nickname}</span>
+                  <span className="text-xs text-stone-300">{timeSince(post.created_at)}</span>
                 </div>
 
                 {isOpen && (
-                  <div className="px-4 pb-4 pt-3 border-t border-gray-100 bg-gray-50">
-                    <p className="text-sm text-gray-700 leading-relaxed whitespace-pre-wrap break-words mb-3">
+                  <div className="px-4 pb-4 pt-3 border-t border-stone-100 bg-stone-50">
+                    <p className="text-sm text-stone-700 leading-relaxed whitespace-pre-wrap break-words mb-3">
                       {post.content}
                     </p>
 
                     {/* 관리자 툴바 */}
                     {isAdmin && (
-                      <div className="mb-3 pb-3 border-b border-gray-200">
+                      <div className="mb-3 pb-3 border-b border-stone-200">
                         <div className="flex items-center gap-1.5 flex-wrap mb-2">
-                          <span className="text-xs text-gray-400">상태:</span>
+                          <span className="text-xs text-stone-400">상태:</span>
                           {Object.entries(STATUS_STYLE).map(([val, { label: sl, cls }]) => (
                             <button key={val}
                               onClick={e => { e.stopPropagation(); handleStatusChange(post.id, val) }}
                               className={`text-xs px-2 py-1 rounded-full font-semibold border transition-all ${
-                                post.status === val ? `${cls} border-current` : 'bg-white text-gray-400 border-gray-200'
+                                post.status === val ? `${cls} border-current` : 'bg-white text-stone-400 border-stone-200'
                               }`}
                             >
                               {sl}
@@ -240,14 +240,14 @@ export default function MobileBoard() {
                         <div className="flex items-center justify-between mb-1">
                           <span className="text-xs font-bold text-brand">🛠 관리자 답변</span>
                           <div className="flex items-center gap-2">
-                            <span className="text-xs text-gray-400">{timeSince(r.created_at)}</span>
+                            <span className="text-xs text-stone-400">{timeSince(r.created_at)}</span>
                             {isAdmin && (
                               <button onClick={e => { e.stopPropagation(); handleDeleteReply(r.id, post.id) }}
-                                className="text-xs text-gray-300 hover:text-red-400">✕</button>
+                                className="text-xs text-stone-300 hover:text-red-400">✕</button>
                             )}
                           </div>
                         </div>
-                        <p className="text-sm text-gray-700 leading-relaxed whitespace-pre-wrap">{r.content}</p>
+                        <p className="text-sm text-stone-700 leading-relaxed whitespace-pre-wrap">{r.content}</p>
                       </div>
                     ))}
 
@@ -264,7 +264,7 @@ export default function MobileBoard() {
                           />
                           <div className="flex gap-2 mt-2">
                             <button onClick={() => { setReplyTarget(null); setReplyText('') }}
-                              className="flex-1 py-2 border border-gray-200 rounded-xl text-xs text-gray-500">취소</button>
+                              className="flex-1 py-2 border border-stone-200 rounded-xl text-xs text-stone-500">취소</button>
                             <button onClick={() => handleAddReply(post.id)}
                               disabled={submittingReply || !replyText.trim()}
                               className="flex-[2] py-2 bg-brand text-white rounded-xl text-xs font-bold disabled:opacity-50">
@@ -295,17 +295,17 @@ export default function MobileBoard() {
           onClick={() => setShowWrite(false)}>
           <div onClick={e => e.stopPropagation()}
             className="bg-white rounded-t-3xl p-6 w-full max-h-[90vh] overflow-y-auto">
-            <div className="w-10 h-1 bg-gray-200 rounded-full mx-auto mb-5" />
-            <h3 className="text-lg font-bold text-gray-800 mb-5">글 작성</h3>
+            <div className="w-10 h-1 bg-stone-200 rounded-full mx-auto mb-5" />
+            <h3 className="text-lg font-bold text-stone-800 mb-5">글 작성</h3>
 
             <div className="mb-4">
-              <label className="text-xs text-gray-500 mb-2 block">카테고리</label>
+              <label className="text-xs text-stone-500 mb-2 block">카테고리</label>
               <div className="flex gap-2 flex-wrap">
                 {CATS.slice(1).map(c => (
                   <button key={c.value}
                     onClick={() => setForm(f => ({ ...f, category: c.value }))}
                     className={`px-3 py-1.5 rounded-full text-sm font-semibold border-2 transition-all ${
-                      form.category === c.value ? `${c.bg} ${c.color} ${c.border}` : 'bg-gray-100 text-gray-400 border-transparent'
+                      form.category === c.value ? `${c.bg} ${c.color} ${c.border}` : 'bg-stone-100 text-stone-400 border-transparent'
                     }`}
                   >
                     {c.label}
@@ -315,19 +315,19 @@ export default function MobileBoard() {
             </div>
 
             <div className="mb-4">
-              <label className="text-xs text-gray-500 mb-2 block">닉네임</label>
+              <label className="text-xs text-stone-500 mb-2 block">닉네임</label>
               <input value={form.nickname} onChange={e => setForm(f => ({ ...f, nickname: e.target.value }))}
                 placeholder="예) 홍길동 마트" className={inputCls} />
             </div>
 
             <div className="mb-4">
-              <label className="text-xs text-gray-500 mb-2 block">제목</label>
+              <label className="text-xs text-stone-500 mb-2 block">제목</label>
               <input value={form.title} onChange={e => setForm(f => ({ ...f, title: e.target.value }))}
                 placeholder="간단하게 적어주세요" className={inputCls} />
             </div>
 
             <div className="mb-6">
-              <label className="text-xs text-gray-500 mb-2 block">내용</label>
+              <label className="text-xs text-stone-500 mb-2 block">내용</label>
               <textarea value={form.content} onChange={e => setForm(f => ({ ...f, content: e.target.value }))}
                 placeholder="자세히 적어주시면 빠르게 처리할게요" rows={4}
                 className={inputCls + ' resize-none'} />
@@ -335,7 +335,7 @@ export default function MobileBoard() {
 
             <div className="flex gap-3">
               <button onClick={() => setShowWrite(false)}
-                className="flex-1 py-3.5 rounded-xl border border-gray-200 text-sm font-semibold text-gray-600">취소</button>
+                className="flex-1 py-3.5 rounded-xl border border-stone-200 text-sm font-semibold text-stone-600">취소</button>
               <button onClick={handleSubmit}
                 disabled={submitting || !form.title.trim() || !form.content.trim()}
                 className="flex-[2] py-3.5 rounded-xl bg-brand text-white text-sm font-bold disabled:opacity-40">

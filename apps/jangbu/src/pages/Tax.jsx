@@ -43,20 +43,20 @@ export default function Tax() {
 
   return (
     <div className="px-5 pt-6">
-      <h2 className="text-xl font-bold text-gray-800 mb-1">세금 안내</h2>
-      <p className="text-xs text-gray-400 mb-6">
+      <h2 className="text-xl font-bold text-stone-800 mb-1">세금 안내</h2>
+      <p className="text-xs text-stone-400 mb-6">
         참고용 추정치입니다. 정확한 신고는 세무사와 상담하세요.
       </p>
 
-      <div className="bg-white rounded-2xl shadow-sm p-5 mb-4">
-        <p className="text-sm text-gray-500 mb-1">{year}년 {month}월 누계 매출</p>
-        <p className="text-2xl font-bold text-gray-900 mb-4">₩ {monthTotal.toLocaleString('ko-KR')}</p>
+      <div className="bg-white rounded-2xl shadow-card p-5 mb-4">
+        <p className="text-sm text-stone-500 mb-1">{year}년 {month}월 누계 매출</p>
+        <p className="text-2xl font-bold text-stone-900 mb-4">₩ {monthTotal.toLocaleString('ko-KR')}</p>
 
-        <div className="border-t border-gray-100 pt-4">
+        <div className="border-t border-stone-100 pt-4">
           <div className="flex justify-between items-center mb-2">
-            <span className="text-gray-600">
+            <span className="text-stone-600">
               부가세 예상
-              <span className="text-xs text-gray-400 ml-1">
+              <span className="text-xs text-stone-400 ml-1">
                 ({taxType === 'simple' ? '간이과세자' : '일반과세자'})
               </span>
             </span>
@@ -65,29 +65,29 @@ export default function Tax() {
             </span>
           </div>
           <div className="flex justify-between items-center">
-            <span className="text-gray-600">종합소득세</span>
-            <span className="text-sm text-gray-400">전문가 상담 권장</span>
+            <span className="text-stone-600">종합소득세</span>
+            <span className="text-sm text-stone-400">전문가 상담 권장</span>
           </div>
         </div>
       </div>
 
-      <div className="bg-white rounded-2xl shadow-sm p-5">
-        <p className="text-sm font-semibold text-gray-700 mb-3">다음 신고 마감일</p>
-        <div className="flex justify-between items-center py-2 border-b border-gray-100">
+      <div className="bg-white rounded-2xl shadow-card p-5">
+        <p className="text-sm font-semibold text-stone-700 mb-3">다음 신고 마감일</p>
+        <div className="flex justify-between items-center py-2 border-b border-stone-100">
           <div>
-            <span className="text-gray-700">부가세</span>
-            <span className="text-xs text-gray-400 ml-2">{vatDeadline}</span>
+            <span className="text-stone-700">부가세</span>
+            <span className="text-xs text-stone-400 ml-2">{vatDeadline}</span>
           </div>
-          <span className={`font-bold text-base ${vatD <= 30 ? 'text-red-500' : 'text-gray-600'}`}>
+          <span className={`font-bold text-base ${vatD <= 30 ? 'text-red-500' : 'text-stone-600'}`}>
             D-{vatD}
           </span>
         </div>
         <div className="flex justify-between items-center py-2">
           <div>
-            <span className="text-gray-700">종합소득세</span>
-            <span className="text-xs text-gray-400 ml-2">{incomeTaxDeadline}</span>
+            <span className="text-stone-700">종합소득세</span>
+            <span className="text-xs text-stone-400 ml-2">{incomeTaxDeadline}</span>
           </div>
-          <span className={`font-bold text-base ${incomeD <= 30 ? 'text-red-500' : 'text-gray-600'}`}>
+          <span className={`font-bold text-base ${incomeD <= 30 ? 'text-red-500' : 'text-stone-600'}`}>
             D-{incomeD}
           </span>
         </div>
