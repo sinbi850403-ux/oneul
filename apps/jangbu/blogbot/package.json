@@ -1,0 +1,14 @@
+{
+  "name": "blogbot",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "오늘장부 정적 블로그(/blog) 자동 포스팅 봇 - 웹검색으로 사실 확인 후 글 생성, 레포에 커밋",
+  "scripts": {
+    "start": "node index.js",
+    "dry-run": "node index.js --dry-run"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.105.0",
+    "googleapis": "^144.0.0"
+  }
+}

@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>POS 매출과 장부 맞추기, 통장 입금액이 다른 이유 | 오늘장부 블로그</title>
+  <meta name="description" content="POS 매출과 통장 입금액이 다른 이유와 카드·현금·배달앱 매출을 결제수단별로 맞추는 법, 부가세 신고 누락을 막는 실전 매출관리 가이드.">
+  <meta property="og:title" content="POS 매출과 장부 맞추기, 통장 입금액이 다른 이유">
+  <meta property="og:description" content="POS 매출과 통장 입금액이 다른 이유와 카드·현금·배달앱 매출을 결제수단별로 맞추는 법, 부가세 신고 누락을 막는 실전 매출관리 가이드.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://xn--wh1bw0st1gbrb.kr/blog/posts/pos-sales-bookkeeping-reconciliation.html">
+  <meta property="og:image" content="https://images.pexels.com/photos/36729529/pexels-photo-36729529.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200">
+  <link rel="canonical" href="https://xn--wh1bw0st1gbrb.kr/blog/posts/pos-sales-bookkeeping-reconciliation.html">
+  <link rel="icon" href="/icons/icon-192.png">
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2764893290310463" crossorigin="anonymous"></script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Noto Sans KR', sans-serif; background: #f8f9fa; color: #1a1a1a; line-height: 1.7; }
+    header { background: #fff; border-bottom: 1px solid #eee; position: sticky; top: 0; z-index: 100; }
+    .header-inner { max-width: 1100px; margin: 0 auto; padding: 0 20px; height: 60px; display: flex; align-items: center; justify-content: space-between; }
+    .logo { display: flex; align-items: center; gap: 8px; text-decoration: none; }
+    .logo-icon { width: 32px; height: 32px; background: #FF6B35; border-radius: 8px; display: flex; align-items: center; justify-content: center; color: white; font-weight: 900; font-size: 16px; }
+    .logo-text { font-size: 18px; font-weight: 800; color: #FF6B35; }
+    .logo-sub { font-size: 13px; color: #888; margin-left: 4px; }
+    .header-cta { background: #FF6B35; color: white; border: none; padding: 8px 16px; border-radius: 8px; font-size: 13px; font-weight: 600; cursor: pointer; text-decoration: none; }
+    .wrap { max-width: 1100px; margin: 0 auto; padding: 32px 20px; display: grid; grid-template-columns: 1fr 300px; gap: 40px; }
+    @media (max-width: 768px) { .wrap { grid-template-columns: 1fr; } .sidebar { display: none; } }
+    article { background: white; border-radius: 20px; overflow: hidden; box-shadow: 0 2px 12px rgba(0,0,0,0.06); }
+    .article-head { padding: 32px 32px 24px; border-bottom: 1px solid #f0f0f0; }
+    .article-cat { font-size: 12px; font-weight: 700; color: #FF6B35; text-transform: uppercase; margin-bottom: 12px; }
+    .article-cat a { color: #FF6B35; text-decoration: none; }
+    .article-title { font-size: clamp(20px, 4vw, 28px); font-weight: 900; line-height: 1.4; color: #1a1a1a; margin-bottom: 16px; }
+    .article-meta { font-size: 13px; color: #aaa; display: flex; gap: 16px; align-items: center; flex-wrap: wrap; }
+    .hero-img { width: 100%; aspect-ratio: 16/9; object-fit: cover; background: #f0f0f0; }
+    .article-body { padding: 32px; }
+    .article-body h2 { font-size: 20px; font-weight: 800; color: #1a1a1a; margin: 32px 0 14px; padding-bottom: 8px; border-bottom: 2px solid #FF6B35; }
+    .article-body h3 { font-size: 16px; font-weight: 700; color: #333; margin: 20px 0 10px; }
+    .article-body p { margin-bottom: 14px; color: #333; font-size: 15px; }
+    .article-body ul, .article-body ol { padding-left: 20px; margin-bottom: 14px; }
+    .article-body li { margin-bottom: 6px; color: #333; font-size: 15px; }
+    .article-body table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 14px; }
+    .article-body th { background: #FF6B35; color: white; padding: 10px 14px; text-align: left; }
+    .article-body td { padding: 10px 14px; border-bottom: 1px solid #f0f0f0; }
+    .article-body tr:nth-child(even) td { background: #fff8f5; }
+    .article-body img { width: 100%; border-radius: 12px; margin: 16px 0; }
+    .article-body strong { color: #1a1a1a; }
+    .article-body blockquote { background: #fff8f5; border-left: 4px solid #FF6B35; padding: 16px 20px; border-radius: 0 12px 12px 0; margin: 16px 0; font-style: italic; color: #555; }
+    .article-body a { color: #FF6B35; }
+    .tags { padding: 20px 32px; border-top: 1px solid #f0f0f0; display: flex; gap: 8px; flex-wrap: wrap; }
+    .tag { background: #fff3ee; color: #FF6B35; border-radius: 20px; padding: 5px 12px; font-size: 12px; font-weight: 600; text-decoration: none; }
+    .tag:hover { background: #FF6B35; color: white; }
+    .ad-slot { background: #f0f0f0; border-radius: 12px; display: flex; align-items: center; justify-content: center; color: #bbb; font-size: 12px; min-height: 90px; margin: 24px 0; }
+    .cta-box { background: linear-gradient(135deg, #FF6B35, #ff8c42); border-radius: 20px; padding: 32px; text-align: center; color: white; margin-top: 24px; }
+    .cta-box h3 { font-size: 22px; font-weight: 900; margin-bottom: 10px; }
+    .cta-box p { font-size: 14px; opacity: 0.9; line-height: 1.6; margin-bottom: 20px; }
+    .cta-box a { background: white; color: #FF6B35; border-radius: 12px; padding: 13px 28px; font-weight: 800; font-size: 15px; text-decoration: none; display: inline-block; }
+    .nav-links { display: flex; gap: 16px; margin-top: 24px; }
+    .nav-back { color: #FF6B35; text-decoration: none; font-size: 14px; font-weight: 600; }
+    .nav-back::before { content: '\2190 '; }
+    .sidebar-cta { background: linear-gradient(135deg, #FF6B35, #ff8c42); color: white; border-radius: 16px; padding: 24px; text-align: center; position: sticky; top: 80px; }
+    .sidebar-cta h3 { font-size: 16px; font-weight: 900; margin-bottom: 8px; }
+    .sidebar-cta p { font-size: 13px; opacity: 0.9; line-height: 1.5; margin-bottom: 16px; }
+    .sidebar-cta a { background: white; color: #FF6B35; border-radius: 8px; padding: 10px 20px; font-weight: 700; font-size: 14px; text-decoration: none; display: inline-block; }
+    footer { background: #1a1a1a; color: #888; padding: 40px 20px; margin-top: 60px; }
+    .footer-inner { max-width: 1100px; margin: 0 auto; }
+    .footer-links { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 16px; }
+    .footer-links a { color: #888; text-decoration: none; font-size: 13px; }
+    .footer-copy { font-size: 12px; }
+  </style>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "POS 매출과 장부 맞추기, 통장 입금액이 다른 이유",
+  "description": "POS 매출과 통장 입금액이 다른 이유와 카드·현금·배달앱 매출을 결제수단별로 맞추는 법, 부가세 신고 누락을 막는 실전 매출관리 가이드.",
+  "datePublished": "2026-06-22",
+  "dateModified": "2026-06-22",
+  "image": "https://images.pexels.com/photos/36729529/pexels-photo-36729529.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200",
+  "author": {
+    "@type": "Organization",
+    "name": "오늘장부",
+    "url": "https://오늘장부.kr"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "오늘장부",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://xn--wh1bw0st1gbrb.kr/icons/icon-192.png"
+    }
+  },
+  "mainEntityOfPage": "https://xn--wh1bw0st1gbrb.kr/blog/posts/pos-sales-bookkeeping-reconciliation.html",
+  "keywords": "포스매출, 장부맞추기, 매출관리, 부가세신고"
+}
+  </script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "통장에 들어온 금액으로 매출을 적으면 안 되나요?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "안 됩니다. 부가세는 수수료를 빼기 전 총매출(공급가액) 기준으로 신고합니다. 입금액만 적으면 매출이 실제보다 줄어 신고 누락으로 보일 수 있습니다. 총매출을 적고 수수료는 비용으로 따로 관리하세요."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "배달앱 매출도 POS에 다 잡히나요?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "배달앱은 자체 결제 시스템을 거치기 때문에 POS에 안 잡히거나 별도로 집계되는 경우가 많습니다. 배달앱 정산 내역을 따로 확인해 총매출에 포함시켜야 신고 때 누락되지 않습니다."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "매출 맞추기는 얼마나 자주 해야 하나요?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "기록은 매일, 통장 대조는 주 1회를 권합니다. 카드 입금 시차가 있어 당일에는 정확히 안 맞지만, 매일 기록해 두면 주간·월간 단위로 쉽게 검증할 수 있습니다. 오늘장부 무료로 시작하기"
+      }
+    }
+  ]
+}
+  </script>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <a href="/" class="logo">
+      <div class="logo-icon">장</div>
+      <span class="logo-text">오늘장부</span>
+      <span class="logo-sub">블로그</span>
+    </a>
+    <a href="/" class="header-cta">무료로 시작하기</a>
+  </div>
+</header>
+
+<div class="wrap">
+  <main>
+    <div class="nav-links">
+      <a href="/blog/" class="nav-back">블로그 목록으로</a>
+    </div>
+
+    <div class="ad-slot">광고 영역 (AdSense 승인 후 활성화)</div>
+
+    <article>
+      <div class="article-head">
+        <div class="article-cat"><a href="/blog/">매출관리</a></div>
+        <h1 class="article-title">POS 매출과 장부 맞추기, 통장 입금액이 다른 이유</h1>
+        <div class="article-meta">
+          <span>오늘장부 편집팀</span>
+          <span>2026년 06월 22일</span>
+        </div>
+      </div>
+      <img src="https://images.pexels.com/photos/36729529/pexels-photo-36729529.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200" alt="POS 매출과 장부 맞추기, 통장 입금액이 다른 이유" class="hero-img" loading="lazy">
+      <div class="article-body">
+<p>POS 단말기 화면에 찍힌 오늘 매출, 그대로 장부에 옮겨 적으면 끝일까요? 막상 통장에 들어온 돈과 비교해 보면 숫자가 안 맞아 당황하는 사장님이 많습니다. POS 매출은 '판 금액'이고, 통장에 들어오는 돈은 카드수수료·배달앱 수수료·환불을 뺀 '받은 금액'이라 애초에 다를 수밖에 없습니다. 이 둘을 제대로 맞춰 두지 않으면 부가세 신고 때 매출이 누락되거나 부풀려져 가산세로 이어질 수 있습니다. 오늘은 POS 매출과 장부를 어떻게 맞추는지, 어디서 차이가 생기는지 실전으로 정리합니다.</p>
+
+<h2>왜 POS 매출과 통장 입금액이 다를까?</h2>
+<p>POS에 찍힌 매출은 손님이 결제한 '총액'입니다. 하지만 그 돈이 100% 그대로 들어오지는 않습니다. 차이가 생기는 대표적인 이유는 다음과 같습니다.</p>
+<ul>
+<li><strong>카드수수료</strong>: 카드사가 매출에서 수수료를 떼고 입금합니다. 영세·중소가맹점은 우대수수료율이 적용됩니다.</li>
+<li><strong>배달앱 중개·결제 수수료</strong>: 배달의민족·쿠팡이츠 등은 중개이용료, 결제수수료, 배달비 등을 정산할 때 차감합니다. POS에 잡히지 않는 매출도 있습니다.</li>
+<li><strong>입금 시차</strong>: 카드 매출은 보통 며칠 뒤 입금돼, 오늘 매출과 오늘 입금액이 어긋납니다.</li>
+<li><strong>환불·취소</strong>: 결제 취소분이 나중에 차감되면서 숫자가 흔들립니다.</li>
+<li><strong>현금·계좌이체 매출</strong>: POS를 거치지 않은 현금 매출은 따로 기록하지 않으면 누락됩니다.</li>
+</ul>
+<p>핵심은 <strong>'매출(총액)'과 '입금(실수령액)'을 분리해서 본다</strong>는 것입니다. 부가세는 수수료를 빼기 전 '공급가액(총매출)' 기준으로 신고하기 때문에, 통장 입금액만 보고 매출을 적으면 신고액이 줄어 문제가 됩니다.</p>
+
+<h2>부가세 신고와 매출 일치가 중요한 이유</h2>
+<p>일반과세자는 매출세액(매출의 10%)에서 매입세액을 빼서 부가세를 냅니다. 이때 기준이 되는 매출은 카드·현금·배달앱을 모두 합한 총매출입니다. 카드 매출과 현금영수증 발행분은 국세청에 자동으로 집계되므로, 내 장부의 매출이 이보다 적으면 누락으로 보일 수 있습니다.</p>
+<p>개인사업자의 부가세 확정신고는 1년에 두 번입니다. 상반기(1.1~6.30)분은 7월 25일까지, 하반기(7.1~12.31)분은 다음 해 1월 25일까지 신고·납부합니다. 신고 기한을 넘기면 신고불성실·납부지연 가산세가 붙으니, 평소에 매출을 맞춰 두면 신고철 부담이 크게 줄어듭니다.</p>
+<p>참고로 직전 연도 매출이 일정 기준 미만이면 간이과세가 적용되는데, 2024년 7월부터 그 기준이 연 매출 1억 400만원으로 올랐습니다. 간이과세자 중에서도 연 매출 4,800만원 미만이면 부가세 납부 의무가 면제됩니다. 다만 본인이 어느 유형인지, 정확한 적용 금액은 사업장 상황마다 다르므로 홈택스나 세무사를 통해 확인하는 것이 안전합니다.</p>
+
+<h2>매일 5분, 이렇게 맞추세요</h2>
+<p>매출 맞추기는 몰아서 하면 절대 안 맞습니다. 영업 마감 후 그날의 숫자를 바로 기록하는 습관이 핵심입니다.</p>
+<ol>
+<li><strong>결제수단별로 나눠 기록</strong>: 카드, 현금, 배달앱, 계좌이체를 각각 적습니다. 합쳐 버리면 나중에 검증이 불가능합니다.</li>
+<li><strong>총매출과 입금액을 따로 적기</strong>: '오늘 판 금액'과 '실제 들어올 금액'을 구분합니다.</li>
+<li><strong>수수료·환불을 메모</strong>: 카드수수료, 배달앱 정산 차감액, 취소 건을 표시해 둡니다.</li>
+<li><strong>주 1회 통장과 대조</strong>: 입금 시차를 감안해 일주일 단위로 통장 입금 내역과 맞춰 봅니다.</li>
+</ol>
+<blockquote>POS 매출과 통장 입금액의 차이는 '틀린 것'이 아니라 '수수료·시차 때문에 당연히 생기는 차이'입니다. 그 차이를 설명할 수 있게 기록해 두는 것이 장부 맞추기의 전부입니다.</blockquote>
+<p>이 과정을 손으로 다 하기 버겁다면 <strong>오늘장부</strong> 같은 일매출 기록 앱을 쓰면 편합니다. 카드·현금·배달앱 매출을 결제수단별로 한 번에 입력하면 총매출이 합산되고, 예상 부가세까지 자동으로 계산돼 신고철에 당황할 일이 줄어듭니다.</p>
+
+<h2>한눈에 보는 매출 항목 정리</h2>
+<table>
+<thead>
+<tr><th>구분</th><th>장부 기록 기준</th><th>주의할 점</th></tr>
+</thead>
+<tbody>
+<tr><td>카드 매출</td><td>수수료 빼기 전 총액</td><td>입금은 수수료 차감 후, 며칠 뒤</td></tr>
+<tr><td>현금 매출</td><td>받은 전액</td><td>POS 미입력 시 누락 위험</td></tr>
+<tr><td>배달앱 매출</td><td>고객 결제 총액</td><td>중개·결제·배달비 차감 후 정산</td></tr>
+<tr><td>환불·취소</td><td>(-) 차감 기록</td><td>발생일 기준으로 반영</td></tr>
+</tbody>
+</table>
+
+<h2>자주 묻는 질문</h2>
+<h3>통장에 들어온 금액으로 매출을 적으면 안 되나요?</h3>
+<p>안 됩니다. 부가세는 수수료를 빼기 전 총매출(공급가액) 기준으로 신고합니다. 입금액만 적으면 매출이 실제보다 줄어 신고 누락으로 보일 수 있습니다. 총매출을 적고 수수료는 비용으로 따로 관리하세요.</p>
+<h3>배달앱 매출도 POS에 다 잡히나요?</h3>
+<p>배달앱은 자체 결제 시스템을 거치기 때문에 POS에 안 잡히거나 별도로 집계되는 경우가 많습니다. 배달앱 정산 내역을 따로 확인해 총매출에 포함시켜야 신고 때 누락되지 않습니다.</p>
+<h3>매출 맞추기는 얼마나 자주 해야 하나요?</h3>
+<p>기록은 매일, 통장 대조는 주 1회를 권합니다. 카드 입금 시차가 있어 당일에는 정확히 안 맞지만, 매일 기록해 두면 주간·월간 단위로 쉽게 검증할 수 있습니다. <a href="https://오늘장부.kr">오늘장부 무료로 시작하기</a></p>
+
+<p>※ 본 글은 2026년 기준 참고용 정보이며, 정확한 신고·금액은 국세청 홈택스 또는 세무사와 상담하세요.</p>
+      </div>
+      <div class="tags">
+        <a href="/blog/?tag=%ED%8F%AC%EC%8A%A4%EB%A7%A4%EC%B6%9C" class="tag">포스매출</a> <a href="/blog/?tag=%EC%9E%A5%EB%B6%80%EB%A7%9E%EC%B6%94%EA%B8%B0" class="tag">장부맞추기</a> <a href="/blog/?tag=%EB%A7%A4%EC%B6%9C%EA%B4%80%EB%A6%AC" class="tag">매출관리</a> <a href="/blog/?tag=%EB%B6%80%EA%B0%80%EC%84%B8%EC%8B%A0%EA%B3%A0" class="tag">부가세신고</a>
+      </div>
+    </article>
+
+    <section style="background:#fff8f5;border-radius:16px;padding:24px 28px;margin-top:24px;">
+      <h2 style="font-size:18px;font-weight:800;color:#1a1a1a;margin:0 0 14px;">함께 보면 좋은 글</h2>
+      <ul style="list-style:none;padding:0;margin:0;">
+        <li style="padding:8px 0;border-bottom:1px solid #ffe6d9;"><a href="/blog/posts/cash-sales-record-without-omission.html" style="color:#FF6B35;text-decoration:none;font-weight:600;font-size:14px;">현금매출 누락 없이 기록하는 법 — 사장님 필독 가이드</a></li>
+        <li style="padding:8px 0;border-bottom:1px solid #ffe6d9;"><a href="/blog/posts/ohaewa-jinsil-kape-sajangnim-maecul-gwanri-egsel-vs-aeb-2026nyeon-5gaji-ohae-wan.html" style="color:#FF6B35;text-decoration:none;font-weight:600;font-size:14px;">[오해와 진실] 카페 사장님 매출 관리, 엑셀 vs 앱 2026년 5가지 오해 완전 정복</a></li>
+        <li style="padding:8px 0;border-bottom:1px solid #ffe6d9;"><a href="/blog/posts/how-to-write-employment-contract-2026.html" style="color:#FF6B35;text-decoration:none;font-weight:600;font-size:14px;">근로계약서 작성법: 사장님 벌금 막는 필수 5가지</a></li>
+        <li style="padding:8px 0;border-bottom:1px solid #ffe6d9;"><a href="/blog/posts/business-registration-required-documents-2026.html" style="color:#FF6B35;text-decoration:none;font-weight:600;font-size:14px;">사업자등록 필요 서류 총정리 (2026 최신)</a></li>
+      </ul>
+    </section>
+
+    <div class="ad-slot">광고 영역 (AdSense 승인 후 활성화)</div>
+
+    <div class="cta-box">
+      <h3>매일 매출 기록, 30초면 끝!</h3>
+      <p>카드·현금·네이버페이·카카오페이<br>여러 결제수단을 한 화면에서 입력<br>부가세 예상액도 자동으로 계산해드려요</p>
+      <a href="/">지금 무료로 시작하기</a>
+    </div>
+  </main>
+
+  <aside class="sidebar">
+    <div class="sidebar-cta">
+      <h3>매일 매출 기록,<br>30초면 끝!</h3>
+      <p>카드·현금·배달앱 한 번에<br>부가세 예상액도 자동 계산</p>
+      <a href="/">무료로 시작하기</a>
+    </div>
+  </aside>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-links">
+      <a href="/">서비스 홈</a>
+      <a href="/blog/">블로그</a>
+      <a href="/privacy">개인정보처리방침</a>
+      <a href="/terms">이용약관</a>
+    </div>
+    <div class="footer-copy">© 2026 오늘장부. All rights reserved.</div>
+  </div>
+</footer>
+
+</body>
+</html>

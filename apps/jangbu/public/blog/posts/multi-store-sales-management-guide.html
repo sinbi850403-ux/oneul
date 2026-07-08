@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>다점포 매출 한눈에 관리하는 법 — 사장님 필수 가이드 | 오늘장부 블로그</title>
+  <meta name="description" content="매장이 2개 이상이면 매출 파악이 두 배로 복잡해집니다. 카드·현금·배달앱별 집계부터 부가세 신고 준비까지, 다점포 사장님을 위한 실전 매출관리 방법을 총정리했습니다.">
+  <meta property="og:title" content="다점포 매출 한눈에 관리하는 법 — 사장님 필수 가이드">
+  <meta property="og:description" content="매장이 2개 이상이면 매출 파악이 두 배로 복잡해집니다. 카드·현금·배달앱별 집계부터 부가세 신고 준비까지, 다점포 사장님을 위한 실전 매출관리 방법을 총정리했습니다.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://xn--wh1bw0st1gbrb.kr/blog/posts/multi-store-sales-management-guide.html">
+  <meta property="og:image" content="https://images.pexels.com/photos/3906984/pexels-photo-3906984.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200">
+  <link rel="canonical" href="https://xn--wh1bw0st1gbrb.kr/blog/posts/multi-store-sales-management-guide.html">
+  <link rel="icon" href="/icons/icon-192.png">
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2764893290310463" crossorigin="anonymous"></script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Noto Sans KR', sans-serif; background: #f8f9fa; color: #1a1a1a; line-height: 1.7; }
+    header { background: #fff; border-bottom: 1px solid #eee; position: sticky; top: 0; z-index: 100; }
+    .header-inner { max-width: 1100px; margin: 0 auto; padding: 0 20px; height: 60px; display: flex; align-items: center; justify-content: space-between; }
+    .logo { display: flex; align-items: center; gap: 8px; text-decoration: none; }
+    .logo-icon { width: 32px; height: 32px; background: #FF6B35; border-radius: 8px; display: flex; align-items: center; justify-content: center; color: white; font-weight: 900; font-size: 16px; }
+    .logo-text { font-size: 18px; font-weight: 800; color: #FF6B35; }
+    .logo-sub { font-size: 13px; color: #888; margin-left: 4px; }
+    .header-cta { background: #FF6B35; color: white; border: none; padding: 8px 16px; border-radius: 8px; font-size: 13px; font-weight: 600; cursor: pointer; text-decoration: none; }
+    .wrap { max-width: 1100px; margin: 0 auto; padding: 32px 20px; display: grid; grid-template-columns: 1fr 300px; gap: 40px; }
+    @media (max-width: 768px) { .wrap { grid-template-columns: 1fr; } .sidebar { display: none; } }
+    article { background: white; border-radius: 20px; overflow: hidden; box-shadow: 0 2px 12px rgba(0,0,0,0.06); }
+    .article-head { padding: 32px 32px 24px; border-bottom: 1px solid #f0f0f0; }
+    .article-cat { font-size: 12px; font-weight: 700; color: #FF6B35; text-transform: uppercase; margin-bottom: 12px; }
+    .article-cat a { color: #FF6B35; text-decoration: none; }
+    .article-title { font-size: clamp(20px, 4vw, 28px); font-weight: 900; line-height: 1.4; color: #1a1a1a; margin-bottom: 16px; }
+    .article-meta { font-size: 13px; color: #aaa; display: flex; gap: 16px; align-items: center; flex-wrap: wrap; }
+    .hero-img { width: 100%; aspect-ratio: 16/9; object-fit: cover; background: #f0f0f0; }
+    .article-body { padding: 32px; }
+    .article-body h2 { font-size: 20px; font-weight: 800; color: #1a1a1a; margin: 32px 0 14px; padding-bottom: 8px; border-bottom: 2px solid #FF6B35; }
+    .article-body h3 { font-size: 16px; font-weight: 700; color: #333; margin: 20px 0 10px; }
+    .article-body p { margin-bottom: 14px; color: #333; font-size: 15px; }
+    .article-body ul, .article-body ol { padding-left: 20px; margin-bottom: 14px; }
+    .article-body li { margin-bottom: 6px; color: #333; font-size: 15px; }
+    .article-body table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 14px; }
+    .article-body th { background: #FF6B35; color: white; padding: 10px 14px; text-align: left; }
+    .article-body td { padding: 10px 14px; border-bottom: 1px solid #f0f0f0; }
+    .article-body tr:nth-child(even) td { background: #fff8f5; }
+    .article-body img { width: 100%; border-radius: 12px; margin: 16px 0; }
+    .article-body strong { color: #1a1a1a; }
+    .article-body blockquote { background: #fff8f5; border-left: 4px solid #FF6B35; padding: 16px 20px; border-radius: 0 12px 12px 0; margin: 16px 0; font-style: italic; color: #555; }
+    .article-body a { color: #FF6B35; }
+    .tags { padding: 20px 32px; border-top: 1px solid #f0f0f0; display: flex; gap: 8px; flex-wrap: wrap; }
+    .tag { background: #fff3ee; color: #FF6B35; border-radius: 20px; padding: 5px 12px; font-size: 12px; font-weight: 600; text-decoration: none; }
+    .tag:hover { background: #FF6B35; color: white; }
+    .ad-slot { background: #f0f0f0; border-radius: 12px; display: flex; align-items: center; justify-content: center; color: #bbb; font-size: 12px; min-height: 90px; margin: 24px 0; }
+    .cta-box { background: linear-gradient(135deg, #FF6B35, #ff8c42); border-radius: 20px; padding: 32px; text-align: center; color: white; margin-top: 24px; }
+    .cta-box h3 { font-size: 22px; font-weight: 900; margin-bottom: 10px; }
+    .cta-box p { font-size: 14px; opacity: 0.9; line-height: 1.6; margin-bottom: 20px; }
+    .cta-box a { background: white; color: #FF6B35; border-radius: 12px; padding: 13px 28px; font-weight: 800; font-size: 15px; text-decoration: none; display: inline-block; }
+    .nav-links { display: flex; gap: 16px; margin-top: 24px; }
+    .nav-back { color: #FF6B35; text-decoration: none; font-size: 14px; font-weight: 600; }
+    .nav-back::before { content: '\2190 '; }
+    .sidebar-cta { background: linear-gradient(135deg, #FF6B35, #ff8c42); color: white; border-radius: 16px; padding: 24px; text-align: center; position: sticky; top: 80px; }
+    .sidebar-cta h3 { font-size: 16px; font-weight: 900; margin-bottom: 8px; }
+    .sidebar-cta p { font-size: 13px; opacity: 0.9; line-height: 1.5; margin-bottom: 16px; }
+    .sidebar-cta a { background: white; color: #FF6B35; border-radius: 8px; padding: 10px 20px; font-weight: 700; font-size: 14px; text-decoration: none; display: inline-block; }
+    footer { background: #1a1a1a; color: #888; padding: 40px 20px; margin-top: 60px; }
+    .footer-inner { max-width: 1100px; margin: 0 auto; }
+    .footer-links { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 16px; }
+    .footer-links a { color: #888; text-decoration: none; font-size: 13px; }
+    .footer-copy { font-size: 12px; }
+  </style>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "다점포 매출 한눈에 관리하는 법 — 사장님 필수 가이드",
+  "description": "매장이 2개 이상이면 매출 파악이 두 배로 복잡해집니다. 카드·현금·배달앱별 집계부터 부가세 신고 준비까지, 다점포 사장님을 위한 실전 매출관리 방법을 총정리했습니다.",
+  "datePublished": "2026-07-02",
+  "dateModified": "2026-07-02",
+  "image": "https://images.pexels.com/photos/3906984/pexels-photo-3906984.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200",
+  "author": {
+    "@type": "Organization",
+    "name": "오늘장부",
+    "url": "https://오늘장부.kr"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "오늘장부",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://xn--wh1bw0st1gbrb.kr/icons/icon-192.png"
+    }
+  },
+  "mainEntityOfPage": "https://xn--wh1bw0st1gbrb.kr/blog/posts/multi-store-sales-management-guide.html",
+  "keywords": "다점포, 매출관리, 부가세, 소상공인"
+}
+  </script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "매장 두 곳을 운영하는데 부가세 신고를 한 번에 할 수 있나요?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "사업자등록이 별개라면 각 사업자번호로 따로 신고해야 합니다. 신고 기한이 같더라도 누락하지 않도록 매장별 일정을 별도로 관리하세요. 하나의 사업자 아래 지점으로 운영 중이라면 본점 사업자로 통합 신고가 가능합니다. 구체적인 구조는 세무사와 확인하시기 바랍니다."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "간이과세자 매장과 일반과세자 매장을 동시에 운영하면 어떻게 관리하나요?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "각 사업자의 과세유형에 맞춰 별도로 장부를 관리하고 신고 기한도 따로 챙겨야 합니다. 간이과세자는 다음 해 1월 25일 연 1회 신고, 일반과세자는 7월 25일과 다음 해 1월 25일 연 2회 확정신고(+ 예정고지)가 있습니다. 매장별 매출을 혼용하지 않도록 채널별 기록 앱을 분리해서 운영하거나, 매장별 계정을 구분해 사용하는 것이 실수를 줄이는 방법입니다."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "배달앱 매출도 부가세 신고 대상인가요?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "네, 배달앱을 통한 매출도 부가가치세 과세 대상입니다. 배달앱이 정산할 때 중개이용료·결제수수료를 차감한 금액이 입금되지만, 부가세 신고 시 매출은 차감 전 공급가액 전체를 기준으로 신고해야 합니다. 배달 플랫폼의 정산 내역서를 반드시 보관하고, 전체 매출 기준으로 신고액을 계산하세요."
+      }
+    }
+  ]
+}
+  </script>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <a href="/" class="logo">
+      <div class="logo-icon">장</div>
+      <span class="logo-text">오늘장부</span>
+      <span class="logo-sub">블로그</span>
+    </a>
+    <a href="/" class="header-cta">무료로 시작하기</a>
+  </div>
+</header>
+
+<div class="wrap">
+  <main>
+    <div class="nav-links">
+      <a href="/blog/" class="nav-back">블로그 목록으로</a>
+    </div>
+
+    <div class="ad-slot">광고 영역 (AdSense 승인 후 활성화)</div>
+
+    <article>
+      <div class="article-head">
+        <div class="article-cat"><a href="/blog/">매출관리</a></div>
+        <h1 class="article-title">다점포 매출 한눈에 관리하는 법 — 사장님 필수 가이드</h1>
+        <div class="article-meta">
+          <span>오늘장부 편집팀</span>
+          <span>2026년 07월 02일</span>
+        </div>
+      </div>
+      <img src="https://images.pexels.com/photos/3906984/pexels-photo-3906984.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200" alt="다점포 매출 한눈에 관리하는 법 — 사장님 필수 가이드" class="hero-img" loading="lazy">
+      <div class="article-body">
+<p>처음엔 한 매장으로 시작했는데 어느새 두 번째, 세 번째 점포까지 내게 됐다면? 매출이 늘어난 만큼 머릿속은 더 복잡해집니다. 카드 단말기는 매장마다 따로 정산되고, 배달앱 수익은 앱별로 들어오고, 현금 매출은 각자 금고에 쌓여 있습니다. 신고 시즌이 다가오면 "어느 매장에서 얼마가 나왔더라?"를 맨손으로 꿰맞추다가 밤을 새우는 사장님이 한둘이 아닙니다. 이 글에서는 다점포 사장님이 매출을 체계적으로 관리하고 부가세 신고까지 수월하게 준비할 수 있는 실전 방법을 정리합니다.</p>
+
+<h2>다점포 매출관리, 왜 유독 어려울까</h2>
+<p>매장이 하나일 때는 하루 마감 때 카드 매출 문자 한 통, 현금 계수, 배달앱 정산 화면 확인으로 끝납니다. 그런데 매장이 두 개가 되면 이 과정이 단순히 두 배가 아니라 <strong>훨씬 복잡</strong>해집니다. 이유는 크게 세 가지입니다.</p>
+<ul>
+  <li><strong>채널이 매장별로 분산</strong> — 카드사 정산, 현금, 배달의민족·쿠팡이츠·요기요 등 플랫폼 정산이 매장별·앱별로 제각각 들어옵니다.</li>
+  <li><strong>과세유형이 다를 수 있음</strong> — 사업자등록을 따로 낸 경우 A점은 일반과세자, B점은 간이과세자인 경우도 있어 세금 계산 방식이 달라집니다.</li>
+  <li><strong>부가세 신고 기준이 헷갈림</strong> — 일반과세자는 연 2회 확정신고(7월 25일, 다음 해 1월 25일)와 중간 예정고지가 있고, 간이과세자는 연 1회(다음 해 1월 25일)로 주기가 다릅니다. 매장마다 일정이 다르면 놓치기 십상입니다.</li>
+</ul>
+
+<h2>과세유형별 부가세 핵심 정리</h2>
+<p>다점포를 운영한다면 각 사업자의 과세유형부터 다시 확인하세요. 2026년 기준, 직전 연도 연 매출(공급대가) <strong>1억 400만 원 미만</strong>이면 간이과세자 해당 요건이 됩니다. 단, 과세유흥장소·부동산임대업 등 일부 업종은 4,800만 원 기준이 적용되므로 반드시 홈택스 또는 세무사에게 확인하세요.</p>
+<table>
+  <thead>
+    <tr>
+      <th>구분</th>
+      <th>일반과세자</th>
+      <th>간이과세자</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>적용 매출 기준</td>
+      <td>연 1억 400만 원 이상</td>
+      <td>연 1억 400만 원 미만</td>
+    </tr>
+    <tr>
+      <td>세율</td>
+      <td>매출의 10% (매입세액 공제 가능)</td>
+      <td>업종별 부가가치율 × 10% (실효 1.5~4%)</td>
+    </tr>
+    <tr>
+      <td>신고 횟수</td>
+      <td>연 2회 확정 + 중간 예정고지</td>
+      <td>연 1회 (단, 조건 충족 시 추가 신고)</td>
+    </tr>
+    <tr>
+      <td>확정신고 기한</td>
+      <td>7월 25일 / 다음 해 1월 25일</td>
+      <td>다음 해 1월 25일</td>
+    </tr>
+    <tr>
+      <td>납부의무 면제</td>
+      <td>해당 없음</td>
+      <td>연 매출 4,800만 원 미만 시 납부 면제<br>(신고 의무는 있음)</td>
+    </tr>
+  </tbody>
+</table>
+<p>납부의무가 면제되더라도 <strong>신고 자체를 건너뛰면 가산세</strong>가 붙습니다. 간이과세자라도 반드시 기한 내 신고를 마쳐야 합니다.</p>
+
+<h2>배달앱·카드 수수료, 매출에서 얼마나 빠져나가나</h2>
+<p>다점포 사장님이 자주 간과하는 부분이 채널별 실수령액입니다. 공식 발표 기준으로 2025년 2월부터 인하된 영세·중소가맹점 카드 우대수수료율을 참고하면, 연 매출 3억 원 이하 영세가맹점의 신용카드 수수료율은 <strong>0.40%</strong>, 3억~5억 원 구간은 <strong>1.00%</strong>, 5억~10억 원 구간은 <strong>1.15%</strong>, 10억~30억 원 구간은 <strong>1.45%</strong> 수준입니다(체크카드는 별도 기준 적용). 다점포를 운영하면 매장별 매출 합산에 따라 수수료 구간이 달라질 수 있으니 여신금융협회 '가맹점매출정보통합조회시스템(cardsales.or.kr)'에서 실제 적용 수수료율을 확인하세요.</p>
+<p>배달앱은 상황이 더 복잡합니다. 2024년 상생협의체 합의 기준으로 배달 주문 중개이용료는 <strong>2.0%~7.8%</strong> 구간이며, 업주 부담 배달비·결제 수수료·부가세까지 합산하면 매출의 25~30%가 차감될 수 있습니다. 매장이 늘어날수록 채널 믹스가 달라지기 때문에 매장별로 채널 구성비를 따로 파악해야 실제 순매출을 정확히 알 수 있습니다.</p>
+
+<h2>다점포 매출관리 3단계 실전 루틴</h2>
+<ol>
+  <li>
+    <strong>매일 마감 시 매장별 채널별 기록</strong><br>
+    카드·현금·배달앱을 구분하여 각 매장의 일 매출을 당일 기록합니다. 기억에 의존하면 1~2일만 지나도 수치가 흐릿해집니다. <strong>오늘장부</strong>처럼 카드·현금·배달앱 매출을 한 화면에서 입력하고 매장별로 분리 조회할 수 있는 앱을 활용하면 매일 5분 이내로 마감 루틴을 끝낼 수 있습니다.
+  </li>
+  <li>
+    <strong>월간 채널별 집계로 손익 파악</strong><br>
+    월말에는 매장별·채널별 총매출, 수수료 차감 후 순매출을 한눈에 비교합니다. 어느 매장이 실제로 더 많이 남기는지, 어느 채널의 수수료 부담이 큰지 수치로 확인해야 합리적인 판단이 가능합니다.
+  </li>
+  <li>
+    <strong>부가세 예상액 수시 확인</strong><br>
+    일반과세자라면 매출의 10%를 부가세로 납부해야 하지만(매입세액 공제 후), 분기가 지나도록 미리 쌓아두지 않으면 신고 때 목돈이 한꺼번에 나가 자금 흐름이 흔들립니다. 매월 예상 부가세를 자동으로 보여주는 기능을 활용해 별도 통장에 적립해 두는 습관이 핵심입니다.
+  </li>
+</ol>
+
+<h2>사업자등록은 합칠까, 분리할까</h2>
+<p>다점포 운영 시 자주 나오는 질문입니다. 동일 대표자라도 매장마다 별도 사업자등록을 내는 경우가 많습니다. 이때 각 사업자의 과세유형·신고 기한이 따로 관리되므로, <strong>신고 누락이나 예정고지 미납</strong>에 특히 주의해야 합니다. 반면 하나의 사업자로 여러 매장(지점)을 운영하면 신고는 통합되지만 매장별 손익 파악이 더 어려워집니다. 어떤 구조가 유리한지는 매출 규모·업종·세무 전략에 따라 다르므로 반드시 세무사와 상담하세요.</p>
+
+<h2>다점포 매출관리 체크리스트</h2>
+<ul>
+  <li>☑ 각 매장의 과세유형(일반/간이) 확인 및 신고 기한 캘린더 등록</li>
+  <li>☑ 매장별 카드 우대수수료율 여신금융협회 시스템에서 확인</li>
+  <li>☑ 배달앱 채널별 중개이용료·배달비 구조 파악</li>
+  <li>☑ 일 마감 시 매장별 채널별 매출 즉시 기록</li>
+  <li>☑ 월별 부가세 예상액 적립 통장 운영</li>
+  <li>☑ 분기마다 매장별 순매출 비교 분석</li>
+</ul>
+<p>이 체크리스트를 꾸준히 실천한다면 신고 직전 "지난달 매출이 얼마였지?"를 헤매는 상황은 사라집니다. <a href="https://오늘장부.kr">오늘장부 무료로 시작하기</a>를 통해 카드·현금·배달앱 매출 기록부터 부가세 예상액 자동 계산까지 한 번에 시작해 보세요.</p>
+
+<h2>자주 묻는 질문</h2>
+
+<h3>매장 두 곳을 운영하는데 부가세 신고를 한 번에 할 수 있나요?</h3>
+<p>사업자등록이 별개라면 각 사업자번호로 따로 신고해야 합니다. 신고 기한이 같더라도 누락하지 않도록 매장별 일정을 별도로 관리하세요. 하나의 사업자 아래 지점으로 운영 중이라면 본점 사업자로 통합 신고가 가능합니다. 구체적인 구조는 세무사와 확인하시기 바랍니다.</p>
+
+<h3>간이과세자 매장과 일반과세자 매장을 동시에 운영하면 어떻게 관리하나요?</h3>
+<p>각 사업자의 과세유형에 맞춰 별도로 장부를 관리하고 신고 기한도 따로 챙겨야 합니다. 간이과세자는 다음 해 1월 25일 연 1회 신고, 일반과세자는 7월 25일과 다음 해 1월 25일 연 2회 확정신고(+ 예정고지)가 있습니다. 매장별 매출을 혼용하지 않도록 채널별 기록 앱을 분리해서 운영하거나, 매장별 계정을 구분해 사용하는 것이 실수를 줄이는 방법입니다.</p>
+
+<h3>배달앱 매출도 부가세 신고 대상인가요?</h3>
+<p>네, 배달앱을 통한 매출도 부가가치세 과세 대상입니다. 배달앱이 정산할 때 중개이용료·결제수수료를 차감한 금액이 입금되지만, 부가세 신고 시 매출은 차감 전 <strong>공급가액 전체</strong>를 기준으로 신고해야 합니다. 배달 플랫폼의 정산 내역서를 반드시 보관하고, 전체 매출 기준으로 신고액을 계산하세요.</p>
+
+<p>※ 본 글은 2026년 기준 참고용 정보이며, 정확한 신고·금액은 국세청 홈택스 또는 세무사와 상담하세요.</p>
+      </div>
+      <div class="tags">
+        <a href="/blog/?tag=%EB%8B%A4%EC%A0%90%ED%8F%AC" class="tag">다점포</a> <a href="/blog/?tag=%EB%A7%A4%EC%B6%9C%EA%B4%80%EB%A6%AC" class="tag">매출관리</a> <a href="/blog/?tag=%EB%B6%80%EA%B0%80%EC%84%B8" class="tag">부가세</a> <a href="/blog/?tag=%EC%86%8C%EC%83%81%EA%B3%B5%EC%9D%B8" class="tag">소상공인</a>
+      </div>
+    </article>
+
+    <section style="background:#fff8f5;border-radius:16px;padding:24px 28px;margin-top:24px;">
+      <h2 style="font-size:18px;font-weight:800;color:#1a1a1a;margin:0 0 14px;">함께 보면 좋은 글</h2>
+      <ul style="list-style:none;padding:0;margin:0;">
+        <li style="padding:8px 0;border-bottom:1px solid #ffe6d9;"><a href="/blog/posts/simple-daily-sales-report-for-small-business.html" style="color:#FF6B35;text-decoration:none;font-weight:600;font-size:14px;">매출 보고서 간단히 만드는 법 – 하루 5분으로 세금까지 대비하기</a></li>
+        <li style="padding:8px 0;border-bottom:1px solid #ffe6d9;"><a href="/blog/posts/peak-season-sales-maximization-strategy.html" style="color:#FF6B35;text-decoration:none;font-weight:600;font-size:14px;">성수기 매출 극대화 전략: 번 돈 다 지키는 사장님 실전 가이드</a></li>
+        <li style="padding:8px 0;border-bottom:1px solid #ffe6d9;"><a href="/blog/posts/daily-sales-recording-habit.html" style="color:#FF6B35;text-decoration:none;font-weight:600;font-size:14px;">매출 기록 습관 만드는 법: 하루 1분 루틴 5단계</a></li>
+        <li style="padding:8px 0;border-bottom:1px solid #ffe6d9;"><a href="/blog/posts/delivery-vs-hall-sales-separate-management.html" style="color:#FF6B35;text-decoration:none;font-weight:600;font-size:14px;">배달·홀 매출 따로 관리하기, 왜 사장님 통장이 달라질까</a></li>
+      </ul>
+    </section>
+
+    <div class="ad-slot">광고 영역 (AdSense 승인 후 활성화)</div>
+
+    <div class="cta-box">
+      <h3>매일 매출 기록, 30초면 끝!</h3>
+      <p>카드·현금·네이버페이·카카오페이<br>여러 결제수단을 한 화면에서 입력<br>부가세 예상액도 자동으로 계산해드려요</p>
+      <a href="/">지금 무료로 시작하기</a>
+    </div>
+  </main>
+
+  <aside class="sidebar">
+    <div class="sidebar-cta">
+      <h3>매일 매출 기록,<br>30초면 끝!</h3>
+      <p>카드·현금·배달앱 한 번에<br>부가세 예상액도 자동 계산</p>
+      <a href="/">무료로 시작하기</a>
+    </div>
+  </aside>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-links">
+      <a href="/">서비스 홈</a>
+      <a href="/blog/">블로그</a>
+      <a href="/privacy">개인정보처리방침</a>
+      <a href="/terms">이용약관</a>
+    </div>
+    <div class="footer-copy">© 2026 오늘장부. All rights reserved.</div>
+  </div>
+</footer>
+
+</body>
+</html>

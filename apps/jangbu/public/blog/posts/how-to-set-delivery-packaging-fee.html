@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>배달 포장비 책정하는 법: 손해 안 보는 계산 공식 | 오늘장부 블로그</title>
+  <meta name="description" content="용기 원가부터 배달앱 중개수수료, 부가세까지 한 번에 반영해 손해 보지 않는 배달 포장비 책정법을 4단계 공식과 표·예시로 쉽게 정리했습니다.">
+  <meta property="og:title" content="배달 포장비 책정하는 법: 손해 안 보는 계산 공식">
+  <meta property="og:description" content="용기 원가부터 배달앱 중개수수료, 부가세까지 한 번에 반영해 손해 보지 않는 배달 포장비 책정법을 4단계 공식과 표·예시로 쉽게 정리했습니다.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://xn--wh1bw0st1gbrb.kr/blog/posts/how-to-set-delivery-packaging-fee.html">
+  <meta property="og:image" content="https://images.pexels.com/photos/7706456/pexels-photo-7706456.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200">
+  <link rel="canonical" href="https://xn--wh1bw0st1gbrb.kr/blog/posts/how-to-set-delivery-packaging-fee.html">
+  <link rel="icon" href="/icons/icon-192.png">
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2764893290310463" crossorigin="anonymous"></script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Noto Sans KR', sans-serif; background: #f8f9fa; color: #1a1a1a; line-height: 1.7; }
+    header { background: #fff; border-bottom: 1px solid #eee; position: sticky; top: 0; z-index: 100; }
+    .header-inner { max-width: 1100px; margin: 0 auto; padding: 0 20px; height: 60px; display: flex; align-items: center; justify-content: space-between; }
+    .logo { display: flex; align-items: center; gap: 8px; text-decoration: none; }
+    .logo-icon { width: 32px; height: 32px; background: #FF6B35; border-radius: 8px; display: flex; align-items: center; justify-content: center; color: white; font-weight: 900; font-size: 16px; }
+    .logo-text { font-size: 18px; font-weight: 800; color: #FF6B35; }
+    .logo-sub { font-size: 13px; color: #888; margin-left: 4px; }
+    .header-cta { background: #FF6B35; color: white; border: none; padding: 8px 16px; border-radius: 8px; font-size: 13px; font-weight: 600; cursor: pointer; text-decoration: none; }
+    .wrap { max-width: 1100px; margin: 0 auto; padding: 32px 20px; display: grid; grid-template-columns: 1fr 300px; gap: 40px; }
+    @media (max-width: 768px) { .wrap { grid-template-columns: 1fr; } .sidebar { display: none; } }
+    article { background: white; border-radius: 20px; overflow: hidden; box-shadow: 0 2px 12px rgba(0,0,0,0.06); }
+    .article-head { padding: 32px 32px 24px; border-bottom: 1px solid #f0f0f0; }
+    .article-cat { font-size: 12px; font-weight: 700; color: #FF6B35; text-transform: uppercase; margin-bottom: 12px; }
+    .article-cat a { color: #FF6B35; text-decoration: none; }
+    .article-title { font-size: clamp(20px, 4vw, 28px); font-weight: 900; line-height: 1.4; color: #1a1a1a; margin-bottom: 16px; }
+    .article-meta { font-size: 13px; color: #aaa; display: flex; gap: 16px; align-items: center; flex-wrap: wrap; }
+    .hero-img { width: 100%; aspect-ratio: 16/9; object-fit: cover; background: #f0f0f0; }
+    .article-body { padding: 32px; }
+    .article-body h2 { font-size: 20px; font-weight: 800; color: #1a1a1a; margin: 32px 0 14px; padding-bottom: 8px; border-bottom: 2px solid #FF6B35; }
+    .article-body h3 { font-size: 16px; font-weight: 700; color: #333; margin: 20px 0 10px; }
+    .article-body p { margin-bottom: 14px; color: #333; font-size: 15px; }
+    .article-body ul, .article-body ol { padding-left: 20px; margin-bottom: 14px; }
+    .article-body li { margin-bottom: 6px; color: #333; font-size: 15px; }
+    .article-body table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 14px; }
+    .article-body th { background: #FF6B35; color: white; padding: 10px 14px; text-align: left; }
+    .article-body td { padding: 10px 14px; border-bottom: 1px solid #f0f0f0; }
+    .article-body tr:nth-child(even) td { background: #fff8f5; }
+    .article-body img { width: 100%; border-radius: 12px; margin: 16px 0; }
+    .article-body strong { color: #1a1a1a; }
+    .article-body blockquote { background: #fff8f5; border-left: 4px solid #FF6B35; padding: 16px 20px; border-radius: 0 12px 12px 0; margin: 16px 0; font-style: italic; color: #555; }
+    .article-body a { color: #FF6B35; }
+    .tags { padding: 20px 32px; border-top: 1px solid #f0f0f0; display: flex; gap: 8px; flex-wrap: wrap; }
+    .tag { background: #fff3ee; color: #FF6B35; border-radius: 20px; padding: 5px 12px; font-size: 12px; font-weight: 600; text-decoration: none; }
+    .tag:hover { background: #FF6B35; color: white; }
+    .ad-slot { background: #f0f0f0; border-radius: 12px; display: flex; align-items: center; justify-content: center; color: #bbb; font-size: 12px; min-height: 90px; margin: 24px 0; }
+    .cta-box { background: linear-gradient(135deg, #FF6B35, #ff8c42); border-radius: 20px; padding: 32px; text-align: center; color: white; margin-top: 24px; }
+    .cta-box h3 { font-size: 22px; font-weight: 900; margin-bottom: 10px; }
+    .cta-box p { font-size: 14px; opacity: 0.9; line-height: 1.6; margin-bottom: 20px; }
+    .cta-box a { background: white; color: #FF6B35; border-radius: 12px; padding: 13px 28px; font-weight: 800; font-size: 15px; text-decoration: none; display: inline-block; }
+    .nav-links { display: flex; gap: 16px; margin-top: 24px; }
+    .nav-back { color: #FF6B35; text-decoration: none; font-size: 14px; font-weight: 600; }
+    .nav-back::before { content: '\2190 '; }
+    .sidebar-cta { background: linear-gradient(135deg, #FF6B35, #ff8c42); color: white; border-radius: 16px; padding: 24px; text-align: center; position: sticky; top: 80px; }
+    .sidebar-cta h3 { font-size: 16px; font-weight: 900; margin-bottom: 8px; }
+    .sidebar-cta p { font-size: 13px; opacity: 0.9; line-height: 1.5; margin-bottom: 16px; }
+    .sidebar-cta a { background: white; color: #FF6B35; border-radius: 8px; padding: 10px 20px; font-weight: 700; font-size: 14px; text-decoration: none; display: inline-block; }
+    footer { background: #1a1a1a; color: #888; padding: 40px 20px; margin-top: 60px; }
+    .footer-inner { max-width: 1100px; margin: 0 auto; }
+    .footer-links { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 16px; }
+    .footer-links a { color: #888; text-decoration: none; font-size: 13px; }
+    .footer-copy { font-size: 12px; }
+  </style>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "배달 포장비 책정하는 법: 손해 안 보는 계산 공식",
+  "description": "용기 원가부터 배달앱 중개수수료, 부가세까지 한 번에 반영해 손해 보지 않는 배달 포장비 책정법을 4단계 공식과 표·예시로 쉽게 정리했습니다.",
+  "datePublished": "2026-06-24",
+  "dateModified": "2026-06-24",
+  "image": "https://images.pexels.com/photos/7706456/pexels-photo-7706456.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200",
+  "author": {
+    "@type": "Organization",
+    "name": "오늘장부",
+    "url": "https://오늘장부.kr"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "오늘장부",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://xn--wh1bw0st1gbrb.kr/icons/icon-192.png"
+    }
+  },
+  "mainEntityOfPage": "https://xn--wh1bw0st1gbrb.kr/blog/posts/how-to-set-delivery-packaging-fee.html",
+  "keywords": "배달포장비, 배달앱수수료, 용기비, 부가세, 소상공인"
+}
+  </script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "포장비를 따로 받으면 손님이 싫어하지 않을까요?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "지나치게 높으면 주문이 줄지만, 용기 품질이 좋고 누수·식음 보존이 잘 되면 합리적인 포장비는 대체로 수용됩니다. 경쟁점 수준을 넘지 않는 선에서 책정하고, 메뉴 설명에 '친환경·밀봉 용기' 같은 가치를 적어두면 저항이 줄어듭니다."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "포장(픽업) 주문은 배달비가 없으니 무조건 이득인가요?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "라이더 배달비는 없지만 포장 주문에도 중개수수료가 붙는 앱이 늘었습니다(배민·요기요 등). 다만 배달 대비 비용 구조가 가벼운 편이라, 자사 앱이나 수수료가 낮은 채널로 포장 주문을 유도하면 수익성을 높일 수 있습니다."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "받은 포장비도 부가세를 내야 하나요?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "일반과세자의 경우 소비자에게 받은 포장비는 음식값과 마찬가지로 과세 매출에 포함되는 것이 원칙입니다. 정확한 적용은 과세 유형에 따라 다르니 홈택스나 세무사를 통해 확인하세요."
+      }
+    }
+  ]
+}
+  </script>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <a href="/" class="logo">
+      <div class="logo-icon">장</div>
+      <span class="logo-text">오늘장부</span>
+      <span class="logo-sub">블로그</span>
+    </a>
+    <a href="/" class="header-cta">무료로 시작하기</a>
+  </div>
+</header>
+
+<div class="wrap">
+  <main>
+    <div class="nav-links">
+      <a href="/blog/" class="nav-back">블로그 목록으로</a>
+    </div>
+
+    <div class="ad-slot">광고 영역 (AdSense 승인 후 활성화)</div>
+
+    <article>
+      <div class="article-head">
+        <div class="article-cat"><a href="/blog/">배달앱</a></div>
+        <h1 class="article-title">배달 포장비 책정하는 법: 손해 안 보는 계산 공식</h1>
+        <div class="article-meta">
+          <span>오늘장부 편집팀</span>
+          <span>2026년 06월 24일</span>
+        </div>
+      </div>
+      <img src="https://images.pexels.com/photos/7706456/pexels-photo-7706456.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200" alt="배달 포장비 책정하는 법: 손해 안 보는 계산 공식" class="hero-img" loading="lazy">
+      <div class="article-body">
+<p>배달 주문에 쓰는 용기와 포장재 값, 그냥 '대충 1,000원' 받고 계신가요? 포장비는 메뉴 가격만큼 자주 보는 항목은 아니지만, 한 달 수백 건이 쌓이면 순이익을 좌우합니다. 너무 적게 받으면 음식을 팔수록 적자가 나고, 너무 많이 받으면 주문 자체가 줄어듭니다. 오늘은 사장님이 바로 계산기를 두드릴 수 있도록 <strong>배달 포장비를 책정하는 법</strong>을 원가·수수료·세금까지 묶어 정리했습니다.</p>
+
+<h2>포장비에 '진짜로' 들어가는 비용부터 따지기</h2>
+<p>포장비를 정하기 전에, 한 건을 포장하는 데 들어가는 실제 원가를 항목별로 적어봐야 합니다. 흔히 용기 값만 생각하지만 부자재가 의외로 큽니다.</p>
+<ul>
+<li><strong>주 용기</strong>: 음식이 담기는 그릇(플라스틱·종이·알루미늄)</li>
+<li><strong>뚜껑·밀봉 부자재</strong>: 뚜껑, 실링 필름, 안전 스티커</li>
+<li><strong>부속 포장재</strong>: 소스 용기, 수저·물티슈, 비닐봉투, 종이쇼핑백</li>
+<li><strong>보온·보냉재</strong>: 단열 봉투, 아이스팩(여름·디저트류)</li>
+<li><strong>로스율</strong>: 파손·여분으로 버려지는 몫(보통 원가의 몇 % 가산)</li>
+</ul>
+<p>이 항목을 모두 더한 값이 '메뉴 1건당 포장 원가'입니다. 메뉴마다 용기가 다르면 대표 메뉴군별로 따로 계산하는 편이 정확합니다.</p>
+
+<h2>포장비에도 수수료·부가세가 붙는다는 점을 놓치지 마세요</h2>
+<p>가장 많이 하는 실수가 '용기 원가 = 받을 포장비'로 정하는 것입니다. 배달앱에서는 포장비도 결제 금액의 일부라, 거기에 <strong>중개수수료와 결제(PG)수수료, 부가세</strong>가 함께 따라붙습니다. 즉 소비자에게 받은 포장비가 100% 내 주머니에 들어오지 않습니다.</p>
+<p>특히 포장(픽업) 주문도 더 이상 무료가 아닙니다. 2025년부터 <strong>배달의민족은 포장 주문에도 중개수수료 6.8%(부가세 별도)</strong>를 부과하기 시작했고, 요기요는 7.7% 수준입니다. 쿠팡이츠는 포장 주문 수수료 무료 정책을 한시적으로 연장 중이며, 공공배달앱(예: 먹깨비)은 1.5% 안팎으로 상대적으로 낮습니다. 같은 메뉴라도 <strong>어느 앱·어느 주문 유형이냐에 따라 실수령액이 달라진다</strong>는 뜻입니다. 정확한 최신 수수료율은 각 앱 정산 화면에서 꼭 확인하세요.</p>
+<blockquote>핵심: 포장비는 '용기 원가'가 아니라 '용기 원가 + 거기에 빠져나갈 수수료·세금'까지 덮을 수 있어야 본전입니다.</blockquote>
+
+<h2>손해 안 보는 포장비 책정 4단계</h2>
+<ol>
+<li><strong>1단계 — 원가 합산</strong>: 위 항목을 모두 더해 1건당 포장 원가를 구합니다.</li>
+<li><strong>2단계 — 수수료 역산</strong>: 받을 포장비에서 중개·PG수수료 비율만큼 빠진다고 보고, 원가를 덮을 만큼 금액을 올려 잡습니다.</li>
+<li><strong>3단계 — 부가세 고려</strong>: 일반과세자라면 받은 포장비도 과세 매출에 포함됩니다. 부가세 부담분을 감안해 책정합니다.</li>
+<li><strong>4단계 — 시장가 점검</strong>: 같은 동네 경쟁점이 받는 포장비와 비교해 소비자 저항선을 넘지 않는지 확인합니다.</li>
+</ol>
+<p>아래는 책정 흐름을 단순화한 예시입니다(금액은 가게마다 다르므로 직접 대입하세요).</p>
+<table>
+<thead>
+<tr><th>항목</th><th>내용</th><th>책정 시 반영</th></tr>
+</thead>
+<tbody>
+<tr><td>용기·부자재 원가</td><td>1건당 실제 들어가는 포장재 합계</td><td>최소 회수해야 할 기준선</td></tr>
+<tr><td>중개·PG수수료</td><td>포장비에도 비율로 부과</td><td>원가 위에 더해 책정</td></tr>
+<tr><td>부가세</td><td>받은 포장비는 과세 매출</td><td>일반과세자는 부담분 감안</td></tr>
+<tr><td>경쟁점 포장비</td><td>동일 상권·메뉴 비교</td><td>상한선(소비자 저항) 점검</td></tr>
+</tbody>
+</table>
+
+<h2>매출에 묻혀 새는 포장비, 기록부터 시작하세요</h2>
+<p>포장비는 금액이 작아 '대충 남겠지' 하고 넘기기 쉽지만, 실제로는 건당 수수료·세금이 겹치며 마진을 갉아먹는 대표 항목입니다. 그래서 포장 주문 건수와 포장비 수입, 용기 매입액을 따로 기록해 두는 습관이 중요합니다. <strong>오늘장부</strong>처럼 카드·현금·배달앱 매출을 한 번에 적고 부가세 예상액까지 자동으로 보여주는 도구를 쓰면, 포장비를 올렸을 때 실제 순이익이 어떻게 바뀌는지 숫자로 바로 확인할 수 있습니다.</p>
+<p>참고로 직전연도 공급대가가 1억400만원 미만이면 간이과세자, 그 이상이면 일반과세자로 구분되며, 과세 유형에 따라 포장비에 대한 세 부담도 달라집니다. 내 가게가 어디에 해당하는지 모르겠다면 매출을 꾸준히 기록해 두고 세무사와 상담하는 것이 안전합니다.</p>
+
+<h2>자주 묻는 질문</h2>
+<h3>포장비를 따로 받으면 손님이 싫어하지 않을까요?</h3>
+<p>지나치게 높으면 주문이 줄지만, 용기 품질이 좋고 누수·식음 보존이 잘 되면 합리적인 포장비는 대체로 수용됩니다. 경쟁점 수준을 넘지 않는 선에서 책정하고, 메뉴 설명에 '친환경·밀봉 용기' 같은 가치를 적어두면 저항이 줄어듭니다.</p>
+<h3>포장(픽업) 주문은 배달비가 없으니 무조건 이득인가요?</h3>
+<p>라이더 배달비는 없지만 포장 주문에도 중개수수료가 붙는 앱이 늘었습니다(배민·요기요 등). 다만 배달 대비 비용 구조가 가벼운 편이라, 자사 앱이나 수수료가 낮은 채널로 포장 주문을 유도하면 수익성을 높일 수 있습니다.</p>
+<h3>받은 포장비도 부가세를 내야 하나요?</h3>
+<p>일반과세자의 경우 소비자에게 받은 포장비는 음식값과 마찬가지로 과세 매출에 포함되는 것이 원칙입니다. 정확한 적용은 과세 유형에 따라 다르니 홈택스나 세무사를 통해 확인하세요.</p>
+
+<p>포장비 한 항목만 제대로 잡아도 한 달 순이익이 달라집니다. 매출과 비용을 한곳에서 기록하고 세금까지 미리 가늠하고 싶다면 <a href="https://오늘장부.kr">오늘장부 무료로 시작하기</a>로 시작해 보세요.</p>
+<p>※ 본 글은 2026년 기준 참고용 정보이며, 정확한 신고·금액은 국세청 홈택스 또는 세무사와 상담하세요.</p>
+      </div>
+      <div class="tags">
+        <a href="/blog/?tag=%EB%B0%B0%EB%8B%AC%ED%8F%AC%EC%9E%A5%EB%B9%84" class="tag">배달포장비</a> <a href="/blog/?tag=%EB%B0%B0%EB%8B%AC%EC%95%B1%EC%88%98%EC%88%98%EB%A3%8C" class="tag">배달앱수수료</a> <a href="/blog/?tag=%EC%9A%A9%EA%B8%B0%EB%B9%84" class="tag">용기비</a> <a href="/blog/?tag=%EB%B6%80%EA%B0%80%EC%84%B8" class="tag">부가세</a> <a href="/blog/?tag=%EC%86%8C%EC%83%81%EA%B3%B5%EC%9D%B8" class="tag">소상공인</a>
+      </div>
+    </article>
+
+    <section style="background:#fff8f5;border-radius:16px;padding:24px 28px;margin-top:24px;">
+      <h2 style="font-size:18px;font-weight:800;color:#1a1a1a;margin:0 0 14px;">함께 보면 좋은 글</h2>
+      <ul style="list-style:none;padding:0;margin:0;">
+        <li style="padding:8px 0;border-bottom:1px solid #ffe6d9;"><a href="/blog/posts/delivery-app-ads-worth-it.html" style="color:#FF6B35;text-decoration:none;font-weight:600;font-size:14px;">배달앱 광고 효과 있을까? 사장님 손익 기준 정리</a></li>
+        <li style="padding:8px 0;border-bottom:1px solid #ffe6d9;"><a href="/blog/posts/delivery-review-management-boost-sales.html" style="color:#FF6B35;text-decoration:none;font-weight:600;font-size:14px;">배달 리뷰 관리로 매출 늘리기: 사장님 실전 전략</a></li>
+        <li style="padding:8px 0;border-bottom:1px solid #ffe6d9;"><a href="/blog/posts/self-delivery-vs-delivery-agency-comparison.html" style="color:#FF6B35;text-decoration:none;font-weight:600;font-size:14px;">자체배달 vs 배달대행 비교, 우리 가게엔 뭐가 이득?</a></li>
+        <li style="padding:8px 0;border-bottom:1px solid #ffe6d9;"><a href="/blog/posts/depreciation-tax-saving-for-small-business.html" style="color:#FF6B35;text-decoration:none;font-weight:600;font-size:14px;">감가상각으로 세금 줄이기, 사장님 필수 절세 전략</a></li>
+      </ul>
+    </section>
+
+    <div class="ad-slot">광고 영역 (AdSense 승인 후 활성화)</div>
+
+    <div class="cta-box">
+      <h3>매일 매출 기록, 30초면 끝!</h3>
+      <p>카드·현금·네이버페이·카카오페이<br>여러 결제수단을 한 화면에서 입력<br>부가세 예상액도 자동으로 계산해드려요</p>
+      <a href="/">지금 무료로 시작하기</a>
+    </div>
+  </main>
+
+  <aside class="sidebar">
+    <div class="sidebar-cta">
+      <h3>매일 매출 기록,<br>30초면 끝!</h3>
+      <p>카드·현금·배달앱 한 번에<br>부가세 예상액도 자동 계산</p>
+      <a href="/">무료로 시작하기</a>
+    </div>
+  </aside>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-links">
+      <a href="/">서비스 홈</a>
+      <a href="/blog/">블로그</a>
+      <a href="/privacy">개인정보처리방침</a>
+      <a href="/terms">이용약관</a>
+    </div>
+    <div class="footer-copy">© 2026 오늘장부. All rights reserved.</div>
+  </div>
+</footer>
+
+</body>
+</html>

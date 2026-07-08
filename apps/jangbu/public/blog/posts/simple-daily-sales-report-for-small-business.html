@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>매출 보고서 간단히 만드는 법 – 하루 5분으로 세금까지 대비하기 | 오늘장부 블로그</title>
+  <meta name="description" content="카드·현금·배달앱 매출을 한 번에 정리하는 매출 보고서 작성법. 일별 기록 루틴부터 부가세 예상까지, 소상공인 사장님이 바로 쓸 수 있는 실전 가이드.">
+  <meta property="og:title" content="매출 보고서 간단히 만드는 법 – 하루 5분으로 세금까지 대비하기">
+  <meta property="og:description" content="카드·현금·배달앱 매출을 한 번에 정리하는 매출 보고서 작성법. 일별 기록 루틴부터 부가세 예상까지, 소상공인 사장님이 바로 쓸 수 있는 실전 가이드.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://xn--wh1bw0st1gbrb.kr/blog/posts/simple-daily-sales-report-for-small-business.html">
+  <meta property="og:image" content="https://images.pexels.com/photos/36729737/pexels-photo-36729737.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200">
+  <link rel="canonical" href="https://xn--wh1bw0st1gbrb.kr/blog/posts/simple-daily-sales-report-for-small-business.html">
+  <link rel="icon" href="/icons/icon-192.png">
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2764893290310463" crossorigin="anonymous"></script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Noto Sans KR', sans-serif; background: #f8f9fa; color: #1a1a1a; line-height: 1.7; }
+    header { background: #fff; border-bottom: 1px solid #eee; position: sticky; top: 0; z-index: 100; }
+    .header-inner { max-width: 1100px; margin: 0 auto; padding: 0 20px; height: 60px; display: flex; align-items: center; justify-content: space-between; }
+    .logo { display: flex; align-items: center; gap: 8px; text-decoration: none; }
+    .logo-icon { width: 32px; height: 32px; background: #FF6B35; border-radius: 8px; display: flex; align-items: center; justify-content: center; color: white; font-weight: 900; font-size: 16px; }
+    .logo-text { font-size: 18px; font-weight: 800; color: #FF6B35; }
+    .logo-sub { font-size: 13px; color: #888; margin-left: 4px; }
+    .header-cta { background: #FF6B35; color: white; border: none; padding: 8px 16px; border-radius: 8px; font-size: 13px; font-weight: 600; cursor: pointer; text-decoration: none; }
+    .wrap { max-width: 1100px; margin: 0 auto; padding: 32px 20px; display: grid; grid-template-columns: 1fr 300px; gap: 40px; }
+    @media (max-width: 768px) { .wrap { grid-template-columns: 1fr; } .sidebar { display: none; } }
+    article { background: white; border-radius: 20px; overflow: hidden; box-shadow: 0 2px 12px rgba(0,0,0,0.06); }
+    .article-head { padding: 32px 32px 24px; border-bottom: 1px solid #f0f0f0; }
+    .article-cat { font-size: 12px; font-weight: 700; color: #FF6B35; text-transform: uppercase; margin-bottom: 12px; }
+    .article-cat a { color: #FF6B35; text-decoration: none; }
+    .article-title { font-size: clamp(20px, 4vw, 28px); font-weight: 900; line-height: 1.4; color: #1a1a1a; margin-bottom: 16px; }
+    .article-meta { font-size: 13px; color: #aaa; display: flex; gap: 16px; align-items: center; flex-wrap: wrap; }
+    .hero-img { width: 100%; aspect-ratio: 16/9; object-fit: cover; background: #f0f0f0; }
+    .article-body { padding: 32px; }
+    .article-body h2 { font-size: 20px; font-weight: 800; color: #1a1a1a; margin: 32px 0 14px; padding-bottom: 8px; border-bottom: 2px solid #FF6B35; }
+    .article-body h3 { font-size: 16px; font-weight: 700; color: #333; margin: 20px 0 10px; }
+    .article-body p { margin-bottom: 14px; color: #333; font-size: 15px; }
+    .article-body ul, .article-body ol { padding-left: 20px; margin-bottom: 14px; }
+    .article-body li { margin-bottom: 6px; color: #333; font-size: 15px; }
+    .article-body table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 14px; }
+    .article-body th { background: #FF6B35; color: white; padding: 10px 14px; text-align: left; }
+    .article-body td { padding: 10px 14px; border-bottom: 1px solid #f0f0f0; }
+    .article-body tr:nth-child(even) td { background: #fff8f5; }
+    .article-body img { width: 100%; border-radius: 12px; margin: 16px 0; }
+    .article-body strong { color: #1a1a1a; }
+    .article-body blockquote { background: #fff8f5; border-left: 4px solid #FF6B35; padding: 16px 20px; border-radius: 0 12px 12px 0; margin: 16px 0; font-style: italic; color: #555; }
+    .article-body a { color: #FF6B35; }
+    .tags { padding: 20px 32px; border-top: 1px solid #f0f0f0; display: flex; gap: 8px; flex-wrap: wrap; }
+    .tag { background: #fff3ee; color: #FF6B35; border-radius: 20px; padding: 5px 12px; font-size: 12px; font-weight: 600; text-decoration: none; }
+    .tag:hover { background: #FF6B35; color: white; }
+    .ad-slot { background: #f0f0f0; border-radius: 12px; display: flex; align-items: center; justify-content: center; color: #bbb; font-size: 12px; min-height: 90px; margin: 24px 0; }
+    .cta-box { background: linear-gradient(135deg, #FF6B35, #ff8c42); border-radius: 20px; padding: 32px; text-align: center; color: white; margin-top: 24px; }
+    .cta-box h3 { font-size: 22px; font-weight: 900; margin-bottom: 10px; }
+    .cta-box p { font-size: 14px; opacity: 0.9; line-height: 1.6; margin-bottom: 20px; }
+    .cta-box a { background: white; color: #FF6B35; border-radius: 12px; padding: 13px 28px; font-weight: 800; font-size: 15px; text-decoration: none; display: inline-block; }
+    .nav-links { display: flex; gap: 16px; margin-top: 24px; }
+    .nav-back { color: #FF6B35; text-decoration: none; font-size: 14px; font-weight: 600; }
+    .nav-back::before { content: '\2190 '; }
+    .sidebar-cta { background: linear-gradient(135deg, #FF6B35, #ff8c42); color: white; border-radius: 16px; padding: 24px; text-align: center; position: sticky; top: 80px; }
+    .sidebar-cta h3 { font-size: 16px; font-weight: 900; margin-bottom: 8px; }
+    .sidebar-cta p { font-size: 13px; opacity: 0.9; line-height: 1.5; margin-bottom: 16px; }
+    .sidebar-cta a { background: white; color: #FF6B35; border-radius: 8px; padding: 10px 20px; font-weight: 700; font-size: 14px; text-decoration: none; display: inline-block; }
+    footer { background: #1a1a1a; color: #888; padding: 40px 20px; margin-top: 60px; }
+    .footer-inner { max-width: 1100px; margin: 0 auto; }
+    .footer-links { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 16px; }
+    .footer-links a { color: #888; text-decoration: none; font-size: 13px; }
+    .footer-copy { font-size: 12px; }
+  </style>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "매출 보고서 간단히 만드는 법 – 하루 5분으로 세금까지 대비하기",
+  "description": "카드·현금·배달앱 매출을 한 번에 정리하는 매출 보고서 작성법. 일별 기록 루틴부터 부가세 예상까지, 소상공인 사장님이 바로 쓸 수 있는 실전 가이드.",
+  "datePublished": "2026-07-01",
+  "dateModified": "2026-07-01",
+  "image": "https://images.pexels.com/photos/36729737/pexels-photo-36729737.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200",
+  "author": {
+    "@type": "Organization",
+    "name": "오늘장부",
+    "url": "https://오늘장부.kr"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "오늘장부",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://xn--wh1bw0st1gbrb.kr/icons/icon-192.png"
+    }
+  },
+  "mainEntityOfPage": "https://xn--wh1bw0st1gbrb.kr/blog/posts/simple-daily-sales-report-for-small-business.html",
+  "keywords": "매출관리, 매출보고서, 부가세신고, 소상공인장부"
+}
+  </script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "배달앱 정산액과 실제 매출이 다른데, 어느 금액을 기록해야 하나요?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "매출로 기록해야 할 금액은 고객이 실제 결제한 주문 금액(배달앱 수수료 차감 전)입니다. 플랫폼 수수료는 비용(지급수수료)으로 별도 처리합니다. 정산 예정액만 매출로 잡으면 실제 매출이 과소 신고될 수 있으니 주의하세요."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "간이과세자인데도 매출 보고서를 만들어야 하나요?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "네, 오히려 더 중요합니다. 간이과세자는 연 매출이 1억 400만 원을 넘으면 일반과세자로 전환됩니다. 또한 연 매출 4,800만 원 미만이면 부가세 납부 의무가 면제되지만, 이 기준을 넘는 순간 세금 부담이 달라집니다. 매출이 기준선에 근접할수록 실시간 누적 매출 추적이 필수입니다."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "매출 보고서를 세무사에게 넘기면 어떤 도움이 되나요?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "매출 유형별(카드·현금·배달앱)로 정리된 보고서가 있으면 세무사가 부가세·종합소득세 신고 시 공제 항목을 빠짐없이 검토할 수 있습니다. 자료가 없으면 세무사도 추정 처리할 수밖에 없어, 공제를 놓치거나 반대로 과소 신고 리스크가 생깁니다. 월별 보고서를 파일로 보관해 두면 세무 비용도 줄어드는 경우가 많습니다."
+      }
+    }
+  ]
+}
+  </script>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <a href="/" class="logo">
+      <div class="logo-icon">장</div>
+      <span class="logo-text">오늘장부</span>
+      <span class="logo-sub">블로그</span>
+    </a>
+    <a href="/" class="header-cta">무료로 시작하기</a>
+  </div>
+</header>
+
+<div class="wrap">
+  <main>
+    <div class="nav-links">
+      <a href="/blog/" class="nav-back">블로그 목록으로</a>
+    </div>
+
+    <div class="ad-slot">광고 영역 (AdSense 승인 후 활성화)</div>
+
+    <article>
+      <div class="article-head">
+        <div class="article-cat"><a href="/blog/">매출관리</a></div>
+        <h1 class="article-title">매출 보고서 간단히 만드는 법 – 하루 5분으로 세금까지 대비하기</h1>
+        <div class="article-meta">
+          <span>오늘장부 편집팀</span>
+          <span>2026년 07월 01일</span>
+        </div>
+      </div>
+      <img src="https://images.pexels.com/photos/36729737/pexels-photo-36729737.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200" alt="매출 보고서 간단히 만드는 법 – 하루 5분으로 세금까지 대비하기" class="hero-img" loading="lazy">
+      <div class="article-body">
+<p>가게 문 닫고 나면 오늘 얼마 벌었는지 바로 파악이 되시나요? 카드 단말기 숫자, 배달앱 정산 화면, 현금 봉투를 따로따로 열어보다가 결국 "대충 이 정도겠지" 하고 넘어가는 사장님이 많습니다. 그런데 매출 보고서 하나가 제대로 갖춰지지 않으면, 부가세 신고철에 숫자가 맞지 않아 가산세를 물거나 세무사에게 추가 비용을 내는 일이 생깁니다. 이 글에서는 복잡한 프로그램 없이도 소상공인 사장님이 <strong>매출 보고서를 간단히 만드는 방법</strong>을 단계별로 안내합니다.</p>
+
+<h2>왜 매출 보고서가 필요한가요?</h2>
+<p>매출 보고서는 단순히 "오늘 얼마 팔았나" 확인용이 아닙니다. 세금 신고와 직결됩니다.</p>
+<ul>
+  <li><strong>부가세 신고:</strong> 개인 일반과세자는 1년에 2회(1기: 7월 25일까지, 2기: 다음 해 1월 25일까지) 확정신고를 합니다. 예정 고지(4월·10월)에서는 직전 과세기간 납부세액의 50%를 미리 납부해야 하므로, 매출 데이터가 축적되지 않으면 예상 세액을 가늠하기 어렵습니다.</li>
+  <li><strong>간이과세자 기준 관리:</strong> 연 매출 1억 400만 원 미만이면 간이과세자 적용이 가능합니다. 매출이 이 기준선 근처라면 매일 누적 매출을 추적해야 유형 전환 여부를 미리 알 수 있습니다.</li>
+  <li><strong>현금 흐름 파악:</strong> 카드 정산은 보통 영업일 기준 2~3일 후 입금됩니다. 배달앱은 플랫폼마다 정산 주기가 다릅니다. 매출 보고서가 있어야 실제 통장 잔고와 '벌어야 할 돈'의 차이를 관리할 수 있습니다.</li>
+</ul>
+
+<h2>매출 보고서에 꼭 들어가야 할 항목</h2>
+<p>거창한 양식은 필요 없습니다. 아래 5가지 항목만 매일 기록하면 충분합니다.</p>
+<table>
+  <thead>
+    <tr>
+      <th>항목</th>
+      <th>내용</th>
+      <th>확인 방법</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>날짜</td>
+      <td>영업일 기준</td>
+      <td>당일 직접 입력</td>
+    </tr>
+    <tr>
+      <td>카드 매출</td>
+      <td>신용·체크카드 합계</td>
+      <td>카드 단말기 일계표</td>
+    </tr>
+    <tr>
+      <td>현금 매출</td>
+      <td>현금영수증 발행분 + 미발행분</td>
+      <td>POS·수기 기록</td>
+    </tr>
+    <tr>
+      <td>배달앱 매출</td>
+      <td>배민·쿠팡이츠·요기요 등 합계</td>
+      <td>각 앱 사장님 메뉴</td>
+    </tr>
+    <tr>
+      <td>메모</td>
+      <td>휴무, 이벤트, 날씨 등 특이사항</td>
+      <td>자유 기재</td>
+    </tr>
+  </tbody>
+</table>
+<p>현금 매출은 특히 놓치기 쉽습니다. 현금영수증을 발행하지 않은 현금 거래도 <strong>수입으로 신고해야 하는 소득</strong>임을 기억하세요. 누락하면 종합소득세 신고 시 가산세 위험이 생깁니다.</p>
+
+<h2>3단계로 만드는 간단 매출 보고서</h2>
+<h3>1단계: 마감 루틴 만들기 (하루 5분)</h3>
+<p>영업이 끝난 직후, 또는 다음 날 오전 오픈 전 5분을 '마감 정리 시간'으로 고정하세요. 카드 단말기 일계표 출력 → 배달앱 당일 주문 건수·금액 확인 → 현금 카운팅 순서로 움직이면 빠집니다. 이 루틴을 매일 지키는 것이 보고서 완성도의 90%를 차지합니다.</p>
+
+<h3>2단계: 주간·월간 집계</h3>
+<p>일별 데이터가 쌓이면 주 1회(예: 매주 월요일) 지난 주 합계를 정리합니다. 월말에는 월 합계를 뽑아두면 부가세 예상액을 직접 계산해 볼 수 있습니다. 일반과세자라면 <strong>월 매출 합계 × 10% ÷ 2(매입세액 고려 전 단순 추정)</strong>를 머릿속에 그려두는 것만으로도 세금 폭탄을 예방하는 데 도움이 됩니다. 정확한 납부세액은 매입세액·공제 항목에 따라 달라지므로 반드시 세무사나 홈택스에서 확인하세요.</p>
+
+<h3>3단계: 앱으로 자동화하기</h3>
+<p>매일 수기로 적는 것도 괜찮지만, 카드·현금·배달앱 매출을 한 화면에서 기록하고 부가세 예상액까지 자동으로 보여주는 <strong>오늘장부</strong> 같은 앱을 활용하면 시간이 크게 줄어듭니다. 입력한 매출 데이터가 쌓이면 일별·주별·월별 보고서가 자동 생성되어, 세무 신고 전에 따로 엑셀을 정리할 필요가 없습니다.</p>
+
+<h2>매출 유형별 기록 시 주의사항</h2>
+<ul>
+  <li><strong>카드 매출:</strong> 단말기 일계표의 '승인 금액'이 기준입니다. 취소 건은 반드시 빼야 합니다. 카드 수수료는 나중에 정산될 때 차감되므로, 매출 기록 시에는 수수료 차감 전 총액으로 기재하는 것이 원칙입니다.</li>
+  <li><strong>현금영수증:</strong> 소비자가 요청하지 않아도, 건당 10만 원 이상 현금 거래는 현금영수증을 의무 발행해야 하는 업종이 있습니다. 해당 여부는 국세청에서 확인하세요.</li>
+  <li><strong>배달앱 매출:</strong> 배달앱에서 보이는 금액은 수수료 차감 전 '주문 금액'인지, 차감 후 '정산 예정액'인지 혼동하지 마세요. 매출로 잡아야 할 금액은 <strong>고객이 결제한 주문 금액(수수료 차감 전)</strong>이며, 수수료는 비용으로 처리합니다.</li>
+  <li><strong>쿠폰·할인:</strong> 플랫폼이 지원해주는 쿠폰 금액도 매출에 포함될 수 있습니다. 정확한 처리 기준은 세무사에게 확인하는 것이 안전합니다.</li>
+</ul>
+
+<h2>엑셀 vs 앱, 뭐가 더 좋을까요?</h2>
+<table>
+  <thead>
+    <tr>
+      <th>구분</th>
+      <th>엑셀·수기 장부</th>
+      <th>매출 관리 앱</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>초기 비용</td>
+      <td>무료</td>
+      <td>무료~소액</td>
+    </tr>
+    <tr>
+      <td>입력 편의성</td>
+      <td>낮음 (직접 작성)</td>
+      <td>높음 (자동 집계)</td>
+    </tr>
+    <tr>
+      <td>보고서 생성</td>
+      <td>수식·서식 직접 설정</td>
+      <td>자동 생성</td>
+    </tr>
+    <tr>
+      <td>부가세 예상</td>
+      <td>직접 계산</td>
+      <td>자동 표시</td>
+    </tr>
+    <tr>
+      <td>이동 중 확인</td>
+      <td>불편</td>
+      <td>스마트폰으로 가능</td>
+    </tr>
+    <tr>
+      <td>데이터 누락 위험</td>
+      <td>높음</td>
+      <td>낮음</td>
+    </tr>
+  </tbody>
+</table>
+<p>처음 시작하는 사장님이라면 엑셀도 충분합니다. 단, 배달앱 3~4개를 동시에 운영하거나 월 매출 규모가 커질수록 앱이 훨씬 효율적입니다.</p>
+
+<blockquote>
+<p><strong>사장님 팁:</strong> 매출 보고서는 '정확하게'보다 '매일 꾸준히'가 더 중요합니다. 오차가 있어도 매일 기록된 데이터가, 완벽하지만 가끔 정리한 장부보다 세무 신고에 훨씬 유용합니다.</p>
+</blockquote>
+
+<h2>자주 묻는 질문</h2>
+
+<h3>배달앱 정산액과 실제 매출이 다른데, 어느 금액을 기록해야 하나요?</h3>
+<p>매출로 기록해야 할 금액은 고객이 실제 결제한 <strong>주문 금액(배달앱 수수료 차감 전)</strong>입니다. 플랫폼 수수료는 비용(지급수수료)으로 별도 처리합니다. 정산 예정액만 매출로 잡으면 실제 매출이 과소 신고될 수 있으니 주의하세요.</p>
+
+<h3>간이과세자인데도 매출 보고서를 만들어야 하나요?</h3>
+<p>네, 오히려 더 중요합니다. 간이과세자는 연 매출이 1억 400만 원을 넘으면 일반과세자로 전환됩니다. 또한 연 매출 4,800만 원 미만이면 부가세 납부 의무가 면제되지만, 이 기준을 넘는 순간 세금 부담이 달라집니다. 매출이 기준선에 근접할수록 실시간 누적 매출 추적이 필수입니다.</p>
+
+<h3>매출 보고서를 세무사에게 넘기면 어떤 도움이 되나요?</h3>
+<p>매출 유형별(카드·현금·배달앱)로 정리된 보고서가 있으면 세무사가 부가세·종합소득세 신고 시 공제 항목을 빠짐없이 검토할 수 있습니다. 자료가 없으면 세무사도 추정 처리할 수밖에 없어, 공제를 놓치거나 반대로 과소 신고 리스크가 생깁니다. 월별 보고서를 파일로 보관해 두면 세무 비용도 줄어드는 경우가 많습니다.</p>
+
+<p>오늘부터 5분씩, 하루 매출 세 줄만 적어두세요. 그 습관이 다음 부가세 신고철에 가장 든든한 준비가 됩니다. 카드·현금·배달앱 매출을 한 번에 기록하고 부가세 예상액까지 확인하고 싶다면 <a href="https://오늘장부.kr">오늘장부 무료로 시작하기</a>를 눌러보세요.</p>
+
+<p>※ 본 글은 2026년 기준 참고용 정보이며, 정확한 신고·금액은 국세청 홈택스 또는 세무사와 상담하세요.</p>
+      </div>
+      <div class="tags">
+        <a href="/blog/?tag=%EB%A7%A4%EC%B6%9C%EA%B4%80%EB%A6%AC" class="tag">매출관리</a> <a href="/blog/?tag=%EB%A7%A4%EC%B6%9C%EB%B3%B4%EA%B3%A0%EC%84%9C" class="tag">매출보고서</a> <a href="/blog/?tag=%EB%B6%80%EA%B0%80%EC%84%B8%EC%8B%A0%EA%B3%A0" class="tag">부가세신고</a> <a href="/blog/?tag=%EC%86%8C%EC%83%81%EA%B3%B5%EC%9D%B8%EC%9E%A5%EB%B6%80" class="tag">소상공인장부</a>
+      </div>
+    </article>
+
+    <section style="background:#fff8f5;border-radius:16px;padding:24px 28px;margin-top:24px;">
+      <h2 style="font-size:18px;font-weight:800;color:#1a1a1a;margin:0 0 14px;">함께 보면 좋은 글</h2>
+      <ul style="list-style:none;padding:0;margin:0;">
+        <li style="padding:8px 0;border-bottom:1px solid #ffe6d9;"><a href="/blog/posts/peak-season-sales-maximization-strategy.html" style="color:#FF6B35;text-decoration:none;font-weight:600;font-size:14px;">성수기 매출 극대화 전략: 번 돈 다 지키는 사장님 실전 가이드</a></li>
+        <li style="padding:8px 0;border-bottom:1px solid #ffe6d9;"><a href="/blog/posts/daily-sales-recording-habit.html" style="color:#FF6B35;text-decoration:none;font-weight:600;font-size:14px;">매출 기록 습관 만드는 법: 하루 1분 루틴 5단계</a></li>
+        <li style="padding:8px 0;border-bottom:1px solid #ffe6d9;"><a href="/blog/posts/delivery-vs-hall-sales-separate-management.html" style="color:#FF6B35;text-decoration:none;font-weight:600;font-size:14px;">배달·홀 매출 따로 관리하기, 왜 사장님 통장이 달라질까</a></li>
+        <li style="padding:8px 0;border-bottom:1px solid #ffe6d9;"><a href="/blog/posts/increase-average-transaction-value-sales-management.html" style="color:#FF6B35;text-decoration:none;font-weight:600;font-size:14px;">객단가 높이는 매출 관리, 손님 수보다 중요한 이유</a></li>
+      </ul>
+    </section>
+
+    <div class="ad-slot">광고 영역 (AdSense 승인 후 활성화)</div>
+
+    <div class="cta-box">
+      <h3>매일 매출 기록, 30초면 끝!</h3>
+      <p>카드·현금·네이버페이·카카오페이<br>여러 결제수단을 한 화면에서 입력<br>부가세 예상액도 자동으로 계산해드려요</p>
+      <a href="/">지금 무료로 시작하기</a>
+    </div>
+  </main>
+
+  <aside class="sidebar">
+    <div class="sidebar-cta">
+      <h3>매일 매출 기록,<br>30초면 끝!</h3>
+      <p>카드·현금·배달앱 한 번에<br>부가세 예상액도 자동 계산</p>
+      <a href="/">무료로 시작하기</a>
+    </div>
+  </aside>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-links">
+      <a href="/">서비스 홈</a>
+      <a href="/blog/">블로그</a>
+      <a href="/privacy">개인정보처리방침</a>
+      <a href="/terms">이용약관</a>
+    </div>
+    <div class="footer-copy">© 2026 오늘장부. All rights reserved.</div>
+  </div>
+</footer>
+
+</body>
+</html>

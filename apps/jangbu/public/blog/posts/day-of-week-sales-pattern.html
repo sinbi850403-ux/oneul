@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>요일별 매출 패턴 활용하기: 사장님이 놓치는 돈의 흐름 | 오늘장부 블로그</title>
+  <meta name="description" content="매출이 들쭉날쭉한 이유는 '요일'에 있습니다. 요일별 매출 패턴을 읽고 인건비·재고·프로모션을 최적화하는 실전 방법을 정리했습니다.">
+  <meta property="og:title" content="요일별 매출 패턴 활용하기: 사장님이 놓치는 돈의 흐름">
+  <meta property="og:description" content="매출이 들쭉날쭉한 이유는 '요일'에 있습니다. 요일별 매출 패턴을 읽고 인건비·재고·프로모션을 최적화하는 실전 방법을 정리했습니다.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://xn--wh1bw0st1gbrb.kr/blog/posts/day-of-week-sales-pattern.html">
+  <meta property="og:image" content="https://images.pexels.com/photos/36729528/pexels-photo-36729528.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200">
+  <link rel="canonical" href="https://xn--wh1bw0st1gbrb.kr/blog/posts/day-of-week-sales-pattern.html">
+  <link rel="icon" href="/icons/icon-192.png">
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2764893290310463" crossorigin="anonymous"></script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Noto Sans KR', sans-serif; background: #f8f9fa; color: #1a1a1a; line-height: 1.7; }
+    header { background: #fff; border-bottom: 1px solid #eee; position: sticky; top: 0; z-index: 100; }
+    .header-inner { max-width: 1100px; margin: 0 auto; padding: 0 20px; height: 60px; display: flex; align-items: center; justify-content: space-between; }
+    .logo { display: flex; align-items: center; gap: 8px; text-decoration: none; }
+    .logo-icon { width: 32px; height: 32px; background: #FF6B35; border-radius: 8px; display: flex; align-items: center; justify-content: center; color: white; font-weight: 900; font-size: 16px; }
+    .logo-text { font-size: 18px; font-weight: 800; color: #FF6B35; }
+    .logo-sub { font-size: 13px; color: #888; margin-left: 4px; }
+    .header-cta { background: #FF6B35; color: white; border: none; padding: 8px 16px; border-radius: 8px; font-size: 13px; font-weight: 600; cursor: pointer; text-decoration: none; }
+    .wrap { max-width: 1100px; margin: 0 auto; padding: 32px 20px; display: grid; grid-template-columns: 1fr 300px; gap: 40px; }
+    @media (max-width: 768px) { .wrap { grid-template-columns: 1fr; } .sidebar { display: none; } }
+    article { background: white; border-radius: 20px; overflow: hidden; box-shadow: 0 2px 12px rgba(0,0,0,0.06); }
+    .article-head { padding: 32px 32px 24px; border-bottom: 1px solid #f0f0f0; }
+    .article-cat { font-size: 12px; font-weight: 700; color: #FF6B35; text-transform: uppercase; margin-bottom: 12px; }
+    .article-cat a { color: #FF6B35; text-decoration: none; }
+    .article-title { font-size: clamp(20px, 4vw, 28px); font-weight: 900; line-height: 1.4; color: #1a1a1a; margin-bottom: 16px; }
+    .article-meta { font-size: 13px; color: #aaa; display: flex; gap: 16px; align-items: center; flex-wrap: wrap; }
+    .hero-img { width: 100%; aspect-ratio: 16/9; object-fit: cover; background: #f0f0f0; }
+    .article-body { padding: 32px; }
+    .article-body h2 { font-size: 20px; font-weight: 800; color: #1a1a1a; margin: 32px 0 14px; padding-bottom: 8px; border-bottom: 2px solid #FF6B35; }
+    .article-body h3 { font-size: 16px; font-weight: 700; color: #333; margin: 20px 0 10px; }
+    .article-body p { margin-bottom: 14px; color: #333; font-size: 15px; }
+    .article-body ul, .article-body ol { padding-left: 20px; margin-bottom: 14px; }
+    .article-body li { margin-bottom: 6px; color: #333; font-size: 15px; }
+    .article-body table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 14px; }
+    .article-body th { background: #FF6B35; color: white; padding: 10px 14px; text-align: left; }
+    .article-body td { padding: 10px 14px; border-bottom: 1px solid #f0f0f0; }
+    .article-body tr:nth-child(even) td { background: #fff8f5; }
+    .article-body img { width: 100%; border-radius: 12px; margin: 16px 0; }
+    .article-body strong { color: #1a1a1a; }
+    .article-body blockquote { background: #fff8f5; border-left: 4px solid #FF6B35; padding: 16px 20px; border-radius: 0 12px 12px 0; margin: 16px 0; font-style: italic; color: #555; }
+    .article-body a { color: #FF6B35; }
+    .tags { padding: 20px 32px; border-top: 1px solid #f0f0f0; display: flex; gap: 8px; flex-wrap: wrap; }
+    .tag { background: #fff3ee; color: #FF6B35; border-radius: 20px; padding: 5px 12px; font-size: 12px; font-weight: 600; text-decoration: none; }
+    .tag:hover { background: #FF6B35; color: white; }
+    .ad-slot { background: #f0f0f0; border-radius: 12px; display: flex; align-items: center; justify-content: center; color: #bbb; font-size: 12px; min-height: 90px; margin: 24px 0; }
+    .cta-box { background: linear-gradient(135deg, #FF6B35, #ff8c42); border-radius: 20px; padding: 32px; text-align: center; color: white; margin-top: 24px; }
+    .cta-box h3 { font-size: 22px; font-weight: 900; margin-bottom: 10px; }
+    .cta-box p { font-size: 14px; opacity: 0.9; line-height: 1.6; margin-bottom: 20px; }
+    .cta-box a { background: white; color: #FF6B35; border-radius: 12px; padding: 13px 28px; font-weight: 800; font-size: 15px; text-decoration: none; display: inline-block; }
+    .nav-links { display: flex; gap: 16px; margin-top: 24px; }
+    .nav-back { color: #FF6B35; text-decoration: none; font-size: 14px; font-weight: 600; }
+    .nav-back::before { content: '\2190 '; }
+    .sidebar-cta { background: linear-gradient(135deg, #FF6B35, #ff8c42); color: white; border-radius: 16px; padding: 24px; text-align: center; position: sticky; top: 80px; }
+    .sidebar-cta h3 { font-size: 16px; font-weight: 900; margin-bottom: 8px; }
+    .sidebar-cta p { font-size: 13px; opacity: 0.9; line-height: 1.5; margin-bottom: 16px; }
+    .sidebar-cta a { background: white; color: #FF6B35; border-radius: 8px; padding: 10px 20px; font-weight: 700; font-size: 14px; text-decoration: none; display: inline-block; }
+    footer { background: #1a1a1a; color: #888; padding: 40px 20px; margin-top: 60px; }
+    .footer-inner { max-width: 1100px; margin: 0 auto; }
+    .footer-links { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 16px; }
+    .footer-links a { color: #888; text-decoration: none; font-size: 13px; }
+    .footer-copy { font-size: 12px; }
+  </style>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "요일별 매출 패턴 활용하기: 사장님이 놓치는 돈의 흐름",
+  "description": "매출이 들쭉날쭉한 이유는 '요일'에 있습니다. 요일별 매출 패턴을 읽고 인건비·재고·프로모션을 최적화하는 실전 방법을 정리했습니다.",
+  "datePublished": "2026-06-26",
+  "dateModified": "2026-06-26",
+  "image": "https://images.pexels.com/photos/36729528/pexels-photo-36729528.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200",
+  "author": {
+    "@type": "Organization",
+    "name": "오늘장부",
+    "url": "https://오늘장부.kr"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "오늘장부",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://xn--wh1bw0st1gbrb.kr/icons/icon-192.png"
+    }
+  },
+  "mainEntityOfPage": "https://xn--wh1bw0st1gbrb.kr/blog/posts/day-of-week-sales-pattern.html",
+  "keywords": "요일별매출, 매출관리, 소상공인, 매출분석"
+}
+  </script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "요일별 패턴을 보려면 데이터가 얼마나 필요한가요?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "최소 4주, 가능하면 8주 이상을 같은 요일끼리 묶어 평균을 내는 것이 좋습니다. 기간이 짧으면 날씨나 연휴 같은 일시적 변수에 결과가 휘둘립니다."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "카드 매출만 봐도 충분하지 않나요?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "요일마다 현금·배달앱 비중이 달라지기 때문에 카드만 보면 패턴이 왜곡됩니다. 세 채널을 합한 총매출과 객수를 함께 보는 것이 정확합니다."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "비수기 요일은 차라리 쉬는 게 나을까요?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "고정비와 인건비, 단골 이탈 위험을 함께 따져봐야 합니다. 요일별 매출·객수 데이터로 그날의 한계이익을 계산해 본 뒤 휴무 여부를 판단하는 것이 안전합니다."
+      }
+    }
+  ]
+}
+  </script>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <a href="/" class="logo">
+      <div class="logo-icon">장</div>
+      <span class="logo-text">오늘장부</span>
+      <span class="logo-sub">블로그</span>
+    </a>
+    <a href="/" class="header-cta">무료로 시작하기</a>
+  </div>
+</header>
+
+<div class="wrap">
+  <main>
+    <div class="nav-links">
+      <a href="/blog/" class="nav-back">블로그 목록으로</a>
+    </div>
+
+    <div class="ad-slot">광고 영역 (AdSense 승인 후 활성화)</div>
+
+    <article>
+      <div class="article-head">
+        <div class="article-cat"><a href="/blog/">매출관리</a></div>
+        <h1 class="article-title">요일별 매출 패턴 활용하기: 사장님이 놓치는 돈의 흐름</h1>
+        <div class="article-meta">
+          <span>오늘장부 편집팀</span>
+          <span>2026년 06월 26일</span>
+        </div>
+      </div>
+      <img src="https://images.pexels.com/photos/36729528/pexels-photo-36729528.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200" alt="요일별 매출 패턴 활용하기: 사장님이 놓치는 돈의 흐름" class="hero-img" loading="lazy">
+      <div class="article-body">
+<p>장사를 하다 보면 "왜 어떤 날은 손님이 몰리고, 어떤 날은 텅 비는지" 막연하게만 느낄 때가 많습니다. 그런데 이 차이의 상당 부분은 우연이 아니라 <strong>요일별 패턴</strong>에서 옵니다. 같은 주차라도 월요일과 금요일의 매출은 구조적으로 다르고, 이 흐름을 데이터로 잡아내면 인건비·재고·발주·프로모션 같은 비용 결정을 훨씬 정확하게 내릴 수 있습니다. 오늘은 요일별 매출 패턴을 읽고 실제 돈으로 연결하는 방법을 정리했습니다.</p>
+
+<h2>왜 '요일'로 봐야 할까</h2>
+<p>월 단위 매출만 보면 "이번 달은 좀 별로였다" 정도의 감상에서 끝납니다. 하지만 같은 매출이라도 <strong>특정 요일에 쏠려 있는지, 고르게 퍼져 있는지</strong>에 따라 대응이 완전히 달라집니다. 예를 들어 주말 매출이 평일의 두 배라면, 평일 인력을 줄이고 주말에 집중 배치하는 것만으로도 같은 매출에 인건비를 아낄 수 있습니다. 반대로 특정 평일이 꾸준히 죽어 있다면, 그날을 겨냥한 할인이나 단체예약 영업이 답이 됩니다.</p>
+<p>핵심은 <strong>최소 4~8주치 데이터</strong>를 같은 요일끼리 묶어 평균을 내는 것입니다. 한두 주만 보면 비·연휴·날씨 같은 변수에 휘둘리지만, 여러 주를 겹쳐 보면 그 가게 고유의 '요일 리듬'이 드러납니다.</p>
+
+<h2>요일별 데이터, 이렇게 모으세요</h2>
+<p>가장 흔한 실수는 카드 매출만 보는 것입니다. 요즘은 카드·현금·배달앱 매출 비중이 요일마다 다릅니다. 평일 점심은 카드, 주말 저녁은 배달앱이 강한 식으로요. 그래서 <strong>세 가지 채널을 합산한 '하루 총매출'</strong>을 요일별로 봐야 진짜 패턴이 보입니다.</p>
+<ul>
+<li><strong>총매출</strong>: 카드+현금+배달앱을 모두 더한 하루 합계</li>
+<li><strong>객수(손님 수)</strong>: 매출이 같아도 객수가 다르면 원인이 다릅니다</li>
+<li><strong>객단가</strong>: 총매출 ÷ 객수, 요일별 메뉴 구성 차이를 드러냄</li>
+<li><strong>채널 비중</strong>: 요일별로 배달·홀 비중이 어떻게 바뀌는지</li>
+</ul>
+<p>이걸 매일 손으로 적기는 번거롭습니다. <strong>오늘장부</strong>처럼 카드·현금·배달앱 매출을 한 번에 기록하는 앱을 쓰면 요일별·채널별 합계가 자동으로 쌓여, 4주만 입력해도 패턴을 바로 확인할 수 있습니다.</p>
+
+<h2>패턴을 비용 결정으로 바꾸기</h2>
+<table>
+<thead>
+<tr><th>요일 유형</th><th>전형적 특징</th><th>실전 대응</th></tr>
+</thead>
+<tbody>
+<tr><td>피크 요일(주말 등)</td><td>객수·매출 최고, 대기 발생</td><td>인력 집중 배치, 회전율 높은 메뉴 준비</td></tr>
+<tr><td>중간 요일</td><td>꾸준하지만 무난</td><td>재고·발주 기준선으로 활용</td></tr>
+<tr><td>비수기 요일</td><td>객수 적고 고정비만 나감</td><td>할인·단체영업, 인력 최소화, 휴무 검토</td></tr>
+</tbody>
+</table>
+<p>특히 <strong>인건비</strong>는 요일 패턴과 직결됩니다. 2026년 최저임금은 시급 10,320원으로, 주 40시간 근무 기준 월 환산액이 약 215만 원 수준입니다. 또한 한 주 동안 <strong>15시간 이상</strong> 일하는 직원에게는 주휴수당이 발생하므로, 비수기 요일에 무리하게 인력을 두면 매출 없이 인건비만 빠져나갑니다. 요일별 객수 데이터가 있으면 '몇 시에 몇 명이 필요한지'를 근거로 스케줄을 짤 수 있어, 감(感)으로 짜던 근무표보다 훨씬 단단해집니다.</p>
+
+<h2>재고·발주와 세금까지 연결하기</h2>
+<p>요일 패턴은 발주에도 직접 쓰입니다. 금요일에 재료가 모자라 못 팔고, 화요일엔 남아서 버리는 일이 반복된다면 그건 발주 주기가 요일 리듬을 못 따라가고 있다는 신호입니다. <strong>피크 요일 전날 입고를 늘리고, 비수기 요일 전날은 줄이는</strong> 식으로 발주를 요일에 맞춰야 폐기 손실이 줄어듭니다.</p>
+<p>매출 기록은 세금 관리의 출발점이기도 합니다. 개인 일반과세자의 부가가치세 확정신고는 상반기분이 7월 25일, 하반기분이 이듬해 1월 25일까지입니다. 평소 요일별로 매출을 빠짐없이 기록해두면 신고 시즌에 매출 자료를 다시 끌어모으느라 고생할 일이 줄고, 오늘장부는 입력한 매출을 토대로 <strong>예상 부가세</strong>도 함께 보여줘 미리 세금을 준비하는 데 도움이 됩니다.</p>
+<blockquote>요일 패턴은 한 번 보고 끝나는 분석이 아닙니다. 계절·상권·주변 행사에 따라 리듬이 바뀌므로, 분기에 한 번은 다시 들여다보는 습관이 매출의 새는 구멍을 막아줍니다.</blockquote>
+
+<p>매출은 '얼마 벌었나'보다 '언제, 어떤 채널로 벌었나'를 알 때 비로소 관리가 시작됩니다. 오늘부터 하루 매출을 요일별로 쌓아보세요. <a href="https://오늘장부.kr">오늘장부 무료로 시작하기</a></p>
+
+<h2>자주 묻는 질문</h2>
+<h3>요일별 패턴을 보려면 데이터가 얼마나 필요한가요?</h3>
+<p>최소 4주, 가능하면 8주 이상을 같은 요일끼리 묶어 평균을 내는 것이 좋습니다. 기간이 짧으면 날씨나 연휴 같은 일시적 변수에 결과가 휘둘립니다.</p>
+<h3>카드 매출만 봐도 충분하지 않나요?</h3>
+<p>요일마다 현금·배달앱 비중이 달라지기 때문에 카드만 보면 패턴이 왜곡됩니다. 세 채널을 합한 총매출과 객수를 함께 보는 것이 정확합니다.</p>
+<h3>비수기 요일은 차라리 쉬는 게 나을까요?</h3>
+<p>고정비와 인건비, 단골 이탈 위험을 함께 따져봐야 합니다. 요일별 매출·객수 데이터로 그날의 한계이익을 계산해 본 뒤 휴무 여부를 판단하는 것이 안전합니다.</p>
+
+<p>※ 본 글은 2026년 기준 참고용 정보이며, 정확한 신고·금액은 국세청 홈택스 또는 세무사와 상담하세요.</p>
+      </div>
+      <div class="tags">
+        <a href="/blog/?tag=%EC%9A%94%EC%9D%BC%EB%B3%84%EB%A7%A4%EC%B6%9C" class="tag">요일별매출</a> <a href="/blog/?tag=%EB%A7%A4%EC%B6%9C%EA%B4%80%EB%A6%AC" class="tag">매출관리</a> <a href="/blog/?tag=%EC%86%8C%EC%83%81%EA%B3%B5%EC%9D%B8" class="tag">소상공인</a> <a href="/blog/?tag=%EB%A7%A4%EC%B6%9C%EB%B6%84%EC%84%9D" class="tag">매출분석</a>
+      </div>
+    </article>
+
+    <section style="background:#fff8f5;border-radius:16px;padding:24px 28px;margin-top:24px;">
+      <h2 style="font-size:18px;font-weight:800;color:#1a1a1a;margin:0 0 14px;">함께 보면 좋은 글</h2>
+      <ul style="list-style:none;padding:0;margin:0;">
+        <li style="padding:8px 0;border-bottom:1px solid #ffe6d9;"><a href="/blog/posts/regular-customer-sales-analysis-revisit.html" style="color:#FF6B35;text-decoration:none;font-weight:600;font-size:14px;">단골 매출 분석으로 재방문 늘리기: 데이터로 단골 만드는 법</a></li>
+        <li style="padding:8px 0;border-bottom:1px solid #ffe6d9;"><a href="/blog/posts/find-causes-of-sales-decline.html" style="color:#FF6B35;text-decoration:none;font-weight:600;font-size:14px;">매출 급감 원인 찾는 법: 사장님 3단계 진단</a></li>
+        <li style="padding:8px 0;border-bottom:1px solid #ffe6d9;"><a href="/blog/posts/monthly-sales-target-management-guide.html" style="color:#FF6B35;text-decoration:none;font-weight:600;font-size:14px;">월 매출 목표 세우고 관리하기: 사장님 실전 가이드</a></li>
+        <li style="padding:8px 0;border-bottom:1px solid #ffe6d9;"><a href="/blog/posts/pos-sales-bookkeeping-reconciliation.html" style="color:#FF6B35;text-decoration:none;font-weight:600;font-size:14px;">POS 매출과 장부 맞추기, 통장 입금액이 다른 이유</a></li>
+      </ul>
+    </section>
+
+    <div class="ad-slot">광고 영역 (AdSense 승인 후 활성화)</div>
+
+    <div class="cta-box">
+      <h3>매일 매출 기록, 30초면 끝!</h3>
+      <p>카드·현금·네이버페이·카카오페이<br>여러 결제수단을 한 화면에서 입력<br>부가세 예상액도 자동으로 계산해드려요</p>
+      <a href="/">지금 무료로 시작하기</a>
+    </div>
+  </main>
+
+  <aside class="sidebar">
+    <div class="sidebar-cta">
+      <h3>매일 매출 기록,<br>30초면 끝!</h3>
+      <p>카드·현금·배달앱 한 번에<br>부가세 예상액도 자동 계산</p>
+      <a href="/">무료로 시작하기</a>
+    </div>
+  </aside>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-links">
+      <a href="/">서비스 홈</a>
+      <a href="/blog/">블로그</a>
+      <a href="/privacy">개인정보처리방침</a>
+      <a href="/terms">이용약관</a>
+    </div>
+    <div class="footer-copy">© 2026 오늘장부. All rights reserved.</div>
+  </div>
+</footer>
+
+</body>
+</html>
