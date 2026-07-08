@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>카드 매출 정산 주기 완전 정복 — 사장님 통장은 언제 채워질까? | 오늘장부 블로그</title>
+  <meta name="description" content="카드 결제 후 돈이 통장에 들어오기까지 얼마나 걸릴까? 승인·매입·정산 3단계 구조부터 카드사·배달앱별 정산 주기, 2025년 최신 우대수수료율까지 소상공인 필수 정보를 한 번에 정리했습니다.">
+  <meta property="og:title" content="카드 매출 정산 주기 완전 정복 — 사장님 통장은 언제 채워질까?">
+  <meta property="og:description" content="카드 결제 후 돈이 통장에 들어오기까지 얼마나 걸릴까? 승인·매입·정산 3단계 구조부터 카드사·배달앱별 정산 주기, 2025년 최신 우대수수료율까지 소상공인 필수 정보를 한 번에 정리했습니다.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://xn--wh1bw0st1gbrb.kr/blog/posts/card-sales-settlement-cycle-guide.html">
+  <meta property="og:image" content="https://images.pexels.com/photos/3933649/pexels-photo-3933649.jpeg?auto=compress&amp;cs=tinysrgb&amp;fit=crop&amp;h=627&amp;w=1200">
+  <link rel="canonical" href="https://xn--wh1bw0st1gbrb.kr/blog/posts/card-sales-settlement-cycle-guide.html">
+  <link rel="icon" href="/icons/icon-192.png">
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2764893290310463" crossorigin="anonymous"></script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Noto Sans KR', sans-serif; background: #f8f9fa; color: #1a1a1a; line-height: 1.7; }
+    header { background: #fff; border-bottom: 1px solid #eee; position: sticky; top: 0; z-index: 100; }
+    .header-inner { max-width: 1100px; margin: 0 auto; padding: 0 20px; height: 60px; display: flex; align-items: center; justify-content: space-between; }
+    .logo { display: flex; align-items: center; gap: 8px; text-decoration: none; }
+    .logo-icon { width: 32px; height: 32px; background: #FF6B35; border-radius: 8px; display: flex; align-items: center; justify-content: center; color: white; font-weight: 900; font-size: 16px; }
+    .logo-text { font-size: 18px; font-weight: 800; color: #FF6B35; }
+    .logo-sub { font-size: 13px; color: #888; margin-left: 4px; }
+    .header-cta { background: #FF6B35; color: white; border: none; padding: 8px 16px; border-radius: 8px; font-size: 13px; font-weight: 600; cursor: pointer; text-decoration: none; }
+    .wrap { max-width: 1100px; margin: 0 auto; padding: 32px 20px; display: grid; grid-template-columns: 1fr 300px; gap: 40px; }
+    @media (max-width: 768px) { .wrap { grid-template-columns: 1fr; } .sidebar { display: none; } }
+    article { background: white; border-radius: 20px; overflow: hidden; box-shadow: 0 2px 12px rgba(0,0,0,0.06); }
+    .article-head { padding: 32px 32px 24px; border-bottom: 1px solid #f0f0f0; }
+    .article-cat { font-size: 12px; font-weight: 700; color: #FF6B35; text-transform: uppercase; margin-bottom: 12px; }
+    .article-cat a { color: #FF6B35; text-decoration: none; }
+    .article-title { font-size: clamp(20px, 4vw, 28px); font-weight: 900; line-height: 1.4; color: #1a1a1a; margin-bottom: 16px; }
+    .article-meta { font-size: 13px; color: #aaa; display: flex; gap: 16px; align-items: center; flex-wrap: wrap; }
+    .hero-img { width: 100%; aspect-ratio: 16/9; object-fit: cover; background: #f0f0f0; }
+    .article-body { padding: 32px; }
+    .article-body h2 { font-size: 20px; font-weight: 800; color: #1a1a1a; margin: 32px 0 14px; padding-bottom: 8px; border-bottom: 2px solid #FF6B35; }
+    .article-body h3 { font-size: 16px; font-weight: 700; color: #333; margin: 20px 0 10px; }
+    .article-body p { margin-bottom: 14px; color: #333; font-size: 15px; }
+    .article-body ul, .article-body ol { padding-left: 20px; margin-bottom: 14px; }
+    .article-body li { margin-bottom: 6px; color: #333; font-size: 15px; }
+    .article-body table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 14px; }
+    .article-body th { background: #FF6B35; color: white; padding: 10px 14px; text-align: left; }
+    .article-body td { padding: 10px 14px; border-bottom: 1px solid #f0f0f0; }
+    .article-body tr:nth-child(even) td { background: #fff8f5; }
+    .article-body img { width: 100%; border-radius: 12px; margin: 16px 0; }
+    .article-body strong { color: #1a1a1a; }
+    .article-body blockquote { background: #fff8f5; border-left: 4px solid #FF6B35; padding: 16px 20px; border-radius: 0 12px 12px 0; margin: 16px 0; font-style: italic; color: #555; }
+    .article-body a { color: #FF6B35; }
+    .tags { padding: 20px 32px; border-top: 1px solid #f0f0f0; display: flex; gap: 8px; flex-wrap: wrap; }
+    .tag { background: #fff3ee; color: #FF6B35; border-radius: 20px; padding: 5px 12px; font-size: 12px; font-weight: 600; text-decoration: none; }
+    .tag:hover { background: #FF6B35; color: white; }
+    .ad-slot { background: #f0f0f0; border-radius: 12px; display: flex; align-items: center; justify-content: center; color: #bbb; font-size: 12px; min-height: 90px; margin: 24px 0; }
+    .cta-box { background: linear-gradient(135deg, #FF6B35, #ff8c42); border-radius: 20px; padding: 32px; text-align: center; color: white; margin-top: 24px; }
+    .cta-box h3 { font-size: 22px; font-weight: 900; margin-bottom: 10px; }
+    .cta-box p { font-size: 14px; opacity: 0.9; line-height: 1.6; margin-bottom: 20px; }
+    .cta-box a { background: white; color: #FF6B35; border-radius: 12px; padding: 13px 28px; font-weight: 800; font-size: 15px; text-decoration: none; display: inline-block; }
+    .nav-links { display: flex; gap: 16px; margin-top: 24px; }
+    .nav-back { color: #FF6B35; text-decoration: none; font-size: 14px; font-weight: 600; }
+    .nav-back::before { content: '\2190 '; }
+    .sidebar-cta { background: linear-gradient(135deg, #FF6B35, #ff8c42); color: white; border-radius: 16px; padding: 24px; text-align: center; position: sticky; top: 80px; }
+    .sidebar-cta h3 { font-size: 16px; font-weight: 900; margin-bottom: 8px; }
+    .sidebar-cta p { font-size: 13px; opacity: 0.9; line-height: 1.5; margin-bottom: 16px; }
+    .sidebar-cta a { background: white; color: #FF6B35; border-radius: 8px; padding: 10px 20px; font-weight: 700; font-size: 14px; text-decoration: none; display: inline-block; }
+    footer { background: #1a1a1a; color: #888; padding: 40px 20px; margin-top: 60px; }
+    .footer-inner { max-width: 1100px; margin: 0 auto; }
+    .footer-links { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 16px; }
+    .footer-links a { color: #888; text-decoration: none; font-size: 13px; }
+    .footer-copy { font-size: 12px; }
+  </style>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "카드 매출 정산 주기 완전 정복 — 사장님 통장은 언제 채워질까?",
+  "description": "카드 결제 후 돈이 통장에 들어오기까지 얼마나 걸릴까? 승인·매입·정산 3단계 구조부터 카드사·배달앱별 정산 주기, 2025년 최신 우대수수료율까지 소상공인 필수 정보를 한 번에 정리했습니다.",
+  "datePublished": "2026-07-08",
+  "dateModified": "2026-07-08",
+  "image": "https://images.pexels.com/photos/3933649/pexels-photo-3933649.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200",
+  "author": {
+    "@type": "Organization",
+    "name": "오늘장부",
+    "url": "https://오늘장부.kr"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "오늘장부",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://xn--wh1bw0st1gbrb.kr/icons/icon-192.png"
+    }
+  },
+  "mainEntityOfPage": "https://xn--wh1bw0st1gbrb.kr/blog/posts/card-sales-settlement-cycle-guide.html",
+  "keywords": "카드수수료, 카드정산, 매출관리, 소상공인"
+}
+  </script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "금요일에 카드 결제가 발생하면 언제 입금되나요?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "영업일 기준 D+2~3이 적용되는 카드 직가맹점의 경우, 금요일 매출은 주말이 정산일에서 제외되기 때문에 빠르면 다음 주 화요일, 늦으면 수요일에 입금됩니다. 공휴일이 월요일에 겹치면 목요일까지 밀릴 수 있습니다."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "신규 개업했는데 처음에는 우대수수료율을 바로 적용받나요?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "아닙니다. 신규 개업 가맹점은 국세청 매출 자료가 집계되기까지 일반가맹점 수수료율이 먼저 적용됩니다. 이후 카드사가 반기별로 매출 규모를 확인해 영세·중소가맹점으로 분류되면 우대수수료율이 소급 적용되고 차액이 환급됩니다. 따라서 개업 후 첫 반기 동안은 수수료를 더 낼 수 있으나, 추후 차액을 돌려받을 수 있으니 여신금융협회나 카드사에 확인해 보세요."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "배달앱 매출은 카드 직가맹보다 정산이 왜 더 느린가요?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "배달앱은 소비자 결제 → PG사(간편결제사) 자금 회수 → 배달앱(플랫폼) → 가맹점 입금 순서로 단계가 하나 더 추가되기 때문입니다. 플랫폼이 PG사로부터 자금을 모두 받은 뒤 정산하기 때문에 카드 직가맹보다 1~2 영업일 더 걸리는 구조입니다. 배달의민족 기준 영업일 3일, 쿠팡이츠는 주 단위 정산이 적용됩니다."
+      }
+    }
+  ]
+}
+  </script>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <a href="/" class="logo">
+      <div class="logo-icon">장</div>
+      <span class="logo-text">오늘장부</span>
+      <span class="logo-sub">블로그</span>
+    </a>
+    <a href="/" class="header-cta">무료로 시작하기</a>
+  </div>
+</header>
+
+<div class="wrap">
+  <main>
+    <div class="nav-links">
+      <a href="/blog/" class="nav-back">블로그 목록으로</a>
+    </div>
+
+    <div class="ad-slot">광고 영역 (AdSense 승인 후 활성화)</div>
+
+    <article>
+      <div class="article-head">
+        <div class="article-cat"><a href="/blog/">카드수수료</a></div>
+        <h1 class="article-title">카드 매출 정산 주기 완전 정복 — 사장님 통장은 언제 채워질까?</h1>
+        <div class="article-meta">
+          <span>오늘장부 편집팀</span>
+          <span>2026년 07월 08일</span>
+        </div>
+      </div>
+      <img src="https://images.pexels.com/photos/3933649/pexels-photo-3933649.jpeg?auto=compress&amp;cs=tinysrgb&amp;fit=crop&amp;h=627&amp;w=1200" alt="카드 매출 정산 주기 완전 정복 — 사장님 통장은 언제 채워질까?" class="hero-img" loading="lazy">
+      <div class="article-body">
+<p>가게 문을 열고 하루 종일 열심히 일해도 정작 통장 잔고가 비어있다면? 카드 결제는 분명 됐는데, 언제 입금되는지 몰라 임대료 납부일이 걱정되신 적 없으신가요? 카드 매출 정산 주기를 이해하면 자금 계획이 훨씬 수월해집니다. 특히 주말이나 명절이 낀 주간에는 정산일이 달라지기 때문에, 이 구조를 모르면 "돈이 왜 안 들어오지?"라며 불안해하기 쉽습니다. 이번 글에서는 카드 정산의 흐름과 수수료율을 단계별로 정리해 드립니다.</p>
+
+<h2>카드 결제, 바로 입금되지 않는 이유</h2>
+<p>고객이 카드를 긁거나 단말기에 태그하는 순간, 돈이 즉시 사장님 통장으로 들어오는 것이 아닙니다. 카드 결제는 <strong>승인 → 매입 → 정산</strong> 세 단계를 거칩니다.</p>
+<ol>
+  <li><strong>승인(Authorization)</strong>: 고객 카드사가 결제를 허가하고 한도를 차감하는 단계입니다. 결제 단말기에 '승인' 문구가 뜨는 바로 이 순간입니다.</li>
+  <li><strong>매입(Clearing)</strong>: 가맹점 측이 카드사에 "실제로 이 거래가 이루어졌습니다"라고 전표를 청구하는 단계입니다. POS기나 단말기가 자동으로 처리하지만, 이 과정이 완료돼야 정산 대상에 포함됩니다.</li>
+  <li><strong>정산(Settlement)</strong>: 카드사가 수수료를 차감한 뒤 가맹점 계좌로 입금하는 단계입니다. 이때 비로소 사장님 통장에 돈이 들어옵니다.</li>
+</ol>
+<p>이 세 단계가 순차적으로 진행되기 때문에, 결제 당일에 바로 입금되지 않는 것입니다. 매입 완료 후 일반적으로 <strong>영업일 기준 2~3일</strong>이 소요됩니다.</p>
+
+<h2>정산 주기, 채널별로 얼마나 다를까?</h2>
+<p>결제 채널에 따라 정산 주기가 크게 달라집니다. 아래 표를 기준으로 자기 가게에 해당하는 항목을 확인해 보세요.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>결제 채널</th>
+      <th>정산 주기(영업일 기준)</th>
+      <th>비고</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>카드 직접 가맹점 (신용·체크카드)</td>
+      <td>D+2~3 영업일</td>
+      <td>대형 가맹점은 D+1도 가능</td>
+    </tr>
+    <tr>
+      <td>PG사(결제대행사) 경유 온라인 결제</td>
+      <td>D+3~5 영업일</td>
+      <td>카드사 정산 후 PG사 처리 추가</td>
+    </tr>
+    <tr>
+      <td>배달의민족 (배민)</td>
+      <td>결제 후 3영업일</td>
+      <td>배민셀프서비스에서 일별 확인 가능</td>
+    </tr>
+    <tr>
+      <td>쿠팡이츠</td>
+      <td>주 단위 정산(통상 금요일 입금)</td>
+      <td>수요일~화요일 수행분 기준</td>
+    </tr>
+  </tbody>
+</table>
+
+<blockquote>
+<strong>핵심 주의사항</strong>: 영업일 기준이란 토요일·일요일·공휴일은 정산일에 포함되지 않는다는 뜻입니다. 예를 들어 금요일 매출은 빠르면 그다음 주 화요일이나 수요일에 입금됩니다. 명절 연휴가 낀 주간에는 더 늦어질 수 있으니 미리 자금 계획을 세워두는 것이 중요합니다.
+</blockquote>
+
+<h2>입금액이 매출보다 작은 이유 — 수수료 공제 구조</h2>
+<p>POS에 찍힌 총매출과 실제 입금액이 다른 가장 큰 원인은 <strong>카드 수수료</strong>입니다. 카드사는 정산 시 수수료를 먼저 차감하고 나머지를 입금합니다. 그 외에도 포인트 적립 부담금, 할부 수수료, 부가서비스 관련 비용 등이 추가 공제될 수 있습니다.</p>
+
+<h3>2025년 기준 우대수수료율 (2025년 2월 14일 시행)</h3>
+<p>정부는 소상공인 부담 경감을 위해 매출 규모에 따라 <strong>우대수수료율</strong>을 적용합니다. 2025년 2월부터 새로운 개편안이 시행되어 구간별 수수료율이 인하되었습니다.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>연 매출 구간</th>
+      <th>신용카드 수수료율</th>
+      <th>체크카드 수수료율</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>3억 원 이하 (영세가맹점)</td>
+      <td>0.4% 이하</td>
+      <td>0.15% 이하</td>
+    </tr>
+    <tr>
+      <td>3억 초과 ~ 5억 이하</td>
+      <td>1.0% 이하</td>
+      <td>0.75% 이하</td>
+    </tr>
+    <tr>
+      <td>5억 초과 ~ 10억 이하</td>
+      <td>1.15% 이하</td>
+      <td>0.9% 이하</td>
+    </tr>
+    <tr>
+      <td>10억 초과 ~ 30억 이하</td>
+      <td>1.45% 이하</td>
+      <td>1.15% 이하</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>우대수수료율 적용 대상은 전체 신용카드 가맹점의 약 95% 이상으로, 연 매출 30억 원 이하의 대부분 소상공인이 해당됩니다. 내 가게의 적용 수수료율은 <strong>여신금융협회 '가맹점 매출거래정보 통합조회 시스템'</strong>에서 무료로 확인할 수 있습니다.</p>
+
+<h2>정산이 늦어지거나 입금액이 이상할 때 체크포인트</h2>
+<ul>
+  <li><strong>연휴·공휴일 확인</strong>: 명절 등 연속 휴일이 있는 주간은 정산일이 통상보다 며칠 더 늦어집니다. 미리 카드사 또는 배달앱의 정산 일정 안내를 확인하세요.</li>
+  <li><strong>세금·카드대금 연체 여부</strong>: 세금 연체나 카드대금 연체가 있을 경우 카드사가 정산 대금에 압류를 걸 수 있습니다. 카드사에서 사전 문자 안내가 오니 반드시 확인하세요.</li>
+  <li><strong>가맹점 상태 확인</strong>: 신규 가맹점은 초기 심사 기간 동안 정산이 보류되거나 지연될 수 있습니다.</li>
+  <li><strong>PG사 경로 확인</strong>: 온라인 결제나 배달앱은 PG사가 중간에 끼어 있어 정산 단계가 하나 더 추가됩니다. 내가 쓰는 PG사의 정산 주기와 입금 예정일을 반드시 파악해 두세요.</li>
+</ul>
+
+<h2>매출-정산 흐름, 앱으로 한눈에 관리하기</h2>
+<p>카드 결제는 날마다 이루어지지만 입금은 며칠씩 밀려 들어오기 때문에, 오늘 통장 잔고만 봐서는 실제 매출을 파악하기 어렵습니다. <strong>오늘장부</strong>를 활용하면 카드·현금·배달앱 매출을 채널별로 구분해 기록하고, 아직 정산되지 않은 미수금과 이미 입금된 금액을 분리해서 확인할 수 있어 자금 흐름이 훨씬 명확해집니다. 부가세 예상액도 자동으로 계산되기 때문에 신고 시즌에 갑자기 당황하는 일도 줄어듭니다.</p>
+
+<h2>자주 묻는 질문</h2>
+
+<h3>금요일에 카드 결제가 발생하면 언제 입금되나요?</h3>
+<p>영업일 기준 D+2~3이 적용되는 카드 직가맹점의 경우, 금요일 매출은 주말이 정산일에서 제외되기 때문에 빠르면 다음 주 화요일, 늦으면 수요일에 입금됩니다. 공휴일이 월요일에 겹치면 목요일까지 밀릴 수 있습니다.</p>
+
+<h3>신규 개업했는데 처음에는 우대수수료율을 바로 적용받나요?</h3>
+<p>아닙니다. 신규 개업 가맹점은 국세청 매출 자료가 집계되기까지 일반가맹점 수수료율이 먼저 적용됩니다. 이후 카드사가 반기별로 매출 규모를 확인해 영세·중소가맹점으로 분류되면 우대수수료율이 소급 적용되고 차액이 환급됩니다. 따라서 개업 후 첫 반기 동안은 수수료를 더 낼 수 있으나, 추후 차액을 돌려받을 수 있으니 여신금융협회나 카드사에 확인해 보세요.</p>
+
+<h3>배달앱 매출은 카드 직가맹보다 정산이 왜 더 느린가요?</h3>
+<p>배달앱은 소비자 결제 → PG사(간편결제사) 자금 회수 → 배달앱(플랫폼) → 가맹점 입금 순서로 단계가 하나 더 추가되기 때문입니다. 플랫폼이 PG사로부터 자금을 모두 받은 뒤 정산하기 때문에 카드 직가맹보다 1~2 영업일 더 걸리는 구조입니다. 배달의민족 기준 영업일 3일, 쿠팡이츠는 주 단위 정산이 적용됩니다.</p>
+
+<p>정산 주기와 수수료 구조를 이해하면 월말 자금 부족 상황을 미리 예측하고 대비할 수 있습니다. 오늘 당장 내 가게 매출이 언제 들어오는지 채널별로 정리해 두는 것이 현금 흐름 관리의 첫걸음입니다. <a href="https://오늘장부.kr">오늘장부 무료로 시작하기</a></p>
+
+<p>※ 본 글은 2026년 기준 참고용 정보이며, 정확한 신고·금액은 국세청 홈택스 또는 세무사와 상담하세요.</p>
+      </div>
+      <div class="tags">
+        <a href="/blog/?tag=%EC%B9%B4%EB%93%9C%EC%88%98%EC%88%98%EB%A3%8C" class="tag">카드수수료</a> <a href="/blog/?tag=%EC%B9%B4%EB%93%9C%EC%A0%95%EC%82%B0" class="tag">카드정산</a> <a href="/blog/?tag=%EB%A7%A4%EC%B6%9C%EA%B4%80%EB%A6%AC" class="tag">매출관리</a> <a href="/blog/?tag=%EC%86%8C%EC%83%81%EA%B3%B5%EC%9D%B8" class="tag">소상공인</a>
+      </div>
+    </article>
+
+    <section style="background:#fff8f5;border-radius:16px;padding:24px 28px;margin-top:24px;">
+      <h2 style="font-size:18px;font-weight:800;color:#1a1a1a;margin:0 0 14px;">함께 보면 좋은 글</h2>
+      <ul style="list-style:none;padding:0;margin:0;">
+        <li style="padding:8px 0;border-bottom:1px solid #ffe6d9;"><a href="/blog/posts/small-merchant-card-fee-rate-guide.html" style="color:#FF6B35;text-decoration:none;font-weight:600;font-size:14px;">영세 중소가맹점 수수료율 완벽 정리 — 내 매출 구간은 몇 %?</a></li>
+        <li style="padding:8px 0;border-bottom:1px solid #ffe6d9;"><a href="/blog/posts/card-fee-preferential-rate-application-guide.html" style="color:#FF6B35;text-decoration:none;font-weight:600;font-size:14px;">카드 수수료 우대 신청 방법 완전 정리 (2026년 최신)</a></li>
+        <li style="padding:8px 0;border-bottom:1px solid #ffe6d9;"><a href="/blog/posts/annual-sales-card-fee-rate-guide.html" style="color:#FF6B35;text-decoration:none;font-weight:600;font-size:14px;">연 매출별 카드 수수료율 완전 정리 (2025~2026 최신)</a></li>
+        <li style="padding:8px 0;border-bottom:1px solid #ffe6d9;"><a href="/blog/posts/card-vs-cash-sales-ratio-tax-guide.html" style="color:#FF6B35;text-decoration:none;font-weight:600;font-size:14px;">카드 매출 vs 현금 매출 비중, 사장님이 꼭 알아야 할 세금 차이</a></li>
+      </ul>
+    </section>
+
+    <div class="ad-slot">광고 영역 (AdSense 승인 후 활성화)</div>
+
+    <div class="cta-box">
+      <h3>매일 매출 기록, 30초면 끝!</h3>
+      <p>카드·현금·네이버페이·카카오페이<br>여러 결제수단을 한 화면에서 입력<br>부가세 예상액도 자동으로 계산해드려요</p>
+      <a href="/">지금 무료로 시작하기</a>
+    </div>
+  </main>
+
+  <aside class="sidebar">
+    <div class="sidebar-cta">
+      <h3>매일 매출 기록,<br>30초면 끝!</h3>
+      <p>카드·현금·배달앱 한 번에<br>부가세 예상액도 자동 계산</p>
+      <a href="/">무료로 시작하기</a>
+    </div>
+  </aside>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-links">
+      <a href="/">서비스 홈</a>
+      <a href="/blog/">블로그</a>
+      <a href="/privacy">개인정보처리방침</a>
+      <a href="/terms">이용약관</a>
+    </div>
+    <div class="footer-copy">© 2026 오늘장부. All rights reserved.</div>
+  </div>
+</footer>
+
+</body>
+</html>
