@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>배달앱 매출 누락 방지하는 법: 세금 폭탄 피하는 실전 가이드 | 오늘장부 블로그</title>
+  <meta name="description" content="배달앱 정산금액과 실제 매출의 차이, 만나서결제 누락, 가산세까지 — 배달 사장님이 꼭 알아야 할 매출 누락 방지 실전 체크리스트를 정리했습니다.">
+  <meta property="og:title" content="배달앱 매출 누락 방지하는 법: 세금 폭탄 피하는 실전 가이드">
+  <meta property="og:description" content="배달앱 정산금액과 실제 매출의 차이, 만나서결제 누락, 가산세까지 — 배달 사장님이 꼭 알아야 할 매출 누락 방지 실전 체크리스트를 정리했습니다.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://xn--wh1bw0st1gbrb.kr/blog/posts/delivery-app-revenue-missing-prevention-guide.html">
+  <meta property="og:image" content="https://images.pexels.com/photos/16134583/pexels-photo-16134583.jpeg?auto=compress&amp;cs=tinysrgb&amp;fit=crop&amp;h=627&amp;w=1200">
+  <link rel="canonical" href="https://xn--wh1bw0st1gbrb.kr/blog/posts/delivery-app-revenue-missing-prevention-guide.html">
+  <link rel="icon" href="/icons/icon-192.png">
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2764893290310463" crossorigin="anonymous"></script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Noto Sans KR', sans-serif; background: #f8f9fa; color: #1a1a1a; line-height: 1.7; }
+    header { background: #fff; border-bottom: 1px solid #eee; position: sticky; top: 0; z-index: 100; }
+    .header-inner { max-width: 1100px; margin: 0 auto; padding: 0 20px; height: 60px; display: flex; align-items: center; justify-content: space-between; }
+    .logo { display: flex; align-items: center; gap: 8px; text-decoration: none; }
+    .logo-icon { width: 32px; height: 32px; background: #FF6B35; border-radius: 8px; display: flex; align-items: center; justify-content: center; color: white; font-weight: 900; font-size: 16px; }
+    .logo-text { font-size: 18px; font-weight: 800; color: #FF6B35; }
+    .logo-sub { font-size: 13px; color: #888; margin-left: 4px; }
+    .header-cta { background: #FF6B35; color: white; border: none; padding: 8px 16px; border-radius: 8px; font-size: 13px; font-weight: 600; cursor: pointer; text-decoration: none; }
+    .wrap { max-width: 1100px; margin: 0 auto; padding: 32px 20px; display: grid; grid-template-columns: 1fr 300px; gap: 40px; }
+    @media (max-width: 768px) { .wrap { grid-template-columns: 1fr; } .sidebar { display: none; } }
+    article { background: white; border-radius: 20px; overflow: hidden; box-shadow: 0 2px 12px rgba(0,0,0,0.06); }
+    .article-head { padding: 32px 32px 24px; border-bottom: 1px solid #f0f0f0; }
+    .article-cat { font-size: 12px; font-weight: 700; color: #FF6B35; text-transform: uppercase; margin-bottom: 12px; }
+    .article-cat a { color: #FF6B35; text-decoration: none; }
+    .article-title { font-size: clamp(20px, 4vw, 28px); font-weight: 900; line-height: 1.4; color: #1a1a1a; margin-bottom: 16px; }
+    .article-meta { font-size: 13px; color: #aaa; display: flex; gap: 16px; align-items: center; flex-wrap: wrap; }
+    .hero-img { width: 100%; aspect-ratio: 16/9; object-fit: cover; background: #f0f0f0; }
+    .article-body { padding: 32px; }
+    .article-body h2 { font-size: 20px; font-weight: 800; color: #1a1a1a; margin: 32px 0 14px; padding-bottom: 8px; border-bottom: 2px solid #FF6B35; }
+    .article-body h3 { font-size: 16px; font-weight: 700; color: #333; margin: 20px 0 10px; }
+    .article-body p { margin-bottom: 14px; color: #333; font-size: 15px; }
+    .article-body ul, .article-body ol { padding-left: 20px; margin-bottom: 14px; }
+    .article-body li { margin-bottom: 6px; color: #333; font-size: 15px; }
+    .article-body table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 14px; }
+    .article-body th { background: #FF6B35; color: white; padding: 10px 14px; text-align: left; }
+    .article-body td { padding: 10px 14px; border-bottom: 1px solid #f0f0f0; }
+    .article-body tr:nth-child(even) td { background: #fff8f5; }
+    .article-body img { width: 100%; border-radius: 12px; margin: 16px 0; }
+    .article-body strong { color: #1a1a1a; }
+    .article-body blockquote { background: #fff8f5; border-left: 4px solid #FF6B35; padding: 16px 20px; border-radius: 0 12px 12px 0; margin: 16px 0; font-style: italic; color: #555; }
+    .article-body a { color: #FF6B35; }
+    .tags { padding: 20px 32px; border-top: 1px solid #f0f0f0; display: flex; gap: 8px; flex-wrap: wrap; }
+    .tag { background: #fff3ee; color: #FF6B35; border-radius: 20px; padding: 5px 12px; font-size: 12px; font-weight: 600; text-decoration: none; }
+    .tag:hover { background: #FF6B35; color: white; }
+    .ad-slot { background: #f0f0f0; border-radius: 12px; display: flex; align-items: center; justify-content: center; color: #bbb; font-size: 12px; min-height: 90px; margin: 24px 0; }
+    .cta-box { background: linear-gradient(135deg, #FF6B35, #ff8c42); border-radius: 20px; padding: 32px; text-align: center; color: white; margin-top: 24px; }
+    .cta-box h3 { font-size: 22px; font-weight: 900; margin-bottom: 10px; }
+    .cta-box p { font-size: 14px; opacity: 0.9; line-height: 1.6; margin-bottom: 20px; }
+    .cta-box a { background: white; color: #FF6B35; border-radius: 12px; padding: 13px 28px; font-weight: 800; font-size: 15px; text-decoration: none; display: inline-block; }
+    .nav-links { display: flex; gap: 16px; margin-top: 24px; }
+    .nav-back { color: #FF6B35; text-decoration: none; font-size: 14px; font-weight: 600; }
+    .nav-back::before { content: '\2190 '; }
+    .sidebar-cta { background: linear-gradient(135deg, #FF6B35, #ff8c42); color: white; border-radius: 16px; padding: 24px; text-align: center; position: sticky; top: 80px; }
+    .sidebar-cta h3 { font-size: 16px; font-weight: 900; margin-bottom: 8px; }
+    .sidebar-cta p { font-size: 13px; opacity: 0.9; line-height: 1.5; margin-bottom: 16px; }
+    .sidebar-cta a { background: white; color: #FF6B35; border-radius: 8px; padding: 10px 20px; font-weight: 700; font-size: 14px; text-decoration: none; display: inline-block; }
+    footer { background: #1a1a1a; color: #888; padding: 40px 20px; margin-top: 60px; }
+    .footer-inner { max-width: 1100px; margin: 0 auto; }
+    .footer-links { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 16px; }
+    .footer-links a { color: #888; text-decoration: none; font-size: 13px; }
+    .footer-copy { font-size: 12px; }
+  </style>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "배달앱 매출 누락 방지하는 법: 세금 폭탄 피하는 실전 가이드",
+  "description": "배달앱 정산금액과 실제 매출의 차이, 만나서결제 누락, 가산세까지 — 배달 사장님이 꼭 알아야 할 매출 누락 방지 실전 체크리스트를 정리했습니다.",
+  "datePublished": "2026-07-09",
+  "dateModified": "2026-07-09",
+  "image": "https://images.pexels.com/photos/16134583/pexels-photo-16134583.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200",
+  "author": {
+    "@type": "Organization",
+    "name": "오늘장부",
+    "url": "https://오늘장부.kr"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "오늘장부",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://xn--wh1bw0st1gbrb.kr/icons/icon-192.png"
+    }
+  },
+  "mainEntityOfPage": "https://xn--wh1bw0st1gbrb.kr/blog/posts/delivery-app-revenue-missing-prevention-guide.html",
+  "keywords": "배달앱, 매출관리, 부가세신고, 소상공인세금"
+}
+  </script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "배달앱 정산금액과 홈택스 신용카드 매출 조회 금액이 다른데, 어느 쪽을 신고해야 하나요?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "신용카드·현금영수증 발행분의 경우 홈택스와 플랫폼 자료 중 큰 금액을 기준으로 신고하는 것이 안전합니다. 정산금액은 수수료·배달비 등이 차감된 입금액이므로, 이를 그대로 매출로 신고하면 과소신고가 됩니다. 반드시 플랫폼 '부가세 신고 자료'의 공급가액 기준으로 확인하세요."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "만나서결제(현금)로 받은 금액도 신고해야 하나요?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "네, 반드시 신고해야 합니다. 만나서결제(현금)는 홈택스에 자동 집계되지 않지만, 실제 발생한 매출이므로 신고 의무가 있습니다. 부가세 신고서의 '기타(정규영수증 외 매출분)' 란에 기재하세요. 이 항목을 누락하면 가산세 부과 대상이 됩니다."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "배달앱 수수료(중개 수수료·배달비)도 세금 처리를 해야 하나요?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "수수료는 매출에서 빼는 게 아니라, 사업 관련 지출로 매입세액 공제 대상이 됩니다. 배달 플랫폼에서 발급받은 세금계산서를 홈택스에 등록하면 해당 부가세를 돌려받을 수 있습니다. 증빙(세금계산서 등)은 5년간 보관 의무가 있습니다."
+      }
+    }
+  ]
+}
+  </script>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <a href="/" class="logo">
+      <div class="logo-icon">장</div>
+      <span class="logo-text">오늘장부</span>
+      <span class="logo-sub">블로그</span>
+    </a>
+    <a href="/" class="header-cta">무료로 시작하기</a>
+  </div>
+</header>
+
+<div class="wrap">
+  <main>
+    <div class="nav-links">
+      <a href="/blog/" class="nav-back">블로그 목록으로</a>
+    </div>
+
+    <div class="ad-slot">광고 영역 (AdSense 승인 후 활성화)</div>
+
+    <article>
+      <div class="article-head">
+        <div class="article-cat"><a href="/blog/">배달앱</a></div>
+        <h1 class="article-title">배달앱 매출 누락 방지하는 법: 세금 폭탄 피하는 실전 가이드</h1>
+        <div class="article-meta">
+          <span>오늘장부 편집팀</span>
+          <span>2026년 07월 09일</span>
+        </div>
+      </div>
+      <img src="https://images.pexels.com/photos/16134583/pexels-photo-16134583.jpeg?auto=compress&amp;cs=tinysrgb&amp;fit=crop&amp;h=627&amp;w=1200" alt="배달앱 매출 누락 방지하는 법: 세금 폭탄 피하는 실전 가이드" class="hero-img" loading="lazy">
+      <div class="article-body">
+<p>배달앱으로 하루 수십 건씩 주문을 받다 보면, 매달 들어오는 정산금액이 진짜 매출인지 헷갈리는 순간이 생깁니다. 많은 사장님들이 통장에 입금된 금액만 보고 세금 신고를 하다가, 나중에 국세청으로부터 수정신고 안내를 받거나 가산세를 추가로 납부하는 경우가 적지 않습니다. 배달앱 매출은 구조 자체가 복잡해서, <strong>정산금액 ≠ 신고 매출</strong>이라는 원칙을 제대로 이해하지 않으면 의도치 않은 누락이 반복됩니다. 이 글에서는 배달앱 매출이 왜 누락되는지, 어떻게 방지해야 하는지를 실전 중심으로 정리합니다.</p>
+
+<h2>왜 배달앱 매출은 누락되기 쉬울까?</h2>
+<p>배달앱 매출이 누락되는 가장 큰 이유는 <strong>정산금액을 매출로 착각</strong>하기 때문입니다. 배달의민족·쿠팡이츠·요기요 등 배달 플랫폼은 주문 금액(공급가액+배달팁)에서 중개 수수료·배달비·광고비 등을 차감한 나머지를 사장님 통장으로 정산합니다. 하지만 세금 신고 시 기준이 되는 매출은 이 차감 전 총 주문 금액입니다. 수수료는 비용으로 따로 처리해야 합니다.</p>
+
+<p>또 하나의 함정은 <strong>결제 수단별 집계 방식의 차이</strong>입니다. 배달앱 주문은 크게 세 가지로 나뉩니다.</p>
+<ul>
+  <li><strong>바로결제(앱 내 카드·간편결제)</strong>: PG사를 통해 처리되며, 홈택스 신용카드 매출 조회에 집계됩니다.</li>
+  <li><strong>만나서결제(카드)</strong>: 카드사 매출로 집계되어 홈택스에서 조회됩니다.</li>
+  <li><strong>만나서결제(현금)</strong>: 홈택스에 자동으로 잡히지 않아 <strong>가장 누락되기 쉬운 항목</strong>입니다. 플랫폼 사장님 사이트에서 직접 확인해야 합니다.</li>
+</ul>
+
+<p>여기에 배달팁(배달비) 항목을 매출에 포함해야 하는지 모르는 사장님도 많습니다. 소비자가 결제하는 배달팁은 과세 매출에 포함되므로 신고 시 반드시 반영해야 합니다.</p>
+
+<h2>누락 시 가산세는 얼마나 될까?</h2>
+<p>매출을 신고하지 않거나 적게 신고했을 때의 불이익은 생각보다 큽니다. 현행 세법 기준으로 다음과 같은 가산세가 부과됩니다.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>유형</th>
+      <th>가산세율</th>
+      <th>설명</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>무신고 가산세</td>
+      <td>납부세액의 <strong>20%</strong></td>
+      <td>신고 자체를 하지 않은 경우</td>
+    </tr>
+    <tr>
+      <td>부정무신고 가산세</td>
+      <td>납부세액의 <strong>40%</strong></td>
+      <td>고의적 탈루로 인정된 경우</td>
+    </tr>
+    <tr>
+      <td>과소신고 가산세</td>
+      <td>과소신고 세액의 <strong>10%</strong></td>
+      <td>신고는 했으나 금액이 부족한 경우</td>
+    </tr>
+    <tr>
+      <td>납부지연 가산세</td>
+      <td>미납세액의 일 <strong>0.022%</strong></td>
+      <td>기간이 길어질수록 누적 증가</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>특히 2025년부터 국세청은 AI 기반 매출·매입 정합성 검증을 강화하여, 신용카드사·PG사로부터 수집한 데이터와 신고 내용을 자동 비교 분석합니다. 매출 누락이 반복되거나 규모가 클 경우 세무조사 대상이 될 수 있으므로, 처음부터 정확하게 관리하는 것이 최선입니다.</p>
+
+<h2>배달앱별 매출 확인, 이렇게 하세요</h2>
+<p>각 배달 플랫폼의 사장님 페이지(파트너 센터)에는 <strong>'부가세 신고 자료'</strong> 메뉴가 별도로 존재합니다. 홈택스만 믿지 말고 플랫폼 자료와 반드시 대조하세요.</p>
+
+<ol>
+  <li><strong>배달의민족</strong>: 사장님 사이트 → 정산 → 부가세 신고 자료. <em>만나서결제(카드/현금)는 '부가세 신고 자료'가 아닌 별도 정산 메뉴에서 확인</em>해야 합니다.</li>
+  <li><strong>쿠팡이츠</strong>: 파트너 센터 → 정산 → 세금신고 자료 다운로드 후 결제 유형별 항목 구분 확인.</li>
+  <li><strong>요기요</strong>: 요기요 파트너스 → 정산 내역 → 부가세 신고 자료 다운로드.</li>
+</ol>
+
+<p>다운로드한 자료에서 <strong>신용카드 매출 / 현금영수증 매출 / 기타(건별) 매출</strong> 세 항목을 반드시 구분해 확인하세요. 특히 기타(건별) 매출—즉, 현금영수증이 발행되지 않은 순수 현금 매출—은 홈택스에 자동 집계되지 않으므로, 부가세 신고서의 <strong>'기타(정규영수증 외 매출분)'</strong> 항목에 직접 기입해야 합니다.</p>
+
+<h2>수수료는 비용으로 따로 챙기세요</h2>
+<p>배달 플랫폼 수수료는 매출에서 차감하는 게 아니라, <strong>매입세액공제 가능한 비용</strong>으로 별도 처리해야 합니다. 배달의민족·쿠팡이츠는 매출 규모에 따라 중개수수료를 차등 적용(2025년 상생협의체 합의 기준 2%~7.8%)하고 있으며, 여기에 배달비·광고비가 추가됩니다. 이 수수료에 대한 세금계산서를 플랫폼에서 발급받아 5년간 보관하면 매입세액으로 공제받을 수 있습니다.</p>
+
+<blockquote>💡 정산금액에서 수수료를 뺀 금액을 매출로 신고하는 실수가 가장 흔합니다. 신고 기준은 항상 <strong>소비자가 주문 시 결제한 총 금액(공급가액)</strong>입니다.</blockquote>
+
+<h2>매일 기록하는 습관이 최고의 방지책</h2>
+<p>배달앱 매출 누락을 막는 가장 확실한 방법은 <strong>매일 결제 수단별로 매출을 기록</strong>하는 것입니다. 배달앱 정산은 통상 주 단위 또는 월 단위로 이루어지기 때문에, 나중에 한꺼번에 정리하려 하면 만나서결제(현금) 건이나 취소·환불 건 처리에서 오류가 생기기 쉽습니다. <strong>오늘장부</strong>처럼 카드·현금·배달앱 매출을 한 번에 기록하고 부가세 예상액을 자동으로 계산해주는 앱을 활용하면, 신고 직전에 자료를 모으느라 허둥대는 상황 자체를 예방할 수 있습니다.</p>
+
+<p>또한 과세 유형도 미리 점검하세요. 2025년부터 간이과세자 기준이 직전연도 연 매출 <strong>1억 400만 원 미만</strong>으로 상향 조정되었습니다. 매출이 이 기준에 근접하거나 초과하는 사장님이라면, 일반과세자로 전환 여부에 따라 신고 횟수(연 1회→연 2회)와 세금계산서 발행 의무가 달라지므로 반드시 확인이 필요합니다.</p>
+
+<h2>자주 묻는 질문</h2>
+
+<h3>배달앱 정산금액과 홈택스 신용카드 매출 조회 금액이 다른데, 어느 쪽을 신고해야 하나요?</h3>
+<p>신용카드·현금영수증 발행분의 경우 홈택스와 플랫폼 자료 중 큰 금액을 기준으로 신고하는 것이 안전합니다. 정산금액은 수수료·배달비 등이 차감된 입금액이므로, 이를 그대로 매출로 신고하면 과소신고가 됩니다. 반드시 플랫폼 '부가세 신고 자료'의 공급가액 기준으로 확인하세요.</p>
+
+<h3>만나서결제(현금)로 받은 금액도 신고해야 하나요?</h3>
+<p>네, 반드시 신고해야 합니다. 만나서결제(현금)는 홈택스에 자동 집계되지 않지만, 실제 발생한 매출이므로 신고 의무가 있습니다. 부가세 신고서의 '기타(정규영수증 외 매출분)' 란에 기재하세요. 이 항목을 누락하면 가산세 부과 대상이 됩니다.</p>
+
+<h3>배달앱 수수료(중개 수수료·배달비)도 세금 처리를 해야 하나요?</h3>
+<p>수수료는 매출에서 빼는 게 아니라, 사업 관련 지출로 매입세액 공제 대상이 됩니다. 배달 플랫폼에서 발급받은 세금계산서를 홈택스에 등록하면 해당 부가세를 돌려받을 수 있습니다. 증빙(세금계산서 등)은 5년간 보관 의무가 있습니다.</p>
+
+<p>배달앱 매출을 날마다 정확하게 기록하고, 신고 기간에 흔들리지 않는 장부 습관을 만들고 싶다면 지금 바로 <a href="https://오늘장부.kr">오늘장부 무료로 시작하기</a>를 이용해보세요.</p>
+
+<p>※ 본 글은 2026년 기준 참고용 정보이며, 정확한 신고·금액은 국세청 홈택스 또는 세무사와 상담하세요.</p>
+      </div>
+      <div class="tags">
+        <a href="/blog/?tag=%EB%B0%B0%EB%8B%AC%EC%95%B1" class="tag">배달앱</a> <a href="/blog/?tag=%EB%A7%A4%EC%B6%9C%EA%B4%80%EB%A6%AC" class="tag">매출관리</a> <a href="/blog/?tag=%EB%B6%80%EA%B0%80%EC%84%B8%EC%8B%A0%EA%B3%A0" class="tag">부가세신고</a> <a href="/blog/?tag=%EC%86%8C%EC%83%81%EA%B3%B5%EC%9D%B8%EC%84%B8%EA%B8%88" class="tag">소상공인세금</a>
+      </div>
+    </article>
+
+    <section style="background:#fff8f5;border-radius:16px;padding:24px 28px;margin-top:24px;">
+      <h2 style="font-size:18px;font-weight:800;color:#1a1a1a;margin:0 0 14px;">함께 보면 좋은 글</h2>
+      <ul style="list-style:none;padding:0;margin:0;">
+        <li style="padding:8px 0;border-bottom:1px solid #ffe6d9;"><a href="/blog/posts/delivery-app-vat-filing-guide.html" style="color:#FF6B35;text-decoration:none;font-weight:600;font-size:14px;">배달 매출 부가세 처리법: 중복신고 없이 정확하게</a></li>
+        <li style="padding:8px 0;border-bottom:1px solid #ffe6d9;"><a href="/blog/posts/baemin-coupang-eats-settlement-guide.html" style="color:#FF6B35;text-decoration:none;font-weight:600;font-size:14px;">배민·쿠팡이츠 정산 완전 이해하기 — 수수료·세금 실전 정리</a></li>
+        <li style="padding:8px 0;border-bottom:1px solid #ffe6d9;"><a href="/blog/posts/delivery-app-fee-saving-tips-2026.html" style="color:#FF6B35;text-decoration:none;font-weight:600;font-size:14px;">배달앱 수수료 절약 방법 총정리 — 2026년 차등제 완벽 공략</a></li>
+        <li style="padding:8px 0;border-bottom:1px solid #ffe6d9;"><a href="/blog/posts/delivery-app-sales-data-analysis-guide.html" style="color:#FF6B35;text-decoration:none;font-weight:600;font-size:14px;">배달 매출 데이터 분석, 사장님이 꼭 알아야 할 5가지 핵심</a></li>
+      </ul>
+    </section>
+
+    <div class="ad-slot">광고 영역 (AdSense 승인 후 활성화)</div>
+
+    <div class="cta-box">
+      <h3>매일 매출 기록, 30초면 끝!</h3>
+      <p>카드·현금·네이버페이·카카오페이<br>여러 결제수단을 한 화면에서 입력<br>부가세 예상액도 자동으로 계산해드려요</p>
+      <a href="/">지금 무료로 시작하기</a>
+    </div>
+  </main>
+
+  <aside class="sidebar">
+    <div class="sidebar-cta">
+      <h3>매일 매출 기록,<br>30초면 끝!</h3>
+      <p>카드·현금·배달앱 한 번에<br>부가세 예상액도 자동 계산</p>
+      <a href="/">무료로 시작하기</a>
+    </div>
+  </aside>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-links">
+      <a href="/">서비스 홈</a>
+      <a href="/blog/">블로그</a>
+      <a href="/privacy">개인정보처리방침</a>
+      <a href="/terms">이용약관</a>
+    </div>
+    <div class="footer-copy">© 2026 오늘장부. All rights reserved.</div>
+  </div>
+</footer>
+
+</body>
+</html>
