@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>배달앱 수수료 구조 완전정리 — 사장님 실수령액의 진실 | 오늘장부 블로그</title>
+  <meta name="description" content="배달의민족·쿠팡이츠·요기요 수수료를 한눈에 비교. 2026년 차등 수수료제부터 숨겨진 배달비·광고비까지, 실질 부담률 25~30%의 구조를 낱낱이 파헤칩니다.">
+  <meta property="og:title" content="배달앱 수수료 구조 완전정리 — 사장님 실수령액의 진실">
+  <meta property="og:description" content="배달의민족·쿠팡이츠·요기요 수수료를 한눈에 비교. 2026년 차등 수수료제부터 숨겨진 배달비·광고비까지, 실질 부담률 25~30%의 구조를 낱낱이 파헤칩니다.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://xn--wh1bw0st1gbrb.kr/blog/posts/delivery-app-fee-structure-complete-guide.html">
+  <meta property="og:image" content="https://images.pexels.com/photos/4392042/pexels-photo-4392042.jpeg?auto=compress&amp;cs=tinysrgb&amp;fit=crop&amp;h=627&amp;w=1200">
+  <link rel="canonical" href="https://xn--wh1bw0st1gbrb.kr/blog/posts/delivery-app-fee-structure-complete-guide.html">
+  <link rel="icon" href="/icons/icon-192.png">
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2764893290310463" crossorigin="anonymous"></script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Noto Sans KR', sans-serif; background: #f8f9fa; color: #1a1a1a; line-height: 1.7; }
+    header { background: #fff; border-bottom: 1px solid #eee; position: sticky; top: 0; z-index: 100; }
+    .header-inner { max-width: 1100px; margin: 0 auto; padding: 0 20px; height: 60px; display: flex; align-items: center; justify-content: space-between; }
+    .logo { display: flex; align-items: center; gap: 8px; text-decoration: none; }
+    .logo-icon { width: 32px; height: 32px; background: #FF6B35; border-radius: 8px; display: flex; align-items: center; justify-content: center; color: white; font-weight: 900; font-size: 16px; }
+    .logo-text { font-size: 18px; font-weight: 800; color: #FF6B35; }
+    .logo-sub { font-size: 13px; color: #888; margin-left: 4px; }
+    .header-cta { background: #FF6B35; color: white; border: none; padding: 8px 16px; border-radius: 8px; font-size: 13px; font-weight: 600; cursor: pointer; text-decoration: none; }
+    .wrap { max-width: 1100px; margin: 0 auto; padding: 32px 20px; display: grid; grid-template-columns: 1fr 300px; gap: 40px; }
+    @media (max-width: 768px) { .wrap { grid-template-columns: 1fr; } .sidebar { display: none; } }
+    article { background: white; border-radius: 20px; overflow: hidden; box-shadow: 0 2px 12px rgba(0,0,0,0.06); }
+    .article-head { padding: 32px 32px 24px; border-bottom: 1px solid #f0f0f0; }
+    .article-cat { font-size: 12px; font-weight: 700; color: #FF6B35; text-transform: uppercase; margin-bottom: 12px; }
+    .article-cat a { color: #FF6B35; text-decoration: none; }
+    .article-title { font-size: clamp(20px, 4vw, 28px); font-weight: 900; line-height: 1.4; color: #1a1a1a; margin-bottom: 16px; }
+    .article-meta { font-size: 13px; color: #aaa; display: flex; gap: 16px; align-items: center; flex-wrap: wrap; }
+    .hero-img { width: 100%; aspect-ratio: 16/9; object-fit: cover; background: #f0f0f0; }
+    .article-body { padding: 32px; }
+    .article-body h2 { font-size: 20px; font-weight: 800; color: #1a1a1a; margin: 32px 0 14px; padding-bottom: 8px; border-bottom: 2px solid #FF6B35; }
+    .article-body h3 { font-size: 16px; font-weight: 700; color: #333; margin: 20px 0 10px; }
+    .article-body p { margin-bottom: 14px; color: #333; font-size: 15px; }
+    .article-body ul, .article-body ol { padding-left: 20px; margin-bottom: 14px; }
+    .article-body li { margin-bottom: 6px; color: #333; font-size: 15px; }
+    .article-body table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 14px; }
+    .article-body th { background: #FF6B35; color: white; padding: 10px 14px; text-align: left; }
+    .article-body td { padding: 10px 14px; border-bottom: 1px solid #f0f0f0; }
+    .article-body tr:nth-child(even) td { background: #fff8f5; }
+    .article-body img { width: 100%; border-radius: 12px; margin: 16px 0; }
+    .article-body strong { color: #1a1a1a; }
+    .article-body blockquote { background: #fff8f5; border-left: 4px solid #FF6B35; padding: 16px 20px; border-radius: 0 12px 12px 0; margin: 16px 0; font-style: italic; color: #555; }
+    .article-body a { color: #FF6B35; }
+    .tags { padding: 20px 32px; border-top: 1px solid #f0f0f0; display: flex; gap: 8px; flex-wrap: wrap; }
+    .tag { background: #fff3ee; color: #FF6B35; border-radius: 20px; padding: 5px 12px; font-size: 12px; font-weight: 600; text-decoration: none; }
+    .tag:hover { background: #FF6B35; color: white; }
+    .ad-slot { background: #f0f0f0; border-radius: 12px; display: flex; align-items: center; justify-content: center; color: #bbb; font-size: 12px; min-height: 90px; margin: 24px 0; }
+    .cta-box { background: linear-gradient(135deg, #FF6B35, #ff8c42); border-radius: 20px; padding: 32px; text-align: center; color: white; margin-top: 24px; }
+    .cta-box h3 { font-size: 22px; font-weight: 900; margin-bottom: 10px; }
+    .cta-box p { font-size: 14px; opacity: 0.9; line-height: 1.6; margin-bottom: 20px; }
+    .cta-box a { background: white; color: #FF6B35; border-radius: 12px; padding: 13px 28px; font-weight: 800; font-size: 15px; text-decoration: none; display: inline-block; }
+    .nav-links { display: flex; gap: 16px; margin-top: 24px; }
+    .nav-back { color: #FF6B35; text-decoration: none; font-size: 14px; font-weight: 600; }
+    .nav-back::before { content: '\2190 '; }
+    .sidebar-cta { background: linear-gradient(135deg, #FF6B35, #ff8c42); color: white; border-radius: 16px; padding: 24px; text-align: center; position: sticky; top: 80px; }
+    .sidebar-cta h3 { font-size: 16px; font-weight: 900; margin-bottom: 8px; }
+    .sidebar-cta p { font-size: 13px; opacity: 0.9; line-height: 1.5; margin-bottom: 16px; }
+    .sidebar-cta a { background: white; color: #FF6B35; border-radius: 8px; padding: 10px 20px; font-weight: 700; font-size: 14px; text-decoration: none; display: inline-block; }
+    footer { background: #1a1a1a; color: #888; padding: 40px 20px; margin-top: 60px; }
+    .footer-inner { max-width: 1100px; margin: 0 auto; }
+    .footer-links { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 16px; }
+    .footer-links a { color: #888; text-decoration: none; font-size: 13px; }
+    .footer-copy { font-size: 12px; }
+  </style>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "배달앱 수수료 구조 완전정리 — 사장님 실수령액의 진실",
+  "description": "배달의민족·쿠팡이츠·요기요 수수료를 한눈에 비교. 2026년 차등 수수료제부터 숨겨진 배달비·광고비까지, 실질 부담률 25~30%의 구조를 낱낱이 파헤칩니다.",
+  "datePublished": "2026-07-10",
+  "dateModified": "2026-07-10",
+  "image": "https://images.pexels.com/photos/4392042/pexels-photo-4392042.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200",
+  "author": {
+    "@type": "Organization",
+    "name": "오늘장부",
+    "url": "https://오늘장부.kr"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "오늘장부",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://xn--wh1bw0st1gbrb.kr/icons/icon-192.png"
+    }
+  },
+  "mainEntityOfPage": "https://xn--wh1bw0st1gbrb.kr/blog/posts/delivery-app-fee-structure-complete-guide.html",
+  "keywords": "배달앱수수료, 배달의민족, 쿠팡이츠, 소상공인비용"
+}
+  </script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "배달앱 수수료는 부가세 신고 때 매입세액으로 공제받을 수 있나요?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "네. 배달앱 플랫폼이 발행하는 세금계산서를 수취하면, 수수료 금액에 포함된 부가세(10%)를 매입세액으로 공제받을 수 있습니다. 세금계산서 수취를 빠뜨리지 않도록 매월 확인하세요."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "차등 수수료에서 내 가게는 어느 구간에 해당하나요?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "배달의민족·쿠팡이츠의 차등 수수료 구간은 해당 플랫폼 내 전체 입점 업체의 매출 순위를 기준으로 배정됩니다. 본인 가게의 구간은 각 플랫폼 사장님 앱(ceo앱) 또는 정산 내역서에서 확인할 수 있습니다."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "정산금액만 매출로 신고해도 되지 않나요?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "안 됩니다. 부가세 및 소득세 신고 시 매출은 고객이 결제한 총 주문금액을 기준으로 해야 합니다. 수수료는 별도의 필요경비로 처리해야 하며, 정산금액만 신고하면 매출 누락으로 가산세가 발생할 수 있습니다. 정확한 신고 방법은 세무사와 상담하세요."
+      }
+    }
+  ]
+}
+  </script>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <a href="/" class="logo">
+      <div class="logo-icon">장</div>
+      <span class="logo-text">오늘장부</span>
+      <span class="logo-sub">블로그</span>
+    </a>
+    <a href="/" class="header-cta">무료로 시작하기</a>
+  </div>
+</header>
+
+<div class="wrap">
+  <main>
+    <div class="nav-links">
+      <a href="/blog/" class="nav-back">블로그 목록으로</a>
+    </div>
+
+    <div class="ad-slot">광고 영역 (AdSense 승인 후 활성화)</div>
+
+    <article>
+      <div class="article-head">
+        <div class="article-cat"><a href="/blog/">배달앱</a></div>
+        <h1 class="article-title">배달앱 수수료 구조 완전정리 — 사장님 실수령액의 진실</h1>
+        <div class="article-meta">
+          <span>오늘장부 편집팀</span>
+          <span>2026년 07월 10일</span>
+        </div>
+      </div>
+      <img src="https://images.pexels.com/photos/4392042/pexels-photo-4392042.jpeg?auto=compress&amp;cs=tinysrgb&amp;fit=crop&amp;h=627&amp;w=1200" alt="배달앱 수수료 구조 완전정리 — 사장님 실수령액의 진실" class="hero-img" loading="lazy">
+      <div class="article-body">
+<p>배달 주문이 늘어도 통장 잔고는 그대로라는 사장님이 많습니다. 이유는 단순합니다. 배달앱 수수료가 <strong>중개수수료 하나가 아니라</strong> 배달비·결제수수료·광고비·부가세까지 층층이 쌓이는 구조이기 때문입니다. 2026년 현재 차등 수수료제가 본격 안착됐지만 체감 부담은 오히려 복잡해졌습니다. 이 글에서는 배달의민족·쿠팡이츠·요기요 3사의 수수료 구조를 정확하게 분해하고, 실수령액을 지키는 핵심 포인트를 정리합니다.</p>
+
+<h2>배달앱 수수료, 무엇으로 구성되나?</h2>
+<p>사장님이 부담하는 비용은 크게 네 가지입니다. 이 네 가지를 모두 더해야 진짜 부담률이 나옵니다.</p>
+<ul>
+  <li><strong>중개수수료</strong> — 주문금액 대비 플랫폼에 내는 핵심 수수료. 2026년부터 차등 요율 적용.</li>
+  <li><strong>결제수수료</strong> — 카드·간편결제 처리 비용. 통상 약 1.5~3% 내외.</li>
+  <li><strong>배달비(업주 부담분)</strong> — 배민배달·쿠팡이츠 등 플랫폼 배달 이용 시 건당 부과. 2026년 기준 1,900~3,400원 수준.</li>
+  <li><strong>광고비</strong> — 노출 순위를 높이기 위한 선택적 비용. 오픈리스트(정률) 또는 클릭당 과금 방식.</li>
+</ul>
+<p>여기에 중개수수료와 결제수수료에는 <strong>부가세(10%)</strong>가 별도 부과됩니다. 이 모든 항목을 합산하면 실질 부담률이 <strong>매출의 25~30%</strong>에 달한다는 것이 업계 분석의 공통된 결론입니다.</p>
+
+<h2>2026년 차등 수수료제 — 배민·쿠팡이츠 구조</h2>
+<p>2024년 11월 배달 플랫폼 상생협의체 합의를 거쳐, 배달의민족과 쿠팡이츠는 기존 일괄 9.8%에서 <strong>매출 구간별 차등 중개수수료</strong>로 전환했습니다. 2026년 현재 아래 구간이 적용되고 있습니다.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>매출 구간</th>
+      <th>배달의민족 중개수수료</th>
+      <th>쿠팡이츠 중개수수료</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>하위 20% (영세 점포)</td>
+      <td>2.0%</td>
+      <td>2.0%</td>
+    </tr>
+    <tr>
+      <td>중위 35~80% 구간</td>
+      <td>6.8%</td>
+      <td>6.8%</td>
+    </tr>
+    <tr>
+      <td>상위 35% 구간</td>
+      <td>7.8%</td>
+      <td>7.8%</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>겉으로는 최저 2.0%로 인하된 것처럼 보이지만, 주의할 점이 있습니다. <strong>실제 상권에서 유의미하게 영업 중인 가게 대다수는 중위~상위 구간에 속해 6.8~7.8%를 그대로 부담</strong>합니다. 게다가 업주 부담 배달비는 기존 1,900~2,900원에서 <strong>1,900~3,400원으로 인상</strong>됐기 때문에, 수수료율만 보고 "부담이 줄었다"고 안심하면 안 됩니다.</p>
+
+<h2>배달의민족 서비스 유형별 비용 비교</h2>
+<p>배달의민족은 배달 방식에 따라 비용 구조가 다릅니다.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>서비스 유형</th>
+      <th>배달 주체</th>
+      <th>주요 비용</th>
+      <th>특징</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>배민배달(배민1플러스)</td>
+      <td>배민 라이더</td>
+      <td>중개수수료(차등) + 건당 배달비</td>
+      <td>조리에만 집중 가능, 배달비 변동</td>
+    </tr>
+    <tr>
+      <td>가게배달(오픈리스트)</td>
+      <td>사장님 직접 or 배달대행</td>
+      <td>정률 광고비(주문금액의 일정 %) + 결제수수료</td>
+      <td>배달비 직접 계약, 노출 경쟁 발생</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>기존에는 월 정액 광고비(울트라콜, 약 8만 8천 원)를 내면 추가 수수료 없이 노출이 가능했으나, 울트라콜은 단계적으로 폐지되는 방향으로 정책이 바뀌었습니다. 이제 가게배달에서도 매출 연동 방식의 오픈리스트가 핵심이 되면서, <strong>매출이 오를수록 광고비도 함께 늘어나는 구조</strong>가 됐습니다.</p>
+
+<h2>요기요 수수료 — 건수에 따라 달라지는 요율</h2>
+<p>요기요는 배민·쿠팡이츠와 달리 <strong>월 주문 건수를 기준으로 차등 요율</strong>을 적용합니다. 기본 중개수수료는 9.7%에서 시작하며, 주문 건수가 꾸준히 늘어 월 720건 수준에 이르면 수수료율이 단계적으로 낮아지는 구조입니다. 포장 주문의 경우 7.7%가 적용됩니다. 주문량이 많을수록 유리하지만, 초기 입점 시점에는 가장 높은 구간이 적용된다는 점을 기억해야 합니다.</p>
+
+<h2>공공 배달앱 — 땡겨요·배달특급</h2>
+<p>서울시의 땡겨요, 경기도의 배달특급 등 지자체 공공배달앱은 <strong>2% 내외의 고정 중개수수료</strong>를 제공합니다. 별도 광고비나 업주 부담 배달비 구조가 없어 비용 예측이 쉽습니다. 단, 민간 앱 대비 사용자 수가 적어 주문 건수 자체가 제한적일 수 있습니다. <strong>민간 앱으로 신규 고객을 유입하고, 공공 앱으로 단골 고객을 관리하는 투트랙 전략</strong>이 실질적입니다.</p>
+
+<h2>3사 핵심 수수료 한눈 비교</h2>
+<table>
+  <thead>
+    <tr>
+      <th>항목</th>
+      <th>배달의민족</th>
+      <th>쿠팡이츠</th>
+      <th>요기요</th>
+      <th>공공앱(땡겨요 등)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>중개수수료</td>
+      <td>2.0~7.8% (차등)</td>
+      <td>2.0~7.8% (차등)</td>
+      <td>9.7% ~ (건수 차등)</td>
+      <td>약 2% 고정</td>
+    </tr>
+    <tr>
+      <td>포장 주문 수수료</td>
+      <td>6.8% (2025년 4월~)</td>
+      <td>2026년 4월~ 유료 전환</td>
+      <td>7.7%</td>
+      <td>낮거나 없음</td>
+    </tr>
+    <tr>
+      <td>결제수수료</td>
+      <td>약 1.5~3% 내외</td>
+      <td>약 1.5~3% 내외</td>
+      <td>약 1.5~3% 내외</td>
+      <td>별도 확인</td>
+    </tr>
+    <tr>
+      <td>업주 부담 배달비</td>
+      <td>1,900~3,400원/건</td>
+      <td>1,900~3,400원/건</td>
+      <td>별도 계약</td>
+      <td>별도 계약</td>
+    </tr>
+    <tr>
+      <td>광고비</td>
+      <td>오픈리스트 정률 등</td>
+      <td>별도 광고 상품</td>
+      <td>별도 광고 상품</td>
+      <td>없거나 최소</td>
+    </tr>
+  </tbody>
+</table>
+<p>※ 위 수치는 각 플랫폼의 공개 정보 기준이며, 계약 조건·지역·프로모션에 따라 달라질 수 있습니다. 입점 전 플랫폼 공식 채널에서 반드시 확인하세요.</p>
+
+<h2>세금 처리: 매출·수수료를 어떻게 신고해야 하나?</h2>
+<p>배달앱 세금 처리에서 가장 흔한 실수는 <strong>정산금액(입금액)만 매출로 신고</strong>하는 것입니다. 국세청 기준으로 매출은 <strong>총 주문금액(고객이 결제한 전체 금액)</strong>을 잡아야 하고, 수수료는 필요경비로 별도 처리해야 합니다. 정산금액만 매출로 신고하면 매출 누락으로 <strong>가산세가 부과</strong>될 수 있습니다.</p>
+<ul>
+  <li><strong>부가세 매입세액 공제</strong>: 배달앱은 매월 세금계산서를 발행합니다. 이를 수취하면 수수료에 포함된 부가세(10%)를 매입세액으로 공제받을 수 있습니다.</li>
+  <li><strong>종합소득세 필요경비</strong>: 중개수수료·배달비·광고비는 전액 필요경비로 인정됩니다. 연간 수수료 규모가 크면 절세 효과도 상당합니다.</li>
+</ul>
+<p>배달 매출·수수료·부가세 예상액을 매일 자동으로 계산하기 어렵다면, <strong>오늘장부</strong>처럼 카드·현금·배달앱 매출을 한 곳에서 기록하고 부가세 예상액을 자동 계산해 주는 도구를 활용하면 신고 실수를 크게 줄일 수 있습니다.</p>
+
+<h2>실질 부담률 낮추는 3가지 실전 전략</h2>
+<ol>
+  <li><strong>포장 주문 적극 활용</strong> — 배달 주문 대비 중개수수료가 낮고, 배달비도 발생하지 않습니다. 포장 할인 이벤트로 단골 고객을 유도하면 마진이 개선됩니다.</li>
+  <li><strong>메뉴 가격과 마진율 재점검</strong> — 수수료 25~30%를 역산해 손익분기점 가격을 다시 설정하세요. 배달 전용 메뉴를 따로 구성하는 것도 방법입니다.</li>
+  <li><strong>광고비 효율 모니터링</strong> — 광고비 대비 주문 전환율을 주 단위로 점검하고, 비효율 광고는 과감히 줄이세요. 플랫폼에 의존하지 않는 자체 채널(SNS, 단골 앱)도 병행하면 장기적으로 비용을 낮출 수 있습니다.</li>
+</ol>
+
+<h2>자주 묻는 질문</h2>
+
+<h3>배달앱 수수료는 부가세 신고 때 매입세액으로 공제받을 수 있나요?</h3>
+<p>네. 배달앱 플랫폼이 발행하는 세금계산서를 수취하면, 수수료 금액에 포함된 부가세(10%)를 매입세액으로 공제받을 수 있습니다. 세금계산서 수취를 빠뜨리지 않도록 매월 확인하세요.</p>
+
+<h3>차등 수수료에서 내 가게는 어느 구간에 해당하나요?</h3>
+<p>배달의민족·쿠팡이츠의 차등 수수료 구간은 해당 플랫폼 내 전체 입점 업체의 매출 순위를 기준으로 배정됩니다. 본인 가게의 구간은 각 플랫폼 사장님 앱(ceo앱) 또는 정산 내역서에서 확인할 수 있습니다.</p>
+
+<h3>정산금액만 매출로 신고해도 되지 않나요?</h3>
+<p>안 됩니다. 부가세 및 소득세 신고 시 매출은 고객이 결제한 <strong>총 주문금액</strong>을 기준으로 해야 합니다. 수수료는 별도의 필요경비로 처리해야 하며, 정산금액만 신고하면 매출 누락으로 가산세가 발생할 수 있습니다. 정확한 신고 방법은 세무사와 상담하세요.</p>
+
+<p>배달 매출은 날마다 변동이 크고, 플랫폼별 정산 주기도 달라 한 번에 파악하기 어렵습니다. <a href="https://오늘장부.kr">오늘장부 무료로 시작하기</a>로 배달앱·카드·현금 매출을 한 곳에 기록하고, 부가세 예상액을 자동으로 확인해 보세요. 신고 시즌마다 허둥대지 않아도 됩니다.</p>
+
+<p>※ 본 글은 2026년 기준 참고용 정보이며, 정확한 신고·금액은 국세청 홈택스 또는 세무사와 상담하세요.</p>
+      </div>
+      <div class="tags">
+        <a href="/blog/?tag=%EB%B0%B0%EB%8B%AC%EC%95%B1%EC%88%98%EC%88%98%EB%A3%8C" class="tag">배달앱수수료</a> <a href="/blog/?tag=%EB%B0%B0%EB%8B%AC%EC%9D%98%EB%AF%BC%EC%A1%B1" class="tag">배달의민족</a> <a href="/blog/?tag=%EC%BF%A0%ED%8C%A1%EC%9D%B4%EC%B8%A0" class="tag">쿠팡이츠</a> <a href="/blog/?tag=%EC%86%8C%EC%83%81%EA%B3%B5%EC%9D%B8%EB%B9%84%EC%9A%A9" class="tag">소상공인비용</a>
+      </div>
+    </article>
+
+    <section style="background:#fff8f5;border-radius:16px;padding:24px 28px;margin-top:24px;">
+      <h2 style="font-size:18px;font-weight:800;color:#1a1a1a;margin:0 0 14px;">함께 보면 좋은 글</h2>
+      <ul style="list-style:none;padding:0;margin:0;">
+        <li style="padding:8px 0;border-bottom:1px solid #ffe6d9;"><a href="/blog/posts/delivery-app-revenue-missing-prevention-guide.html" style="color:#FF6B35;text-decoration:none;font-weight:600;font-size:14px;">배달앱 매출 누락 방지하는 법: 세금 폭탄 피하는 실전 가이드</a></li>
+        <li style="padding:8px 0;border-bottom:1px solid #ffe6d9;"><a href="/blog/posts/delivery-app-vat-filing-guide.html" style="color:#FF6B35;text-decoration:none;font-weight:600;font-size:14px;">배달 매출 부가세 처리법: 중복신고 없이 정확하게</a></li>
+        <li style="padding:8px 0;border-bottom:1px solid #ffe6d9;"><a href="/blog/posts/baemin-coupang-eats-settlement-guide.html" style="color:#FF6B35;text-decoration:none;font-weight:600;font-size:14px;">배민·쿠팡이츠 정산 완전 이해하기 — 수수료·세금 실전 정리</a></li>
+        <li style="padding:8px 0;border-bottom:1px solid #ffe6d9;"><a href="/blog/posts/delivery-app-fee-saving-tips-2026.html" style="color:#FF6B35;text-decoration:none;font-weight:600;font-size:14px;">배달앱 수수료 절약 방법 총정리 — 2026년 차등제 완벽 공략</a></li>
+      </ul>
+    </section>
+
+    <div class="ad-slot">광고 영역 (AdSense 승인 후 활성화)</div>
+
+    <div class="cta-box">
+      <h3>매일 매출 기록, 30초면 끝!</h3>
+      <p>카드·현금·네이버페이·카카오페이<br>여러 결제수단을 한 화면에서 입력<br>부가세 예상액도 자동으로 계산해드려요</p>
+      <a href="/">지금 무료로 시작하기</a>
+    </div>
+  </main>
+
+  <aside class="sidebar">
+    <div class="sidebar-cta">
+      <h3>매일 매출 기록,<br>30초면 끝!</h3>
+      <p>카드·현금·배달앱 한 번에<br>부가세 예상액도 자동 계산</p>
+      <a href="/">무료로 시작하기</a>
+    </div>
+  </aside>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-links">
+      <a href="/">서비스 홈</a>
+      <a href="/blog/">블로그</a>
+      <a href="/privacy">개인정보처리방침</a>
+      <a href="/terms">이용약관</a>
+    </div>
+    <div class="footer-copy">© 2026 오늘장부. All rights reserved.</div>
+  </div>
+</footer>
+
+</body>
+</html>
