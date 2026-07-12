@@ -1,5 +1,19 @@
 [
   {
+    "slug": "pos-sales-ledger-reconciliation-guide",
+    "title": "포스(POS) 매출과 장부 맞추기: 숫자가 다른 5가지 이유와 해법",
+    "description": "포스 매출·카드 입금·배달앱 정산이 왜 다른지 원인별로 파헤치고, 부가세 신고 전까지 장부를 정확히 맞추는 실전 방법을 단계별로 안내합니다.",
+    "category": "매출관리",
+    "date": "2026-07-12",
+    "thumb": "https://images.pexels.com/photos/3570239/pexels-photo-3570239.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200",
+    "tags": [
+      "포스매출관리",
+      "매출장부맞추기",
+      "부가세신고",
+      "소상공인세금"
+    ]
+  },
+  {
     "slug": "employment-contract-writing-guide-for-small-business",
     "title": "근로계약서 작성법 완전 정리 — 알바·직원 고용 전 필수 체크",
     "description": "직원·알바 고용 시 반드시 작성해야 할 근로계약서의 필수 기재사항, 유형별 차이, 미작성 시 불이익까지 소상공인 사장님 눈높이로 깔끔하게 정리했습니다.",
