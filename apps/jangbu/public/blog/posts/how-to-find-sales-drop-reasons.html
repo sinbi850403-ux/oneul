@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>매출 급감 원인 찾는 법 — 숫자로 진단하는 5단계 점검표 | 오늘장부 블로그</title>
+  <meta name="description" content="매출이 갑자기 줄었을 때 감이 아닌 데이터로 원인을 짚는 5단계 분석법. 요일·시간대·결제수단·경쟁 환경까지 사장님이 바로 실행할 수 있는 체크리스트를 정리했습니다.">
+  <meta property="og:title" content="매출 급감 원인 찾는 법 — 숫자로 진단하는 5단계 점검표">
+  <meta property="og:description" content="매출이 갑자기 줄었을 때 감이 아닌 데이터로 원인을 짚는 5단계 분석법. 요일·시간대·결제수단·경쟁 환경까지 사장님이 바로 실행할 수 있는 체크리스트를 정리했습니다.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://xn--wh1bw0st1gbrb.kr/blog/posts/how-to-find-sales-drop-reasons.html">
+  <meta property="og:image" content="https://images.pexels.com/photos/9433330/pexels-photo-9433330.jpeg?auto=compress&amp;cs=tinysrgb&amp;fit=crop&amp;h=627&amp;w=1200">
+  <link rel="canonical" href="https://xn--wh1bw0st1gbrb.kr/blog/posts/how-to-find-sales-drop-reasons.html">
+  <link rel="icon" href="/icons/icon-192.png">
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2764893290310463" crossorigin="anonymous"></script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Noto Sans KR', sans-serif; background: #f8f9fa; color: #1a1a1a; line-height: 1.7; }
+    header { background: #fff; border-bottom: 1px solid #eee; position: sticky; top: 0; z-index: 100; }
+    .header-inner { max-width: 1100px; margin: 0 auto; padding: 0 20px; height: 60px; display: flex; align-items: center; justify-content: space-between; }
+    .logo { display: flex; align-items: center; gap: 8px; text-decoration: none; }
+    .logo-icon { width: 32px; height: 32px; background: #FF6B35; border-radius: 8px; display: flex; align-items: center; justify-content: center; color: white; font-weight: 900; font-size: 16px; }
+    .logo-text { font-size: 18px; font-weight: 800; color: #FF6B35; }
+    .logo-sub { font-size: 13px; color: #888; margin-left: 4px; }
+    .header-cta { background: #FF6B35; color: white; border: none; padding: 8px 16px; border-radius: 8px; font-size: 13px; font-weight: 600; cursor: pointer; text-decoration: none; }
+    .wrap { max-width: 1100px; margin: 0 auto; padding: 32px 20px; display: grid; grid-template-columns: 1fr 300px; gap: 40px; }
+    @media (max-width: 768px) { .wrap { grid-template-columns: 1fr; } .sidebar { display: none; } }
+    article { background: white; border-radius: 20px; overflow: hidden; box-shadow: 0 2px 12px rgba(0,0,0,0.06); }
+    .article-head { padding: 32px 32px 24px; border-bottom: 1px solid #f0f0f0; }
+    .article-cat { font-size: 12px; font-weight: 700; color: #FF6B35; text-transform: uppercase; margin-bottom: 12px; }
+    .article-cat a { color: #FF6B35; text-decoration: none; }
+    .article-title { font-size: clamp(20px, 4vw, 28px); font-weight: 900; line-height: 1.4; color: #1a1a1a; margin-bottom: 16px; }
+    .article-meta { font-size: 13px; color: #aaa; display: flex; gap: 16px; align-items: center; flex-wrap: wrap; }
+    .hero-img { width: 100%; aspect-ratio: 16/9; object-fit: cover; background: #f0f0f0; }
+    .article-body { padding: 32px; }
+    .article-body h2 { font-size: 20px; font-weight: 800; color: #1a1a1a; margin: 32px 0 14px; padding-bottom: 8px; border-bottom: 2px solid #FF6B35; }
+    .article-body h3 { font-size: 16px; font-weight: 700; color: #333; margin: 20px 0 10px; }
+    .article-body p { margin-bottom: 14px; color: #333; font-size: 15px; }
+    .article-body ul, .article-body ol { padding-left: 20px; margin-bottom: 14px; }
+    .article-body li { margin-bottom: 6px; color: #333; font-size: 15px; }
+    .article-body table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 14px; }
+    .article-body th { background: #FF6B35; color: white; padding: 10px 14px; text-align: left; }
+    .article-body td { padding: 10px 14px; border-bottom: 1px solid #f0f0f0; }
+    .article-body tr:nth-child(even) td { background: #fff8f5; }
+    .article-body img { width: 100%; border-radius: 12px; margin: 16px 0; }
+    .article-body strong { color: #1a1a1a; }
+    .article-body blockquote { background: #fff8f5; border-left: 4px solid #FF6B35; padding: 16px 20px; border-radius: 0 12px 12px 0; margin: 16px 0; font-style: italic; color: #555; }
+    .article-body a { color: #FF6B35; }
+    .tags { padding: 20px 32px; border-top: 1px solid #f0f0f0; display: flex; gap: 8px; flex-wrap: wrap; }
+    .tag { background: #fff3ee; color: #FF6B35; border-radius: 20px; padding: 5px 12px; font-size: 12px; font-weight: 600; text-decoration: none; }
+    .tag:hover { background: #FF6B35; color: white; }
+    .ad-slot { background: #f0f0f0; border-radius: 12px; display: flex; align-items: center; justify-content: center; color: #bbb; font-size: 12px; min-height: 90px; margin: 24px 0; }
+    .cta-box { background: linear-gradient(135deg, #FF6B35, #ff8c42); border-radius: 20px; padding: 32px; text-align: center; color: white; margin-top: 24px; }
+    .cta-box h3 { font-size: 22px; font-weight: 900; margin-bottom: 10px; }
+    .cta-box p { font-size: 14px; opacity: 0.9; line-height: 1.6; margin-bottom: 20px; }
+    .cta-box a { background: white; color: #FF6B35; border-radius: 12px; padding: 13px 28px; font-weight: 800; font-size: 15px; text-decoration: none; display: inline-block; }
+    .nav-links { display: flex; gap: 16px; margin-top: 24px; }
+    .nav-back { color: #FF6B35; text-decoration: none; font-size: 14px; font-weight: 600; }
+    .nav-back::before { content: '\2190 '; }
+    .sidebar-cta { background: linear-gradient(135deg, #FF6B35, #ff8c42); color: white; border-radius: 16px; padding: 24px; text-align: center; position: sticky; top: 80px; }
+    .sidebar-cta h3 { font-size: 16px; font-weight: 900; margin-bottom: 8px; }
+    .sidebar-cta p { font-size: 13px; opacity: 0.9; line-height: 1.5; margin-bottom: 16px; }
+    .sidebar-cta a { background: white; color: #FF6B35; border-radius: 8px; padding: 10px 20px; font-weight: 700; font-size: 14px; text-decoration: none; display: inline-block; }
+    footer { background: #1a1a1a; color: #888; padding: 40px 20px; margin-top: 60px; }
+    .footer-inner { max-width: 1100px; margin: 0 auto; }
+    .footer-links { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 16px; }
+    .footer-links a { color: #888; text-decoration: none; font-size: 13px; }
+    .footer-copy { font-size: 12px; }
+  </style>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "매출 급감 원인 찾는 법 — 숫자로 진단하는 5단계 점검표",
+  "description": "매출이 갑자기 줄었을 때 감이 아닌 데이터로 원인을 짚는 5단계 분석법. 요일·시간대·결제수단·경쟁 환경까지 사장님이 바로 실행할 수 있는 체크리스트를 정리했습니다.",
+  "datePublished": "2026-07-14",
+  "dateModified": "2026-07-14",
+  "image": "https://images.pexels.com/photos/9433330/pexels-photo-9433330.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200",
+  "author": {
+    "@type": "Organization",
+    "name": "오늘장부",
+    "url": "https://오늘장부.kr"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "오늘장부",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://xn--wh1bw0st1gbrb.kr/icons/icon-192.png"
+    }
+  },
+  "mainEntityOfPage": "https://xn--wh1bw0st1gbrb.kr/blog/posts/how-to-find-sales-drop-reasons.html",
+  "keywords": "매출관리, 매출분석, 소상공인, 자영업"
+}
+  </script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "매출이 줄었는지 어떻게 빠르게 확인하나요?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "가장 간단한 방법은 어제·지난주·지난달 같은 요일과 비교하는 것입니다. 카드·현금·배달앱 매출을 채널별로 매일 기록해 두면 이상 징후를 빠르게 발견할 수 있습니다. 오늘장부 무료로 시작하기를 활용하면 카드·현금·배달앱 매출을 한 화면에서 비교하고, 부가세 예상액까지 자동으로 계산해줘 바쁜 사장님도 하루 1분이면 확인이 가능합니다."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "배달앱 매출만 줄었을 때 가장 먼저 해야 할 일은 무엇인가요?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "앱 내 노출 순위와 리뷰 점수를 먼저 확인하세요. 리뷰 수가 줄거나 별점이 내려갔다면 메뉴·포장·서비스 품질 점검이 우선입니다. 또 배달비 부담으로 고객이 이탈했을 수도 있으므로, 최소 주문금액과 배달비 설정이 경쟁점 대비 적정한지 함께 살펴보세요."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "전체 상권이 침체된 것 같은데, 내 가게만의 문제인지 어떻게 구분하나요?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "소상공인시장진흥공단의 상권정보 시스템(소상공인365)에서 업종별·상권별 매출 추이를 무료로 조회할 수 있습니다. 내 가게 매출 감소폭이 동종 업종 평균보다 크다면 가게 내부 문제가 있는 것이고, 비슷하거나 작다면 상권 전체의 외부 요인일 가능성이 높습니다. 이 경우 비용 구조 최적화와 함께 지자체·소진공의 상권 활성화 지원사업을 검토해 보세요."
+      }
+    }
+  ]
+}
+  </script>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <a href="/" class="logo">
+      <div class="logo-icon">장</div>
+      <span class="logo-text">오늘장부</span>
+      <span class="logo-sub">블로그</span>
+    </a>
+    <a href="/" class="header-cta">무료로 시작하기</a>
+  </div>
+</header>
+
+<div class="wrap">
+  <main>
+    <div class="nav-links">
+      <a href="/blog/" class="nav-back">블로그 목록으로</a>
+    </div>
+
+    <div class="ad-slot">광고 영역 (AdSense 승인 후 활성화)</div>
+
+    <article>
+      <div class="article-head">
+        <div class="article-cat"><a href="/blog/">매출관리</a></div>
+        <h1 class="article-title">매출 급감 원인 찾는 법 — 숫자로 진단하는 5단계 점검표</h1>
+        <div class="article-meta">
+          <span>오늘장부 편집팀</span>
+          <span>2026년 07월 14일</span>
+        </div>
+      </div>
+      <img src="https://images.pexels.com/photos/9433330/pexels-photo-9433330.jpeg?auto=compress&amp;cs=tinysrgb&amp;fit=crop&amp;h=627&amp;w=1200" alt="매출 급감 원인 찾는 법 — 숫자로 진단하는 5단계 점검표" class="hero-img" loading="lazy">
+      <div class="article-body">
+<p>어느 날 갑자기 하루 매출이 뚝 떨어졌습니다. 지난달보다 확실히 적은데, 왜인지 딱 잡히지 않습니다. "요즘 경기가 나빠서…"라고 넘기기엔 찜찜하고, 그렇다고 어디서부터 손을 대야 할지도 막막합니다. 실제로 한국경제인협회 조사에 따르면 소상공인 10명 중 8명(77.1%)이 매출이 비슷하거나 줄 것이라고 예상할 정도로 경영 환경이 녹록지 않습니다. 하지만 막연한 불안보다는 <strong>데이터로 원인을 짚어야</strong> 대책도 세울 수 있습니다. 아래 5단계 점검표를 순서대로 따라가 보세요.</p>
+
+<h2>1단계: '언제부터' 줄었는지 기간을 특정한다</h2>
+<p>가장 먼저 할 일은 감소 시점을 정확히 파악하는 것입니다. 전주 대비, 전월 대비, 전년 동기 대비 세 가지 비교를 모두 해야 합니다.</p>
+<ul>
+  <li><strong>전주 대비</strong> — 갑자기 줄었다면 특정 사건(공사, 날씨, 행사)을 먼저 의심</li>
+  <li><strong>전월 대비</strong> — 계절성·달력 효과(명절, 월별 공휴일 수 차이)를 고려</li>
+  <li><strong>전년 동기 대비</strong> — 계절 요인을 제거한 순수한 추세 변화를 확인</li>
+</ul>
+<p>예를 들어 1분기 매출이 빠졌다면, 연말 송년 시즌이 지난 계절적 요인일 수 있습니다. 반면 전년 동기보다도 낮다면 구조적인 문제를 의심해야 합니다. <strong>오늘장부</strong>처럼 날짜별 매출을 자동 기록해 두면, 이 비교를 몇 초 만에 확인할 수 있습니다.</p>
+
+<h2>2단계: 요일·시간대별로 쪼개 본다</h2>
+<p>총 매출이 줄었더라도 특정 요일이나 시간대만 빠졌다면 원인이 훨씬 좁혀집니다.</p>
+<table>
+  <thead>
+    <tr>
+      <th>패턴</th>
+      <th>가능한 원인</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>평일만 감소</td>
+      <td>인근 직장·오피스 공실 증가, 재택근무 확대</td>
+    </tr>
+    <tr>
+      <td>주말만 감소</td>
+      <td>경쟁점 신규 오픈, 근처 행사장 변동</td>
+    </tr>
+    <tr>
+      <td>점심 시간대만 감소</td>
+      <td>인근 신규 식당 증가 또는 메뉴 경쟁력 약화</td>
+    </tr>
+    <tr>
+      <td>저녁 시간대만 감소</td>
+      <td>배달앱 노출 순위 하락, 주변 야간 유동인구 감소</td>
+    </tr>
+    <tr>
+      <td>전 시간대 균등 감소</td>
+      <td>상권 전체 침체, 임대 건물 공사·접근성 문제</td>
+    </tr>
+  </tbody>
+</table>
+<p>요일·시간대 분석은 소상공인시장진흥공단의 상권정보 시스템이나 카드사 매출 조회 서비스를 통해서도 업종 평균과 비교해 볼 수 있습니다.</p>
+
+<h2>3단계: 결제수단별 매출을 분리한다</h2>
+<p>카드·현금·배달앱 매출을 합산해서만 보면 원인이 숨습니다. 반드시 채널별로 나눠 봐야 합니다.</p>
+<h3>카드 매출이 줄었다면</h3>
+<p>오프라인 방문 고객 자체가 줄었을 가능성이 높습니다. 인근 경쟁점, 주차 문제, 간판·접근성을 점검하세요. 단, 2026년 현재 영세·중소가맹점 신용카드 우대수수료율은 연매출 구간별로 0.40%~1.45%, 체크카드는 0.15%~1.15% 수준입니다(금융위원회 기준). 카드 수수료 자체가 변경됐는지도 확인하세요.</p>
+<h3>배달앱 매출이 줄었다면</h3>
+<p>배달앱 노출 순위(배달의민족·쿠팡이츠 등)가 떨어졌거나, 리뷰 점수가 낮아졌을 수 있습니다. 배달의민족·쿠팡이츠는 상생협의체 합의를 통해 중개수수료를 매출 상위 35% 가게 기준 7.8%, 중간 구간 6.8%, 하위 20% 가게에는 2%로 차등 적용하고 있습니다. 수수료 구조가 바뀐 뒤 실수령 매출이 달라졌는지도 함께 따져 보세요.</p>
+<h3>현금 매출이 줄었다면</h3>
+<p>단골 고객 이탈이나 결제 환경 변화일 수 있습니다. 요즘은 현금 결제 비중 자체가 계속 낮아지고 있어, 현금영수증 발행률과 함께 체크하는 것이 좋습니다.</p>
+
+<h2>4단계: 객단가와 방문 건수를 분리한다</h2>
+<p>총 매출 = 방문(주문) 건수 × 객단가입니다. 이 두 수치가 함께 빠졌는지, 한쪽만 빠졌는지에 따라 처방이 달라집니다.</p>
+<ol>
+  <li><strong>건수는 유지, 객단가만 하락</strong> → 고객이 싼 메뉴를 고르고 있음. 구성·업셀링 전략 검토</li>
+  <li><strong>객단가는 유지, 건수만 하락</strong> → 신규 유입 또는 재방문이 줄었음. 홍보·리텐션 강화 필요</li>
+  <li><strong>둘 다 하락</strong> → 상권 침체 가능성. 경쟁 환경·외부 변수 복합 점검 필요</li>
+</ol>
+
+<blockquote>
+  <p>건수와 객단가는 포스(POS) 데이터나 매출 기록 앱에서 바로 꺼낼 수 있는 숫자입니다. 매일 기록하는 습관이 없다면 오늘부터라도 시작하세요.</p>
+</blockquote>
+
+<h2>5단계: 외부 환경과 비용 구조도 함께 점검한다</h2>
+<p>매출이 줄지 않더라도 비용이 늘었다면 실질 수익은 악화됩니다. 아래 항목을 체크리스트로 활용하세요.</p>
+<ul>
+  <li>☐ 임대료 인상 여부</li>
+  <li>☐ 식재료·원자재 가격 변동 — 고환율·고물가 영향을 받는 품목 재점검</li>
+  <li>☐ 인근 경쟁점 신규 오픈 또는 폐업(상권 유동인구 변화)</li>
+  <li>☐ 도로 공사·건물 공사로 인한 접근성 저하</li>
+  <li>☐ 플랫폼 광고비 증가(배달앱 울트라콜, 오픈리스트 등)</li>
+  <li>☐ 인건비 변동 — 최저임금 및 4대보험료 변경 여부(정확한 금액은 고용노동부·국민연금공단에서 확인)</li>
+</ul>
+<p>외부 환경이 원인이라면 혼자 해결하기 어렵습니다. 소상공인시장진흥공단의 경영 컨설팅, 지자체 상권 지원사업, 소상공인 정책자금 등을 활용하는 것도 방법입니다.</p>
+
+<h2>매출 급감 원인 진단 요약</h2>
+<table>
+  <thead>
+    <tr>
+      <th>진단 단계</th>
+      <th>확인 항목</th>
+      <th>활용 도구</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1단계 — 기간 특정</td>
+      <td>전주·전월·전년 동기 비교</td>
+      <td>매출 기록 앱, 포스 데이터</td>
+    </tr>
+    <tr>
+      <td>2단계 — 시간대 분석</td>
+      <td>요일별·시간대별 매출 추이</td>
+      <td>카드사 조회, 상권정보 시스템</td>
+    </tr>
+    <tr>
+      <td>3단계 — 채널 분리</td>
+      <td>카드·현금·배달앱 각각 비교</td>
+      <td>오늘장부, 배달앱 정산 내역</td>
+    </tr>
+    <tr>
+      <td>4단계 — 건수·객단가</td>
+      <td>방문 건수와 1건당 매출 분리</td>
+      <td>포스, 매출 기록 앱</td>
+    </tr>
+    <tr>
+      <td>5단계 — 외부 환경</td>
+      <td>임대료·원가·경쟁점·플랫폼 비용</td>
+      <td>소진공 컨설팅, 세무사 상담</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2>자주 묻는 질문</h2>
+
+<h3>매출이 줄었는지 어떻게 빠르게 확인하나요?</h3>
+<p>가장 간단한 방법은 어제·지난주·지난달 같은 요일과 비교하는 것입니다. 카드·현금·배달앱 매출을 채널별로 매일 기록해 두면 이상 징후를 빠르게 발견할 수 있습니다. <a href="https://오늘장부.kr">오늘장부 무료로 시작하기</a>를 활용하면 카드·현금·배달앱 매출을 한 화면에서 비교하고, 부가세 예상액까지 자동으로 계산해줘 바쁜 사장님도 하루 1분이면 확인이 가능합니다.</p>
+
+<h3>배달앱 매출만 줄었을 때 가장 먼저 해야 할 일은 무엇인가요?</h3>
+<p>앱 내 노출 순위와 리뷰 점수를 먼저 확인하세요. 리뷰 수가 줄거나 별점이 내려갔다면 메뉴·포장·서비스 품질 점검이 우선입니다. 또 배달비 부담으로 고객이 이탈했을 수도 있으므로, 최소 주문금액과 배달비 설정이 경쟁점 대비 적정한지 함께 살펴보세요.</p>
+
+<h3>전체 상권이 침체된 것 같은데, 내 가게만의 문제인지 어떻게 구분하나요?</h3>
+<p>소상공인시장진흥공단의 상권정보 시스템(소상공인365)에서 업종별·상권별 매출 추이를 무료로 조회할 수 있습니다. 내 가게 매출 감소폭이 동종 업종 평균보다 크다면 가게 내부 문제가 있는 것이고, 비슷하거나 작다면 상권 전체의 외부 요인일 가능성이 높습니다. 이 경우 비용 구조 최적화와 함께 지자체·소진공의 상권 활성화 지원사업을 검토해 보세요.</p>
+
+<p>※ 본 글은 2026년 기준 참고용 정보이며, 정확한 신고·금액은 국세청 홈택스 또는 세무사와 상담하세요.</p>
+      </div>
+      <div class="tags">
+        <a href="/blog/?tag=%EB%A7%A4%EC%B6%9C%EA%B4%80%EB%A6%AC" class="tag">매출관리</a> <a href="/blog/?tag=%EB%A7%A4%EC%B6%9C%EB%B6%84%EC%84%9D" class="tag">매출분석</a> <a href="/blog/?tag=%EC%86%8C%EC%83%81%EA%B3%B5%EC%9D%B8" class="tag">소상공인</a> <a href="/blog/?tag=%EC%9E%90%EC%98%81%EC%97%85" class="tag">자영업</a>
+      </div>
+    </article>
+
+    <section style="background:#fff8f5;border-radius:16px;padding:24px 28px;margin-top:24px;">
+      <h2 style="font-size:18px;font-weight:800;color:#1a1a1a;margin:0 0 14px;">함께 보면 좋은 글</h2>
+      <ul style="list-style:none;padding:0;margin:0;">
+        <li style="padding:8px 0;border-bottom:1px solid #ffe6d9;"><a href="/blog/posts/monthly-sales-goal-setting-and-management.html" style="color:#FF6B35;text-decoration:none;font-weight:600;font-size:14px;">월 매출 목표 세우고 관리하기 — 사장님을 위한 실전 5단계</a></li>
+        <li style="padding:8px 0;border-bottom:1px solid #ffe6d9;"><a href="/blog/posts/pos-sales-ledger-reconciliation-guide.html" style="color:#FF6B35;text-decoration:none;font-weight:600;font-size:14px;">포스(POS) 매출과 장부 맞추기: 숫자가 다른 5가지 이유와 해법</a></li>
+        <li style="padding:8px 0;border-bottom:1px solid #ffe6d9;"><a href="/blog/posts/cash-revenue-recording-tips-for-small-business.html" style="color:#FF6B35;text-decoration:none;font-weight:600;font-size:14px;">현금매출 누락 없이 기록하는 법 – 사장님 필수 체크리스트</a></li>
+        <li style="padding:8px 0;border-bottom:1px solid #ffe6d9;"><a href="/blog/posts/how-to-prepare-for-off-season-with-sales-data.html" style="color:#FF6B35;text-decoration:none;font-weight:600;font-size:14px;">매출 데이터로 비수기 대비하는 법 — 사장님 실전 가이드</a></li>
+      </ul>
+    </section>
+
+    <div class="ad-slot">광고 영역 (AdSense 승인 후 활성화)</div>
+
+    <div class="cta-box">
+      <h3>매일 매출 기록, 30초면 끝!</h3>
+      <p>카드·현금·네이버페이·카카오페이<br>여러 결제수단을 한 화면에서 입력<br>부가세 예상액도 자동으로 계산해드려요</p>
+      <a href="/">지금 무료로 시작하기</a>
+    </div>
+  </main>
+
+  <aside class="sidebar">
+    <div class="sidebar-cta">
+      <h3>매일 매출 기록,<br>30초면 끝!</h3>
+      <p>카드·현금·배달앱 한 번에<br>부가세 예상액도 자동 계산</p>
+      <a href="/">무료로 시작하기</a>
+    </div>
+  </aside>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-links">
+      <a href="/">서비스 홈</a>
+      <a href="/blog/">블로그</a>
+      <a href="/privacy">개인정보처리방침</a>
+      <a href="/terms">이용약관</a>
+    </div>
+    <div class="footer-copy">© 2026 오늘장부. All rights reserved.</div>
+  </div>
+</footer>
+
+</body>
+</html>
