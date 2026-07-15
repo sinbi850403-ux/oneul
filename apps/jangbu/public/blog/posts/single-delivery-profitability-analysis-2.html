@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>단건배달 수익성 분석: 사장님이 실제로 남기는 돈은? | 오늘장부 블로그</title>
+  <meta name="description" content="배달의민족·쿠팡이츠 단건배달을 쓸수록 왜 통장이 비는지, 2026년 차등 수수료 구조부터 실질 비용 계산법·수익성 개선 전략까지 사장님 눈높이로 정리했습니다.">
+  <meta property="og:title" content="단건배달 수익성 분석: 사장님이 실제로 남기는 돈은?">
+  <meta property="og:description" content="배달의민족·쿠팡이츠 단건배달을 쓸수록 왜 통장이 비는지, 2026년 차등 수수료 구조부터 실질 비용 계산법·수익성 개선 전략까지 사장님 눈높이로 정리했습니다.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://xn--wh1bw0st1gbrb.kr/blog/posts/single-delivery-profitability-analysis-2.html">
+  <meta property="og:image" content="https://images.pexels.com/photos/7843984/pexels-photo-7843984.jpeg?auto=compress&amp;cs=tinysrgb&amp;fit=crop&amp;h=627&amp;w=1200">
+  <link rel="canonical" href="https://xn--wh1bw0st1gbrb.kr/blog/posts/single-delivery-profitability-analysis-2.html">
+  <link rel="icon" href="/icons/icon-192.png">
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2764893290310463" crossorigin="anonymous"></script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Noto Sans KR', sans-serif; background: #f8f9fa; color: #1a1a1a; line-height: 1.7; }
+    header { background: #fff; border-bottom: 1px solid #eee; position: sticky; top: 0; z-index: 100; }
+    .header-inner { max-width: 1100px; margin: 0 auto; padding: 0 20px; height: 60px; display: flex; align-items: center; justify-content: space-between; }
+    .logo { display: flex; align-items: center; gap: 8px; text-decoration: none; }
+    .logo-icon { width: 32px; height: 32px; background: #FF6B35; border-radius: 8px; display: flex; align-items: center; justify-content: center; color: white; font-weight: 900; font-size: 16px; }
+    .logo-text { font-size: 18px; font-weight: 800; color: #FF6B35; }
+    .logo-sub { font-size: 13px; color: #888; margin-left: 4px; }
+    .header-cta { background: #FF6B35; color: white; border: none; padding: 8px 16px; border-radius: 8px; font-size: 13px; font-weight: 600; cursor: pointer; text-decoration: none; }
+    .wrap { max-width: 1100px; margin: 0 auto; padding: 32px 20px; display: grid; grid-template-columns: 1fr 300px; gap: 40px; }
+    @media (max-width: 768px) { .wrap { grid-template-columns: 1fr; } .sidebar { display: none; } }
+    article { background: white; border-radius: 20px; overflow: hidden; box-shadow: 0 2px 12px rgba(0,0,0,0.06); }
+    .article-head { padding: 32px 32px 24px; border-bottom: 1px solid #f0f0f0; }
+    .article-cat { font-size: 12px; font-weight: 700; color: #FF6B35; text-transform: uppercase; margin-bottom: 12px; }
+    .article-cat a { color: #FF6B35; text-decoration: none; }
+    .article-title { font-size: clamp(20px, 4vw, 28px); font-weight: 900; line-height: 1.4; color: #1a1a1a; margin-bottom: 16px; }
+    .article-meta { font-size: 13px; color: #aaa; display: flex; gap: 16px; align-items: center; flex-wrap: wrap; }
+    .hero-img { width: 100%; aspect-ratio: 16/9; object-fit: cover; background: #f0f0f0; }
+    .article-body { padding: 32px; }
+    .article-body h2 { font-size: 20px; font-weight: 800; color: #1a1a1a; margin: 32px 0 14px; padding-bottom: 8px; border-bottom: 2px solid #FF6B35; }
+    .article-body h3 { font-size: 16px; font-weight: 700; color: #333; margin: 20px 0 10px; }
+    .article-body p { margin-bottom: 14px; color: #333; font-size: 15px; }
+    .article-body ul, .article-body ol { padding-left: 20px; margin-bottom: 14px; }
+    .article-body li { margin-bottom: 6px; color: #333; font-size: 15px; }
+    .article-body table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 14px; }
+    .article-body th { background: #FF6B35; color: white; padding: 10px 14px; text-align: left; }
+    .article-body td { padding: 10px 14px; border-bottom: 1px solid #f0f0f0; }
+    .article-body tr:nth-child(even) td { background: #fff8f5; }
+    .article-body img { width: 100%; border-radius: 12px; margin: 16px 0; }
+    .article-body strong { color: #1a1a1a; }
+    .article-body blockquote { background: #fff8f5; border-left: 4px solid #FF6B35; padding: 16px 20px; border-radius: 0 12px 12px 0; margin: 16px 0; font-style: italic; color: #555; }
+    .article-body a { color: #FF6B35; }
+    .tags { padding: 20px 32px; border-top: 1px solid #f0f0f0; display: flex; gap: 8px; flex-wrap: wrap; }
+    .tag { background: #fff3ee; color: #FF6B35; border-radius: 20px; padding: 5px 12px; font-size: 12px; font-weight: 600; text-decoration: none; }
+    .tag:hover { background: #FF6B35; color: white; }
+    .ad-slot { background: #f0f0f0; border-radius: 12px; display: flex; align-items: center; justify-content: center; color: #bbb; font-size: 12px; min-height: 90px; margin: 24px 0; }
+    .cta-box { background: linear-gradient(135deg, #FF6B35, #ff8c42); border-radius: 20px; padding: 32px; text-align: center; color: white; margin-top: 24px; }
+    .cta-box h3 { font-size: 22px; font-weight: 900; margin-bottom: 10px; }
+    .cta-box p { font-size: 14px; opacity: 0.9; line-height: 1.6; margin-bottom: 20px; }
+    .cta-box a { background: white; color: #FF6B35; border-radius: 12px; padding: 13px 28px; font-weight: 800; font-size: 15px; text-decoration: none; display: inline-block; }
+    .nav-links { display: flex; gap: 16px; margin-top: 24px; }
+    .nav-back { color: #FF6B35; text-decoration: none; font-size: 14px; font-weight: 600; }
+    .nav-back::before { content: '\2190 '; }
+    .sidebar-cta { background: linear-gradient(135deg, #FF6B35, #ff8c42); color: white; border-radius: 16px; padding: 24px; text-align: center; position: sticky; top: 80px; }
+    .sidebar-cta h3 { font-size: 16px; font-weight: 900; margin-bottom: 8px; }
+    .sidebar-cta p { font-size: 13px; opacity: 0.9; line-height: 1.5; margin-bottom: 16px; }
+    .sidebar-cta a { background: white; color: #FF6B35; border-radius: 8px; padding: 10px 20px; font-weight: 700; font-size: 14px; text-decoration: none; display: inline-block; }
+    footer { background: #1a1a1a; color: #888; padding: 40px 20px; margin-top: 60px; }
+    .footer-inner { max-width: 1100px; margin: 0 auto; }
+    .footer-links { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 16px; }
+    .footer-links a { color: #888; text-decoration: none; font-size: 13px; }
+    .footer-copy { font-size: 12px; }
+  </style>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "단건배달 수익성 분석: 사장님이 실제로 남기는 돈은?",
+  "description": "배달의민족·쿠팡이츠 단건배달을 쓸수록 왜 통장이 비는지, 2026년 차등 수수료 구조부터 실질 비용 계산법·수익성 개선 전략까지 사장님 눈높이로 정리했습니다.",
+  "datePublished": "2026-07-15",
+  "dateModified": "2026-07-15",
+  "image": "https://images.pexels.com/photos/7843984/pexels-photo-7843984.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200",
+  "author": {
+    "@type": "Organization",
+    "name": "오늘장부",
+    "url": "https://오늘장부.kr"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "오늘장부",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://xn--wh1bw0st1gbrb.kr/icons/icon-192.png"
+    }
+  },
+  "mainEntityOfPage": "https://xn--wh1bw0st1gbrb.kr/blog/posts/single-delivery-profitability-analysis-2.html",
+  "keywords": "단건배달, 배달앱수수료, 배달수익성, 소상공인"
+}
+  </script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "단건배달은 묶음배달보다 수수료가 더 비싼가요?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "중개수수료율 자체는 배달 방식에 따라 구분되지 않고 매출 구간으로 결정됩니다. 다만 단건배달(한집배달)은 라이더가 1건만 처리하므로 매장 부담 배달비가 묶음배달보다 높게 설정되는 경우가 많습니다. 결과적으로 같은 주문 금액이라도 단건배달 쪽 실수령액이 적어질 수 있습니다."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "차등 수수료제에서 내 매장은 어느 구간인가요?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "배달의민족·쿠팡이츠는 월 매출 거래액 기준으로 하위 20% 영세 점포에 2.0%, 중위 구간에 6.8%, 상위 구간에 7.8%를 적용하는 것으로 알려져 있습니다. 정확한 적용 구간과 기준금액은 각 플랫폼의 파트너 센터 또는 고객센터에서 직접 확인하시기 바랍니다."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "배달앱 수수료는 부가세 신고 때 매입세액 공제가 되나요?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "일반과세자라면 배달앱 수수료에 포함된 부가세(10%)는 매입세액으로 공제받을 수 있습니다. 단, 공제를 받으려면 세금계산서 또는 플랫폼에서 발급하는 전자세금계산서가 있어야 하므로 매월 정산 내역을 꼼꼼히 보관해야 합니다. 정확한 공제 요건은 홈택스 또는 세무사와 확인하세요."
+      }
+    }
+  ]
+}
+  </script>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <a href="/" class="logo">
+      <div class="logo-icon">장</div>
+      <span class="logo-text">오늘장부</span>
+      <span class="logo-sub">블로그</span>
+    </a>
+    <a href="/" class="header-cta">무료로 시작하기</a>
+  </div>
+</header>
+
+<div class="wrap">
+  <main>
+    <div class="nav-links">
+      <a href="/blog/" class="nav-back">블로그 목록으로</a>
+    </div>
+
+    <div class="ad-slot">광고 영역 (AdSense 승인 후 활성화)</div>
+
+    <article>
+      <div class="article-head">
+        <div class="article-cat"><a href="/blog/">배달앱</a></div>
+        <h1 class="article-title">단건배달 수익성 분석: 사장님이 실제로 남기는 돈은?</h1>
+        <div class="article-meta">
+          <span>오늘장부 편집팀</span>
+          <span>2026년 07월 15일</span>
+        </div>
+      </div>
+      <img src="https://images.pexels.com/photos/7843984/pexels-photo-7843984.jpeg?auto=compress&amp;cs=tinysrgb&amp;fit=crop&amp;h=627&amp;w=1200" alt="단건배달 수익성 분석: 사장님이 실제로 남기는 돈은?" class="hero-img" loading="lazy">
+      <div class="article-body">
+<p>배달 주문이 하루 50건을 넘어도 정작 통장에 남는 돈이 없다고 느끼는 사장님이 많습니다. 수수료 고지서를 열어보면 숫자가 적혀 있지만, 거기에 배달비·결제수수료·부가세·광고비까지 더하면 이야기가 달라집니다. 2026년 현재 배달앱 3사의 <strong>차등 수수료제</strong>가 전면 안착했지만, 소상공인이 체감하는 실질 부담은 여전히 매출의 20%대 중반 수준에 달합니다. 이 글에서는 단건배달 구조를 해부하고, 한 건 주문에서 실제로 얼마가 남는지 직접 계산해 보겠습니다.</p>
+
+<h2>단건배달이란 무엇인가</h2>
+<p>단건배달은 라이더 한 명이 한 주문만 배달하는 방식입니다. 배달의민족의 <strong>'한집배달(바로배달)'</strong>과 쿠팡이츠의 <strong>'치타배달'</strong>이 대표적입니다. 2019년 쿠팡이츠가 강남 지역에서 '30분 배달'을 내세우며 처음 도입했고, 이후 배달의민족도 같은 방식을 적용했습니다.</p>
+<p>반면 <strong>묶음배달(알뜰배달)</strong>은 라이더 한 명이 동선이 겹치는 여러 주문을 한꺼번에 처리합니다. 고객은 배달비를 아끼지만 배달 시간이 길어질 수 있고, 매장은 라이더 수급이 더 원활합니다. 2023년 이후 배달의민족 알뜰배달, 쿠팡이츠 최적화배달이 정착하면서 현재는 두 방식이 병존하고 있습니다.</p>
+
+<h2>2026년 기준 배달앱 비용 구조 한눈에 보기</h2>
+<p>수수료는 단 하나가 아닙니다. 실제로는 아래 다섯 가지 항목이 겹쳐서 빠져나갑니다.</p>
+<table>
+  <thead>
+    <tr>
+      <th>비용 항목</th>
+      <th>내용</th>
+      <th>비고</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>중개수수료</td>
+      <td>매출 구간에 따라 <strong>2.0% ~ 7.8%</strong></td>
+      <td>영세 하위 20% → 2%, 중위 → 6.8%, 상위 → 7.8%</td>
+    </tr>
+    <tr>
+      <td>결제수수료(PG)</td>
+      <td>약 <strong>3%</strong> 수준</td>
+      <td>앱 내 카드·간편결제 처리 비용</td>
+    </tr>
+    <tr>
+      <td>수수료 부가세</td>
+      <td>중개수수료+결제수수료의 <strong>10%</strong></td>
+      <td>사업자 환급 가능하나 당장 현금 나감</td>
+    </tr>
+    <tr>
+      <td>배달비(매장 부담분)</td>
+      <td>플랫폼 직배송 이용 시 고객 부담분 제외한 나머지</td>
+      <td>단건배달일수록 매장 부담 ↑</td>
+    </tr>
+    <tr>
+      <td>광고비(노출 비용)</td>
+      <td>울트라콜·오픈리스트 등 상위 노출 비용</td>
+      <td>선택이지만 안 하면 노출도 하락</td>
+    </tr>
+  </tbody>
+</table>
+<p>2026년 배달의민족·쿠팡이츠는 차등 수수료제를 도입해 명목 중개수수료율을 낮췄습니다. 그러나 <strong>중개 수수료가 낮아진 만큼 매장이 부담하는 배달비가 기존 대비 약 200~500원 인상</strong>되어 체감 효과는 업종마다 다릅니다. 서울시가 2025년 발표한 '배달플랫폼 상생지수' 조사에 따르면, 중개료·광고비·결제수수료를 모두 합한 실질 부담률은 최대 29.3%까지 치솟는 것으로 나타났습니다.</p>
+
+<h2>단건배달 주문 1건 실제 수익 시뮬레이션</h2>
+<p>치킨 1마리를 2만 원에 팔았다고 가정하고, 단건배달과 묶음배달을 비교해 봅니다. 아래 수치는 중위 매출 구간(중개수수료 6.8%) 기준 예시이며, 실제 계약 조건·지역에 따라 다를 수 있습니다.</p>
+<table>
+  <thead>
+    <tr>
+      <th>항목</th>
+      <th>단건배달(한집배달)</th>
+      <th>묶음배달(알뜰배달)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>주문 금액</td>
+      <td>20,000원</td>
+      <td>20,000원</td>
+    </tr>
+    <tr>
+      <td>중개수수료 (6.8%)</td>
+      <td>△1,360원</td>
+      <td>△1,360원</td>
+    </tr>
+    <tr>
+      <td>결제수수료 (약 3%)</td>
+      <td>△600원</td>
+      <td>△600원</td>
+    </tr>
+    <tr>
+      <td>수수료 부가세 (10%)</td>
+      <td>△196원</td>
+      <td>△196원</td>
+    </tr>
+    <tr>
+      <td>매장 부담 배달비</td>
+      <td>△약 2,500~4,000원</td>
+      <td>△약 1,000~2,000원</td>
+    </tr>
+    <tr>
+      <td><strong>플랫폼 공제 후 수취액(예시)</strong></td>
+      <td><strong>약 13,844~15,344원</strong></td>
+      <td><strong>약 15,844~16,844원</strong></td>
+    </tr>
+  </tbody>
+</table>
+<p>여기에 식자재 원가(통상 30~40%), 임대료·인건비·공과금 등 고정비를 빼면 단건배달 한 건의 순이익은 생각보다 훨씬 얇습니다. 광고비까지 월 30만~50만 원 집행하는 매장이라면, 건당 광고 분담금도 추가로 고려해야 합니다.</p>
+<blockquote>💡 핵심 공식: <strong>실질 수취액 = 주문금액 − 중개수수료 − 결제수수료 − 수수료 부가세 − 매장 부담 배달비</strong><br>여기서 식자재 원가·고정비 배분액을 추가로 빼야 순이익이 나옵니다.</blockquote>
+
+<h2>단건배달이 수익에 미치는 구조적 문제</h2>
+<ul>
+  <li><strong>풍선 효과:</strong> 중개수수료율이 낮아진 대신 매장 부담 배달비가 오르는 구조입니다. 영세 점포일수록 건당 이윤이 박해, 수수료 절감액(수백 원)보다 배달비 인상분이 더 크게 수익을 깎는 '재무적 역설'이 발생합니다.</li>
+  <li><strong>매출 증가 = 수익 증가가 아닐 수 있음:</strong> 상위 매출 구간으로 올라갈수록 수수료율이 7.8%로 올라가기 때문에, 주문량을 늘려도 수익이 비례하지 않습니다.</li>
+  <li><strong>단건배달 라이더 수급 불안정:</strong> 단건배달은 라이더 1명이 1건만 처리하므로, 주문이 몰리는 피크 시간대에 배차가 지연되면 음식 품질 클레임으로 이어질 수 있습니다.</li>
+  <li><strong>포장 수수료 신설:</strong> 2026년 4월부터 쿠팡이츠도 포장 주문에 수수료를 부과하기 시작했습니다. 배달 외 포장 채널도 이제는 수수료 계산에 포함해야 합니다.</li>
+</ul>
+
+<h2>사장님이 수익성을 높이는 현실적 전략</h2>
+<ol>
+  <li><strong>손익분기점 주문금액 역산하기:</strong> "내 매장에서 배달 한 건이 손익분기를 넘으려면 최소 얼마 이상 팔아야 하나?"를 계산하세요. 중개수수료 + 결제수수료 + 배달비 + 원가를 합산해 역산하면 메뉴 가격 조정에 직접 활용할 수 있습니다.</li>
+  <li><strong>단건배달과 묶음배달 병행 설정:</strong> 한집배달 단독 운영 대신 알뜰배달 병행 설정으로 배달비 부담을 낮추고, 배달 속도에 민감한 고객층은 한집배달로 흡수하는 혼합 전략이 유효합니다.</li>
+  <li><strong>최소 주문금액 조정:</strong> 건당 배달비 부담이 고정 비용처럼 작동하므로, 최소 주문금액을 현실에 맞게 올려 건당 마진을 확보하세요.</li>
+  <li><strong>공공 배달앱 병행 입점:</strong> 지자체 운영 공공 배달앱(배달특급, 땡겨요 등)은 수수료가 0~2% 수준으로, 단골 고객의 주문 경로 일부를 유도하면 전체 평균 수수료 부담을 낮출 수 있습니다.</li>
+  <li><strong>정산 내역 주기적 검증:</strong> 플랫폼별로 정산 주기와 차감 내역이 달라, 매주 또는 매월 정산 명세를 직접 확인해야 과오 청구나 광고비 자동 충전을 사전에 방지할 수 있습니다.</li>
+</ol>
+
+<h2>배달 매출, 한 곳에서 관리해야 놓치지 않는다</h2>
+<p>단건배달·묶음배달·포장·홀 매출이 섞이면 어디서 돈이 새는지 파악하기 어렵습니다. <strong>오늘장부</strong>는 카드·현금·배달앱 매출을 한 화면에서 기록하고, 부가세 예상액을 자동으로 계산해 줍니다. 정산일마다 플랫폼 앱을 하나씩 열어볼 필요 없이, 일매출 흐름과 실질 수익 변화를 한눈에 확인할 수 있어 배달 의존도가 높은 매장일수록 특히 유용합니다.</p>
+
+<h2>자주 묻는 질문</h2>
+
+<h3>단건배달은 묶음배달보다 수수료가 더 비싼가요?</h3>
+<p>중개수수료율 자체는 배달 방식에 따라 구분되지 않고 매출 구간으로 결정됩니다. 다만 단건배달(한집배달)은 라이더가 1건만 처리하므로 매장 부담 배달비가 묶음배달보다 높게 설정되는 경우가 많습니다. 결과적으로 같은 주문 금액이라도 단건배달 쪽 실수령액이 적어질 수 있습니다.</p>
+
+<h3>차등 수수료제에서 내 매장은 어느 구간인가요?</h3>
+<p>배달의민족·쿠팡이츠는 월 매출 거래액 기준으로 하위 20% 영세 점포에 2.0%, 중위 구간에 6.8%, 상위 구간에 7.8%를 적용하는 것으로 알려져 있습니다. 정확한 적용 구간과 기준금액은 각 플랫폼의 파트너 센터 또는 고객센터에서 직접 확인하시기 바랍니다.</p>
+
+<h3>배달앱 수수료는 부가세 신고 때 매입세액 공제가 되나요?</h3>
+<p>일반과세자라면 배달앱 수수료에 포함된 부가세(10%)는 매입세액으로 공제받을 수 있습니다. 단, 공제를 받으려면 세금계산서 또는 플랫폼에서 발급하는 전자세금계산서가 있어야 하므로 매월 정산 내역을 꼼꼼히 보관해야 합니다. 정확한 공제 요건은 홈택스 또는 세무사와 확인하세요.</p>
+
+<p>배달 매출이 전체 매출의 절반 이상을 차지한다면, 지금 당장 건당 실질 수익을 계산해 보는 것이 시작입니다. <a href="https://오늘장부.kr">오늘장부 무료로 시작하기</a></p>
+
+<p>※ 본 글은 2026년 기준 참고용 정보이며, 정확한 신고·금액은 국세청 홈택스 또는 세무사와 상담하세요.</p>
+      </div>
+      <div class="tags">
+        <a href="/blog/?tag=%EB%8B%A8%EA%B1%B4%EB%B0%B0%EB%8B%AC" class="tag">단건배달</a> <a href="/blog/?tag=%EB%B0%B0%EB%8B%AC%EC%95%B1%EC%88%98%EC%88%98%EB%A3%8C" class="tag">배달앱수수료</a> <a href="/blog/?tag=%EB%B0%B0%EB%8B%AC%EC%88%98%EC%9D%B5%EC%84%B1" class="tag">배달수익성</a> <a href="/blog/?tag=%EC%86%8C%EC%83%81%EA%B3%B5%EC%9D%B8" class="tag">소상공인</a>
+      </div>
+    </article>
+
+    <section style="background:#fff8f5;border-radius:16px;padding:24px 28px;margin-top:24px;">
+      <h2 style="font-size:18px;font-weight:800;color:#1a1a1a;margin:0 0 14px;">함께 보면 좋은 글</h2>
+      <ul style="list-style:none;padding:0;margin:0;">
+        <li style="padding:8px 0;border-bottom:1px solid #ffe6d9;"><a href="/blog/posts/delivery-packaging-fee-pricing-guide.html" style="color:#FF6B35;text-decoration:none;font-weight:600;font-size:14px;">배달 포장비 책정하는 법: 원가부터 수수료까지 완전 정복</a></li>
+        <li style="padding:8px 0;border-bottom:1px solid #ffe6d9;"><a href="/blog/posts/delivery-app-ad-effect-cost-roi-guide.html" style="color:#FF6B35;text-decoration:none;font-weight:600;font-size:14px;">배달앱 광고 효과 있을까? 비용 구조와 손익 계산 완전 정리</a></li>
+        <li style="padding:8px 0;border-bottom:1px solid #ffe6d9;"><a href="/blog/posts/delivery-review-management-increase-sales.html" style="color:#FF6B35;text-decoration:none;font-weight:600;font-size:14px;">배달 리뷰 관리로 매출 늘리기: 사장님 실전 가이드</a></li>
+        <li style="padding:8px 0;border-bottom:1px solid #ffe6d9;"><a href="/blog/posts/self-delivery-vs-delivery-agency-comparison-2.html" style="color:#FF6B35;text-decoration:none;font-weight:600;font-size:14px;">자체배달 vs 배달대행 비교: 사장님 순수익 지키는 선택법</a></li>
+      </ul>
+    </section>
+
+    <div class="ad-slot">광고 영역 (AdSense 승인 후 활성화)</div>
+
+    <div class="cta-box">
+      <h3>매일 매출 기록, 30초면 끝!</h3>
+      <p>카드·현금·네이버페이·카카오페이<br>여러 결제수단을 한 화면에서 입력<br>부가세 예상액도 자동으로 계산해드려요</p>
+      <a href="/">지금 무료로 시작하기</a>
+    </div>
+  </main>
+
+  <aside class="sidebar">
+    <div class="sidebar-cta">
+      <h3>매일 매출 기록,<br>30초면 끝!</h3>
+      <p>카드·현금·배달앱 한 번에<br>부가세 예상액도 자동 계산</p>
+      <a href="/">무료로 시작하기</a>
+    </div>
+  </aside>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-links">
+      <a href="/">서비스 홈</a>
+      <a href="/blog/">블로그</a>
+      <a href="/privacy">개인정보처리방침</a>
+      <a href="/terms">이용약관</a>
+    </div>
+    <div class="footer-copy">© 2026 오늘장부. All rights reserved.</div>
+  </div>
+</footer>
+
+</body>
+</html>
