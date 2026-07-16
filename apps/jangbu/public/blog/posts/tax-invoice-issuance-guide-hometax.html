@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>세금계산서 발행 방법 완전 정복 — 홈택스 전자발급부터 가산세까지 | 오늘장부 블로그</title>
+  <meta name="description" content="세금계산서 발행 방법을 처음부터 끝까지 정리했습니다. 의무발급 대상 확인, 홈택스 전자발급 4단계, 가산세 종류와 세액공제 혜택까지 소상공인 사장님 눈높이로 알기 쉽게 설명합니다.">
+  <meta property="og:title" content="세금계산서 발행 방법 완전 정복 — 홈택스 전자발급부터 가산세까지">
+  <meta property="og:description" content="세금계산서 발행 방법을 처음부터 끝까지 정리했습니다. 의무발급 대상 확인, 홈택스 전자발급 4단계, 가산세 종류와 세액공제 혜택까지 소상공인 사장님 눈높이로 알기 쉽게 설명합니다.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://xn--wh1bw0st1gbrb.kr/blog/posts/tax-invoice-issuance-guide-hometax.html">
+  <meta property="og:image" content="https://images.pexels.com/photos/10330110/pexels-photo-10330110.jpeg?auto=compress&amp;cs=tinysrgb&amp;fit=crop&amp;h=627&amp;w=1200">
+  <link rel="canonical" href="https://xn--wh1bw0st1gbrb.kr/blog/posts/tax-invoice-issuance-guide-hometax.html">
+  <link rel="icon" href="/icons/icon-192.png">
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2764893290310463" crossorigin="anonymous"></script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Noto Sans KR', sans-serif; background: #f8f9fa; color: #1a1a1a; line-height: 1.7; }
+    header { background: #fff; border-bottom: 1px solid #eee; position: sticky; top: 0; z-index: 100; }
+    .header-inner { max-width: 1100px; margin: 0 auto; padding: 0 20px; height: 60px; display: flex; align-items: center; justify-content: space-between; }
+    .logo { display: flex; align-items: center; gap: 8px; text-decoration: none; }
+    .logo-icon { width: 32px; height: 32px; background: #FF6B35; border-radius: 8px; display: flex; align-items: center; justify-content: center; color: white; font-weight: 900; font-size: 16px; }
+    .logo-text { font-size: 18px; font-weight: 800; color: #FF6B35; }
+    .logo-sub { font-size: 13px; color: #888; margin-left: 4px; }
+    .header-cta { background: #FF6B35; color: white; border: none; padding: 8px 16px; border-radius: 8px; font-size: 13px; font-weight: 600; cursor: pointer; text-decoration: none; }
+    .wrap { max-width: 1100px; margin: 0 auto; padding: 32px 20px; display: grid; grid-template-columns: 1fr 300px; gap: 40px; }
+    @media (max-width: 768px) { .wrap { grid-template-columns: 1fr; } .sidebar { display: none; } }
+    article { background: white; border-radius: 20px; overflow: hidden; box-shadow: 0 2px 12px rgba(0,0,0,0.06); }
+    .article-head { padding: 32px 32px 24px; border-bottom: 1px solid #f0f0f0; }
+    .article-cat { font-size: 12px; font-weight: 700; color: #FF6B35; text-transform: uppercase; margin-bottom: 12px; }
+    .article-cat a { color: #FF6B35; text-decoration: none; }
+    .article-title { font-size: clamp(20px, 4vw, 28px); font-weight: 900; line-height: 1.4; color: #1a1a1a; margin-bottom: 16px; }
+    .article-meta { font-size: 13px; color: #aaa; display: flex; gap: 16px; align-items: center; flex-wrap: wrap; }
+    .hero-img { width: 100%; aspect-ratio: 16/9; object-fit: cover; background: #f0f0f0; }
+    .article-body { padding: 32px; }
+    .article-body h2 { font-size: 20px; font-weight: 800; color: #1a1a1a; margin: 32px 0 14px; padding-bottom: 8px; border-bottom: 2px solid #FF6B35; }
+    .article-body h3 { font-size: 16px; font-weight: 700; color: #333; margin: 20px 0 10px; }
+    .article-body p { margin-bottom: 14px; color: #333; font-size: 15px; }
+    .article-body ul, .article-body ol { padding-left: 20px; margin-bottom: 14px; }
+    .article-body li { margin-bottom: 6px; color: #333; font-size: 15px; }
+    .article-body table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 14px; }
+    .article-body th { background: #FF6B35; color: white; padding: 10px 14px; text-align: left; }
+    .article-body td { padding: 10px 14px; border-bottom: 1px solid #f0f0f0; }
+    .article-body tr:nth-child(even) td { background: #fff8f5; }
+    .article-body img { width: 100%; border-radius: 12px; margin: 16px 0; }
+    .article-body strong { color: #1a1a1a; }
+    .article-body blockquote { background: #fff8f5; border-left: 4px solid #FF6B35; padding: 16px 20px; border-radius: 0 12px 12px 0; margin: 16px 0; font-style: italic; color: #555; }
+    .article-body a { color: #FF6B35; }
+    .tags { padding: 20px 32px; border-top: 1px solid #f0f0f0; display: flex; gap: 8px; flex-wrap: wrap; }
+    .tag { background: #fff3ee; color: #FF6B35; border-radius: 20px; padding: 5px 12px; font-size: 12px; font-weight: 600; text-decoration: none; }
+    .tag:hover { background: #FF6B35; color: white; }
+    .ad-slot { background: #f0f0f0; border-radius: 12px; display: flex; align-items: center; justify-content: center; color: #bbb; font-size: 12px; min-height: 90px; margin: 24px 0; }
+    .cta-box { background: linear-gradient(135deg, #FF6B35, #ff8c42); border-radius: 20px; padding: 32px; text-align: center; color: white; margin-top: 24px; }
+    .cta-box h3 { font-size: 22px; font-weight: 900; margin-bottom: 10px; }
+    .cta-box p { font-size: 14px; opacity: 0.9; line-height: 1.6; margin-bottom: 20px; }
+    .cta-box a { background: white; color: #FF6B35; border-radius: 12px; padding: 13px 28px; font-weight: 800; font-size: 15px; text-decoration: none; display: inline-block; }
+    .nav-links { display: flex; gap: 16px; margin-top: 24px; }
+    .nav-back { color: #FF6B35; text-decoration: none; font-size: 14px; font-weight: 600; }
+    .nav-back::before { content: '\2190 '; }
+    .sidebar-cta { background: linear-gradient(135deg, #FF6B35, #ff8c42); color: white; border-radius: 16px; padding: 24px; text-align: center; position: sticky; top: 80px; }
+    .sidebar-cta h3 { font-size: 16px; font-weight: 900; margin-bottom: 8px; }
+    .sidebar-cta p { font-size: 13px; opacity: 0.9; line-height: 1.5; margin-bottom: 16px; }
+    .sidebar-cta a { background: white; color: #FF6B35; border-radius: 8px; padding: 10px 20px; font-weight: 700; font-size: 14px; text-decoration: none; display: inline-block; }
+    footer { background: #1a1a1a; color: #888; padding: 40px 20px; margin-top: 60px; }
+    .footer-inner { max-width: 1100px; margin: 0 auto; }
+    .footer-links { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 16px; }
+    .footer-links a { color: #888; text-decoration: none; font-size: 13px; }
+    .footer-copy { font-size: 12px; }
+  </style>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "세금계산서 발행 방법 완전 정복 — 홈택스 전자발급부터 가산세까지",
+  "description": "세금계산서 발행 방법을 처음부터 끝까지 정리했습니다. 의무발급 대상 확인, 홈택스 전자발급 4단계, 가산세 종류와 세액공제 혜택까지 소상공인 사장님 눈높이로 알기 쉽게 설명합니다.",
+  "datePublished": "2026-07-16",
+  "dateModified": "2026-07-16",
+  "image": "https://images.pexels.com/photos/10330110/pexels-photo-10330110.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200",
+  "author": {
+    "@type": "Organization",
+    "name": "오늘장부",
+    "url": "https://오늘장부.kr"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "오늘장부",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://xn--wh1bw0st1gbrb.kr/icons/icon-192.png"
+    }
+  },
+  "mainEntityOfPage": "https://xn--wh1bw0st1gbrb.kr/blog/posts/tax-invoice-issuance-guide-hometax.html",
+  "keywords": "세금계산서, 전자세금계산서, 홈택스, 부가세"
+}
+  </script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "세금계산서는 거래 당일에만 발행해야 하나요?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "아닙니다. 월 중 발생한 거래를 모아 월합계 세금계산서로 말일자로 발행할 수 있습니다. 이 경우에도 반드시 다음 달 10일까지 발행해야 합니다. 거래 건수가 많은 사장님들은 월합계 방식이 편리합니다."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "간이과세자인데 거래처가 세금계산서를 요구합니다. 어떻게 하나요?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "간이과세자는 원칙적으로 세금계산서 발급이 불가능합니다. 단, 부가세법 개정으로 일정 요건을 충족한 간이과세자는 발급이 허용됩니다. 정확한 내용은 담당 세무서 또는 세무사에게 확인하시기 바랍니다. 거래처에 세금계산서 발급이 어려운 상황이라면 미리 안내하는 것이 좋습니다."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "세금계산서를 받지 못하면 어떻게 되나요?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "공급받는 자가 세금계산서를 수취하지 못하면 매입세액 공제를 받을 수 없습니다. 세금계산서 없이 이미 매입세액을 공제받은 경우 해당 세액 전액이 추징될 수 있으니, 거래 시 반드시 세금계산서를 수취하고 이상 여부를 확인하세요."
+      }
+    }
+  ]
+}
+  </script>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <a href="/" class="logo">
+      <div class="logo-icon">장</div>
+      <span class="logo-text">오늘장부</span>
+      <span class="logo-sub">블로그</span>
+    </a>
+    <a href="/" class="header-cta">무료로 시작하기</a>
+  </div>
+</header>
+
+<div class="wrap">
+  <main>
+    <div class="nav-links">
+      <a href="/blog/" class="nav-back">블로그 목록으로</a>
+    </div>
+
+    <div class="ad-slot">광고 영역 (AdSense 승인 후 활성화)</div>
+
+    <article>
+      <div class="article-head">
+        <div class="article-cat"><a href="/blog/">부가세/세금</a></div>
+        <h1 class="article-title">세금계산서 발행 방법 완전 정복 — 홈택스 전자발급부터 가산세까지</h1>
+        <div class="article-meta">
+          <span>오늘장부 편집팀</span>
+          <span>2026년 07월 16일</span>
+        </div>
+      </div>
+      <img src="https://images.pexels.com/photos/10330110/pexels-photo-10330110.jpeg?auto=compress&amp;cs=tinysrgb&amp;fit=crop&amp;h=627&amp;w=1200" alt="세금계산서 발행 방법 완전 정복 — 홈택스 전자발급부터 가산세까지" class="hero-img" loading="lazy">
+      <div class="article-body">
+<p>거래처에서 "세금계산서 끊어 주세요"라는 말을 처음 들었을 때 당황하셨던 적 있으신가요? 세금계산서는 사업자 간(B2B) 거래에서 부가가치세를 포함한 거래 내용을 증빙하는 법적 문서입니다. 공급자에겐 매출 증빙이 되고, 공급받는 자에겐 매입세액 공제의 근거가 되기 때문에 양쪽 모두 꼼꼼히 챙겨야 합니다. 이 글에서는 2026년 기준으로 <strong>세금계산서 발행 방법</strong>을 단계별로 정리했습니다.</p>
+
+<h2>세금계산서, 누가 발행해야 하나요?</h2>
+<p>세금계산서는 <strong>일반과세자</strong>에게 발행 의무가 있습니다. 면세사업자는 세금계산서 대신 '계산서'를 발급합니다. 간이과세자는 원칙적으로 세금계산서를 발급할 수 없지만, 예외적으로 일부 간이과세자는 발급이 가능합니다.</p>
+<p>특히 <strong>전자세금계산서</strong>를 반드시 발행해야 하는 의무발급 대상은 다음과 같습니다.</p>
+<ul>
+  <li><strong>모든 법인사업자</strong> — 매출 규모와 관계없이 전부 해당</li>
+  <li><strong>직전 연도 공급가액 합계 8천만 원 이상인 개인사업자</strong> — 면세공급가액 포함, 2024년 7월부터 적용</li>
+  <li>의무발급 대상이 된 이후에는 매출이 줄어도 의무가 계속 유지됨</li>
+</ul>
+<p>의무발급 대상자가 종이 세금계산서를 발급하면 <strong>공급가액의 1% 가산세</strong>가 부과되므로 반드시 전자 발급을 사용하세요. 해당 여부가 헷갈린다면 홈택스 또는 세무사를 통해 먼저 확인하시길 권장합니다.</p>
+
+<h2>세금계산서에 반드시 써야 하는 항목</h2>
+<p>부가가치세법상 <strong>필요적 기재사항</strong>이 하나라도 빠지거나 사실과 다르게 적히면 세금계산서로서의 효력이 인정되지 않습니다. 아래 항목은 빠짐없이 정확히 기재해야 합니다.</p>
+<table>
+  <thead>
+    <tr>
+      <th>구분</th>
+      <th>필수 기재사항</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>공급자</td>
+      <td>사업자등록번호, 상호(명칭), 성명</td>
+    </tr>
+    <tr>
+      <td>공급받는 자</td>
+      <td>사업자등록번호</td>
+    </tr>
+    <tr>
+      <td>거래 정보</td>
+      <td>작성 연월일(공급일), 공급가액, 부가가치세액</td>
+    </tr>
+  </tbody>
+</table>
+<p>이 외에도 공급받는 자의 상호·성명·주소, 업태·종목, 공급 품목·수량·단가 등을 기재하는 것이 좋습니다. 특히 상대방 사업자등록번호는 홈택스에서 입력 직후 <strong>'정상 사업장' 확인</strong>을 꼭 클릭하세요. 확인하지 않으면 나중에 오류로 재작성해야 하는 번거로움이 생깁니다.</p>
+
+<h2>홈택스 전자세금계산서 발행 방법 — 4단계</h2>
+<p>홈택스(hometax.go.kr)는 별도 프로그램 설치 없이 웹에서 바로 전자세금계산서를 발급할 수 있는 <strong>무료</strong> 시스템입니다. 스마트빌 등 외부 ASP도 이용할 수 있지만 건당 비용이 발생합니다.</p>
+
+<h3>1단계 — 로그인</h3>
+<p>홈택스에 접속한 뒤 <strong>사업자용 공동인증서(범용)</strong>로 로그인합니다. 개인 공동인증서로는 세금계산서 발급이 불가능합니다. 사업자등록번호가 포함된 인증서를 미리 준비해 두세요.</p>
+
+<h3>2단계 — 메뉴 진입</h3>
+<p>상단 메뉴에서 <strong>[계산서·영수증·카드] → [전자(세금)계산서 발급] → [전자(세금)계산서 건별발급]</strong>을 선택합니다. 여러 거래처에 한꺼번에 발급하려면 '일괄발급' 메뉴에서 엑셀 업로드 방식을 이용할 수 있습니다.</p>
+
+<h3>3단계 — 정보 입력</h3>
+<p>공급자 정보는 자동으로 채워집니다. 공급받는 자의 사업자등록번호를 입력하고 <strong>'확인'</strong>을 눌러 정상 사업장 여부를 검증하세요. 이후 작성일자(거래 발생일), 품목, 공급가액, 세액을 입력합니다. 작성일자는 세금계산서를 '작성한 날'이 아니라 <strong>'거래가 실제로 일어난 날'</strong>임을 꼭 기억하세요. 공급가액의 10%가 부가가치세액입니다.</p>
+
+<h3>4단계 — 발급</h3>
+<p>모든 항목 입력 후 [발급] 버튼을 클릭하면 <strong>국세청 자동 전송과 거래처 이메일 발송이 동시에</strong> 완료됩니다. 발급 후 [전자(세금)계산서 > 발급목록조회] 메뉴에서 전송 여부와 이메일 발송 여부를 반드시 확인하세요. 간혹 전송 오류가 발생할 수 있으니 한 번 더 체크하는 습관을 들이시기 바랍니다.</p>
+
+<h2>발행 기한과 전송 기한 — 놓치면 가산세</h2>
+<p>세금계산서는 <strong>공급일이 속하는 달의 다음 달 10일까지</strong> 발행해야 합니다. 예를 들어 4월 거래분은 5월 10일까지, 6월 거래분은 7월 10일까지입니다. 전자세금계산서는 발행일의 <strong>다음 날까지</strong> 국세청에 전송해야 하지만, 홈택스에서 발급하면 자동 전송되므로 별도 조치는 필요 없습니다.</p>
+<blockquote>
+  <strong>⚠ 6월·12월 거래는 특히 주의!</strong><br>
+  과세기간 마지막 달(6월·12월) 거래는 다음 달 10일 발급 기한이 이미 다음 과세기간으로 넘어간 시점이기 때문에, 기한을 놓치면 지연발급이 아닌 바로 미발급 가산세(2%)가 적용될 수 있습니다.
+</blockquote>
+
+<h2>가산세 종류 한눈에 보기</h2>
+<table>
+  <thead>
+    <tr>
+      <th>위반 유형</th>
+      <th>가산세율 (공급가액 기준)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>미발급</td>
+      <td>2%</td>
+    </tr>
+    <tr>
+      <td>지연발급 (기한 경과 후 당기 내 발급)</td>
+      <td>1%</td>
+    </tr>
+    <tr>
+      <td>전자세금계산서 지연전송</td>
+      <td>0.3%</td>
+    </tr>
+    <tr>
+      <td>전자세금계산서 미전송</td>
+      <td>0.5%</td>
+    </tr>
+    <tr>
+      <td>의무발급자 종이 발급</td>
+      <td>1%</td>
+    </tr>
+    <tr>
+      <td>허위(가공·위장) 발급·수취</td>
+      <td>4% (2026년 인상)</td>
+    </tr>
+  </tbody>
+</table>
+<p>가산세는 한 건의 거래에 여러 종류가 중복 적용될 수 있습니다. 단, 발급 위반 가산세가 적용되는 경우에는 전송 위반 가산세는 중복 부과되지 않습니다. 허위 세금계산서 관련 가산세는 2026년부터 기존 3%에서 <strong>4%로 인상</strong>되었으니 반드시 주의하시기 바랍니다.</p>
+
+<h2>전자세금계산서 발급 시 세액공제 혜택</h2>
+<p>직전 연도 공급가액 합계가 <strong>3억 원 미만인 개인사업자</strong>는 전자세금계산서를 발급하면 발급 건당 <strong>200원</strong>을 납부할 세액에서 공제받을 수 있습니다. 연간 한도는 최대 <strong>100만 원</strong>입니다. 자동으로 공제되지 않으므로 종합소득세 신고 시 세액공제 항목에 누락 없이 신청하셔야 합니다.</p>
+<p>매출 관리와 세금 흐름을 한눈에 파악하고 싶다면 <strong>오늘장부</strong>를 활용해 보세요. 카드·현금·배달앱 매출을 한곳에 기록하고 부가세 예상액을 자동으로 계산해 주기 때문에, 세금계산서 발행 시점을 놓치지 않도록 매출 흐름을 미리 파악하는 데 큰 도움이 됩니다.</p>
+
+<h2>수정세금계산서는 어떻게 하나요?</h2>
+<p>이미 발급한 세금계산서를 수정해야 할 경우, 홈택스에서 <strong>[전자(세금)계산서 > 수정발급]</strong> 메뉴를 이용합니다. 수정 사유(환입, 계약 해제, 내국신용장 개설, 착오 정정 등)에 따라 작성 방법이 다르므로 사유를 정확히 선택해야 합니다. 수정 시점과 사유에 따라 가산세가 부과될 수 있으니 가능하면 처음 발급 단계에서 정확히 기재하는 것이 최선입니다.</p>
+
+<h2>자주 묻는 질문</h2>
+
+<h3>세금계산서는 거래 당일에만 발행해야 하나요?</h3>
+<p>아닙니다. 월 중 발생한 거래를 모아 <strong>월합계 세금계산서</strong>로 말일자로 발행할 수 있습니다. 이 경우에도 반드시 다음 달 10일까지 발행해야 합니다. 거래 건수가 많은 사장님들은 월합계 방식이 편리합니다.</p>
+
+<h3>간이과세자인데 거래처가 세금계산서를 요구합니다. 어떻게 하나요?</h3>
+<p>간이과세자는 원칙적으로 세금계산서 발급이 불가능합니다. 단, 부가세법 개정으로 일정 요건을 충족한 간이과세자는 발급이 허용됩니다. 정확한 내용은 담당 세무서 또는 세무사에게 확인하시기 바랍니다. 거래처에 세금계산서 발급이 어려운 상황이라면 미리 안내하는 것이 좋습니다.</p>
+
+<h3>세금계산서를 받지 못하면 어떻게 되나요?</h3>
+<p>공급받는 자가 세금계산서를 수취하지 못하면 <strong>매입세액 공제를 받을 수 없습니다.</strong> 세금계산서 없이 이미 매입세액을 공제받은 경우 해당 세액 전액이 추징될 수 있으니, 거래 시 반드시 세금계산서를 수취하고 이상 여부를 확인하세요.</p>
+
+<p>매출과 부가세를 체계적으로 관리하고 싶다면 지금 바로 <a href="https://오늘장부.kr">오늘장부 무료로 시작하기</a>에서 시작해 보세요.</p>
+
+<p>※ 본 글은 2026년 기준 참고용 정보이며, 정확한 신고·금액은 국세청 홈택스 또는 세무사와 상담하세요.</p>
+      </div>
+      <div class="tags">
+        <a href="/blog/?tag=%EC%84%B8%EA%B8%88%EA%B3%84%EC%82%B0%EC%84%9C" class="tag">세금계산서</a> <a href="/blog/?tag=%EC%A0%84%EC%9E%90%EC%84%B8%EA%B8%88%EA%B3%84%EC%82%B0%EC%84%9C" class="tag">전자세금계산서</a> <a href="/blog/?tag=%ED%99%88%ED%83%9D%EC%8A%A4" class="tag">홈택스</a> <a href="/blog/?tag=%EB%B6%80%EA%B0%80%EC%84%B8" class="tag">부가세</a>
+      </div>
+    </article>
+
+    <section style="background:#fff8f5;border-radius:16px;padding:24px 28px;margin-top:24px;">
+      <h2 style="font-size:18px;font-weight:800;color:#1a1a1a;margin:0 0 14px;">함께 보면 좋은 글</h2>
+      <ul style="list-style:none;padding:0;margin:0;">
+        <li style="padding:8px 0;border-bottom:1px solid #ffe6d9;"><a href="/blog/posts/vat-refund-cases-guide-for-small-business.html" style="color:#FF6B35;text-decoration:none;font-weight:600;font-size:14px;">부가세 환급 받는 경우 총정리 — 사장님이 꼭 알아야 할 5가지</a></li>
+        <li style="padding:8px 0;border-bottom:1px solid #ffe6d9;"><a href="/blog/posts/tax-exempt-vs-taxable-business-korea.html" style="color:#FF6B35;text-decoration:none;font-weight:600;font-size:14px;">면세사업자 vs 과세사업자, 사장님이 꼭 알아야 할 핵심 차이</a></li>
+        <li style="padding:8px 0;border-bottom:1px solid #ffe6d9;"><a href="/blog/posts/hometax-vat-filing-guide-for-small-business.html" style="color:#FF6B35;text-decoration:none;font-weight:600;font-size:14px;">홈택스 부가세 신고 따라하기 – 사장님 필수 완전 가이드</a></li>
+        <li style="padding:8px 0;border-bottom:1px solid #ffe6d9;"><a href="/blog/posts/vat-penalty-tax-how-to-avoid.html" style="color:#FF6B35;text-decoration:none;font-weight:600;font-size:14px;">부가세 가산세 피하는 법 — 사장님이 꼭 알아야 할 5가지</a></li>
+      </ul>
+    </section>
+
+    <div class="ad-slot">광고 영역 (AdSense 승인 후 활성화)</div>
+
+    <div class="cta-box">
+      <h3>매일 매출 기록, 30초면 끝!</h3>
+      <p>카드·현금·네이버페이·카카오페이<br>여러 결제수단을 한 화면에서 입력<br>부가세 예상액도 자동으로 계산해드려요</p>
+      <a href="/">지금 무료로 시작하기</a>
+    </div>
+  </main>
+
+  <aside class="sidebar">
+    <div class="sidebar-cta">
+      <h3>매일 매출 기록,<br>30초면 끝!</h3>
+      <p>카드·현금·배달앱 한 번에<br>부가세 예상액도 자동 계산</p>
+      <a href="/">무료로 시작하기</a>
+    </div>
+  </aside>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-links">
+      <a href="/">서비스 홈</a>
+      <a href="/blog/">블로그</a>
+      <a href="/privacy">개인정보처리방침</a>
+      <a href="/terms">이용약관</a>
+    </div>
+    <div class="footer-copy">© 2026 오늘장부. All rights reserved.</div>
+  </div>
+</footer>
+
+</body>
+</html>
