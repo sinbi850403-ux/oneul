@@ -92,12 +92,17 @@ export default function Landing() {
       <header className="bg-white/80 backdrop-blur-md border-b border-stone-100 sticky top-0 z-10">
         <div className="max-w-4xl mx-auto px-6 py-4 flex justify-between items-center">
           <h1 className="text-2xl font-bold text-brand">오늘장부</h1>
-          <button
-            onClick={() => navigate('/login')}
-            className="text-sm font-medium text-brand border border-brand px-4 py-1.5 rounded-full hover:bg-orange-50 transition-colors"
-          >
-            로그인
-          </button>
+          <div className="flex items-center gap-4">
+            <a href="/blog/" className="text-sm font-medium text-stone-500 hover:text-brand transition-colors">
+              블로그
+            </a>
+            <button
+              onClick={() => navigate('/login')}
+              className="text-sm font-medium text-brand border border-brand px-4 py-1.5 rounded-full hover:bg-orange-50 transition-colors"
+            >
+              로그인
+            </button>
+          </div>
         </div>
       </header>
 
@@ -230,6 +235,7 @@ export default function Landing() {
         <div className="max-w-4xl mx-auto px-6 py-6 flex flex-col md:flex-row justify-between items-center gap-2 text-xs text-stone-400">
           <span>© 2026 오늘장부</span>
           <div className="flex gap-4">
+            <a href="/blog/" className="hover:text-stone-600 transition-colors">블로그</a>
             <button onClick={() => navigate('/privacy')} className="hover:text-stone-600 transition-colors">개인정보처리방침</button>
             <button onClick={() => navigate('/terms')} className="hover:text-stone-600 transition-colors">이용약관</button>
             <span>문의: sinbi850403@gmail.com</span>
