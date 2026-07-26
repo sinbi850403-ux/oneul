@@ -54,7 +54,8 @@
     .post-date { font-size: 12px; color: #aaa; margin-top: 10px; }
 
     /* Ad slot */
-    .ad-slot { background: #f0f0f0; border-radius: 12px; display: flex; align-items: center; justify-content: center; color: #bbb; font-size: 12px; min-height: 90px; margin: 24px 0; }
+    .ad-slot { margin: 24px 0; }
+    .ad-slot:empty { margin: 0; }
 
     /* Sidebar */
     .sidebar { }
@@ -132,8 +133,8 @@
 
 <div class="main-wrap">
   <div>
-    <!-- 상단 광고 -->
-    <div class="ad-slot">광고 영역 (AdSense 승인 후 활성화)</div>
+    <!-- 상단 광고 (Google 자동 광고) -->
+    <div class="ad-slot"></div>
 
     <div class="post-grid" id="postGrid">
       <div class="loading">게시글을 불러오는 중...</div>
@@ -157,7 +158,8 @@
     </div>
 
     <!-- 사이드바 광고 -->
-    <div class="ad-slot" style="min-height:250px; margin-top:20px">광고 영역</div>
+    <!-- 사이드바 광고 (Google 자동 광고) -->
+    <div class="ad-slot" style="margin-top:20px"></div>
   </aside>
 </div>
 

@@ -50,7 +50,9 @@
     .tags { padding: 20px 32px; border-top: 1px solid #f0f0f0; display: flex; gap: 8px; flex-wrap: wrap; }
     .tag { background: #fff3ee; color: #FF6B35; border-radius: 20px; padding: 5px 12px; font-size: 12px; font-weight: 600; text-decoration: none; }
     .tag:hover { background: #FF6B35; color: white; }
-    .ad-slot { background: #f0f0f0; border-radius: 12px; display: flex; align-items: center; justify-content: center; color: #bbb; font-size: 12px; min-height: 90px; margin: 24px 0; }
+    /* 광고 자리: 채워지기 전에는 회색 박스가 보이지 않도록 비워둔다 */
+    .ad-slot { margin: 24px 0; }
+    .ad-slot:empty { margin: 0; }
     .cta-box { background: linear-gradient(135deg, #FF6B35, #ff8c42); border-radius: 20px; padding: 32px; text-align: center; color: white; margin-top: 24px; }
     .cta-box h3 { font-size: 22px; font-weight: 900; margin-bottom: 10px; }
     .cta-box p { font-size: 14px; opacity: 0.9; line-height: 1.6; margin-bottom: 20px; }
@@ -146,7 +148,7 @@
       <a href="/blog/" class="nav-back">블로그 목록으로</a>
     </div>
 
-    <div class="ad-slot">광고 영역 (AdSense 승인 후 활성화)</div>
+    <div class="ad-slot"></div>
 
     <article>
       <div class="article-head">
@@ -279,7 +281,7 @@
       </ul>
     </section>
 
-    <div class="ad-slot">광고 영역 (AdSense 승인 후 활성화)</div>
+    <div class="ad-slot"></div>
 
     <div class="cta-box">
       <h3>매일 매출 기록, 30초면 끝!</h3>
