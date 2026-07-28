@@ -1,16 +1,7 @@
 import { useState, useEffect, useRef } from 'react'
 import { supabase } from '../../lib/supabase.js'
 
-const FIELDS = [
-  { key: 'card',  label: '카드' },
-  { key: 'cash',  label: '현금영수증' },
-  { key: 'bank',  label: '무통장입금' },
-  { key: 'vbank', label: '가상계좌' },
-  { key: 'phone', label: '휴대폰결제' },
-  { key: 'npay',  label: '네이버페이' },
-  { key: 'kpay',  label: '카카오페이' },
-  { key: 'etc',   label: '기타' },
-]
+import { PAYMENT_FIELDS as FIELDS } from '../../lib/paymentFields.js'
 
 function won(n) {
   return '₩ ' + (n ?? 0).toLocaleString('ko-KR')

@@ -10,7 +10,11 @@ create table sales (
   phone int default 0,
   npay int default 0,
   kpay int default 0,
+  baemin int default 0,
+  coupang int default 0,
+  yogiyo int default 0,
   etc int default 0,
+  -- total은 배달앱을 포함한 주문 총액이다. 수수료는 매출에서 빼지 않는다(부가세 신고 기준).
   total int default 0,
   memo text,
   created_at timestamptz default now(),
@@ -27,6 +31,8 @@ create table profiles (
   biz_type text,
   address text,
   tax_type text default 'general',
+  -- 배달앱별 실효 수수료율(%). 중개·결제·배달비를 합친 값으로, 실입금 예상액 계산에만 쓴다.
+  delivery_rates jsonb default '{"baemin":0,"coupang":0,"yogiyo":0}'::jsonb,
   created_at timestamptz default now()
 );
 
