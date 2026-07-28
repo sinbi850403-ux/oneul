@@ -10,16 +10,20 @@ export default function Tax() {
 
   const [monthTotal, setMonthTotal] = useState(0)
   const [taxType, setTaxType] = useState('general')
+  const [bizClass, setBizClass] = useState(0)
 
   useEffect(() => {
     async function load() {
       const { data: { user } } = await supabase.auth.getUser()
       const { data: profile } = await supabase
         .from('profiles')
-        .select('tax_type')
+        .select('tax_type, vat_biz_class')
         .eq('user_id', user.id)
         .single()
-      if (profile) setTaxType(profile.tax_type)
+      if (profile) {
+        setTaxType(profile.tax_type)
+        setBizClass(profile.vat_biz_class ?? 0)
+      }
 
       const { start, end } = getMonthRange(year, month)
       const { data } = await supabase
@@ -35,7 +39,7 @@ export default function Tax() {
     load()
   }, [year, month])
 
-  const vatAmount = vat(monthTotal, taxType)
+  const vatAmount = vat(monthTotal, taxType, bizClass)
   const vatDeadline = nextVatDeadline()
   const incomeTaxDeadline = nextIncomeTaxDeadline()
   const vatD = dDay(vatDeadline)

@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from 'react'
 import { supabase } from '../../lib/supabase.js'
 
 import { PAYMENT_FIELDS as FIELDS } from '../../lib/paymentFields.js'
+import { vat } from '../../lib/tax.js'
 
 function won(n) {
   return '₩ ' + (n ?? 0).toLocaleString('ko-KR')
@@ -174,6 +175,7 @@ export default function MonthlyReport() {
   const [purchaseTotal,    setPurchaseTotal]    = useState(0)
   const [salesItemsRows,   setSalesItemsRows]   = useState([])
   const [taxType,          setTaxType]          = useState('general')
+  const [bizClass,         setBizClass]         = useState(0)
 
   useEffect(() => {
     async function load() {
@@ -189,13 +191,14 @@ export default function MonthlyReport() {
           .gte('purchase_date', start).lte('purchase_date', endStr),
         supabase.from('sales_items').select('sale_date, total_amount').eq('user_id', user.id)
           .gte('sale_date', start).lte('sale_date', endStr),
-        supabase.from('profiles').select('tax_type').eq('user_id', user.id).maybeSingle(),
+        supabase.from('profiles').select('tax_type, vat_biz_class').eq('user_id', user.id).maybeSingle(),
       ])
 
       setRows(salesData ?? [])
       setPurchaseTotal((purchasesData ?? []).reduce((a, r) => a + (r.total_amount ?? 0), 0))
       setSalesItemsRows(siData ?? [])
       setTaxType(profile?.tax_type ?? 'general')
+      setBizClass(profile?.vat_biz_class ?? 0)
     }
     load()
   }, [year, month])
@@ -211,9 +214,7 @@ export default function MonthlyReport() {
 
   async function handleShare() {
     const totalSales   = salesItemTotal + monthTotal
-    const estimatedVat = taxType === 'simple'
-      ? Math.round(totalSales * 0.015)
-      : Math.round(totalSales / 11)
+    const estimatedVat = vat(totalSales, taxType, bizClass)
     const profit     = totalSales - purchaseTotal - estimatedVat
     const marginRate = totalSales > 0 ? Math.round((profit / totalSales) * 100) : 0
     const text = [
@@ -297,9 +298,7 @@ export default function MonthlyReport() {
       {/* 손익 요약 */}
       {(purchaseTotal > 0 || salesItemTotal > 0 || monthTotal > 0) && (() => {
         const totalSales  = salesItemTotal + monthTotal
-        const estimatedVat = taxType === 'simple'
-          ? Math.round(totalSales * 0.015)
-          : Math.round(totalSales / 11)
+        const estimatedVat = vat(totalSales, taxType, bizClass)
         const profit     = totalSales - purchaseTotal - estimatedVat
         const marginRate = totalSales > 0 ? Math.round((profit / totalSales) * 100) : 0
         return (

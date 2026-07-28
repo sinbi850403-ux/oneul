@@ -4,10 +4,12 @@ import { supabase } from '../lib/supabase.js'
 import { usePush } from '../hooks/usePush.js'
 import Toast from '../components/Toast.jsx'
 import { DELIVERY_FIELDS, EMPTY_DELIVERY_RATES } from '../lib/paymentFields.js'
+import { VAT_BIZ_CLASSES } from '../lib/vatRates.js'
 
 export default function Settings() {
   const [shopName, setShopName] = useState('')
   const [taxType, setTaxType] = useState('general')
+  const [bizClass, setBizClass] = useState(0)
   const [rates, setRates] = useState(EMPTY_DELIVERY_RATES)
   const [toast, setToast] = useState('')
   const [saving, setSaving] = useState(false)
@@ -23,12 +25,13 @@ export default function Settings() {
       setUserId(user.id)
       const { data } = await supabase
         .from('profiles')
-        .select('shop_name, tax_type, delivery_rates')
+        .select('shop_name, tax_type, delivery_rates, vat_biz_class')
         .eq('user_id', user.id)
         .single()
       if (data) {
         setShopName(data.shop_name ?? '')
         setTaxType(data.tax_type ?? 'general')
+        setBizClass(data.vat_biz_class ?? 0)
         setRates({ ...EMPTY_DELIVERY_RATES, ...(data.delivery_rates ?? {}) })
       }
     }
@@ -40,7 +43,7 @@ export default function Settings() {
     const { data: { user } } = await supabase.auth.getUser()
     const { error } = await supabase
       .from('profiles')
-      .update({ shop_name: shopName, tax_type: taxType, delivery_rates: rates })
+      .update({ shop_name: shopName, tax_type: taxType, delivery_rates: rates, vat_biz_class: bizClass })
       .eq('user_id', user.id)
     setSaving(false)
     if (error) setToast('저장에 실패했어요')
@@ -124,6 +127,30 @@ export default function Settings() {
             ))}
           </div>
         </div>
+
+        {/* 간이과세자는 업종별 부가가치율로 세금이 갈린다. 일반과세자에겐 쓰이지 않는 값이라 숨긴다. */}
+        {taxType === 'simple' && (
+          <div>
+            <label htmlFor="vat-biz" className="text-sm text-stone-500 mb-2 block">업종 (부가가치율)</label>
+            <select
+              id="vat-biz"
+              value={bizClass}
+              onChange={(e) => setBizClass(Number(e.target.value))}
+              className="w-full text-sm bg-stone-50 rounded-xl px-3 py-3 outline-none focus:ring-2 focus:ring-brand/30"
+            >
+              {VAT_BIZ_CLASSES.map(({ value, rate, label }) => (
+                <option key={value} value={value}>
+                  {label} ({rate}%)
+                </option>
+              ))}
+            </select>
+            <p className="text-xs text-stone-400 mt-2 leading-relaxed">
+              업종에 따라 부가세가 매출의 1.5%에서 4.0%까지 달라집니다.
+              자세한 계산은 <a href="/tools/vat-simplified-calculator/" className="text-brand font-semibold underline">
+              간이과세자 부가세 계산기</a>에서 확인하세요.
+            </p>
+          </div>
+        )}
       </div>
 
       {/* 배달앱 수수료 — 매출 입력 화면의 실입금 예상액 계산에 쓰인다 */}
