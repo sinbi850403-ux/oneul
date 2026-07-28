@@ -271,8 +271,10 @@ function renderPostHtml({ title, description, body, category, tags, thumb, relat
     .logo-text { font-size: 18px; font-weight: 800; color: #FF6B35; }
     .logo-sub { font-size: 13px; color: #888; margin-left: 4px; }
     .header-cta { background: #FF6B35; color: white; border: none; padding: 8px 16px; border-radius: 8px; font-size: 13px; font-weight: 600; cursor: pointer; text-decoration: none; }
-    .wrap { max-width: 1100px; margin: 0 auto; padding: 32px 20px; display: grid; grid-template-columns: 1fr 300px; gap: 40px; }
-    @media (max-width: 768px) { .wrap { grid-template-columns: 1fr; } .sidebar { display: none; } }
+    /* minmax(0, ...): 표처럼 최소폭이 큰 콘텐츠가 그리드 트랙을 밀어내 페이지 전체가
+       가로로 스크롤되는 것을 막는다. 1fr만 쓰면 트랙 최소폭이 auto라 끌려간다. */
+    .wrap { max-width: 1100px; margin: 0 auto; padding: 32px 20px; display: grid; grid-template-columns: minmax(0, 1fr) 300px; gap: 40px; }
+    @media (max-width: 768px) { .wrap { grid-template-columns: minmax(0, 1fr); } .sidebar { display: none; } }
     article { background: white; border-radius: 20px; overflow: hidden; box-shadow: 0 2px 12px rgba(0,0,0,0.06); }
     .article-head { padding: 32px 32px 24px; border-bottom: 1px solid #f0f0f0; }
     .article-cat { font-size: 12px; font-weight: 700; color: #FF6B35; text-transform: uppercase; margin-bottom: 12px; }
@@ -286,7 +288,10 @@ function renderPostHtml({ title, description, body, category, tags, thumb, relat
     .article-body p { margin-bottom: 14px; color: #333; font-size: 15px; }
     .article-body ul, .article-body ol { padding-left: 20px; margin-bottom: 14px; }
     .article-body li { margin-bottom: 6px; color: #333; font-size: 15px; }
-    .article-body table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 14px; }
+    article { min-width: 0; }
+    /* 좁은 화면에서는 표만 자기 안에서 가로 스크롤시킨다. min-width:100%가 있어야
+       넓은 화면에서 기존처럼 폭을 꽉 채운다. */
+    .article-body table { display: block; width: max-content; min-width: 100%; max-width: 100%; overflow-x: auto; border-collapse: collapse; margin: 16px 0; font-size: 14px; }
     .article-body th { background: #FF6B35; color: white; padding: 10px 14px; text-align: left; }
     .article-body td { padding: 10px 14px; border-bottom: 1px solid #f0f0f0; }
     .article-body tr:nth-child(even) td { background: #fff8f5; }

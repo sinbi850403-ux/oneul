@@ -39,8 +39,10 @@
     .cat-btn.active, .cat-btn:hover { color: #FF6B35; border-bottom-color: #FF6B35; }
 
     /* Main layout */
-    .main-wrap { max-width: 1100px; margin: 0 auto; padding: 32px 20px; display: grid; grid-template-columns: 1fr 300px; gap: 32px; }
-    @media (max-width: 768px) { .main-wrap { grid-template-columns: 1fr; } .sidebar { display: none; } }
+    /* minmax(0, ...): 최소폭이 큰 콘텐츠가 그리드 트랙을 밀어내 페이지 전체가
+       가로로 스크롤되는 것을 막는다. 1fr만 쓰면 트랙 최소폭이 auto라 끌려간다. */
+    .main-wrap { max-width: 1100px; margin: 0 auto; padding: 32px 20px; display: grid; grid-template-columns: minmax(0, 1fr) 300px; gap: 32px; }
+    @media (max-width: 768px) { .main-wrap { grid-template-columns: minmax(0, 1fr); } .sidebar { display: none; } }
 
     /* Post grid */
     .post-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; }
@@ -73,7 +75,8 @@
     .popular-num { color: #FF6B35; font-weight: 800; margin-right: 8px; }
 
     /* Pagination */
-    .pagination { display: flex; justify-content: center; gap: 8px; margin-top: 32px; }
+    /* 글이 늘면 페이지 버튼도 늘어난다. wrap이 없으면 좁은 화면에서 한 줄로 뻗어 페이지가 가로로 스크롤된다. */
+    .pagination { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; margin-top: 32px; }
     .page-btn { width: 36px; height: 36px; border: 1px solid #ddd; border-radius: 8px; background: white; cursor: pointer; font-size: 14px; color: #444; }
     .page-btn.active { background: #FF6B35; color: white; border-color: #FF6B35; font-weight: 700; }
 
