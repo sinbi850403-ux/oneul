@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>간이과세자 부가세 계산기 — 업종별 부가가치율·납부면제 확인 | 오늘장부</title>
+  <meta name="description" content="업종을 고르면 국세청 부가가치율로 간이과세자 납부세액을 계산합니다. 납부의무 면제 대상인지, 신용카드 발행세액공제로 얼마가 줄어드는지까지 한 번에 확인하세요.">
+  <meta property="og:title" content="간이과세자 부가세 계산기 — 업종별 부가가치율·납부면제 확인">
+  <meta property="og:description" content="업종별 부가가치율로 간이과세자 납부세액을 계산하고, 납부의무 면제와 세액공제까지 반영합니다.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://xn--wh1bw0st1gbrb.kr/tools/vat-simplified-calculator/">
+  <link rel="canonical" href="https://xn--wh1bw0st1gbrb.kr/tools/vat-simplified-calculator/">
+  <link rel="icon" href="/icons/icon-192.png">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2764893290310463" crossorigin="anonymous"></script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "간이과세자 부가세 계산기",
+    "url": "https://xn--wh1bw0st1gbrb.kr/tools/vat-simplified-calculator/",
+    "applicationCategory": "FinanceApplication",
+    "operatingSystem": "All",
+    "description": "업종별 부가가치율을 적용해 간이과세자의 부가가치세 납부세액을 계산하고, 납부의무 면제 여부와 세액공제를 반영합니다.",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "KRW" }
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "간이과세자 부가세는 어떻게 계산하나요?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "공급대가(부가세를 포함한 매출 총액)에 업종별 부가가치율을 곱하고, 다시 세율 10%를 곱해 납부세액을 구합니다. 일반과세자처럼 매출세액에서 매입세액을 빼는 방식이 아니라, 업종별로 정해진 부가가치율을 적용하는 간편한 방식입니다."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "매출이 얼마 이하면 부가세를 안 내나요?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "해당 과세기간의 공급대가가 4,800만원 미만이면 납부의무가 면제됩니다. 다만 납부하지 않더라도 신고는 해야 합니다. 간이과세자는 1년에 한 번, 다음 해 1월 25일까지 신고합니다."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "간이과세자도 환급을 받을 수 있나요?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "받을 수 없습니다. 매입세액 공제와 신용카드 발행세액공제를 더한 금액이 납부세액보다 커도 납부할 세금이 0이 될 뿐, 차액을 돌려받지는 못합니다. 매입이 많고 환급이 필요하다면 일반과세자 전환을 검토하는 편이 낫습니다."
+        }
+      }
+    ]
+  }
+  </script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Noto Sans KR', sans-serif; background: #f8f9fa; color: #1a1a1a; line-height: 1.7; }
+    header { background: #fff; border-bottom: 1px solid #eee; position: sticky; top: 0; z-index: 100; }
+    .header-inner { max-width: 900px; margin: 0 auto; padding: 0 20px; height: 60px; display: flex; align-items: center; justify-content: space-between; }
+    .logo { display: flex; align-items: center; gap: 8px; text-decoration: none; }
+    .logo-icon { width: 32px; height: 32px; background: #FF6B35; border-radius: 8px; display: flex; align-items: center; justify-content: center; color: white; font-weight: 900; font-size: 16px; }
+    .logo-text { font-size: 18px; font-weight: 800; color: #FF6B35; }
+    .header-cta { background: #FF6B35; color: white; padding: 8px 16px; border-radius: 8px; font-size: 13px; font-weight: 600; text-decoration: none; }
+    .wrap { max-width: 900px; margin: 0 auto; padding: 32px 20px 60px; }
+    h1 { font-size: clamp(22px, 5vw, 30px); font-weight: 900; line-height: 1.35; margin-bottom: 10px; }
+    .lede { color: #666; font-size: 15px; margin-bottom: 28px; }
+    .card { background: #fff; border-radius: 20px; box-shadow: 0 2px 12px rgba(0,0,0,0.06); padding: 28px; margin-bottom: 20px; }
+    .card h2 { font-size: 19px; font-weight: 800; margin-bottom: 6px; padding-bottom: 8px; border-bottom: 2px solid #FF6B35; }
+    .card h2.plain { border: 0; padding: 0; margin-bottom: 14px; }
+    .field { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 11px 0; border-bottom: 1px solid #f2f2f2; }
+    .field:last-child { border-bottom: 0; }
+    .field label { font-size: 15px; color: #333; font-weight: 500; }
+    .field .hint { display: block; font-size: 12px; color: #aaa; font-weight: 400; margin-top: 2px; }
+    .input-group { display: flex; align-items: center; gap: 6px; flex-shrink: 0; }
+    input[type="number"] { width: 150px; text-align: right; font-size: 15px; font-family: inherit; padding: 10px 12px; border: 1px solid #e5e5e5; border-radius: 10px; background: #fafafa; }
+    input[type="number"]:focus { outline: none; border-color: #FF6B35; background: #fff; }
+    select { width: 100%; font-size: 15px; font-family: inherit; padding: 12px; border: 1px solid #e5e5e5; border-radius: 10px; background: #fafafa; color: #333; }
+    select:focus { outline: none; border-color: #FF6B35; background: #fff; }
+    .unit { font-size: 14px; color: #999; width: 22px; }
+    .tier-badge { background: #fff8f5; border: 1px solid #ffd9c7; border-radius: 14px; padding: 16px 20px; margin-top: 18px; }
+    .tier-badge .t { font-size: 13px; color: #a0664a; }
+    .tier-badge .v { font-size: 20px; font-weight: 900; color: #FF6B35; margin-top: 2px; }
+    .tier-badge .r { font-size: 14px; color: #7a5443; margin-top: 6px; }
+    .result { background: linear-gradient(135deg, #FF6B35, #ff8c42); border-radius: 20px; padding: 28px; color: #fff; margin-bottom: 20px; }
+    .result-row { display: flex; justify-content: space-between; align-items: baseline; padding: 7px 0; font-size: 15px; }
+    .result-row.sub { opacity: 0.85; font-size: 14px; }
+    .result-divider { border-top: 1px solid rgba(255,255,255,0.3); margin: 12px 0; }
+    .result-main { display: flex; justify-content: space-between; align-items: baseline; }
+    .result-main .k { font-size: 16px; font-weight: 700; }
+    .result-main .v { font-size: 30px; font-weight: 900; }
+    .banner { border-radius: 14px; padding: 16px 20px; margin-top: 18px; background: rgba(255,255,255,0.2); font-size: 14px; }
+    .banner strong { font-size: 15px; }
+    table { width: 100%; border-collapse: collapse; font-size: 14px; margin-top: 8px; }
+    th { background: #FF6B35; color: #fff; padding: 10px 12px; text-align: left; font-weight: 700; }
+    td { padding: 10px 12px; border-bottom: 1px solid #f0f0f0; }
+    tr:nth-child(even) td { background: #fff8f5; }
+    tr.on td { background: #ffe8dc; font-weight: 800; }
+    .table-scroll { overflow-x: auto; }
+    .note { background: #fff8f5; border-left: 4px solid #FF6B35; padding: 14px 18px; border-radius: 0 12px 12px 0; font-size: 14px; color: #555; margin-top: 14px; }
+    .faq h3 { font-size: 16px; font-weight: 700; margin: 20px 0 6px; }
+    .faq p { font-size: 15px; color: #444; }
+    .cta-box { background: linear-gradient(135deg, #FF6B35, #ff8c42); border-radius: 20px; padding: 32px; text-align: center; color: #fff; }
+    .cta-box h3 { font-size: 22px; font-weight: 900; margin-bottom: 10px; }
+    .cta-box p { font-size: 14px; opacity: 0.92; margin-bottom: 20px; }
+    .cta-box a { background: #fff; color: #FF6B35; border-radius: 12px; padding: 13px 28px; font-weight: 800; font-size: 15px; text-decoration: none; display: inline-block; }
+    .ad-slot { margin: 24px 0; min-height: 90px; }
+    .links { margin-top: 24px; font-size: 14px; }
+    .links a { color: #FF6B35; text-decoration: none; font-weight: 600; }
+    footer { text-align: center; color: #aaa; font-size: 13px; padding: 30px 20px 50px; }
+    @media (max-width: 600px) {
+      .card { padding: 20px; }
+      .field { flex-direction: column; align-items: stretch; gap: 6px; }
+      .input-group { justify-content: flex-end; }
+      input[type="number"] { width: 100%; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="header-inner">
+      <a class="logo" href="/">
+        <span class="logo-icon">오</span>
+        <span class="logo-text">오늘장부</span>
+      </a>
+      <a class="header-cta" href="/">무료로 시작하기</a>
+    </div>
+  </header>
+
+  <div class="wrap">
+    <h1>간이과세자 부가세 계산기</h1>
+    <p class="lede">
+      간이과세자는 매출세액에서 매입세액을 빼는 방식이 아니라, <strong>업종별로 정해진 부가가치율</strong>을 적용합니다.
+      업종만 고르면 국세청 기준으로 납부세액을 계산하고, 납부의무 면제 대상인지까지 알려드립니다.
+    </p>
+
+    <div class="card">
+      <h2 class="plain">1. 업종과 매출</h2>
+
+      <div style="padding: 11px 0; border-bottom: 1px solid #f2f2f2;">
+        <label for="biz" style="font-size:15px;color:#333;font-weight:500;display:block;margin-bottom:8px;">업종</label>
+        <select id="biz">
+          <option value="0">소매업 · 재생용 재료수집 및 판매업 · 음식점업 (15%)</option>
+          <option value="1">제조업 · 농업 임업 및 어업 · 소화물 전문 운송업 (20%)</option>
+          <option value="2">숙박업 (25%)</option>
+          <option value="3">건설업 · 운수 및 창고업 · 정보통신업 (30%)</option>
+          <option value="4">그 밖의 서비스업 (30%)</option>
+          <option value="5">금융·보험 · 전문·과학·기술 · 사업시설관리 · 부동산 관련 서비스업 · 부동산임대업 (40%)</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label for="supply">연 매출 (공급대가)<span class="hint">부가세를 포함한 총 매출액. 손님이 낸 돈 전부입니다</span></label>
+        <div class="input-group">
+          <input type="number" id="supply" value="60000000" min="0" step="1000000">
+          <span class="unit">원</span>
+        </div>
+      </div>
+
+      <div class="tier-badge">
+        <div class="t">적용 부가가치율</div>
+        <div class="v" id="rate-label">-</div>
+        <div class="r" id="tier-msg">-</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2 class="plain">2. 공제 항목 (선택)</h2>
+      <p style="font-size:14px;color:#777;margin-bottom:6px">
+        모르시면 비워두세요. 넣으면 실제 납부액이 더 정확해집니다.
+      </p>
+
+      <div class="field">
+        <label for="cardIssued">카드·현금영수증 발행액<span class="hint">연간 발행 합계. 발행액의 1.3%를 세액에서 빼줍니다 (연 1,000만원 한도)</span></label>
+        <div class="input-group">
+          <input type="number" id="cardIssued" value="40000000" min="0" step="1000000">
+          <span class="unit">원</span>
+        </div>
+      </div>
+
+      <div class="field">
+        <label for="purchase">세금계산서 받은 매입액<span class="hint">공급대가 기준. 매입액의 0.5%를 공제받습니다</span></label>
+        <div class="input-group">
+          <input type="number" id="purchase" value="20000000" min="0" step="1000000">
+          <span class="unit">원</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="result">
+      <div class="result-row"><span>공급대가</span><span id="r-supply">-</span></div>
+      <div class="result-row sub"><span id="r-rate-label">부가가치율</span><span id="r-rate">-</span></div>
+      <div class="result-divider"></div>
+      <div class="result-row"><span>납부세액</span><span id="r-tax">-</span></div>
+      <div class="result-row sub"><span>신용카드 발행세액공제</span><span id="r-card">-</span></div>
+      <div class="result-row sub"><span>매입세액 공제</span><span id="r-purchase">-</span></div>
+      <div class="result-divider"></div>
+      <div class="result-main">
+        <span class="k">최종 납부액</span>
+        <span class="v" id="r-final">-</span>
+      </div>
+      <div class="banner" id="banner">-</div>
+    </div>
+
+    <div class="cta-box">
+      <h3>공급대가, 지금 바로 아세요?</h3>
+      <p>
+        간이과세자는 1년에 한 번, 다음 해 1월 25일까지 신고합니다.<br>
+        1년치 매출을 그때 몰아서 정리하면 늦습니다.<br>
+        오늘장부에 매일 기록하면 공급대가와 카드 발행액이 자동으로 쌓입니다.
+      </p>
+      <a href="/">오늘장부 무료로 시작하기</a>
+    </div>
+
+    <div class="ad-slot">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2764893290310463" data-ad-format="auto" data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+
+    <div class="card">
+      <h2>업종별 부가가치율 (국세청 기준)</h2>
+      <div class="table-scroll">
+        <table>
+          <thead>
+            <tr><th>업종</th><th>부가가치율</th><th>실효 세율</th></tr>
+          </thead>
+          <tbody id="rate-table">
+            <tr data-i="0"><td>소매업, 재생용 재료수집 및 판매업, 음식점업</td><td>15%</td><td>1.5%</td></tr>
+            <tr data-i="1"><td>제조업, 농업·임업 및 어업, 소화물 전문 운송업</td><td>20%</td><td>2.0%</td></tr>
+            <tr data-i="2"><td>숙박업</td><td>25%</td><td>2.5%</td></tr>
+            <tr data-i="3"><td>건설업, 운수 및 창고업, 정보통신업</td><td>30%</td><td>3.0%</td></tr>
+            <tr data-i="4"><td>그 밖의 서비스업</td><td>30%</td><td>3.0%</td></tr>
+            <tr data-i="5"><td>금융·보험, 전문·과학·기술, 사업시설관리·지원 및 임대, 부동산 관련 서비스업, 부동산임대업</td><td>40%</td><td>4.0%</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="note">
+        2021년 7월 1일 이후 적용되는 국세청 기준입니다.
+        <strong>실효 세율 = 부가가치율 × 10%</strong> 이므로, 공급대가에 실효 세율만 곱해도 납부세액이 나옵니다.
+        음식점을 하는 사장님이라면 매출의 1.5%가 기준선입니다.
+      </div>
+    </div>
+
+    <div class="card faq">
+      <h2 class="plain">자주 묻는 질문</h2>
+
+      <h3>간이과세자 부가세는 어떻게 계산하나요?</h3>
+      <p>
+        <strong>공급대가 × 업종별 부가가치율 × 10%</strong> 입니다.
+        공급대가는 부가세를 포함한 매출 총액, 즉 손님이 낸 돈 전부입니다.
+        일반과세자처럼 매출세액에서 매입세액을 빼는 방식이 아니라, 업종별로 정해진 비율을 쓰는 간편한 방식입니다.
+      </p>
+
+      <h3>매출이 얼마 이하면 부가세를 안 내나요?</h3>
+      <p>
+        해당 과세기간의 공급대가가 <strong>4,800만원 미만</strong>이면 납부의무가 면제됩니다.
+        다만 납부하지 않더라도 <strong>신고는 해야 합니다.</strong>
+        간이과세자는 1년에 한 번, 다음 해 1월 25일까지 신고합니다.
+      </p>
+
+      <h3>간이과세자도 환급을 받을 수 있나요?</h3>
+      <p>
+        받을 수 없습니다. 매입세액 공제와 신용카드 발행세액공제를 더한 금액이 납부세액보다 커도
+        납부할 세금이 0이 될 뿐, 차액을 돌려받지는 못합니다.
+        매입이 많고 환급이 필요하다면 일반과세자 전환을 검토하는 편이 낫습니다.
+      </p>
+
+      <h3>간이과세자 기준은 얼마인가요?</h3>
+      <p>
+        직전 연도 공급대가가 <strong>1억 400만원 미만</strong>이면 간이과세를 적용받습니다.
+        다만 업종이나 사업장 소재지에 따라 매출과 무관하게 간이과세가 배제되는 경우가 있으니,
+        본인이 해당하는지는 홈택스나 세무서에서 확인하세요.
+      </p>
+
+      <div class="note">
+        본 계산기는 국세청 공개 기준을 바탕으로 한 참고용입니다. 실제 신고세액은 업종 분류,
+        공제 요건 충족 여부, 재고납부세액 등에 따라 달라질 수 있습니다.
+        정확한 신고는 홈택스 또는 세무사와 상담하세요.
+      </div>
+    </div>
+
+    <div class="links">
+      <a href="/tools/card-fee-calculator/">카드수수료 계산기</a>
+      &nbsp;·&nbsp;
+      <a href="/tools/delivery-fee-calculator/">배달앱 수수료 계산기</a>
+      &nbsp;·&nbsp;
+      <a href="/blog/">오늘장부 블로그</a>
+    </div>
+  </div>
+
+  <footer>오늘장부 — 카드·현금·배달앱 매출을 한 번에</footer>
+
+  <script>
+  (function () {
+    // 국세청 기준 (2021-07-01 이후). 부가가치율 × 세율 10% = 실효 세율.
+    var RATES = [15, 20, 25, 30, 30, 40];
+    var EXEMPT_LIMIT = 48000000;      // 공급대가 4,800만원 미만이면 납부의무 면제
+    var SIMPLE_LIMIT = 104000000;     // 직전연도 공급대가 1억 400만원 미만이면 간이과세
+    var CARD_CREDIT_RATE = 1.3;       // 신용카드 등 발행세액공제
+    var CARD_CREDIT_CAP = 10000000;   // 연 1,000만원 한도
+    var PURCHASE_CREDIT_RATE = 0.5;   // 매입액(공급대가) × 0.5%
+
+    var el = {};
+    ['biz', 'supply', 'cardIssued', 'purchase'].forEach(function (id) { el[id] = document.getElementById(id); });
+
+    function num(id) {
+      var v = parseFloat(el[id].value);
+      return isFinite(v) && v > 0 ? v : 0;
+    }
+    function won(n) { return '₩ ' + Math.round(n).toLocaleString('ko-KR'); }
+    function txt(id, v) { document.getElementById(id).textContent = v; }
+
+    function calc() {
+      var i = Number(el.biz.value);
+      var vaRate = RATES[i];
+      var effective = vaRate / 10;   // 부가가치율 × 10% 를 퍼센트로 표기
+      var supply = num('supply');
+
+      document.querySelectorAll('#rate-table tr').forEach(function (tr) {
+        tr.classList.toggle('on', Number(tr.dataset.i) === i);
+      });
+
+      txt('rate-label', vaRate + '%  (실효 세율 ' + effective.toFixed(1) + '%)');
+      txt('r-rate-label', '부가가치율 ' + vaRate + '% × 세율 10%');
+
+      if (supply <= 0) {
+        ['r-supply', 'r-rate', 'r-tax', 'r-card', 'r-purchase', 'r-final'].forEach(function (id) { txt(id, '-'); });
+        txt('tier-msg', '연 매출을 입력하면 납부세액이 계산됩니다.');
+        txt('banner', '연 매출을 입력해 주세요.');
+        return;
+      }
+
+      var tax = supply * vaRate / 100 * 0.1;
+      var cardCredit = Math.min(num('cardIssued') * CARD_CREDIT_RATE / 100, CARD_CREDIT_CAP);
+      var purchaseCredit = num('purchase') * PURCHASE_CREDIT_RATE / 100;
+
+      // 납부의무 면제는 공제보다 먼저 판단한다. 면제면 계산과 무관하게 0원이다.
+      var exempt = supply < EXEMPT_LIMIT;
+      // 간이과세자는 환급이 없다. 공제가 세액보다 커도 0에서 멈춘다.
+      var final = exempt ? 0 : Math.max(0, tax - cardCredit - purchaseCredit);
+
+      txt('r-supply', won(supply));
+      txt('r-rate', effective.toFixed(1) + '%');
+      txt('r-tax', won(tax));
+      txt('r-card', '− ' + won(cardCredit));
+      txt('r-purchase', '− ' + won(purchaseCredit));
+      txt('r-final', won(final));
+
+      if (supply >= SIMPLE_LIMIT) {
+        txt('tier-msg', '연 매출이 1억 400만원 이상이라 간이과세 대상이 아닐 수 있습니다. 일반과세자라면 이 계산기 대신 매출세액−매입세액 방식으로 계산해야 합니다.');
+      } else {
+        txt('tier-msg', '공급대가 × ' + vaRate + '% × 10% 로 계산합니다.');
+      }
+
+      if (exempt) {
+        txt('banner', '공급대가가 4,800만원 미만이라 납부의무가 면제됩니다. 다만 신고는 하셔야 합니다 (다음 해 1월 25일까지).');
+      } else if (final === 0) {
+        txt('banner', '공제액이 납부세액보다 커서 납부할 세금이 없습니다. 간이과세자는 환급이 없어 차액은 돌려받지 못합니다.');
+      } else {
+        txt('banner', '신고·납부 기한은 다음 해 1월 25일입니다. 공제를 빼기 전 세액은 ' + won(tax) + ' 이었습니다.');
+      }
+    }
+
+    ['biz', 'supply', 'cardIssued', 'purchase'].forEach(function (id) {
+      el[id].addEventListener('input', calc);
+      el[id].addEventListener('change', calc);
+    });
+    calc();
+  })();
+  </script>
+</body>
+</html>
