@@ -31,6 +31,9 @@ create table profiles (
   biz_type text,
   address text,
   tax_type text default 'general',
+  -- 간이과세자 업종별 부가가치율 구분(국세청 6구분). src/lib/vatRates.js 의 value 와 대응.
+  -- 기본 0 = 소매·음식점(15%) — 컬럼 추가 이전의 1.5% 고정 동작과 같은 값이다.
+  vat_biz_class smallint default 0,
   -- 배달앱별 실효 수수료율(%). 중개·결제·배달비를 합친 값으로, 실입금 예상액 계산에만 쓴다.
   delivery_rates jsonb default '{"baemin":0,"coupang":0,"yogiyo":0}'::jsonb,
   created_at timestamptz default now()

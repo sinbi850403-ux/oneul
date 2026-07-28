@@ -13,13 +13,17 @@ export default function DashboardTax() {
   const [monthTotal, setMonthTotal] = useState(0)
   const [yearTotal, setYearTotal]   = useState(0)
   const [taxType, setTaxType]   = useState('general')
+  const [bizClass, setBizClass] = useState(0)
 
   useEffect(() => {
     async function load() {
       const { data: { user } } = await supabase.auth.getUser()
       const { data: profile } = await supabase
-        .from('profiles').select('tax_type').eq('user_id', user.id).single()
-      if (profile) setTaxType(profile.tax_type)
+        .from('profiles').select('tax_type, vat_biz_class').eq('user_id', user.id).single()
+      if (profile) {
+        setTaxType(profile.tax_type)
+        setBizClass(profile.vat_biz_class ?? 0)
+      }
 
       const pad = (n) => String(n).padStart(2, '0')
 
@@ -94,11 +98,11 @@ export default function DashboardTax() {
             {month}월 매출 기준
             <span className="text-xs text-stone-400 ml-1">({taxType === 'simple' ? '간이과세자' : '일반과세자'})</span>
           </span>
-          <span className="text-2xl font-bold text-brand">{won(vat(monthTotal, taxType))}</span>
+          <span className="text-2xl font-bold text-brand">{won(vat(monthTotal, taxType, bizClass))}</span>
         </div>
         <div className="flex justify-between items-center">
           <span className="text-stone-600">연간 매출 기준</span>
-          <span className="text-xl font-semibold text-stone-700">{won(vat(yearTotal, taxType))}</span>
+          <span className="text-xl font-semibold text-stone-700">{won(vat(yearTotal, taxType, bizClass))}</span>
         </div>
       </div>
 
