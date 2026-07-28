@@ -12,6 +12,9 @@ const MANIFEST = path.join(BLOG_DIR, 'blog-manifest.json')
 const SITEMAP = path.resolve(__dirname, '../public/sitemap.xml')
 
 const SITE = 'https://xn--wh1bw0st1gbrb.kr' // 오늘장부.kr (punycode)
+
+// public/tools 아래 정적 계산기 페이지들. 사이트맵 색인용.
+const TOOL_PAGES = ['delivery-fee-calculator', 'card-fee-calculator']
 const SITE_KR = 'https://오늘장부.kr'
 const DRY_RUN = process.argv.includes('--dry-run')
 
@@ -366,6 +369,12 @@ function rebuildSitemap(manifest) {
     `  <url><loc>${SITE}/</loc><changefreq>monthly</changefreq><priority>1.0</priority></url>`,
     `  <url><loc>${SITE}/login</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>`,
     `  <url><loc>${SITE}/blog/</loc><changefreq>daily</changefreq><priority>0.9</priority></url>`,
+    // 무료 계산기 — public/tools 아래 정적 페이지. 사이트맵을 여기서 통째로 다시 쓰므로
+    // 도구를 추가하면 이 목록에도 넣어야 색인된다.
+    ...TOOL_PAGES.map(
+      (slug) =>
+        `  <url><loc>${SITE}/tools/${slug}/</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>`
+    ),
     ...manifest.map(
       (p) =>
         `  <url><loc>${SITE}/blog/posts/${p.slug}.html</loc><lastmod>${p.date}</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>`

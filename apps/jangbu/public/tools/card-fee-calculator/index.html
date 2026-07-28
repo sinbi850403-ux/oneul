@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>카드수수료 계산기 — 우대수수료율 구간·환급 대상 확인 | 오늘장부</title>
+  <meta name="description" content="연매출로 영세·중소가맹점 우대수수료율 구간을 확인하고, 지금 내는 요율과 비교해 더 내고 있는 금액과 환급 가능액을 계산합니다. 2026년 금융위 고시 기준.">
+  <meta property="og:title" content="카드수수료 계산기 — 우대수수료율 구간·환급 대상 확인">
+  <meta property="og:description" content="연매출 구간별 우대수수료율을 확인하고, 지금 내는 요율과의 차액으로 환급 대상인지 계산합니다.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://xn--wh1bw0st1gbrb.kr/tools/card-fee-calculator/">
+  <link rel="canonical" href="https://xn--wh1bw0st1gbrb.kr/tools/card-fee-calculator/">
+  <link rel="icon" href="/icons/icon-192.png">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2764893290310463" crossorigin="anonymous"></script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "카드수수료 계산기",
+    "url": "https://xn--wh1bw0st1gbrb.kr/tools/card-fee-calculator/",
+    "applicationCategory": "FinanceApplication",
+    "operatingSystem": "All",
+    "description": "연매출 구간별 영세·중소가맹점 우대수수료율을 확인하고, 현재 적용 요율과 비교해 과다 납부액과 환급 가능액을 계산합니다.",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "KRW" }
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "우대수수료율은 어떻게 정해지나요?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "카드사가 국세청 과세자료로 확인한 직전 기간 연매출액을 기준으로 영세(3억원 이하)·중소(3억~30억원) 가맹점을 선정하고, 반기마다 재선정합니다. 사장님이 따로 신청하지 않아도 자동으로 적용됩니다."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "신규 개업이라 매출 자료가 없으면 어떻게 되나요?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "매출 자료가 없는 신규 가맹점은 처음에 일반가맹점 수수료율을 적용받습니다. 이후 매출액이 확인되어 영세·중소에 해당하면 우대수수료율을 소급 적용하고, 이미 더 낸 수수료 차액은 카드사가 카드대금 입금 계좌로 환급합니다."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "체크카드 수수료가 신용카드보다 싼 이유는 무엇인가요?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "신용카드는 카드사가 대금을 먼저 지급하고 나중에 회수하므로 자금조달비용과 대손비용이 발생합니다. 체크카드는 결제 즉시 예금에서 빠져나가 그 비용이 없기 때문에 수수료율이 더 낮게 책정됩니다."
+        }
+      }
+    ]
+  }
+  </script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Noto Sans KR', sans-serif; background: #f8f9fa; color: #1a1a1a; line-height: 1.7; }
+    header { background: #fff; border-bottom: 1px solid #eee; position: sticky; top: 0; z-index: 100; }
+    .header-inner { max-width: 900px; margin: 0 auto; padding: 0 20px; height: 60px; display: flex; align-items: center; justify-content: space-between; }
+    .logo { display: flex; align-items: center; gap: 8px; text-decoration: none; }
+    .logo-icon { width: 32px; height: 32px; background: #FF6B35; border-radius: 8px; display: flex; align-items: center; justify-content: center; color: white; font-weight: 900; font-size: 16px; }
+    .logo-text { font-size: 18px; font-weight: 800; color: #FF6B35; }
+    .header-cta { background: #FF6B35; color: white; padding: 8px 16px; border-radius: 8px; font-size: 13px; font-weight: 600; text-decoration: none; }
+    .wrap { max-width: 900px; margin: 0 auto; padding: 32px 20px 60px; }
+    h1 { font-size: clamp(22px, 5vw, 30px); font-weight: 900; line-height: 1.35; margin-bottom: 10px; }
+    .lede { color: #666; font-size: 15px; margin-bottom: 28px; }
+    .card { background: #fff; border-radius: 20px; box-shadow: 0 2px 12px rgba(0,0,0,0.06); padding: 28px; margin-bottom: 20px; }
+    .card h2 { font-size: 19px; font-weight: 800; margin-bottom: 6px; padding-bottom: 8px; border-bottom: 2px solid #FF6B35; }
+    .card h2.plain { border: 0; padding: 0; margin-bottom: 14px; }
+    .field { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 11px 0; border-bottom: 1px solid #f2f2f2; }
+    .field:last-child { border-bottom: 0; }
+    .field label { font-size: 15px; color: #333; font-weight: 500; }
+    .field .hint { display: block; font-size: 12px; color: #aaa; font-weight: 400; margin-top: 2px; }
+    .input-group { display: flex; align-items: center; gap: 6px; flex-shrink: 0; }
+    input[type="number"] { width: 140px; text-align: right; font-size: 15px; font-family: inherit; padding: 10px 12px; border: 1px solid #e5e5e5; border-radius: 10px; background: #fafafa; }
+    input[type="number"]:focus { outline: none; border-color: #FF6B35; background: #fff; }
+    .unit { font-size: 14px; color: #999; width: 22px; }
+    .tier-badge { background: #fff8f5; border: 1px solid #ffd9c7; border-radius: 14px; padding: 16px 20px; margin-top: 18px; }
+    .tier-badge .t { font-size: 13px; color: #a0664a; }
+    .tier-badge .v { font-size: 20px; font-weight: 900; color: #FF6B35; margin-top: 2px; }
+    .tier-badge .r { font-size: 14px; color: #7a5443; margin-top: 6px; }
+    .result { background: linear-gradient(135deg, #FF6B35, #ff8c42); border-radius: 20px; padding: 28px; color: #fff; margin-bottom: 20px; }
+    .result-row { display: flex; justify-content: space-between; align-items: baseline; padding: 7px 0; font-size: 15px; }
+    .result-row.sub { opacity: 0.85; font-size: 14px; }
+    .result-divider { border-top: 1px solid rgba(255,255,255,0.3); margin: 12px 0; }
+    .result-main { display: flex; justify-content: space-between; align-items: baseline; }
+    .result-main .k { font-size: 16px; font-weight: 700; }
+    .result-main .v { font-size: 30px; font-weight: 900; }
+    .refund { border-radius: 20px; padding: 28px; margin-bottom: 20px; border: 2px solid #e5e5e5; background: #fff; }
+    .refund.alert { border-color: #FF6B35; background: #fff8f5; }
+    .refund h3 { font-size: 17px; font-weight: 800; margin-bottom: 4px; }
+    .refund .msg { font-size: 14px; color: #666; margin-bottom: 16px; }
+    .refund.alert .msg { color: #a0664a; }
+    .refund-figure { display: flex; justify-content: space-between; align-items: baseline; padding: 8px 0; }
+    .refund-figure .k { font-size: 15px; color: #555; }
+    .refund-figure .v { font-size: 22px; font-weight: 900; color: #FF6B35; }
+    .refund-figure.year .v { font-size: 28px; }
+    table { width: 100%; border-collapse: collapse; font-size: 14px; margin-top: 8px; }
+    th { background: #FF6B35; color: #fff; padding: 10px 12px; text-align: left; font-weight: 700; }
+    td { padding: 10px 12px; border-bottom: 1px solid #f0f0f0; }
+    tr:nth-child(even) td { background: #fff8f5; }
+    tr.on td { background: #ffe8dc; font-weight: 800; }
+    .note { background: #fff8f5; border-left: 4px solid #FF6B35; padding: 14px 18px; border-radius: 0 12px 12px 0; font-size: 14px; color: #555; margin-top: 14px; }
+    .faq h3 { font-size: 16px; font-weight: 700; margin: 20px 0 6px; }
+    .faq p { font-size: 15px; color: #444; }
+    .cta-box { background: linear-gradient(135deg, #FF6B35, #ff8c42); border-radius: 20px; padding: 32px; text-align: center; color: #fff; }
+    .cta-box h3 { font-size: 22px; font-weight: 900; margin-bottom: 10px; }
+    .cta-box p { font-size: 14px; opacity: 0.92; margin-bottom: 20px; }
+    .cta-box a { background: #fff; color: #FF6B35; border-radius: 12px; padding: 13px 28px; font-weight: 800; font-size: 15px; text-decoration: none; display: inline-block; }
+    .ad-slot { margin: 24px 0; min-height: 90px; }
+    .links { margin-top: 24px; font-size: 14px; }
+    .links a { color: #FF6B35; text-decoration: none; font-weight: 600; }
+    footer { text-align: center; color: #aaa; font-size: 13px; padding: 30px 20px 50px; }
+    @media (max-width: 600px) {
+      .card, .refund { padding: 20px; }
+      .field { flex-direction: column; align-items: stretch; gap: 6px; }
+      .input-group { justify-content: flex-end; }
+      input[type="number"] { width: 100%; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="header-inner">
+      <a class="logo" href="/">
+        <span class="logo-icon">오</span>
+        <span class="logo-text">오늘장부</span>
+      </a>
+      <a class="header-cta" href="/">무료로 시작하기</a>
+    </div>
+  </header>
+
+  <div class="wrap">
+    <h1>카드수수료 계산기</h1>
+    <p class="lede">
+      연매출을 넣으면 적용받아야 할 우대수수료율 구간이 나옵니다.
+      지금 내는 요율과 비교해 <strong>더 내고 있는 금액과 환급 가능액</strong>까지 계산합니다.
+    </p>
+
+    <div class="card">
+      <h2 class="plain">1. 우리 가게 정보</h2>
+
+      <div class="field">
+        <label for="annual">연매출<span class="hint">직전 1년 기준. 카드사가 국세청 자료로 확인하는 금액입니다</span></label>
+        <div class="input-group">
+          <input type="number" id="annual" value="250000000" min="0" step="10000000">
+          <span class="unit">원</span>
+        </div>
+      </div>
+
+      <div class="field">
+        <label for="cardSales">월 카드매출<span class="hint">신용·체크 합계</span></label>
+        <div class="input-group">
+          <input type="number" id="cardSales" value="15000000" min="0" step="1000000">
+          <span class="unit">원</span>
+        </div>
+      </div>
+
+      <div class="field">
+        <label for="creditRatio">신용카드 비중<span class="hint">나머지는 체크카드로 계산합니다</span></label>
+        <div class="input-group">
+          <input type="number" id="creditRatio" value="70" min="0" max="100" step="1">
+          <span class="unit">%</span>
+        </div>
+      </div>
+
+      <div class="tier-badge">
+        <div class="t">적용 구간</div>
+        <div class="v" id="tier-name">-</div>
+        <div class="r" id="tier-rates">-</div>
+      </div>
+    </div>
+
+    <div class="result">
+      <div class="result-row"><span>월 카드매출</span><span id="r-sales">-</span></div>
+      <div class="result-row sub"><span id="r-credit-label">신용카드 수수료</span><span id="r-credit">-</span></div>
+      <div class="result-row sub"><span id="r-check-label">체크카드 수수료</span><span id="r-check">-</span></div>
+      <div class="result-divider"></div>
+      <div class="result-row"><span>월 수수료 합계</span><span id="r-fee">-</span></div>
+      <div class="result-divider"></div>
+      <div class="result-main">
+        <span class="k">월 실입금 예상</span>
+        <span class="v" id="r-net">-</span>
+      </div>
+      <div class="result-row" style="margin-top:10px"><span>연간 수수료</span><span id="r-fee-year">-</span></div>
+    </div>
+
+    <div class="card">
+      <h2 class="plain">2. 지금 내는 요율과 비교</h2>
+      <p style="font-size:14px;color:#777;margin-bottom:6px">
+        카드사 명세서나 가맹점 사이트에서 실제 적용 요율을 확인해 넣어보세요.
+        신규 개업이라 매출 자료가 없으면 일반가맹점 요율(보통 2% 안팎)을 적용받고 있을 수 있습니다.
+      </p>
+      <div class="field">
+        <label for="curCredit">현재 신용카드 요율</label>
+        <div class="input-group">
+          <input type="number" id="curCredit" value="2" min="0" max="10" step="0.01">
+          <span class="unit">%</span>
+        </div>
+      </div>
+      <div class="field">
+        <label for="curCheck">현재 체크카드 요율</label>
+        <div class="input-group">
+          <input type="number" id="curCheck" value="1.7" min="0" max="10" step="0.01">
+          <span class="unit">%</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="refund" id="refund-box">
+      <h3 id="refund-title">-</h3>
+      <p class="msg" id="refund-msg">-</p>
+      <div class="refund-figure">
+        <span class="k">월 차액</span>
+        <span class="v" id="r-diff-month">-</span>
+      </div>
+      <div class="refund-figure year">
+        <span class="k">연 환산</span>
+        <span class="v" id="r-diff-year">-</span>
+      </div>
+    </div>
+
+    <div class="cta-box">
+      <h3>연매출, 지금 바로 아세요?</h3>
+      <p>
+        우대수수료율 구간은 연매출로 갈립니다. 3억이냐 3억 1천이냐로 요율이 두 배 넘게 벌어집니다.<br>
+        오늘장부에 매일 매출을 기록하면 연매출이 자동으로 집계돼,<br>
+        반기 재선정 때 어느 구간에 들어갈지 미리 알 수 있습니다.
+      </p>
+      <a href="/">오늘장부 무료로 시작하기</a>
+    </div>
+
+    <div class="ad-slot">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2764893290310463" data-ad-format="auto" data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+
+    <div class="card">
+      <h2>연매출 구간별 우대수수료율</h2>
+      <table>
+        <thead>
+          <tr><th>연매출</th><th>구분</th><th>신용카드</th><th>체크카드</th></tr>
+        </thead>
+        <tbody id="rate-table">
+          <tr data-tier="0"><td>3억원 이하</td><td>영세</td><td>0.40%</td><td>0.15%</td></tr>
+          <tr data-tier="1"><td>3억~5억원</td><td>중소</td><td>1.00%</td><td>0.75%</td></tr>
+          <tr data-tier="2"><td>5억~10억원</td><td>중소</td><td>1.15%</td><td>0.90%</td></tr>
+          <tr data-tier="3"><td>10억~30억원</td><td>중소</td><td>1.45%</td><td>1.15%</td></tr>
+          <tr data-tier="4"><td>30억원 초과</td><td>일반</td><td colspan="2">카드사와 개별 협상</td></tr>
+        </tbody>
+      </table>
+      <div class="note">
+        2026년 2월 14일부터 적용되는 금융위원회 고시 기준입니다.
+        카드사가 국세청 과세자료로 매출을 확인해 <strong>반기마다 재선정</strong>하며,
+        사장님이 따로 신청하지 않아도 자동 적용됩니다.
+        연매출 30억원을 넘으면 우대 대상이 아니라 카드사와 개별 협상한 요율이 적용되므로,
+        위 계산기에서 직접 요율을 넣어 비교하세요.
+      </div>
+    </div>
+
+    <div class="card faq">
+      <h2 class="plain">자주 묻는 질문</h2>
+
+      <h3>우대수수료율은 어떻게 정해지나요?</h3>
+      <p>
+        카드사가 국세청 과세자료로 확인한 직전 기간 연매출액을 기준으로
+        영세(3억원 이하)·중소(3억~30억원) 가맹점을 선정하고, 반기마다 재선정합니다.
+        사장님이 따로 신청하지 않아도 자동으로 적용됩니다.
+      </p>
+
+      <h3>신규 개업이라 매출 자료가 없으면 어떻게 되나요?</h3>
+      <p>
+        매출 자료가 없는 신규 가맹점은 처음에 일반가맹점 수수료율을 적용받습니다.
+        이후 매출액이 확인되어 영세·중소에 해당하면 <strong>우대수수료율을 소급 적용</strong>하고,
+        이미 더 낸 수수료 차액은 카드사가 카드대금 입금 계좌로 환급합니다.
+        환급 시기와 대상은 카드사 공지를 확인하세요.
+      </p>
+
+      <h3>체크카드 수수료가 신용카드보다 싼 이유는 무엇인가요?</h3>
+      <p>
+        신용카드는 카드사가 대금을 먼저 지급하고 나중에 회수하므로 자금조달비용과
+        대손비용이 발생합니다. 체크카드는 결제 즉시 예금에서 빠져나가 그 비용이 없기 때문에
+        수수료율이 더 낮게 책정됩니다. 그래서 체크카드 비중이 높을수록 전체 수수료 부담이 줄어듭니다.
+      </p>
+
+      <div class="note">
+        본 계산기는 2026년 금융위원회 고시를 기준으로 한 참고용이며, 실제 적용 요율은
+        카드사·결제대행사(PG)·업종에 따라 다를 수 있습니다. 정확한 적용 요율은
+        카드사 가맹점 사이트나 여신금융협회에서 확인하시고, 이의가 있으면 카드사에 문의하세요.
+      </div>
+    </div>
+
+    <div class="links">
+      <a href="/tools/delivery-fee-calculator/">배달앱 수수료 계산기도 있어요</a>
+      &nbsp;·&nbsp;
+      <a href="/blog/">오늘장부 블로그</a>
+    </div>
+  </div>
+
+  <footer>오늘장부 — 카드·현금·배달앱 매출을 한 번에</footer>
+
+  <script>
+  (function () {
+    // 2026-02-14 적용, 금융위원회 고시 기준. 30억 초과는 우대 대상이 아니라 개별 협상이다.
+    var TIERS = [
+      { limit: 300000000,  name: '영세 가맹점 (3억원 이하)',    credit: 0.40, check: 0.15 },
+      { limit: 500000000,  name: '중소 가맹점 (3억~5억원)',     credit: 1.00, check: 0.75 },
+      { limit: 1000000000, name: '중소 가맹점 (5억~10억원)',    credit: 1.15, check: 0.90 },
+      { limit: 3000000000, name: '중소 가맹점 (10억~30억원)',   credit: 1.45, check: 1.15 },
+      { limit: Infinity,   name: '일반 가맹점 (30억원 초과)',   credit: null, check: null }
+    ];
+
+    var ids = ['annual', 'cardSales', 'creditRatio', 'curCredit', 'curCheck'];
+    var el = {};
+    ids.forEach(function (id) { el[id] = document.getElementById(id); });
+
+    function num(id) {
+      var v = parseFloat(el[id].value);
+      return isFinite(v) && v > 0 ? v : 0;
+    }
+    function won(n) { return '₩ ' + Math.round(n).toLocaleString('ko-KR'); }
+    function txt(id, v) { document.getElementById(id).textContent = v; }
+
+    function tierOf(annual) {
+      for (var i = 0; i < TIERS.length; i++) {
+        if (annual <= TIERS[i].limit) return { idx: i, tier: TIERS[i] };
+      }
+      return { idx: TIERS.length - 1, tier: TIERS[TIERS.length - 1] };
+    }
+
+    function calc() {
+      var annual  = num('annual');
+      var sales   = num('cardSales');
+      var ratio   = Math.min(num('creditRatio'), 100);
+      var found   = tierOf(annual);
+      var tier    = found.tier;
+
+      // 표에서 해당 구간 강조
+      document.querySelectorAll('#rate-table tr').forEach(function (tr) {
+        tr.classList.toggle('on', Number(tr.dataset.tier) === found.idx);
+      });
+
+      // 30억 초과는 고시 요율이 없다. 아래 "현재 요율" 입력값을 그대로 쓴다.
+      var isGeneral   = tier.credit === null;
+      var creditRate  = isGeneral ? num('curCredit') : tier.credit;
+      var checkRate   = isGeneral ? num('curCheck')  : tier.check;
+
+      txt('tier-name', tier.name);
+      txt('tier-rates', isGeneral
+        ? '우대 대상이 아닙니다. 카드사와 협상한 요율이 적용되니 아래에 실제 요율을 넣어주세요.'
+        : '신용카드 ' + creditRate.toFixed(2) + '% · 체크카드 ' + checkRate.toFixed(2) + '%');
+
+      if (sales <= 0) {
+        ['r-sales', 'r-credit', 'r-check', 'r-fee', 'r-net', 'r-fee-year',
+         'r-diff-month', 'r-diff-year'].forEach(function (id) { txt(id, '-'); });
+        txt('refund-title', '월 카드매출을 입력하세요');
+        txt('refund-msg', '매출을 넣으면 지금 내는 요율과의 차액을 계산합니다.');
+        document.getElementById('refund-box').classList.remove('alert');
+        return;
+      }
+
+      var creditSales = sales * ratio / 100;
+      var checkSales  = sales - creditSales;
+      var creditFee   = creditSales * creditRate / 100;
+      var checkFee    = checkSales * checkRate / 100;
+      var fee         = creditFee + checkFee;
+
+      txt('r-credit-label', '신용카드 수수료 (' + creditRate.toFixed(2) + '%)');
+      txt('r-check-label',  '체크카드 수수료 (' + checkRate.toFixed(2) + '%)');
+      txt('r-sales', won(sales));
+      txt('r-credit', '− ' + won(creditFee));
+      txt('r-check', '− ' + won(checkFee));
+      txt('r-fee', '− ' + won(fee));
+      txt('r-net', won(sales - fee));
+      txt('r-fee-year', won(fee * 12));
+
+      // 현재 요율로 냈을 때와의 차액
+      var curFee = creditSales * num('curCredit') / 100 + checkSales * num('curCheck') / 100;
+      var diff   = curFee - fee;
+      var box    = document.getElementById('refund-box');
+
+      txt('r-diff-month', won(Math.abs(diff)));
+      txt('r-diff-year', won(Math.abs(diff) * 12));
+
+      if (isGeneral) {
+        box.classList.remove('alert');
+        txt('refund-title', '우대수수료율 대상이 아닙니다');
+        txt('refund-msg', '연매출 30억원을 넘으면 카드사와 개별 협상한 요율이 적용됩니다. 위 결과는 입력하신 요율 기준입니다.');
+        txt('r-diff-month', '-');
+        txt('r-diff-year', '-');
+      } else if (diff > 0) {
+        box.classList.add('alert');
+        txt('refund-title', '우대요율보다 더 내고 있습니다');
+        txt('refund-msg', '연매출 기준으로는 ' + tier.name + ' 요율을 적용받아야 합니다. 카드사에 확인해 보세요. 신규 개업이라 매출 자료가 없어 일반요율을 적용받은 경우라면, 매출이 확인된 뒤 소급 적용과 차액 환급을 받을 수 있습니다.');
+      } else if (diff < 0) {
+        box.classList.remove('alert');
+        txt('refund-title', '우대요율보다 낮은 요율을 적용받고 있습니다');
+        txt('refund-msg', '입력하신 현재 요율이 고시 우대요율보다 낮습니다. 요율을 잘못 입력하지 않았는지 카드사 명세서를 다시 확인해 보세요.');
+      } else {
+        box.classList.remove('alert');
+        txt('refund-title', '우대요율대로 적용받고 있습니다');
+        txt('refund-msg', '현재 요율이 연매출 구간의 고시 우대요율과 같습니다.');
+      }
+    }
+
+    ids.forEach(function (id) { el[id].addEventListener('input', calc); });
+    calc();
+  })();
+  </script>
+</body>
+</html>
