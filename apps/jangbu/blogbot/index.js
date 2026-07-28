@@ -108,19 +108,47 @@ async function generatePost(kw) {
   "body": "<h2>...</h2> ... 본문 HTML 전체"
 }`
 
-  const tools = [{ type: 'web_search_20260209', name: 'web_search' }]
-  let messages = [{ role: 'user', content: prompt }]
+  const tools = [{ type: 'web_search_20260209', name: 'web_search', max_uses: 4 }]
+  let messages = [{ role: 'user', content: [{ type: 'text', text: prompt }] }]
   let resp
 
+  // 턴마다 누적 대화(검색 결과 포함)를 통째로 재전송하므로, 매 요청 직전에
+  // 마지막 블록에만 cache_control을 찍어 이전 프리픽스를 캐시에서 읽는다.
+  // (재전송분 입력 단가 $3/M → $0.30/M)
+  const setCacheBreakpoint = (on) => {
+    for (const msg of messages) {
+      if (!Array.isArray(msg.content)) continue
+      for (const block of msg.content) delete block.cache_control
+    }
+    if (!on) return
+    const last = messages[messages.length - 1]
+    if (Array.isArray(last.content) && last.content.length) {
+      last.content[last.content.length - 1].cache_control = { type: 'ephemeral' }
+    }
+  }
+
   // web_search 서버 루프가 한도에 도달하면 pause_turn → 이어서 재요청
-  for (let turn = 0; turn < 6; turn++) {
-    const stream = anthropic.messages.stream({
-      model: 'claude-sonnet-4-6',
-max_tokens: 8000,
-      tools,
-      messages,
-    })
-    resp = await stream.finalMessage()
+  let useCache = true
+  for (let turn = 0; turn < 3; turn++) {
+    setCacheBreakpoint(useCache)
+    try {
+      const stream = anthropic.messages.stream({
+        model: 'claude-sonnet-4-6',
+        max_tokens: 8000,
+        tools,
+        messages,
+      })
+      resp = await stream.finalMessage()
+    } catch (err) {
+      // 캐시 브레이크포인트를 못 붙이는 블록 타입이면 캐시 없이 한 번 더
+      if (useCache && err?.status === 400 && /cache_control/i.test(err?.message || '')) {
+        console.warn('  ⚠ cache_control 거부 - 캐시 없이 재시도')
+        useCache = false
+        turn--
+        continue
+      }
+      throw err
+    }
     if (resp.stop_reason === 'pause_turn') {
       messages.push({ role: 'assistant', content: resp.content })
       continue
