@@ -25,8 +25,8 @@
     .logo-sub { font-size: 13px; color: #888; margin-left: 4px; }
     .header-cta { background: #FF6B35; color: white; border: none; padding: 8px 16px; border-radius: 8px; font-size: 13px; font-weight: 600; cursor: pointer; text-decoration: none; }
 
-    .wrap { max-width: 1100px; margin: 0 auto; padding: 32px 20px; display: grid; grid-template-columns: 1fr 300px; gap: 40px; }
-    @media (max-width: 768px) { .wrap { grid-template-columns: 1fr; } .sidebar { display: none; } }
+    .wrap { max-width: 1100px; margin: 0 auto; padding: 32px 20px; display: grid; grid-template-columns: minmax(0, 1fr) 300px; gap: 40px; }
+    @media (max-width: 768px) { .wrap { grid-template-columns: minmax(0, 1fr); } .sidebar { display: none; } }
 
     article { background: white; border-radius: 20px; overflow: hidden; box-shadow: 0 2px 12px rgba(0,0,0,0.06); }
     .article-head { padding: 32px 32px 24px; border-bottom: 1px solid #f0f0f0; }
@@ -40,7 +40,8 @@
     .article-body p { margin-bottom: 14px; color: #333; font-size: 15px; }
     .article-body ul, .article-body ol { padding-left: 20px; margin-bottom: 14px; }
     .article-body li { margin-bottom: 6px; color: #333; font-size: 15px; }
-    .article-body table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 14px; }
+    article { min-width: 0; }
+    .article-body table { display: block; width: max-content; min-width: 100%; max-width: 100%; overflow-x: auto; border-collapse: collapse; margin: 16px 0; font-size: 14px; }
     .article-body th { background: #FF6B35; color: white; padding: 10px 14px; text-align: left; }
     .article-body td { padding: 10px 14px; border-bottom: 1px solid #f0f0f0; }
     .article-body tr:nth-child(even) td { background: #fff8f5; }
