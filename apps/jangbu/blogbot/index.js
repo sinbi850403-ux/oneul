@@ -15,6 +15,36 @@ const SITE = 'https://xn--wh1bw0st1gbrb.kr' // 오늘장부.kr (punycode)
 
 // public/tools 아래 정적 계산기 페이지들. 사이트맵 색인용.
 const TOOL_PAGES = ['delivery-fee-calculator', 'card-fee-calculator']
+
+// 글 카테고리 → 관련 계산기. 본문 아래에 링크 박스를 붙여 내부 링크를 늘린다.
+// 매칭되는 게 없으면 두 개를 모두 보여준다.
+const TOOLS = {
+  'delivery-fee-calculator': { label: '배달앱 수수료 계산기', desc: '중개·결제 수수료와 배달비를 빼면 실제로 얼마가 입금되는지 계산합니다' },
+  'card-fee-calculator':     { label: '카드수수료 계산기',   desc: '연매출로 우대수수료율 구간을 확인하고 환급 대상인지 알아봅니다' },
+}
+const CATEGORY_TOOLS = {
+  '배달앱':      ['delivery-fee-calculator'],
+  '카드수수료':  ['card-fee-calculator'],
+  '매출관리':    ['card-fee-calculator', 'delivery-fee-calculator'],
+  '부가세/세금': ['card-fee-calculator'],
+  '절세꿀팁':    ['card-fee-calculator'],
+}
+
+function toolBoxHtml(category) {
+  const slugs = CATEGORY_TOOLS[category] || TOOL_PAGES
+  const items = slugs
+    .map((slug) => {
+      const t = TOOLS[slug]
+      return `<li style="padding:10px 0;border-bottom:1px solid #ffe6d9;"><a href="/tools/${slug}/" style="color:#FF6B35;text-decoration:none;font-weight:700;font-size:15px;">${t.label}</a><div style="font-size:13px;color:#777;margin-top:2px;">${t.desc}</div></li>`
+    })
+    .join('\n        ')
+  return `<section style="background:#fff8f5;border-radius:16px;padding:24px 28px;margin-top:24px;">
+      <h2 style="font-size:18px;font-weight:800;color:#1a1a1a;margin:0 0 14px;">무료 계산기로 바로 확인하기</h2>
+      <ul style="list-style:none;padding:0;margin:0;">
+        ${items}
+      </ul>
+    </section>`
+}
 const SITE_KR = 'https://오늘장부.kr'
 const DRY_RUN = process.argv.includes('--dry-run')
 
@@ -308,7 +338,8 @@ ${JSON.stringify(ld, null, 2)}
       <a href="/blog/" class="nav-back">블로그 목록으로</a>
     </div>
 
-    <div class="ad-slot">광고 영역 (AdSense 승인 후 활성화)</div>
+    <!-- 자동 광고(Auto ads)가 배치를 정하므로 유닛을 직접 넣지 않는다. 여백만 확보한다. -->
+    <div class="ad-slot"></div>
 
     <article>
       <div class="article-head">
@@ -328,7 +359,10 @@ ${body}
       </div>
     </article>
 ${relatedHtml ? '\n    ' + relatedHtml + '\n' : ''}
-    <div class="ad-slot">광고 영역 (AdSense 승인 후 활성화)</div>
+    ${toolBoxHtml(category)}
+
+    <!-- 자동 광고(Auto ads)가 배치를 정하므로 유닛을 직접 넣지 않는다. 여백만 확보한다. -->
+    <div class="ad-slot"></div>
 
     <div class="cta-box">
       <h3>매일 매출 기록, 30초면 끝!</h3>
