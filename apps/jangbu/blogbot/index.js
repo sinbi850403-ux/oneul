@@ -14,24 +14,28 @@ const SITEMAP = path.resolve(__dirname, '../public/sitemap.xml')
 const SITE = 'https://xn--wh1bw0st1gbrb.kr' // 오늘장부.kr (punycode)
 
 // public/tools 아래 정적 계산기 페이지들. 사이트맵 색인용.
-const TOOL_PAGES = ['delivery-fee-calculator', 'card-fee-calculator']
+const TOOL_PAGES = ['delivery-fee-calculator', 'card-fee-calculator', 'vat-simplified-calculator']
 
 // 글 카테고리 → 관련 계산기. 본문 아래에 링크 박스를 붙여 내부 링크를 늘린다.
 // 매칭되는 게 없으면 두 개를 모두 보여준다.
 const TOOLS = {
   'delivery-fee-calculator': { label: '배달앱 수수료 계산기', desc: '중개·결제 수수료와 배달비를 빼면 실제로 얼마가 입금되는지 계산합니다' },
   'card-fee-calculator':     { label: '카드수수료 계산기',   desc: '연매출로 우대수수료율 구간을 확인하고 환급 대상인지 알아봅니다' },
+  'vat-simplified-calculator': { label: '간이과세자 부가세 계산기', desc: '업종별 부가가치율로 납부세액을 계산하고 납부의무 면제 대상인지 확인합니다' },
 }
+// 글마다 최대 2개까지만 노출한다. 세 개를 다 붙이면 링크 박스가 본문을 밀어낸다.
 const CATEGORY_TOOLS = {
   '배달앱':      ['delivery-fee-calculator'],
   '카드수수료':  ['card-fee-calculator'],
+  '부가세/세금': ['vat-simplified-calculator'],
+  '절세꿀팁':    ['vat-simplified-calculator', 'card-fee-calculator'],
   '매출관리':    ['card-fee-calculator', 'delivery-fee-calculator'],
-  '부가세/세금': ['card-fee-calculator'],
-  '절세꿀팁':    ['card-fee-calculator'],
+  '사업자등록':  ['vat-simplified-calculator', 'card-fee-calculator'],
 }
+const DEFAULT_TOOLS = ['card-fee-calculator', 'vat-simplified-calculator']
 
 function toolBoxHtml(category) {
-  const slugs = CATEGORY_TOOLS[category] || TOOL_PAGES
+  const slugs = CATEGORY_TOOLS[category] || DEFAULT_TOOLS
   const items = slugs
     .map((slug) => {
       const t = TOOLS[slug]

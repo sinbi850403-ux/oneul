@@ -240,6 +240,7 @@ export default function Landing() {
           <div className="flex gap-4">
             <a href="/tools/card-fee-calculator/" className="hover:text-stone-600 transition-colors">카드수수료 계산기</a>
             <a href="/tools/delivery-fee-calculator/" className="hover:text-stone-600 transition-colors">배달앱 수수료 계산기</a>
+            <a href="/tools/vat-simplified-calculator/" className="hover:text-stone-600 transition-colors">간이과세자 부가세 계산기</a>
             <a href="/blog/" className="hover:text-stone-600 transition-colors">블로그</a>
             <button onClick={() => navigate('/privacy')} className="hover:text-stone-600 transition-colors">개인정보처리방침</button>
             <button onClick={() => navigate('/terms')} className="hover:text-stone-600 transition-colors">이용약관</button>
