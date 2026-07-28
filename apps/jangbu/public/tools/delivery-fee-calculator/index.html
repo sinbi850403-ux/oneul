@@ -93,6 +93,7 @@
     .rate-badge .label { font-size: 13px; opacity: 0.9; }
     .rate-badge .value { font-size: 34px; font-weight: 900; line-height: 1.2; }
     .rate-badge .desc { font-size: 12px; opacity: 0.85; margin-top: 4px; }
+    .rate-badge .rate-sub { font-size: 13px; opacity: 0.95; margin-top: 12px; padding-top: 12px; border-top: 1px solid rgba(255,255,255,0.25); }
     table { width: 100%; border-collapse: collapse; font-size: 14px; margin-top: 8px; }
     th { background: #FF6B35; color: #fff; padding: 10px 12px; text-align: left; font-weight: 700; }
     td { padding: 10px 12px; border-bottom: 1px solid #f0f0f0; }
@@ -158,7 +159,7 @@
       </div>
 
       <div class="field">
-        <label for="mediation">중개수수료율<span class="hint">거래액·주문 건수에 따라 차등 적용됩니다</span></label>
+        <label for="mediation">중개수수료율<span class="hint">거래액·주문 건수에 따라 차등 적용됩니다. 사장님 사이트에서 실제 요율을 확인하세요</span></label>
         <div class="input-group">
           <input type="number" id="mediation" value="7.8" min="0" max="100" step="0.1">
           <span class="unit">%</span>
@@ -204,9 +205,12 @@
         <span class="v" id="r-net">-</span>
       </div>
       <div class="rate-badge">
-        <div class="label">실효 수수료율</div>
+        <div class="label">실효 수수료율 (부가세 포함)</div>
         <div class="value" id="r-rate">-</div>
-        <div class="desc">주문금액에서 빠져나가는 실제 비율</div>
+        <div class="desc">통장에서 실제로 빠져나가는 비율 — 오늘장부 설정에 넣을 값</div>
+        <div class="rate-sub">
+          매입세액 공제 후 실질 비용률 <strong id="r-rate-net">-</strong>
+        </div>
       </div>
     </div>
 
@@ -265,6 +269,15 @@
         부가가치세 10%가 별도로 부과됩니다. 이 부가세는 매입세액으로 공제받을 수 있으니
         세금계산서를 반드시 챙기세요.
       </p>
+      <h3>실효 수수료율과 실질 비용률은 왜 다른가요?</h3>
+      <p>
+        수수료에 붙은 부가세는 당장은 통장에서 빠져나가지만, 일반과세자라면
+        부가세 신고 때 <strong>매입세액으로 공제</strong>받습니다. 그래서 통장 기준
+        실효 수수료율보다 손익에 실제로 잡히는 비용률이 낮습니다.
+        <strong>간이과세자는 매입세액 공제가 제한적</strong>이라 실질 부담이
+        실효 수수료율에 가깝습니다. 오늘장부 설정에는 통장 기준인
+        <strong>실효 수수료율(부가세 포함)</strong>을 넣으셔야 실입금 예상액이 맞습니다.
+      </p>
       <div class="note">
         본 계산기는 2026년 기준 참고용이며, 실제 수수료율은 배달앱과 맺은 계약과 차등 요율 구간에
         따라 다릅니다. 정확한 금액은 각 배달앱 사장님 사이트의 정산 내역을 확인하시고,
@@ -308,9 +321,9 @@
       // 주문금액을 비우면 배달비·부가세만 남아 실입금이 음수로 보인다.
       // 계산이 성립하지 않는 상태이므로 결과를 비워 둔다.
       if (amount <= 0) {
-        ['r-amount', 'r-mediation', 'r-payment', 'r-delivery', 'r-vat', 'r-total-fee', 'r-net']
+        ['r-amount', 'r-mediation', 'r-payment', 'r-delivery', 'r-vat', 'r-total-fee', 'r-net',
+         'r-rate', 'r-rate-net']
           .forEach(function (id) { document.getElementById(id).textContent = '-'; });
-        document.getElementById('r-rate').textContent = '-';
         return;
       }
 
@@ -321,7 +334,10 @@
       var vat       = subtotal * num('vat') / 100;
       var totalFee  = subtotal + vat;
       var net       = amount - totalFee;
-      var rate      = amount > 0 ? (totalFee / amount) * 100 : 0;
+      // 통장 기준 실효율은 부가세를 포함한다. 다만 그 부가세는 매입세액 공제 대상이므로
+      // 손익에 잡히는 실질 비용률은 부가세를 뺀 값이다. 둘 다 보여준다.
+      var rate      = (totalFee / amount) * 100;
+      var rateNet   = (subtotal / amount) * 100;
 
       document.getElementById('r-amount').textContent    = won(amount);
       document.getElementById('r-mediation').textContent = '− ' + won(mediation);
@@ -331,6 +347,7 @@
       document.getElementById('r-total-fee').textContent = '− ' + won(totalFee);
       document.getElementById('r-net').textContent       = won(net);
       document.getElementById('r-rate').textContent      = rate.toFixed(1) + '%';
+      document.getElementById('r-rate-net').textContent  = rateNet.toFixed(1) + '%';
     }
 
     ids.forEach(function (id) {
