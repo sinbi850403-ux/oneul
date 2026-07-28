@@ -4,29 +4,24 @@ import { supabase } from '../lib/supabase.js'
 import { todayKST, toKSTDateString } from '../lib/date.js'
 import NumberInput from '../components/NumberInput.jsx'
 import Toast from '../components/Toast.jsx'
+import {
+  PAYMENT_FIELDS as FIELDS,
+  EMPTY_SALES as EMPTY,
+  EMPTY_DELIVERY_RATES,
+  calcDeliverySettlement,
+} from '../lib/paymentFields.js'
 // AdSense 승인 후: import AdBanner from '../components/AdBanner.jsx'
-
-const FIELDS = [
-  { key: 'card',  label: '카드' },
-  { key: 'cash',  label: '현금영수증' },
-  { key: 'bank',  label: '무통장입금' },
-  { key: 'vbank', label: '가상계좌' },
-  { key: 'phone', label: '휴대폰결제' },
-  { key: 'npay',  label: '네이버페이' },
-  { key: 'kpay',  label: '카카오페이' },
-  { key: 'etc',   label: '기타' },
-]
-
-const EMPTY = Object.fromEntries(FIELDS.map(f => [f.key, 0]))
 
 export default function Input() {
   const [searchParams] = useSearchParams()
   const [date, setDate] = useState(searchParams.get('date') || todayKST())
   const [values, setValues] = useState(EMPTY)
+  const [rates, setRates] = useState(EMPTY_DELIVERY_RATES)
   const [toast, setToast] = useState('')
   const [saving, setSaving] = useState(false)
 
   const total = Object.values(values).reduce((a, b) => a + b, 0)
+  const delivery = calcDeliverySettlement(values, rates)
 
   const load = useCallback(async (d) => {
     const { data: { user } } = await supabase.auth.getUser()
@@ -45,6 +40,23 @@ export default function Input() {
   }, [])
 
   useEffect(() => { load(date) }, [date, load])
+
+  // 배달앱 실효 수수료율 — 설정에서 저장한 값. 없으면 실입금 안내만 뜬다.
+  useEffect(() => {
+    async function loadRates() {
+      const { data: { user } } = await supabase.auth.getUser()
+      if (!user) return
+      const { data } = await supabase
+        .from('profiles')
+        .select('delivery_rates')
+        .eq('user_id', user.id)
+        .maybeSingle()
+      if (data?.delivery_rates) {
+        setRates({ ...EMPTY_DELIVERY_RATES, ...data.delivery_rates })
+      }
+    }
+    loadRates()
+  }, [])
 
   async function handleSave() {
     setSaving(true)
@@ -98,6 +110,34 @@ export default function Input() {
           ₩ {total.toLocaleString('ko-KR')}
         </span>
       </div>
+
+      {delivery.gross > 0 && (
+        <div className="bg-white rounded-2xl shadow-card px-5 py-4 mb-5">
+          <div className="flex justify-between items-center mb-1">
+            <span className="text-stone-600 font-medium">배달 매출</span>
+            <span className="text-stone-800 font-semibold">
+              ₩ {delivery.gross.toLocaleString('ko-KR')}
+            </span>
+          </div>
+          <div className="flex justify-between items-center mb-2">
+            <span className="text-stone-400 text-sm">예상 수수료</span>
+            <span className="text-stone-400 text-sm">
+              − ₩ {delivery.fee.toLocaleString('ko-KR')}
+            </span>
+          </div>
+          <div className="flex justify-between items-center pt-2 border-t border-stone-100">
+            <span className="text-stone-700 font-semibold">실입금 예상</span>
+            <span className="text-xl font-bold text-brand">
+              ₩ {delivery.net.toLocaleString('ko-KR')}
+            </span>
+          </div>
+          {delivery.hasUnsetRate && (
+            <p className="text-xs text-stone-400 mt-3 leading-relaxed">
+              수수료율이 아직 설정되지 않은 앱이 있어요. 설정에서 입력하면 실입금이 정확해집니다.
+            </p>
+          )}
+        </div>
+      )}
 
       <button
         onClick={handleSave}

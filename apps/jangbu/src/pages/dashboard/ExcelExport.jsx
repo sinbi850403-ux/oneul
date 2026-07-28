@@ -2,16 +2,11 @@ import { useState } from 'react'
 import * as XLSX from 'xlsx'
 import { supabase } from '../../lib/supabase.js'
 
+import { PAYMENT_FIELDS } from '../../lib/paymentFields.js'
+
 const FIELDS = [
   { key: 'sale_date', label: '날짜' },
-  { key: 'card',      label: '카드' },
-  { key: 'cash',      label: '현금영수증' },
-  { key: 'bank',      label: '무통장입금' },
-  { key: 'vbank',     label: '가상계좌' },
-  { key: 'phone',     label: '휴대폰결제' },
-  { key: 'npay',      label: '네이버페이' },
-  { key: 'kpay',      label: '카카오페이' },
-  { key: 'etc',       label: '기타' },
+  ...PAYMENT_FIELDS,
   { key: 'total',     label: '합계' },
   { key: 'memo',      label: '메모' },
 ]

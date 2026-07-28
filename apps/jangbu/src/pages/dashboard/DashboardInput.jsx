@@ -3,18 +3,7 @@ import { supabase } from '../../lib/supabase.js'
 import { todayKST, toKSTDateString } from '../../lib/date.js'
 import Toast from '../../components/Toast.jsx'
 
-const FIELDS = [
-  { key: 'card',  label: '카드' },
-  { key: 'cash',  label: '현금영수증' },
-  { key: 'bank',  label: '무통장입금' },
-  { key: 'vbank', label: '가상계좌' },
-  { key: 'phone', label: '휴대폰결제' },
-  { key: 'npay',  label: '네이버페이' },
-  { key: 'kpay',  label: '카카오페이' },
-  { key: 'etc',   label: '기타' },
-]
-
-const EMPTY = Object.fromEntries(FIELDS.map(f => [f.key, 0]))
+import { PAYMENT_FIELDS as FIELDS, EMPTY_SALES as EMPTY } from '../../lib/paymentFields.js'
 
 export default function DashboardInput() {
   const [date, setDate] = useState(todayKST())

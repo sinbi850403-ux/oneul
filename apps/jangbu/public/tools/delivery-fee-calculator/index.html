@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>배달앱 수수료 계산기 — 배민·쿠팡이츠·요기요 실입금 계산 | 오늘장부</title>
+  <meta name="description" content="배달앱 주문금액에서 중개수수료·결제수수료·배달비·부가세를 빼면 실제로 통장에 얼마가 들어오는지 계산합니다. 실효 수수료율까지 한 번에 확인하세요.">
+  <meta property="og:title" content="배달앱 수수료 계산기 — 배민·쿠팡이츠·요기요 실입금 계산">
+  <meta property="og:description" content="주문금액에서 중개·결제 수수료와 배달비, 부가세를 빼고 실제 입금액과 실효 수수료율을 계산합니다.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://xn--wh1bw0st1gbrb.kr/tools/delivery-fee-calculator/">
+  <link rel="canonical" href="https://xn--wh1bw0st1gbrb.kr/tools/delivery-fee-calculator/">
+  <link rel="icon" href="/icons/icon-192.png">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2764893290310463" crossorigin="anonymous"></script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "배달앱 수수료 계산기",
+    "url": "https://xn--wh1bw0st1gbrb.kr/tools/delivery-fee-calculator/",
+    "applicationCategory": "FinanceApplication",
+    "operatingSystem": "All",
+    "description": "배달앱 주문금액에서 중개수수료·결제수수료·배달비·부가세를 차감한 실제 입금액과 실효 수수료율을 계산합니다.",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "KRW" }
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "배달앱 수수료는 매출에서 빼고 신고하나요?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "아닙니다. 부가가치세 신고 시 매출은 고객이 결제한 주문 총액 기준입니다. 배달앱이 떼어간 수수료는 매출에서 차감하는 것이 아니라 별도의 비용(매입)으로 처리합니다. 정산 입금액만 매출로 잡으면 매출 누락이 됩니다."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "실효 수수료율이 무엇인가요?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "중개수수료율만 보면 실제 부담을 알 수 없습니다. 결제수수료, 점주가 부담하는 배달비, 그리고 이 수수료들에 붙는 부가세까지 모두 합쳐 주문금액 대비 몇 퍼센트가 빠져나가는지를 계산한 값이 실효 수수료율입니다."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "수수료에도 부가세가 붙나요?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "붙습니다. 중개수수료·결제수수료·배달비는 배달앱이 제공하는 용역의 대가이므로 부가가치세 10%가 별도로 부과됩니다. 이 부가세는 매입세액으로 공제받을 수 있으므로 세금계산서를 반드시 챙기세요."
+        }
+      }
+    ]
+  }
+  </script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Noto Sans KR', sans-serif; background: #f8f9fa; color: #1a1a1a; line-height: 1.7; }
+    header { background: #fff; border-bottom: 1px solid #eee; position: sticky; top: 0; z-index: 100; }
+    .header-inner { max-width: 900px; margin: 0 auto; padding: 0 20px; height: 60px; display: flex; align-items: center; justify-content: space-between; }
+    .logo { display: flex; align-items: center; gap: 8px; text-decoration: none; }
+    .logo-icon { width: 32px; height: 32px; background: #FF6B35; border-radius: 8px; display: flex; align-items: center; justify-content: center; color: white; font-weight: 900; font-size: 16px; }
+    .logo-text { font-size: 18px; font-weight: 800; color: #FF6B35; }
+    .header-cta { background: #FF6B35; color: white; padding: 8px 16px; border-radius: 8px; font-size: 13px; font-weight: 600; text-decoration: none; }
+    .wrap { max-width: 900px; margin: 0 auto; padding: 32px 20px 60px; }
+    h1 { font-size: clamp(22px, 5vw, 30px); font-weight: 900; line-height: 1.35; margin-bottom: 10px; }
+    .lede { color: #666; font-size: 15px; margin-bottom: 28px; }
+    .card { background: #fff; border-radius: 20px; box-shadow: 0 2px 12px rgba(0,0,0,0.06); padding: 28px; margin-bottom: 20px; }
+    .card h2 { font-size: 19px; font-weight: 800; margin-bottom: 6px; padding-bottom: 8px; border-bottom: 2px solid #FF6B35; }
+    .card h2.plain { border: 0; padding: 0; margin-bottom: 14px; }
+    .tabs { display: flex; gap: 8px; margin-bottom: 22px; flex-wrap: wrap; }
+    .tab { flex: 1; min-width: 100px; padding: 11px 8px; border-radius: 12px; border: 1px solid #e5e5e5; background: #fff; color: #666; font-size: 14px; font-weight: 700; cursor: pointer; font-family: inherit; }
+    .tab[aria-selected="true"] { background: #FF6B35; border-color: #FF6B35; color: #fff; }
+    .field { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 11px 0; border-bottom: 1px solid #f2f2f2; }
+    .field:last-child { border-bottom: 0; }
+    .field label { font-size: 15px; color: #333; font-weight: 500; }
+    .field .hint { display: block; font-size: 12px; color: #aaa; font-weight: 400; margin-top: 2px; }
+    .input-group { display: flex; align-items: center; gap: 6px; flex-shrink: 0; }
+    input[type="number"] { width: 130px; text-align: right; font-size: 15px; font-family: inherit; padding: 10px 12px; border: 1px solid #e5e5e5; border-radius: 10px; background: #fafafa; }
+    input[type="number"]:focus { outline: none; border-color: #FF6B35; background: #fff; }
+    .unit { font-size: 14px; color: #999; width: 22px; }
+    .result { background: linear-gradient(135deg, #FF6B35, #ff8c42); border-radius: 20px; padding: 28px; color: #fff; margin-bottom: 20px; }
+    .result-row { display: flex; justify-content: space-between; align-items: baseline; padding: 7px 0; font-size: 15px; }
+    .result-row.sub { opacity: 0.85; font-size: 14px; }
+    .result-divider { border-top: 1px solid rgba(255,255,255,0.3); margin: 12px 0; }
+    .result-main { display: flex; justify-content: space-between; align-items: baseline; }
+    .result-main .k { font-size: 16px; font-weight: 700; }
+    .result-main .v { font-size: 30px; font-weight: 900; }
+    .rate-badge { background: rgba(255,255,255,0.2); border-radius: 14px; padding: 16px 20px; margin-top: 18px; text-align: center; }
+    .rate-badge .label { font-size: 13px; opacity: 0.9; }
+    .rate-badge .value { font-size: 34px; font-weight: 900; line-height: 1.2; }
+    .rate-badge .desc { font-size: 12px; opacity: 0.85; margin-top: 4px; }
+    .rate-badge .rate-sub { font-size: 13px; opacity: 0.95; margin-top: 12px; padding-top: 12px; border-top: 1px solid rgba(255,255,255,0.25); }
+    table { width: 100%; border-collapse: collapse; font-size: 14px; margin-top: 8px; }
+    th { background: #FF6B35; color: #fff; padding: 10px 12px; text-align: left; font-weight: 700; }
+    td { padding: 10px 12px; border-bottom: 1px solid #f0f0f0; }
+    tr:nth-child(even) td { background: #fff8f5; }
+    .note { background: #fff8f5; border-left: 4px solid #FF6B35; padding: 14px 18px; border-radius: 0 12px 12px 0; font-size: 14px; color: #555; margin-top: 14px; }
+    .faq h3 { font-size: 16px; font-weight: 700; margin: 20px 0 6px; }
+    .faq p { font-size: 15px; color: #444; }
+    .cta-box { background: linear-gradient(135deg, #FF6B35, #ff8c42); border-radius: 20px; padding: 32px; text-align: center; color: #fff; }
+    .cta-box h3 { font-size: 22px; font-weight: 900; margin-bottom: 10px; }
+    .cta-box p { font-size: 14px; opacity: 0.92; margin-bottom: 20px; }
+    .cta-box a { background: #fff; color: #FF6B35; border-radius: 12px; padding: 13px 28px; font-weight: 800; font-size: 15px; text-decoration: none; display: inline-block; }
+    .ad-slot { margin: 24px 0; min-height: 90px; }
+    .links { margin-top: 24px; font-size: 14px; }
+    .links a { color: #FF6B35; text-decoration: none; font-weight: 600; }
+    footer { text-align: center; color: #aaa; font-size: 13px; padding: 30px 20px 50px; }
+    @media (max-width: 600px) {
+      .card { padding: 20px; }
+      .field { flex-direction: column; align-items: stretch; gap: 6px; }
+      .input-group { justify-content: flex-end; }
+      input[type="number"] { width: 100%; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="header-inner">
+      <a class="logo" href="/">
+        <span class="logo-icon">오</span>
+        <span class="logo-text">오늘장부</span>
+      </a>
+      <a class="header-cta" href="/">무료로 시작하기</a>
+    </div>
+  </header>
+
+  <div class="wrap">
+    <h1>배달앱 수수료 계산기</h1>
+    <p class="lede">
+      주문금액에서 중개수수료·결제수수료·배달비, 그리고 거기 붙는 부가세까지 빼면
+      실제로 통장에 얼마가 들어오는지 계산합니다. 아래 값은 기본값이니 사장님 계약 조건으로 바꿔서 쓰세요.
+    </p>
+
+    <div class="card">
+      <div class="tabs" role="tablist">
+        <button class="tab" role="tab" data-app="baemin" aria-selected="true">배달의민족</button>
+        <button class="tab" role="tab" data-app="coupang" aria-selected="false">쿠팡이츠</button>
+        <button class="tab" role="tab" data-app="yogiyo" aria-selected="false">요기요</button>
+      </div>
+
+      <div class="field">
+        <label for="amount">주문금액 합계<span class="hint">고객이 결제한 총액 (한 달 또는 하루 기준)</span></label>
+        <div class="input-group">
+          <input type="number" id="amount" value="1000000" min="0" step="10000">
+          <span class="unit">원</span>
+        </div>
+      </div>
+
+      <div class="field">
+        <label for="orders">주문 건수<span class="hint">배달비 계산에 필요합니다</span></label>
+        <div class="input-group">
+          <input type="number" id="orders" value="50" min="0" step="1">
+          <span class="unit">건</span>
+        </div>
+      </div>
+
+      <div class="field">
+        <label for="mediation">중개수수료율<span class="hint">거래액·주문 건수에 따라 차등 적용됩니다. 사장님 사이트에서 실제 요율을 확인하세요</span></label>
+        <div class="input-group">
+          <input type="number" id="mediation" value="7.8" min="0" max="100" step="0.1">
+          <span class="unit">%</span>
+        </div>
+      </div>
+
+      <div class="field">
+        <label for="payment">결제수수료율</label>
+        <div class="input-group">
+          <input type="number" id="payment" value="3" min="0" max="100" step="0.1">
+          <span class="unit">%</span>
+        </div>
+      </div>
+
+      <div class="field">
+        <label for="delivery">건당 배달비 부담<span class="hint">점주가 부담하는 금액만</span></label>
+        <div class="input-group">
+          <input type="number" id="delivery" value="2900" min="0" step="100">
+          <span class="unit">원</span>
+        </div>
+      </div>
+
+      <div class="field">
+        <label for="vat">수수료 부가세<span class="hint">중개·결제·배달비에 10% 부과. 매입세액 공제 대상입니다</span></label>
+        <div class="input-group">
+          <input type="number" id="vat" value="10" min="0" max="100" step="1">
+          <span class="unit">%</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="result" id="result">
+      <div class="result-row"><span>주문금액</span><span id="r-amount">-</span></div>
+      <div class="result-row sub"><span>중개수수료</span><span id="r-mediation">-</span></div>
+      <div class="result-row sub"><span>결제수수료</span><span id="r-payment">-</span></div>
+      <div class="result-row sub"><span>배달비 부담</span><span id="r-delivery">-</span></div>
+      <div class="result-row sub"><span>수수료 부가세</span><span id="r-vat">-</span></div>
+      <div class="result-divider"></div>
+      <div class="result-row"><span>총 차감액</span><span id="r-total-fee">-</span></div>
+      <div class="result-divider"></div>
+      <div class="result-main">
+        <span class="k">실입금 예상</span>
+        <span class="v" id="r-net">-</span>
+      </div>
+      <div class="rate-badge">
+        <div class="label">실효 수수료율 (부가세 포함)</div>
+        <div class="value" id="r-rate">-</div>
+        <div class="desc">통장에서 실제로 빠져나가는 비율 — 오늘장부 설정에 넣을 값</div>
+        <div class="rate-sub">
+          매입세액 공제 후 실질 비용률 <strong id="r-rate-net">-</strong>
+        </div>
+      </div>
+    </div>
+
+    <div class="cta-box">
+      <h3>이 수수료율, 매일 계산하지 마세요</h3>
+      <p>
+        위에서 나온 실효 수수료율을 오늘장부 설정에 한 번만 넣어두면,<br>
+        매출을 입력할 때마다 실입금 예상액이 자동으로 계산됩니다.<br>
+        카드·현금·배달앱 매출을 한 화면에서 기록하고 부가세 예상액까지 확인하세요.
+      </p>
+      <a href="/">오늘장부 무료로 시작하기</a>
+    </div>
+
+    <div class="ad-slot">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2764893290310463" data-ad-format="auto" data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+
+    <div class="card">
+      <h2>수수료 구조 한눈에 보기</h2>
+      <table>
+        <thead>
+          <tr><th>항목</th><th>부과 기준</th><th>비고</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>중개수수료</td><td>주문금액 × 요율</td><td>거래액·주문 건수 기준 차등 적용</td></tr>
+          <tr><td>결제수수료</td><td>주문금액 × 요율</td><td>카드사·간편결제 대행 비용</td></tr>
+          <tr><td>배달비</td><td>건당 정액</td><td>점주 부담분만 계산에 넣으세요</td></tr>
+          <tr><td>부가세</td><td>위 3개 합계 × 10%</td><td>세금계산서를 받으면 매입세액 공제</td></tr>
+        </tbody>
+      </table>
+      <div class="note">
+        중개수수료율만 보면 실제 부담을 알 수 없습니다. 배달비와 부가세까지 합치면
+        실효 수수료율이 중개수수료율의 두 배를 넘는 경우가 흔합니다. 특히 객단가가 낮을수록
+        건당 정액인 배달비의 비중이 커져 실효율이 급격히 올라갑니다.
+      </div>
+    </div>
+
+    <div class="card faq">
+      <h2 class="plain">자주 묻는 질문</h2>
+      <h3>배달앱 수수료는 매출에서 빼고 신고하나요?</h3>
+      <p>
+        아닙니다. 부가가치세 신고 시 매출은 <strong>고객이 결제한 주문 총액</strong> 기준입니다.
+        배달앱이 떼어간 수수료는 매출에서 차감하는 게 아니라 별도의 비용(매입)으로 처리합니다.
+        정산 입금액만 매출로 잡으면 매출 누락이 됩니다.
+      </p>
+      <h3>실효 수수료율이 무엇인가요?</h3>
+      <p>
+        중개수수료율만 보면 실제 부담을 알 수 없습니다. 결제수수료, 점주가 부담하는 배달비,
+        그리고 이 수수료들에 붙는 부가세까지 모두 합쳐 주문금액 대비 몇 퍼센트가 빠져나가는지를
+        계산한 값이 실효 수수료율입니다.
+      </p>
+      <h3>수수료에도 부가세가 붙나요?</h3>
+      <p>
+        붙습니다. 중개수수료·결제수수료·배달비는 배달앱이 제공하는 용역의 대가이므로
+        부가가치세 10%가 별도로 부과됩니다. 이 부가세는 매입세액으로 공제받을 수 있으니
+        세금계산서를 반드시 챙기세요.
+      </p>
+      <h3>실효 수수료율과 실질 비용률은 왜 다른가요?</h3>
+      <p>
+        수수료에 붙은 부가세는 당장은 통장에서 빠져나가지만, 일반과세자라면
+        부가세 신고 때 <strong>매입세액으로 공제</strong>받습니다. 그래서 통장 기준
+        실효 수수료율보다 손익에 실제로 잡히는 비용률이 낮습니다.
+        <strong>간이과세자는 매입세액 공제가 제한적</strong>이라 실질 부담이
+        실효 수수료율에 가깝습니다. 오늘장부 설정에는 통장 기준인
+        <strong>실효 수수료율(부가세 포함)</strong>을 넣으셔야 실입금 예상액이 맞습니다.
+      </p>
+      <div class="note">
+        본 계산기는 2026년 기준 참고용이며, 실제 수수료율은 배달앱과 맺은 계약과 차등 요율 구간에
+        따라 다릅니다. 정확한 금액은 각 배달앱 사장님 사이트의 정산 내역을 확인하시고,
+        세무 처리는 세무사와 상담하세요.
+      </div>
+    </div>
+
+    <div class="links">
+      <a href="/blog/">오늘장부 블로그에서 더 많은 사장님 정보 보기</a>
+    </div>
+  </div>
+
+  <footer>오늘장부 — 카드·현금·배달앱 매출을 한 번에</footer>
+
+  <script>
+  (function () {
+    // 앱별 기본값. 실제 요율은 차등 구간과 계약에 따라 다르므로 사용자가 수정하는 것을 전제로 한다.
+    var PRESETS = {
+      baemin:  { mediation: 7.8, payment: 3, delivery: 2900 },
+      coupang: { mediation: 7.8, payment: 3, delivery: 2900 },
+      yogiyo:  { mediation: 9.7, payment: 3, delivery: 2900 }
+    };
+
+    var ids = ['amount', 'orders', 'mediation', 'payment', 'delivery', 'vat'];
+    var el = {};
+    ids.forEach(function (id) { el[id] = document.getElementById(id); });
+
+    function num(id) {
+      var v = parseFloat(el[id].value);
+      return isFinite(v) && v > 0 ? v : 0;
+    }
+
+    function won(n) {
+      return '₩ ' + Math.round(n).toLocaleString('ko-KR');
+    }
+
+    function calc() {
+      var amount = num('amount');
+      var orders = num('orders');
+
+      // 주문금액을 비우면 배달비·부가세만 남아 실입금이 음수로 보인다.
+      // 계산이 성립하지 않는 상태이므로 결과를 비워 둔다.
+      if (amount <= 0) {
+        ['r-amount', 'r-mediation', 'r-payment', 'r-delivery', 'r-vat', 'r-total-fee', 'r-net',
+         'r-rate', 'r-rate-net']
+          .forEach(function (id) { document.getElementById(id).textContent = '-'; });
+        return;
+      }
+
+      var mediation = amount * num('mediation') / 100;
+      var payment   = amount * num('payment') / 100;
+      var delivery  = orders * num('delivery');
+      var subtotal  = mediation + payment + delivery;
+      var vat       = subtotal * num('vat') / 100;
+      var totalFee  = subtotal + vat;
+      var net       = amount - totalFee;
+      // 통장 기준 실효율은 부가세를 포함한다. 다만 그 부가세는 매입세액 공제 대상이므로
+      // 손익에 잡히는 실질 비용률은 부가세를 뺀 값이다. 둘 다 보여준다.
+      var rate      = (totalFee / amount) * 100;
+      var rateNet   = (subtotal / amount) * 100;
+
+      document.getElementById('r-amount').textContent    = won(amount);
+      document.getElementById('r-mediation').textContent = '− ' + won(mediation);
+      document.getElementById('r-payment').textContent   = '− ' + won(payment);
+      document.getElementById('r-delivery').textContent  = '− ' + won(delivery);
+      document.getElementById('r-vat').textContent       = '− ' + won(vat);
+      document.getElementById('r-total-fee').textContent = '− ' + won(totalFee);
+      document.getElementById('r-net').textContent       = won(net);
+      document.getElementById('r-rate').textContent      = rate.toFixed(1) + '%';
+      document.getElementById('r-rate-net').textContent  = rateNet.toFixed(1) + '%';
+    }
+
+    ids.forEach(function (id) {
+      el[id].addEventListener('input', calc);
+    });
+
+    document.querySelectorAll('.tab').forEach(function (tab) {
+      tab.addEventListener('click', function () {
+        document.querySelectorAll('.tab').forEach(function (t) {
+          t.setAttribute('aria-selected', String(t === tab));
+        });
+        var p = PRESETS[tab.dataset.app];
+        el.mediation.value = p.mediation;
+        el.payment.value   = p.payment;
+        el.delivery.value  = p.delivery;
+        calc();
+      });
+    });
+
+    calc();
+  })();
+  </script>
+</body>
+</html>

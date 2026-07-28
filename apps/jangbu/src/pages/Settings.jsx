@@ -3,10 +3,12 @@ import { useNavigate } from 'react-router-dom'
 import { supabase } from '../lib/supabase.js'
 import { usePush } from '../hooks/usePush.js'
 import Toast from '../components/Toast.jsx'
+import { DELIVERY_FIELDS, EMPTY_DELIVERY_RATES } from '../lib/paymentFields.js'
 
 export default function Settings() {
   const [shopName, setShopName] = useState('')
   const [taxType, setTaxType] = useState('general')
+  const [rates, setRates] = useState(EMPTY_DELIVERY_RATES)
   const [toast, setToast] = useState('')
   const [saving, setSaving] = useState(false)
   const [deleting, setDeleting] = useState(false)
@@ -21,12 +23,13 @@ export default function Settings() {
       setUserId(user.id)
       const { data } = await supabase
         .from('profiles')
-        .select('shop_name, tax_type')
+        .select('shop_name, tax_type, delivery_rates')
         .eq('user_id', user.id)
         .single()
       if (data) {
         setShopName(data.shop_name ?? '')
         setTaxType(data.tax_type ?? 'general')
+        setRates({ ...EMPTY_DELIVERY_RATES, ...(data.delivery_rates ?? {}) })
       }
     }
     load()
@@ -37,7 +40,7 @@ export default function Settings() {
     const { data: { user } } = await supabase.auth.getUser()
     const { error } = await supabase
       .from('profiles')
-      .update({ shop_name: shopName, tax_type: taxType })
+      .update({ shop_name: shopName, tax_type: taxType, delivery_rates: rates })
       .eq('user_id', user.id)
     setSaving(false)
     if (error) setToast('저장에 실패했어요')
@@ -120,6 +123,40 @@ export default function Settings() {
               </button>
             ))}
           </div>
+        </div>
+      </div>
+
+      {/* 배달앱 수수료 — 매출 입력 화면의 실입금 예상액 계산에 쓰인다 */}
+      <div className="bg-white rounded-2xl shadow-card p-5 mb-4">
+        <label className="text-sm text-stone-500 mb-1 block">배달앱 수수료율</label>
+        <p className="text-xs text-stone-400 mb-4 leading-relaxed">
+          중개·결제 수수료와 배달비를 모두 합친 실효 수수료율입니다.
+          모르시면 <a href="/tools/delivery-fee-calculator/" className="text-brand font-semibold underline">
+          배달앱 수수료 계산기</a>에서 확인하세요.
+        </p>
+        <div className="flex flex-col gap-3">
+          {DELIVERY_FIELDS.map(({ key, label }) => (
+            <div key={key} className="flex items-center justify-between">
+              <span className="text-stone-700">{label}</span>
+              <div className="flex items-center gap-1.5">
+                <input
+                  type="number"
+                  inputMode="decimal"
+                  min="0"
+                  max="100"
+                  step="0.1"
+                  value={rates[key] || ''}
+                  placeholder="0"
+                  onChange={(e) => {
+                    const v = e.target.value === '' ? 0 : Number(e.target.value)
+                    setRates((prev) => ({ ...prev, [key]: v }))
+                  }}
+                  className="w-20 text-right bg-stone-50 rounded-lg px-3 py-2 outline-none focus:ring-2 focus:ring-brand/30"
+                />
+                <span className="text-stone-400 text-sm w-4">%</span>
+              </div>
+            </div>
+          ))}
         </div>
       </div>
 
