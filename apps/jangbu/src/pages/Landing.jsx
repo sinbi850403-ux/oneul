@@ -93,6 +93,9 @@ export default function Landing() {
         <div className="max-w-4xl mx-auto px-6 py-4 flex justify-between items-center">
           <h1 className="text-2xl font-bold text-brand">오늘장부</h1>
           <div className="flex items-center gap-4">
+            <a href="/tools/card-fee-calculator/" className="text-sm font-medium text-stone-500 hover:text-brand transition-colors">
+              무료 계산기
+            </a>
             <a href="/blog/" className="text-sm font-medium text-stone-500 hover:text-brand transition-colors">
               블로그
             </a>
@@ -235,6 +238,8 @@ export default function Landing() {
         <div className="max-w-4xl mx-auto px-6 py-6 flex flex-col md:flex-row justify-between items-center gap-2 text-xs text-stone-400">
           <span>© 2026 오늘장부</span>
           <div className="flex gap-4">
+            <a href="/tools/card-fee-calculator/" className="hover:text-stone-600 transition-colors">카드수수료 계산기</a>
+            <a href="/tools/delivery-fee-calculator/" className="hover:text-stone-600 transition-colors">배달앱 수수료 계산기</a>
             <a href="/blog/" className="hover:text-stone-600 transition-colors">블로그</a>
             <button onClick={() => navigate('/privacy')} className="hover:text-stone-600 transition-colors">개인정보처리방침</button>
             <button onClick={() => navigate('/terms')} className="hover:text-stone-600 transition-colors">이용약관</button>
