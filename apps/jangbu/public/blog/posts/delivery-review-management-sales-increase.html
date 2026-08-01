@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>배달 리뷰 관리로 매출 늘리기: 별점·답글 실전 전략 | 오늘장부 블로그</title>
+  <meta name="description" content="배달앱 별점과 리뷰 답글이 매출에 직결되는 이유와, 악성 리뷰 대응·리뷰 이벤트·답글 작성법까지 소상공인이 바로 써먹을 수 있는 실전 전략을 정리했습니다.">
+  <meta property="og:title" content="배달 리뷰 관리로 매출 늘리기: 별점·답글 실전 전략">
+  <meta property="og:description" content="배달앱 별점과 리뷰 답글이 매출에 직결되는 이유와, 악성 리뷰 대응·리뷰 이벤트·답글 작성법까지 소상공인이 바로 써먹을 수 있는 실전 전략을 정리했습니다.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://xn--wh1bw0st1gbrb.kr/blog/posts/delivery-review-management-sales-increase.html">
+  <meta property="og:image" content="https://images.pexels.com/photos/31918446/pexels-photo-31918446.jpeg?auto=compress&amp;cs=tinysrgb&amp;fit=crop&amp;h=627&amp;w=1200">
+  <link rel="canonical" href="https://xn--wh1bw0st1gbrb.kr/blog/posts/delivery-review-management-sales-increase.html">
+  <link rel="icon" href="/icons/icon-192.png">
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2764893290310463" crossorigin="anonymous"></script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Noto Sans KR', sans-serif; background: #f8f9fa; color: #1a1a1a; line-height: 1.7; }
+    header { background: #fff; border-bottom: 1px solid #eee; position: sticky; top: 0; z-index: 100; }
+    .header-inner { max-width: 1100px; margin: 0 auto; padding: 0 20px; height: 60px; display: flex; align-items: center; justify-content: space-between; }
+    .logo { display: flex; align-items: center; gap: 8px; text-decoration: none; }
+    .logo-icon { width: 32px; height: 32px; background: #FF6B35; border-radius: 8px; display: flex; align-items: center; justify-content: center; color: white; font-weight: 900; font-size: 16px; }
+    .logo-text { font-size: 18px; font-weight: 800; color: #FF6B35; }
+    .logo-sub { font-size: 13px; color: #888; margin-left: 4px; }
+    .header-cta { background: #FF6B35; color: white; border: none; padding: 8px 16px; border-radius: 8px; font-size: 13px; font-weight: 600; cursor: pointer; text-decoration: none; }
+    /* minmax(0, ...): 표처럼 최소폭이 큰 콘텐츠가 그리드 트랙을 밀어내 페이지 전체가
+       가로로 스크롤되는 것을 막는다. 1fr만 쓰면 트랙 최소폭이 auto라 끌려간다. */
+    .wrap { max-width: 1100px; margin: 0 auto; padding: 32px 20px; display: grid; grid-template-columns: minmax(0, 1fr) 300px; gap: 40px; }
+    @media (max-width: 768px) { .wrap { grid-template-columns: minmax(0, 1fr); } .sidebar { display: none; } }
+    article { background: white; border-radius: 20px; overflow: hidden; box-shadow: 0 2px 12px rgba(0,0,0,0.06); }
+    .article-head { padding: 32px 32px 24px; border-bottom: 1px solid #f0f0f0; }
+    .article-cat { font-size: 12px; font-weight: 700; color: #FF6B35; text-transform: uppercase; margin-bottom: 12px; }
+    .article-cat a { color: #FF6B35; text-decoration: none; }
+    .article-title { font-size: clamp(20px, 4vw, 28px); font-weight: 900; line-height: 1.4; color: #1a1a1a; margin-bottom: 16px; }
+    .article-meta { font-size: 13px; color: #aaa; display: flex; gap: 16px; align-items: center; flex-wrap: wrap; }
+    .hero-img { width: 100%; aspect-ratio: 16/9; object-fit: cover; background: #f0f0f0; }
+    .article-body { padding: 32px; }
+    .article-body h2 { font-size: 20px; font-weight: 800; color: #1a1a1a; margin: 32px 0 14px; padding-bottom: 8px; border-bottom: 2px solid #FF6B35; }
+    .article-body h3 { font-size: 16px; font-weight: 700; color: #333; margin: 20px 0 10px; }
+    .article-body p { margin-bottom: 14px; color: #333; font-size: 15px; }
+    .article-body ul, .article-body ol { padding-left: 20px; margin-bottom: 14px; }
+    .article-body li { margin-bottom: 6px; color: #333; font-size: 15px; }
+    article { min-width: 0; }
+    /* 좁은 화면에서는 표만 자기 안에서 가로 스크롤시킨다. min-width:100%가 있어야
+       넓은 화면에서 기존처럼 폭을 꽉 채운다. */
+    .article-body table { display: block; width: max-content; min-width: 100%; max-width: 100%; overflow-x: auto; border-collapse: collapse; margin: 16px 0; font-size: 14px; }
+    .article-body th { background: #FF6B35; color: white; padding: 10px 14px; text-align: left; }
+    .article-body td { padding: 10px 14px; border-bottom: 1px solid #f0f0f0; }
+    .article-body tr:nth-child(even) td { background: #fff8f5; }
+    .article-body img { width: 100%; border-radius: 12px; margin: 16px 0; }
+    .article-body strong { color: #1a1a1a; }
+    .article-body blockquote { background: #fff8f5; border-left: 4px solid #FF6B35; padding: 16px 20px; border-radius: 0 12px 12px 0; margin: 16px 0; font-style: italic; color: #555; }
+    .article-body a { color: #FF6B35; }
+    .tags { padding: 20px 32px; border-top: 1px solid #f0f0f0; display: flex; gap: 8px; flex-wrap: wrap; }
+    .tag { background: #fff3ee; color: #FF6B35; border-radius: 20px; padding: 5px 12px; font-size: 12px; font-weight: 600; text-decoration: none; }
+    .tag:hover { background: #FF6B35; color: white; }
+    .ad-slot { background: #f0f0f0; border-radius: 12px; display: flex; align-items: center; justify-content: center; color: #bbb; font-size: 12px; min-height: 90px; margin: 24px 0; }
+    .cta-box { background: linear-gradient(135deg, #FF6B35, #ff8c42); border-radius: 20px; padding: 32px; text-align: center; color: white; margin-top: 24px; }
+    .cta-box h3 { font-size: 22px; font-weight: 900; margin-bottom: 10px; }
+    .cta-box p { font-size: 14px; opacity: 0.9; line-height: 1.6; margin-bottom: 20px; }
+    .cta-box a { background: white; color: #FF6B35; border-radius: 12px; padding: 13px 28px; font-weight: 800; font-size: 15px; text-decoration: none; display: inline-block; }
+    .nav-links { display: flex; gap: 16px; margin-top: 24px; }
+    .nav-back { color: #FF6B35; text-decoration: none; font-size: 14px; font-weight: 600; }
+    .nav-back::before { content: '\2190 '; }
+    .sidebar-cta { background: linear-gradient(135deg, #FF6B35, #ff8c42); color: white; border-radius: 16px; padding: 24px; text-align: center; position: sticky; top: 80px; }
+    .sidebar-cta h3 { font-size: 16px; font-weight: 900; margin-bottom: 8px; }
+    .sidebar-cta p { font-size: 13px; opacity: 0.9; line-height: 1.5; margin-bottom: 16px; }
+    .sidebar-cta a { background: white; color: #FF6B35; border-radius: 8px; padding: 10px 20px; font-weight: 700; font-size: 14px; text-decoration: none; display: inline-block; }
+    footer { background: #1a1a1a; color: #888; padding: 40px 20px; margin-top: 60px; }
+    .footer-inner { max-width: 1100px; margin: 0 auto; }
+    .footer-links { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 16px; }
+    .footer-links a { color: #888; text-decoration: none; font-size: 13px; }
+    .footer-copy { font-size: 12px; }
+  </style>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "배달 리뷰 관리로 매출 늘리기: 별점·답글 실전 전략",
+  "description": "배달앱 별점과 리뷰 답글이 매출에 직결되는 이유와, 악성 리뷰 대응·리뷰 이벤트·답글 작성법까지 소상공인이 바로 써먹을 수 있는 실전 전략을 정리했습니다.",
+  "datePublished": "2026-08-01",
+  "dateModified": "2026-08-01",
+  "image": "https://images.pexels.com/photos/31918446/pexels-photo-31918446.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200",
+  "author": {
+    "@type": "Organization",
+    "name": "오늘장부",
+    "url": "https://오늘장부.kr"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "오늘장부",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://xn--wh1bw0st1gbrb.kr/icons/icon-192.png"
+    }
+  },
+  "mainEntityOfPage": "https://xn--wh1bw0st1gbrb.kr/blog/posts/delivery-review-management-sales-increase.html",
+  "keywords": "배달앱, 리뷰관리, 별점관리, 소상공인"
+}
+  </script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "리뷰 이벤트(쿠폰 제공)를 하면 진짜 별점이 올라가나요?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "리뷰 이벤트는 리뷰 작성 자체의 허들을 낮춰 리뷰 수를 늘리는 데 효과적입니다. 다만, 리뷰의 질(음식 맛·배달 속도·포장)이 뒷받침되지 않으면 리뷰 수가 늘어도 별점 평균이 오르지 않을 수 있습니다. 이벤트와 품질 개선을 병행해야 효과가 납니다."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "낮은 별점 리뷰를 삭제할 수 있나요?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "단순히 별점이 낮다는 이유만으로는 삭제를 요청할 수 없습니다. 욕설·비방·허위 사실·주문 없는 리뷰 등 명백한 정책 위반이 있을 때만 플랫폼 신고를 통해 삭제 요청이 가능합니다. 정상적인 낮은 별점 리뷰는 성실한 답글로 대응하는 것이 최선입니다."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "배달앱 수수료가 부담스러운데, 리뷰 관리로 광고비를 줄일 수 있나요?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "별점이 높고 최신 리뷰가 풍부하면 알고리즘 자연 노출이 늘어 유료 광고 의존도를 줄이는 데 도움이 됩니다. 2026년 현재 배달의민족·쿠팡이츠의 중개수수료는 매출 구간에 따라 약 2~7.8%로 차등 적용되는데, 리뷰 관리로 광고 지출을 줄이면 그만큼 실질 수익이 개선됩니다. 정확한 수익 구조는 플랫폼별 수수료 정책과 함께 꼼꼼히 계산해보세요."
+      }
+    }
+  ]
+}
+  </script>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <a href="/" class="logo">
+      <div class="logo-icon">장</div>
+      <span class="logo-text">오늘장부</span>
+      <span class="logo-sub">블로그</span>
+    </a>
+    <a href="/" class="header-cta">무료로 시작하기</a>
+  </div>
+</header>
+
+<div class="wrap">
+  <main>
+    <div class="nav-links">
+      <a href="/blog/" class="nav-back">블로그 목록으로</a>
+    </div>
+
+    <!-- 자동 광고(Auto ads)가 배치를 정하므로 유닛을 직접 넣지 않는다. 여백만 확보한다. -->
+    <div class="ad-slot"></div>
+
+    <article>
+      <div class="article-head">
+        <div class="article-cat"><a href="/blog/">배달앱</a></div>
+        <h1 class="article-title">배달 리뷰 관리로 매출 늘리기: 별점·답글 실전 전략</h1>
+        <div class="article-meta">
+          <span>오늘장부 편집팀</span>
+          <span>2026년 08월 01일</span>
+        </div>
+      </div>
+      <img src="https://images.pexels.com/photos/31918446/pexels-photo-31918446.jpeg?auto=compress&amp;cs=tinysrgb&amp;fit=crop&amp;h=627&amp;w=1200" alt="배달 리뷰 관리로 매출 늘리기: 별점·답글 실전 전략" class="hero-img" loading="lazy">
+      <div class="article-body">
+<p>배달앱 시장은 2026년 현재에도 수천만 명이 이용하는 핵심 판매 채널입니다. 그런데 많은 사장님이 음식 품질과 배달 속도에만 집중하고, <strong>리뷰·별점 관리</strong>는 뒷전으로 미루는 경우가 많습니다. 소비자는 주문 전 별점과 리뷰를 반드시 확인합니다. 즉, 리뷰 관리는 광고비를 한 푼도 쓰지 않고도 신규 고객을 끌어오는 가장 강력한 무기입니다. 이 글에서는 별점을 올리고, 부정 리뷰에 현명하게 대응하고, 재주문율을 높이는 실전 전략을 단계별로 정리합니다.</p>
+
+<h2>왜 리뷰가 매출에 직결되는가</h2>
+<p>배달앱 알고리즘은 리뷰 수와 별점을 주요 노출 기준 중 하나로 활용합니다. 별점이 높고 최신 리뷰가 많은 가게일수록 검색 상단에 노출될 가능성이 높아집니다. 소비자 입장에서도 낯선 가게를 처음 주문할 때 가장 먼저 보는 것이 별점과 최근 리뷰입니다. 한국소비자원 조사에 따르면 배달 플랫폼의 리뷰 관련 소비자 불만이 매년 증가하고 있으며, 그만큼 소비자들이 리뷰를 구매 결정에 적극 활용한다는 의미이기도 합니다.</p>
+<p>또한 배달앱 수수료 부담(배달의민족·쿠팡이츠 기준 매출 구간에 따라 약 2~7.8%의 차등 중개수수료 + 배달비)이 적지 않은 상황에서, 광고비 추가 지출 없이 리뷰 관리만으로 자연 노출을 높이는 것은 수익성 측면에서 매우 효율적인 전략입니다.</p>
+
+<h2>별점을 올리는 5가지 실전 전략</h2>
+<ol>
+  <li><strong>배달 전용 포장에 투자하라</strong><br>아무리 맛있는 음식도 뚜껑을 열었을 때 내용물이 흐트러져 있으면 낮은 별점을 받습니다. 칸막이 포장 용기, 보온·보냉백 등 배달 환경에 최적화된 포장재에 아낌없이 투자하세요. 포장 품질은 첫인상이자 별점의 절반입니다.</li>
+  <li><strong>리뷰 이벤트를 적극 활용하라</strong><br>배달의민족·쿠팡이츠·요기요 모두 사장님 메뉴에서 리뷰 작성 시 쿠폰이나 포인트를 제공하는 리뷰 이벤트 기능을 제공합니다. 리뷰 이벤트를 설정해두면 리뷰 작성률이 높아지고 자연스럽게 리뷰 수가 쌓입니다. 단, 특정 내용의 리뷰를 유도하거나 별점을 조작하는 행위는 플랫폼 약관 위반으로 계정 정지·평점 삭제 등 불이익을 받을 수 있으니 반드시 플랫폼 가이드라인 안에서 운영하세요.</li>
+  <li><strong>메뉴 사진과 설명을 최신 상태로 유지하라</strong><br>실제 음식과 사진이 다르다는 리뷰는 별점을 크게 깎아 먹습니다. 메뉴 사진은 실제 제공량과 비슷하게 찍고, 계절 한정 메뉴나 품절 메뉴는 즉시 업데이트하세요.</li>
+  <li><strong>배달 예상 시간을 현실적으로 설정하라</strong><br>과도하게 짧은 배달 예상 시간을 설정해 고객의 기대를 높이면, 조금만 늦어도 낮은 별점으로 이어집니다. 피크타임에는 여유 있는 예상 시간을 설정해 "생각보다 빨리 왔어요"라는 긍정적 경험을 만드세요.</li>
+  <li><strong>감사 메모·소스 등 작은 서비스를 더하라</strong><br>작은 손편지, 사탕 한 알, 소스 추가 등 기대 이상의 경험을 제공하면 고객이 자발적으로 리뷰를 남기고 싶어집니다. 비용 대비 리뷰 전환율이 높은 방법입니다.</li>
+</ol>
+
+<h2>부정 리뷰·낮은 별점에 대응하는 답글 공식</h2>
+<p>낮은 별점 리뷰를 받으면 무시하거나 감정적으로 반박하고 싶은 마음이 들지만, 둘 다 최악의 선택입니다. 답글의 진짜 독자는 리뷰를 남긴 당사자가 아니라, <strong>그 답글을 보는 수백 명의 잠재 고객</strong>입니다. 아래 3단계 공식을 참고하세요.</p>
+<table>
+  <thead>
+    <tr>
+      <th>단계</th>
+      <th>핵심 내용</th>
+      <th>예시 문구</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1단계: 공감·사과</td>
+      <td>불편함을 인정, 감정적 반박 금지</td>
+      <td>"불편하셨겠습니다. 진심으로 죄송합니다."</td>
+    </tr>
+    <tr>
+      <td>2단계: 짧은 사실 설명</td>
+      <td>감정 배제, 구체적 상황 한 줄 이내</td>
+      <td>"해당 날 포장 과정에서 실수가 있었던 것 같습니다."</td>
+    </tr>
+    <tr>
+      <td>3단계: 개선 약속 + 재방문 유도</td>
+      <td>변화 의지 표명, 따뜻한 마무리</td>
+      <td>"꼼꼼히 개선하겠습니다. 다음엔 더 좋은 경험 드리겠습니다."</td>
+    </tr>
+  </tbody>
+</table>
+<p>반박형 답글("그런 적 없는데요?")은 보는 고객에게 방어적인 업체로 비춰지며, 무대응도 신뢰를 더 떨어뜨립니다. 사실관계에 다툼이 있더라도 공개 답글에서는 공감을 우선하고, 필요하다면 고객센터나 개인 연락으로 이어가세요.</p>
+
+<h2>악성 리뷰(허위·조작 리뷰) 대응법</h2>
+<p>주문한 적 없는 고객의 리뷰, 명백한 허위 사실, 욕설·비방이 포함된 리뷰는 플랫폼 신고 기능을 통해 삭제를 요청할 수 있습니다. 배달의민족·쿠팡이츠·요기요 모두 악의적 리뷰에 대한 게시 중단·임시 차단 기능을 운영하고 있습니다. 신고 시에는 <strong>주문 내역과 대화 내용 등 구체적인 근거 자료</strong>를 함께 첨부해야 처리 속도가 빠릅니다. 플랫폼 조치가 지연될 경우 한국소비자원에도 신고할 수 있습니다.</p>
+
+<h2>리뷰와 매출을 함께 관리하는 법</h2>
+<p>리뷰 답글을 열심히 달아 별점이 올라가도, 실제 배달앱 매출이 수익에 얼마나 기여하는지 파악하지 못하면 방향을 잡기 어렵습니다. 배달앱별 매출, 카드 매출, 현금 매출을 한 화면에서 확인하고 부가세 예상액까지 자동으로 계산해주는 <strong>오늘장부</strong> 같은 앱을 활용하면, 리뷰 이벤트를 진행한 주와 그렇지 않은 주의 매출 변화를 한눈에 비교할 수 있습니다. 데이터를 보면서 어떤 리뷰 전략이 실제 매출로 이어지는지 검증하는 것이 장기적으로 가장 효율적인 운영 방식입니다.</p>
+
+<h2>리뷰 관리 체크리스트</h2>
+<ul>
+  <li>✅ 리뷰 이벤트(쿠폰·포인트) 설정 여부 확인</li>
+  <li>✅ 최근 1주일 리뷰 전체 확인 및 미답글 없는지 점검</li>
+  <li>✅ 별점 3점 이하 리뷰에 24시간 내 답글 작성</li>
+  <li>✅ 메뉴 사진·설명 최신 상태 유지</li>
+  <li>✅ 배달 예상 시간 현실적으로 설정</li>
+  <li>✅ 허위·악성 리뷰 신고 접수 및 진행 상황 확인</li>
+  <li>✅ 리뷰 이벤트 진행 전후 매출 변화 비교</li>
+</ul>
+
+<h2>자주 묻는 질문</h2>
+
+<h3>리뷰 이벤트(쿠폰 제공)를 하면 진짜 별점이 올라가나요?</h3>
+<p>리뷰 이벤트는 리뷰 작성 자체의 허들을 낮춰 리뷰 수를 늘리는 데 효과적입니다. 다만, 리뷰의 질(음식 맛·배달 속도·포장)이 뒷받침되지 않으면 리뷰 수가 늘어도 별점 평균이 오르지 않을 수 있습니다. 이벤트와 품질 개선을 병행해야 효과가 납니다.</p>
+
+<h3>낮은 별점 리뷰를 삭제할 수 있나요?</h3>
+<p>단순히 별점이 낮다는 이유만으로는 삭제를 요청할 수 없습니다. 욕설·비방·허위 사실·주문 없는 리뷰 등 명백한 정책 위반이 있을 때만 플랫폼 신고를 통해 삭제 요청이 가능합니다. 정상적인 낮은 별점 리뷰는 성실한 답글로 대응하는 것이 최선입니다.</p>
+
+<h3>배달앱 수수료가 부담스러운데, 리뷰 관리로 광고비를 줄일 수 있나요?</h3>
+<p>별점이 높고 최신 리뷰가 풍부하면 알고리즘 자연 노출이 늘어 유료 광고 의존도를 줄이는 데 도움이 됩니다. 2026년 현재 배달의민족·쿠팡이츠의 중개수수료는 매출 구간에 따라 약 2~7.8%로 차등 적용되는데, 리뷰 관리로 광고 지출을 줄이면 그만큼 실질 수익이 개선됩니다. 정확한 수익 구조는 플랫폼별 수수료 정책과 함께 꼼꼼히 계산해보세요.</p>
+
+<p>리뷰 관리는 하루아침에 효과가 나타나지 않지만, 꾸준히 쌓이면 광고비 없이도 가게 노출을 높이는 가장 강력한 자산이 됩니다. 오늘부터 리뷰 답글 하나부터 시작해보세요. 배달앱 매출을 한눈에 파악하고 싶은 사장님께는 <a href="https://오늘장부.kr">오늘장부 무료로 시작하기</a>를 추천합니다.</p>
+
+<p>※ 본 글은 2026년 기준 참고용 정보이며, 정확한 신고·금액은 국세청 홈택스 또는 세무사와 상담하세요.</p>
+      </div>
+      <div class="tags">
+        <a href="/blog/?tag=%EB%B0%B0%EB%8B%AC%EC%95%B1" class="tag">배달앱</a> <a href="/blog/?tag=%EB%A6%AC%EB%B7%B0%EA%B4%80%EB%A6%AC" class="tag">리뷰관리</a> <a href="/blog/?tag=%EB%B3%84%EC%A0%90%EA%B4%80%EB%A6%AC" class="tag">별점관리</a> <a href="/blog/?tag=%EC%86%8C%EC%83%81%EA%B3%B5%EC%9D%B8" class="tag">소상공인</a>
+      </div>
+    </article>
+
+    <section style="background:#fff8f5;border-radius:16px;padding:24px 28px;margin-top:24px;">
+      <h2 style="font-size:18px;font-weight:800;color:#1a1a1a;margin:0 0 14px;">함께 보면 좋은 글</h2>
+      <ul style="list-style:none;padding:0;margin:0;">
+        <li style="padding:8px 0;border-bottom:1px solid #ffe6d9;"><a href="/blog/posts/delivery-exclusive-menu-strategy.html" style="color:#FF6B35;text-decoration:none;font-weight:600;font-size:14px;">배달 전용 메뉴 구성 전략: 수수료 먹어도 남는 메뉴 만들기</a></li>
+        <li style="padding:8px 0;border-bottom:1px solid #ffe6d9;"><a href="/blog/posts/single-delivery-profitability-analysis-2.html" style="color:#FF6B35;text-decoration:none;font-weight:600;font-size:14px;">단건배달 수익성 분석: 사장님이 실제로 남기는 돈은?</a></li>
+        <li style="padding:8px 0;border-bottom:1px solid #ffe6d9;"><a href="/blog/posts/delivery-packaging-fee-pricing-guide.html" style="color:#FF6B35;text-decoration:none;font-weight:600;font-size:14px;">배달 포장비 책정하는 법: 원가부터 수수료까지 완전 정복</a></li>
+        <li style="padding:8px 0;border-bottom:1px solid #ffe6d9;"><a href="/blog/posts/delivery-app-ad-effect-cost-roi-guide.html" style="color:#FF6B35;text-decoration:none;font-weight:600;font-size:14px;">배달앱 광고 효과 있을까? 비용 구조와 손익 계산 완전 정리</a></li>
+      </ul>
+    </section>
+
+    <section style="background:#fff8f5;border-radius:16px;padding:24px 28px;margin-top:24px;">
+      <h2 style="font-size:18px;font-weight:800;color:#1a1a1a;margin:0 0 14px;">무료 계산기로 바로 확인하기</h2>
+      <ul style="list-style:none;padding:0;margin:0;">
+        <li style="padding:10px 0;border-bottom:1px solid #ffe6d9;"><a href="/tools/delivery-fee-calculator/" style="color:#FF6B35;text-decoration:none;font-weight:700;font-size:15px;">배달앱 수수료 계산기</a><div style="font-size:13px;color:#777;margin-top:2px;">중개·결제 수수료와 배달비를 빼면 실제로 얼마가 입금되는지 계산합니다</div></li>
+      </ul>
+    </section>
+
+    <!-- 자동 광고(Auto ads)가 배치를 정하므로 유닛을 직접 넣지 않는다. 여백만 확보한다. -->
+    <div class="ad-slot"></div>
+
+    <div class="cta-box">
+      <h3>매일 매출 기록, 30초면 끝!</h3>
+      <p>카드·현금·네이버페이·카카오페이<br>여러 결제수단을 한 화면에서 입력<br>부가세 예상액도 자동으로 계산해드려요</p>
+      <a href="/">지금 무료로 시작하기</a>
+    </div>
+  </main>
+
+  <aside class="sidebar">
+    <div class="sidebar-cta">
+      <h3>매일 매출 기록,<br>30초면 끝!</h3>
+      <p>카드·현금·배달앱 한 번에<br>부가세 예상액도 자동 계산</p>
+      <a href="/">무료로 시작하기</a>
+    </div>
+  </aside>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-links">
+      <a href="/">서비스 홈</a>
+      <a href="/blog/">블로그</a>
+      <a href="/privacy">개인정보처리방침</a>
+      <a href="/terms">이용약관</a>
+    </div>
+    <div class="footer-copy">© 2026 오늘장부. All rights reserved.</div>
+  </div>
+</footer>
+
+</body>
+</html>
