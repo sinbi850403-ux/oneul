@@ -5,36 +5,57 @@
 // 프론트는 Supabase access_token 을 Authorization 헤더로 보내고,
 // 여기서 profiles.is_admin 을 확인한 뒤에만 데이터를 돌려준다.
 
-import { createClient } from '@supabase/supabase-js'
+// supabase-js 는 createClient() 시점에 Realtime 클라이언트를 만드는데,
+// Vercel 의 Node 20 에는 내장 WebSocket 이 없어 거기서 예외를 던진다.
+// 이 함수에 필요한 건 사용자 조회와 한 줄 읽기뿐이라 실시간 기능이 필요
+// 없으므로, SDK 대신 REST 를 직접 호출한다. 의존성도 콜드스타트도 줄어든다.
 
 // 프로젝트 URL 은 비밀이 아니다 — 클라이언트 번들에 그대로 박혀 모든
-// 방문자에게 노출된다. 환경변수로만 두면 값이 깨졌을 때 서버가 통째로
-// 멈추므로, 코드에 기본값을 두고 환경변수는 덮어쓰기 용도로만 남긴다.
+// 방문자에게 노출된다. 환경변수 값이 깨져 있던 적이 있어 코드에 기본값을
+// 두고, 환경변수는 형식이 멀쩡할 때만 쓴다.
 // (비밀인 service_role 키는 여전히 환경변수에서만 읽는다.)
 const DEFAULT_SUPABASE_URL = 'https://lgxdabtmvbbzmzwistjd.supabase.co'
 
 const SUPABASE_SERVICE_KEY = process.env.SUPABASE_SERVICE_KEY
 
-// 환경변수 값이 "있는데 깨진" 경우가 실제로 있었다. 직접 형식을 검사해
-// 걸러보려 했지만, 무엇이 섞였는지 특정하지 못해 계속 실패했다.
-// 그래서 판정을 실제 소비자에게 맡긴다 — 환경변수 값으로 만들어 보고
-// 거부당하면 코드 기본값으로 다시 만든다. 어떤 문자가 섞였든 통과한다.
-function makeSupabaseClient() {
-  const fromEnv = (process.env.VITE_SUPABASE_URL || '').trim()
-  const candidates = fromEnv && fromEnv !== DEFAULT_SUPABASE_URL
-    ? [fromEnv, DEFAULT_SUPABASE_URL]
-    : [DEFAULT_SUPABASE_URL]
-
-  let lastError
-  for (const url of candidates) {
+function resolveSupabaseUrl() {
+  const raw = (process.env.VITE_SUPABASE_URL || '').trim()
+  if (raw) {
     try {
-      return createClient(url, SUPABASE_SERVICE_KEY)
-    } catch (e) {
-      lastError = e
-      console.error('[analytics] Supabase 클라이언트 생성 실패:', String(e?.message ?? e))
-    }
+      const u = new URL(raw)
+      // origin 을 쓴다 — 파서가 걸러내는 제어문자가 원본에 남아 있어도
+      // 정규화된 주소만 나가게 된다.
+      if (u.protocol === 'https:' || u.protocol === 'http:') return u.origin
+    } catch { /* 아래 기본값 */ }
+    console.error('[analytics] VITE_SUPABASE_URL 형식이 올바르지 않아 기본값을 사용합니다.')
   }
-  throw lastError
+  return DEFAULT_SUPABASE_URL
+}
+
+const SUPABASE_URL = resolveSupabaseUrl()
+
+// 토큰 소유자 확인. 실패하면 null — 호출 측에서 401 로 처리한다.
+async function fetchUser(token) {
+  const r = await fetch(`${SUPABASE_URL}/auth/v1/user`, {
+    headers: { apikey: SUPABASE_SERVICE_KEY, Authorization: `Bearer ${token}` },
+  })
+  if (!r.ok) return null
+  const u = await r.json()
+  return u?.id ? u : null
+}
+
+async function fetchIsAdmin(userId) {
+  const url = `${SUPABASE_URL}/rest/v1/profiles`
+    + `?user_id=eq.${encodeURIComponent(userId)}&select=is_admin&limit=1`
+  const r = await fetch(url, {
+    headers: {
+      apikey: SUPABASE_SERVICE_KEY,
+      Authorization: `Bearer ${SUPABASE_SERVICE_KEY}`,
+    },
+  })
+  if (!r.ok) throw new Error(`profiles 조회 실패 (${r.status})`)
+  const rows = await r.json()
+  return rows?.[0]?.is_admin === true
 }
 // 속성 ID 는 비밀값이 아니다(측정 ID 처럼 공개되어도 무방). 설정 단계를
 // 줄이려고 코드에 두고, 필요하면 환경변수로 덮어쓸 수 있게 남겨둔다.
@@ -44,7 +65,7 @@ const GA_SERVICE_ACCOUNT   = process.env.GA_SERVICE_ACCOUNT_JSON
 // 배포 표식. 빌드 캐시 때문에 옛 함수가 계속 돌아 원인을 찾는 데
 // 오래 걸린 적이 있다. 응답에 실어 어느 빌드가 살아있는지 바로 알 수 있게 한다.
 // 함수 동작을 바꿀 때마다 갱신한다.
-const BUILD = 'r4-detail-msg'
+const BUILD = 'r5-rest-no-sdk'
 
 // GA4 API 는 일일 호출 할당량이 있다. 관리자가 새로고침을 연타해도
 // 할당량이 마르지 않도록 람다 인스턴스 메모리에 5분간 캐시한다.
@@ -105,36 +126,22 @@ async function run(req, res) {
     })
   }
 
-  let db
-  try {
-    db = makeSupabaseClient()
-  } catch (e) {
-    // 라이브러리가 돌려준 문구를 그대로 싣는다. 값은 들어있지 않고,
-    // 이게 없으면 원인을 추측만 하게 되어 진단이 한없이 길어진다.
-    const msg = String(e?.message ?? e)
-    console.error('[analytics] Supabase 초기화 실패:', msg)
-    return res.status(503).json({
-      error: '서버 설정값이 올바르지 않아요.',
-      hint: `Vercel 환경변수 SUPABASE_SERVICE_KEY 값을 확인해 주세요. (상세: ${msg})`,
-    })
-  }
-
-  // 토큰이 망가졌거나 만료되면 getUser 가 예외를 던지기도 한다. 그것도
-  // 인증 실패이므로 500 이 아니라 401 로 돌려줘야 원인 구분이 된다.
+  // 토큰이 망가졌거나 만료된 것도 인증 실패이므로 500 이 아니라 401 이다.
   let user
   try {
-    const { data, error: authErr } = await db.auth.getUser(token)
-    user = data?.user
-    if (authErr || !user) return res.status(401).json({ error: '로그인이 필요합니다.' })
-  } catch {
+    user = await fetchUser(token)
+  } catch (e) {
+    console.error('[analytics] 사용자 조회 실패:', String(e?.message ?? e))
     return res.status(401).json({ error: '로그인이 필요합니다.' })
   }
+  if (!user) return res.status(401).json({ error: '로그인이 필요합니다.' })
 
   try {
-    const { data: profile } = await db
-      .from('profiles').select('is_admin').eq('user_id', user.id).maybeSingle()
-    if (!profile?.is_admin) return res.status(403).json({ error: '접근 권한이 없습니다.' })
-  } catch {
+    if (!(await fetchIsAdmin(user.id))) {
+      return res.status(403).json({ error: '접근 권한이 없습니다.' })
+    }
+  } catch (e) {
+    console.error('[analytics] 권한 확인 실패:', String(e?.message ?? e))
     return res.status(500).json({ error: '권한 확인에 실패했어요.' })
   }
 
