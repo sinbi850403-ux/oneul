@@ -7,7 +7,26 @@
 
 import { createClient } from '@supabase/supabase-js'
 
-const SUPABASE_URL         = process.env.VITE_SUPABASE_URL
+// 프로젝트 URL 은 비밀이 아니다 — 클라이언트 번들에 그대로 박혀 모든
+// 방문자에게 노출된다. 환경변수로만 두면 값이 깨졌을 때 서버가 통째로
+// 멈추므로, 코드에 기본값을 두고 환경변수는 덮어쓰기 용도로만 남긴다.
+// (비밀인 service_role 키는 여전히 환경변수에서만 읽는다.)
+const DEFAULT_SUPABASE_URL = 'https://lgxdabtmvbbzmzwistjd.supabase.co'
+
+// 값이 "있는데 깨진" 경우가 실제로 있었다. 있으면 쓰는 게 아니라
+// 써도 되는 값인지 확인하고, 아니면 기본값으로 되돌린다.
+function resolveSupabaseUrl() {
+  const raw = (process.env.VITE_SUPABASE_URL || '').trim()
+  if (!raw) return DEFAULT_SUPABASE_URL
+  try {
+    const u = new URL(raw)
+    if (u.protocol === 'http:' || u.protocol === 'https:') return raw
+  } catch { /* 아래에서 기본값으로 */ }
+  console.error('[analytics] VITE_SUPABASE_URL 형식이 올바르지 않아 기본값을 사용합니다.')
+  return DEFAULT_SUPABASE_URL
+}
+
+const SUPABASE_URL         = resolveSupabaseUrl()
 const SUPABASE_SERVICE_KEY = process.env.SUPABASE_SERVICE_KEY
 // 속성 ID 는 비밀값이 아니다(측정 ID 처럼 공개되어도 무방). 설정 단계를
 // 줄이려고 코드에 두고, 필요하면 환경변수로 덮어쓸 수 있게 남겨둔다.
