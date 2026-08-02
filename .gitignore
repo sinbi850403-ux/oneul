@@ -40,3 +40,13 @@ coverage/
 .cache/
 .turbo/
 .eslintcache
+
+# 서비스 계정 키 — 절대 커밋 금지 (GCP private_key 포함)
+*-*.json.key
+oneul-jangbu-*.json
+gcp-*.json
+service-account*.json
+
+# 로컬 도구 산출물
+.gstack/
+.playwright-mcp/

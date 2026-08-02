@@ -263,6 +263,8 @@ function renderPostHtml({ title, description, body, category, tags, thumb, relat
   <meta property="og:image" content="${esc(thumb)}">
   <link rel="canonical" href="${url}">
   <link rel="icon" href="/icons/icon-192.png">
+  <!-- 방문자 분석 (GA4 + Clarity + 네이버). ID는 /analytics.js 상단에서 관리. -->
+  <script defer src="/analytics.js"></script>
   <!-- Google AdSense -->
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2764893290310463" crossorigin="anonymous"></script>
   <style>
