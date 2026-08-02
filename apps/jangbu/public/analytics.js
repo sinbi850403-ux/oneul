@@ -14,7 +14,7 @@
  */
 var GA4_ID = 'G-L5ML58DZ05'
 var CLARITY_ID = 'xvzhgeccu8'
-var NAVER_ID = ''     // 예: '1a2b3c4d5e6f7g'
+var NAVER_ID = '1a2b9e9892ddbb0'
 
 /* Clarity는 화면을 그대로 녹화한다. 로그인한 앱 화면에는 사장님의 실제 매출
  * 금액이 떠 있으므로 공개 콘텐츠(/blog)에서만 켠다. 이 줄을 지우지 말 것. */
@@ -55,7 +55,7 @@ var CLARITY_ONLY_ON_BLOG = true
   if (NAVER_ID) {
     var n = document.createElement('script')
     n.async = true
-    n.src = 'https://wcs.naver.net/wcslog.js'
+    n.src = 'https://wcs.pstatic.net/wcslog.js'
     n.onload = function () {
       if (!window.wcs) return
       window.wcs_add = window.wcs_add || {}
