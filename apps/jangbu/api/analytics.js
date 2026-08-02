@@ -44,7 +44,7 @@ const GA_SERVICE_ACCOUNT   = process.env.GA_SERVICE_ACCOUNT_JSON
 // 배포 표식. 빌드 캐시 때문에 옛 함수가 계속 돌아 원인을 찾는 데
 // 오래 걸린 적이 있다. 응답에 실어 어느 빌드가 살아있는지 바로 알 수 있게 한다.
 // 함수 동작을 바꿀 때마다 갱신한다.
-const BUILD = 'r3-client-fallback'
+const BUILD = 'r4-detail-msg'
 
 // GA4 API 는 일일 호출 할당량이 있다. 관리자가 새로고침을 연타해도
 // 할당량이 마르지 않도록 람다 인스턴스 메모리에 5분간 캐시한다.
@@ -109,10 +109,13 @@ async function run(req, res) {
   try {
     db = makeSupabaseClient()
   } catch (e) {
-    console.error('[analytics] Supabase 초기화 실패:', String(e?.message ?? e))
+    // 라이브러리가 돌려준 문구를 그대로 싣는다. 값은 들어있지 않고,
+    // 이게 없으면 원인을 추측만 하게 되어 진단이 한없이 길어진다.
+    const msg = String(e?.message ?? e)
+    console.error('[analytics] Supabase 초기화 실패:', msg)
     return res.status(503).json({
       error: '서버 설정값이 올바르지 않아요.',
-      hint: 'Vercel 환경변수 SUPABASE_SERVICE_KEY 값을 확인해 주세요.',
+      hint: `Vercel 환경변수 SUPABASE_SERVICE_KEY 값을 확인해 주세요. (상세: ${msg})`,
     })
   }
 
