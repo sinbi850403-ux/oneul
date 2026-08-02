@@ -13,21 +13,29 @@ import { createClient } from '@supabase/supabase-js'
 // (비밀인 service_role 키는 여전히 환경변수에서만 읽는다.)
 const DEFAULT_SUPABASE_URL = 'https://lgxdabtmvbbzmzwistjd.supabase.co'
 
-// 값이 "있는데 깨진" 경우가 실제로 있었다. 있으면 쓰는 게 아니라
-// 써도 되는 값인지 확인하고, 아니면 기본값으로 되돌린다.
-function resolveSupabaseUrl() {
-  const raw = (process.env.VITE_SUPABASE_URL || '').trim()
-  if (!raw) return DEFAULT_SUPABASE_URL
-  try {
-    const u = new URL(raw)
-    if (u.protocol === 'http:' || u.protocol === 'https:') return raw
-  } catch { /* 아래에서 기본값으로 */ }
-  console.error('[analytics] VITE_SUPABASE_URL 형식이 올바르지 않아 기본값을 사용합니다.')
-  return DEFAULT_SUPABASE_URL
-}
-
-const SUPABASE_URL         = resolveSupabaseUrl()
 const SUPABASE_SERVICE_KEY = process.env.SUPABASE_SERVICE_KEY
+
+// 환경변수 값이 "있는데 깨진" 경우가 실제로 있었다. 직접 형식을 검사해
+// 걸러보려 했지만, 무엇이 섞였는지 특정하지 못해 계속 실패했다.
+// 그래서 판정을 실제 소비자에게 맡긴다 — 환경변수 값으로 만들어 보고
+// 거부당하면 코드 기본값으로 다시 만든다. 어떤 문자가 섞였든 통과한다.
+function makeSupabaseClient() {
+  const fromEnv = (process.env.VITE_SUPABASE_URL || '').trim()
+  const candidates = fromEnv && fromEnv !== DEFAULT_SUPABASE_URL
+    ? [fromEnv, DEFAULT_SUPABASE_URL]
+    : [DEFAULT_SUPABASE_URL]
+
+  let lastError
+  for (const url of candidates) {
+    try {
+      return createClient(url, SUPABASE_SERVICE_KEY)
+    } catch (e) {
+      lastError = e
+      console.error('[analytics] Supabase 클라이언트 생성 실패:', String(e?.message ?? e))
+    }
+  }
+  throw lastError
+}
 // 속성 ID 는 비밀값이 아니다(측정 ID 처럼 공개되어도 무방). 설정 단계를
 // 줄이려고 코드에 두고, 필요하면 환경변수로 덮어쓸 수 있게 남겨둔다.
 const GA4_PROPERTY_ID      = process.env.GA4_PROPERTY_ID || '548190585'
@@ -36,7 +44,7 @@ const GA_SERVICE_ACCOUNT   = process.env.GA_SERVICE_ACCOUNT_JSON
 // 배포 표식. 빌드 캐시 때문에 옛 함수가 계속 돌아 원인을 찾는 데
 // 오래 걸린 적이 있다. 응답에 실어 어느 빌드가 살아있는지 바로 알 수 있게 한다.
 // 함수 동작을 바꿀 때마다 갱신한다.
-const BUILD = 'r2-url-fallback'
+const BUILD = 'r3-client-fallback'
 
 // GA4 API 는 일일 호출 할당량이 있다. 관리자가 새로고침을 연타해도
 // 할당량이 마르지 않도록 람다 인스턴스 메모리에 5분간 캐시한다.
@@ -85,37 +93,26 @@ async function run(req, res) {
   const token = auth.startsWith('Bearer ') ? auth.slice(7) : null
   if (!token) return res.status(401).json({ error: '로그인이 필요합니다.' })
 
-  // 환경변수가 비어 있으면 createClient 가 그냥 던져서 함수가 죽고, 응답이
-  // JSON 이 아닌 오류 페이지가 되어 화면에서는 원인을 알 수 없다.
-  //
-  // 이 검사는 관리자 확인보다 먼저 일어난다(확인 자체가 이 키를 쓰므로).
-  // 따라서 누락된 변수 이름은 응답에 담지 않고 서버 로그로만 남긴다 —
-  // 인증 없는 요청자에게 서버 설정 상태를 알려줄 이유가 없다.
-  const missing = []
-  if (!SUPABASE_URL)         missing.push('VITE_SUPABASE_URL')
-  if (!SUPABASE_SERVICE_KEY) missing.push('SUPABASE_SERVICE_KEY')
-  if (missing.length) {
-    console.error('[analytics] 환경변수 누락:', missing.join(', '))
+  // URL 은 코드 기본값이 있으므로 실제로 빠질 수 있는 건 비밀 키뿐이다.
+  // 누락된 이름은 응답에 담지 않고 서버 로그로만 남긴다 — 이 검사는 관리자
+  // 확인보다 먼저 일어나므로(확인 자체가 이 키를 쓴다) 인증 없는 요청자에게
+  // 서버 설정 상태를 알려주게 된다.
+  if (!SUPABASE_SERVICE_KEY) {
+    console.error('[analytics] 환경변수 누락: SUPABASE_SERVICE_KEY')
     return res.status(503).json({
       error: '서버 설정이 완료되지 않았어요.',
       hint: 'Vercel 환경변수 설정을 확인해 주세요. 자세한 내용은 서버 로그에 있어요.',
     })
   }
 
-  // 값이 있어도 형식이 깨졌으면 createClient 가 던진다. 여기서 잡지 않으면
-  // 함수가 통째로 죽어 "처리 중 오류"라는 뭉뚱그린 메시지만 남는다.
-  // 붙여넣기로 딸려오는 앞뒤 공백·줄바꿈은 흔한 원인이라 먼저 털어낸다.
   let db
   try {
-    db = createClient(SUPABASE_URL.trim(), SUPABASE_SERVICE_KEY.trim())
+    db = makeSupabaseClient()
   } catch (e) {
-    const msg = String(e?.message ?? '')
-    console.error('[analytics] Supabase 초기화 실패:', msg)
-    // 어떤 값이 잘못됐는지는 알려주되 값 자체는 절대 싣지 않는다.
-    const which = /url/i.test(msg) ? 'VITE_SUPABASE_URL 의 주소 형식' : 'SUPABASE_SERVICE_KEY 의 값'
+    console.error('[analytics] Supabase 초기화 실패:', String(e?.message ?? e))
     return res.status(503).json({
       error: '서버 설정값이 올바르지 않아요.',
-      hint: `Vercel 환경변수 ${which}을 확인해 주세요. 앞뒤 공백이나 따옴표가 섞이지 않았는지도 봐주세요.`,
+      hint: 'Vercel 환경변수 SUPABASE_SERVICE_KEY 값을 확인해 주세요.',
     })
   }
 
