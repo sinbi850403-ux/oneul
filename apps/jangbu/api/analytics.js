@@ -60,14 +60,18 @@ async function run(req, res) {
 
   // 환경변수가 비어 있으면 createClient 가 그냥 던져서 함수가 죽고, 응답이
   // JSON 이 아닌 오류 페이지가 되어 화면에서는 원인을 알 수 없다.
-  // 어떤 값이 없는지 이름만 (값은 절대 노출하지 않고) 알려준다.
+  //
+  // 이 검사는 관리자 확인보다 먼저 일어난다(확인 자체가 이 키를 쓰므로).
+  // 따라서 누락된 변수 이름은 응답에 담지 않고 서버 로그로만 남긴다 —
+  // 인증 없는 요청자에게 서버 설정 상태를 알려줄 이유가 없다.
   const missing = []
   if (!SUPABASE_URL)         missing.push('VITE_SUPABASE_URL')
   if (!SUPABASE_SERVICE_KEY) missing.push('SUPABASE_SERVICE_KEY')
   if (missing.length) {
+    console.error('[analytics] 환경변수 누락:', missing.join(', '))
     return res.status(503).json({
       error: '서버 설정이 완료되지 않았어요.',
-      hint: `Vercel 환경변수 ${missing.join(', ')} 이(가) 등록되어 있지 않아요.`,
+      hint: 'Vercel 환경변수 설정을 확인해 주세요. 자세한 내용은 서버 로그에 있어요.',
     })
   }
 
