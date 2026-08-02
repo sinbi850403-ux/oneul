@@ -6,7 +6,6 @@
 // 여기서 profiles.is_admin 을 확인한 뒤에만 데이터를 돌려준다.
 
 import { createClient } from '@supabase/supabase-js'
-import { BetaAnalyticsDataClient } from '@google-analytics/data'
 
 const SUPABASE_URL         = process.env.VITE_SUPABASE_URL
 const SUPABASE_SERVICE_KEY = process.env.SUPABASE_SERVICE_KEY
@@ -18,7 +17,10 @@ const GA_SERVICE_ACCOUNT   = process.env.GA_SERVICE_ACCOUNT_JSON
 const CACHE_MS = 5 * 60 * 1000
 let cache = null
 
-function gaClient() {
+// GA4 SDK 는 무겁고, 로드에 실패하면 모듈 최상단 import 로는 함수 자체가
+// 죽어 원인을 알 수 없다. 실제로 쓸 때 불러와서 실패를 잡을 수 있게 한다.
+async function gaClient() {
+  const { BetaAnalyticsDataClient } = await import('@google-analytics/data')
   const creds = JSON.parse(GA_SERVICE_ACCOUNT)
   return new BetaAnalyticsDataClient({
     credentials: { client_email: creds.client_email, private_key: creds.private_key },
@@ -35,7 +37,18 @@ function fmtDate(d) {
 
 const num = (v) => Number(v ?? 0)
 
+// 어떤 경로로 죽든 응답은 항상 JSON 이어야 한다. 그러지 않으면 프론트가
+// 본문을 파싱하지 못해 "불러오지 못했어요"만 뜨고 원인이 묻힌다.
 export default async function handler(req, res) {
+  try {
+    return await run(req, res)
+  } catch (e) {
+    console.error('[analytics] 처리 실패:', String(e?.message ?? e))
+    return res.status(500).json({ error: '통계 처리 중 오류가 발생했어요.' })
+  }
+}
+
+async function run(req, res) {
   if (req.method !== 'GET') {
     return res.status(405).json({ error: 'Method not allowed' })
   }
@@ -44,6 +57,19 @@ export default async function handler(req, res) {
   const auth = req.headers.authorization || ''
   const token = auth.startsWith('Bearer ') ? auth.slice(7) : null
   if (!token) return res.status(401).json({ error: '로그인이 필요합니다.' })
+
+  // 환경변수가 비어 있으면 createClient 가 그냥 던져서 함수가 죽고, 응답이
+  // JSON 이 아닌 오류 페이지가 되어 화면에서는 원인을 알 수 없다.
+  // 어떤 값이 없는지 이름만 (값은 절대 노출하지 않고) 알려준다.
+  const missing = []
+  if (!SUPABASE_URL)         missing.push('VITE_SUPABASE_URL')
+  if (!SUPABASE_SERVICE_KEY) missing.push('SUPABASE_SERVICE_KEY')
+  if (missing.length) {
+    return res.status(503).json({
+      error: '서버 설정이 완료되지 않았어요.',
+      hint: `Vercel 환경변수 ${missing.join(', ')} 이(가) 등록되어 있지 않아요.`,
+    })
+  }
 
   const db = createClient(SUPABASE_URL, SUPABASE_SERVICE_KEY)
 
@@ -80,7 +106,7 @@ export default async function handler(req, res) {
 
   // ── 3. GA4 조회 ─────────────────────────────────────────
   try {
-    const ga = gaClient()
+    const ga = await gaClient()
 
     // 기간별 방문자 수. activeUsers 는 중복 제거된 값이라 일별 합계로는
     // 구할 수 없다. 기간마다 별도 dateRange 로 물어야 정확하다.
