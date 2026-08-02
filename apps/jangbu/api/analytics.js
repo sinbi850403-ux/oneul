@@ -45,11 +45,20 @@ export default async function handler(req, res) {
   const token = auth.startsWith('Bearer ') ? auth.slice(7) : null
   if (!token) return res.status(401).json({ error: '로그인이 필요합니다.' })
 
-  try {
-    const db = createClient(SUPABASE_URL, SUPABASE_SERVICE_KEY)
-    const { data: { user }, error: authErr } = await db.auth.getUser(token)
-    if (authErr || !user) return res.status(401).json({ error: '로그인이 필요합니다.' })
+  const db = createClient(SUPABASE_URL, SUPABASE_SERVICE_KEY)
 
+  // 토큰이 망가졌거나 만료되면 getUser 가 예외를 던지기도 한다. 그것도
+  // 인증 실패이므로 500 이 아니라 401 로 돌려줘야 원인 구분이 된다.
+  let user
+  try {
+    const { data, error: authErr } = await db.auth.getUser(token)
+    user = data?.user
+    if (authErr || !user) return res.status(401).json({ error: '로그인이 필요합니다.' })
+  } catch {
+    return res.status(401).json({ error: '로그인이 필요합니다.' })
+  }
+
+  try {
     const { data: profile } = await db
       .from('profiles').select('is_admin').eq('user_id', user.id).maybeSingle()
     if (!profile?.is_admin) return res.status(403).json({ error: '접근 권한이 없습니다.' })
