@@ -35,7 +35,15 @@ export default async function handler(req, res) {
       return res.status(200).json({ message: '관리자 없음' })
     }
 
-    const adminIds = adminProfiles.map(p => p.user_id)
+    // 작성자 본인은 제외한다. 자기가 방금 쓴 글을 알림으로 다시 받을 이유가 없다.
+    const adminIds = adminProfiles
+      .map(p => p.user_id)
+      .filter(id => id !== post.user_id)
+
+    if (!adminIds.length) {
+      return res.status(200).json({ message: '작성자 본인 외 받을 관리자 없음' })
+    }
+
     const subs = await select(
       'push_subscriptions',
       `user_id=in.(${adminIds.join(',')})&select=user_id,subscription`,
