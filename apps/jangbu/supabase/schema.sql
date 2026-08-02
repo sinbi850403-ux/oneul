@@ -36,6 +36,9 @@ create table profiles (
   vat_biz_class smallint default 0,
   -- 배달앱별 실효 수수료율(%). 중개·결제·배달비를 합친 값으로, 실입금 예상액 계산에만 쓴다.
   delivery_rates jsonb default '{"baemin":0,"coupang":0,"yogiyo":0}'::jsonb,
+  -- 운영자 계정 표시. 게시판 관리·방문자 분석 등 관리자 전용 기능의 판정 기준.
+  -- 사용자가 직접 바꿀 수 없도록 RLS update 정책에서 제외한다.
+  is_admin boolean default false,
   created_at timestamptz default now()
 );
 

@@ -4,13 +4,16 @@
   "version": "0.1.0",
   "type": "module",
   "packageManager": "pnpm@9.12.3",
-  "engines": { "node": "20.x" },
+  "engines": {
+    "node": "20.x"
+  },
   "scripts": {
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview"
   },
   "dependencies": {
+    "@google-analytics/data": "^6.1.0",
     "@oneul/supabase": "workspace:*",
     "@supabase/supabase-js": "^2.49.4",
     "react": "^19.1.0",
