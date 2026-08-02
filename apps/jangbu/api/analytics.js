@@ -33,6 +33,11 @@ const SUPABASE_SERVICE_KEY = process.env.SUPABASE_SERVICE_KEY
 const GA4_PROPERTY_ID      = process.env.GA4_PROPERTY_ID || '548190585'
 const GA_SERVICE_ACCOUNT   = process.env.GA_SERVICE_ACCOUNT_JSON
 
+// 배포 표식. 빌드 캐시 때문에 옛 함수가 계속 돌아 원인을 찾는 데
+// 오래 걸린 적이 있다. 응답에 실어 어느 빌드가 살아있는지 바로 알 수 있게 한다.
+// 함수 동작을 바꿀 때마다 갱신한다.
+const BUILD = 'r2-url-fallback'
+
 // GA4 API 는 일일 호출 할당량이 있다. 관리자가 새로고침을 연타해도
 // 할당량이 마르지 않도록 람다 인스턴스 메모리에 5분간 캐시한다.
 const CACHE_MS = 5 * 60 * 1000
@@ -61,6 +66,7 @@ const num = (v) => Number(v ?? 0)
 // 어떤 경로로 죽든 응답은 항상 JSON 이어야 한다. 그러지 않으면 프론트가
 // 본문을 파싱하지 못해 "불러오지 못했어요"만 뜨고 원인이 묻힌다.
 export default async function handler(req, res) {
+  res.setHeader('X-Analytics-Build', BUILD)
   try {
     return await run(req, res)
   } catch (e) {
