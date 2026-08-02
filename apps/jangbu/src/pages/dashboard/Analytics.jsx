@@ -89,8 +89,18 @@ export default function Analytics() {
       const res = await fetch('/api/analytics', {
         headers: { Authorization: `Bearer ${session.access_token}` },
       })
-      const json = await res.json()
-      if (!res.ok) setError(json)
+
+      // 서버가 죽으면 JSON 이 아닌 오류 페이지가 온다. 그대로 파싱하면
+      // 원인이 묻히므로 상태 코드라도 화면에 남긴다.
+      let json = null
+      try { json = await res.json() } catch { /* 아래에서 처리 */ }
+
+      if (!json) {
+        setError({
+          error: '서버에서 올바른 응답이 오지 않았어요.',
+          hint: `응답 코드 ${res.status}. 잠시 후에도 같으면 알려주세요.`,
+        })
+      } else if (!res.ok) setError(json)
       else setData(json)
     } catch {
       setError({ error: '통계를 불러오지 못했어요.' })
