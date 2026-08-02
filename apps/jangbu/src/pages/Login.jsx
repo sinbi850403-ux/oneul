@@ -49,7 +49,12 @@ export default function Login() {
       }
       const { error } = await supabase.auth.signUp({ email, password })
       if (error) setError(toKoreanError(error.message))
-      else setMessage('가입됐어요! 바로 로그인해 주세요.')
+      else {
+        // 어떤 유입 경로가 가입까지 이어졌는지 보려면 GA4 에 가입 시점을 알려야 한다.
+        // 개인정보는 넘기지 않는다 — 이벤트 발생 사실만 기록한다.
+        window.gtag?.('event', 'sign_up', { method: 'email' })
+        setMessage('가입됐어요! 바로 로그인해 주세요.')
+      }
     } else {
       const { error } = await supabase.auth.signInWithPassword({ email, password })
       if (error) setError(toKoreanError(error.message))

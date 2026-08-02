@@ -22,6 +22,7 @@ import Workers        from './pages/dashboard/Workers.jsx'
 import Board         from './pages/dashboard/Board.jsx'
 import MobileBoard   from './pages/MobileBoard.jsx'
 import FixedExpenses from './pages/dashboard/FixedExpenses.jsx'
+import Analytics     from './pages/dashboard/Analytics.jsx'
 import Privacy from './pages/Privacy.jsx'
 import Terms from './pages/Terms.jsx'
 import Onboarding from './pages/Onboarding.jsx'
@@ -154,6 +155,8 @@ export default function App() {
           <Route path="workers"   element={<Workers />} />
           <Route path="board"          element={<Board />} />
           <Route path="fixed-expenses" element={<FixedExpenses />} />
+          {/* 관리자 전용. 메뉴는 숨기지만 실제 차단은 /api/analytics 가 한다. */}
+          <Route path="analytics"      element={<Analytics />} />
         </Route>
         <Route path="/*" element={<ProtectedLayout />} />
       </Routes>

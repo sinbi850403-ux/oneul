@@ -26,18 +26,26 @@ const menus = [
   { to: '/dashboard/biz',       label: '설정' },
 ]
 
+// 관리자에게만 보이는 메뉴
+const adminMenus = [
+  { to: '/dashboard/analytics', label: '방문자 분석' },
+]
+
 export default function DashboardLayout() {
   const navigate = useNavigate()
   const [deleting, setDeleting] = useState(false)
   const [shopName, setShopName] = useState('')
+  const [isAdmin,  setIsAdmin]  = useState(false)
 
   useEffect(() => {
-    async function loadShopName() {
+    async function loadProfile() {
       const { data: { user } } = await supabase.auth.getUser()
-      const { data } = await supabase.from('profiles').select('shop_name').eq('user_id', user.id).maybeSingle()
+      const { data } = await supabase
+        .from('profiles').select('shop_name, is_admin').eq('user_id', user.id).maybeSingle()
       if (data?.shop_name) setShopName(data.shop_name)
+      setIsAdmin(data?.is_admin ?? false)
     }
-    loadShopName()
+    loadProfile()
   }, [])
 
   async function handleLogout() {
@@ -90,7 +98,7 @@ export default function DashboardLayout() {
         </div>
 
         <nav className="flex-1 px-3 py-4 flex flex-col gap-1">
-          {menus.map(({ to, label }) => (
+          {[...menus, ...(isAdmin ? adminMenus : [])].map(({ to, label }) => (
             <NavLink
               key={to}
               to={to}
