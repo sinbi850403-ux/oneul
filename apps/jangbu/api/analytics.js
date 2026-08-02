@@ -9,7 +9,9 @@ import { createClient } from '@supabase/supabase-js'
 
 const SUPABASE_URL         = process.env.VITE_SUPABASE_URL
 const SUPABASE_SERVICE_KEY = process.env.SUPABASE_SERVICE_KEY
-const GA4_PROPERTY_ID      = process.env.GA4_PROPERTY_ID
+// 속성 ID 는 비밀값이 아니다(측정 ID 처럼 공개되어도 무방). 설정 단계를
+// 줄이려고 코드에 두고, 필요하면 환경변수로 덮어쓸 수 있게 남겨둔다.
+const GA4_PROPERTY_ID      = process.env.GA4_PROPERTY_ID || '548190585'
 const GA_SERVICE_ACCOUNT   = process.env.GA_SERVICE_ACCOUNT_JSON
 
 // GA4 API 는 일일 호출 할당량이 있다. 관리자가 새로고침을 연타해도
@@ -100,7 +102,8 @@ async function run(req, res) {
   if (!GA4_PROPERTY_ID || !GA_SERVICE_ACCOUNT) {
     return res.status(503).json({
       error: 'GA4 연동이 아직 설정되지 않았어요.',
-      hint: 'Vercel 환경변수 GA4_PROPERTY_ID, GA_SERVICE_ACCOUNT_JSON 을 등록해 주세요.',
+      // 이 응답은 관리자 확인을 통과한 뒤에만 나가므로 변수명을 담아도 된다.
+      hint: 'Vercel 환경변수 GA_SERVICE_ACCOUNT_JSON 을 등록한 뒤 재배포해 주세요.',
     })
   }
 
