@@ -77,7 +77,22 @@ async function run(req, res) {
     })
   }
 
-  const db = createClient(SUPABASE_URL, SUPABASE_SERVICE_KEY)
+  // 값이 있어도 형식이 깨졌으면 createClient 가 던진다. 여기서 잡지 않으면
+  // 함수가 통째로 죽어 "처리 중 오류"라는 뭉뚱그린 메시지만 남는다.
+  // 붙여넣기로 딸려오는 앞뒤 공백·줄바꿈은 흔한 원인이라 먼저 털어낸다.
+  let db
+  try {
+    db = createClient(SUPABASE_URL.trim(), SUPABASE_SERVICE_KEY.trim())
+  } catch (e) {
+    const msg = String(e?.message ?? '')
+    console.error('[analytics] Supabase 초기화 실패:', msg)
+    // 어떤 값이 잘못됐는지는 알려주되 값 자체는 절대 싣지 않는다.
+    const which = /url/i.test(msg) ? 'VITE_SUPABASE_URL 의 주소 형식' : 'SUPABASE_SERVICE_KEY 의 값'
+    return res.status(503).json({
+      error: '서버 설정값이 올바르지 않아요.',
+      hint: `Vercel 환경변수 ${which}을 확인해 주세요. 앞뒤 공백이나 따옴표가 섞이지 않았는지도 봐주세요.`,
+    })
+  }
 
   // 토큰이 망가졌거나 만료되면 getUser 가 예외를 던지기도 한다. 그것도
   // 인증 실패이므로 500 이 아니라 401 로 돌려줘야 원인 구분이 된다.
