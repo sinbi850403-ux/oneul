@@ -32,7 +32,9 @@ function TrendChart({ series }) {
   if (!series.length) return null
   const max = Math.max(...series.map((d) => d.users), 1)
   const W = 720, H = 160, gap = 3
-  const bw = (W - gap * (series.length - 1)) / series.length
+  // 폭 상한이 없으면 데이터가 하루치일 때 막대 하나가 화면을 가득 채워
+  // 그래프가 아니라 주황색 덩어리로 보인다.
+  const bw = Math.min((W - gap * (series.length - 1)) / series.length, 28)
 
   return (
     <svg viewBox={`0 0 ${W} ${H + 22}`} className="w-full" role="img" aria-label="일별 방문자 추이">
