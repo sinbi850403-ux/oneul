@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>면세사업자 vs 과세사업자, 우리 가게는 어디에 속할까? | 오늘장부 블로그</title>
+  <meta name="description" content="면세사업자와 과세사업자의 핵심 차이를 업종별로 정리했습니다. 부가세 신고 의무·매입세액공제·사업장현황신고까지 사장님이 꼭 알아야 할 실전 정보를 담았습니다.">
+  <meta property="og:title" content="면세사업자 vs 과세사업자, 우리 가게는 어디에 속할까?">
+  <meta property="og:description" content="면세사업자와 과세사업자의 핵심 차이를 업종별로 정리했습니다. 부가세 신고 의무·매입세액공제·사업장현황신고까지 사장님이 꼭 알아야 할 실전 정보를 담았습니다.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://xn--wh1bw0st1gbrb.kr/blog/posts/exempt-vs-taxable-business-korea-vat-guide.html">
+  <meta property="og:image" content="https://images.pexels.com/photos/7821564/pexels-photo-7821564.jpeg?auto=compress&amp;cs=tinysrgb&amp;fit=crop&amp;h=627&amp;w=1200">
+  <link rel="canonical" href="https://xn--wh1bw0st1gbrb.kr/blog/posts/exempt-vs-taxable-business-korea-vat-guide.html">
+  <link rel="icon" href="/icons/icon-192.png">
+  <!-- 방문자 분석 (GA4 + Clarity + 네이버). ID는 /analytics.js 상단에서 관리. -->
+  <script defer src="/analytics.js"></script>
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2764893290310463" crossorigin="anonymous"></script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Noto Sans KR', sans-serif; background: #f8f9fa; color: #1a1a1a; line-height: 1.7; }
+    header { background: #fff; border-bottom: 1px solid #eee; position: sticky; top: 0; z-index: 100; }
+    .header-inner { max-width: 1100px; margin: 0 auto; padding: 0 20px; height: 60px; display: flex; align-items: center; justify-content: space-between; }
+    .logo { display: flex; align-items: center; gap: 8px; text-decoration: none; }
+    .logo-icon { width: 32px; height: 32px; background: #FF6B35; border-radius: 8px; display: flex; align-items: center; justify-content: center; color: white; font-weight: 900; font-size: 16px; }
+    .logo-text { font-size: 18px; font-weight: 800; color: #FF6B35; }
+    .logo-sub { font-size: 13px; color: #888; margin-left: 4px; }
+    .header-cta { background: #FF6B35; color: white; border: none; padding: 8px 16px; border-radius: 8px; font-size: 13px; font-weight: 600; cursor: pointer; text-decoration: none; }
+    /* minmax(0, ...): 표처럼 최소폭이 큰 콘텐츠가 그리드 트랙을 밀어내 페이지 전체가
+       가로로 스크롤되는 것을 막는다. 1fr만 쓰면 트랙 최소폭이 auto라 끌려간다. */
+    .wrap { max-width: 1100px; margin: 0 auto; padding: 32px 20px; display: grid; grid-template-columns: minmax(0, 1fr) 300px; gap: 40px; }
+    @media (max-width: 768px) { .wrap { grid-template-columns: minmax(0, 1fr); } .sidebar { display: none; } }
+    article { background: white; border-radius: 20px; overflow: hidden; box-shadow: 0 2px 12px rgba(0,0,0,0.06); }
+    .article-head { padding: 32px 32px 24px; border-bottom: 1px solid #f0f0f0; }
+    .article-cat { font-size: 12px; font-weight: 700; color: #FF6B35; text-transform: uppercase; margin-bottom: 12px; }
+    .article-cat a { color: #FF6B35; text-decoration: none; }
+    .article-title { font-size: clamp(20px, 4vw, 28px); font-weight: 900; line-height: 1.4; color: #1a1a1a; margin-bottom: 16px; }
+    .article-meta { font-size: 13px; color: #aaa; display: flex; gap: 16px; align-items: center; flex-wrap: wrap; }
+    .hero-img { width: 100%; aspect-ratio: 16/9; object-fit: cover; background: #f0f0f0; }
+    .article-body { padding: 32px; }
+    .article-body h2 { font-size: 20px; font-weight: 800; color: #1a1a1a; margin: 32px 0 14px; padding-bottom: 8px; border-bottom: 2px solid #FF6B35; }
+    .article-body h3 { font-size: 16px; font-weight: 700; color: #333; margin: 20px 0 10px; }
+    .article-body p { margin-bottom: 14px; color: #333; font-size: 15px; }
+    .article-body ul, .article-body ol { padding-left: 20px; margin-bottom: 14px; }
+    .article-body li { margin-bottom: 6px; color: #333; font-size: 15px; }
+    article { min-width: 0; }
+    /* 좁은 화면에서는 표만 자기 안에서 가로 스크롤시킨다. min-width:100%가 있어야
+       넓은 화면에서 기존처럼 폭을 꽉 채운다. */
+    .article-body table { display: block; width: max-content; min-width: 100%; max-width: 100%; overflow-x: auto; border-collapse: collapse; margin: 16px 0; font-size: 14px; }
+    .article-body th { background: #FF6B35; color: white; padding: 10px 14px; text-align: left; }
+    .article-body td { padding: 10px 14px; border-bottom: 1px solid #f0f0f0; }
+    .article-body tr:nth-child(even) td { background: #fff8f5; }
+    .article-body img { width: 100%; border-radius: 12px; margin: 16px 0; }
+    .article-body strong { color: #1a1a1a; }
+    .article-body blockquote { background: #fff8f5; border-left: 4px solid #FF6B35; padding: 16px 20px; border-radius: 0 12px 12px 0; margin: 16px 0; font-style: italic; color: #555; }
+    .article-body a { color: #FF6B35; }
+    .tags { padding: 20px 32px; border-top: 1px solid #f0f0f0; display: flex; gap: 8px; flex-wrap: wrap; }
+    .tag { background: #fff3ee; color: #FF6B35; border-radius: 20px; padding: 5px 12px; font-size: 12px; font-weight: 600; text-decoration: none; }
+    .tag:hover { background: #FF6B35; color: white; }
+    .ad-slot { background: #f0f0f0; border-radius: 12px; display: flex; align-items: center; justify-content: center; color: #bbb; font-size: 12px; min-height: 90px; margin: 24px 0; }
+    .cta-box { background: linear-gradient(135deg, #FF6B35, #ff8c42); border-radius: 20px; padding: 32px; text-align: center; color: white; margin-top: 24px; }
+    .cta-box h3 { font-size: 22px; font-weight: 900; margin-bottom: 10px; }
+    .cta-box p { font-size: 14px; opacity: 0.9; line-height: 1.6; margin-bottom: 20px; }
+    .cta-box a { background: white; color: #FF6B35; border-radius: 12px; padding: 13px 28px; font-weight: 800; font-size: 15px; text-decoration: none; display: inline-block; }
+    .nav-links { display: flex; gap: 16px; margin-top: 24px; }
+    .nav-back { color: #FF6B35; text-decoration: none; font-size: 14px; font-weight: 600; }
+    .nav-back::before { content: '\2190 '; }
+    .sidebar-cta { background: linear-gradient(135deg, #FF6B35, #ff8c42); color: white; border-radius: 16px; padding: 24px; text-align: center; position: sticky; top: 80px; }
+    .sidebar-cta h3 { font-size: 16px; font-weight: 900; margin-bottom: 8px; }
+    .sidebar-cta p { font-size: 13px; opacity: 0.9; line-height: 1.5; margin-bottom: 16px; }
+    .sidebar-cta a { background: white; color: #FF6B35; border-radius: 8px; padding: 10px 20px; font-weight: 700; font-size: 14px; text-decoration: none; display: inline-block; }
+    footer { background: #1a1a1a; color: #888; padding: 40px 20px; margin-top: 60px; }
+    .footer-inner { max-width: 1100px; margin: 0 auto; }
+    .footer-links { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 16px; }
+    .footer-links a { color: #888; text-decoration: none; font-size: 13px; }
+    .footer-copy { font-size: 12px; }
+  </style>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "면세사업자 vs 과세사업자, 우리 가게는 어디에 속할까?",
+  "description": "면세사업자와 과세사업자의 핵심 차이를 업종별로 정리했습니다. 부가세 신고 의무·매입세액공제·사업장현황신고까지 사장님이 꼭 알아야 할 실전 정보를 담았습니다.",
+  "datePublished": "2026-08-03",
+  "dateModified": "2026-08-03",
+  "image": "https://images.pexels.com/photos/7821564/pexels-photo-7821564.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200",
+  "author": {
+    "@type": "Organization",
+    "name": "오늘장부",
+    "url": "https://오늘장부.kr"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "오늘장부",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://xn--wh1bw0st1gbrb.kr/icons/icon-192.png"
+    }
+  },
+  "mainEntityOfPage": "https://xn--wh1bw0st1gbrb.kr/blog/posts/exempt-vs-taxable-business-korea-vat-guide.html",
+  "keywords": "면세사업자, 과세사업자, 부가가치세, 소상공인세금"
+}
+  </script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "면세사업자는 세금계산서를 발행할 수 없나요?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "맞습니다. 면세사업자는 세금계산서가 아닌 '계산서'를 발행합니다. 부가세가 포함되지 않은 문서이기 때문에 거래처에서 매입세액공제를 받을 수 없습니다. 따라서 B2B 거래가 많은 업종이라면, 거래처가 세금계산서를 요청하는 경우 업종 특성과 함께 안내가 필요합니다."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "음식점은 무조건 과세사업자인가요?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "일반적인 음식점(조리·가공 판매)은 과세사업자에 해당합니다. 다만 미가공 식료품만을 판매하는 경우(정육, 채소 등 원물 판매)는 면세가 적용될 수 있습니다. 같은 가게에서 과세 품목과 면세 품목을 함께 파는 경우에는 겸업사업자로 분류돼 별도 관리가 필요합니다."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "면세사업자인데 사업장현황신고를 안 하면 어떻게 되나요?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "사업장현황신고를 기한(매년 2월 10일) 내에 하지 않으면 수입금액의 일정 비율에 해당하는 무신고 가산세가 부과될 수 있습니다. 또한 국세청 소득 파악에 차질이 생겨 종합소득세 신고 시 불이익을 받을 수 있으므로, 매년 꼭 챙기세요."
+      }
+    }
+  ]
+}
+  </script>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <a href="/" class="logo">
+      <div class="logo-icon">장</div>
+      <span class="logo-text">오늘장부</span>
+      <span class="logo-sub">블로그</span>
+    </a>
+    <a href="/" class="header-cta">무료로 시작하기</a>
+  </div>
+</header>
+
+<div class="wrap">
+  <main>
+    <div class="nav-links">
+      <a href="/blog/" class="nav-back">블로그 목록으로</a>
+    </div>
+
+    <!-- 자동 광고(Auto ads)가 배치를 정하므로 유닛을 직접 넣지 않는다. 여백만 확보한다. -->
+    <div class="ad-slot"></div>
+
+    <article>
+      <div class="article-head">
+        <div class="article-cat"><a href="/blog/">부가세/세금</a></div>
+        <h1 class="article-title">면세사업자 vs 과세사업자, 우리 가게는 어디에 속할까?</h1>
+        <div class="article-meta">
+          <span>오늘장부 편집팀</span>
+          <span>2026년 08월 03일</span>
+        </div>
+      </div>
+      <img src="https://images.pexels.com/photos/7821564/pexels-photo-7821564.jpeg?auto=compress&amp;cs=tinysrgb&amp;fit=crop&amp;h=627&amp;w=1200" alt="면세사업자 vs 과세사업자, 우리 가게는 어디에 속할까?" class="hero-img" loading="lazy">
+      <div class="article-body">
+<p>사업자등록을 처음 하거나 업종을 추가할 때 가장 많이 혼동하는 것 중 하나가 <strong>면세사업자</strong>와 <strong>과세사업자</strong>의 차이입니다. '면세'라는 단어만 보고 "세금을 안 내도 된다"고 오해하시는 분들이 많은데, 현실은 조금 다릅니다. 어떤 세금이 면제되는지, 어떤 신고 의무가 여전히 남아 있는지를 정확히 알아야 절세도 하고 가산세도 피할 수 있습니다.</p>
+
+<h2>핵심 개념부터: 부가가치세(부가세)란?</h2>
+<p>부가가치세는 재화나 용역을 공급할 때 공급가액의 <strong>10%</strong>를 붙여 소비자에게 받고, 사업자가 이를 대신 신고·납부하는 세금입니다. 실질적으로는 최종 소비자가 부담하지만, <strong>사업자가 중간에서 징수·납부 의무</strong>를 집니다. 과세사업자는 이 역할을 수행해야 하고, 면세사업자는 법령에 따라 이 의무에서 제외됩니다.</p>
+
+<h2>면세사업자가 되는 업종은 따로 정해져 있다</h2>
+<p>면세는 모든 사업자에게 열려 있는 선택지가 아닙니다. <strong>부가가치세법에 열거된 특정 재화·용역</strong>을 공급하는 경우에만 적용됩니다. 대표적인 면세 업종은 다음과 같습니다.</p>
+<ul>
+  <li><strong>미가공 식료품</strong> — 정육점, 농산물 직판, 수산물 판매 등 가공하지 않은 먹거리</li>
+  <li><strong>의료·보건 용역</strong> — 병원, 의원, 치과, 한의원 등</li>
+  <li><strong>교육 서비스</strong> — 학원(일부), 강사 개인 과외 등</li>
+  <li><strong>주택 임대</strong> — 주거용 건물 임대(상가 임대는 과세)</li>
+  <li><strong>기타</strong> — 도서·신문·잡지 공급, 우표·인지, 금융·보험 용역, 예술창작품 등</li>
+</ul>
+<p>내 업종이 면세에 해당하는지 확실하지 않다면, 국세청 홈택스 또는 담당 세무사에게 정확히 확인하세요. 같은 음식점이라도 <strong>조리·가공 여부</strong>에 따라 과세·면세가 달라질 수 있습니다.</p>
+
+<h2>면세사업자 vs 과세사업자, 핵심 비교</h2>
+<table>
+  <thead>
+    <tr>
+      <th>구분</th>
+      <th>면세사업자</th>
+      <th>과세사업자 (일반)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>부가세 징수·납부</td>
+      <td>❌ 없음</td>
+      <td>✅ 공급가액의 10%</td>
+    </tr>
+    <tr>
+      <td>매입세액공제</td>
+      <td>❌ 불가</td>
+      <td>✅ 가능 (매입 세금계산서 수취 시)</td>
+    </tr>
+    <tr>
+      <td>부가세 신고</td>
+      <td>❌ 없음</td>
+      <td>✅ 연 2회 (1월·7월)</td>
+    </tr>
+    <tr>
+      <td>사업장현황신고</td>
+      <td>✅ 매년 2월 10일까지</td>
+      <td>❌ 없음 (부가세 신고로 대체)</td>
+    </tr>
+    <tr>
+      <td>소득세(종합소득세)</td>
+      <td>✅ 납부 의무 있음</td>
+      <td>✅ 납부 의무 있음</td>
+    </tr>
+    <tr>
+      <td>발행 서류</td>
+      <td>계산서 (세금계산서 ✕)</td>
+      <td>세금계산서</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2>"면세 = 세금 없음"은 착각입니다</h2>
+<p>면세사업자에게 면제되는 것은 오직 <strong>부가가치세</strong>뿐입니다. <strong>종합소득세(소득세)는 동일하게 납부 의무가 있습니다.</strong> 또한 면세 개인사업자는 매년 <strong>2월 10일까지 사업장현황신고</strong>를 관할 세무서(또는 홈택스)에 해야 합니다. 2025년도 귀속 수입금액은 2026년 2월 10일이 신고 기한이었습니다. 이를 누락하면 가산세가 부과될 수 있으니 주의하세요.</p>
+
+<h2>매입세액공제 — 면세사업자에게 가장 큰 불이익</h2>
+<p>과세사업자는 사업에 필요한 물품이나 서비스를 구매할 때 지불한 부가세(매입세액)를 매출세액에서 공제받을 수 있습니다. 예를 들어 재료를 100만 원어치 구입하면서 10만 원의 부가세를 냈다면, 이 10만 원을 나중에 돌려받을 수 있는 구조입니다.</p>
+<p>반면 <strong>면세사업자는 매입세액공제가 전혀 불가능합니다.</strong> 부가세를 신고·납부하지 않으므로 공제 자체가 성립하지 않습니다. 이 때문에 매입 비중이 높은 업종(예: 식재료 매입이 많은 가공식품업)이라면, 면세 업종이라도 실질 세 부담을 꼼꼼히 따져볼 필요가 있습니다.</p>
+
+<h2>과세사업자 유형: 일반과세자 vs 간이과세자</h2>
+<p>과세사업자 안에서도 규모에 따라 구분이 있습니다.</p>
+<ul>
+  <li><strong>일반과세자</strong>: 직전 연도 연매출 <strong>1억 400만 원 이상</strong>(또는 간이과세 배제 업종·지역)인 사업자. 매출의 10% 부가세 신고, 연 2회(1월·7월) 납부.</li>
+  <li><strong>간이과세자</strong>: 직전 연도 연매출 <strong>1억 400만 원 미만</strong>인 소규모 사업자. 업종별 부가가치율을 적용해 세 부담이 낮고, 연 1회(1월) 신고. 연 공급대가 4,800만 원 미만이면 부가세 납부의무가 면제됩니다.</li>
+</ul>
+<blockquote>📌 간이과세자 기준 금액은 2024년 7월 이후 기존 8,000만 원에서 <strong>1억 400만 원</strong>으로 상향됐습니다. 업종에 따라 간이과세가 배제되는 경우도 있으니 업종 코드를 반드시 확인하세요.</blockquote>
+
+<h2>매출 관리가 세금의 시작 — 오늘장부 활용 팁</h2>
+<p>면세·과세 구분과 무관하게 <strong>정확한 일매출 기록</strong>은 세금 신고의 출발점입니다. 카드 단말기 매출, 현금 매출, 배달앱 정산금이 따로따로 들어오면 월말에 합산하는 것만으로도 시간이 많이 걸립니다. <strong>오늘장부</strong>는 카드·현금·배달앱 매출을 하나의 화면에서 기록하고 부가세 예상액까지 자동으로 보여줘, 신고철에 당황하지 않도록 미리 준비할 수 있게 도와줍니다. 과세사업자라면 부가세 예상액을 월별로 파악해두는 것이 자금 관리에도 훨씬 유리합니다.</p>
+
+<h2>면세 포기(과세 전환)가 유리한 경우는?</h2>
+<p>면세 업종이라도 <strong>사업 초기에 시설 투자나 대규모 매입이 많은 경우</strong>, 면세를 포기하고 과세사업자로 등록하면 매입세액을 공제받을 수 있어 유리할 수 있습니다. 단, 면세 포기 후 3년간은 다시 면세로 돌아갈 수 없는 제약이 있으므로, 반드시 세무사와 충분히 상담한 후 결정하세요.</p>
+
+<h2>자주 묻는 질문</h2>
+
+<h3>면세사업자는 세금계산서를 발행할 수 없나요?</h3>
+<p>맞습니다. 면세사업자는 <strong>세금계산서가 아닌 '계산서'</strong>를 발행합니다. 부가세가 포함되지 않은 문서이기 때문에 거래처에서 매입세액공제를 받을 수 없습니다. 따라서 B2B 거래가 많은 업종이라면, 거래처가 세금계산서를 요청하는 경우 업종 특성과 함께 안내가 필요합니다.</p>
+
+<h3>음식점은 무조건 과세사업자인가요?</h3>
+<p>일반적인 음식점(조리·가공 판매)은 <strong>과세사업자</strong>에 해당합니다. 다만 미가공 식료품만을 판매하는 경우(정육, 채소 등 원물 판매)는 면세가 적용될 수 있습니다. 같은 가게에서 과세 품목과 면세 품목을 함께 파는 경우에는 <strong>겸업사업자</strong>로 분류돼 별도 관리가 필요합니다.</p>
+
+<h3>면세사업자인데 사업장현황신고를 안 하면 어떻게 되나요?</h3>
+<p>사업장현황신고를 기한(매년 2월 10일) 내에 하지 않으면 수입금액의 일정 비율에 해당하는 <strong>무신고 가산세</strong>가 부과될 수 있습니다. 또한 국세청 소득 파악에 차질이 생겨 종합소득세 신고 시 불이익을 받을 수 있으므로, 매년 꼭 챙기세요.</p>
+
+<p>사업자 유형에 맞는 세금 전략을 세웠다면, 이제 매일의 매출을 빠짐없이 기록하는 습관이 중요합니다. <a href="https://오늘장부.kr">오늘장부 무료로 시작하기</a>로 오늘 매출부터 간편하게 정리해 보세요.</p>
+
+<p>※ 본 글은 2026년 기준 참고용 정보이며, 정확한 신고·금액은 국세청 홈택스 또는 세무사와 상담하세요.</p>
+      </div>
+      <div class="tags">
+        <a href="/blog/?tag=%EB%A9%B4%EC%84%B8%EC%82%AC%EC%97%85%EC%9E%90" class="tag">면세사업자</a> <a href="/blog/?tag=%EA%B3%BC%EC%84%B8%EC%82%AC%EC%97%85%EC%9E%90" class="tag">과세사업자</a> <a href="/blog/?tag=%EB%B6%80%EA%B0%80%EA%B0%80%EC%B9%98%EC%84%B8" class="tag">부가가치세</a> <a href="/blog/?tag=%EC%86%8C%EC%83%81%EA%B3%B5%EC%9D%B8%EC%84%B8%EA%B8%88" class="tag">소상공인세금</a>
+      </div>
+    </article>
+
+    <section style="background:#fff8f5;border-radius:16px;padding:24px 28px;margin-top:24px;">
+      <h2 style="font-size:18px;font-weight:800;color:#1a1a1a;margin:0 0 14px;">함께 보면 좋은 글</h2>
+      <ul style="list-style:none;padding:0;margin:0;">
+        <li style="padding:8px 0;border-bottom:1px solid #ffe6d9;"><a href="/blog/posts/tax-invoice-issuance-guide-hometax.html" style="color:#FF6B35;text-decoration:none;font-weight:600;font-size:14px;">세금계산서 발행 방법 완전 정복 — 홈택스 전자발급부터 가산세까지</a></li>
+        <li style="padding:8px 0;border-bottom:1px solid #ffe6d9;"><a href="/blog/posts/vat-refund-cases-guide-for-small-business.html" style="color:#FF6B35;text-decoration:none;font-weight:600;font-size:14px;">부가세 환급 받는 경우 총정리 — 사장님이 꼭 알아야 할 5가지</a></li>
+        <li style="padding:8px 0;border-bottom:1px solid #ffe6d9;"><a href="/blog/posts/tax-exempt-vs-taxable-business-korea.html" style="color:#FF6B35;text-decoration:none;font-weight:600;font-size:14px;">면세사업자 vs 과세사업자, 사장님이 꼭 알아야 할 핵심 차이</a></li>
+        <li style="padding:8px 0;border-bottom:1px solid #ffe6d9;"><a href="/blog/posts/hometax-vat-filing-guide-for-small-business.html" style="color:#FF6B35;text-decoration:none;font-weight:600;font-size:14px;">홈택스 부가세 신고 따라하기 – 사장님 필수 완전 가이드</a></li>
+      </ul>
+    </section>
+
+    <section style="background:#fff8f5;border-radius:16px;padding:24px 28px;margin-top:24px;">
+      <h2 style="font-size:18px;font-weight:800;color:#1a1a1a;margin:0 0 14px;">무료 계산기로 바로 확인하기</h2>
+      <ul style="list-style:none;padding:0;margin:0;">
+        <li style="padding:10px 0;border-bottom:1px solid #ffe6d9;"><a href="/tools/vat-simplified-calculator/" style="color:#FF6B35;text-decoration:none;font-weight:700;font-size:15px;">간이과세자 부가세 계산기</a><div style="font-size:13px;color:#777;margin-top:2px;">업종별 부가가치율로 납부세액을 계산하고 납부의무 면제 대상인지 확인합니다</div></li>
+      </ul>
+    </section>
+
+    <!-- 자동 광고(Auto ads)가 배치를 정하므로 유닛을 직접 넣지 않는다. 여백만 확보한다. -->
+    <div class="ad-slot"></div>
+
+    <div class="cta-box">
+      <h3>매일 매출 기록, 30초면 끝!</h3>
+      <p>카드·현금·네이버페이·카카오페이<br>여러 결제수단을 한 화면에서 입력<br>부가세 예상액도 자동으로 계산해드려요</p>
+      <a href="/">지금 무료로 시작하기</a>
+    </div>
+  </main>
+
+  <aside class="sidebar">
+    <div class="sidebar-cta">
+      <h3>매일 매출 기록,<br>30초면 끝!</h3>
+      <p>카드·현금·배달앱 한 번에<br>부가세 예상액도 자동 계산</p>
+      <a href="/">무료로 시작하기</a>
+    </div>
+  </aside>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-links">
+      <a href="/">서비스 홈</a>
+      <a href="/blog/">블로그</a>
+      <a href="/privacy">개인정보처리방침</a>
+      <a href="/terms">이용약관</a>
+    </div>
+    <div class="footer-copy">© 2026 오늘장부. All rights reserved.</div>
+  </div>
+</footer>
+
+</body>
+</html>
