@@ -67,8 +67,9 @@ export default function Input() {
     )
     setSaving(false)
     if (error) {
-      console.error('[sales upsert]', error)
-      setToast(`저장 실패: ${error.message}`)
+      // 원문 에러에는 테이블·컬럼명이 들어 있고 입력한 매출액이 딸려오기도 한다.
+      // 사용자에게도 콘솔에도 남기지 않는다.
+      setToast('저장에 실패했어요. 잠시 후 다시 시도해 주세요')
     } else {
       setToast('저장됐어요')
     }
