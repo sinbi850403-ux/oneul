@@ -9,6 +9,7 @@ import History from './pages/History.jsx'
 import Login from './pages/Login.jsx'
 import Landing from './pages/Landing.jsx'
 import NavBar from './components/NavBar.jsx'
+import InstallPrompt from './components/InstallPrompt.jsx'
 import DashboardLayout from './pages/dashboard/DashboardLayout.jsx'
 import BizInfo from './pages/dashboard/BizInfo.jsx'
 import MonthlyReport from './pages/dashboard/MonthlyReport.jsx'
@@ -96,6 +97,8 @@ function ProtectedLayout() {
           <Route path="/settings" element={<Settings />} />
         </Routes>
       </div>
+      {/* 모바일에서만 노출. PC 대시보드는 설치 대상이 아니다. */}
+      <InstallPrompt />
       <NavBar />
     </div>
   )
