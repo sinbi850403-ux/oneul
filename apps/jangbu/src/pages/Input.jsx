@@ -19,6 +19,8 @@ export default function Input() {
   const [rates, setRates] = useState(EMPTY_DELIVERY_RATES)
   const [toast, setToast] = useState('')
   const [saving, setSaving] = useState(false)
+  // 열려 있는 입력 항목. 한 번에 하나만 연다.
+  const [openKey, setOpenKey] = useState(null)
 
   const total = Object.values(values).reduce((a, b) => a + b, 0)
   const delivery = calcDeliverySettlement(values, rates)
@@ -95,12 +97,15 @@ export default function Input() {
       </div>
 
       <div className="bg-white rounded-2xl shadow-card px-4 py-1 mb-4">
-        {FIELDS.map(({ key, label }) => (
+        {FIELDS.map(({ key, label }, i) => (
           <NumberInput
             key={key}
             label={label}
             value={values[key]}
             onChange={(v) => setValues(prev => ({ ...prev, [key]: v }))}
+            open={openKey === key}
+            onToggle={() => setOpenKey(openKey === key ? null : key)}
+            onNext={() => setOpenKey(FIELDS[i + 1]?.key ?? null)}
           />
         ))}
       </div>
