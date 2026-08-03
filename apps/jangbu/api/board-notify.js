@@ -74,7 +74,8 @@ export default async function handler(req, res) {
 
     return res.status(200).json({ success, total: subs.length })
   } catch (err) {
-    console.error('board-notify error:', err)
-    return res.status(500).json({ error: err.message })
+    // 원문 메시지에는 테이블명·상태코드 등 내부 구조가 들어 있다. 서버 로그로만 남긴다.
+    console.error('[board-notify] 처리 실패:', String(err?.message ?? err))
+    return res.status(500).json({ error: '알림 발송 중 오류가 발생했어요.' })
   }
 }
