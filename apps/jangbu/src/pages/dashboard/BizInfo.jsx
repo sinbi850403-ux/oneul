@@ -68,7 +68,9 @@ export default function BizInfo() {
       .select()
     setSaving(false)
     if (error || !updated?.length) {
-      setToast(`저장에 실패했어요 (${error?.message ?? '0행 업데이트 — RLS 정책 확인 필요'})`)
+      // 원문 에러와 "RLS 정책 확인" 안내는 개발 중 진단용이었다. 테이블 구조와
+      // 권한 설계가 그대로 드러나므로 사용자에게는 일반 문구만 보여준다.
+      setToast('저장에 실패했어요. 잠시 후 다시 시도해 주세요')
     } else {
       setToast('저장됐어요')
       setShopName?.(values.shop_name || '')
