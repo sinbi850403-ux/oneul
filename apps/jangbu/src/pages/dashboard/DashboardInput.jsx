@@ -65,7 +65,9 @@ export default function DashboardInput() {
       </div>
 
       <div className="bg-white rounded-2xl shadow-card p-6 mb-4">
-        <div className="grid grid-cols-2 gap-x-8">
+        {/* minmax(0,1fr): 트랙 최소폭이 auto 면 아래 input 의 고유 폭에 끌려가
+            그리드가 통째로 넓어진다. input 의 min-w-0 과 짝으로 필요하다. */}
+        <div className="grid grid-cols-[minmax(0,1fr)_minmax(0,1fr)] gap-x-8">
           {FIELDS.map(({ key, label }) => (
             <div key={key} className="flex items-center justify-between py-3 border-b border-stone-50">
               <span className="text-stone-600 text-sm w-24 shrink-0">{label}</span>
@@ -75,7 +77,7 @@ export default function DashboardInput() {
                 value={values[key] === 0 ? '' : values[key].toLocaleString('ko-KR')}
                 onChange={(e) => handleNumberInput(key, e.target.value)}
                 placeholder="0"
-                className="text-right text-base font-medium text-stone-900 flex-1 outline-none placeholder-stone-300"
+                className="text-right text-base font-medium text-stone-900 flex-1 min-w-0 outline-none placeholder-stone-300"
               />
             </div>
           ))}
