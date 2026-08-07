@@ -1,20 +1,227 @@
 {
   "framework": "vite",
-  "env": { "PNPM_VERSION": "9" },
+  "env": {
+    "PNPM_VERSION": "9"
+  },
   "installCommand": "cd ../.. && pnpm install",
   "buildCommand": "pnpm build",
   "outputDirectory": "dist",
   "redirects": [
     {
       "source": "/(.*)",
-      "has": [{ "type": "header", "key": "x-forwarded-proto", "value": "http" }],
+      "has": [
+        {
+          "type": "header",
+          "key": "x-forwarded-proto",
+          "value": "http"
+        }
+      ],
       "destination": "https://오늘장부.kr/$1",
+      "permanent": true
+    },
+    {
+      "source": "/blog/posts/alba-dismissal-voluntary-resignation-guide.html",
+      "destination": "/blog/posts/parttime-dismissal-recommendation-resignation-guide.html",
+      "permanent": true
+    },
+    {
+      "source": "/blog/posts/avoid-vat-penalty-tips.html",
+      "destination": "/blog/posts/vat-penalty-tax-how-to-avoid.html",
+      "permanent": true
+    },
+    {
+      "source": "/blog/posts/business-bank-account-card-guide.html",
+      "destination": "/blog/posts/business-bank-account-card-setup-guide.html",
+      "permanent": true
+    },
+    {
+      "source": "/blog/posts/card-fee-refund-guide.html",
+      "destination": "/blog/posts/card-fee-refund-guide-for-small-business.html",
+      "permanent": true
+    },
+    {
+      "source": "/blog/posts/card-surcharge-preferential-rate-application-guide.html",
+      "destination": "/blog/posts/card-fee-preferential-rate-application-guide.html",
+      "permanent": true
+    },
+    {
+      "source": "/blog/posts/card-terminal-types-and-costs.html",
+      "destination": "/blog/posts/card-terminal-types-and-costs-guide.html",
+      "permanent": true
+    },
+    {
+      "source": "/blog/posts/cash-sales-record-without-omission.html",
+      "destination": "/blog/posts/cash-revenue-recording-tips-for-small-business.html",
+      "permanent": true
+    },
+    {
+      "source": "/blog/posts/delivery-app-ads-worth-it.html",
+      "destination": "/blog/posts/delivery-app-ad-effect-cost-roi-guide.html",
+      "permanent": true
+    },
+    {
+      "source": "/blog/posts/delivery-app-settlement-cycle-payout.html",
+      "destination": "/blog/posts/delivery-app-settlement-cycle-payment-date.html",
+      "permanent": true
+    },
+    {
+      "source": "/blog/posts/delivery-only-menu-strategy.html",
+      "destination": "/blog/posts/delivery-exclusive-menu-strategy.html",
+      "permanent": true
+    },
+    {
+      "source": "/blog/posts/delivery-packaging-fee-pricing-guide.html",
+      "destination": "/blog/posts/delivery-packaging-fee-guide.html",
+      "permanent": true
+    },
+    {
+      "source": "/blog/posts/delivery-review-management-boost-sales.html",
+      "destination": "/blog/posts/delivery-review-management-increase-sales.html",
+      "permanent": true
+    },
+    {
+      "source": "/blog/posts/delivery-review-management-sales-increase.html",
+      "destination": "/blog/posts/delivery-review-management-increase-sales.html",
+      "permanent": true
+    },
+    {
+      "source": "/blog/posts/depreciation-tax-saving-for-small-business.html",
+      "destination": "/blog/posts/depreciation-tax-saving-tips-for-small-business.html",
+      "permanent": true
+    },
+    {
+      "source": "/blog/posts/depreciation-tax-saving-tips-for-small-business-2.html",
+      "destination": "/blog/posts/depreciation-tax-saving-tips-for-small-business.html",
+      "permanent": true
+    },
+    {
+      "source": "/blog/posts/entertainment-expense-limit-tax-saving.html",
+      "destination": "/blog/posts/entertainment-expense-limit-tax-saving-guide.html",
+      "permanent": true
+    },
+    {
+      "source": "/blog/posts/hiring-family-members-cautions.html",
+      "destination": "/blog/posts/hiring-family-employee-tax-insurance-guide.html",
+      "permanent": true
+    },
+    {
+      "source": "/blog/posts/hometax-vat-filing-step-by-step.html",
+      "destination": "/blog/posts/hometax-vat-filing-guide-for-small-business.html",
+      "permanent": true
+    },
+    {
+      "source": "/blog/posts/how-to-issue-tax-invoice-hometax-guide.html",
+      "destination": "/blog/posts/tax-invoice-issuance-guide-hometax.html",
+      "permanent": true
+    },
+    {
+      "source": "/blog/posts/income-tax-deductible-expenses-guide.html",
+      "destination": "/blog/posts/jonghapsodeutse-gyeongbi-injung-hangmok.html",
+      "permanent": true
+    },
+    {
+      "source": "/blog/posts/input-vat-deduction-guide.html",
+      "destination": "/blog/posts/input-tax-credit-guide-for-small-business.html",
+      "permanent": true
+    },
+    {
+      "source": "/blog/posts/monthly-sales-target-management-guide.html",
+      "destination": "/blog/posts/monthly-sales-goal-setting-and-management.html",
+      "permanent": true
+    },
+    {
+      "source": "/blog/posts/monthly-sales-target-management-guide-2.html",
+      "destination": "/blog/posts/monthly-sales-goal-setting-and-management.html",
+      "permanent": true
+    },
+    {
+      "source": "/blog/posts/part-time-4-insurance-criteria.html",
+      "destination": "/blog/posts/part-time-worker-4-major-insurance-enrollment-criteria.html",
+      "permanent": true
+    },
+    {
+      "source": "/blog/posts/part-time-dismissal-recommended-resignation-guide.html",
+      "destination": "/blog/posts/parttime-dismissal-recommendation-resignation-guide.html",
+      "permanent": true
+    },
+    {
+      "source": "/blog/posts/part-time-under-15-hours-regulations-2.html",
+      "destination": "/blog/posts/part-time-under-15-hours-regulations.html",
+      "permanent": true
+    },
+    {
+      "source": "/blog/posts/regular-customer-sales-analysis-revisit.html",
+      "destination": "/blog/posts/regular-customer-sales-analysis-increase-revisit.html",
+      "permanent": true
+    },
+    {
+      "source": "/blog/posts/side-job-business-registration-guide.html",
+      "destination": "/blog/posts/side-business-registration-guide-korea.html",
+      "permanent": true
+    },
+    {
+      "source": "/blog/posts/side-job-business-registration-korea.html",
+      "destination": "/blog/posts/side-business-registration-guide-korea.html",
+      "permanent": true
+    },
+    {
+      "source": "/blog/posts/simple-payment-fee-comparison-naver-kakao-toss.html",
+      "destination": "/blog/posts/simple-payment-fee-comparison-2026.html",
+      "permanent": true
+    },
+    {
+      "source": "/blog/posts/simplified-vs-general-taxpayer-difference.html",
+      "destination": "/blog/posts/gani-ilban-gwaseeja-chai-2026.html",
+      "permanent": true
+    },
+    {
+      "source": "/blog/posts/small-business-policy-fund-guide-2026.html",
+      "destination": "/blog/posts/small-business-policy-fund-guide-tax-saving.html",
+      "permanent": true
+    },
+    {
+      "source": "/blog/posts/tax-credit-vs-income-deduction.html",
+      "destination": "/blog/posts/tax-credit-vs-income-deduction-for-small-business.html",
+      "permanent": true
+    },
+    {
+      "source": "/blog/posts/tax-free-vs-taxable-business.html",
+      "destination": "/blog/posts/tax-exempt-vs-taxable-business-korea.html",
+      "permanent": true
+    },
+    {
+      "source": "/blog/posts/vat-input-tax-credit-guide-for-small-business.html",
+      "destination": "/blog/posts/input-tax-credit-guide-for-small-business.html",
+      "permanent": true
+    },
+    {
+      "source": "/blog/posts/vehicle-expense-tax-deduction-guide.html",
+      "destination": "/blog/posts/vehicle-maintenance-expense-deduction-guide.html",
+      "permanent": true
+    },
+    {
+      "source": "/blog/posts/vehicle-maintenance-expense-deduction-guide-2.html",
+      "destination": "/blog/posts/vehicle-maintenance-expense-deduction-guide.html",
+      "permanent": true
+    },
+    {
+      "source": "/blog/posts/weekly-15-hours-part-time-rules.html",
+      "destination": "/blog/posts/part-time-under-15-hours-regulations.html",
       "permanent": true
     }
   ],
   "rewrites": [
-    { "source": "/sitemap.xml", "destination": "/sitemap.xml" },
-    { "source": "/api/(.*)", "destination": "/api/$1" },
-    { "source": "/((?!blog|tools).*)", "destination": "/" }
+    {
+      "source": "/sitemap.xml",
+      "destination": "/sitemap.xml"
+    },
+    {
+      "source": "/api/(.*)",
+      "destination": "/api/$1"
+    },
+    {
+      "source": "/((?!blog|tools).*)",
+      "destination": "/"
+    }
   ]
 }
