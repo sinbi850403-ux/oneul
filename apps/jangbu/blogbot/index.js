@@ -62,14 +62,86 @@ const pad = (n) => String(n).padStart(2, '0')
 const dateISO = `${y}-${pad(m)}-${pad(day)}`
 const dateKR = `${y}년 ${pad(m)}월 ${pad(day)}일`
 
+// ── 이미 다룬 주제인지 판별 ──────────────────────────────────────
+// 키워드 풀은 카테고리당 20개뿐인데 날짜 나머지로만 순환시키면 20일마다 한 바퀴
+// 돌아 같은 주제를 또 쓴다. 실제로 201편 중 38편이 재탕이었고 애드센스가
+// "가치가 별로 없는 콘텐츠"로 게재를 거절했다.
+
+// 모든 제목에 깔린 상투구 — 유사도 계산에서 빼지 않으면 서로 다른 주제까지 겹쳐 보인다.
+const TITLE_STOPWORDS = new Set([
+  '사장님', '사장님이', '사장님을', '소상공인', '소상공인이', '소상공인이라면', '꼭', '알아야',
+  '할', '핵심', '정리', '총정리', '완전', '완전정복', '가이드', '전략', '실전', '방법', '법',
+  '필수', '필독', '체크리스트', '최신', '위한', '및', 'vs', '한눈에', '기준',
+])
+
+function topicTokens(s) {
+  return new Set(
+    String(s || '')
+      .match(/[가-힣A-Za-z0-9]+/g)
+      ?.filter((t) => !TITLE_STOPWORDS.has(t) && !/^20\d\d년?$/.test(t)) || []
+  )
+}
+
+// 어미만 다른 같은 말을 같게 본다. "활용"/"활용법", "입금"/"입금일" 처럼
+// 붙는 접미사 하나 때문에 중복을 놓치는 경우가 많다.
+function tokenMatches(t, set) {
+  if (set.has(t)) return true
+  for (const u of set) {
+    if (t.length >= 2 && u.length >= 2 && (u.startsWith(t) || t.startsWith(u))) return true
+  }
+  return false
+}
+
+// 단어 희소성(IDF). "배달"·"계산" 같은 흔한 말이 겹치는 것과
+// "키오스크"·"손익분기점" 같은 고유한 말이 겹치는 것은 무게가 달라야 한다.
+function buildIdf(manifest) {
+  const df = new Map()
+  for (const p of manifest) {
+    for (const t of topicTokens(p.title)) df.set(t, (df.get(t) || 0) + 1)
+  }
+  const n = manifest.length || 1
+  return (t) => Math.log((n + 1) / ((df.get(t) || 0) + 1)) + 1
+}
+
+// 키워드의 단어들이 제목 안에 얼마나 들어있는지를 희소성으로 가중해 계산한다.
+function weightedContainment(kt, pt, idf) {
+  let hit = 0, total = 0
+  for (const t of kt) {
+    const w = idf(t)
+    total += w
+    if (tokenMatches(t, pt)) hit += w
+  }
+  return total ? hit / total : 0
+}
+
+// 기존 발행글 163편에 사람이 정답을 붙여 맞춘 값. 같은 주제 9건은 0.65 이상,
+// 다른 주제 중 가장 높은 "배달 손익분기점 계산"이 0.60이라 그 사이를 잡았다.
+// 여유가 좁으므로 애매하면 막는 쪽으로 기울인다 — 잘못 막으면 주제 하나를
+// 건너뛰고 말지만, 잘못 통과시키면 중복 글이 그대로 발행된다.
+const TOPIC_DUP_THRESHOLD = 0.63
+
+function isAlreadyCovered(kw, manifest, idf) {
+  // 발행 시 keyword를 기록하므로 정확히 일치하면 바로 중복.
+  if (manifest.some((p) => p.keyword === kw.keyword)) return true
+  // 기록 이전에 발행된 글은 제목으로 판정한다.
+  // 카테고리로 좁히면 안 된다. 같은 주제가 다른 섹션에 들어간 경우가 실제로 있었다
+  // ("매입세액 공제"는 부가세/세금과 절세꿀팁에 흩어져 3편이나 있었다).
+  const kt = topicTokens(kw.keyword)
+  return manifest.some(
+    (p) => weightedContainment(kt, topicTokens(p.title), idf) >= TOPIC_DUP_THRESHOLD
+  )
+}
+
 // ── 키워드 선택 ──────────────────────────────────────────────────
-// 우선순위: --kw=<번호|문자열>(수동) → --category=<섹션>(섹션 내 날짜 순환) → 전체 날짜 순환
-function pickKeyword() {
+// 우선순위: --kw=<번호|문자열>(수동) → --category=<섹션> → 전체
+// 날짜 순환 위치에서 시작해 아직 안 쓴 주제를 찾을 때까지 앞으로 훑는다.
+function pickKeyword(manifest = []) {
   const dayNum = Math.floor((Date.now() + 9 * 3600 * 1000) / 86400000)
   const arg = (name) => {
     const a = process.argv.find((x) => x.startsWith(name))
     return a ? a.slice(name.length) : null
   }
+  // 수동 지정은 중복 검사를 건너뛴다 — 사람이 의도적으로 고른 것이다.
   const kw = arg('--kw=')
   if (kw) {
     const idx = Number(kw)
@@ -77,12 +149,23 @@ function pickKeyword() {
     const found = keywords.find((k) => k.keyword.includes(kw) || k.category === kw)
     if (found) return found
   }
+
   const cat = arg('--category=')
-  if (cat) {
-    const pool = keywords.filter((k) => k.category === cat)
-    if (pool.length) return pool[dayNum % pool.length] // 섹션 내 4개를 4일 주기로 순환
+  const pool = cat ? keywords.filter((k) => k.category === cat) : keywords
+  if (!pool.length) return keywords[dayNum % keywords.length]
+
+  const idf = buildIdf(manifest)
+  const start = dayNum % pool.length
+  for (let i = 0; i < pool.length; i++) {
+    const cand = pool[(start + i) % pool.length]
+    if (!isAlreadyCovered(cand, manifest, idf)) {
+      if (i > 0) console.log(`주제 중복 ${i}건 건너뜀 → "${cand.keyword}"`)
+      return cand
+    }
   }
-  return keywords[dayNum % keywords.length]
+
+  // 풀이 전부 소진됐다. 재탕하느니 발행을 멈추는 편이 낫다.
+  return null
 }
 
 // ── 유틸 ─────────────────────────────────────────────────────────
@@ -510,7 +593,16 @@ async function resolveThumb(imageQuery, slug) {
 // ── 메인 ─────────────────────────────────────────────────────────
 let slugGlobal = 'post'
 async function main() {
-  const kw = pickKeyword()
+  const manifest = JSON.parse(fs.readFileSync(MANIFEST, 'utf8'))
+
+  const kw = pickKeyword(manifest)
+  if (!kw) {
+    console.log(
+      '키워드 풀의 모든 주제를 이미 다뤘습니다 — 재탕을 피하기 위해 발행하지 않습니다.\n' +
+        'blogbot/keywords.js 에 새 주제를 추가하세요.'
+    )
+    return
+  }
   console.log(`키워드: ${kw.keyword} (${kw.category})${DRY_RUN ? ' [DRY RUN]' : ''}`)
 
   let post
@@ -540,7 +632,6 @@ async function main() {
   console.log(`slug: ${slugGlobal}`)
 
   // 관련 글(같은 섹션 우선, 그다음 최근) — 내부링크 SEO
-  const manifest = JSON.parse(fs.readFileSync(MANIFEST, 'utf8'))
   const related = [
     ...manifest.filter((p) => p.category === category),
     ...manifest.filter((p) => p.category !== category),
@@ -554,7 +645,11 @@ async function main() {
   fs.writeFileSync(path.join(POSTS_DIR, `${slugGlobal}.html`), html)
 
   // 2) 매니페스트 prepend
-  manifest.unshift({ slug: slugGlobal, title, description, category, date: dateISO, thumb, tags })
+  // keyword를 남겨야 다음 실행이 같은 주제를 다시 고르지 않는다.
+  manifest.unshift({
+    slug: slugGlobal, title, description, category,
+    date: dateISO, thumb, tags, keyword: kw.keyword,
+  })
   fs.writeFileSync(MANIFEST, JSON.stringify(manifest, null, 2) + '\n')
 
   // 3) 사이트맵 갱신
