@@ -1,5 +1,20 @@
 [
   {
+    "slug": "card-fee-refund-on-payment-cancellation",
+    "title": "결제 취소하면 카드수수료도 돌려받나? 사장님이 꼭 알아야 할 진실",
+    "description": "손님이 결제를 취소하면 이미 뗀 카드수수료는 어떻게 될까? 매출취소전표 처리법부터 현금 환급 시 손실까지, 소상공인이 꼭 알아야 할 카드수수료 환급 원칙을 정리했습니다.",
+    "category": "카드수수료",
+    "date": "2026-08-08",
+    "thumb": "https://images.pexels.com/photos/302854/pexels-photo-302854.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200",
+    "tags": [
+      "카드수수료",
+      "결제취소",
+      "매출취소전표",
+      "소상공인"
+    ],
+    "keyword": "결제 취소하면 수수료도 돌려받나"
+  },
+  {
     "slug": "receipt-management-tax-saving-tips",
     "title": "절세를 위한 영수증 관리, 사장님이 꼭 알아야 할 실전 핵심",
     "description": "소상공인 절세의 시작은 영수증 관리입니다. 적격증빙 종류·3만 원 기준·보관 5년 규정까지, 세금 줄이는 영수증 습관을 실전으로 정리했습니다.",
