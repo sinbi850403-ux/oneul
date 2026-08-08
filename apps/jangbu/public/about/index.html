@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>오늘장부 소개 — 누가 왜 만들고 어떻게 운영하나</title>
+  <meta name="description" content="오늘장부는 1인 소상공인을 위한 무료 매출 기록 서비스입니다. 서비스를 만든 이유, 블로그 콘텐츠 제작 방식과 한계, 운영 정보를 밝힙니다.">
+  <meta property="og:title" content="오늘장부 소개">
+  <meta property="og:description" content="1인 소상공인을 위한 무료 매출 기록 서비스. 만든 이유와 운영 방식을 밝힙니다.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://xn--wh1bw0st1gbrb.kr/about/">
+  <link rel="canonical" href="https://xn--wh1bw0st1gbrb.kr/about/">
+  <link rel="icon" href="/icons/icon-192.png">
+  <script defer src="/analytics.js"></script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "AboutPage",
+    "url": "https://xn--wh1bw0st1gbrb.kr/about/",
+    "mainEntity": {
+      "@type": "Organization",
+      "name": "오늘장부",
+      "url": "https://xn--wh1bw0st1gbrb.kr/",
+      "logo": "https://xn--wh1bw0st1gbrb.kr/icons/icon-192.png",
+      "description": "1인 소상공인을 위한 무료 일매출 기록 서비스",
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "contactType": "customer support",
+        "email": "invex@invex.io.kr",
+        "availableLanguage": ["Korean"]
+      }
+    }
+  }
+  </script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Noto Sans KR', sans-serif; background: #f8f9fa; color: #1a1a1a; line-height: 1.7; }
+    header { background: #fff; border-bottom: 1px solid #eee; position: sticky; top: 0; z-index: 100; }
+    .header-inner { max-width: 900px; margin: 0 auto; padding: 0 20px; height: 60px; display: flex; align-items: center; justify-content: space-between; }
+    .logo { display: flex; align-items: center; gap: 8px; text-decoration: none; }
+    .logo-icon { width: 32px; height: 32px; background: #FF6B35; border-radius: 8px; display: flex; align-items: center; justify-content: center; color: white; font-weight: 900; font-size: 16px; }
+    .logo-text { font-size: 18px; font-weight: 800; color: #FF6B35; }
+    .header-cta { background: #FF6B35; color: white; padding: 8px 16px; border-radius: 8px; font-size: 13px; font-weight: 600; text-decoration: none; }
+    .wrap { max-width: 900px; margin: 0 auto; padding: 32px 20px 60px; }
+    h1 { font-size: clamp(22px, 5vw, 30px); font-weight: 900; line-height: 1.35; margin-bottom: 10px; }
+    .lede { color: #666; font-size: 15px; margin-bottom: 28px; }
+    .card { background: #fff; border-radius: 20px; box-shadow: 0 2px 12px rgba(0,0,0,0.06); padding: 28px; margin-bottom: 20px; }
+    .card h2 { font-size: 19px; font-weight: 800; margin-bottom: 14px; padding-bottom: 8px; border-bottom: 2px solid #FF6B35; }
+    .card h3 { font-size: 16px; font-weight: 700; margin: 20px 0 8px; color: #333; }
+    .card p { font-size: 15px; color: #333; margin-bottom: 12px; }
+    .card p:last-child { margin-bottom: 0; }
+    .card ul { padding-left: 20px; margin-bottom: 12px; }
+    .card li { font-size: 15px; color: #333; margin-bottom: 7px; }
+    .card a { color: #FF6B35; text-decoration: none; font-weight: 600; }
+    .card a:hover { text-decoration: underline; }
+    dl.info { display: grid; grid-template-columns: 140px minmax(0, 1fr); gap: 0; font-size: 15px; }
+    @media (max-width: 560px) { dl.info { grid-template-columns: 1fr; } dl.info dt { padding-bottom: 0; } }
+    dl.info dt { color: #888; padding: 11px 0; border-bottom: 1px solid #f2f2f2; font-weight: 500; }
+    dl.info dd { padding: 11px 0; border-bottom: 1px solid #f2f2f2; word-break: break-word; }
+    @media (max-width: 560px) { dl.info dt { border-bottom: 0; } }
+    .note { background: #fff8f5; border: 1px solid #ffd9c7; border-radius: 14px; padding: 18px 20px; font-size: 14px; color: #7a5443; }
+    .note strong { color: #a0664a; }
+    .tools { list-style: none; padding: 0; }
+    .tools li { padding: 12px 0; border-bottom: 1px solid #f2f2f2; }
+    .tools li:last-child { border-bottom: 0; }
+    .tools .desc { display: block; font-size: 13px; color: #888; font-weight: 400; margin-top: 2px; }
+    footer { background: #1a1a1a; color: #888; padding: 40px 20px; margin-top: 40px; }
+    .footer-inner { max-width: 900px; margin: 0 auto; }
+    .footer-links { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 16px; }
+    .footer-links a { color: #888; text-decoration: none; font-size: 13px; }
+    .footer-links a:hover { color: #FF6B35; }
+    .footer-copy { font-size: 12px; }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="header-inner">
+      <a class="logo" href="/">
+        <span class="logo-icon">장</span>
+        <span class="logo-text">오늘장부</span>
+      </a>
+      <a class="header-cta" href="/">무료로 시작하기</a>
+    </div>
+  </header>
+
+  <div class="wrap">
+    <h1>오늘장부 소개</h1>
+    <p class="lede">1인 소상공인이 하루 매출을 30초 만에 기록하도록 돕는 무료 서비스입니다.</p>
+
+    <div class="card">
+      <h2>왜 만들었나</h2>
+      <p>혼자 가게를 보는 사장님에게 장부는 늘 뒷전입니다. 카드로 받고, 현금으로 받고, 배달앱으로도 받는데 정산일이 제각각이라 오늘 얼마를 벌었는지조차 한눈에 보이지 않습니다. 그러다 부가세 신고 기간이 오면 영수증과 정산 내역을 몰아서 뒤지게 됩니다.</p>
+      <p>기존 회계 프로그램은 이 문제를 풀어주지 않았습니다. 기능이 너무 많고, 세무 용어로 되어 있고, 대부분 유료입니다. 하루 매출 한 줄 적자고 월 구독료를 낼 사장님은 많지 않습니다.</p>
+      <p>오늘장부는 그 한 줄만 잘 적히게 만드는 데 집중합니다. 결제수단별로 숫자를 넣으면 합계와 부가세 예상액이 자동으로 나옵니다. 그게 전부이고, 그거면 충분한 경우가 많습니다.</p>
+    </div>
+
+    <div class="card">
+      <h2>무엇을 제공하나</h2>
+      <h3>매출 기록 앱</h3>
+      <p>카드·현금·현금영수증·계좌이체·네이버페이·카카오페이 등 결제수단을 나눠 입력하면 일·월 단위 합계와 부가세 예상액을 계산합니다. 월별 리포트와 엑셀 내려받기를 지원합니다. 무료입니다.</p>
+
+      <h3>무료 계산기</h3>
+      <ul class="tools">
+        <li>
+          <a href="/tools/card-fee-calculator/">카드수수료 계산기</a>
+          <span class="desc">연매출로 우대수수료율 구간을 확인하고 과다 납부·환급 가능액을 계산합니다</span>
+        </li>
+        <li>
+          <a href="/tools/delivery-fee-calculator/">배달앱 수수료 계산기</a>
+          <span class="desc">중개수수료·배달비·결제수수료를 빼고 실제로 통장에 들어오는 금액을 계산합니다</span>
+        </li>
+        <li>
+          <a href="/tools/vat-simplified-calculator/">간이과세자 부가세 계산기</a>
+          <span class="desc">업종별 부가가치율을 적용해 간이과세자 납부세액을 계산합니다</span>
+        </li>
+      </ul>
+
+      <h3>블로그</h3>
+      <p>매출 관리, 부가세 신고, 절세, 배달앱 수수료, 인건비 같은 자영업 실무 주제를 다룹니다. <a href="/blog/">블로그 보기</a></p>
+    </div>
+
+    <div class="card">
+      <h2>블로그는 어떻게 만드나</h2>
+      <p>솔직하게 밝힙니다. 블로그 글의 초안은 <strong>AI로 작성</strong>합니다. 자영업 실무에서 반복적으로 나오는 질문을 주제로 잡고, 세율·기한·요율 같은 수치는 공개된 정부·기관 기준을 근거로 씁니다.</p>
+      <p>다만 한계가 분명합니다.</p>
+      <ul>
+        <li>세법과 요율은 자주 바뀝니다. 글에 적힌 기준 연도를 확인하시고, 실제 신고 전에는 국세청 홈택스나 세무 전문가에게 최종 확인하시기 바랍니다.</li>
+        <li>모든 글은 <strong>일반적인 정보 제공</strong>이며, 개별 사업장에 대한 세무·법률 자문이 아닙니다. 같은 제도라도 업종·매출 규모·계약 형태에 따라 결론이 달라집니다.</li>
+        <li>내용에 오류를 발견하시면 알려주세요. 확인 후 수정하거나 글을 내립니다.</li>
+      </ul>
+      <div class="note">
+        <strong>중복 주제를 쓰지 않습니다.</strong> 같은 주제를 표현만 바꿔 반복 발행하는 것은 읽는 분께 도움이 되지 않습니다. 이미 다룬 주제는 자동으로 걸러내고, 새로 쓸 주제가 없으면 발행하지 않습니다.
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>운영 정보</h2>
+      <dl class="info">
+        <dt>서비스명</dt>
+        <dd>오늘장부</dd>
+        <dt>사이트 주소</dt>
+        <dd><a href="https://xn--wh1bw0st1gbrb.kr/">오늘장부.kr</a></dd>
+        <dt>문의</dt>
+        <dd><a href="mailto:invex@invex.io.kr">invex@invex.io.kr</a></dd>
+        <dt>이용 요금</dt>
+        <dd>무료</dd>
+        <dt>수익 모델</dt>
+        <dd>광고</dd>
+      </dl>
+      <p style="margin-top:16px;font-size:14px;color:#888;">문의는 <a href="/contact/">문의하기</a> 페이지에서 자세히 안내합니다.</p>
+    </div>
+
+    <div class="card">
+      <h2>광고에 대하여</h2>
+      <p>오늘장부는 무료로 운영되며 광고 수익으로 서버 비용과 개발 비용을 충당합니다. 블로그와 계산기 페이지에 광고가 게재됩니다.</p>
+      <p>광고는 콘텐츠와 구분되도록 배치하며, 광고주가 글의 내용이나 방향에 관여하지 않습니다. 매출 기록 앱 화면 안에는 광고를 넣지 않습니다.</p>
+      <p>광고 게재 과정에서 쿠키가 사용될 수 있습니다. 자세한 내용은 <a href="/privacy">개인정보처리방침</a>을 확인해 주세요.</p>
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-links">
+        <a href="/">서비스 홈</a>
+        <a href="/blog/">블로그</a>
+        <a href="/about/">소개</a>
+        <a href="/contact/">문의하기</a>
+        <a href="/privacy">개인정보처리방침</a>
+        <a href="/terms">이용약관</a>
+      </div>
+      <div class="footer-copy">© 2026 오늘장부. All rights reserved.</div>
+    </div>
+  </footer>
+</body>
+</html>
