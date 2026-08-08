@@ -156,4 +156,76 @@ export const keywords = [
   { keyword: '알바 채용 공고 잘 쓰는 법', category: '직원관리', imageQuery: 'hiring sign window' },
   { keyword: '직원 동기부여 현실 방법', category: '직원관리', imageQuery: 'happy team staff' },
   { keyword: '근로시간 관리와 기록', category: '직원관리', imageQuery: 'time clock work' },
+
+  // ── 2차 주제 (기존 163편이 안 다룬 영역) ──
+  // 1차 140개가 사실상 소진되어 추가. 기존 글·기존 키워드·후보끼리
+  // 모두 중복 판정을 돌려 통과한 것만 넣었다.
+  // ── 매출관리 ── 지금까지는 '기록·집계'만 다뤘다. 원가·현금흐름·수익구조가 비어 있다.
+  { keyword: '원가율 계산하고 낮추는 법', category: '매출관리', imageQuery: 'food cost calculation' },
+  { keyword: '손익계산서 읽는 법', category: '매출관리', imageQuery: 'financial statement paper' },
+  { keyword: '고정비 변동비 나누는 법', category: '매출관리', imageQuery: 'expense breakdown chart' },
+  { keyword: '매출은 느는데 통장이 비는 이유', category: '매출관리', imageQuery: 'empty wallet worry' },
+  { keyword: '식자재 폐기율 줄이기', category: '매출관리', imageQuery: 'food waste kitchen' },
+  { keyword: '메뉴별 수익성 따져보기', category: '매출관리', imageQuery: 'restaurant menu board' },
+  { keyword: '부가세 낼 돈 미리 떼어두기', category: '매출관리', imageQuery: 'saving money jar' },
+  { keyword: '재고 조사 주기와 방법', category: '매출관리', imageQuery: 'warehouse inventory count' },
+
+  // ── 부가세/세금 ── 신고 '절차'는 다 다뤘다. 잘못 신고했을 때와 그 이후가 비어 있다.
+  { keyword: '잘못 신고했을 때 수정신고', category: '부가세/세금', imageQuery: 'correcting document pen' },
+  { keyword: '더 낸 세금 돌려받는 경정청구', category: '부가세/세금', imageQuery: 'tax refund money' },
+  { keyword: '신고 기한 놓쳤을 때 기한후신고', category: '부가세/세금', imageQuery: 'calendar deadline missed' },
+  { keyword: '세무조사 나오는 기준과 대비', category: '부가세/세금', imageQuery: 'audit documents desk' },
+  { keyword: '세금 나눠 내는 분납과 납부유예', category: '부가세/세금', imageQuery: 'installment payment plan' },
+  { keyword: '원천세 반기납부 특례', category: '부가세/세금', imageQuery: 'payroll tax paperwork' },
+  { keyword: '면세사업자 사업장현황신고', category: '부가세/세금', imageQuery: 'tax filing office' },
+  { keyword: '성실신고확인제도 대상', category: '부가세/세금', imageQuery: 'accountant checking report' },
+
+  // ── 절세꿀팁 ── 공제 항목은 많이 다뤘다. 고용·손실·겸용 지출이 비어 있다.
+  { keyword: '직원 늘리면 받는 통합고용세액공제', category: '절세꿀팁', imageQuery: 'team hiring handshake' },
+  { keyword: '적자 난 해의 결손금 이월공제', category: '절세꿀팁', imageQuery: 'red loss graph' },
+  { keyword: '집과 가게 겸용 지출 나누기', category: '절세꿀팁', imageQuery: 'home office desk' },
+  { keyword: '청년창업 세액감면 조건', category: '절세꿀팁', imageQuery: 'young entrepreneur shop' },
+  { keyword: '화재 침수 재해손실 세액공제', category: '절세꿀팁', imageQuery: 'flood damage store' },
+  { keyword: '창업자금 증여 과세특례', category: '절세꿀팁', imageQuery: 'family money support' },
+  { keyword: '30만원 미만 소액자산 즉시 비용처리', category: '절세꿀팁', imageQuery: 'small equipment tools' },
+  { keyword: '세금 체납하면 벌어지는 일', category: '절세꿀팁', imageQuery: 'overdue notice envelope' },
+
+  // ── 배달앱 ── 수수료·정산은 포화. 분쟁·할인 분담·운영이 비어 있다.
+  { keyword: '배달앱 쿠폰 할인 누가 부담하나', category: '배달앱', imageQuery: 'discount coupon phone' },
+  { keyword: '별점 테러와 악성 리뷰 대응', category: '배달앱', imageQuery: 'bad review phone' },
+  { keyword: '포장 주문 수수료 따져보기', category: '배달앱', imageQuery: 'takeout packaging food' },
+  { keyword: '배달 반경 설정하는 법', category: '배달앱', imageQuery: 'delivery map route' },
+  { keyword: '자체 주문앱 만들 만한가', category: '배달앱', imageQuery: 'mobile ordering app' },
+  { keyword: '배달 음식 위생 사고 대처', category: '배달앱', imageQuery: 'food safety kitchen' },
+  { keyword: '라이더 사고와 사장님 책임', category: '배달앱', imageQuery: 'delivery rider scooter' },
+  { keyword: '배달앱 정산 오류 이의제기', category: '배달앱', imageQuery: 'checking invoice dispute' },
+
+  // ── 카드수수료 ── 요율·정산은 포화. 환불·계약·결제 인프라가 비어 있다.
+  { keyword: '결제 취소하면 수수료도 돌려받나', category: '카드수수료', imageQuery: 'refund credit card' },
+  { keyword: '밴사와 PG사 차이', category: '카드수수료', imageQuery: 'payment gateway terminal' },
+  { keyword: '온라인 결제 수수료 구조', category: '카드수수료', imageQuery: 'online payment laptop' },
+  { keyword: '무이자 할부 비용은 누가 내나', category: '카드수수료', imageQuery: 'installment credit card' },
+  { keyword: '단말기 계약 해지와 위약금', category: '카드수수료', imageQuery: 'contract cancellation paper' },
+  { keyword: '카드 전표 보관 의무 기간', category: '카드수수료', imageQuery: 'receipt archive box' },
+  { keyword: '결제대행 미정산 사고 대응', category: '카드수수료', imageQuery: 'payment problem worry' },
+
+  // ── 사업자등록 ── 개업 절차는 포화. 개업 이후 변경·확장·정리가 비어 있다.
+  { keyword: '주소나 업종 바꿀 때 정정신고', category: '사업자등록', imageQuery: 'address change form' },
+  { keyword: '상호 정할 때 상표권 확인', category: '사업자등록', imageQuery: 'shop sign branding' },
+  { keyword: '개인사업자 법인 전환 시기', category: '사업자등록', imageQuery: 'business growth office' },
+  { keyword: '가게 넘길 때 양도양수와 권리금', category: '사업자등록', imageQuery: 'shop handover keys' },
+  { keyword: '영업신고증 받는 절차', category: '사업자등록', imageQuery: 'restaurant kitchen license' },
+  { keyword: '간판 옥외광고물 신고', category: '사업자등록', imageQuery: 'store signboard street' },
+  { keyword: '소상공인 확인서 발급받기', category: '사업자등록', imageQuery: 'certificate document stamp' },
+  { keyword: '무인매장 창업 인허가', category: '사업자등록', imageQuery: 'unmanned store kiosk' },
+
+  // ── 직원관리 ── 급여·계약은 포화. 법정의무와 사고 대응이 비어 있다.
+  { keyword: '임금명세서 안 주면 과태료', category: '직원관리', imageQuery: 'payslip document' },
+  { keyword: '법정의무교육 다섯 가지', category: '직원관리', imageQuery: 'workplace training session' },
+  { keyword: '알바가 일하다 다쳤을 때 산재', category: '직원관리', imageQuery: 'workplace injury first aid' },
+  { keyword: '권고사직과 실업급여 이직확인서', category: '직원관리', imageQuery: 'resignation paperwork' },
+  { keyword: '청소년 알바 고용 조건', category: '직원관리', imageQuery: 'teenager part time work' },
+  { keyword: '취업규칙 만들어야 하는 기준', category: '직원관리', imageQuery: 'company rulebook' },
+  { keyword: '직장 내 괴롭힘 신고 들어오면', category: '직원관리', imageQuery: 'workplace conflict meeting' },
+  { keyword: '퇴직연금 가입 의무', category: '직원관리', imageQuery: 'retirement pension savings' },
 ]
