@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>밴사와 PG사 차이, 사장님이 꼭 알아야 할 카드수수료 핵심 정리 | 오늘장부 블로그</title>
+  <meta name="description" content="밴사(VAN)와 PG사의 역할·수수료 구조·정산 방식 차이를 소상공인 눈높이에서 비교 정리했습니다. 내 가게에 맞는 결제 파트너를 선택하세요.">
+  <meta property="og:title" content="밴사와 PG사 차이, 사장님이 꼭 알아야 할 카드수수료 핵심 정리">
+  <meta property="og:description" content="밴사(VAN)와 PG사의 역할·수수료 구조·정산 방식 차이를 소상공인 눈높이에서 비교 정리했습니다. 내 가게에 맞는 결제 파트너를 선택하세요.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://xn--wh1bw0st1gbrb.kr/blog/posts/van-pg-card-fee-difference-guide.html">
+  <meta property="og:image" content="https://images.pexels.com/photos/10330107/pexels-photo-10330107.jpeg?auto=compress&amp;cs=tinysrgb&amp;fit=crop&amp;h=627&amp;w=1200">
+  <link rel="canonical" href="https://xn--wh1bw0st1gbrb.kr/blog/posts/van-pg-card-fee-difference-guide.html">
+  <link rel="icon" href="/icons/icon-192.png">
+  <!-- 방문자 분석 (GA4 + Clarity + 네이버). ID는 /analytics.js 상단에서 관리. -->
+  <script defer src="/analytics.js"></script>
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2764893290310463" crossorigin="anonymous"></script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Noto Sans KR', sans-serif; background: #f8f9fa; color: #1a1a1a; line-height: 1.7; }
+    header { background: #fff; border-bottom: 1px solid #eee; position: sticky; top: 0; z-index: 100; }
+    .header-inner { max-width: 1100px; margin: 0 auto; padding: 0 20px; height: 60px; display: flex; align-items: center; justify-content: space-between; }
+    .logo { display: flex; align-items: center; gap: 8px; text-decoration: none; }
+    .logo-icon { width: 32px; height: 32px; background: #FF6B35; border-radius: 8px; display: flex; align-items: center; justify-content: center; color: white; font-weight: 900; font-size: 16px; }
+    .logo-text { font-size: 18px; font-weight: 800; color: #FF6B35; }
+    .logo-sub { font-size: 13px; color: #888; margin-left: 4px; }
+    .header-cta { background: #FF6B35; color: white; border: none; padding: 8px 16px; border-radius: 8px; font-size: 13px; font-weight: 600; cursor: pointer; text-decoration: none; }
+    /* minmax(0, ...): 표처럼 최소폭이 큰 콘텐츠가 그리드 트랙을 밀어내 페이지 전체가
+       가로로 스크롤되는 것을 막는다. 1fr만 쓰면 트랙 최소폭이 auto라 끌려간다. */
+    .wrap { max-width: 1100px; margin: 0 auto; padding: 32px 20px; display: grid; grid-template-columns: minmax(0, 1fr) 300px; gap: 40px; }
+    @media (max-width: 768px) { .wrap { grid-template-columns: minmax(0, 1fr); } .sidebar { display: none; } }
+    article { background: white; border-radius: 20px; overflow: hidden; box-shadow: 0 2px 12px rgba(0,0,0,0.06); }
+    .article-head { padding: 32px 32px 24px; border-bottom: 1px solid #f0f0f0; }
+    .article-cat { font-size: 12px; font-weight: 700; color: #FF6B35; text-transform: uppercase; margin-bottom: 12px; }
+    .article-cat a { color: #FF6B35; text-decoration: none; }
+    .article-title { font-size: clamp(20px, 4vw, 28px); font-weight: 900; line-height: 1.4; color: #1a1a1a; margin-bottom: 16px; }
+    .article-meta { font-size: 13px; color: #aaa; display: flex; gap: 16px; align-items: center; flex-wrap: wrap; }
+    .hero-img { width: 100%; aspect-ratio: 16/9; object-fit: cover; background: #f0f0f0; }
+    .article-body { padding: 32px; }
+    .article-body h2 { font-size: 20px; font-weight: 800; color: #1a1a1a; margin: 32px 0 14px; padding-bottom: 8px; border-bottom: 2px solid #FF6B35; }
+    .article-body h3 { font-size: 16px; font-weight: 700; color: #333; margin: 20px 0 10px; }
+    .article-body p { margin-bottom: 14px; color: #333; font-size: 15px; }
+    .article-body ul, .article-body ol { padding-left: 20px; margin-bottom: 14px; }
+    .article-body li { margin-bottom: 6px; color: #333; font-size: 15px; }
+    article { min-width: 0; }
+    /* 좁은 화면에서는 표만 자기 안에서 가로 스크롤시킨다. min-width:100%가 있어야
+       넓은 화면에서 기존처럼 폭을 꽉 채운다. */
+    .article-body table { display: block; width: max-content; min-width: 100%; max-width: 100%; overflow-x: auto; border-collapse: collapse; margin: 16px 0; font-size: 14px; }
+    .article-body th { background: #FF6B35; color: white; padding: 10px 14px; text-align: left; }
+    .article-body td { padding: 10px 14px; border-bottom: 1px solid #f0f0f0; }
+    .article-body tr:nth-child(even) td { background: #fff8f5; }
+    .article-body img { width: 100%; border-radius: 12px; margin: 16px 0; }
+    .article-body strong { color: #1a1a1a; }
+    .article-body blockquote { background: #fff8f5; border-left: 4px solid #FF6B35; padding: 16px 20px; border-radius: 0 12px 12px 0; margin: 16px 0; font-style: italic; color: #555; }
+    .article-body a { color: #FF6B35; }
+    .tags { padding: 20px 32px; border-top: 1px solid #f0f0f0; display: flex; gap: 8px; flex-wrap: wrap; }
+    .tag { background: #fff3ee; color: #FF6B35; border-radius: 20px; padding: 5px 12px; font-size: 12px; font-weight: 600; text-decoration: none; }
+    .tag:hover { background: #FF6B35; color: white; }
+    .ad-slot { background: #f0f0f0; border-radius: 12px; display: flex; align-items: center; justify-content: center; color: #bbb; font-size: 12px; min-height: 90px; margin: 24px 0; }
+    .cta-box { background: linear-gradient(135deg, #FF6B35, #ff8c42); border-radius: 20px; padding: 32px; text-align: center; color: white; margin-top: 24px; }
+    .cta-box h3 { font-size: 22px; font-weight: 900; margin-bottom: 10px; }
+    .cta-box p { font-size: 14px; opacity: 0.9; line-height: 1.6; margin-bottom: 20px; }
+    .cta-box a { background: white; color: #FF6B35; border-radius: 12px; padding: 13px 28px; font-weight: 800; font-size: 15px; text-decoration: none; display: inline-block; }
+    .nav-links { display: flex; gap: 16px; margin-top: 24px; }
+    .nav-back { color: #FF6B35; text-decoration: none; font-size: 14px; font-weight: 600; }
+    .nav-back::before { content: '\2190 '; }
+    .sidebar-cta { background: linear-gradient(135deg, #FF6B35, #ff8c42); color: white; border-radius: 16px; padding: 24px; text-align: center; position: sticky; top: 80px; }
+    .sidebar-cta h3 { font-size: 16px; font-weight: 900; margin-bottom: 8px; }
+    .sidebar-cta p { font-size: 13px; opacity: 0.9; line-height: 1.5; margin-bottom: 16px; }
+    .sidebar-cta a { background: white; color: #FF6B35; border-radius: 8px; padding: 10px 20px; font-weight: 700; font-size: 14px; text-decoration: none; display: inline-block; }
+    footer { background: #1a1a1a; color: #888; padding: 40px 20px; margin-top: 60px; }
+    .footer-inner { max-width: 1100px; margin: 0 auto; }
+    .footer-links { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 16px; }
+    .footer-links a { color: #888; text-decoration: none; font-size: 13px; }
+    .footer-copy { font-size: 12px; }
+  </style>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "밴사와 PG사 차이, 사장님이 꼭 알아야 할 카드수수료 핵심 정리",
+  "description": "밴사(VAN)와 PG사의 역할·수수료 구조·정산 방식 차이를 소상공인 눈높이에서 비교 정리했습니다. 내 가게에 맞는 결제 파트너를 선택하세요.",
+  "datePublished": "2026-08-11",
+  "dateModified": "2026-08-11",
+  "image": "https://images.pexels.com/photos/10330107/pexels-photo-10330107.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200",
+  "author": {
+    "@type": "Organization",
+    "name": "오늘장부",
+    "url": "https://오늘장부.kr"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "오늘장부",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://xn--wh1bw0st1gbrb.kr/icons/icon-192.png"
+    }
+  },
+  "mainEntityOfPage": "https://xn--wh1bw0st1gbrb.kr/blog/posts/van-pg-card-fee-difference-guide.html",
+  "keywords": "카드수수료, 밴사, PG사, 소상공인결제, 우대수수료"
+}
+  </script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "PG사를 쓰면 카드수수료가 더 비싼가요?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "PG사를 이용하면 카드사 수수료 외에 PG사의 망 이용료가 추가로 붙는 구조입니다. 다만, 영세·중소가맹점 우대수수료 혜택은 PG 하위가맹점에도 동일하게 적용되므로, 매출 규모가 작을수록 우대율 적용 후 실질 부담을 비교해 보는 것이 중요합니다. 정확한 수수료율은 이용 중인 PG사에 직접 문의하거나, 여신금융협회 가맹점 매출거래정보 통합조회 시스템에서 확인하세요."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "밴사를 통하면 우대수수료 적용이 더 빠른가요?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "밴사(카드사 직접 가맹점)와 PG 하위가맹점 모두 매년 1·7월에 동시에 등급이 재산정됩니다. 신규 개업 가맹점은 초반 6개월간 일반 수수료를 낸 뒤, 영세·중소 구간으로 확인되면 차액을 환급받는 방식이 동일하게 적용됩니다."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "배달앱 수수료와 카드수수료는 다른 건가요?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "네, 다릅니다. 배달앱 수수료(중개 수수료)는 배달 플랫폼에 내는 비용이고, 카드수수료는 배달앱 내 카드결제 처리를 위해 PG사·카드사에 내는 비용입니다. 두 가지가 별개로 청구되므로, 배달앱 매출의 실수령액을 정확히 파악하려면 중개 수수료와 카드수수료를 모두 차감한 금액을 확인해야 합니다."
+      }
+    }
+  ]
+}
+  </script>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <a href="/" class="logo">
+      <div class="logo-icon">장</div>
+      <span class="logo-text">오늘장부</span>
+      <span class="logo-sub">블로그</span>
+    </a>
+    <a href="/" class="header-cta">무료로 시작하기</a>
+  </div>
+</header>
+
+<div class="wrap">
+  <main>
+    <div class="nav-links">
+      <a href="/blog/" class="nav-back">블로그 목록으로</a>
+    </div>
+
+    <!-- 자동 광고(Auto ads)가 배치를 정하므로 유닛을 직접 넣지 않는다. 여백만 확보한다. -->
+    <div class="ad-slot"></div>
+
+    <article>
+      <div class="article-head">
+        <div class="article-cat"><a href="/blog/">카드수수료</a></div>
+        <h1 class="article-title">밴사와 PG사 차이, 사장님이 꼭 알아야 할 카드수수료 핵심 정리</h1>
+        <div class="article-meta">
+          <span>오늘장부 편집팀</span>
+          <span>2026년 08월 11일</span>
+        </div>
+      </div>
+      <img src="https://images.pexels.com/photos/10330107/pexels-photo-10330107.jpeg?auto=compress&amp;cs=tinysrgb&amp;fit=crop&amp;h=627&amp;w=1200" alt="밴사와 PG사 차이, 사장님이 꼭 알아야 할 카드수수료 핵심 정리" class="hero-img" loading="lazy">
+      <div class="article-body">
+<p>카드단말기를 처음 설치할 때 밴사 계약을 했다는 분도 있고, 온라인 쇼핑몰을 운영하면서 PG사 심사를 거쳤다는 분도 있습니다. 그런데 두 개념이 정확히 어떻게 다른지, 수수료는 어떻게 붙는지 명확히 아는 사장님은 생각보다 많지 않습니다. 밴사와 PG사는 모두 카드사와 가맹점 사이를 연결하는 중간 사업자이지만, 활동 무대와 수수료 구조가 완전히 다릅니다. 이 차이를 모르면 불필요한 수수료를 더 낼 수도 있습니다.</p><h2>밴사(VAN)란 무엇인가요?</h2><p>VAN은 <strong>Value Added Network(부가가치통신망)</strong>의 약자입니다. 밴사는 <strong>오프라인 매장</strong>에 설치된 카드단말기와 카드사 사이의 통신망을 연결해 주는 역할을 합니다. 손님이 매장에서 카드를 긁거나 IC칩을 꽂으면, 밴사의 네트워크를 통해 카드사로 승인 요청이 가고, 카드사의 승인 결과가 다시 단말기로 전달됩니다. 한마디로 <strong>결제 승인 중계망</strong>입니다.</p><p>국내 주요 밴사로는 KIS정보통신, 나이스정보통신, 한국정보통신(KICC), 스마트로 등이 있습니다. 사장님이 카드단말기를 설치할 때 어떤 밴사를 선택하느냐에 따라 단말기 기종과 서비스 품질이 달라집니다.</p><p>밴사는 <strong>카드사로부터 수수료(밴수수료)를 받는 구조</strong>입니다. 과거에는 건당 정액(약 100원)으로 받다가, 현재는 결제금액의 일정 비율로 받는 정률제로 개편되었습니다. 중요한 점은 밴사 수수료는 <strong>가맹점이 직접 밴사에 내는 것이 아니라</strong> 카드사가 부담하고 그 비용이 가맹점 수수료 산정 원가에 반영된다는 것입니다. 사장님 입장에서는 카드사에 수수료를 내는 것처럼 보이지만, 그 안에 밴사 비용이 포함되어 있습니다.</p><h2>PG사란 무엇인가요?</h2><p>PG는 <strong>Payment Gateway(결제 게이트웨이)</strong>의 약자입니다. PG사는 주로 <strong>온라인·모바일 결제</strong> 환경에서 카드사 및 다양한 금융기관과 가맹점 사이를 연결합니다. 온라인 쇼핑몰, 배달앱, 구독 서비스 등을 운영하는 사업자는 각 카드사와 개별 계약을 맺기 어렵기 때문에, PG사와 계약 하나로 여러 카드사와 간편결제 수단을 한 번에 연결할 수 있습니다.</p><p>PG사가 카드사와의 계약을 대신 맺고, 하위 가맹점(사장님)에게 결제 서비스를 제공하는 구조입니다. 금융감독원에 등록된 전자지급결제 대행업체는 150여 곳이 넘으며, 국내 시장은 상위 4~5개사가 약 65~70%를 점유하고 있습니다.</p><p>PG사를 이용하면 <strong>카드사 수수료 외에 PG사의 시스템 운영비(망 이용료)가 별도로 부과</strong>되어 통합 수수료로 청구됩니다. 초기 신규 사업자는 매출 데이터가 없어 일반 등급 수수료를 적용받으며, 이후 국세청 과세자료를 바탕으로 매년 1월·7월에 영세·중소가맹점 우대 등급이 재산정됩니다.</p><h2>밴사 vs PG사 한눈에 비교</h2><table><thead><tr><th>구분</th><th>밴사 (VAN)</th><th>PG사 (Payment Gateway)</th></tr></thead><tbody><tr><td><strong>주요 결제 환경</strong></td><td>오프라인 매장 (카드단말기)</td><td>온라인·모바일 (쇼핑몰, 앱 등)</td></tr><tr><td><strong>역할</strong></td><td>카드사 ↔ 단말기 승인 중계</td><td>카드사·금융사 ↔ 가맹점 결제 대행</td></tr><tr><td><strong>가맹 방식</strong></td><td>카드사와 직접 가맹 후 밴사 단말기 설치</td><td>PG사 1곳 계약으로 다수 카드사 연동</td></tr><tr><td><strong>수수료 구조</strong></td><td>카드사 수수료만 부담 (밴수수료는 원가에 포함)</td><td>카드사 수수료 + PG사 수수료 통합 청구</td></tr><tr><td><strong>우대수수료 적용</strong></td><td>카드사가 가맹점에 직접 적용</td><td>PG사 통해 간접 적용 (하위가맹점 동일 혜택)</td></tr><tr><td><strong>정산 주기</strong></td><td>카드사별 상이 (통상 2~3영업일)</td><td>PG사별 상이 (통상 2~7영업일)</td></tr><tr><td><strong>초기 비용</strong></td><td>단말기 구매 또는 렌탈 비용</td><td>가입비·월정액 있는 곳도 있음 (PG사별 상이)</td></tr></tbody></table><h2>우대수수료율, PG 하위가맹점도 받을 수 있습니다</h2><p>온라인 결제만 하면 우대수수료를 못 받는다고 오해하는 사장님이 많습니다. 2026년 상반기 기준, 금융위원회가 발표한 영세·중소가맹점 우대수수료율은 <strong>연매출 구간별로 신용카드 0.4%~1.45%, 체크카드 0.15%~1.15%</strong>가 적용됩니다. 직접 카드사에 가맹한 오프라인 가맹점뿐 아니라 <strong>PG사 하위가맹점도 동일하게 적용</strong>받을 수 있습니다.</p><ul><li>연매출 <strong>3억 원 이하</strong> → 신용카드 <strong>0.40%</strong>, 체크카드 <strong>0.15%</strong> (영세가맹점)</li><li>연매출 <strong>3억 원 초과 ~ 5억 원 이하</strong> → 신용카드 <strong>1.00%</strong> 수준 (중소1)</li><li>연매출 <strong>5억 원 초과 ~ 30억 원 이하</strong> → 구간별 우대율 적용 (중소2~3)</li></ul><p>등급 산정은 매년 1·7월에 국세청 과세자료를 기준으로 자동 적용됩니다. PG 하위가맹점은 거래하는 PG사를 통해 적용 수수료율을 확인할 수 있으며, 신규 가맹점에 대한 초과 납부 수수료는 소급 환급됩니다.</p><p>내 연매출이 어느 구간에 해당하는지 정확히 파악해야 우대수수료 적용 여부와 환급 대상 여부를 확인할 수 있습니다. <strong>오늘장부</strong>를 사용하면 카드·현금·배달앱 매출을 채널별로 매일 기록하고, 누적 매출 현황을 한눈에 파악할 수 있습니다.</p><h2>내 가게엔 밴사가 맞을까, PG사가 맞을까?</h2><p>결론부터 말하면 <strong>오프라인 매장 위주라면 밴사, 온라인·비대면 결제가 필요하다면 PG사</strong>가 적합합니다. 두 가지를 함께 쓰는 경우도 많습니다. 예를 들어 동네 식당이 배달앱도 운영한다면, 오프라인 결제는 밴사 단말기로, 배달앱 온라인 결제는 배달앱이 연결한 PG사를 통해 처리됩니다.</p><ol><li><strong>오프라인 매장만 운영</strong> → 밴사 단말기로 충분. 카드사와 직접 가맹하므로 수수료 구조가 단순합니다.</li><li><strong>온라인 쇼핑몰·예약 결제 운영</strong> → PG사 필수. 금감원에 정식 등록된 PG사인지 반드시 확인하세요.</li><li><strong>배달앱 + 오프라인 병행</strong> → 두 채널 모두 사용. 채널별 수수료를 각각 파악해 두는 것이 중요합니다.</li></ol><blockquote>어떤 방식을 쓰든, 수수료 부담을 줄이는 첫걸음은 내 매출 규모를 정확히 아는 것입니다. 매출 기록이 흐트러지면 우대수수료 구간 판단도 어렵고, 환급 여부 확인도 늦어집니다.</blockquote><h2>자주 묻는 질문</h2><h3>PG사를 쓰면 카드수수료가 더 비싼가요?</h3><p>PG사를 이용하면 카드사 수수료 외에 PG사의 망 이용료가 추가로 붙는 구조입니다. 다만, 영세·중소가맹점 우대수수료 혜택은 PG 하위가맹점에도 동일하게 적용되므로, 매출 규모가 작을수록 우대율 적용 후 실질 부담을 비교해 보는 것이 중요합니다. 정확한 수수료율은 이용 중인 PG사에 직접 문의하거나, 여신금융협회 가맹점 매출거래정보 통합조회 시스템에서 확인하세요.</p><h3>밴사를 통하면 우대수수료 적용이 더 빠른가요?</h3><p>밴사(카드사 직접 가맹점)와 PG 하위가맹점 모두 매년 1·7월에 동시에 등급이 재산정됩니다. 신규 개업 가맹점은 초반 6개월간 일반 수수료를 낸 뒤, 영세·중소 구간으로 확인되면 차액을 환급받는 방식이 동일하게 적용됩니다.</p><h3>배달앱 수수료와 카드수수료는 다른 건가요?</h3><p>네, 다릅니다. 배달앱 수수료(중개 수수료)는 배달 플랫폼에 내는 비용이고, 카드수수료는 배달앱 내 카드결제 처리를 위해 PG사·카드사에 내는 비용입니다. 두 가지가 별개로 청구되므로, 배달앱 매출의 실수령액을 정확히 파악하려면 중개 수수료와 카드수수료를 모두 차감한 금액을 확인해야 합니다.</p><p>카드·현금·배달앱 매출을 채널별로 매일 기록하고, 부가세 예상액까지 자동으로 계산하고 싶다면 <a href="https://오늘장부.kr">오늘장부 무료로 시작하기</a>를 활용해 보세요.</p><p>※ 본 글은 2026년 기준 참고용 정보이며, 정확한 신고·금액은 국세청 홈택스 또는 세무사와 상담하세요.</p>
+      </div>
+      <div class="tags">
+        <a href="/blog/?tag=%EC%B9%B4%EB%93%9C%EC%88%98%EC%88%98%EB%A3%8C" class="tag">카드수수료</a> <a href="/blog/?tag=%EB%B0%B4%EC%82%AC" class="tag">밴사</a> <a href="/blog/?tag=PG%EC%82%AC" class="tag">PG사</a> <a href="/blog/?tag=%EC%86%8C%EC%83%81%EA%B3%B5%EC%9D%B8%EA%B2%B0%EC%A0%9C" class="tag">소상공인결제</a> <a href="/blog/?tag=%EC%9A%B0%EB%8C%80%EC%88%98%EC%88%98%EB%A3%8C" class="tag">우대수수료</a>
+      </div>
+    </article>
+
+    <section style="background:#fff8f5;border-radius:16px;padding:24px 28px;margin-top:24px;">
+      <h2 style="font-size:18px;font-weight:800;color:#1a1a1a;margin:0 0 14px;">함께 보면 좋은 글</h2>
+      <ul style="list-style:none;padding:0;margin:0;">
+        <li style="padding:8px 0;border-bottom:1px solid #ffe6d9;"><a href="/blog/posts/card-fee-refund-on-payment-cancellation.html" style="color:#FF6B35;text-decoration:none;font-weight:600;font-size:14px;">결제 취소하면 카드수수료도 돌려받나? 사장님이 꼭 알아야 할 진실</a></li>
+        <li style="padding:8px 0;border-bottom:1px solid #ffe6d9;"><a href="/blog/posts/subscription-recurring-payment-card-fee-guide.html" style="color:#FF6B35;text-decoration:none;font-weight:600;font-size:14px;">정기결제·구독 수수료, 사장님이 꼭 알아야 할 카드수수료 진짜 구조</a></li>
+        <li style="padding:8px 0;border-bottom:1px solid #ffe6d9;"><a href="/blog/posts/card-company-settlement-date-guide.html" style="color:#FF6B35;text-decoration:none;font-weight:600;font-size:14px;">카드사별 정산일 완전 정리 — 사장님 통장에 언제 들어오나?</a></li>
+        <li style="padding:8px 0;border-bottom:1px solid #ffe6d9;"><a href="/blog/posts/subscription-regular-payment-card-fee-guide.html" style="color:#FF6B35;text-decoration:none;font-weight:600;font-size:14px;">정기결제 구독 수수료, 사장님이 꼭 알아야 할 비용 처리법</a></li>
+      </ul>
+    </section>
+
+    <section style="background:#fff8f5;border-radius:16px;padding:24px 28px;margin-top:24px;">
+      <h2 style="font-size:18px;font-weight:800;color:#1a1a1a;margin:0 0 14px;">무료 계산기로 바로 확인하기</h2>
+      <ul style="list-style:none;padding:0;margin:0;">
+        <li style="padding:10px 0;border-bottom:1px solid #ffe6d9;"><a href="/tools/card-fee-calculator/" style="color:#FF6B35;text-decoration:none;font-weight:700;font-size:15px;">카드수수료 계산기</a><div style="font-size:13px;color:#777;margin-top:2px;">연매출로 우대수수료율 구간을 확인하고 환급 대상인지 알아봅니다</div></li>
+      </ul>
+    </section>
+
+    <!-- 자동 광고(Auto ads)가 배치를 정하므로 유닛을 직접 넣지 않는다. 여백만 확보한다. -->
+    <div class="ad-slot"></div>
+
+    <div class="cta-box">
+      <h3>매일 매출 기록, 30초면 끝!</h3>
+      <p>카드·현금·네이버페이·카카오페이<br>여러 결제수단을 한 화면에서 입력<br>부가세 예상액도 자동으로 계산해드려요</p>
+      <a href="/">지금 무료로 시작하기</a>
+    </div>
+  </main>
+
+  <aside class="sidebar">
+    <div class="sidebar-cta">
+      <h3>매일 매출 기록,<br>30초면 끝!</h3>
+      <p>카드·현금·배달앱 한 번에<br>부가세 예상액도 자동 계산</p>
+      <a href="/">무료로 시작하기</a>
+    </div>
+  </aside>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-links">
+      <a href="/">서비스 홈</a>
+      <a href="/blog/">블로그</a>
+      <a href="/about/">소개</a>
+      <a href="/contact/">문의하기</a>
+      <a href="/privacy">개인정보처리방침</a>
+      <a href="/terms">이용약관</a>
+    </div>
+    <div class="footer-copy">© 2026 오늘장부. All rights reserved.</div>
+  </div>
+</footer>
+
+</body>
+</html>
