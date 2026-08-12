@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>원가율 계산하고 낮추는 법 — 사장님 수익의 첫 단추 | 오늘장부 블로그</title>
+  <meta name="description" content="원가율 공식부터 업종별 적정 기준, 배달 수수료까지 반영한 실전 원가율 관리법. 식재료비를 줄이면서도 품질을 지키는 소상공인 필독 가이드.">
+  <meta property="og:title" content="원가율 계산하고 낮추는 법 — 사장님 수익의 첫 단추">
+  <meta property="og:description" content="원가율 공식부터 업종별 적정 기준, 배달 수수료까지 반영한 실전 원가율 관리법. 식재료비를 줄이면서도 품질을 지키는 소상공인 필독 가이드.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://xn--wh1bw0st1gbrb.kr/blog/posts/cost-ratio-calculation-and-reduction.html">
+  <meta property="og:image" content="https://images.pexels.com/photos/8970688/pexels-photo-8970688.jpeg?auto=compress&amp;cs=tinysrgb&amp;fit=crop&amp;h=627&amp;w=1200">
+  <link rel="canonical" href="https://xn--wh1bw0st1gbrb.kr/blog/posts/cost-ratio-calculation-and-reduction.html">
+  <link rel="icon" href="/icons/icon-192.png">
+  <!-- 방문자 분석 (GA4 + Clarity + 네이버). ID는 /analytics.js 상단에서 관리. -->
+  <script defer src="/analytics.js"></script>
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2764893290310463" crossorigin="anonymous"></script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Noto Sans KR', sans-serif; background: #f8f9fa; color: #1a1a1a; line-height: 1.7; }
+    header { background: #fff; border-bottom: 1px solid #eee; position: sticky; top: 0; z-index: 100; }
+    .header-inner { max-width: 1100px; margin: 0 auto; padding: 0 20px; height: 60px; display: flex; align-items: center; justify-content: space-between; }
+    .logo { display: flex; align-items: center; gap: 8px; text-decoration: none; }
+    .logo-icon { width: 32px; height: 32px; background: #FF6B35; border-radius: 8px; display: flex; align-items: center; justify-content: center; color: white; font-weight: 900; font-size: 16px; }
+    .logo-text { font-size: 18px; font-weight: 800; color: #FF6B35; }
+    .logo-sub { font-size: 13px; color: #888; margin-left: 4px; }
+    .header-cta { background: #FF6B35; color: white; border: none; padding: 8px 16px; border-radius: 8px; font-size: 13px; font-weight: 600; cursor: pointer; text-decoration: none; }
+    /* minmax(0, ...): 표처럼 최소폭이 큰 콘텐츠가 그리드 트랙을 밀어내 페이지 전체가
+       가로로 스크롤되는 것을 막는다. 1fr만 쓰면 트랙 최소폭이 auto라 끌려간다. */
+    .wrap { max-width: 1100px; margin: 0 auto; padding: 32px 20px; display: grid; grid-template-columns: minmax(0, 1fr) 300px; gap: 40px; }
+    @media (max-width: 768px) { .wrap { grid-template-columns: minmax(0, 1fr); } .sidebar { display: none; } }
+    article { background: white; border-radius: 20px; overflow: hidden; box-shadow: 0 2px 12px rgba(0,0,0,0.06); }
+    .article-head { padding: 32px 32px 24px; border-bottom: 1px solid #f0f0f0; }
+    .article-cat { font-size: 12px; font-weight: 700; color: #FF6B35; text-transform: uppercase; margin-bottom: 12px; }
+    .article-cat a { color: #FF6B35; text-decoration: none; }
+    .article-title { font-size: clamp(20px, 4vw, 28px); font-weight: 900; line-height: 1.4; color: #1a1a1a; margin-bottom: 16px; }
+    .article-meta { font-size: 13px; color: #aaa; display: flex; gap: 16px; align-items: center; flex-wrap: wrap; }
+    .hero-img { width: 100%; aspect-ratio: 16/9; object-fit: cover; background: #f0f0f0; }
+    .article-body { padding: 32px; }
+    .article-body h2 { font-size: 20px; font-weight: 800; color: #1a1a1a; margin: 32px 0 14px; padding-bottom: 8px; border-bottom: 2px solid #FF6B35; }
+    .article-body h3 { font-size: 16px; font-weight: 700; color: #333; margin: 20px 0 10px; }
+    .article-body p { margin-bottom: 14px; color: #333; font-size: 15px; }
+    .article-body ul, .article-body ol { padding-left: 20px; margin-bottom: 14px; }
+    .article-body li { margin-bottom: 6px; color: #333; font-size: 15px; }
+    article { min-width: 0; }
+    /* 좁은 화면에서는 표만 자기 안에서 가로 스크롤시킨다. min-width:100%가 있어야
+       넓은 화면에서 기존처럼 폭을 꽉 채운다. */
+    .article-body table { display: block; width: max-content; min-width: 100%; max-width: 100%; overflow-x: auto; border-collapse: collapse; margin: 16px 0; font-size: 14px; }
+    .article-body th { background: #FF6B35; color: white; padding: 10px 14px; text-align: left; }
+    .article-body td { padding: 10px 14px; border-bottom: 1px solid #f0f0f0; }
+    .article-body tr:nth-child(even) td { background: #fff8f5; }
+    .article-body img { width: 100%; border-radius: 12px; margin: 16px 0; }
+    .article-body strong { color: #1a1a1a; }
+    .article-body blockquote { background: #fff8f5; border-left: 4px solid #FF6B35; padding: 16px 20px; border-radius: 0 12px 12px 0; margin: 16px 0; font-style: italic; color: #555; }
+    .article-body a { color: #FF6B35; }
+    .tags { padding: 20px 32px; border-top: 1px solid #f0f0f0; display: flex; gap: 8px; flex-wrap: wrap; }
+    .tag { background: #fff3ee; color: #FF6B35; border-radius: 20px; padding: 5px 12px; font-size: 12px; font-weight: 600; text-decoration: none; }
+    .tag:hover { background: #FF6B35; color: white; }
+    .ad-slot { background: #f0f0f0; border-radius: 12px; display: flex; align-items: center; justify-content: center; color: #bbb; font-size: 12px; min-height: 90px; margin: 24px 0; }
+    .cta-box { background: linear-gradient(135deg, #FF6B35, #ff8c42); border-radius: 20px; padding: 32px; text-align: center; color: white; margin-top: 24px; }
+    .cta-box h3 { font-size: 22px; font-weight: 900; margin-bottom: 10px; }
+    .cta-box p { font-size: 14px; opacity: 0.9; line-height: 1.6; margin-bottom: 20px; }
+    .cta-box a { background: white; color: #FF6B35; border-radius: 12px; padding: 13px 28px; font-weight: 800; font-size: 15px; text-decoration: none; display: inline-block; }
+    .nav-links { display: flex; gap: 16px; margin-top: 24px; }
+    .nav-back { color: #FF6B35; text-decoration: none; font-size: 14px; font-weight: 600; }
+    .nav-back::before { content: '\2190 '; }
+    .sidebar-cta { background: linear-gradient(135deg, #FF6B35, #ff8c42); color: white; border-radius: 16px; padding: 24px; text-align: center; position: sticky; top: 80px; }
+    .sidebar-cta h3 { font-size: 16px; font-weight: 900; margin-bottom: 8px; }
+    .sidebar-cta p { font-size: 13px; opacity: 0.9; line-height: 1.5; margin-bottom: 16px; }
+    .sidebar-cta a { background: white; color: #FF6B35; border-radius: 8px; padding: 10px 20px; font-weight: 700; font-size: 14px; text-decoration: none; display: inline-block; }
+    footer { background: #1a1a1a; color: #888; padding: 40px 20px; margin-top: 60px; }
+    .footer-inner { max-width: 1100px; margin: 0 auto; }
+    .footer-links { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 16px; }
+    .footer-links a { color: #888; text-decoration: none; font-size: 13px; }
+    .footer-copy { font-size: 12px; }
+  </style>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "원가율 계산하고 낮추는 법 — 사장님 수익의 첫 단추",
+  "description": "원가율 공식부터 업종별 적정 기준, 배달 수수료까지 반영한 실전 원가율 관리법. 식재료비를 줄이면서도 품질을 지키는 소상공인 필독 가이드.",
+  "datePublished": "2026-08-12",
+  "dateModified": "2026-08-12",
+  "image": "https://images.pexels.com/photos/8970688/pexels-photo-8970688.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200",
+  "author": {
+    "@type": "Organization",
+    "name": "오늘장부",
+    "url": "https://오늘장부.kr"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "오늘장부",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://xn--wh1bw0st1gbrb.kr/icons/icon-192.png"
+    }
+  },
+  "mainEntityOfPage": "https://xn--wh1bw0st1gbrb.kr/blog/posts/cost-ratio-calculation-and-reduction.html",
+  "keywords": "원가율, 원가관리, 식재료비절감, 매출관리"
+}
+  </script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "원가율 40%면 무조건 적자인가요?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "반드시 그렇지는 않습니다. 고깃집처럼 원재료 단가가 높은 업종에서는 원가율 40~50%도 흔합니다. 다만 원가율이 높을수록 임대료·인건비·공과금 등 고정비를 충당하고 이익을 남기기 어려워지는 건 사실입니다. 원가율 수치 하나만이 아니라 전체 비용 구조와 좌석 회전율을 함께 분석하세요."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "배달 메뉴 가격은 홀 메뉴와 다르게 설정해도 되나요?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "네, 가능합니다. 배달 수수료·포장재비 등 추가 비용이 붙는 만큼, 배달 채널 전용 가격을 별도로 설정하는 것은 합리적인 원가 관리 방법입니다. 다만 소비자가 가격 차이를 인지할 수 있으므로, 메뉴 구성이나 용량을 달리해 차별화하는 방식도 함께 검토하면 좋습니다."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "원가율은 얼마나 자주 확인해야 하나요?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "이상적으로는 월 1회 정기 점검을 권장합니다. 특정 식재료 가격이 크게 오른 달에는 수시 확인도 필요합니다. 일매출을 꾸준히 기록해 두면 월말 집계가 자동으로 쌓이므로, 원가율 계산에 필요한 시간을 크게 줄일 수 있습니다."
+      }
+    }
+  ]
+}
+  </script>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <a href="/" class="logo">
+      <div class="logo-icon">장</div>
+      <span class="logo-text">오늘장부</span>
+      <span class="logo-sub">블로그</span>
+    </a>
+    <a href="/" class="header-cta">무료로 시작하기</a>
+  </div>
+</header>
+
+<div class="wrap">
+  <main>
+    <div class="nav-links">
+      <a href="/blog/" class="nav-back">블로그 목록으로</a>
+    </div>
+
+    <!-- 자동 광고(Auto ads)가 배치를 정하므로 유닛을 직접 넣지 않는다. 여백만 확보한다. -->
+    <div class="ad-slot"></div>
+
+    <article>
+      <div class="article-head">
+        <div class="article-cat"><a href="/blog/">매출관리</a></div>
+        <h1 class="article-title">원가율 계산하고 낮추는 법 — 사장님 수익의 첫 단추</h1>
+        <div class="article-meta">
+          <span>오늘장부 편집팀</span>
+          <span>2026년 08월 12일</span>
+        </div>
+      </div>
+      <img src="https://images.pexels.com/photos/8970688/pexels-photo-8970688.jpeg?auto=compress&amp;cs=tinysrgb&amp;fit=crop&amp;h=627&amp;w=1200" alt="원가율 계산하고 낮추는 법 — 사장님 수익의 첫 단추" class="hero-img" loading="lazy">
+      <div class="article-body">
+<p>매달 매출은 나쁘지 않은데 통장에 돈이 남지 않는다면, 원가율 점검이 먼저입니다. 원가율은 단순히 "재료비가 비싸다"는 느낌이 아니라, <strong>매출 대비 원재료비가 차지하는 정확한 비율</strong>을 숫자로 보여 줍니다. 이 숫자를 모르고 영업하는 것은 구멍 난 양동이에 물을 붓는 것과 같습니다. 이 글에서는 원가율 공식, 업종별 적정 기준, 그리고 품질을 지키면서 원가율을 낮추는 실전 방법까지 한꺼번에 정리해 드립니다.</p>
+
+<h2>원가율이란 무엇인가</h2>
+<p>원가율(Food Cost Ratio)은 판매가격에서 원재료비가 차지하는 비율입니다. 계산 공식은 아래와 같습니다.</p>
+<blockquote>
+  <strong>원가율(%) = (원재료비 ÷ 판매가격) × 100</strong><br>
+  예) 판매가 9,000원짜리 된장찌개, 재료비 2,700원 → 원가율 = 2,700 ÷ 9,000 × 100 = <strong>30%</strong>
+</blockquote>
+<p>월 단위로 관리할 때는 <strong>월간 원가율 = (월 식재료 매입액 ÷ 월 총매출) × 100</strong>으로 계산합니다. 월초·월말 재고를 반영하면 더 정확합니다.</p>
+<blockquote>
+  <strong>월간 원가율 = (월초 재고 + 당월 매입 − 월말 재고) ÷ 당월 매출 × 100</strong>
+</blockquote>
+<p>이 공식이 번거롭게 느껴진다면, 일매출과 매입비를 날마다 기록해 두는 것만으로도 월말 집계가 훨씬 쉬워집니다. <strong>오늘장부</strong>처럼 카드·현금·배달앱 매출을 한 화면에 모아 주는 앱을 활용하면 매출 수치를 따로 취합하는 수고를 크게 줄일 수 있습니다.</p>
+
+<h2>업종별 적정 원가율 기준</h2>
+<p>원가율의 '좋고 나쁨'은 업종에 따라 다릅니다. 아래 표는 외식·소매 현장에서 일반적으로 통용되는 참고 기준입니다.</p>
+<table>
+  <thead>
+    <tr>
+      <th>업종</th>
+      <th>원재료비 원가율 목표</th>
+      <th>비고</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>한식·중식·분식·국밥</td>
+      <td>30~35%</td>
+      <td>35% 초과 시 주의, 40% 이상이면 경고</td>
+    </tr>
+    <tr>
+      <td>패스트푸드·도시락</td>
+      <td>25~35%</td>
+      <td>대량 구매·규격화로 원가 절감 가능</td>
+    </tr>
+    <tr>
+      <td>카페·디저트</td>
+      <td>25~30%</td>
+      <td>음료 마진이 높아 전체 원가율 낮음</td>
+    </tr>
+    <tr>
+      <td>고깃집(생고기 위주)</td>
+      <td>40~50%</td>
+      <td>원재료 단가 높음, 회전율·부재료 관리 중요</td>
+    </tr>
+    <tr>
+      <td>배달 전문점</td>
+      <td>30% 이하 목표</td>
+      <td>배달 수수료·포장재 추가 부담 반드시 반영</td>
+    </tr>
+  </tbody>
+</table>
+<p>중요한 점은 <strong>원가율만 낮다고 수익이 보장되지 않는다</strong>는 것입니다. 예를 들어 7,000원에 팔면서 원재료비가 2,000원인 메뉴(원가율 약 29%)의 건당 마진은 5,000원이지만, 4,000원에 팔면서 원재료비가 1,000원인 메뉴(원가율 25%)의 건당 마진은 3,000원에 불과합니다. <strong>원가율 비율과 마진 금액을 함께 보는 습관</strong>이 필요합니다.</p>
+
+<h2>배달 매출에선 '실질 원가율'을 따로 계산하세요</h2>
+<p>배달 비중이 높은 매장이라면, 원재료비만 계산하는 것으로는 부족합니다. 배달앱 중개 수수료와 포장재비가 추가로 붙기 때문입니다. 2026년 현재 배달의민족·쿠팡이츠는 매출 규모에 따라 차등 수수료를 적용하고 있습니다. 매출 상위 35% 업소에는 7.8%, 중간 구간에는 6.8%, 하위 20% 영세 점포에는 2.0% 수준의 중개수수료율이 적용되며, 여기에 음식점주가 부담하는 배달비까지 더하면 실질 비용 부담은 더 커집니다.</p>
+<blockquote>
+  <strong>배달 실질 원가율 = (원재료비 + 배달 중개수수료 + 포장재비) ÷ 배달 판매가 × 100</strong>
+</blockquote>
+<p>배달 매출이 전체의 절반 이상인 매장이라면, 이 실질 원가율을 기준으로 메뉴 판매가와 구성을 반드시 재검토하세요.</p>
+
+<h2>원가율을 낮추는 5가지 실전 방법</h2>
+<ol>
+  <li>
+    <strong>표준 레시피(레시피 카드)를 만들어 운영하세요</strong><br>
+    재료를 "대충 한 줌"이 아니라 그램 단위로 표준화하면 직원이 바뀌어도 원가가 흔들리지 않습니다. 레시피 카드 한 장이 월 수십만 원의 재료비 낭비를 막아 줍니다.
+  </li>
+  <li>
+    <strong>발주 주기를 줄이고 재고를 최소화하세요</strong><br>
+    과잉 발주는 식재료 폐기로 이어집니다. 특히 신선 채소·과일은 소량 다빈도 발주를 원칙으로 삼아 짓무름에 의한 손실을 줄이세요.
+  </li>
+  <li>
+    <strong>식재료를 교차 활용하세요</strong><br>
+    같은 육수·소스·부산물을 여러 메뉴에 공유하면 폐기가 줄어듭니다. 핵심 식재료를 공유하는 '메뉴 슬림화'도 효과적인 원가 절감 전략입니다.
+  </li>
+  <li>
+    <strong>메뉴 믹스(Menu Mix)를 분석하세요</strong><br>
+    잘 팔리는 메뉴가 반드시 이익을 많이 남기는 메뉴는 아닙니다. 판매량 × 건당 마진을 곱해 메뉴별 기여 이익을 파악하고, 원가율이 높으면서 판매량이 낮은 메뉴는 가격 조정 또는 메뉴판 정리를 검토하세요.
+  </li>
+  <li>
+    <strong>납품처 다변화와 공동 구매를 활용하세요</strong><br>
+    단골 납품업체 한 곳에만 의존하면 가격 협상력이 낮아집니다. 주기적으로 시장 가격을 비교하고, 지역 소상공인 공동 구매나 aT(한국농수산식품유통공사) 온라인 도매시장 등을 적극 활용해 보세요.
+  </li>
+</ol>
+
+<h2>원가율 개선의 함정 — 품질을 희생하지 마세요</h2>
+<p>원가율을 낮추겠다고 식재료 품질을 무리하게 삭감하면, 단기 비용 절감이 장기 매출 하락으로 돌아옵니다. 고객은 맛의 변화를 금방 알아채고 재방문을 줄이기 때문입니다. <strong>원가율 관리의 목표는 '낭비 제거'</strong>이지, 품질 삭감이 아닙니다. 식재료비와 인건비를 합친 '프라임 코스트(Prime Cost)'가 매출의 60%를 넘지 않도록 관리하는 것이 수익성 유지의 큰 원칙입니다.</p>
+<p>외식업 자영업자의 평균 영업이익률이 한 자릿수대로 내려앉은 것은 식재료비·인건비 상승, 고물가·고금리가 복합적으로 작용한 결과입니다. 이럴 때일수록 감이 아니라 <strong>숫자</strong>로 관리해야 생존할 수 있습니다. <strong>오늘장부</strong>로 매일 매출을 기록하면, 월말에 원가율을 계산할 때 필요한 매출 데이터가 자동으로 쌓여 집계 시간이 크게 줄어듭니다.</p>
+
+<h2>자주 묻는 질문</h2>
+<h3>원가율 40%면 무조건 적자인가요?</h3>
+<p>반드시 그렇지는 않습니다. 고깃집처럼 원재료 단가가 높은 업종에서는 원가율 40~50%도 흔합니다. 다만 원가율이 높을수록 임대료·인건비·공과금 등 고정비를 충당하고 이익을 남기기 어려워지는 건 사실입니다. 원가율 수치 하나만이 아니라 전체 비용 구조와 좌석 회전율을 함께 분석하세요.</p>
+<h3>배달 메뉴 가격은 홀 메뉴와 다르게 설정해도 되나요?</h3>
+<p>네, 가능합니다. 배달 수수료·포장재비 등 추가 비용이 붙는 만큼, 배달 채널 전용 가격을 별도로 설정하는 것은 합리적인 원가 관리 방법입니다. 다만 소비자가 가격 차이를 인지할 수 있으므로, 메뉴 구성이나 용량을 달리해 차별화하는 방식도 함께 검토하면 좋습니다.</p>
+<h3>원가율은 얼마나 자주 확인해야 하나요?</h3>
+<p>이상적으로는 <strong>월 1회 정기 점검</strong>을 권장합니다. 특정 식재료 가격이 크게 오른 달에는 수시 확인도 필요합니다. 일매출을 꾸준히 기록해 두면 월말 집계가 자동으로 쌓이므로, 원가율 계산에 필요한 시간을 크게 줄일 수 있습니다.</p>
+
+<p>매출 기록과 원가 관리, 오늘부터 숫자로 시작해 보세요. <a href="https://오늘장부.kr">오늘장부 무료로 시작하기</a></p>
+
+<p>※ 본 글은 2026년 기준 참고용 정보이며, 정확한 신고·금액은 국세청 홈택스 또는 세무사와 상담하세요.</p>
+      </div>
+      <div class="tags">
+        <a href="/blog/?tag=%EC%9B%90%EA%B0%80%EC%9C%A8" class="tag">원가율</a> <a href="/blog/?tag=%EC%9B%90%EA%B0%80%EA%B4%80%EB%A6%AC" class="tag">원가관리</a> <a href="/blog/?tag=%EC%8B%9D%EC%9E%AC%EB%A3%8C%EB%B9%84%EC%A0%88%EA%B0%90" class="tag">식재료비절감</a> <a href="/blog/?tag=%EB%A7%A4%EC%B6%9C%EA%B4%80%EB%A6%AC" class="tag">매출관리</a>
+      </div>
+    </article>
+
+    <section style="background:#fff8f5;border-radius:16px;padding:24px 28px;margin-top:24px;">
+      <h2 style="font-size:18px;font-weight:800;color:#1a1a1a;margin:0 0 14px;">함께 보면 좋은 글</h2>
+      <ul style="list-style:none;padding:0;margin:0;">
+        <li style="padding:8px 0;border-bottom:1px solid #ffe6d9;"><a href="/blog/posts/revenue-vs-net-profit-for-small-business.html" style="color:#FF6B35;text-decoration:none;font-weight:600;font-size:14px;">매출과 순이익 헷갈리지 않기 — 사장님이 꼭 알아야 할 차이</a></li>
+        <li style="padding:8px 0;border-bottom:1px solid #ffe6d9;"><a href="/blog/posts/weekly-sales-pattern-management.html" style="color:#FF6B35;text-decoration:none;font-weight:600;font-size:14px;">요일별 매출 패턴 활용하기: 잘 파는 날 더 팔고, 쉬는 날 비용 줄이기</a></li>
+        <li style="padding:8px 0;border-bottom:1px solid #ffe6d9;"><a href="/blog/posts/daily-sales-pattern-for-small-business.html" style="color:#FF6B35;text-decoration:none;font-weight:600;font-size:14px;">요일별 매출 패턴 활용하기 — 매출 데이터로 인건비·발주·세금까지 잡는 법</a></li>
+        <li style="padding:8px 0;border-bottom:1px solid #ffe6d9;"><a href="/blog/posts/regular-customer-sales-analysis-increase-revisit.html" style="color:#FF6B35;text-decoration:none;font-weight:600;font-size:14px;">단골 매출 분석으로 재방문 늘리기: 사장님 실전 가이드</a></li>
+      </ul>
+    </section>
+
+    <section style="background:#fff8f5;border-radius:16px;padding:24px 28px;margin-top:24px;">
+      <h2 style="font-size:18px;font-weight:800;color:#1a1a1a;margin:0 0 14px;">무료 계산기로 바로 확인하기</h2>
+      <ul style="list-style:none;padding:0;margin:0;">
+        <li style="padding:10px 0;border-bottom:1px solid #ffe6d9;"><a href="/tools/card-fee-calculator/" style="color:#FF6B35;text-decoration:none;font-weight:700;font-size:15px;">카드수수료 계산기</a><div style="font-size:13px;color:#777;margin-top:2px;">연매출로 우대수수료율 구간을 확인하고 환급 대상인지 알아봅니다</div></li>
+        <li style="padding:10px 0;border-bottom:1px solid #ffe6d9;"><a href="/tools/delivery-fee-calculator/" style="color:#FF6B35;text-decoration:none;font-weight:700;font-size:15px;">배달앱 수수료 계산기</a><div style="font-size:13px;color:#777;margin-top:2px;">중개·결제 수수료와 배달비를 빼면 실제로 얼마가 입금되는지 계산합니다</div></li>
+      </ul>
+    </section>
+
+    <!-- 자동 광고(Auto ads)가 배치를 정하므로 유닛을 직접 넣지 않는다. 여백만 확보한다. -->
+    <div class="ad-slot"></div>
+
+    <div class="cta-box">
+      <h3>매일 매출 기록, 30초면 끝!</h3>
+      <p>카드·현금·네이버페이·카카오페이<br>여러 결제수단을 한 화면에서 입력<br>부가세 예상액도 자동으로 계산해드려요</p>
+      <a href="/">지금 무료로 시작하기</a>
+    </div>
+  </main>
+
+  <aside class="sidebar">
+    <div class="sidebar-cta">
+      <h3>매일 매출 기록,<br>30초면 끝!</h3>
+      <p>카드·현금·배달앱 한 번에<br>부가세 예상액도 자동 계산</p>
+      <a href="/">무료로 시작하기</a>
+    </div>
+  </aside>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-links">
+      <a href="/">서비스 홈</a>
+      <a href="/blog/">블로그</a>
+      <a href="/about/">소개</a>
+      <a href="/contact/">문의하기</a>
+      <a href="/privacy">개인정보처리방침</a>
+      <a href="/terms">이용약관</a>
+    </div>
+    <div class="footer-copy">© 2026 오늘장부. All rights reserved.</div>
+  </div>
+</footer>
+
+</body>
+</html>
