@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>별점 테러·악성 리뷰 대응법: 배달앱 사장님 생존 가이드 | 오늘장부 블로그</title>
+  <meta name="description" content="배달앱 별점 테러와 악성 리뷰로 고통받는 사장님을 위한 실전 대응법. 플랫폼별 신고 절차, 답글 작성 요령, 법적 대응까지 단계별로 정리했습니다.">
+  <meta property="og:title" content="별점 테러·악성 리뷰 대응법: 배달앱 사장님 생존 가이드">
+  <meta property="og:description" content="배달앱 별점 테러와 악성 리뷰로 고통받는 사장님을 위한 실전 대응법. 플랫폼별 신고 절차, 답글 작성 요령, 법적 대응까지 단계별로 정리했습니다.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://xn--wh1bw0st1gbrb.kr/blog/posts/delivery-app-bad-review-star-rating-terror-response-guide.html">
+  <meta property="og:image" content="https://images.pexels.com/photos/5053740/pexels-photo-5053740.jpeg?auto=compress&amp;cs=tinysrgb&amp;fit=crop&amp;h=627&amp;w=1200">
+  <link rel="canonical" href="https://xn--wh1bw0st1gbrb.kr/blog/posts/delivery-app-bad-review-star-rating-terror-response-guide.html">
+  <link rel="icon" href="/icons/icon-192.png">
+  <!-- 방문자 분석 (GA4 + Clarity + 네이버). ID는 /analytics.js 상단에서 관리. -->
+  <script defer src="/analytics.js"></script>
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2764893290310463" crossorigin="anonymous"></script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Noto Sans KR', sans-serif; background: #f8f9fa; color: #1a1a1a; line-height: 1.7; }
+    header { background: #fff; border-bottom: 1px solid #eee; position: sticky; top: 0; z-index: 100; }
+    .header-inner { max-width: 1100px; margin: 0 auto; padding: 0 20px; height: 60px; display: flex; align-items: center; justify-content: space-between; }
+    .logo { display: flex; align-items: center; gap: 8px; text-decoration: none; }
+    .logo-icon { width: 32px; height: 32px; background: #FF6B35; border-radius: 8px; display: flex; align-items: center; justify-content: center; color: white; font-weight: 900; font-size: 16px; }
+    .logo-text { font-size: 18px; font-weight: 800; color: #FF6B35; }
+    .logo-sub { font-size: 13px; color: #888; margin-left: 4px; }
+    .header-cta { background: #FF6B35; color: white; border: none; padding: 8px 16px; border-radius: 8px; font-size: 13px; font-weight: 600; cursor: pointer; text-decoration: none; }
+    /* minmax(0, ...): 표처럼 최소폭이 큰 콘텐츠가 그리드 트랙을 밀어내 페이지 전체가
+       가로로 스크롤되는 것을 막는다. 1fr만 쓰면 트랙 최소폭이 auto라 끌려간다. */
+    .wrap { max-width: 1100px; margin: 0 auto; padding: 32px 20px; display: grid; grid-template-columns: minmax(0, 1fr) 300px; gap: 40px; }
+    @media (max-width: 768px) { .wrap { grid-template-columns: minmax(0, 1fr); } .sidebar { display: none; } }
+    article { background: white; border-radius: 20px; overflow: hidden; box-shadow: 0 2px 12px rgba(0,0,0,0.06); }
+    .article-head { padding: 32px 32px 24px; border-bottom: 1px solid #f0f0f0; }
+    .article-cat { font-size: 12px; font-weight: 700; color: #FF6B35; text-transform: uppercase; margin-bottom: 12px; }
+    .article-cat a { color: #FF6B35; text-decoration: none; }
+    .article-title { font-size: clamp(20px, 4vw, 28px); font-weight: 900; line-height: 1.4; color: #1a1a1a; margin-bottom: 16px; }
+    .article-meta { font-size: 13px; color: #aaa; display: flex; gap: 16px; align-items: center; flex-wrap: wrap; }
+    .hero-img { width: 100%; aspect-ratio: 16/9; object-fit: cover; background: #f0f0f0; }
+    .article-body { padding: 32px; }
+    .article-body h2 { font-size: 20px; font-weight: 800; color: #1a1a1a; margin: 32px 0 14px; padding-bottom: 8px; border-bottom: 2px solid #FF6B35; }
+    .article-body h3 { font-size: 16px; font-weight: 700; color: #333; margin: 20px 0 10px; }
+    .article-body p { margin-bottom: 14px; color: #333; font-size: 15px; }
+    .article-body ul, .article-body ol { padding-left: 20px; margin-bottom: 14px; }
+    .article-body li { margin-bottom: 6px; color: #333; font-size: 15px; }
+    article { min-width: 0; }
+    /* 좁은 화면에서는 표만 자기 안에서 가로 스크롤시킨다. min-width:100%가 있어야
+       넓은 화면에서 기존처럼 폭을 꽉 채운다. */
+    .article-body table { display: block; width: max-content; min-width: 100%; max-width: 100%; overflow-x: auto; border-collapse: collapse; margin: 16px 0; font-size: 14px; }
+    .article-body th { background: #FF6B35; color: white; padding: 10px 14px; text-align: left; }
+    .article-body td { padding: 10px 14px; border-bottom: 1px solid #f0f0f0; }
+    .article-body tr:nth-child(even) td { background: #fff8f5; }
+    .article-body img { width: 100%; border-radius: 12px; margin: 16px 0; }
+    .article-body strong { color: #1a1a1a; }
+    .article-body blockquote { background: #fff8f5; border-left: 4px solid #FF6B35; padding: 16px 20px; border-radius: 0 12px 12px 0; margin: 16px 0; font-style: italic; color: #555; }
+    .article-body a { color: #FF6B35; }
+    .tags { padding: 20px 32px; border-top: 1px solid #f0f0f0; display: flex; gap: 8px; flex-wrap: wrap; }
+    .tag { background: #fff3ee; color: #FF6B35; border-radius: 20px; padding: 5px 12px; font-size: 12px; font-weight: 600; text-decoration: none; }
+    .tag:hover { background: #FF6B35; color: white; }
+    .ad-slot { background: #f0f0f0; border-radius: 12px; display: flex; align-items: center; justify-content: center; color: #bbb; font-size: 12px; min-height: 90px; margin: 24px 0; }
+    .cta-box { background: linear-gradient(135deg, #FF6B35, #ff8c42); border-radius: 20px; padding: 32px; text-align: center; color: white; margin-top: 24px; }
+    .cta-box h3 { font-size: 22px; font-weight: 900; margin-bottom: 10px; }
+    .cta-box p { font-size: 14px; opacity: 0.9; line-height: 1.6; margin-bottom: 20px; }
+    .cta-box a { background: white; color: #FF6B35; border-radius: 12px; padding: 13px 28px; font-weight: 800; font-size: 15px; text-decoration: none; display: inline-block; }
+    .nav-links { display: flex; gap: 16px; margin-top: 24px; }
+    .nav-back { color: #FF6B35; text-decoration: none; font-size: 14px; font-weight: 600; }
+    .nav-back::before { content: '\2190 '; }
+    .sidebar-cta { background: linear-gradient(135deg, #FF6B35, #ff8c42); color: white; border-radius: 16px; padding: 24px; text-align: center; position: sticky; top: 80px; }
+    .sidebar-cta h3 { font-size: 16px; font-weight: 900; margin-bottom: 8px; }
+    .sidebar-cta p { font-size: 13px; opacity: 0.9; line-height: 1.5; margin-bottom: 16px; }
+    .sidebar-cta a { background: white; color: #FF6B35; border-radius: 8px; padding: 10px 20px; font-weight: 700; font-size: 14px; text-decoration: none; display: inline-block; }
+    footer { background: #1a1a1a; color: #888; padding: 40px 20px; margin-top: 60px; }
+    .footer-inner { max-width: 1100px; margin: 0 auto; }
+    .footer-links { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 16px; }
+    .footer-links a { color: #888; text-decoration: none; font-size: 13px; }
+    .footer-copy { font-size: 12px; }
+  </style>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "별점 테러·악성 리뷰 대응법: 배달앱 사장님 생존 가이드",
+  "description": "배달앱 별점 테러와 악성 리뷰로 고통받는 사장님을 위한 실전 대응법. 플랫폼별 신고 절차, 답글 작성 요령, 법적 대응까지 단계별로 정리했습니다.",
+  "datePublished": "2026-08-13",
+  "dateModified": "2026-08-13",
+  "image": "https://images.pexels.com/photos/5053740/pexels-photo-5053740.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200",
+  "author": {
+    "@type": "Organization",
+    "name": "오늘장부",
+    "url": "https://오늘장부.kr"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "오늘장부",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://xn--wh1bw0st1gbrb.kr/icons/icon-192.png"
+    }
+  },
+  "mainEntityOfPage": "https://xn--wh1bw0st1gbrb.kr/blog/posts/delivery-app-bad-review-star-rating-terror-response-guide.html",
+  "keywords": "배달앱, 악성리뷰, 별점테러, 리뷰관리"
+}
+  </script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "악성 리뷰를 신고했는데 플랫폼에서 기각했습니다. 다음 방법은?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "플랫폼 내 재심사를 요청하거나, 방송통신위원회 민원 창구에 피해를 접수할 수 있습니다. 방통위는 배달앱 등 온라인 플랫폼의 악성 리뷰·별점 테러 피해를 소관 기관에 신속히 연계하는 원스톱 피해구제 체계를 운영하고 있습니다. 피해가 심각하다면 경찰 사이버수사대에 업무방해 또는 명예훼손으로 고소하는 방법도 검토해 보세요."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "주문도 하지 않은 사람이 리뷰를 남겼습니다. 삭제가 가능한가요?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "주문 이력 없이 작성된 리뷰는 허위 리뷰에 해당할 수 있어 삭제 요청 사유가 됩니다. 플랫폼 신고 시 주문 내역이 없음을 명시하고, 해당 리뷰와 주문 데이터를 함께 첨부하면 처리 가능성이 높아집니다."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "부정적인 리뷰에 사장님 답글을 꼭 달아야 하나요?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "법적 의무는 없지만, 답글을 달지 않으면 예비 고객에게 '무관심한 가게'로 비칠 수 있습니다. 특히 별점이 낮은 리뷰일수록 차분하고 성의 있는 답글이 오히려 신뢰를 높여줍니다. 감정적 답변은 반드시 피하고, 사실 중심으로 짧고 정중하게 작성하는 것이 핵심입니다."
+      }
+    }
+  ]
+}
+  </script>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <a href="/" class="logo">
+      <div class="logo-icon">장</div>
+      <span class="logo-text">오늘장부</span>
+      <span class="logo-sub">블로그</span>
+    </a>
+    <a href="/" class="header-cta">무료로 시작하기</a>
+  </div>
+</header>
+
+<div class="wrap">
+  <main>
+    <div class="nav-links">
+      <a href="/blog/" class="nav-back">블로그 목록으로</a>
+    </div>
+
+    <!-- 자동 광고(Auto ads)가 배치를 정하므로 유닛을 직접 넣지 않는다. 여백만 확보한다. -->
+    <div class="ad-slot"></div>
+
+    <article>
+      <div class="article-head">
+        <div class="article-cat"><a href="/blog/">배달앱</a></div>
+        <h1 class="article-title">별점 테러·악성 리뷰 대응법: 배달앱 사장님 생존 가이드</h1>
+        <div class="article-meta">
+          <span>오늘장부 편집팀</span>
+          <span>2026년 08월 13일</span>
+        </div>
+      </div>
+      <img src="https://images.pexels.com/photos/5053740/pexels-photo-5053740.jpeg?auto=compress&amp;cs=tinysrgb&amp;fit=crop&amp;h=627&amp;w=1200" alt="별점 테러·악성 리뷰 대응법: 배달앱 사장님 생존 가이드" class="hero-img" loading="lazy">
+      <div class="article-body">
+<p>배달앱에서 별점 4.9점을 유지하던 가게가 하루아침에 1점 리뷰 폭탄을 맞는 일이 실제로 일어나고 있습니다. 한국소비자원이 2024년 배달앱 리뷰 실태를 조사한 결과, 소비자의 73.4%가 음식점을 고를 때 리뷰를 '많이 참고한다'고 답했습니다. 리뷰 하나가 매출 직결 변수가 된 시대, 별점 테러와 악성 리뷰에 어떻게 대응해야 할까요? 감정적으로 맞받아치면 오히려 손해입니다. 단계별로 차근차근 대응해야 합니다.</p>
+
+<h2>악성 리뷰, 어디까지가 '삭제 대상'인가?</h2>
+<p>모든 부정적인 리뷰가 삭제 대상은 아닙니다. 음식 맛, 배달 속도에 대한 솔직한 불만은 삭제 요청이 받아들여지기 어렵습니다. 반면 아래 유형은 플랫폼 정책 및 <strong>정보통신망법</strong>을 근거로 임시조치(블라인드) 또는 삭제를 요청할 수 있습니다.</p>
+<ul>
+  <li><strong>욕설·비방·혐오 표현</strong>이 포함된 리뷰</li>
+  <li><strong>허위 사실</strong>을 적시해 영업을 방해하는 리뷰 (예: 실제로 없는 이물질 주장)</li>
+  <li><strong>주문 이력이 없는 소비자</strong>가 작성한 리뷰</li>
+  <li><strong>개인정보</strong>(사장님 실명, 전화번호 등)를 무단 노출한 리뷰</li>
+  <li>경쟁업체 또는 지인이 조직적으로 작성한 <strong>조작·청탁 리뷰</strong></li>
+</ul>
+<p>배달의민족·요기요·쿠팡이츠는 공통적으로 사장님이 권리침해를 소명해 삭제를 요청하면 <strong>30일간 해당 리뷰를 비공개(임시조치)</strong> 처리합니다. 30일 이후 작성자가 이의를 제기하지 않으면 자동 삭제되고, 이의를 제기하면 30일 추가 비공개 후 재공개됩니다. 즉 최대 60일간 해당 리뷰의 별점이 평점에 반영되지 않습니다.</p>
+
+<h2>플랫폼별 신고 절차 한눈에 보기</h2>
+<table>
+  <thead>
+    <tr>
+      <th>플랫폼</th>
+      <th>신고 경로</th>
+      <th>처리 방식</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>배달의민족</strong></td>
+      <td>배민사장님 앱 → 해당 리뷰 → '신고하기'</td>
+      <td>검토 후 최대 30일 임시조치</td>
+    </tr>
+    <tr>
+      <td><strong>쿠팡이츠</strong></td>
+      <td>쿠팡이츠 파트너 앱 → 리뷰 관리 → 신고 / 고객만족센터 문의</td>
+      <td>30일 비공개, 미이의 시 자동 삭제</td>
+    </tr>
+    <tr>
+      <td><strong>요기요</strong></td>
+      <td>요기요 사장님 앱 → 리뷰 → 신고 / 고객만족센터 문의</td>
+      <td>30일 비공개, 미이의 시 자동 삭제</td>
+    </tr>
+  </tbody>
+</table>
+<p>신고 시에는 <strong>해당 리뷰 캡처, 주문 내역 확인, 허위 사실 또는 욕설 해당 여부</strong>를 구체적으로 소명해야 처리 속도가 빠릅니다. '기분이 나쁘다'는 이유만으로는 받아들여지지 않습니다.</p>
+
+<h2>답글 작성: 나쁜 리뷰가 오히려 홍보가 되는 법</h2>
+<p>신고와 별개로, <strong>답글은 반드시 작성</strong>해야 합니다. 잠재 고객들은 악성 리뷰 자체보다 사장님의 답글을 더 꼼꼼히 읽습니다. 차분하고 사실 중심의 답변은 오히려 신뢰를 높입니다.</p>
+<h3>이렇게 쓰면 역효과</h3>
+<blockquote>저희가 언제 그랬어요? 손님이 잘못 아세요? 다시는 오지 마세요.</blockquote>
+<p>감정적·방어적 답변은 열람한 모든 예비 고객에게 부정적 인상을 남깁니다. 법적 분쟁 시 불리한 증거가 될 수도 있습니다.</p>
+<h3>이렇게 쓰면 신뢰가 쌓인다</h3>
+<blockquote>소중한 의견 주셔서 감사합니다. 말씀하신 부분을 확인하였습니다. 해당 건은 [사실 설명]이었으며, 앞으로 더 세심하게 준비하겠습니다. 불편을 드려 진심으로 죄송합니다.</blockquote>
+<p>포인트는 세 가지입니다. <strong>① 감사 인사 → ② 사실 확인 및 간결한 설명 → ③ 재발 방지 약속.</strong> 허위 사실이 포함된 리뷰라면 "확인 결과 해당 날짜에 주문 내역이 없습니다"처럼 <strong>팩트</strong>만 담담히 적으세요. 흥분한 어조는 금물입니다.</p>
+
+<h2>배달의민족 '리뷰 통계' 기능 활용하기</h2>
+<p>배달의민족은 리뷰 작성자의 <strong>평균 별점 부여 성향을 확인할 수 있는 '리뷰 통계' 기능</strong>을 도입했습니다. 리뷰어의 닉네임을 클릭하면 그간 남긴 리뷰 전체를 볼 수 있는 '리뷰 모아보기'도 함께 제공됩니다. 해당 리뷰어가 여러 가게에 습관적으로 낮은 별점을 남기는 패턴이 확인된다면, 이는 신고 소명 자료로 활용할 수 있습니다. 캡처해서 보관해 두세요.</p>
+
+<h2>법적 대응: 언제, 어떻게 가능한가?</h2>
+<p>플랫폼 신고로도 해결되지 않는 심각한 경우라면 법적 조치를 검토할 수 있습니다. 적용 가능한 법 조항은 크게 두 가지입니다.</p>
+<ol>
+  <li><strong>형사: 명예훼손·업무방해죄</strong> — 허위 사실을 공연히 적시해 영업 신용을 훼손하거나, 조직적 별점 테러로 업무를 방해한 경우 형사 고소 대상이 됩니다. 경찰서 민원실 또는 사이버수사대에 신고하면 됩니다.</li>
+  <li><strong>민사: 손해배상 청구</strong> — 악성 리뷰로 인한 매출 손실을 입증하면 민사 손해배상 청구도 가능합니다. 다만 매출 감소와 리뷰의 인과관계 입증이 쉽지 않으므로, 평소 <strong>일자별 매출 기록</strong>을 꼼꼼하게 관리해 두는 것이 중요합니다.</li>
+</ol>
+<p>법적 대응에는 증거가 핵심입니다. <strong>리뷰 캡처, 주문 내역, 매출 기록, 고객과 나눈 대화 기록</strong>을 최대한 수집해 두세요. 배달앱·카드·현금 매출을 날마다 기록하는 <strong>오늘장부</strong>를 활용하면, 악성 리뷰 이후 매출 변동 추이를 데이터로 남길 수 있어 분쟁 대응에 실질적인 도움이 됩니다.</p>
+
+<h2>예방이 최선: 평소 리뷰 관리 습관</h2>
+<ul>
+  <li><strong>리뷰 이벤트는 신중하게:</strong> 서비스를 제공했지만 리뷰를 받지 못하는 사례가 흔합니다. 이벤트보다 음식·포장 품질로 자연 리뷰를 유도하는 전략이 장기적으로 안전합니다.</li>
+  <li><strong>긍정 리뷰를 꾸준히 쌓는다:</strong> 별점 테러 한두 개가 전체 평점에 미치는 영향을 줄이려면 성실한 긍정 리뷰 축적이 최고의 방어막입니다.</li>
+  <li><strong>매출-리뷰 상관관계를 주기적으로 확인:</strong> 리뷰 급감 시점과 매출 하락 시점을 비교해두면 이상징후를 빠르게 포착할 수 있습니다.</li>
+</ul>
+
+<h2>자주 묻는 질문</h2>
+<h3>악성 리뷰를 신고했는데 플랫폼에서 기각했습니다. 다음 방법은?</h3>
+<p>플랫폼 내 재심사를 요청하거나, 방송통신위원회 민원 창구에 피해를 접수할 수 있습니다. 방통위는 배달앱 등 온라인 플랫폼의 악성 리뷰·별점 테러 피해를 소관 기관에 신속히 연계하는 원스톱 피해구제 체계를 운영하고 있습니다. 피해가 심각하다면 경찰 사이버수사대에 업무방해 또는 명예훼손으로 고소하는 방법도 검토해 보세요.</p>
+<h3>주문도 하지 않은 사람이 리뷰를 남겼습니다. 삭제가 가능한가요?</h3>
+<p>주문 이력 없이 작성된 리뷰는 허위 리뷰에 해당할 수 있어 삭제 요청 사유가 됩니다. 플랫폼 신고 시 주문 내역이 없음을 명시하고, 해당 리뷰와 주문 데이터를 함께 첨부하면 처리 가능성이 높아집니다.</p>
+<h3>부정적인 리뷰에 사장님 답글을 꼭 달아야 하나요?</h3>
+<p>법적 의무는 없지만, 답글을 달지 않으면 예비 고객에게 '무관심한 가게'로 비칠 수 있습니다. 특히 별점이 낮은 리뷰일수록 차분하고 성의 있는 답글이 오히려 신뢰를 높여줍니다. 감정적 답변은 반드시 피하고, 사실 중심으로 짧고 정중하게 작성하는 것이 핵심입니다.</p>
+
+<p>별점 테러 이후 매출이 얼마나 달라졌는지, 언제부터 회복됐는지—이 데이터를 손에 쥐고 있어야 다음 대응도, 법적 소명도 가능합니다. 카드·현금·배달앱 매출을 하루 1분으로 통합 기록하고 싶다면 <a href="https://오늘장부.kr">오늘장부 무료로 시작하기</a>를 확인해 보세요.</p>
+
+<p>※ 본 글은 2026년 기준 참고용 정보이며, 정확한 신고·금액은 국세청 홈택스 또는 세무사와 상담하세요.</p>
+      </div>
+      <div class="tags">
+        <a href="/blog/?tag=%EB%B0%B0%EB%8B%AC%EC%95%B1" class="tag">배달앱</a> <a href="/blog/?tag=%EC%95%85%EC%84%B1%EB%A6%AC%EB%B7%B0" class="tag">악성리뷰</a> <a href="/blog/?tag=%EB%B3%84%EC%A0%90%ED%85%8C%EB%9F%AC" class="tag">별점테러</a> <a href="/blog/?tag=%EB%A6%AC%EB%B7%B0%EA%B4%80%EB%A6%AC" class="tag">리뷰관리</a>
+      </div>
+    </article>
+
+    <section style="background:#fff8f5;border-radius:16px;padding:24px 28px;margin-top:24px;">
+      <h2 style="font-size:18px;font-weight:800;color:#1a1a1a;margin:0 0 14px;">함께 보면 좋은 글</h2>
+      <ul style="list-style:none;padding:0;margin:0;">
+        <li style="padding:8px 0;border-bottom:1px solid #ffe6d9;"><a href="/blog/posts/delivery-app-coupon-discount-who-pays.html" style="color:#FF6B35;text-decoration:none;font-weight:600;font-size:14px;">배달앱 쿠폰 할인, 누가 부담하나? 사장님이 꼭 알아야 할 비용 구조</a></li>
+        <li style="padding:8px 0;border-bottom:1px solid #ffe6d9;"><a href="/blog/posts/delivery-app-settlement-cycle-payment-date.html" style="color:#FF6B35;text-decoration:none;font-weight:600;font-size:14px;">배달앱 정산 주기와 입금일 완벽 정리 — 배민·쿠팡이츠·요기요</a></li>
+        <li style="padding:8px 0;border-bottom:1px solid #ffe6d9;"><a href="/blog/posts/delivery-packaging-fee-guide.html" style="color:#FF6B35;text-decoration:none;font-weight:600;font-size:14px;">배달 포장비 책정하는 법 — 원가부터 세금까지 완벽 정리</a></li>
+        <li style="padding:8px 0;border-bottom:1px solid #ffe6d9;"><a href="/blog/posts/delivery-exclusive-menu-strategy.html" style="color:#FF6B35;text-decoration:none;font-weight:600;font-size:14px;">배달 전용 메뉴 구성 전략: 수수료 먹어도 남는 메뉴 만들기</a></li>
+      </ul>
+    </section>
+
+    <section style="background:#fff8f5;border-radius:16px;padding:24px 28px;margin-top:24px;">
+      <h2 style="font-size:18px;font-weight:800;color:#1a1a1a;margin:0 0 14px;">무료 계산기로 바로 확인하기</h2>
+      <ul style="list-style:none;padding:0;margin:0;">
+        <li style="padding:10px 0;border-bottom:1px solid #ffe6d9;"><a href="/tools/delivery-fee-calculator/" style="color:#FF6B35;text-decoration:none;font-weight:700;font-size:15px;">배달앱 수수료 계산기</a><div style="font-size:13px;color:#777;margin-top:2px;">중개·결제 수수료와 배달비를 빼면 실제로 얼마가 입금되는지 계산합니다</div></li>
+      </ul>
+    </section>
+
+    <!-- 자동 광고(Auto ads)가 배치를 정하므로 유닛을 직접 넣지 않는다. 여백만 확보한다. -->
+    <div class="ad-slot"></div>
+
+    <div class="cta-box">
+      <h3>매일 매출 기록, 30초면 끝!</h3>
+      <p>카드·현금·네이버페이·카카오페이<br>여러 결제수단을 한 화면에서 입력<br>부가세 예상액도 자동으로 계산해드려요</p>
+      <a href="/">지금 무료로 시작하기</a>
+    </div>
+  </main>
+
+  <aside class="sidebar">
+    <div class="sidebar-cta">
+      <h3>매일 매출 기록,<br>30초면 끝!</h3>
+      <p>카드·현금·배달앱 한 번에<br>부가세 예상액도 자동 계산</p>
+      <a href="/">무료로 시작하기</a>
+    </div>
+  </aside>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-links">
+      <a href="/">서비스 홈</a>
+      <a href="/blog/">블로그</a>
+      <a href="/about/">소개</a>
+      <a href="/contact/">문의하기</a>
+      <a href="/privacy">개인정보처리방침</a>
+      <a href="/terms">이용약관</a>
+    </div>
+    <div class="footer-copy">© 2026 오늘장부. All rights reserved.</div>
+  </div>
+</footer>
+
+</body>
+</html>
