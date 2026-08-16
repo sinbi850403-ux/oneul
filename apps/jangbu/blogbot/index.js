@@ -481,6 +481,7 @@ ${relatedHtml ? '\n    ' + relatedHtml + '\n' : ''}
       <a href="/blog/">블로그</a>
       <a href="/about/">소개</a>
       <a href="/contact/">문의하기</a>
+      <a href="/blog/about.html">소개 및 문의</a>
       <a href="/privacy">개인정보처리방침</a>
       <a href="/terms">이용약관</a>
     </div>
@@ -499,6 +500,7 @@ function rebuildSitemap(manifest) {
     `  <url><loc>${SITE}/</loc><changefreq>monthly</changefreq><priority>1.0</priority></url>`,
     `  <url><loc>${SITE}/login</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>`,
     `  <url><loc>${SITE}/blog/</loc><changefreq>daily</changefreq><priority>0.9</priority></url>`,
+    `  <url><loc>${SITE}/blog/about.html</loc><changefreq>yearly</changefreq><priority>0.5</priority></url>`,
     `  <url><loc>${SITE}/about/</loc><changefreq>yearly</changefreq><priority>0.6</priority></url>`,
     `  <url><loc>${SITE}/contact/</loc><changefreq>yearly</changefreq><priority>0.6</priority></url>`,
     // 무료 계산기 — public/tools 아래 정적 페이지. 사이트맵을 여기서 통째로 다시 쓰므로
