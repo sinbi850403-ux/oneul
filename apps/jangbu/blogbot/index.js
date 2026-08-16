@@ -194,6 +194,58 @@ function esc(s) {
   return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;')
 }
 
+// ── 새 주제 생성 (키워드 풀 고갈 시) ──────────────────────────────
+// 손으로 관리하는 목록은 반드시 바닥난다. 195개를 채워도 하루 3편이면
+// 두 달이면 끝이다. 그래서 고갈되면 이미 쓴 글 제목을 전부 보여주고
+// 겹치지 않는 주제를 새로 제안받는다. 제안받은 주제도 기존 중복 검사를
+// 그대로 통과해야 채택한다 — 모델이 "새롭다"고 해도 믿지 않는다.
+async function inventKeyword(category, manifest, idf) {
+  const anthropic = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY })
+  const titles = manifest
+    .filter((p) => !category || p.category === category)
+    .map((p) => `- ${p.title}`)
+    .join('\n')
+
+  const prompt = `한국 자영업자(소상공인) 대상 블로그 "오늘장부 블로그"의 편집자입니다.
+"${category}" 섹션에 새로 쓸 주제를 정해야 합니다.
+
+[이미 발행한 글]
+${titles}
+
+[조건]
+- 위 글들과 다루는 내용이 겹치지 않아야 합니다. 제목만 다르고 답이 같은 주제는 안 됩니다.
+- 사장님이 실제로 검색할 법한, 돈·시간과 직결된 구체적인 주제여야 합니다.
+- 억지로 쪼갠 주제("카페 사장님 부가세", "치킨집 사장님 부가세" 같은 업종만 바꾼 변형)는 금지입니다.
+- 2026년 한국 기준으로 유효한 제도·현실이어야 합니다.
+
+JSON 만 출력하세요. 설명 금지.
+{"keyword": "주제(15자 내외, 검색어처럼)", "imageQuery": "영어 이미지 검색어 2~4단어"}`
+
+  for (let attempt = 1; attempt <= 3; attempt++) {
+    const res = await anthropic.messages.create({
+      model: 'claude-sonnet-4-6',
+      max_tokens: 300,
+      messages: [{ role: 'user', content: prompt }],
+    })
+    const text = res.content.filter((c) => c.type === 'text').map((c) => c.text).join('')
+    const m = text.match(/\{[\s\S]*\}/)
+    if (!m) continue
+
+    let cand
+    try { cand = JSON.parse(m[0]) } catch { continue }
+    if (!cand?.keyword) continue
+
+    const kw = { keyword: cand.keyword, category, imageQuery: cand.imageQuery || category }
+    if (isAlreadyCovered(kw, manifest, idf)) {
+      console.log(`제안된 주제 "${kw.keyword}" 는 기존 글과 겹침 → 다시 요청 (${attempt}/3)`)
+      continue
+    }
+    console.log(`새 주제 생성: "${kw.keyword}"`)
+    return kw
+  }
+  return null
+}
+
 // ── Claude(Opus 4.8 + 웹검색)로 사실 확인 후 글 생성 ───────────────
 // 정확성이 최우선. 웹검색으로 2026년 한국 기준 사실을 확인한 뒤 작성한다.
 async function generatePost(kw) {
@@ -601,12 +653,17 @@ let slugGlobal = 'post'
 async function main() {
   const manifest = JSON.parse(fs.readFileSync(MANIFEST, 'utf8'))
 
-  const kw = pickKeyword(manifest)
+  let kw = pickKeyword(manifest)
+
+  // 목록이 바닥나면 새 주제를 만들어 이어간다. 그래도 못 만들면 쉰다 —
+  // 재탕하느니 하루 안 쓰는 편이 낫다.
   if (!kw) {
-    console.log(
-      '키워드 풀의 모든 주제를 이미 다뤘습니다 — 재탕을 피하기 위해 발행하지 않습니다.\n' +
-        'blogbot/keywords.js 에 새 주제를 추가하세요.'
-    )
+    const cat = (process.argv.find((x) => x.startsWith('--category=')) || '').slice('--category='.length)
+    console.log(`키워드 풀 소진(${cat || '전체'}) — 새 주제를 생성합니다.`)
+    if (!DRY_RUN) kw = await inventKeyword(cat, manifest, buildIdf(manifest))
+  }
+  if (!kw) {
+    console.log('새 주제를 만들지 못했습니다 — 재탕을 피하기 위해 발행하지 않습니다.')
     return
   }
   console.log(`키워드: ${kw.keyword} (${kw.category})${DRY_RUN ? ' [DRY RUN]' : ''}`)
