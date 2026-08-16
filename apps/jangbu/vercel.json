@@ -71,7 +71,7 @@
     },
     {
       "source": "/blog/posts/delivery-packaging-fee-pricing-guide.html",
-      "destination": "/blog/posts/delivery-packaging-fee-guide.html",
+      "destination": "/blog/posts/how-to-set-delivery-packaging-fee.html",
       "permanent": true
     },
     {
@@ -166,7 +166,7 @@
     },
     {
       "source": "/blog/posts/simple-payment-fee-comparison-naver-kakao-toss.html",
-      "destination": "/blog/posts/simple-payment-fee-comparison-2026.html",
+      "destination": "/blog/posts/simple-payment-fee-comparison.html",
       "permanent": true
     },
     {
@@ -207,6 +207,41 @@
     {
       "source": "/blog/posts/weekly-15-hours-part-time-rules.html",
       "destination": "/blog/posts/part-time-under-15-hours-regulations.html",
+      "permanent": true
+    },
+    {
+      "source": "/blog/posts/business-registration-required-documents.html",
+      "destination": "/blog/posts/business-registration-required-documents-2026.html",
+      "permanent": true
+    },
+    {
+      "source": "/blog/posts/delivery-packaging-fee-guide.html",
+      "destination": "/blog/posts/how-to-set-delivery-packaging-fee.html",
+      "permanent": true
+    },
+    {
+      "source": "/blog/posts/online-sales-business-registration-guide-2.html",
+      "destination": "/blog/posts/online-sales-business-registration-guide.html",
+      "permanent": true
+    },
+    {
+      "source": "/blog/posts/self-delivery-vs-delivery-agency-comparison-2.html",
+      "destination": "/blog/posts/self-delivery-vs-delivery-agency-comparison.html",
+      "permanent": true
+    },
+    {
+      "source": "/blog/posts/simple-payment-fee-comparison-2026.html",
+      "destination": "/blog/posts/simple-payment-fee-comparison.html",
+      "permanent": true
+    },
+    {
+      "source": "/blog/posts/single-delivery-profitability-analysis-2.html",
+      "destination": "/blog/posts/single-delivery-profitability-analysis.html",
+      "permanent": true
+    },
+    {
+      "source": "/blog/posts/zeropay-fee-benefits-guide.html",
+      "destination": "/blog/posts/zeropay-fee-benefits.html",
       "permanent": true
     }
   ],
