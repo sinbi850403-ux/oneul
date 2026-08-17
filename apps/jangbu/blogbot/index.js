@@ -3,6 +3,7 @@ import fs from 'node:fs'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { keywords } from './keywords.js'
+import { rebuildBlogIndex } from '../scripts/rebuild-blog-index.mjs'
 
 // ── 경로 (이 파일 위치 기준이라 어디서 실행해도 동일) ──────────────
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
@@ -550,7 +551,9 @@ ${relatedHtml ? '\n    ' + relatedHtml + '\n' : ''}
 function rebuildSitemap(manifest) {
   const urls = [
     `  <url><loc>${SITE}/</loc><changefreq>monthly</changefreq><priority>1.0</priority></url>`,
-    `  <url><loc>${SITE}/login</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>`,
+    // /login 은 넣지 않는다. 로그인 폼이라 검색 가치가 없고, SPA rewrite 때문에
+    // 대문과 같은 HTML(=canonical이 "/")이 나가서 사이트맵이 스스로 "대체 페이지"를
+    // 신고하는 꼴이 된다.
     `  <url><loc>${SITE}/blog/</loc><changefreq>daily</changefreq><priority>0.9</priority></url>`,
     `  <url><loc>${SITE}/blog/about.html</loc><changefreq>yearly</changefreq><priority>0.5</priority></url>`,
     `  <url><loc>${SITE}/about/</loc><changefreq>yearly</changefreq><priority>0.6</priority></url>`,
@@ -717,6 +720,10 @@ async function main() {
 
   // 3) 사이트맵 갱신
   rebuildSitemap(manifest)
+
+  // 3-1) /blog/ 대문의 정적 글 링크 갱신.
+  // 대문은 JS 로 카드를 그리므로, 이걸 안 하면 원본 HTML 에 새 글로 가는 링크가 없다.
+  rebuildBlogIndex()
 
   // 4) 구글 색인 요청 (베스트에포트 — 키 없거나 실패해도 발행은 정상)
   await requestIndexing(`${SITE}/blog/posts/${slugGlobal}.html`)
