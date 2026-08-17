@@ -243,19 +243,28 @@
       "source": "/blog/posts/zeropay-fee-benefits-guide.html",
       "destination": "/blog/posts/zeropay-fee-benefits.html",
       "permanent": true
+    },
+    {
+      "source": "/blog/index.html",
+      "destination": "/blog/",
+      "permanent": true
     }
   ],
   "rewrites": [
-    {
-      "source": "/sitemap.xml",
-      "destination": "/sitemap.xml"
-    },
     {
       "source": "/api/(.*)",
       "destination": "/api/$1"
     },
     {
-      "source": "/((?!blog|tools).*)",
+      "source": "/(login|reset-password|onboarding|privacy|terms|input|calendar|history|tax|board|settings)",
+      "destination": "/"
+    },
+    {
+      "source": "/dashboard",
+      "destination": "/"
+    },
+    {
+      "source": "/dashboard/(.*)",
       "destination": "/"
     }
   ]

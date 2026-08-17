@@ -82,6 +82,21 @@
     .page-btn { width: 36px; height: 36px; border: 1px solid #ddd; border-radius: 8px; background: white; cursor: pointer; font-size: 14px; color: #444; }
     .page-btn.active { background: #FF6B35; color: white; border-color: #FF6B35; font-weight: 700; }
 
+    /* Archive (전체 글 목차) */
+    .archive { margin-top: 48px; border-top: 1px solid #e8e8e8; padding-top: 28px; }
+    .archive-title { font-size: 15px; font-weight: 800; color: #444; margin-bottom: 14px; }
+    .archive-cat { background: white; border-radius: 12px; margin-bottom: 8px; box-shadow: 0 1px 4px rgba(0,0,0,0.05); }
+    .archive-cat > summary { padding: 13px 16px; font-size: 14px; font-weight: 700; color: #333; cursor: pointer; list-style: none; }
+    .archive-cat > summary::-webkit-details-marker { display: none; }
+    .archive-cat > summary::before { content: '+'; color: #FF6B35; font-weight: 800; margin-right: 8px; }
+    .archive-cat[open] > summary::before { content: '−'; }
+    .archive-count { color: #aaa; font-weight: 600; font-size: 12px; margin-left: 4px; }
+    .archive-cat ul { list-style: none; padding: 0 16px 12px; }
+    .archive-cat li { padding: 7px 0; border-top: 1px solid #f2f2f2; font-size: 13px; line-height: 1.5; }
+    .archive-cat a { color: #444; text-decoration: none; }
+    .archive-cat a:hover { color: #FF6B35; }
+    .archive-date { color: #bbb; font-size: 12px; white-space: nowrap; }
+
     /* Footer */
     footer { background: #1a1a1a; color: #888; padding: 40px 20px; margin-top: 60px; }
     .footer-inner { max-width: 1100px; margin: 0 auto; }
@@ -142,11 +157,318 @@
     <!-- 상단 광고 (Google 자동 광고) -->
     <div class="ad-slot"></div>
 
+    <!-- 아래 카드는 scripts/rebuild-blog-index.mjs 가 채운다. JS 가 뜨면 같은 내용으로
+         덮어쓰지만, 원본 HTML 에도 글 링크가 있어야 크롤러가 글까지 따라올 수 있다. -->
     <div class="post-grid" id="postGrid">
-      <div class="loading">게시글을 불러오는 중...</div>
+<!-- BLOGBOT:LATEST:START -->
+      <a href="/blog/posts/recommended-resignation-unemployment-separation-certificate.html" class="post-card">
+        <img src="https://images.pexels.com/photos/7821540/pexels-photo-7821540.jpeg?auto=compress&amp;cs=tinysrgb&amp;fit=crop&amp;h=627&amp;w=1200" alt="권고사직과 실업급여 이직확인서, 사장님이 꼭 챙겨야 할 것들" class="post-thumb" loading="lazy">
+        <div class="post-body">
+          <div class="post-cat">직원관리</div>
+          <div class="post-title">권고사직과 실업급여 이직확인서, 사장님이 꼭 챙겨야 할 것들</div>
+          <div class="post-desc">직원을 권고사직할 때 사업주가 해야 할 이직확인서 작성·제출 의무, 이직코드 선택 요령, 과태료 주의사항까지 소상공인 눈높이로 정리했습니다.</div>
+          <div class="post-date">2026.08.16</div>
+        </div>
+      </a>
+      <a href="/blog/posts/business-transfer-premium-tax-guide.html" class="post-card">
+        <img src="https://images.pexels.com/photos/7736044/pexels-photo-7736044.jpeg?auto=compress&amp;cs=tinysrgb&amp;fit=crop&amp;h=627&amp;w=1200" alt="가게 넘길 때 양도양수와 권리금, 세금까지 정리했습니다" class="post-thumb" loading="lazy">
+        <div class="post-body">
+          <div class="post-cat">사업자등록</div>
+          <div class="post-title">가게 넘길 때 양도양수와 권리금, 세금까지 정리했습니다</div>
+          <div class="post-desc">가게를 넘기거나 인수할 때 꼭 알아야 할 양도양수 절차, 권리금의 세금 처리(기타소득·원천징수), 포괄양수도 부가세 면제 요건까지 소상공인 실전 가이드.</div>
+          <div class="post-date">2026.08.16</div>
+        </div>
+      </a>
+      <a href="/blog/posts/card-slip-retention-period-5-years.html" class="post-card">
+        <img src="https://images.pexels.com/photos/7841437/pexels-photo-7841437.jpeg?auto=compress&amp;cs=tinysrgb&amp;fit=crop&amp;h=627&amp;w=1200" alt="카드 전표 보관 의무 기간, 사장님이 꼭 알아야 할 5년의 법칙" class="post-thumb" loading="lazy">
+        <div class="post-body">
+          <div class="post-cat">카드수수료</div>
+          <div class="post-title">카드 전표 보관 의무 기간, 사장님이 꼭 알아야 할 5년의 법칙</div>
+          <div class="post-desc">카드 전표 보관 기간은 부가가치세법상 확정신고 기한 후 5년. 버리면 매입세액 공제 박탈·가산세 위험. 종이·전자 보관법과 실전 체크리스트까지 총정리.</div>
+          <div class="post-date">2026.08.15</div>
+        </div>
+      </a>
+      <a href="/blog/posts/delivery-app-packaging-order-fee-comparison-2026.html" class="post-card">
+        <img src="https://images.pexels.com/photos/8165197/pexels-photo-8165197.jpeg?auto=compress&amp;cs=tinysrgb&amp;fit=crop&amp;h=627&amp;w=1200" alt="포장 주문 수수료 완전 해부 — 배민·쿠팡이츠·요기요 실제 부담 비교" class="post-thumb" loading="lazy">
+        <div class="post-body">
+          <div class="post-cat">배달앱</div>
+          <div class="post-title">포장 주문 수수료 완전 해부 — 배민·쿠팡이츠·요기요 실제 부담 비교</div>
+          <div class="post-desc">2026년 배달앱 3사 포장 수수료 전면 유료화 시대, 배민·쿠팡이츠·요기요의 실제 수수료 구조와 숨겨진 비용까지 사장님 눈높이로 완전 비교합니다.</div>
+          <div class="post-date">2026.08.15</div>
+        </div>
+      </a>
+      <a href="/blog/posts/home-business-shared-expense-split-tax-tip.html" class="post-card">
+        <img src="https://images.pexels.com/photos/31213677/pexels-photo-31213677.jpeg?auto=compress&amp;cs=tinysrgb&amp;fit=crop&amp;h=627&amp;w=1200" alt="집과 가게 겸용 지출 나누기: 경비처리로 세금 줄이는 법" class="post-thumb" loading="lazy">
+        <div class="post-body">
+          <div class="post-cat">절세꿀팁</div>
+          <div class="post-title">집과 가게 겸용 지출 나누기: 경비처리로 세금 줄이는 법</div>
+          <div class="post-desc">집과 가게를 같이 쓰는 사장님, 전기세·월세·통신비를 얼마까지 경비처리할 수 있을까? 면적 안분 원칙부터 항목별 실전 계산법까지 한 번에 정리했습니다.</div>
+          <div class="post-date">2026.08.15</div>
+        </div>
+      </a>
+      <a href="/blog/posts/late-vat-filing-guide-after-deadline.html" class="post-card">
+        <img src="https://images.pexels.com/photos/8962461/pexels-photo-8962461.jpeg?auto=compress&amp;cs=tinysrgb&amp;fit=crop&amp;h=627&amp;w=1200" alt="부가세 신고 기한 놓쳤을 때 기한후신고 완벽 가이드" class="post-thumb" loading="lazy">
+        <div class="post-body">
+          <div class="post-cat">부가세/세금</div>
+          <div class="post-title">부가세 신고 기한 놓쳤을 때 기한후신고 완벽 가이드</div>
+          <div class="post-desc">부가세 신고기한을 놓쳤다면? 기한후신고로 무신고가산세 최대 50% 감면 가능. 신고 방법·가산세 계산·감면율 조건을 소상공인 눈높이로 정리했습니다.</div>
+          <div class="post-date">2026.08.14</div>
+        </div>
+      </a>
+      <a href="/blog/posts/parttime-worker-industrial-accident-guide.html" class="post-card">
+        <img src="https://images.pexels.com/photos/6520104/pexels-photo-6520104.jpeg?auto=compress&amp;cs=tinysrgb&amp;fit=crop&amp;h=627&amp;w=1200" alt="알바가 일하다 다쳤을 때 산재, 사장님이 꼭 알아야 할 처리법" class="post-thumb" loading="lazy">
+        <div class="post-body">
+          <div class="post-cat">직원관리</div>
+          <div class="post-title">알바가 일하다 다쳤을 때 산재, 사장님이 꼭 알아야 할 처리법</div>
+          <div class="post-desc">알바생이 일하다 다쳤을 때 사장님이 해야 할 산재보험 신고·처리 절차, 급여 종류, 미가입 시 불이익까지 2026년 기준으로 총정리했습니다.</div>
+          <div class="post-date">2026.08.14</div>
+        </div>
+      </a>
+      <a href="/blog/posts/sole-proprietor-to-corporation-conversion-timing.html" class="post-card">
+        <img src="https://images.pexels.com/photos/7654185/pexels-photo-7654185.jpeg?auto=compress&amp;cs=tinysrgb&amp;fit=crop&amp;h=627&amp;w=1200" alt="개인사업자 법인 전환 시기, 언제가 딱 맞을까?" class="post-thumb" loading="lazy">
+        <div class="post-body">
+          <div class="post-cat">사업자등록</div>
+          <div class="post-title">개인사업자 법인 전환 시기, 언제가 딱 맞을까?</div>
+          <div class="post-desc">순이익 기준부터 세율 비교, 전환 방법 3가지, 놓치면 후회하는 체크리스트까지. 2026년 최신 세법 기준으로 정리한 법인 전환 실전 가이드.</div>
+          <div class="post-date">2026.08.13</div>
+        </div>
+      </a>
+      <a href="/blog/posts/who-pays-interest-free-installment-cost.html" class="post-card">
+        <img src="https://images.pexels.com/photos/11363562/pexels-photo-11363562.jpeg?auto=compress&amp;cs=tinysrgb&amp;fit=crop&amp;h=627&amp;w=1200" alt="무이자 할부 비용은 누가 내나? 사장님이 꼭 알아야 할 카드 수수료 구조" class="post-thumb" loading="lazy">
+        <div class="post-body">
+          <div class="post-cat">카드수수료</div>
+          <div class="post-title">무이자 할부 비용은 누가 내나? 사장님이 꼭 알아야 할 카드 수수료 구조</div>
+          <div class="post-desc">손님이 무이자 할부로 결제하면 이자는 누가 내는 걸까? 카드사 부담형과 가맹점 부담형의 차이, 소상공인에게 미치는 실제 비용 영향을 알기 쉽게 정리했습니다.</div>
+          <div class="post-date">2026.08.13</div>
+        </div>
+      </a>
+<!-- BLOGBOT:LATEST:END -->
     </div>
 
     <div class="pagination" id="pagination"></div>
+
+    <!-- 전체 글 목차. 사람에게는 카테고리별 접이식 목록이고, 크롤러에게는
+         모든 글로 가는 링크 경로다. JS 는 이 영역을 건드리지 않는다. -->
+    <nav class="archive" aria-label="전체 글 목록">
+<!-- BLOGBOT:ARCHIVE:START -->
+  <h2 class="archive-title">전체 글 180개</h2>
+    <details class="archive-cat">
+      <summary>매출관리 <span class="archive-count">26</span></summary>
+      <ul>
+        <li><a href="/blog/posts/cost-ratio-calculation-and-reduction.html">원가율 계산하고 낮추는 법 — 사장님 수익의 첫 단추</a> <span class="archive-date">2026.08.12</span></li>
+        <li><a href="/blog/posts/revenue-vs-net-profit-for-small-business.html">매출과 순이익 헷갈리지 않기 — 사장님이 꼭 알아야 할 차이</a> <span class="archive-date">2026.08.09</span></li>
+        <li><a href="/blog/posts/weekly-sales-pattern-management.html">요일별 매출 패턴 활용하기: 잘 파는 날 더 팔고, 쉬는 날 비용 줄이기</a> <span class="archive-date">2026.08.05</span></li>
+        <li><a href="/blog/posts/daily-sales-pattern-for-small-business.html">요일별 매출 패턴 활용하기 — 매출 데이터로 인건비·발주·세금까지 잡는 법</a> <span class="archive-date">2026.07.16</span></li>
+        <li><a href="/blog/posts/regular-customer-sales-analysis-increase-revisit.html">단골 매출 분석으로 재방문 늘리기: 사장님 실전 가이드</a> <span class="archive-date">2026.07.15</span></li>
+        <li><a href="/blog/posts/how-to-find-sales-drop-reasons.html">매출 급감 원인 찾는 법 — 숫자로 진단하는 5단계 점검표</a> <span class="archive-date">2026.07.14</span></li>
+        <li><a href="/blog/posts/monthly-sales-goal-setting-and-management.html">월 매출 목표 세우고 관리하기 — 사장님을 위한 실전 5단계</a> <span class="archive-date">2026.07.13</span></li>
+        <li><a href="/blog/posts/pos-sales-ledger-reconciliation-guide.html">포스(POS) 매출과 장부 맞추기: 숫자가 다른 5가지 이유와 해법</a> <span class="archive-date">2026.07.12</span></li>
+        <li><a href="/blog/posts/cash-revenue-recording-tips-for-small-business.html">현금매출 누락 없이 기록하는 법 – 사장님 필수 체크리스트</a> <span class="archive-date">2026.07.11</span></li>
+        <li><a href="/blog/posts/how-to-prepare-for-off-season-with-sales-data.html">매출 데이터로 비수기 대비하는 법 — 사장님 실전 가이드</a> <span class="archive-date">2026.07.10</span></li>
+        <li><a href="/blog/posts/convenience-store-daily-sales-record-tips.html">편의점 일매출 기록 꿀팁 — 놓치면 세금 더 낸다</a> <span class="archive-date">2026.07.09</span></li>
+        <li><a href="/blog/posts/small-business-sales-ledger-management.html">소상공인 매출 장부 정리법: 카드·현금·배달앱까지 한 번에</a> <span class="archive-date">2026.07.08</span></li>
+        <li><a href="/blog/posts/restaurant-sales-management-excel-vs-app.html">음식점 매출 관리, 엑셀 vs 앱 뭐가 더 나을까?</a> <span class="archive-date">2026.07.07</span></li>
+        <li><a href="/blog/posts/cafe-daily-sales-management.html">카페 일매출 관리하는 법 — 카드·현금·배달 한 번에 정리</a> <span class="archive-date">2026.07.06</span></li>
+        <li><a href="/blog/posts/seasonal-menu-sales-management.html">계절 메뉴 매출 관리, 성수기 돈 버는 만큼 세금도 준비하세요</a> <span class="archive-date">2026.07.04</span></li>
+        <li><a href="/blog/posts/kiosk-sales-data-utilization-tax-fee-guide.html">키오스크 매출 데이터 활용법 — 부가세·수수료까지 완벽 정리</a> <span class="archive-date">2026.07.03</span></li>
+        <li><a href="/blog/posts/multi-store-sales-management-guide.html">다점포 매출 한눈에 관리하는 법 — 사장님 필수 가이드</a> <span class="archive-date">2026.07.02</span></li>
+        <li><a href="/blog/posts/simple-daily-sales-report-for-small-business.html">매출 보고서 간단히 만드는 법 – 하루 5분으로 세금까지 대비하기</a> <span class="archive-date">2026.07.01</span></li>
+        <li><a href="/blog/posts/peak-season-sales-maximization-strategy.html">성수기 매출 극대화 전략: 번 돈 다 지키는 사장님 실전 가이드</a> <span class="archive-date">2026.06.30</span></li>
+        <li><a href="/blog/posts/daily-sales-recording-habit.html">매출 기록 습관 만드는 법: 하루 1분 루틴 5단계</a> <span class="archive-date">2026.06.29</span></li>
+        <li><a href="/blog/posts/delivery-vs-hall-sales-separate-management.html">배달·홀 매출 따로 관리하기, 왜 사장님 통장이 달라질까</a> <span class="archive-date">2026.06.28</span></li>
+        <li><a href="/blog/posts/increase-average-transaction-value-sales-management.html">객단가 높이는 매출 관리, 손님 수보다 중요한 이유</a> <span class="archive-date">2026.06.27</span></li>
+        <li><a href="/blog/posts/day-of-week-sales-pattern.html">요일별 매출 패턴 활용하기: 사장님이 놓치는 돈의 흐름</a> <span class="archive-date">2026.06.26</span></li>
+        <li><a href="/blog/posts/find-causes-of-sales-decline.html">매출 급감 원인 찾는 법: 사장님 3단계 진단</a> <span class="archive-date">2026.06.24</span></li>
+        <li><a href="/blog/posts/pos-sales-bookkeeping-reconciliation.html">POS 매출과 장부 맞추기, 통장 입금액이 다른 이유</a> <span class="archive-date">2026.06.22</span></li>
+        <li><a href="/blog/posts/ohaewa-jinsil-kape-sajangnim-maecul-gwanri-egsel-vs-aeb-2026nyeon-5gaji-ohae-wan.html">[오해와 진실] 카페 사장님 매출 관리, 엑셀 vs 앱 2026년 5가지 오해 완전 정복</a> <span class="archive-date">2026.06.16</span></li>
+      </ul>
+    </details>
+    <details class="archive-cat">
+      <summary>부가세/세금 <span class="archive-count">25</span></summary>
+      <ul>
+        <li><a href="/blog/posts/late-vat-filing-guide-after-deadline.html">부가세 신고 기한 놓쳤을 때 기한후신고 완벽 가이드</a> <span class="archive-date">2026.08.14</span></li>
+        <li><a href="/blog/posts/tax-correction-claim-guide-for-small-business.html">더 낸 세금 돌려받는 경정청구, 사장님 꼭 알아야 할 실전 가이드</a> <span class="archive-date">2026.08.12</span></li>
+        <li><a href="/blog/posts/vat-amended-return-how-to-fix-wrong-tax-filing.html">부가세 잘못 신고했을 때 수정신고, 이렇게 하면 가산세 줄어요</a> <span class="archive-date">2026.08.10</span></li>
+        <li><a href="/blog/posts/jonghapsodeutse-gyeongbi-injung-hangmok.html">종합소득세 경비 인정 항목 완전 정리 — 사장님 필독</a> <span class="archive-date">2026.08.07</span></li>
+        <li><a href="/blog/posts/exempt-vs-taxable-business-korea-vat-guide.html">면세사업자 vs 과세사업자, 우리 가게는 어디에 속할까?</a> <span class="archive-date">2026.08.03</span></li>
+        <li><a href="/blog/posts/tax-invoice-issuance-guide-hometax.html">세금계산서 발행 방법 완전 정복 — 홈택스 전자발급부터 가산세까지</a> <span class="archive-date">2026.07.16</span></li>
+        <li><a href="/blog/posts/vat-refund-cases-guide-for-small-business.html">부가세 환급 받는 경우 총정리 — 사장님이 꼭 알아야 할 5가지</a> <span class="archive-date">2026.07.15</span></li>
+        <li><a href="/blog/posts/tax-exempt-vs-taxable-business-korea.html">면세사업자 vs 과세사업자, 사장님이 꼭 알아야 할 핵심 차이</a> <span class="archive-date">2026.07.14</span></li>
+        <li><a href="/blog/posts/hometax-vat-filing-guide-for-small-business.html">홈택스 부가세 신고 따라하기 – 사장님 필수 완전 가이드</a> <span class="archive-date">2026.07.13</span></li>
+        <li><a href="/blog/posts/vat-penalty-tax-how-to-avoid.html">부가세 가산세 피하는 법 — 사장님이 꼭 알아야 할 5가지</a> <span class="archive-date">2026.07.12</span></li>
+        <li><a href="/blog/posts/vat-preliminary-return-target-and-method.html">부가세 예정신고 대상과 방법 — 사장님 유형별 완전 정리</a> <span class="archive-date">2026.07.10</span></li>
+        <li><a href="/blog/posts/self-employed-comprehensive-income-tax-guide-2025.html">자영업자 종합소득세 신고법 완전 정복 — 2025년 귀속 실전 가이드</a> <span class="archive-date">2026.07.09</span></li>
+        <li><a href="/blog/posts/vat-filing-deadline-2026-guide.html">부가세 신고 마감일 총정리 — 사업자 유형별 2026년 일정표</a> <span class="archive-date">2026.07.08</span></li>
+        <li><a href="/blog/posts/gani-ilban-gwaseeja-chai-2026.html">간이과세자 일반과세자 차이, 2026년 기준 완전 정리</a> <span class="archive-date">2026.07.07</span></li>
+        <li><a href="/blog/posts/vat-filing-guide-for-self-employed.html">자영업자 부가세 신고 방법 완전 정복 — 신고기한·계산법·절세 팁</a> <span class="archive-date">2026.07.06</span></li>
+        <li><a href="/blog/posts/card-cash-sales-tax-difference.html">카드매출 현금매출 세금 차이, 사장님이 꼭 알아야 할 핵심 정리</a> <span class="archive-date">2026.07.05</span></li>
+        <li><a href="/blog/posts/vat-legal-tax-saving-tips-for-small-business.html">부가세 절세 합법 방법 7가지 – 사장님이 놓치면 손해</a> <span class="archive-date">2026.07.04</span></li>
+        <li><a href="/blog/posts/tax-agent-vs-self-filing-vat-guide.html">세무대리 맡길까 직접 할까? 소상공인 부가세 신고 완전 정리</a> <span class="archive-date">2026.07.03</span></li>
+        <li><a href="/blog/posts/business-closure-tax-guide.html">폐업 시 세금 정리 완벽 가이드 — 신고 순서·기한·가산세까지</a> <span class="archive-date">2026.07.02</span></li>
+        <li><a href="/blog/posts/vat-filing-required-documents-checklist.html">부가세 신고 필요 서류 완전 정복 — 빠짐없이 챙기는 체크리스트</a> <span class="archive-date">2026.07.01</span></li>
+        <li><a href="/blog/posts/beginner-tax-calendar-for-small-business-owners.html">초보 사장님 세금 달력: 1월부터 11월까지 놓치면 가산세</a> <span class="archive-date">2026.06.30</span></li>
+        <li><a href="/blog/posts/small-business-tax-types-complete-guide.html">사업자 세금 종류 총정리 – 소상공인이 꼭 내야 할 세금 5가지</a> <span class="archive-date">2026.06.29</span></li>
+        <li><a href="/blog/posts/cash-receipt-mandatory-issuance-business-types.html">현금영수증 의무발행 업종, 10만원 넘으면 안 끊으면 가산세 20%</a> <span class="archive-date">2026.06.27</span></li>
+        <li><a href="/blog/posts/how-to-issue-tax-invoice-2026.html">세금계산서 발행 방법 완벽 정리 (2026년 기준)</a> <span class="archive-date">2026.06.26</span></li>
+        <li><a href="/blog/posts/ohaewa-jinsil-jayeongeobja-bugase-singo-2026nyeonedo-teulrige-algo-issneun-5gaji.html">[오해와 진실] 자영업자 부가세 신고, 2026년에도 틀리게 알고 있는 5가지 오해</a> <span class="archive-date">2026.06.16</span></li>
+      </ul>
+    </details>
+    <details class="archive-cat">
+      <summary>절세꿀팁 <span class="archive-count">25</span></summary>
+      <ul>
+        <li><a href="/blog/posts/home-business-shared-expense-split-tax-tip.html">집과 가게 겸용 지출 나누기: 경비처리로 세금 줄이는 법</a> <span class="archive-date">2026.08.15</span></li>
+        <li><a href="/blog/posts/loss-carryforward-deduction-guide-for-self-employed.html">적자 난 해의 결손금, 최대 15년 이월공제로 세금 돌려받는 법</a> <span class="archive-date">2026.08.12</span></li>
+        <li><a href="/blog/posts/integrated-employment-tax-credit-guide.html">직원 늘리면 받는 통합고용세액공제, 1인당 최대 1,550만 원 절세</a> <span class="archive-date">2026.08.10</span></li>
+        <li><a href="/blog/posts/receipt-management-tax-saving-tips.html">절세를 위한 영수증 관리, 사장님이 꼭 알아야 할 실전 핵심</a> <span class="archive-date">2026.08.08</span></li>
+        <li><a href="/blog/posts/small-business-policy-fund-guide-tax-saving.html">소상공인 정책자금 활용법: 저금리 대출부터 절세 꿀팁까지</a> <span class="archive-date">2026.07.16</span></li>
+        <li><a href="/blog/posts/tax-credit-vs-income-deduction-for-small-business.html">세액공제 vs 소득공제 차이, 사장님이 꼭 알아야 할 절세 핵심</a> <span class="archive-date">2026.07.15</span></li>
+        <li><a href="/blog/posts/depreciation-tax-saving-tips-for-small-business.html">감가상각으로 세금 줄이기 — 사장님이 꼭 알아야 할 절세 핵심</a> <span class="archive-date">2026.07.14</span></li>
+        <li><a href="/blog/posts/entertainment-expense-limit-tax-saving-guide.html">접대비 한도와 절세, 소상공인이 꼭 알아야 할 핵심 정리</a> <span class="archive-date">2026.07.13</span></li>
+        <li><a href="/blog/posts/vehicle-maintenance-expense-deduction-guide.html">차량 유지비 경비 처리, 사장님이 꼭 알아야 할 절세 핵심 정리</a> <span class="archive-date">2026.07.12</span></li>
+        <li><a href="/blog/posts/labor-cost-deduction-tax-saving-guide.html">인건비 비용처리로 절세하는 사장님의 실전 전략</a> <span class="archive-date">2026.07.11</span></li>
+        <li><a href="/blog/posts/noran-umbrella-tax-saving-guide-2026.html">노란우산공제 절세 효과 완벽 정리 — 2026년 개정판</a> <span class="archive-date">2026.07.10</span></li>
+        <li><a href="/blog/posts/business-credit-card-tax-saving-guide.html">사업용 신용카드 홈택스 등록만 해도 절세 끝? 실전 활용법</a> <span class="archive-date">2026.07.09</span></li>
+        <li><a href="/blog/posts/input-tax-credit-guide-for-small-business.html">매입세액 공제 제대로 받는 법 — 사장님 필수 체크리스트</a> <span class="archive-date">2026.07.08</span></li>
+        <li><a href="/blog/posts/self-employed-expense-deduction-tips.html">자영업자 경비 처리 꿀팁 — 놓치면 손해인 절세 핵심 7가지</a> <span class="archive-date">2026.07.07</span></li>
+        <li><a href="/blog/posts/small-business-tax-saving-tips-guide.html">소상공인 절세 방법 총정리 — 세금 줄이는 7가지 핵심 전략</a> <span class="archive-date">2026.07.06</span></li>
+        <li><a href="/blog/posts/frequently-missed-tax-saving-items-for-small-business-owners.html">사장님이 자주 놓치는 절세 항목 5가지 (2026 최신)</a> <span class="archive-date">2026.07.05</span></li>
+        <li><a href="/blog/posts/tax-saving-checklist-for-small-business-owners.html">절세 위해 미리 준비할 것 — 사장님 체크리스트 6가지</a> <span class="archive-date">2026.07.04</span></li>
+        <li><a href="/blog/posts/sme-tax-reduction-eligibility-guide.html">중소기업 세액감면 대상 완전정복 — 창업 5년, 세금 최대 100% 아끼는 법</a> <span class="archive-date">2026.07.03</span></li>
+        <li><a href="/blog/posts/self-employed-income-deduction-tips.html">사장님이 놓치면 손해! 소득공제 챙기는 꿀팁 5가지</a> <span class="archive-date">2026.07.02</span></li>
+        <li><a href="/blog/posts/donation-tax-credit-guide-for-self-employed.html">사장님도 받을 수 있는 기부금 세액공제 완전 정복</a> <span class="archive-date">2026.07.01</span></li>
+        <li><a href="/blog/posts/pension-savings-tax-credit-self-employed.html">자영업자 연금저축 세액공제, 최대 148만 원 돌려받는 법</a> <span class="archive-date">2026.06.30</span></li>
+        <li><a href="/blog/posts/rental-fee-vat-deduction-guide.html">임차료 부가세 공제, 월세에서 세금 돌려받는 실전 가이드</a> <span class="archive-date">2026.06.29</span></li>
+        <li><a href="/blog/posts/family-employee-labor-cost-tax-savings.html">가족 직원 인건비 절세, 합법적으로 챙기는 법</a> <span class="archive-date">2026.06.28</span></li>
+        <li><a href="/blog/posts/small-business-policy-funds-tax-tips.html">소상공인 정책자금 활용, 이자 줄이고 세금까지 아끼는 법</a> <span class="archive-date">2026.06.26</span></li>
+        <li><a href="/blog/posts/labor-cost-expense-tax-saving.html">인건비 비용처리로 절세, 사장님이 꼭 챙길 5가지</a> <span class="archive-date">2026.06.21</span></li>
+      </ul>
+    </details>
+    <details class="archive-cat">
+      <summary>배달앱 <span class="archive-count">23</span></summary>
+      <ul>
+        <li><a href="/blog/posts/delivery-app-packaging-order-fee-comparison-2026.html">포장 주문 수수료 완전 해부 — 배민·쿠팡이츠·요기요 실제 부담 비교</a> <span class="archive-date">2026.08.15</span></li>
+        <li><a href="/blog/posts/delivery-app-bad-review-star-rating-terror-response-guide.html">별점 테러·악성 리뷰 대응법: 배달앱 사장님 생존 가이드</a> <span class="archive-date">2026.08.13</span></li>
+        <li><a href="/blog/posts/delivery-app-coupon-discount-who-pays.html">배달앱 쿠폰 할인, 누가 부담하나? 사장님이 꼭 알아야 할 비용 구조</a> <span class="archive-date">2026.08.10</span></li>
+        <li><a href="/blog/posts/delivery-app-settlement-cycle-payment-date.html">배달앱 정산 주기와 입금일 완벽 정리 — 배민·쿠팡이츠·요기요</a> <span class="archive-date">2026.08.06</span></li>
+        <li><a href="/blog/posts/delivery-exclusive-menu-strategy.html">배달 전용 메뉴 구성 전략: 수수료 먹어도 남는 메뉴 만들기</a> <span class="archive-date">2026.07.16</span></li>
+        <li><a href="/blog/posts/delivery-app-ad-effect-cost-roi-guide.html">배달앱 광고 효과 있을까? 비용 구조와 손익 계산 완전 정리</a> <span class="archive-date">2026.07.13</span></li>
+        <li><a href="/blog/posts/delivery-review-management-increase-sales.html">배달 리뷰 관리로 매출 늘리기: 사장님 실전 가이드</a> <span class="archive-date">2026.07.12</span></li>
+        <li><a href="/blog/posts/delivery-app-fee-structure-complete-guide.html">배달앱 수수료 구조 완전정리 — 사장님 실수령액의 진실</a> <span class="archive-date">2026.07.10</span></li>
+        <li><a href="/blog/posts/delivery-app-revenue-missing-prevention-guide.html">배달앱 매출 누락 방지하는 법: 세금 폭탄 피하는 실전 가이드</a> <span class="archive-date">2026.07.09</span></li>
+        <li><a href="/blog/posts/delivery-app-vat-filing-guide.html">배달 매출 부가세 처리법: 중복신고 없이 정확하게</a> <span class="archive-date">2026.07.08</span></li>
+        <li><a href="/blog/posts/baemin-coupang-eats-settlement-guide.html">배민·쿠팡이츠 정산 완전 이해하기 — 수수료·세금 실전 정리</a> <span class="archive-date">2026.07.07</span></li>
+        <li><a href="/blog/posts/delivery-app-fee-saving-tips-2026.html">배달앱 수수료 절약 방법 총정리 — 2026년 차등제 완벽 공략</a> <span class="archive-date">2026.07.06</span></li>
+        <li><a href="/blog/posts/delivery-app-sales-data-analysis-guide.html">배달 매출 데이터 분석, 사장님이 꼭 알아야 할 5가지 핵심</a> <span class="archive-date">2026.07.05</span></li>
+        <li><a href="/blog/posts/delivery-app-registration-process-and-fees.html">배달앱 입점 절차와 비용 완전 정리 — 배민·쿠팡이츠·요기요</a> <span class="archive-date">2026.07.04</span></li>
+        <li><a href="/blog/posts/delivery-fee-increase-customer-reaction-management.html">배달비 인상 후 고객 반응 관리, 사장님이 꼭 알아야 할 5가지</a> <span class="archive-date">2026.07.03</span></li>
+        <li><a href="/blog/posts/delivery-customer-reorder-strategy.html">배달 고객 재주문 유도법 — 단골 만드는 5가지 실전 전략</a> <span class="archive-date">2026.07.02</span></li>
+        <li><a href="/blog/posts/coupang-eats-vs-baemin-selection-guide-2026.html">쿠팡이츠 vs 배민, 사장님 수익 기준 선택 가이드 2026</a> <span class="archive-date">2026.07.01</span></li>
+        <li><a href="/blog/posts/rainy-season-delivery-sales-fees-vat-guide.html">우천·성수기 배달 매출 급증, 수수료·부가세 놓치면 손해</a> <span class="archive-date">2026.06.30</span></li>
+        <li><a href="/blog/posts/delivery-break-even-point-calculation.html">배달 손익분기점 계산법 — 수수료·배달비 다 빼면 진짜 얼마 남나?</a> <span class="archive-date">2026.06.29</span></li>
+        <li><a href="/blog/posts/delivery-app-sales-tax-filing-cautions.html">배달 매출 세금 신고 주의점 5가지 (중복신고 함정)</a> <span class="archive-date">2026.06.28</span></li>
+        <li><a href="/blog/posts/single-delivery-profitability-analysis.html">단건배달 수익성 분석: 주문당 진짜 남는 돈 계산법</a> <span class="archive-date">2026.06.25</span></li>
+        <li><a href="/blog/posts/how-to-set-delivery-packaging-fee.html">배달 포장비 책정하는 법: 손해 안 보는 계산 공식</a> <span class="archive-date">2026.06.24</span></li>
+        <li><a href="/blog/posts/self-delivery-vs-delivery-agency-comparison.html">자체배달 vs 배달대행 비교, 우리 가게엔 뭐가 이득?</a> <span class="archive-date">2026.06.21</span></li>
+      </ul>
+    </details>
+    <details class="archive-cat">
+      <summary>카드수수료 <span class="archive-count">27</span></summary>
+      <ul>
+        <li><a href="/blog/posts/card-slip-retention-period-5-years.html">카드 전표 보관 의무 기간, 사장님이 꼭 알아야 할 5년의 법칙</a> <span class="archive-date">2026.08.15</span></li>
+        <li><a href="/blog/posts/who-pays-interest-free-installment-cost.html">무이자 할부 비용은 누가 내나? 사장님이 꼭 알아야 할 카드 수수료 구조</a> <span class="archive-date">2026.08.13</span></li>
+        <li><a href="/blog/posts/van-pg-card-fee-difference-guide.html">밴사와 PG사 차이, 사장님이 꼭 알아야 할 카드수수료 핵심 정리</a> <span class="archive-date">2026.08.11</span></li>
+        <li><a href="/blog/posts/card-fee-refund-on-payment-cancellation.html">결제 취소하면 카드수수료도 돌려받나? 사장님이 꼭 알아야 할 진실</a> <span class="archive-date">2026.08.08</span></li>
+        <li><a href="/blog/posts/subscription-recurring-payment-card-fee-guide.html">정기결제·구독 수수료, 사장님이 꼭 알아야 할 카드수수료 진짜 구조</a> <span class="archive-date">2026.08.04</span></li>
+        <li><a href="/blog/posts/card-company-settlement-date-guide.html">카드사별 정산일 완전 정리 — 사장님 통장에 언제 들어오나?</a> <span class="archive-date">2026.07.16</span></li>
+        <li><a href="/blog/posts/subscription-regular-payment-card-fee-guide.html">정기결제 구독 수수료, 사장님이 꼭 알아야 할 비용 처리법</a> <span class="archive-date">2026.07.15</span></li>
+        <li><a href="/blog/posts/card-terminal-types-and-costs-guide.html">카드 단말기 종류와 비용 총정리 — 사장님이 꼭 알아야 할 선택 기준</a> <span class="archive-date">2026.07.14</span></li>
+        <li><a href="/blog/posts/card-fee-refund-guide-for-small-business.html">카드 수수료 돌려받는 법 — 소상공인이라면 꼭 확인하세요</a> <span class="archive-date">2026.07.11</span></li>
+        <li><a href="/blog/posts/card-fee-preferential-rate-sales-criteria-2026.html">우대수수료 대상 매출 기준 완벽 정리 (2026년 최신)</a> <span class="archive-date">2026.07.10</span></li>
+        <li><a href="/blog/posts/card-fee-reduction-real-strategy.html">카드수수료 절감 현실 전략: 사장님이 바로 써먹는 5가지</a> <span class="archive-date">2026.07.09</span></li>
+        <li><a href="/blog/posts/card-sales-settlement-cycle-guide.html">카드 매출 정산 주기 완전 정복 — 사장님 통장은 언제 채워질까?</a> <span class="archive-date">2026.07.08</span></li>
+        <li><a href="/blog/posts/small-merchant-card-fee-rate-guide.html">영세 중소가맹점 수수료율 완벽 정리 — 내 매출 구간은 몇 %?</a> <span class="archive-date">2026.07.07</span></li>
+        <li><a href="/blog/posts/card-fee-preferential-rate-application-guide.html">카드 수수료 우대 신청 방법 완전 정리 (2026년 최신)</a> <span class="archive-date">2026.07.06</span></li>
+        <li><a href="/blog/posts/annual-sales-card-fee-rate-guide.html">연 매출별 카드 수수료율 완전 정리 (2025~2026 최신)</a> <span class="archive-date">2026.07.05</span></li>
+        <li><a href="/blog/posts/card-vs-cash-sales-ratio-tax-guide.html">카드 매출 vs 현금 매출 비중, 사장님이 꼭 알아야 할 세금 차이</a> <span class="archive-date">2026.07.04</span></li>
+        <li><a href="/blog/posts/low-fee-payment-methods-guide.html">수수료 낮은 결제수단 총정리 — 사장님 비용 줄이는 법</a> <span class="archive-date">2026.07.03</span></li>
+        <li><a href="/blog/posts/cash-discount-trap-card-fee-tax-risk.html">현금 유도 할인의 함정: 아끼려다 더 내는 카드수수료 절세의 역설</a> <span class="archive-date">2026.07.02</span></li>
+        <li><a href="/blog/posts/card-sales-omission-penalties-korea.html">카드 매출 누락 시 불이익 총정리 — 가산세부터 세무조사까지</a> <span class="archive-date">2026.07.01</span></li>
+        <li><a href="/blog/posts/card-fee-delivery-app-fee-total-guide.html">카드수수료 + 배달앱 결제 수수료까지 합산하면 얼마?</a> <span class="archive-date">2026.06.30</span></li>
+        <li><a href="/blog/posts/card-fee-accounting-guide.html">카드 수수료 회계처리 완벽 정리 — 지급수수료·부가세·절세까지</a> <span class="archive-date">2026.06.29</span></li>
+        <li><a href="/blog/posts/vat-credit-card-deduction-limit-2026.html">부가세 신용카드 공제 한도, 2026년 연 1000만원 총정리</a> <span class="archive-date">2026.06.28</span></li>
+        <li><a href="/blog/posts/credit-card-sales-tax-deduction-guide.html">신용카드 매출세액공제 받기, 부가세 1.3% 돌려받는 법</a> <span class="archive-date">2026.06.27</span></li>
+        <li><a href="/blog/posts/card-company-settlement-dates-guide.html">카드사별 정산일 정리 - 내 매출 언제 입금될까?</a> <span class="archive-date">2026.06.26</span></li>
+        <li><a href="/blog/posts/subscription-recurring-payment-fees-2026.html">정기결제 구독 수수료, 2026년 얼마나 떼일까</a> <span class="archive-date">2026.06.25</span></li>
+        <li><a href="/blog/posts/zeropay-fee-benefits.html">제로페이 수수료 혜택 총정리, 사장님 고정비 줄이는 법</a> <span class="archive-date">2026.06.23</span></li>
+        <li><a href="/blog/posts/simple-payment-fee-comparison.html">간편결제 수수료 비교, 페이별로 진짜 얼마 떼일까</a> <span class="archive-date">2026.06.22</span></li>
+      </ul>
+    </details>
+    <details class="archive-cat">
+      <summary>사업자등록 <span class="archive-count">27</span></summary>
+      <ul>
+        <li><a href="/blog/posts/business-transfer-premium-tax-guide.html">가게 넘길 때 양도양수와 권리금, 세금까지 정리했습니다</a> <span class="archive-date">2026.08.16</span></li>
+        <li><a href="/blog/posts/sole-proprietor-to-corporation-conversion-timing.html">개인사업자 법인 전환 시기, 언제가 딱 맞을까?</a> <span class="archive-date">2026.08.13</span></li>
+        <li><a href="/blog/posts/business-name-trademark-check-before-registration.html">상호 정할 때 상표권 확인 안 하면 간판 뜯는다</a> <span class="archive-date">2026.08.11</span></li>
+        <li><a href="/blog/posts/business-registration-correction-address-industry.html">주소·업종 바꿀 때 사업자등록 정정신고 완벽 가이드</a> <span class="archive-date">2026.08.09</span></li>
+        <li><a href="/blog/posts/business-bank-account-card-setup-guide.html">사업자 통장·카드 만들기 — 개업 직후 꼭 챙겨야 할 실전 가이드</a> <span class="archive-date">2026.08.06</span></li>
+        <li><a href="/blog/posts/business-lease-contract-precautions.html">사업장 임대차계약 주의점: 사장님이 꼭 알아야 할 7가지</a> <span class="archive-date">2026.08.02</span></li>
+        <li><a href="/blog/posts/side-business-registration-guide-korea.html">부업도 사업자등록 해야 하나? 기준·절차·주의사항 총정리</a> <span class="archive-date">2026.07.15</span></li>
+        <li><a href="/blog/posts/individual-vs-corporation-business-comparison.html">개인사업자 vs 법인 차이 완전정리 — 세금·책임·비용까지</a> <span class="archive-date">2026.07.14</span></li>
+        <li><a href="/blog/posts/business-lease-contract-checklist.html">사업장 임대차계약, 계약서 쓰기 전에 꼭 확인할 7가지</a> <span class="archive-date">2026.07.13</span></li>
+        <li><a href="/blog/posts/online-business-registration-hometax-guide.html">온라인 사업자등록 따라하기 — 홈택스 5단계 완전정복</a> <span class="archive-date">2026.07.10</span></li>
+        <li><a href="/blog/posts/joint-business-registration-precautions.html">공동사업자 등록 주의사항 7가지 — 동업 전에 꼭 확인하세요</a> <span class="archive-date">2026.07.09</span></li>
+        <li><a href="/blog/posts/business-type-code-guide-for-self-employed.html">업종코드 정하는 법 자영업 완전 정복 — 세금이 달라진다</a> <span class="archive-date">2026.07.08</span></li>
+        <li><a href="/blog/posts/simplified-vs-general-vat-selection-guide.html">간이과세 vs 일반과세, 내 사업엔 어떤 게 유리할까?</a> <span class="archive-date">2026.07.07</span></li>
+        <li><a href="/blog/posts/business-registration-procedure-guide.html">사업자등록 절차 한눈에 정리 — 개업 전 꼭 확인하세요</a> <span class="archive-date">2026.07.06</span></li>
+        <li><a href="/blog/posts/business-unit-taxation-system-guide.html">사업자 단위 과세 제도 완벽 정리 — 여러 매장 운영 사장님 필독</a> <span class="archive-date">2026.07.05</span></li>
+        <li><a href="/blog/posts/home-address-business-registration.html">집 주소로 사업자등록 가능? 조건·서류·주의사항 완벽 정리</a> <span class="archive-date">2026.07.04</span></li>
+        <li><a href="/blog/posts/business-registration-certificate-reissue-guide.html">사업자등록증 재발급 방법 총정리 — 홈택스 5분 완성</a> <span class="archive-date">2026.07.03</span></li>
+        <li><a href="/blog/posts/business-license-required-industries-guide.html">사업 시작 전 필수! 인허가 필요 업종 완벽 정리</a> <span class="archive-date">2026.07.02</span></li>
+        <li><a href="/blog/posts/how-to-choose-business-type-and-category.html">사업자등록 업태·종목 정하는 법: 세금이 달라집니다</a> <span class="archive-date">2026.07.01</span></li>
+        <li><a href="/blog/posts/unregistered-business-risks-korea.html">사업자등록 안 하면 생기는 무등록 영업의 진짜 위험</a> <span class="archive-date">2026.06.30</span></li>
+        <li><a href="/blog/posts/things-to-do-after-business-registration.html">사업자등록 후 첫 할 일 7가지 — 놓치면 가산세</a> <span class="archive-date">2026.06.29</span></li>
+        <li><a href="/blog/posts/franchise-startup-registration-procedure.html">프랜차이즈 창업 등록 절차 5단계 총정리</a> <span class="archive-date">2026.06.28</span></li>
+        <li><a href="/blog/posts/business-suspension-closure-report-guide.html">휴업·폐업 신고 방법 총정리: 사장님 손해 막는 법</a> <span class="archive-date">2026.06.26</span></li>
+        <li><a href="/blog/posts/sole-proprietor-vs-corporation-difference.html">개인사업자 vs 법인 차이, 2026년 기준 핵심 정리</a> <span class="archive-date">2026.06.24</span></li>
+        <li><a href="/blog/posts/commercial-lease-contract-checklist.html">사업장 임대차계약 주의점 5가지, 계약 전 꼭 확인하세요</a> <span class="archive-date">2026.06.23</span></li>
+        <li><a href="/blog/posts/online-sales-business-registration-guide.html">통신판매업 신고 방법, 면제 기준부터 비용까지 한 번에</a> <span class="archive-date">2026.06.22</span></li>
+        <li><a href="/blog/posts/business-registration-required-documents-2026.html">사업자등록 필요 서류 총정리 (2026 최신)</a> <span class="archive-date">2026.06.21</span></li>
+      </ul>
+    </details>
+    <details class="archive-cat">
+      <summary>직원관리 <span class="archive-count">27</span></summary>
+      <ul>
+        <li><a href="/blog/posts/recommended-resignation-unemployment-separation-certificate.html">권고사직과 실업급여 이직확인서, 사장님이 꼭 챙겨야 할 것들</a> <span class="archive-date">2026.08.16</span></li>
+        <li><a href="/blog/posts/parttime-worker-industrial-accident-guide.html">알바가 일하다 다쳤을 때 산재, 사장님이 꼭 알아야 할 처리법</a> <span class="archive-date">2026.08.14</span></li>
+        <li><a href="/blog/posts/five-mandatory-legal-education-for-small-business.html">직원 있는 사장님 필독! 법정의무교육 다섯 가지 총정리</a> <span class="archive-date">2026.08.11</span></li>
+        <li><a href="/blog/posts/payslip-penalty-fine-guide-for-small-business.html">임금명세서 안 주면 과태료? 사장님이 꼭 알아야 할 핵심 정리</a> <span class="archive-date">2026.08.09</span></li>
+        <li><a href="/blog/posts/hiring-family-employee-tax-insurance-guide.html">가족 직원 고용 시 꼭 알아야 할 세금·4대보험 주의사항</a> <span class="archive-date">2026.08.07</span></li>
+        <li><a href="/blog/posts/part-time-under-15-hours-regulations.html">주 15시간 미만 알바 규정 완전정복: 주휴수당·4대보험·근로계약서</a> <span class="archive-date">2026.07.15</span></li>
+        <li><a href="/blog/posts/employer-4-insurance-contribution-2026.html">4대보험 사업주 부담금 완벽 정리 — 2026년 요율·계산법·절감 팁</a> <span class="archive-date">2026.07.14</span></li>
+        <li><a href="/blog/posts/parttime-dismissal-recommendation-resignation-guide.html">알바 해고·권고사직 전에 꼭 확인할 법적 주의점 총정리</a> <span class="archive-date">2026.07.13</span></li>
+        <li><a href="/blog/posts/probationary-period-salary-rules-korea-2026.html">수습기간 급여와 규정: 사장님이 꼭 알아야 할 2026년 기준</a> <span class="archive-date">2026.07.12</span></li>
+        <li><a href="/blog/posts/employment-contract-writing-guide-for-small-business.html">근로계약서 작성법 완전 정리 — 알바·직원 고용 전 필수 체크</a> <span class="archive-date">2026.07.11</span></li>
+        <li><a href="/blog/posts/2026-minimum-wage-labor-cost-guide.html">2026 최저임금 10,320원, 사장님이 꼭 알아야 할 실전 인건비 계산법</a> <span class="archive-date">2026.07.10</span></li>
+        <li><a href="/blog/posts/employee-payroll-tax-reporting-guide-small-business.html">직원 급여 신고 방법 소상공인 완전 정복 — 원천세·4대보험 한눈에</a> <span class="archive-date">2026.07.09</span></li>
+        <li><a href="/blog/posts/part-time-annual-leave-allowance-calculation.html">알바 연차 수당 계산 방법 완전 정복 — 사장님 필독</a> <span class="archive-date">2026.07.08</span></li>
+        <li><a href="/blog/posts/juyu-sudang-calculation-self-employed-2026.html">주휴수당 계산법 자영업자 완벽 정리 (2026년 최신)</a> <span class="archive-date">2026.07.07</span></li>
+        <li><a href="/blog/posts/part-time-worker-4-major-insurance-enrollment-criteria.html">알바 4대보험 가입 기준 완전 정리 (2026년 최신)</a> <span class="archive-date">2026.07.06</span></li>
+        <li><a href="/blog/posts/working-hours-management-and-record-keeping-guide.html">근로시간 관리와 기록, 사장님이 꼭 알아야 할 실전 가이드</a> <span class="archive-date">2026.07.05</span></li>
+        <li><a href="/blog/posts/employee-motivation-small-business-practical-tips.html">직원 동기부여 현실 방법 — 돈 말고도 통하는 7가지 전략</a> <span class="archive-date">2026.07.04</span></li>
+        <li><a href="/blog/posts/how-to-write-part-time-job-posting.html">알바 채용 공고 잘 쓰는 법 — 지원자 확 늘리는 실전 가이드</a> <span class="archive-date">2026.07.03</span></li>
+        <li><a href="/blog/posts/labor-law-under-5-employees-guide.html">5인 미만 사업장 노동법 완전 정리 — 지켜야 할 것 vs 안 해도 되는 것</a> <span class="archive-date">2026.07.02</span></li>
+        <li><a href="/blog/posts/labor-cost-tax-deduction-guide-for-small-business.html">인건비 비용처리와 절세: 사장님이 꼭 챙겨야 할 실전 가이드</a> <span class="archive-date">2026.07.01</span></li>
+        <li><a href="/blog/posts/night-holiday-pay-calculation-guide-2026.html">야간·휴일 수당 계산법 완전 정리 — 사장님이 꼭 알아야 할 2026년 기준</a> <span class="archive-date">2026.06.30</span></li>
+        <li><a href="/blog/posts/foreign-part-time-worker-hiring-guide.html">외국인 알바 고용 절차 완전 정리 — 비자 확인부터 4대보험까지</a> <span class="archive-date">2026.06.29</span></li>
+        <li><a href="/blog/posts/employee-no-show-absence-guide.html">직원 무단결근 대처법, 즉시 해고는 금물입니다</a> <span class="archive-date">2026.06.27</span></li>
+        <li><a href="/blog/posts/severance-pay-criteria-calculation.html">퇴직금 지급 기준과 계산법, 사장님이 꼭 알아야 할 핵심</a> <span class="archive-date">2026.06.26</span></li>
+        <li><a href="/blog/posts/employer-4-major-insurance-contributions-2026.html">4대보험 사업주 부담금, 2026년 얼마나 낼까? (요율·계산)</a> <span class="archive-date">2026.06.24</span></li>
+        <li><a href="/blog/posts/probation-period-wage-rules-korea-2026.html">수습기간 급여, 90% 감액 가능할까? 사장님 필수 규정 총정리</a> <span class="archive-date">2026.06.22</span></li>
+        <li><a href="/blog/posts/how-to-write-employment-contract-2026.html">근로계약서 작성법: 사장님 벌금 막는 필수 5가지</a> <span class="archive-date">2026.06.21</span></li>
+      </ul>
+    </details>
+<!-- BLOGBOT:ARCHIVE:END -->
+    </nav>
   </div>
 
   <aside class="sidebar">
