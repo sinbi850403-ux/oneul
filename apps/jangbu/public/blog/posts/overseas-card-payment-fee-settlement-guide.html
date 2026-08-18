@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>해외카드 결제 수수료와 정산, 사장님이 꼭 알아야 할 모든 것 | 오늘장부 블로그</title>
+  <meta name="description" content="외국인 손님의 비자·마스터카드 결제 시 수수료 구조, 정산 일정, DCC 주의사항까지 한국 소상공인을 위해 꼼꼼하게 정리했습니다.">
+  <meta property="og:title" content="해외카드 결제 수수료와 정산, 사장님이 꼭 알아야 할 모든 것">
+  <meta property="og:description" content="외국인 손님의 비자·마스터카드 결제 시 수수료 구조, 정산 일정, DCC 주의사항까지 한국 소상공인을 위해 꼼꼼하게 정리했습니다.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://xn--wh1bw0st1gbrb.kr/blog/posts/overseas-card-payment-fee-settlement-guide.html">
+  <meta property="og:image" content="https://images.pexels.com/photos/32269246/pexels-photo-32269246.jpeg?auto=compress&amp;cs=tinysrgb&amp;fit=crop&amp;h=627&amp;w=1200">
+  <link rel="canonical" href="https://xn--wh1bw0st1gbrb.kr/blog/posts/overseas-card-payment-fee-settlement-guide.html">
+  <link rel="icon" href="/icons/icon-192.png">
+  <!-- 방문자 분석 (GA4 + Clarity + 네이버). ID는 /analytics.js 상단에서 관리. -->
+  <script defer src="/analytics.js"></script>
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2764893290310463" crossorigin="anonymous"></script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Noto Sans KR', sans-serif; background: #f8f9fa; color: #1a1a1a; line-height: 1.7; }
+    header { background: #fff; border-bottom: 1px solid #eee; position: sticky; top: 0; z-index: 100; }
+    .header-inner { max-width: 1100px; margin: 0 auto; padding: 0 20px; height: 60px; display: flex; align-items: center; justify-content: space-between; }
+    .logo { display: flex; align-items: center; gap: 8px; text-decoration: none; }
+    .logo-icon { width: 32px; height: 32px; background: #FF6B35; border-radius: 8px; display: flex; align-items: center; justify-content: center; color: white; font-weight: 900; font-size: 16px; }
+    .logo-text { font-size: 18px; font-weight: 800; color: #FF6B35; }
+    .logo-sub { font-size: 13px; color: #888; margin-left: 4px; }
+    .header-cta { background: #FF6B35; color: white; border: none; padding: 8px 16px; border-radius: 8px; font-size: 13px; font-weight: 600; cursor: pointer; text-decoration: none; }
+    /* minmax(0, ...): 표처럼 최소폭이 큰 콘텐츠가 그리드 트랙을 밀어내 페이지 전체가
+       가로로 스크롤되는 것을 막는다. 1fr만 쓰면 트랙 최소폭이 auto라 끌려간다. */
+    .wrap { max-width: 1100px; margin: 0 auto; padding: 32px 20px; display: grid; grid-template-columns: minmax(0, 1fr) 300px; gap: 40px; }
+    @media (max-width: 768px) { .wrap { grid-template-columns: minmax(0, 1fr); } .sidebar { display: none; } }
+    article { background: white; border-radius: 20px; overflow: hidden; box-shadow: 0 2px 12px rgba(0,0,0,0.06); }
+    .article-head { padding: 32px 32px 24px; border-bottom: 1px solid #f0f0f0; }
+    .article-cat { font-size: 12px; font-weight: 700; color: #FF6B35; text-transform: uppercase; margin-bottom: 12px; }
+    .article-cat a { color: #FF6B35; text-decoration: none; }
+    .article-title { font-size: clamp(20px, 4vw, 28px); font-weight: 900; line-height: 1.4; color: #1a1a1a; margin-bottom: 16px; }
+    .article-meta { font-size: 13px; color: #aaa; display: flex; gap: 16px; align-items: center; flex-wrap: wrap; }
+    .hero-img { width: 100%; aspect-ratio: 16/9; object-fit: cover; background: #f0f0f0; }
+    .article-body { padding: 32px; }
+    .article-body h2 { font-size: 20px; font-weight: 800; color: #1a1a1a; margin: 32px 0 14px; padding-bottom: 8px; border-bottom: 2px solid #FF6B35; }
+    .article-body h3 { font-size: 16px; font-weight: 700; color: #333; margin: 20px 0 10px; }
+    .article-body p { margin-bottom: 14px; color: #333; font-size: 15px; }
+    .article-body ul, .article-body ol { padding-left: 20px; margin-bottom: 14px; }
+    .article-body li { margin-bottom: 6px; color: #333; font-size: 15px; }
+    article { min-width: 0; }
+    /* 좁은 화면에서는 표만 자기 안에서 가로 스크롤시킨다. min-width:100%가 있어야
+       넓은 화면에서 기존처럼 폭을 꽉 채운다. */
+    .article-body table { display: block; width: max-content; min-width: 100%; max-width: 100%; overflow-x: auto; border-collapse: collapse; margin: 16px 0; font-size: 14px; }
+    .article-body th { background: #FF6B35; color: white; padding: 10px 14px; text-align: left; }
+    .article-body td { padding: 10px 14px; border-bottom: 1px solid #f0f0f0; }
+    .article-body tr:nth-child(even) td { background: #fff8f5; }
+    .article-body img { width: 100%; border-radius: 12px; margin: 16px 0; }
+    .article-body strong { color: #1a1a1a; }
+    .article-body blockquote { background: #fff8f5; border-left: 4px solid #FF6B35; padding: 16px 20px; border-radius: 0 12px 12px 0; margin: 16px 0; font-style: italic; color: #555; }
+    .article-body a { color: #FF6B35; }
+    .tags { padding: 20px 32px; border-top: 1px solid #f0f0f0; display: flex; gap: 8px; flex-wrap: wrap; }
+    .tag { background: #fff3ee; color: #FF6B35; border-radius: 20px; padding: 5px 12px; font-size: 12px; font-weight: 600; text-decoration: none; }
+    .tag:hover { background: #FF6B35; color: white; }
+    .ad-slot { background: #f0f0f0; border-radius: 12px; display: flex; align-items: center; justify-content: center; color: #bbb; font-size: 12px; min-height: 90px; margin: 24px 0; }
+    .cta-box { background: linear-gradient(135deg, #FF6B35, #ff8c42); border-radius: 20px; padding: 32px; text-align: center; color: white; margin-top: 24px; }
+    .cta-box h3 { font-size: 22px; font-weight: 900; margin-bottom: 10px; }
+    .cta-box p { font-size: 14px; opacity: 0.9; line-height: 1.6; margin-bottom: 20px; }
+    .cta-box a { background: white; color: #FF6B35; border-radius: 12px; padding: 13px 28px; font-weight: 800; font-size: 15px; text-decoration: none; display: inline-block; }
+    .nav-links { display: flex; gap: 16px; margin-top: 24px; }
+    .nav-back { color: #FF6B35; text-decoration: none; font-size: 14px; font-weight: 600; }
+    .nav-back::before { content: '\2190 '; }
+    .sidebar-cta { background: linear-gradient(135deg, #FF6B35, #ff8c42); color: white; border-radius: 16px; padding: 24px; text-align: center; position: sticky; top: 80px; }
+    .sidebar-cta h3 { font-size: 16px; font-weight: 900; margin-bottom: 8px; }
+    .sidebar-cta p { font-size: 13px; opacity: 0.9; line-height: 1.5; margin-bottom: 16px; }
+    .sidebar-cta a { background: white; color: #FF6B35; border-radius: 8px; padding: 10px 20px; font-weight: 700; font-size: 14px; text-decoration: none; display: inline-block; }
+    footer { background: #1a1a1a; color: #888; padding: 40px 20px; margin-top: 60px; }
+    .footer-inner { max-width: 1100px; margin: 0 auto; }
+    .footer-links { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 16px; }
+    .footer-links a { color: #888; text-decoration: none; font-size: 13px; }
+    .footer-copy { font-size: 12px; }
+  </style>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "해외카드 결제 수수료와 정산, 사장님이 꼭 알아야 할 모든 것",
+  "description": "외국인 손님의 비자·마스터카드 결제 시 수수료 구조, 정산 일정, DCC 주의사항까지 한국 소상공인을 위해 꼼꼼하게 정리했습니다.",
+  "datePublished": "2026-08-18",
+  "dateModified": "2026-08-18",
+  "image": "https://images.pexels.com/photos/32269246/pexels-photo-32269246.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200",
+  "author": {
+    "@type": "Organization",
+    "name": "오늘장부",
+    "url": "https://오늘장부.kr"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "오늘장부",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://xn--wh1bw0st1gbrb.kr/icons/icon-192.png"
+    }
+  },
+  "mainEntityOfPage": "https://xn--wh1bw0st1gbrb.kr/blog/posts/overseas-card-payment-fee-settlement-guide.html",
+  "keywords": "해외카드수수료, 카드정산, 외국인결제, 소상공인, 카드수수료"
+}
+  </script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "외국인 손님의 해외카드 결제도 부가가치세 신고 대상인가요?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "네, 국내 가맹점에서 이루어진 외국인의 카드 결제는 국내 과세 거래입니다. 따라서 일반 과세자는 해당 매출을 포함하여 부가세를 신고해야 합니다. 단, 외국인 관광객 대상으로 별도 세금 환급(Tax Refund) 가맹점으로 등록된 경우에는 별도 절차가 있으니, 정확한 내용은 국세청 또는 세무사와 상담하세요."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "해외카드 결제가 국내 영세가맹점 매출액 산정에 포함되나요?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "일반적으로 가맹점의 연 매출액을 기준으로 영세·중소가맹점 구간을 산정할 때, 해외카드 매출도 전체 매출에 포함될 수 있습니다. 정확한 산정 방식은 여신금융협회 또는 거래 카드사에 문의하시기 바랍니다."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "단말기에서 해외카드 결제 오류가 자주 나는데, 어떻게 해야 하나요?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "해외카드 결제 오류는 대부분 단말기(CAT)의 EMV(IC칩) 설정, VAN사 계약 범위, 또는 특정 브랜드 미지원이 원인입니다. 계약된 VAN사 고객센터에 해외카드 수용 가능 브랜드와 설정 상태를 확인하고, 필요시 단말기 펌웨어 업데이트를 요청하세요."
+      }
+    }
+  ]
+}
+  </script>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <a href="/" class="logo">
+      <div class="logo-icon">장</div>
+      <span class="logo-text">오늘장부</span>
+      <span class="logo-sub">블로그</span>
+    </a>
+    <a href="/" class="header-cta">무료로 시작하기</a>
+  </div>
+</header>
+
+<div class="wrap">
+  <main>
+    <div class="nav-links">
+      <a href="/blog/" class="nav-back">블로그 목록으로</a>
+    </div>
+
+    <!-- 자동 광고(Auto ads)가 배치를 정하므로 유닛을 직접 넣지 않는다. 여백만 확보한다. -->
+    <div class="ad-slot"></div>
+
+    <article>
+      <div class="article-head">
+        <div class="article-cat"><a href="/blog/">카드수수료</a></div>
+        <h1 class="article-title">해외카드 결제 수수료와 정산, 사장님이 꼭 알아야 할 모든 것</h1>
+        <div class="article-meta">
+          <span>오늘장부 편집팀</span>
+          <span>2026년 08월 18일</span>
+        </div>
+      </div>
+      <img src="https://images.pexels.com/photos/32269246/pexels-photo-32269246.jpeg?auto=compress&amp;cs=tinysrgb&amp;fit=crop&amp;h=627&amp;w=1200" alt="해외카드 결제 수수료와 정산, 사장님이 꼭 알아야 할 모든 것" class="hero-img" loading="lazy">
+      <div class="article-body">
+<p>관광 상권이나 번화가에서 장사하는 사장님이라면 외국인 손님의 비자(Visa)·마스터카드(Mastercard) 결제가 점점 늘어나고 있다는 걸 피부로 느끼실 겁니다. 2025년 방한 외국인 관광객은 2,000만 명을 넘어설 것으로 전망되고, 이들이 국내에서 쓰는 돈은 연간 30조 원 규모에 달합니다. 기회인 동시에, 수수료·정산 방식이 국내 카드와 달라서 모르면 손해 볼 수 있는 함정도 있습니다. 오늘은 <strong>해외카드 결제 수수료의 구조</strong>와 <strong>정산 일정</strong>, 그리고 놓치기 쉬운 주의사항을 한 번에 정리해 드립니다.</p>
+
+<h2>해외카드 결제, 국내 카드와 뭐가 다른가요?</h2>
+<p>외국인 손님이 비자·마스터카드처럼 해외에서 발급된 카드로 결제하면, 가맹점(사장님) 입장에서는 아래 세 가지 비용 구조가 겹쳐서 발생합니다.</p>
+
+<ul>
+  <li><strong>가맹점 수수료(MDR, Merchant Discount Rate)</strong>: 결제를 처리한 국내 카드사(VAN사 포함)가 가맹점에게 부과하는 수수료입니다.</li>
+  <li><strong>국제 브랜드 수수료(Interchange + Assessment Fee)</strong>: 비자·마스터카드 등 국제 브랜드가 카드사에 부과하고, 카드사가 가맹점 수수료에 반영하는 수수료입니다. 이 비용은 일반적으로 국내 카드 결제보다 높게 책정됩니다.</li>
+  <li><strong>환전·환율 차이</strong>: 외화로 승인된 금액이 원화로 정산될 때 발생하는 환율 차이입니다. 가맹점이 직접 부담하는 항목은 아니지만, 결제 시점과 정산 시점의 환율 차이가 실수령액에 영향을 줄 수 있습니다.</li>
+</ul>
+
+<p>이 모든 비용이 합산되어, 해외카드 결제 시 가맹점이 체감하는 실질 수수료 부담은 <strong>약 2~5% 수준</strong>으로 국내 카드보다 높습니다. 영세·중소가맹점 우대수수료(0%대~1%대)에 익숙한 사장님이라면 꽤 큰 차이를 느낄 수 있습니다.</p>
+
+<h2>2025년 국내 카드 우대수수료율 한눈에 보기</h2>
+<p>비교를 위해, 2025년 2월 14일부터 적용된 국내 카드 영세·중소가맹점 우대수수료율을 먼저 확인하세요. 금융위원회 발표에 따르면 이번 개편으로 매출액 구간별로 <strong>0.05~0.10%p 인하</strong>되었습니다.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>가맹점 구분</th>
+      <th>연 매출 기준</th>
+      <th>신용카드 수수료율(참고)</th>
+      <th>체크카드 수수료율(참고)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>영세가맹점</td>
+      <td>3억 원 이하</td>
+      <td>0.5%</td>
+      <td>0.25%</td>
+    </tr>
+    <tr>
+      <td>중소가맹점 1구간</td>
+      <td>3억~5억 원</td>
+      <td>1.1%</td>
+      <td>0.85%</td>
+    </tr>
+    <tr>
+      <td>중소가맹점 2구간</td>
+      <td>5억~10억 원</td>
+      <td>1.25%</td>
+      <td>1.0%</td>
+    </tr>
+    <tr>
+      <td>중소가맹점 3구간</td>
+      <td>10억~30억 원</td>
+      <td>1.5%</td>
+      <td>1.25%</td>
+    </tr>
+    <tr>
+      <td>일반가맹점</td>
+      <td>30억 원 초과</td>
+      <td>카드사별 협의</td>
+      <td>카드사별 협의</td>
+    </tr>
+  </tbody>
+</table>
+
+<blockquote>⚠️ 위 수수료율은 참고용입니다. 정확한 적용 수수료율은 여신금융협회 '가맹점 매출거래정보 통합조회 시스템' 또는 각 카드사 고객센터에서 확인하세요.</blockquote>
+
+<p><strong>해외카드는 이 우대수수료 적용 대상이 아닙니다.</strong> 영세·중소가맹점 우대수수료는 국내 카드사와 계약을 맺은 가맹점이 국내 발급 카드 결제 시 적용받는 혜택입니다. 비자·마스터 등 해외 발급 카드의 수수료는 별도 구조로 책정되므로 반드시 구분해야 합니다.</p>
+
+<h2>해외카드 정산, 얼마나 걸리나요?</h2>
+<p>국내 카드 결제는 보통 영업일 기준 2~3일 내 정산이 완료됩니다. 반면 해외카드 결제는 정산 구조가 더 복잡합니다.</p>
+
+<ol>
+  <li><strong>승인(Authorization)</strong>: 결제 단말기에서 즉시 처리됩니다.</li>
+  <li><strong>전표 매입(Clearing)</strong>: 국내 카드사가 해외 발행사에 대금을 청구하는 단계입니다. 여기서 1~3 영업일이 소요될 수 있습니다.</li>
+  <li><strong>정산(Settlement)</strong>: 전표 매입이 완료된 뒤 가맹점 계좌로 입금됩니다. 전체 과정이 완료되기까지 <strong>통상 3~5 영업일</strong>이 걸리며, 경우에 따라 더 길어질 수 있습니다.</li>
+</ol>
+
+<p>결제 취소 시에는 더 주의가 필요합니다. 전표 매입 방식으로 취소가 진행되면 실제로 환불 금액이 반영되기까지 <strong>30~90일</strong>이 걸리는 경우도 있습니다. 외국인 손님이 환불을 요청할 때 이 점을 미리 안내하고, 취소 전표(영수증)를 반드시 받아두세요.</p>
+
+<h2>DCC(해외원화결제)란? 가맹점은 왜 거절해야 하나요?</h2>
+<p>외국인 손님이 카드를 꽂으면 단말기에서 "원화로 결제하시겠습니까?" 라는 화면이 뜨는 경우가 있습니다. 이것이 바로 <strong>DCC(Dynamic Currency Conversion, 동적통화변환)</strong>입니다.</p>
+
+<p>DCC를 선택하면 손님은 자국 통화 대신 원화로 결제 금액을 확인할 수 있지만, 그 편의의 대가로 <strong>약 3~8%의 추가 수수료</strong>가 결제 금액에 붙습니다. 이 수수료는 DCC 서비스를 제공하는 사업자에게 귀속되며, 손님이 본국에서 청구서를 받아보면 실제로 훨씬 큰 금액이 빠져나간 것을 보게 됩니다. 결국 손님의 불만이 가맹점으로 향할 수 있습니다.</p>
+
+<p>가맹점 입장에서도 DCC는 수수료 구조를 복잡하게 만들 수 있습니다. <strong>외국인 손님에게 DCC 화면이 뜨면 '현지 통화(Local Currency)'로 결제하도록 안내하는 것이 손님과 가맹점 모두에게 유리합니다.</strong></p>
+
+<h2>어떤 해외카드 브랜드가 가장 많이 쓰이나요?</h2>
+<p>국내 가맹점에서 가장 흔하게 접하는 해외카드 브랜드는 다음과 같습니다.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>브랜드</th>
+      <th>주요 사용 국가</th>
+      <th>국내 가맹점 통용성</th>
+      <th>특이사항</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Visa (비자)</td>
+      <td>전 세계</td>
+      <td>매우 높음</td>
+      <td>전 세계에서 가장 많은 가맹점에서 통용</td>
+    </tr>
+    <tr>
+      <td>Mastercard (마스터)</td>
+      <td>전 세계</td>
+      <td>매우 높음</td>
+      <td>비자와 함께 세트로 가맹 신청하는 경우 많음</td>
+    </tr>
+    <tr>
+      <td>UnionPay (은련)</td>
+      <td>중국·동남아</td>
+      <td>높음</td>
+      <td>중국 관광객 증가로 수요 확대 중</td>
+    </tr>
+    <tr>
+      <td>JCB</td>
+      <td>일본</td>
+      <td>중간</td>
+      <td>일본인 관광객 대상 가맹점에서 중요</td>
+    </tr>
+    <tr>
+      <td>Amex (아메리칸익스프레스)</td>
+      <td>미국·유럽</td>
+      <td>중간</td>
+      <td>수수료가 높아 일부 가맹점 미수용</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>단말기나 POS에 해외카드 결제 기능이 활성화되어 있는지, 어떤 브랜드까지 지원하는지는 계약한 VAN사 또는 카드사에 미리 확인해두세요. 지원하지 않는 브랜드 카드를 받으려 했다가 결제 실패로 손님을 잃는 일이 생길 수 있습니다.</p>
+
+<h2>매출 관리, 국내·해외카드 한 번에 기록하는 법</h2>
+<p>외국인 손님의 해외카드 결제가 늘어나면 일별 매출 정산이 복잡해집니다. 국내 카드 정산일, 해외카드 정산일, 현금 매출까지 따로 관리하다 보면 부가세 신고 시즌에 머리가 아파집니다. <strong>오늘장부</strong>를 사용하면 카드·현금·배달앱 매출을 하나의 앱에서 날짜별로 기록하고, 부가세 예상액도 자동으로 확인할 수 있어 정산 관리 부담을 크게 줄일 수 있습니다.</p>
+
+<h2>자주 묻는 질문</h2>
+
+<h3>외국인 손님의 해외카드 결제도 부가가치세 신고 대상인가요?</h3>
+<p>네, 국내 가맹점에서 이루어진 외국인의 카드 결제는 국내 과세 거래입니다. 따라서 일반 과세자는 해당 매출을 포함하여 부가세를 신고해야 합니다. 단, 외국인 관광객 대상으로 별도 세금 환급(Tax Refund) 가맹점으로 등록된 경우에는 별도 절차가 있으니, 정확한 내용은 국세청 또는 세무사와 상담하세요.</p>
+
+<h3>해외카드 결제가 국내 영세가맹점 매출액 산정에 포함되나요?</h3>
+<p>일반적으로 가맹점의 연 매출액을 기준으로 영세·중소가맹점 구간을 산정할 때, 해외카드 매출도 전체 매출에 포함될 수 있습니다. 정확한 산정 방식은 여신금융협회 또는 거래 카드사에 문의하시기 바랍니다.</p>
+
+<h3>단말기에서 해외카드 결제 오류가 자주 나는데, 어떻게 해야 하나요?</h3>
+<p>해외카드 결제 오류는 대부분 단말기(CAT)의 EMV(IC칩) 설정, VAN사 계약 범위, 또는 특정 브랜드 미지원이 원인입니다. 계약된 VAN사 고객센터에 해외카드 수용 가능 브랜드와 설정 상태를 확인하고, 필요시 단말기 펌웨어 업데이트를 요청하세요.</p>
+
+<p>외국인 손님이 늘어날수록 해외카드 결제는 선택이 아닌 필수가 됩니다. 수수료 구조를 정확히 파악하고, 정산 일정을 미리 알아두면 불필요한 혼란과 비용 손실을 막을 수 있습니다. 카드·현금·배달앱 매출까지 한 번에 기록하고 싶으시다면 지금 바로 <a href="https://오늘장부.kr">오늘장부 무료로 시작하기</a>를 눌러보세요.</p>
+
+<p>※ 본 글은 2026년 기준 참고용 정보이며, 정확한 신고·금액은 국세청 홈택스 또는 세무사와 상담하세요.</p>
+      </div>
+      <div class="tags">
+        <a href="/blog/?tag=%ED%95%B4%EC%99%B8%EC%B9%B4%EB%93%9C%EC%88%98%EC%88%98%EB%A3%8C" class="tag">해외카드수수료</a> <a href="/blog/?tag=%EC%B9%B4%EB%93%9C%EC%A0%95%EC%82%B0" class="tag">카드정산</a> <a href="/blog/?tag=%EC%99%B8%EA%B5%AD%EC%9D%B8%EA%B2%B0%EC%A0%9C" class="tag">외국인결제</a> <a href="/blog/?tag=%EC%86%8C%EC%83%81%EA%B3%B5%EC%9D%B8" class="tag">소상공인</a> <a href="/blog/?tag=%EC%B9%B4%EB%93%9C%EC%88%98%EC%88%98%EB%A3%8C" class="tag">카드수수료</a>
+      </div>
+    </article>
+
+    <section style="background:#fff8f5;border-radius:16px;padding:24px 28px;margin-top:24px;">
+      <h2 style="font-size:18px;font-weight:800;color:#1a1a1a;margin:0 0 14px;">함께 보면 좋은 글</h2>
+      <ul style="list-style:none;padding:0;margin:0;">
+        <li style="padding:8px 0;border-bottom:1px solid #ffe6d9;"><a href="/blog/posts/card-slip-retention-period-5-years.html" style="color:#FF6B35;text-decoration:none;font-weight:600;font-size:14px;">카드 전표 보관 의무 기간, 사장님이 꼭 알아야 할 5년의 법칙</a></li>
+        <li style="padding:8px 0;border-bottom:1px solid #ffe6d9;"><a href="/blog/posts/who-pays-interest-free-installment-cost.html" style="color:#FF6B35;text-decoration:none;font-weight:600;font-size:14px;">무이자 할부 비용은 누가 내나? 사장님이 꼭 알아야 할 카드 수수료 구조</a></li>
+        <li style="padding:8px 0;border-bottom:1px solid #ffe6d9;"><a href="/blog/posts/van-pg-card-fee-difference-guide.html" style="color:#FF6B35;text-decoration:none;font-weight:600;font-size:14px;">밴사와 PG사 차이, 사장님이 꼭 알아야 할 카드수수료 핵심 정리</a></li>
+        <li style="padding:8px 0;border-bottom:1px solid #ffe6d9;"><a href="/blog/posts/card-fee-refund-on-payment-cancellation.html" style="color:#FF6B35;text-decoration:none;font-weight:600;font-size:14px;">결제 취소하면 카드수수료도 돌려받나? 사장님이 꼭 알아야 할 진실</a></li>
+      </ul>
+    </section>
+
+    <section style="background:#fff8f5;border-radius:16px;padding:24px 28px;margin-top:24px;">
+      <h2 style="font-size:18px;font-weight:800;color:#1a1a1a;margin:0 0 14px;">무료 계산기로 바로 확인하기</h2>
+      <ul style="list-style:none;padding:0;margin:0;">
+        <li style="padding:10px 0;border-bottom:1px solid #ffe6d9;"><a href="/tools/card-fee-calculator/" style="color:#FF6B35;text-decoration:none;font-weight:700;font-size:15px;">카드수수료 계산기</a><div style="font-size:13px;color:#777;margin-top:2px;">연매출로 우대수수료율 구간을 확인하고 환급 대상인지 알아봅니다</div></li>
+      </ul>
+    </section>
+
+    <!-- 자동 광고(Auto ads)가 배치를 정하므로 유닛을 직접 넣지 않는다. 여백만 확보한다. -->
+    <div class="ad-slot"></div>
+
+    <div class="cta-box">
+      <h3>매일 매출 기록, 30초면 끝!</h3>
+      <p>카드·현금·네이버페이·카카오페이<br>여러 결제수단을 한 화면에서 입력<br>부가세 예상액도 자동으로 계산해드려요</p>
+      <a href="/">지금 무료로 시작하기</a>
+    </div>
+  </main>
+
+  <aside class="sidebar">
+    <div class="sidebar-cta">
+      <h3>매일 매출 기록,<br>30초면 끝!</h3>
+      <p>카드·현금·배달앱 한 번에<br>부가세 예상액도 자동 계산</p>
+      <a href="/">무료로 시작하기</a>
+    </div>
+  </aside>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-links">
+      <a href="/">서비스 홈</a>
+      <a href="/blog/">블로그</a>
+      <a href="/about/">소개</a>
+      <a href="/contact/">문의하기</a>
+      <a href="/blog/about.html">소개 및 문의</a>
+      <a href="/privacy">개인정보처리방침</a>
+      <a href="/terms">이용약관</a>
+    </div>
+    <div class="footer-copy">© 2026 오늘장부. All rights reserved.</div>
+  </div>
+</footer>
+
+</body>
+</html>
