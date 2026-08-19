@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>손익계산서 읽는 법: 사장님이 꼭 알아야 할 5가지 숫자 | 오늘장부 블로그</title>
+  <meta name="description" content="매출이 늘어도 왜 통장이 비어 있을까? 소상공인이 손익계산서의 핵심 5가지 숫자를 이해하면 세금·비용 의사결정이 완전히 달라집니다.">
+  <meta property="og:title" content="손익계산서 읽는 법: 사장님이 꼭 알아야 할 5가지 숫자">
+  <meta property="og:description" content="매출이 늘어도 왜 통장이 비어 있을까? 소상공인이 손익계산서의 핵심 5가지 숫자를 이해하면 세금·비용 의사결정이 완전히 달라집니다.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://xn--wh1bw0st1gbrb.kr/blog/posts/how-to-read-income-statement-for-small-business.html">
+  <meta property="og:image" content="https://images.pexels.com/photos/7821672/pexels-photo-7821672.jpeg?auto=compress&amp;cs=tinysrgb&amp;fit=crop&amp;h=627&amp;w=1200">
+  <link rel="canonical" href="https://xn--wh1bw0st1gbrb.kr/blog/posts/how-to-read-income-statement-for-small-business.html">
+  <link rel="icon" href="/icons/icon-192.png">
+  <!-- 방문자 분석 (GA4 + Clarity + 네이버). ID는 /analytics.js 상단에서 관리. -->
+  <script defer src="/analytics.js"></script>
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2764893290310463" crossorigin="anonymous"></script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Noto Sans KR', sans-serif; background: #f8f9fa; color: #1a1a1a; line-height: 1.7; }
+    header { background: #fff; border-bottom: 1px solid #eee; position: sticky; top: 0; z-index: 100; }
+    .header-inner { max-width: 1100px; margin: 0 auto; padding: 0 20px; height: 60px; display: flex; align-items: center; justify-content: space-between; }
+    .logo { display: flex; align-items: center; gap: 8px; text-decoration: none; }
+    .logo-icon { width: 32px; height: 32px; background: #FF6B35; border-radius: 8px; display: flex; align-items: center; justify-content: center; color: white; font-weight: 900; font-size: 16px; }
+    .logo-text { font-size: 18px; font-weight: 800; color: #FF6B35; }
+    .logo-sub { font-size: 13px; color: #888; margin-left: 4px; }
+    .header-cta { background: #FF6B35; color: white; border: none; padding: 8px 16px; border-radius: 8px; font-size: 13px; font-weight: 600; cursor: pointer; text-decoration: none; }
+    /* minmax(0, ...): 표처럼 최소폭이 큰 콘텐츠가 그리드 트랙을 밀어내 페이지 전체가
+       가로로 스크롤되는 것을 막는다. 1fr만 쓰면 트랙 최소폭이 auto라 끌려간다. */
+    .wrap { max-width: 1100px; margin: 0 auto; padding: 32px 20px; display: grid; grid-template-columns: minmax(0, 1fr) 300px; gap: 40px; }
+    @media (max-width: 768px) { .wrap { grid-template-columns: minmax(0, 1fr); } .sidebar { display: none; } }
+    article { background: white; border-radius: 20px; overflow: hidden; box-shadow: 0 2px 12px rgba(0,0,0,0.06); }
+    .article-head { padding: 32px 32px 24px; border-bottom: 1px solid #f0f0f0; }
+    .article-cat { font-size: 12px; font-weight: 700; color: #FF6B35; text-transform: uppercase; margin-bottom: 12px; }
+    .article-cat a { color: #FF6B35; text-decoration: none; }
+    .article-title { font-size: clamp(20px, 4vw, 28px); font-weight: 900; line-height: 1.4; color: #1a1a1a; margin-bottom: 16px; }
+    .article-meta { font-size: 13px; color: #aaa; display: flex; gap: 16px; align-items: center; flex-wrap: wrap; }
+    .hero-img { width: 100%; aspect-ratio: 16/9; object-fit: cover; background: #f0f0f0; }
+    .article-body { padding: 32px; }
+    .article-body h2 { font-size: 20px; font-weight: 800; color: #1a1a1a; margin: 32px 0 14px; padding-bottom: 8px; border-bottom: 2px solid #FF6B35; }
+    .article-body h3 { font-size: 16px; font-weight: 700; color: #333; margin: 20px 0 10px; }
+    .article-body p { margin-bottom: 14px; color: #333; font-size: 15px; }
+    .article-body ul, .article-body ol { padding-left: 20px; margin-bottom: 14px; }
+    .article-body li { margin-bottom: 6px; color: #333; font-size: 15px; }
+    article { min-width: 0; }
+    /* 좁은 화면에서는 표만 자기 안에서 가로 스크롤시킨다. min-width:100%가 있어야
+       넓은 화면에서 기존처럼 폭을 꽉 채운다. */
+    .article-body table { display: block; width: max-content; min-width: 100%; max-width: 100%; overflow-x: auto; border-collapse: collapse; margin: 16px 0; font-size: 14px; }
+    .article-body th { background: #FF6B35; color: white; padding: 10px 14px; text-align: left; }
+    .article-body td { padding: 10px 14px; border-bottom: 1px solid #f0f0f0; }
+    .article-body tr:nth-child(even) td { background: #fff8f5; }
+    .article-body img { width: 100%; border-radius: 12px; margin: 16px 0; }
+    .article-body strong { color: #1a1a1a; }
+    .article-body blockquote { background: #fff8f5; border-left: 4px solid #FF6B35; padding: 16px 20px; border-radius: 0 12px 12px 0; margin: 16px 0; font-style: italic; color: #555; }
+    .article-body a { color: #FF6B35; }
+    .tags { padding: 20px 32px; border-top: 1px solid #f0f0f0; display: flex; gap: 8px; flex-wrap: wrap; }
+    .tag { background: #fff3ee; color: #FF6B35; border-radius: 20px; padding: 5px 12px; font-size: 12px; font-weight: 600; text-decoration: none; }
+    .tag:hover { background: #FF6B35; color: white; }
+    .ad-slot { background: #f0f0f0; border-radius: 12px; display: flex; align-items: center; justify-content: center; color: #bbb; font-size: 12px; min-height: 90px; margin: 24px 0; }
+    .cta-box { background: linear-gradient(135deg, #FF6B35, #ff8c42); border-radius: 20px; padding: 32px; text-align: center; color: white; margin-top: 24px; }
+    .cta-box h3 { font-size: 22px; font-weight: 900; margin-bottom: 10px; }
+    .cta-box p { font-size: 14px; opacity: 0.9; line-height: 1.6; margin-bottom: 20px; }
+    .cta-box a { background: white; color: #FF6B35; border-radius: 12px; padding: 13px 28px; font-weight: 800; font-size: 15px; text-decoration: none; display: inline-block; }
+    .nav-links { display: flex; gap: 16px; margin-top: 24px; }
+    .nav-back { color: #FF6B35; text-decoration: none; font-size: 14px; font-weight: 600; }
+    .nav-back::before { content: '\2190 '; }
+    .sidebar-cta { background: linear-gradient(135deg, #FF6B35, #ff8c42); color: white; border-radius: 16px; padding: 24px; text-align: center; position: sticky; top: 80px; }
+    .sidebar-cta h3 { font-size: 16px; font-weight: 900; margin-bottom: 8px; }
+    .sidebar-cta p { font-size: 13px; opacity: 0.9; line-height: 1.5; margin-bottom: 16px; }
+    .sidebar-cta a { background: white; color: #FF6B35; border-radius: 8px; padding: 10px 20px; font-weight: 700; font-size: 14px; text-decoration: none; display: inline-block; }
+    footer { background: #1a1a1a; color: #888; padding: 40px 20px; margin-top: 60px; }
+    .footer-inner { max-width: 1100px; margin: 0 auto; }
+    .footer-links { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 16px; }
+    .footer-links a { color: #888; text-decoration: none; font-size: 13px; }
+    .footer-copy { font-size: 12px; }
+  </style>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "손익계산서 읽는 법: 사장님이 꼭 알아야 할 5가지 숫자",
+  "description": "매출이 늘어도 왜 통장이 비어 있을까? 소상공인이 손익계산서의 핵심 5가지 숫자를 이해하면 세금·비용 의사결정이 완전히 달라집니다.",
+  "datePublished": "2026-08-19",
+  "dateModified": "2026-08-19",
+  "image": "https://images.pexels.com/photos/7821672/pexels-photo-7821672.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200",
+  "author": {
+    "@type": "Organization",
+    "name": "오늘장부",
+    "url": "https://오늘장부.kr"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "오늘장부",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://xn--wh1bw0st1gbrb.kr/icons/icon-192.png"
+    }
+  },
+  "mainEntityOfPage": "https://xn--wh1bw0st1gbrb.kr/blog/posts/how-to-read-income-statement-for-small-business.html",
+  "keywords": "손익계산서, 매출관리, 영업이익, 소상공인회계, 매출원가"
+}
+  </script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "매출총이익과 영업이익, 어느 것을 더 중요하게 봐야 하나요?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "둘 다 봐야 합니다. 매출총이익은 상품·서비스 자체의 수익성을 보여주고, 영업이익은 임차료·인건비 같은 운영비까지 감당하고 남은 실질 수익을 보여줍니다. 매출총이익이 좋아도 고정비(임차료·인건비)가 과도하면 영업이익은 적자가 날 수 있습니다. 먼저 매출총이익률로 원가 구조를 점검하고, 이후 영업이익률로 운영 효율을 판단하는 순서가 효과적입니다."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "배달앱 수수료는 매출원가인가요, 판관비인가요?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "배달앱 중개 수수료는 일반적으로 판매비(판관비)로 분류합니다. 다만 배달앱에서 발생한 매출을 소비자 결제 총액으로 잡을 경우와 플랫폼 정산금액(수수료 차감 후)으로 잡을 경우 처리 방식이 달라질 수 있으니, 일관된 기준을 정해두고 기록하는 것이 중요합니다. 세부 처리는 세무사와 상담하세요."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "손익계산서를 얼마나 자주 작성해야 하나요?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "법적으로는 연간 작성이 기본이지만, 소상공인은 월 단위로 작성하는 것을 강력히 권장합니다. 월별 손익을 비교하면 성수기·비수기 패턴을 파악하고, 비용이 갑자기 늘어난 달을 빠르게 발견할 수 있습니다. 매일 매출을 기록하는 습관이 쌓이면 월 손익계산서 작성은 자연스럽게 따라옵니다."
+      }
+    }
+  ]
+}
+  </script>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <a href="/" class="logo">
+      <div class="logo-icon">장</div>
+      <span class="logo-text">오늘장부</span>
+      <span class="logo-sub">블로그</span>
+    </a>
+    <a href="/" class="header-cta">무료로 시작하기</a>
+  </div>
+</header>
+
+<div class="wrap">
+  <main>
+    <div class="nav-links">
+      <a href="/blog/" class="nav-back">블로그 목록으로</a>
+    </div>
+
+    <!-- 자동 광고(Auto ads)가 배치를 정하므로 유닛을 직접 넣지 않는다. 여백만 확보한다. -->
+    <div class="ad-slot"></div>
+
+    <article>
+      <div class="article-head">
+        <div class="article-cat"><a href="/blog/">매출관리</a></div>
+        <h1 class="article-title">손익계산서 읽는 법: 사장님이 꼭 알아야 할 5가지 숫자</h1>
+        <div class="article-meta">
+          <span>오늘장부 편집팀</span>
+          <span>2026년 08월 19일</span>
+        </div>
+      </div>
+      <img src="https://images.pexels.com/photos/7821672/pexels-photo-7821672.jpeg?auto=compress&amp;cs=tinysrgb&amp;fit=crop&amp;h=627&amp;w=1200" alt="손익계산서 읽는 법: 사장님이 꼭 알아야 할 5가지 숫자" class="hero-img" loading="lazy">
+      <div class="article-body">
+<p>"이번 달 매출은 분명히 늘었는데, 왜 통장엔 돈이 없지?" 많은 사장님이 이 질문 앞에서 막막함을 느낍니다. 원인은 대부분 <strong>매출과 이익을 혼동하는 것</strong>에 있습니다. 손익계산서(P&amp;L)는 그 혼동을 풀어주는 가장 기본적인 도구입니다. 거창한 회계 지식이 없어도 괜찮습니다. 딱 5개의 숫자만 이해하면 가게 재정 상태를 스스로 진단하고, 세금 부담까지 미리 가늠할 수 있습니다.</p>
+
+<h2>손익계산서란 무엇인가</h2>
+<p>손익계산서는 <strong>일정 기간 동안 얼마를 벌고, 얼마를 썼으며, 결국 얼마가 남았는지</strong>를 한눈에 보여주는 재무 보고서입니다. 월별·분기별·연간 단위로 작성하며, 개인사업자라면 매년 5월 종합소득세 신고의 근거 자료가 됩니다. 재고·설비 등 자산 현황을 보여주는 재무상태표와 달리, 손익계산서는 순전히 <strong>흐름(매출 → 비용 → 이익)</strong>에 집중합니다.</p>
+
+<h2>핵심 5가지 숫자와 계산 구조</h2>
+<p>손익계산서는 아래의 순서대로 숫자가 쌓입니다. 각 단계를 이해하면 "어디서 새고 있는지"가 보입니다.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>순서</th>
+      <th>항목</th>
+      <th>계산식</th>
+      <th>소상공인 예시 (월 기준)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>①</td>
+      <td><strong>매출액</strong></td>
+      <td>카드 + 현금 + 배달앱 매출 합계</td>
+      <td>3,000만 원</td>
+    </tr>
+    <tr>
+      <td>②</td>
+      <td><strong>매출원가</strong></td>
+      <td>판매된 상품·재료의 원가</td>
+      <td>1,200만 원 (식재료·도매 매입)</td>
+    </tr>
+    <tr>
+      <td>③</td>
+      <td><strong>매출총이익</strong></td>
+      <td>① − ②</td>
+      <td>1,800만 원</td>
+    </tr>
+    <tr>
+      <td>④</td>
+      <td><strong>판매비·관리비(판관비)</strong></td>
+      <td>임차료·인건비·배달수수료·광고비·소모품 등</td>
+      <td>1,400만 원</td>
+    </tr>
+    <tr>
+      <td>⑤</td>
+      <td><strong>영업이익</strong></td>
+      <td>③ − ④</td>
+      <td>400만 원</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>영업이익 아래에는 <strong>영업외수익·비용(대출이자, 임대수입 등)</strong>이 더해지거나 빠지고, 최종적으로 <strong>당기순이익</strong>이 산출됩니다. 개인사업자의 경우 당기순이익이 곧 <strong>종합소득세 과세소득의 출발점</strong>이 됩니다.</p>
+
+<h2>항목별 핵심 포인트</h2>
+
+<h3>① 매출액 — 착시를 조심하세요</h3>
+<p>배달앱·카드·현금 매출을 빠짐없이 합산해야 정확한 매출액이 됩니다. <strong>배달앱 정산금액은 수수료가 이미 빠진 금액</strong>이므로, 총매출(소비자가 결제한 금액)과 실수령액을 반드시 구분해 기록해야 합니다. 오늘장부처럼 채널별 매출을 자동 집계해주는 앱을 쓰면 이 단계의 실수를 크게 줄일 수 있습니다.</p>
+
+<h3>② 매출원가 — 원가율을 매월 확인하세요</h3>
+<p>음식점이라면 식재료비, 편의점이라면 상품 매입가가 매출원가입니다. <strong>매출원가 ÷ 매출액 = 원가율</strong>을 매월 계산해 두세요. 원가율이 전월보다 높아졌다면 낭비·도난·단가 인상을 의심해야 합니다.</p>
+
+<h3>③ 매출총이익(그로스 마진) — 장사의 체력</h3>
+<p>매출총이익은 "물건을 팔아 순수하게 남긴 금액"입니다. 이 금액으로 임차료·인건비 등 고정비를 충당합니다. <strong>매출총이익률(매출총이익 ÷ 매출액 × 100)이 업종 평균보다 낮다면 원가 구조를 점검</strong>해야 합니다.</p>
+
+<h3>④ 판관비 — 고정비와 변동비를 나눠 보세요</h3>
+<p>판관비는 크게 <strong>고정비(임차료·기본 인건비·보험료)</strong>와 <strong>변동비(배달수수료·포장재·광고비)</strong>로 나뉩니다.</p>
+<ul>
+  <li><strong>임차료</strong>: 매출과 무관하게 나가는 대표적인 고정비. 매출 대비 비중이 지나치게 높으면 구조적 적자 위험이 큽니다.</li>
+  <li><strong>인건비</strong>: 2025년 최저시급 기준으로 실제 지급액 외에 4대 보험 사업주 부담분(급여의 약 9~10% 수준)도 비용에 포함해야 합니다.</li>
+  <li><strong>배달앱 수수료</strong>: 플랫폼마다 요율이 다르며, 매출이 늘수록 같이 늘어나는 변동비입니다. 채널별로 따로 집계해 수익성을 비교해 보세요.</li>
+</ul>
+
+<h3>⑤ 영업이익 — 사장님 진짜 성적표</h3>
+<p>영업이익이 <strong>0 이하(영업적자)</strong>라면 아무리 매출이 높아도 가게를 운영할수록 손해가 납니다. 영업이익이 흑자여도 대출 이자 등 영업외비용이 크면 최종 순이익은 적자가 될 수 있습니다. 영업이익률(영업이익 ÷ 매출액 × 100) 5% 이상을 목표로 삼는 것이 일반적이지만, 업종마다 기준이 다르므로 동종 업계와 비교해 보세요.</p>
+
+<h2>당기순이익과 세금의 관계</h2>
+<p>개인사업자(소상공인)는 당기순이익을 기반으로 각종 공제를 적용한 <strong>과세표준</strong>에 종합소득세율을 매깁니다. 소득세법상 세율은 과세표준 구간에 따라 <strong>6%에서 최대 45%까지 누진 적용</strong>됩니다. 예를 들어 과세표준이 4,000만 원이라면 15% 구간이 적용됩니다(누진공제 후 실효세율은 이보다 낮습니다). 종합소득세 신고·납부는 <strong>매년 5월 1일부터 5월 31일</strong>까지이며, 전년도 소득을 기준으로 합니다.</p>
+<blockquote>💡 <strong>절세 포인트:</strong> 영업이익이 높을수록 세율 구간이 올라갑니다. 합법적인 비용(업무용 카드 지출, 감가상각비 등)을 빠짐없이 장부에 기록해 과세소득을 정확히 산출하는 것이 절세의 첫걸음입니다.</blockquote>
+
+<h2>간편장부로 손익계산서 작성하기</h2>
+<p>국세청은 소규모 사업자(업종별 기준 수입금액 미달 사업자)를 위해 <strong>간편장부</strong> 제도를 운영합니다. 가계부 쓰듯 수입과 비용을 기록하면 손익계산서 구조로 자동 정리되며, 적자가 발생한 경우 최대 10년간 소득에서 공제받을 수 있는 혜택도 있습니다. <a href="https://오늘장부.kr">오늘장부 무료로 시작하기</a>를 활용하면 카드·현금·배달앱 매출을 한곳에 모아 일별 손익을 실시간으로 파악하고, 부가세 예상액까지 자동으로 계산해 종합소득세 신고 준비 부담을 크게 줄일 수 있습니다.</p>
+
+<h2>자주 묻는 질문</h2>
+
+<h3>매출총이익과 영업이익, 어느 것을 더 중요하게 봐야 하나요?</h3>
+<p>둘 다 봐야 합니다. 매출총이익은 상품·서비스 자체의 수익성을 보여주고, 영업이익은 임차료·인건비 같은 운영비까지 감당하고 남은 실질 수익을 보여줍니다. 매출총이익이 좋아도 고정비(임차료·인건비)가 과도하면 영업이익은 적자가 날 수 있습니다. 먼저 매출총이익률로 원가 구조를 점검하고, 이후 영업이익률로 운영 효율을 판단하는 순서가 효과적입니다.</p>
+
+<h3>배달앱 수수료는 매출원가인가요, 판관비인가요?</h3>
+<p>배달앱 중개 수수료는 일반적으로 <strong>판매비(판관비)로 분류</strong>합니다. 다만 배달앱에서 발생한 매출을 소비자 결제 총액으로 잡을 경우와 플랫폼 정산금액(수수료 차감 후)으로 잡을 경우 처리 방식이 달라질 수 있으니, 일관된 기준을 정해두고 기록하는 것이 중요합니다. 세부 처리는 세무사와 상담하세요.</p>
+
+<h3>손익계산서를 얼마나 자주 작성해야 하나요?</h3>
+<p>법적으로는 연간 작성이 기본이지만, 소상공인은 <strong>월 단위로 작성하는 것을 강력히 권장</strong>합니다. 월별 손익을 비교하면 성수기·비수기 패턴을 파악하고, 비용이 갑자기 늘어난 달을 빠르게 발견할 수 있습니다. 매일 매출을 기록하는 습관이 쌓이면 월 손익계산서 작성은 자연스럽게 따라옵니다.</p>
+
+<p>※ 본 글은 2026년 기준 참고용 정보이며, 정확한 신고·금액은 국세청 홈택스 또는 세무사와 상담하세요.</p>
+      </div>
+      <div class="tags">
+        <a href="/blog/?tag=%EC%86%90%EC%9D%B5%EA%B3%84%EC%82%B0%EC%84%9C" class="tag">손익계산서</a> <a href="/blog/?tag=%EB%A7%A4%EC%B6%9C%EA%B4%80%EB%A6%AC" class="tag">매출관리</a> <a href="/blog/?tag=%EC%98%81%EC%97%85%EC%9D%B4%EC%9D%B5" class="tag">영업이익</a> <a href="/blog/?tag=%EC%86%8C%EC%83%81%EA%B3%B5%EC%9D%B8%ED%9A%8C%EA%B3%84" class="tag">소상공인회계</a> <a href="/blog/?tag=%EB%A7%A4%EC%B6%9C%EC%9B%90%EA%B0%80" class="tag">매출원가</a>
+      </div>
+    </article>
+
+    <section style="background:#fff8f5;border-radius:16px;padding:24px 28px;margin-top:24px;">
+      <h2 style="font-size:18px;font-weight:800;color:#1a1a1a;margin:0 0 14px;">함께 보면 좋은 글</h2>
+      <ul style="list-style:none;padding:0;margin:0;">
+        <li style="padding:8px 0;border-bottom:1px solid #ffe6d9;"><a href="/blog/posts/cost-ratio-calculation-and-reduction.html" style="color:#FF6B35;text-decoration:none;font-weight:600;font-size:14px;">원가율 계산하고 낮추는 법 — 사장님 수익의 첫 단추</a></li>
+        <li style="padding:8px 0;border-bottom:1px solid #ffe6d9;"><a href="/blog/posts/revenue-vs-net-profit-for-small-business.html" style="color:#FF6B35;text-decoration:none;font-weight:600;font-size:14px;">매출과 순이익 헷갈리지 않기 — 사장님이 꼭 알아야 할 차이</a></li>
+        <li style="padding:8px 0;border-bottom:1px solid #ffe6d9;"><a href="/blog/posts/weekly-sales-pattern-management.html" style="color:#FF6B35;text-decoration:none;font-weight:600;font-size:14px;">요일별 매출 패턴 활용하기: 잘 파는 날 더 팔고, 쉬는 날 비용 줄이기</a></li>
+        <li style="padding:8px 0;border-bottom:1px solid #ffe6d9;"><a href="/blog/posts/daily-sales-pattern-for-small-business.html" style="color:#FF6B35;text-decoration:none;font-weight:600;font-size:14px;">요일별 매출 패턴 활용하기 — 매출 데이터로 인건비·발주·세금까지 잡는 법</a></li>
+      </ul>
+    </section>
+
+    <section style="background:#fff8f5;border-radius:16px;padding:24px 28px;margin-top:24px;">
+      <h2 style="font-size:18px;font-weight:800;color:#1a1a1a;margin:0 0 14px;">무료 계산기로 바로 확인하기</h2>
+      <ul style="list-style:none;padding:0;margin:0;">
+        <li style="padding:10px 0;border-bottom:1px solid #ffe6d9;"><a href="/tools/card-fee-calculator/" style="color:#FF6B35;text-decoration:none;font-weight:700;font-size:15px;">카드수수료 계산기</a><div style="font-size:13px;color:#777;margin-top:2px;">연매출로 우대수수료율 구간을 확인하고 환급 대상인지 알아봅니다</div></li>
+        <li style="padding:10px 0;border-bottom:1px solid #ffe6d9;"><a href="/tools/delivery-fee-calculator/" style="color:#FF6B35;text-decoration:none;font-weight:700;font-size:15px;">배달앱 수수료 계산기</a><div style="font-size:13px;color:#777;margin-top:2px;">중개·결제 수수료와 배달비를 빼면 실제로 얼마가 입금되는지 계산합니다</div></li>
+      </ul>
+    </section>
+
+    <!-- 자동 광고(Auto ads)가 배치를 정하므로 유닛을 직접 넣지 않는다. 여백만 확보한다. -->
+    <div class="ad-slot"></div>
+
+    <div class="cta-box">
+      <h3>매일 매출 기록, 30초면 끝!</h3>
+      <p>카드·현금·네이버페이·카카오페이<br>여러 결제수단을 한 화면에서 입력<br>부가세 예상액도 자동으로 계산해드려요</p>
+      <a href="/">지금 무료로 시작하기</a>
+    </div>
+  </main>
+
+  <aside class="sidebar">
+    <div class="sidebar-cta">
+      <h3>매일 매출 기록,<br>30초면 끝!</h3>
+      <p>카드·현금·배달앱 한 번에<br>부가세 예상액도 자동 계산</p>
+      <a href="/">무료로 시작하기</a>
+    </div>
+  </aside>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-links">
+      <a href="/">서비스 홈</a>
+      <a href="/blog/">블로그</a>
+      <a href="/about/">소개</a>
+      <a href="/contact/">문의하기</a>
+      <a href="/blog/about.html">소개 및 문의</a>
+      <a href="/privacy">개인정보처리방침</a>
+      <a href="/terms">이용약관</a>
+    </div>
+    <div class="footer-copy">© 2026 오늘장부. All rights reserved.</div>
+  </div>
+</footer>
+
+</body>
+</html>
