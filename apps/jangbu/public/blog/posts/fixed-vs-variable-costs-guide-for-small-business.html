@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>고정비 변동비 나누는 법 — 사장님 필수 비용 구조 분석 | 오늘장부 블로그</title>
+  <meta name="description" content="임대료·인건비·카드수수료까지, 소상공인이 꼭 알아야 할 고정비와 변동비 구분법. 비용 구조를 알면 손익분기점과 절세 전략이 보입니다.">
+  <meta property="og:title" content="고정비 변동비 나누는 법 — 사장님 필수 비용 구조 분석">
+  <meta property="og:description" content="임대료·인건비·카드수수료까지, 소상공인이 꼭 알아야 할 고정비와 변동비 구분법. 비용 구조를 알면 손익분기점과 절세 전략이 보입니다.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://xn--wh1bw0st1gbrb.kr/blog/posts/fixed-vs-variable-costs-guide-for-small-business.html">
+  <meta property="og:image" content="https://images.pexels.com/photos/6801639/pexels-photo-6801639.jpeg?auto=compress&amp;cs=tinysrgb&amp;fit=crop&amp;h=627&amp;w=1200">
+  <link rel="canonical" href="https://xn--wh1bw0st1gbrb.kr/blog/posts/fixed-vs-variable-costs-guide-for-small-business.html">
+  <link rel="icon" href="/icons/icon-192.png">
+  <!-- 방문자 분석 (GA4 + Clarity + 네이버). ID는 /analytics.js 상단에서 관리. -->
+  <script defer src="/analytics.js"></script>
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2764893290310463" crossorigin="anonymous"></script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Noto Sans KR', sans-serif; background: #f8f9fa; color: #1a1a1a; line-height: 1.7; }
+    header { background: #fff; border-bottom: 1px solid #eee; position: sticky; top: 0; z-index: 100; }
+    .header-inner { max-width: 1100px; margin: 0 auto; padding: 0 20px; height: 60px; display: flex; align-items: center; justify-content: space-between; }
+    .logo { display: flex; align-items: center; gap: 8px; text-decoration: none; }
+    .logo-icon { width: 32px; height: 32px; background: #FF6B35; border-radius: 8px; display: flex; align-items: center; justify-content: center; color: white; font-weight: 900; font-size: 16px; }
+    .logo-text { font-size: 18px; font-weight: 800; color: #FF6B35; }
+    .logo-sub { font-size: 13px; color: #888; margin-left: 4px; }
+    .header-cta { background: #FF6B35; color: white; border: none; padding: 8px 16px; border-radius: 8px; font-size: 13px; font-weight: 600; cursor: pointer; text-decoration: none; }
+    /* minmax(0, ...): 표처럼 최소폭이 큰 콘텐츠가 그리드 트랙을 밀어내 페이지 전체가
+       가로로 스크롤되는 것을 막는다. 1fr만 쓰면 트랙 최소폭이 auto라 끌려간다. */
+    .wrap { max-width: 1100px; margin: 0 auto; padding: 32px 20px; display: grid; grid-template-columns: minmax(0, 1fr) 300px; gap: 40px; }
+    @media (max-width: 768px) { .wrap { grid-template-columns: minmax(0, 1fr); } .sidebar { display: none; } }
+    article { background: white; border-radius: 20px; overflow: hidden; box-shadow: 0 2px 12px rgba(0,0,0,0.06); }
+    .article-head { padding: 32px 32px 24px; border-bottom: 1px solid #f0f0f0; }
+    .article-cat { font-size: 12px; font-weight: 700; color: #FF6B35; text-transform: uppercase; margin-bottom: 12px; }
+    .article-cat a { color: #FF6B35; text-decoration: none; }
+    .article-title { font-size: clamp(20px, 4vw, 28px); font-weight: 900; line-height: 1.4; color: #1a1a1a; margin-bottom: 16px; }
+    .article-meta { font-size: 13px; color: #aaa; display: flex; gap: 16px; align-items: center; flex-wrap: wrap; }
+    .hero-img { width: 100%; aspect-ratio: 16/9; object-fit: cover; background: #f0f0f0; }
+    .article-body { padding: 32px; }
+    .article-body h2 { font-size: 20px; font-weight: 800; color: #1a1a1a; margin: 32px 0 14px; padding-bottom: 8px; border-bottom: 2px solid #FF6B35; }
+    .article-body h3 { font-size: 16px; font-weight: 700; color: #333; margin: 20px 0 10px; }
+    .article-body p { margin-bottom: 14px; color: #333; font-size: 15px; }
+    .article-body ul, .article-body ol { padding-left: 20px; margin-bottom: 14px; }
+    .article-body li { margin-bottom: 6px; color: #333; font-size: 15px; }
+    article { min-width: 0; }
+    /* 좁은 화면에서는 표만 자기 안에서 가로 스크롤시킨다. min-width:100%가 있어야
+       넓은 화면에서 기존처럼 폭을 꽉 채운다. */
+    .article-body table { display: block; width: max-content; min-width: 100%; max-width: 100%; overflow-x: auto; border-collapse: collapse; margin: 16px 0; font-size: 14px; }
+    .article-body th { background: #FF6B35; color: white; padding: 10px 14px; text-align: left; }
+    .article-body td { padding: 10px 14px; border-bottom: 1px solid #f0f0f0; }
+    .article-body tr:nth-child(even) td { background: #fff8f5; }
+    .article-body img { width: 100%; border-radius: 12px; margin: 16px 0; }
+    .article-body strong { color: #1a1a1a; }
+    .article-body blockquote { background: #fff8f5; border-left: 4px solid #FF6B35; padding: 16px 20px; border-radius: 0 12px 12px 0; margin: 16px 0; font-style: italic; color: #555; }
+    .article-body a { color: #FF6B35; }
+    .tags { padding: 20px 32px; border-top: 1px solid #f0f0f0; display: flex; gap: 8px; flex-wrap: wrap; }
+    .tag { background: #fff3ee; color: #FF6B35; border-radius: 20px; padding: 5px 12px; font-size: 12px; font-weight: 600; text-decoration: none; }
+    .tag:hover { background: #FF6B35; color: white; }
+    .ad-slot { background: #f0f0f0; border-radius: 12px; display: flex; align-items: center; justify-content: center; color: #bbb; font-size: 12px; min-height: 90px; margin: 24px 0; }
+    .cta-box { background: linear-gradient(135deg, #FF6B35, #ff8c42); border-radius: 20px; padding: 32px; text-align: center; color: white; margin-top: 24px; }
+    .cta-box h3 { font-size: 22px; font-weight: 900; margin-bottom: 10px; }
+    .cta-box p { font-size: 14px; opacity: 0.9; line-height: 1.6; margin-bottom: 20px; }
+    .cta-box a { background: white; color: #FF6B35; border-radius: 12px; padding: 13px 28px; font-weight: 800; font-size: 15px; text-decoration: none; display: inline-block; }
+    .nav-links { display: flex; gap: 16px; margin-top: 24px; }
+    .nav-back { color: #FF6B35; text-decoration: none; font-size: 14px; font-weight: 600; }
+    .nav-back::before { content: '\2190 '; }
+    .sidebar-cta { background: linear-gradient(135deg, #FF6B35, #ff8c42); color: white; border-radius: 16px; padding: 24px; text-align: center; position: sticky; top: 80px; }
+    .sidebar-cta h3 { font-size: 16px; font-weight: 900; margin-bottom: 8px; }
+    .sidebar-cta p { font-size: 13px; opacity: 0.9; line-height: 1.5; margin-bottom: 16px; }
+    .sidebar-cta a { background: white; color: #FF6B35; border-radius: 8px; padding: 10px 20px; font-weight: 700; font-size: 14px; text-decoration: none; display: inline-block; }
+    footer { background: #1a1a1a; color: #888; padding: 40px 20px; margin-top: 60px; }
+    .footer-inner { max-width: 1100px; margin: 0 auto; }
+    .footer-links { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 16px; }
+    .footer-links a { color: #888; text-decoration: none; font-size: 13px; }
+    .footer-copy { font-size: 12px; }
+  </style>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "고정비 변동비 나누는 법 — 사장님 필수 비용 구조 분석",
+  "description": "임대료·인건비·카드수수료까지, 소상공인이 꼭 알아야 할 고정비와 변동비 구분법. 비용 구조를 알면 손익분기점과 절세 전략이 보입니다.",
+  "datePublished": "2026-08-21",
+  "dateModified": "2026-08-21",
+  "image": "https://images.pexels.com/photos/6801639/pexels-photo-6801639.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200",
+  "author": {
+    "@type": "Organization",
+    "name": "오늘장부",
+    "url": "https://오늘장부.kr"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "오늘장부",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://xn--wh1bw0st1gbrb.kr/icons/icon-192.png"
+    }
+  },
+  "mainEntityOfPage": "https://xn--wh1bw0st1gbrb.kr/blog/posts/fixed-vs-variable-costs-guide-for-small-business.html",
+  "keywords": "고정비변동비, 소상공인비용관리, 손익분기점, 매출관리"
+}
+  </script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "임대료가 올랐어요. 고정비가 달라지면 어떻게 해야 하나요?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "고정비가 변경되면 손익분기점을 다시 계산해야 합니다. 임대료가 오른 만큼 목표 매출을 높이거나, 다른 고정비(통신료, 구독 서비스 등)를 줄여 전체 고정비 합계를 최소화하세요. 변동이 생길 때마다 비용 목록을 최신화하는 것이 기본입니다."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "전기요금은 고정비인가요, 변동비인가요?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "전기요금은 기본요금(고정)과 사용량 요금(변동)이 합산됩니다. 사업장에서는 대체로 '준고정비'로 분류합니다. 냉난방·설비 가동이 많은 업종(카페, 식당 등)은 변동 부분 비중이 크므로 절전 설비 투자가 원가 절감으로 이어질 수 있습니다."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "부가세 신고할 때 고정비·변동비 구분이 필요한가요?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "부가세 신고 자체는 매출세액과 매입세액의 차이로 계산되므로 고정비·변동비 구분이 직접 필요하지는 않습니다. 다만 경비 항목을 꼼꼼히 기록해두면 종합소득세 신고 시 필요경비 공제를 최대로 받을 수 있습니다. 정확한 공제 항목과 기준은 홈택스 또는 세무사와 상담하세요."
+      }
+    }
+  ]
+}
+  </script>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <a href="/" class="logo">
+      <div class="logo-icon">장</div>
+      <span class="logo-text">오늘장부</span>
+      <span class="logo-sub">블로그</span>
+    </a>
+    <a href="/" class="header-cta">무료로 시작하기</a>
+  </div>
+</header>
+
+<div class="wrap">
+  <main>
+    <div class="nav-links">
+      <a href="/blog/" class="nav-back">블로그 목록으로</a>
+    </div>
+
+    <!-- 자동 광고(Auto ads)가 배치를 정하므로 유닛을 직접 넣지 않는다. 여백만 확보한다. -->
+    <div class="ad-slot"></div>
+
+    <article>
+      <div class="article-head">
+        <div class="article-cat"><a href="/blog/">매출관리</a></div>
+        <h1 class="article-title">고정비 변동비 나누는 법 — 사장님 필수 비용 구조 분석</h1>
+        <div class="article-meta">
+          <span>오늘장부 편집팀</span>
+          <span>2026년 08월 21일</span>
+        </div>
+      </div>
+      <img src="https://images.pexels.com/photos/6801639/pexels-photo-6801639.jpeg?auto=compress&amp;cs=tinysrgb&amp;fit=crop&amp;h=627&amp;w=1200" alt="고정비 변동비 나누는 법 — 사장님 필수 비용 구조 분석" class="hero-img" loading="lazy">
+      <div class="article-body">
+<p>매달 매출이 늘었는데도 통장 잔고가 늘지 않는다면, 가장 먼저 들여다봐야 할 것이 <strong>비용 구조</strong>입니다. 비용을 고정비와 변동비로 나눠 보면 어디서 돈이 새는지, 매출이 얼마나 나와야 손해를 면하는지가 한눈에 들어옵니다. 복잡하게 생각할 필요 없습니다. 오늘 이 글에서 소상공인 사장님이 바로 써먹을 수 있는 기준을 정리했습니다.</p>
+
+<h2>고정비란 무엇인가?</h2>
+<p><strong>고정비(Fixed Cost)</strong>는 매출 금액과 관계없이 매달 일정하게 나가는 비용입니다. 가게 문을 열든 닫든, 손님이 한 명이든 백 명이든 금액이 변하지 않습니다.</p>
+<ul>
+  <li><strong>임대료(월세)</strong> — 매출 제로여도 꼬박꼬박 나갑니다.</li>
+  <li><strong>고정 인건비</strong> — 정규 직원 급여, 4대보험 사업주 부담분</li>
+  <li><strong>감가상각비</strong> — 인테리어·기계장치 등 초기 투자 비용의 분할 상각</li>
+  <li><strong>통신·인터넷·POS 이용료</strong></li>
+  <li><strong>대출 이자</strong></li>
+  <li><strong>보험료</strong> (화재보험, 영업배상책임보험 등)</li>
+</ul>
+<p>고정비의 핵심은 <strong>'줄이려면 구조 자체를 바꿔야 한다'</strong>는 점입니다. 임대차 계약을 재협상하거나 직원 수를 조정하지 않는 한 단기간에 변동시키기 어렵습니다. 그래서 창업 초기에 고정비를 최대한 낮게 설계하는 것이 중요합니다.</p>
+
+<h2>변동비란 무엇인가?</h2>
+<p><strong>변동비(Variable Cost)</strong>는 매출이나 판매량에 따라 함께 오르내리는 비용입니다. 손님이 많으면 많을수록, 음식을 많이 팔수록 함께 늘어납니다.</p>
+<ul>
+  <li><strong>재료비·원가</strong> — 식재료, 포장재, 소모품</li>
+  <li><strong>카드 수수료</strong> — 카드 결제 금액에 비례해 발생</li>
+  <li><strong>배달앱 수수료</strong> — 주문 건당 또는 매출 비율로 부과</li>
+  <li><strong>아르바이트 인건비</strong> — 근무 시간·일수에 따라 달라짐</li>
+  <li><strong>전기·가스·수도</strong> — 영업 강도에 따라 일부 변동</li>
+</ul>
+<p>변동비는 매출이 줄면 자연스럽게 함께 줄어들기 때문에, 고정비보다 관리가 상대적으로 유연합니다. 다만 매출 대비 변동비 비율(원가율)이 지나치게 높으면 아무리 매출을 올려도 남는 게 없습니다.</p>
+
+<h2>고정비 vs 변동비 한눈에 비교</h2>
+<table>
+  <thead>
+    <tr>
+      <th>구분</th>
+      <th>대표 항목</th>
+      <th>특징</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>고정비</strong></td>
+      <td>임대료, 정규직 급여·4대보험, 감가상각, 대출이자, 통신료</td>
+      <td>매출 무관, 매달 일정액 지출</td>
+    </tr>
+    <tr>
+      <td><strong>변동비</strong></td>
+      <td>재료비, 카드수수료, 배달앱 수수료, 알바 인건비, 공과금 일부</td>
+      <td>매출·판매량에 비례해 증감</td>
+    </tr>
+    <tr>
+      <td><strong>준고정비</strong></td>
+      <td>전기요금(기본요금+사용량), 광고비</td>
+      <td>기본 고정 + 일부 변동 혼합</td>
+    </tr>
+  </tbody>
+</table>
+<p>실제 현장에서는 <strong>'준고정비'</strong>도 자주 등장합니다. 전기요금처럼 기본요금(고정)과 사용량 요금(변동)이 섞인 경우입니다. 이런 항목은 고정 부분과 변동 부분을 대략이라도 나눠 기록해두는 것이 정확한 원가 분석에 도움이 됩니다.</p>
+
+<h2>왜 나눠야 할까? — 손익분기점 계산</h2>
+<p>고정비와 변동비를 분리하면 <strong>손익분기점(BEP, Break-Even Point)</strong>을 계산할 수 있습니다.</p>
+<blockquote>
+  <strong>손익분기점 매출 = 고정비 ÷ (1 − 변동비율)</strong><br>
+  (변동비율 = 변동비 ÷ 매출)
+</blockquote>
+<p>예를 들어 월 고정비가 300만 원이고, 매출 대비 변동비율이 40%라면 손익분기점 매출은 <strong>500만 원</strong>입니다(300만 ÷ 0.6). 즉, 월 매출이 500만 원을 넘어야 비로소 이익이 납니다. 이 숫자를 알면 '이번 달 목표 매출'이 막연한 바람이 아닌 구체적인 목표가 됩니다.</p>
+
+<h2>카드수수료·배달앱 수수료: 변동비 관리의 핵심</h2>
+<p>소상공인의 변동비 중 의외로 많은 비중을 차지하는 것이 <strong>결제 수수료</strong>입니다. 2026년 현재, 연매출 규모에 따라 영세·중소가맹점으로 지정되면 신용카드 수수료 우대율(약 0.4%~1.45%)이 적용됩니다. 체크카드는 이보다 낮은 수준(약 0.15%~1.15%)입니다. 내 가맹점이 어느 구간에 해당하는지는 여신금융협회 또는 각 카드사 고객센터에서 확인할 수 있습니다.</p>
+<p>배달앱 수수료는 플랫폼·요금제별로 다르고 수시로 개편되므로, 현재 이용 중인 플랫폼의 최신 요금제를 직접 확인하는 것이 정확합니다. 매출 대비 배달 수수료 비율이 지나치게 높다면 직접 주문 채널(전화, 자체 앱) 비중을 높이거나 요금제 변경을 검토해볼 수 있습니다.</p>
+<p>이처럼 매출 채널별 수수료가 다르기 때문에, <strong>오늘장부</strong>처럼 카드·현금·배달앱 매출을 채널별로 분리해 기록하는 습관을 들이면 수수료 비용도 정확히 파악할 수 있습니다.</p>
+
+<h2>인건비: 고정비와 변동비가 뒤섞이는 곳</h2>
+<p>인건비는 소상공인 비용 중 가장 복잡한 영역입니다. <strong>정규직 직원의 월 급여와 4대보험 사업주 부담분</strong>은 매출과 무관하게 매달 지출되므로 고정비입니다. 반면 <strong>시간제 아르바이트 인건비</strong>는 근무 시간에 따라 달라지므로 변동비로 분류합니다.</p>
+<p>주휴수당은 주 15시간 이상 근무한 직원에게 지급 의무가 있으므로 알바 고용 시 이를 포함한 실질 시급을 미리 계산해두어야 합니다. 4대보험 가입 기준·요율은 매년 고시되므로 국민건강보험공단이나 근로복지공단에서 최신 내용을 확인하세요.</p>
+
+<h2>실전 적용 3단계</h2>
+<ol>
+  <li><strong>지난 3개월 지출 내역을 꺼낸다</strong> — 통장 내역, 카드 명세서, 각종 영수증을 모두 꺼냅니다.</li>
+  <li><strong>항목별로 '고정/변동/준고정' 딱지를 붙인다</strong> — 매출이 0원이 돼도 나가는 비용 = 고정비, 매출에 따라 오르내리는 비용 = 변동비.</li>
+  <li><strong>월 고정비 합계와 변동비율을 계산한다</strong> — 손익분기점을 구하고, 현재 월 평균 매출과 비교합니다. 손익분기점보다 현재 매출이 낮다면 고정비 절감 또는 매출 확대 전략이 필요합니다.</li>
+</ol>
+<p>이 과정을 매달 반복하면 비용 구조가 눈에 익고, 절세 신고(부가세·종합소득세)를 준비할 때 경비 증빙도 훨씬 수월해집니다. <a href="https://오늘장부.kr">오늘장부 무료로 시작하기</a>를 활용하면 매일 매출과 지출을 자동으로 기록하고, 부가세 예상액까지 한 번에 확인할 수 있어 분기·연말 신고 부담을 줄일 수 있습니다.</p>
+
+<h2>자주 묻는 질문</h2>
+<h3>임대료가 올랐어요. 고정비가 달라지면 어떻게 해야 하나요?</h3>
+<p>고정비가 변경되면 손익분기점을 다시 계산해야 합니다. 임대료가 오른 만큼 목표 매출을 높이거나, 다른 고정비(통신료, 구독 서비스 등)를 줄여 전체 고정비 합계를 최소화하세요. 변동이 생길 때마다 비용 목록을 최신화하는 것이 기본입니다.</p>
+<h3>전기요금은 고정비인가요, 변동비인가요?</h3>
+<p>전기요금은 기본요금(고정)과 사용량 요금(변동)이 합산됩니다. 사업장에서는 대체로 '준고정비'로 분류합니다. 냉난방·설비 가동이 많은 업종(카페, 식당 등)은 변동 부분 비중이 크므로 절전 설비 투자가 원가 절감으로 이어질 수 있습니다.</p>
+<h3>부가세 신고할 때 고정비·변동비 구분이 필요한가요?</h3>
+<p>부가세 신고 자체는 매출세액과 매입세액의 차이로 계산되므로 고정비·변동비 구분이 직접 필요하지는 않습니다. 다만 경비 항목을 꼼꼼히 기록해두면 종합소득세 신고 시 필요경비 공제를 최대로 받을 수 있습니다. 정확한 공제 항목과 기준은 홈택스 또는 세무사와 상담하세요.</p>
+
+<p>※ 본 글은 2026년 기준 참고용 정보이며, 정확한 신고·금액은 국세청 홈택스 또는 세무사와 상담하세요.</p>
+      </div>
+      <div class="tags">
+        <a href="/blog/?tag=%EA%B3%A0%EC%A0%95%EB%B9%84%EB%B3%80%EB%8F%99%EB%B9%84" class="tag">고정비변동비</a> <a href="/blog/?tag=%EC%86%8C%EC%83%81%EA%B3%B5%EC%9D%B8%EB%B9%84%EC%9A%A9%EA%B4%80%EB%A6%AC" class="tag">소상공인비용관리</a> <a href="/blog/?tag=%EC%86%90%EC%9D%B5%EB%B6%84%EA%B8%B0%EC%A0%90" class="tag">손익분기점</a> <a href="/blog/?tag=%EB%A7%A4%EC%B6%9C%EA%B4%80%EB%A6%AC" class="tag">매출관리</a>
+      </div>
+    </article>
+
+    <section style="background:#fff8f5;border-radius:16px;padding:24px 28px;margin-top:24px;">
+      <h2 style="font-size:18px;font-weight:800;color:#1a1a1a;margin:0 0 14px;">함께 보면 좋은 글</h2>
+      <ul style="list-style:none;padding:0;margin:0;">
+        <li style="padding:8px 0;border-bottom:1px solid #ffe6d9;"><a href="/blog/posts/how-to-read-income-statement-for-small-business.html" style="color:#FF6B35;text-decoration:none;font-weight:600;font-size:14px;">손익계산서 읽는 법: 사장님이 꼭 알아야 할 5가지 숫자</a></li>
+        <li style="padding:8px 0;border-bottom:1px solid #ffe6d9;"><a href="/blog/posts/cost-ratio-calculation-and-reduction.html" style="color:#FF6B35;text-decoration:none;font-weight:600;font-size:14px;">원가율 계산하고 낮추는 법 — 사장님 수익의 첫 단추</a></li>
+        <li style="padding:8px 0;border-bottom:1px solid #ffe6d9;"><a href="/blog/posts/revenue-vs-net-profit-for-small-business.html" style="color:#FF6B35;text-decoration:none;font-weight:600;font-size:14px;">매출과 순이익 헷갈리지 않기 — 사장님이 꼭 알아야 할 차이</a></li>
+        <li style="padding:8px 0;border-bottom:1px solid #ffe6d9;"><a href="/blog/posts/weekly-sales-pattern-management.html" style="color:#FF6B35;text-decoration:none;font-weight:600;font-size:14px;">요일별 매출 패턴 활용하기: 잘 파는 날 더 팔고, 쉬는 날 비용 줄이기</a></li>
+      </ul>
+    </section>
+
+    <section style="background:#fff8f5;border-radius:16px;padding:24px 28px;margin-top:24px;">
+      <h2 style="font-size:18px;font-weight:800;color:#1a1a1a;margin:0 0 14px;">무료 계산기로 바로 확인하기</h2>
+      <ul style="list-style:none;padding:0;margin:0;">
+        <li style="padding:10px 0;border-bottom:1px solid #ffe6d9;"><a href="/tools/card-fee-calculator/" style="color:#FF6B35;text-decoration:none;font-weight:700;font-size:15px;">카드수수료 계산기</a><div style="font-size:13px;color:#777;margin-top:2px;">연매출로 우대수수료율 구간을 확인하고 환급 대상인지 알아봅니다</div></li>
+        <li style="padding:10px 0;border-bottom:1px solid #ffe6d9;"><a href="/tools/delivery-fee-calculator/" style="color:#FF6B35;text-decoration:none;font-weight:700;font-size:15px;">배달앱 수수료 계산기</a><div style="font-size:13px;color:#777;margin-top:2px;">중개·결제 수수료와 배달비를 빼면 실제로 얼마가 입금되는지 계산합니다</div></li>
+      </ul>
+    </section>
+
+    <!-- 자동 광고(Auto ads)가 배치를 정하므로 유닛을 직접 넣지 않는다. 여백만 확보한다. -->
+    <div class="ad-slot"></div>
+
+    <div class="cta-box">
+      <h3>매일 매출 기록, 30초면 끝!</h3>
+      <p>카드·현금·네이버페이·카카오페이<br>여러 결제수단을 한 화면에서 입력<br>부가세 예상액도 자동으로 계산해드려요</p>
+      <a href="/">지금 무료로 시작하기</a>
+    </div>
+  </main>
+
+  <aside class="sidebar">
+    <div class="sidebar-cta">
+      <h3>매일 매출 기록,<br>30초면 끝!</h3>
+      <p>카드·현금·배달앱 한 번에<br>부가세 예상액도 자동 계산</p>
+      <a href="/">무료로 시작하기</a>
+    </div>
+  </aside>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-links">
+      <a href="/">서비스 홈</a>
+      <a href="/blog/">블로그</a>
+      <a href="/about/">소개</a>
+      <a href="/contact/">문의하기</a>
+      <a href="/blog/about.html">소개 및 문의</a>
+      <a href="/privacy">개인정보처리방침</a>
+      <a href="/terms">이용약관</a>
+    </div>
+    <div class="footer-copy">© 2026 오늘장부. All rights reserved.</div>
+  </div>
+</footer>
+
+</body>
+</html>
