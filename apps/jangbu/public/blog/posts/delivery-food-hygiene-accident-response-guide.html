@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>배달 음식 위생 사고 터졌을 때 사장님 대처법 완전 정리 | 오늘장부 블로그</title>
+  <meta name="description" content="배달 음식 이물질·식중독 사고 발생 시 증거 확보부터 식약처 신고, 보건소 역학조사 대응, 소비자 분쟁 해결까지 자영업자가 바로 써먹는 단계별 대처 매뉴얼.">
+  <meta property="og:title" content="배달 음식 위생 사고 터졌을 때 사장님 대처법 완전 정리">
+  <meta property="og:description" content="배달 음식 이물질·식중독 사고 발생 시 증거 확보부터 식약처 신고, 보건소 역학조사 대응, 소비자 분쟁 해결까지 자영업자가 바로 써먹는 단계별 대처 매뉴얼.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://xn--wh1bw0st1gbrb.kr/blog/posts/delivery-food-hygiene-accident-response-guide.html">
+  <meta property="og:image" content="https://images.pexels.com/photos/4920549/pexels-photo-4920549.jpeg?auto=compress&amp;cs=tinysrgb&amp;fit=crop&amp;h=627&amp;w=1200">
+  <link rel="canonical" href="https://xn--wh1bw0st1gbrb.kr/blog/posts/delivery-food-hygiene-accident-response-guide.html">
+  <link rel="icon" href="/icons/icon-192.png">
+  <!-- 방문자 분석 (GA4 + Clarity + 네이버). ID는 /analytics.js 상단에서 관리. -->
+  <script defer src="/analytics.js"></script>
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2764893290310463" crossorigin="anonymous"></script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Noto Sans KR', sans-serif; background: #f8f9fa; color: #1a1a1a; line-height: 1.7; }
+    header { background: #fff; border-bottom: 1px solid #eee; position: sticky; top: 0; z-index: 100; }
+    .header-inner { max-width: 1100px; margin: 0 auto; padding: 0 20px; height: 60px; display: flex; align-items: center; justify-content: space-between; }
+    .logo { display: flex; align-items: center; gap: 8px; text-decoration: none; }
+    .logo-icon { width: 32px; height: 32px; background: #FF6B35; border-radius: 8px; display: flex; align-items: center; justify-content: center; color: white; font-weight: 900; font-size: 16px; }
+    .logo-text { font-size: 18px; font-weight: 800; color: #FF6B35; }
+    .logo-sub { font-size: 13px; color: #888; margin-left: 4px; }
+    .header-cta { background: #FF6B35; color: white; border: none; padding: 8px 16px; border-radius: 8px; font-size: 13px; font-weight: 600; cursor: pointer; text-decoration: none; }
+    /* minmax(0, ...): 표처럼 최소폭이 큰 콘텐츠가 그리드 트랙을 밀어내 페이지 전체가
+       가로로 스크롤되는 것을 막는다. 1fr만 쓰면 트랙 최소폭이 auto라 끌려간다. */
+    .wrap { max-width: 1100px; margin: 0 auto; padding: 32px 20px; display: grid; grid-template-columns: minmax(0, 1fr) 300px; gap: 40px; }
+    @media (max-width: 768px) { .wrap { grid-template-columns: minmax(0, 1fr); } .sidebar { display: none; } }
+    article { background: white; border-radius: 20px; overflow: hidden; box-shadow: 0 2px 12px rgba(0,0,0,0.06); }
+    .article-head { padding: 32px 32px 24px; border-bottom: 1px solid #f0f0f0; }
+    .article-cat { font-size: 12px; font-weight: 700; color: #FF6B35; text-transform: uppercase; margin-bottom: 12px; }
+    .article-cat a { color: #FF6B35; text-decoration: none; }
+    .article-title { font-size: clamp(20px, 4vw, 28px); font-weight: 900; line-height: 1.4; color: #1a1a1a; margin-bottom: 16px; }
+    .article-meta { font-size: 13px; color: #aaa; display: flex; gap: 16px; align-items: center; flex-wrap: wrap; }
+    .hero-img { width: 100%; aspect-ratio: 16/9; object-fit: cover; background: #f0f0f0; }
+    .article-body { padding: 32px; }
+    .article-body h2 { font-size: 20px; font-weight: 800; color: #1a1a1a; margin: 32px 0 14px; padding-bottom: 8px; border-bottom: 2px solid #FF6B35; }
+    .article-body h3 { font-size: 16px; font-weight: 700; color: #333; margin: 20px 0 10px; }
+    .article-body p { margin-bottom: 14px; color: #333; font-size: 15px; }
+    .article-body ul, .article-body ol { padding-left: 20px; margin-bottom: 14px; }
+    .article-body li { margin-bottom: 6px; color: #333; font-size: 15px; }
+    article { min-width: 0; }
+    /* 좁은 화면에서는 표만 자기 안에서 가로 스크롤시킨다. min-width:100%가 있어야
+       넓은 화면에서 기존처럼 폭을 꽉 채운다. */
+    .article-body table { display: block; width: max-content; min-width: 100%; max-width: 100%; overflow-x: auto; border-collapse: collapse; margin: 16px 0; font-size: 14px; }
+    .article-body th { background: #FF6B35; color: white; padding: 10px 14px; text-align: left; }
+    .article-body td { padding: 10px 14px; border-bottom: 1px solid #f0f0f0; }
+    .article-body tr:nth-child(even) td { background: #fff8f5; }
+    .article-body img { width: 100%; border-radius: 12px; margin: 16px 0; }
+    .article-body strong { color: #1a1a1a; }
+    .article-body blockquote { background: #fff8f5; border-left: 4px solid #FF6B35; padding: 16px 20px; border-radius: 0 12px 12px 0; margin: 16px 0; font-style: italic; color: #555; }
+    .article-body a { color: #FF6B35; }
+    .tags { padding: 20px 32px; border-top: 1px solid #f0f0f0; display: flex; gap: 8px; flex-wrap: wrap; }
+    .tag { background: #fff3ee; color: #FF6B35; border-radius: 20px; padding: 5px 12px; font-size: 12px; font-weight: 600; text-decoration: none; }
+    .tag:hover { background: #FF6B35; color: white; }
+    .ad-slot { background: #f0f0f0; border-radius: 12px; display: flex; align-items: center; justify-content: center; color: #bbb; font-size: 12px; min-height: 90px; margin: 24px 0; }
+    .cta-box { background: linear-gradient(135deg, #FF6B35, #ff8c42); border-radius: 20px; padding: 32px; text-align: center; color: white; margin-top: 24px; }
+    .cta-box h3 { font-size: 22px; font-weight: 900; margin-bottom: 10px; }
+    .cta-box p { font-size: 14px; opacity: 0.9; line-height: 1.6; margin-bottom: 20px; }
+    .cta-box a { background: white; color: #FF6B35; border-radius: 12px; padding: 13px 28px; font-weight: 800; font-size: 15px; text-decoration: none; display: inline-block; }
+    .nav-links { display: flex; gap: 16px; margin-top: 24px; }
+    .nav-back { color: #FF6B35; text-decoration: none; font-size: 14px; font-weight: 600; }
+    .nav-back::before { content: '\2190 '; }
+    .sidebar-cta { background: linear-gradient(135deg, #FF6B35, #ff8c42); color: white; border-radius: 16px; padding: 24px; text-align: center; position: sticky; top: 80px; }
+    .sidebar-cta h3 { font-size: 16px; font-weight: 900; margin-bottom: 8px; }
+    .sidebar-cta p { font-size: 13px; opacity: 0.9; line-height: 1.5; margin-bottom: 16px; }
+    .sidebar-cta a { background: white; color: #FF6B35; border-radius: 8px; padding: 10px 20px; font-weight: 700; font-size: 14px; text-decoration: none; display: inline-block; }
+    footer { background: #1a1a1a; color: #888; padding: 40px 20px; margin-top: 60px; }
+    .footer-inner { max-width: 1100px; margin: 0 auto; }
+    .footer-links { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 16px; }
+    .footer-links a { color: #888; text-decoration: none; font-size: 13px; }
+    .footer-copy { font-size: 12px; }
+  </style>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "배달 음식 위생 사고 터졌을 때 사장님 대처법 완전 정리",
+  "description": "배달 음식 이물질·식중독 사고 발생 시 증거 확보부터 식약처 신고, 보건소 역학조사 대응, 소비자 분쟁 해결까지 자영업자가 바로 써먹는 단계별 대처 매뉴얼.",
+  "datePublished": "2026-08-22",
+  "dateModified": "2026-08-22",
+  "image": "https://images.pexels.com/photos/4920549/pexels-photo-4920549.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200",
+  "author": {
+    "@type": "Organization",
+    "name": "오늘장부",
+    "url": "https://오늘장부.kr"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "오늘장부",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://xn--wh1bw0st1gbrb.kr/icons/icon-192.png"
+    }
+  },
+  "mainEntityOfPage": "https://xn--wh1bw0st1gbrb.kr/blog/posts/delivery-food-hygiene-accident-response-guide.html",
+  "keywords": "배달앱, 위생사고, 식중독대처, 소상공인"
+}
+  </script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "고객이 식중독이라고 주장하는데, 우리 가게 잘못인지 어떻게 알 수 있나요?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "식중독 원인은 보건소 역학조사를 통해 확인됩니다. 조사관이 식재료 샘플 수거, 환경 검체 채취, 종사자 검진 등을 통해 원인균과 오염 경로를 파악합니다. 가게에서 자의적으로 판단하거나 과실을 먼저 인정하는 발언을 할 필요는 없습니다. 역학조사에 성실히 협조하고 결과를 기다리세요."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "배달앱에 이물질 신고가 들어오면 자동으로 가게에 불이익이 생기나요?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "배달앱 플랫폼은 이물 신고 접수 시 식약처에 통보할 의무가 있습니다(「식품위생법」제46조). 이후 조사가 이루어지고, 위생법 위반이 확인된 경우에 한해 시정명령·영업정지 등 행정처분이 내려집니다. 단순 신고 접수 자체만으로 자동 불이익이 발생하지는 않으므로, 증거를 갖추고 침착하게 대응하는 것이 중요합니다."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "위생 사고에 대비해 미리 가입할 수 있는 보험이 있나요?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "음식점 배상책임보험(또는 식품사고배상책임보험)에 가입하면 위생 사고로 인한 제3자 손해배상 비용 일부를 보장받을 수 있습니다. 또한 평소 일별 매출과 주문 내역을 정확히 기록해 두면, 사고 전후 매출 변동을 객관적으로 입증하는 자료로도 활용됩니다. 오늘장부 무료로 시작하기로 카드·현금·배달앱 매출을 한 번에 기록하고, 만약의 사태에 대비한 데이터를 평소부터 쌓아 두세요."
+      }
+    }
+  ]
+}
+  </script>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <a href="/" class="logo">
+      <div class="logo-icon">장</div>
+      <span class="logo-text">오늘장부</span>
+      <span class="logo-sub">블로그</span>
+    </a>
+    <a href="/" class="header-cta">무료로 시작하기</a>
+  </div>
+</header>
+
+<div class="wrap">
+  <main>
+    <div class="nav-links">
+      <a href="/blog/" class="nav-back">블로그 목록으로</a>
+    </div>
+
+    <!-- 자동 광고(Auto ads)가 배치를 정하므로 유닛을 직접 넣지 않는다. 여백만 확보한다. -->
+    <div class="ad-slot"></div>
+
+    <article>
+      <div class="article-head">
+        <div class="article-cat"><a href="/blog/">배달앱</a></div>
+        <h1 class="article-title">배달 음식 위생 사고 터졌을 때 사장님 대처법 완전 정리</h1>
+        <div class="article-meta">
+          <span>오늘장부 편집팀</span>
+          <span>2026년 08월 22일</span>
+        </div>
+      </div>
+      <img src="https://images.pexels.com/photos/4920549/pexels-photo-4920549.jpeg?auto=compress&amp;cs=tinysrgb&amp;fit=crop&amp;h=627&amp;w=1200" alt="배달 음식 위생 사고 터졌을 때 사장님 대처법 완전 정리" class="hero-img" loading="lazy">
+      <div class="article-body">
+<p>배달 주문이 늘수록 위생 사고 리스크도 커집니다. 어느 날 갑자기 "음식에서 이물질이 나왔다"는 고객 연락이 오거나, 식중독 의심 증상을 호소하는 메시지가 배달앱 채팅창에 뜰 수 있습니다. 이럴 때 감정적으로 대응하거나 무조건 환불부터 해주면, 나중에 더 큰 법적·재정적 손해로 이어질 수 있습니다. 위기 상황에서 사장님을 지켜주는 것은 <strong>침착한 절차 준수</strong>와 <strong>철저한 증거 관리</strong>입니다. 유형별 대처 흐름을 순서대로 정리했습니다.</p>
+
+<h2>1단계: 신고 접수 직후 — 절대 서두르지 마세요</h2>
+<p>고객이 이물질·위생 문제를 제기하는 순간, 사장님이 가장 먼저 해야 할 일은 <strong>사실 확인과 증거 확보</strong>입니다. 즉각 환불이나 보상 약속을 하면 과실을 인정한 것으로 해석될 수 있고, 분쟁이 생겼을 때 불리하게 작용합니다.</p>
+<ul>
+  <li><strong>주문 내역·시간 확인</strong>: 배달앱 관리자 페이지에서 해당 주문의 접수 시각, 조리 완료 시각, 배달 완료 시각을 캡처해 두세요.</li>
+  <li><strong>해당 시간대 조리 상황 파악</strong>: 어떤 직원이 조리했는지, 식재료 보관 온도는 정상이었는지 내부 기록을 점검합니다.</li>
+  <li><strong>사진·영상 요청</strong>: 고객에게 이물질·문제 음식 사진을 배달앱 채팅 또는 문자로 전송해 달라고 정중히 요청합니다. 증거가 없으면 원인 조사 자체가 어렵습니다.</li>
+  <li><strong>대화 내용 보존</strong>: 배달앱 채팅, 전화 통화 메모, 문자 메시지 등 모든 소통 내역을 스크린샷으로 저장하세요.</li>
+</ul>
+
+<h2>이물질 발견 사고 — 법적 신고 의무까지 있습니다</h2>
+<p>배달 음식에서 이물질이 발견되면 단순 민원을 넘어 <strong>「식품위생법」 제46조</strong>에 따른 법적 절차가 따라옵니다. 배달앱 플랫폼은 소비자로부터 이물 신고를 접수하면 식품의약품안전처장에게 통보할 의무가 있습니다. 즉, 고객이 배달앱에 신고만 해도 식약처로 자동 연결됩니다.</p>
+
+<h3>고객이 이용할 수 있는 신고 경로</h3>
+<ul>
+  <li>배달의민족·쿠팡이츠·요기요 등 배달앱 고객센터 또는 앱 내 신고 메뉴</li>
+  <li>식약처 불량식품 신고전화 <strong>☎ 1399</strong></li>
+  <li>식품안전나라 앱 '내손안 식품안전정보'</li>
+</ul>
+
+<h3>사장님이 준비해야 할 것</h3>
+<ol>
+  <li>이물질 발생 경위 기록: 식재료 입고 일자, 보관 방법, 조리 과정 메모</li>
+  <li>해당 배치(batch) 식재료가 남아 있다면 별도 밀봉·냉장 보관 (역학조사 시 제출 가능)</li>
+  <li>조사기관(식약처·지자체)이 현장 조사를 요청할 경우 적극 협조 — 거부·방해 시 별도 행정처분 대상</li>
+</ol>
+<blockquote>이물질 종류(동물성·금속·유리 등)에 따라 위해 수준이 달라지며, 조사 결과에 따라 <strong>시정명령·영업정지·과징금</strong>까지 부과될 수 있습니다. 과실이 없더라도 협조 자세가 처분 수위에 영향을 줍니다.</blockquote>
+
+<h2>식중독 의심 사고 — 보건소 역학조사, 이렇게 대응하세요</h2>
+<p>고객이 복통·구토·설사 등 식중독 증상을 호소하면, 단순 환불 문제가 아닙니다. 동일 증상 호소자가 여럿 발생하면 <strong>집단 식중독</strong>으로 분류되어 관할 보건소의 역학조사가 시작됩니다.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>단계</th>
+      <th>행동</th>
+      <th>담당</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td>고객에게 즉시 병원 진료 권유, 진단서·진료기록 보관 안내</td>
+      <td>사장님</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>관할 보건소에 자진 신고 또는 보건소 조사 착수 통보 수령</td>
+      <td>보건소</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>해당일 조리 식재료·완성 음식 샘플 냉장 보존 (역학조사 제출용)</td>
+      <td>사장님</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>조리 종사자 건강진단 결과·위생교육 이수 증빙 서류 준비</td>
+      <td>사장님</td>
+    </tr>
+    <tr>
+      <td>5</td>
+      <td>역학조사관 현장 방문 시 조리 시설·기구 공개, 진술서 작성</td>
+      <td>보건소 + 사장님</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>식중독 원인이 해당 음식점으로 밝혀지면 「식품위생법」에 따라 영업정지·시설 개선 명령이 내려질 수 있고, 피해자가 민사상 손해배상을 청구할 수도 있습니다. 반대로, 원인이 불명확하거나 배달 중 온도 변화·고객 보관 부주의 등 다른 요인으로 확인되면 가게 과실이 아닐 수 있습니다. 역학조사에 성실히 협조하되, 결과가 나오기 전에 불명확한 과실을 스스로 인정하는 발언은 삼가세요.</p>
+
+<h2>소비자 분쟁 해결 — 공정거래위원회 기준을 알아두세요</h2>
+<p>이물질·위생 문제로 고객과 보상 협의를 할 때는 공정거래위원회의 <strong>「소비자분쟁해결기준」</strong>을 기준점으로 삼을 수 있습니다. 배달앱 플랫폼 자체 보상 기준이 있으면 우선 적용되며, 없을 경우 해당 법령 기준을 따릅니다. 합의가 어려울 때는 <strong>한국소비자원(☎ 1372)</strong>에 분쟁 조정을 신청할 수 있습니다.</p>
+<ul>
+  <li>위해도 낮은 이물질(머리카락 등): 해당 음식 환불 또는 재제공이 일반적</li>
+  <li>신체 위해(치아 파손, 목 이물감 등): 치료비·위자료 배상 가능성</li>
+  <li>식중독 피해 입증 시: 치료비·일실수입·위자료 등 손해배상 청구 대상</li>
+</ul>
+<p>중요한 것은 <strong>"과실 여부"</strong>입니다. 고객 주장만으로 자동 배상 의무가 생기지는 않으므로, 증거 자료를 체계적으로 보관해야 분쟁 시 방어가 가능합니다.</p>
+
+<h2>사고 예방이 최선 — 일상 위생 점검 루틴</h2>
+<p>사고 대응만큼 중요한 것이 예방입니다. 식품의약품안전처 배달음식 위생관리 매뉴얼에 따르면, 어류·육류·가금류 조리 시 중심 온도 <strong>75℃ 이상(어패류는 85℃ 이상)</strong>으로 가열해야 하고, 배달 용기는 반드시 <strong>'식품용' 표시</strong>가 있는 제품을 사용해야 합니다.</p>
+<ul>
+  <li>냉장·냉동 보관 온도 매일 기록 (냉장 0~10℃, 냉동 -18℃ 이하 권장)</li>
+  <li>배달 가방(보온백) 주기적 세척·소독</li>
+  <li>조리 종사자 정기 건강진단 실시 및 기록 보관</li>
+  <li>위생교육 이수 증빙서류 항상 비치</li>
+  <li>조리 기구 교차오염 방지 — 육류·어패류·채소 도마·칼 구분 사용</li>
+</ul>
+<p>이런 기록들이 실제 사고 시 "관리를 성실히 했다"는 증거가 됩니다. 매출 기록과 마찬가지로 위생 기록도 <strong>습관적으로 남기는 것</strong>이 핵심입니다. <strong>오늘장부</strong>로 매일 매출을 빠짐없이 기록하는 습관을 들이듯, 위생 점검 체크리스트도 같은 날 함께 작성해 두면 누락 없이 관리할 수 있습니다.</p>
+
+<h2>자주 묻는 질문</h2>
+
+<h3>고객이 식중독이라고 주장하는데, 우리 가게 잘못인지 어떻게 알 수 있나요?</h3>
+<p>식중독 원인은 보건소 역학조사를 통해 확인됩니다. 조사관이 식재료 샘플 수거, 환경 검체 채취, 종사자 검진 등을 통해 원인균과 오염 경로를 파악합니다. 가게에서 자의적으로 판단하거나 과실을 먼저 인정하는 발언을 할 필요는 없습니다. 역학조사에 성실히 협조하고 결과를 기다리세요.</p>
+
+<h3>배달앱에 이물질 신고가 들어오면 자동으로 가게에 불이익이 생기나요?</h3>
+<p>배달앱 플랫폼은 이물 신고 접수 시 식약처에 통보할 의무가 있습니다(「식품위생법」제46조). 이후 조사가 이루어지고, 위생법 위반이 확인된 경우에 한해 시정명령·영업정지 등 행정처분이 내려집니다. 단순 신고 접수 자체만으로 자동 불이익이 발생하지는 않으므로, 증거를 갖추고 침착하게 대응하는 것이 중요합니다.</p>
+
+<h3>위생 사고에 대비해 미리 가입할 수 있는 보험이 있나요?</h3>
+<p>음식점 배상책임보험(또는 식품사고배상책임보험)에 가입하면 위생 사고로 인한 제3자 손해배상 비용 일부를 보장받을 수 있습니다. 또한 평소 일별 매출과 주문 내역을 정확히 기록해 두면, 사고 전후 매출 변동을 객관적으로 입증하는 자료로도 활용됩니다. <a href="https://오늘장부.kr">오늘장부 무료로 시작하기</a>로 카드·현금·배달앱 매출을 한 번에 기록하고, 만약의 사태에 대비한 데이터를 평소부터 쌓아 두세요.</p>
+
+<p>※ 본 글은 2026년 기준 참고용 정보이며, 정확한 신고 절차·행정처분 기준은 식품의약품안전처(www.mfds.go.kr), 관할 보건소 또는 전문가와 상담하세요.</p>
+      </div>
+      <div class="tags">
+        <a href="/blog/?tag=%EB%B0%B0%EB%8B%AC%EC%95%B1" class="tag">배달앱</a> <a href="/blog/?tag=%EC%9C%84%EC%83%9D%EC%82%AC%EA%B3%A0" class="tag">위생사고</a> <a href="/blog/?tag=%EC%8B%9D%EC%A4%91%EB%8F%85%EB%8C%80%EC%B2%98" class="tag">식중독대처</a> <a href="/blog/?tag=%EC%86%8C%EC%83%81%EA%B3%B5%EC%9D%B8" class="tag">소상공인</a>
+      </div>
+    </article>
+
+    <section style="background:#fff8f5;border-radius:16px;padding:24px 28px;margin-top:24px;">
+      <h2 style="font-size:18px;font-weight:800;color:#1a1a1a;margin:0 0 14px;">함께 보면 좋은 글</h2>
+      <ul style="list-style:none;padding:0;margin:0;">
+        <li style="padding:8px 0;border-bottom:1px solid #ffe6d9;"><a href="/blog/posts/should-small-business-build-own-order-app.html" style="color:#FF6B35;text-decoration:none;font-weight:600;font-size:14px;">자체 주문앱 만들 만한가? 소상공인이 알아야 할 현실 비용</a></li>
+        <li style="padding:8px 0;border-bottom:1px solid #ffe6d9;"><a href="/blog/posts/delivery-radius-setting-guide-for-restaurant-owners.html" style="color:#FF6B35;text-decoration:none;font-weight:600;font-size:14px;">배달 반경 설정하는 법 — 앱별 핵심 정리</a></li>
+        <li style="padding:8px 0;border-bottom:1px solid #ffe6d9;"><a href="/blog/posts/delivery-app-packaging-order-fee-comparison-2026.html" style="color:#FF6B35;text-decoration:none;font-weight:600;font-size:14px;">포장 주문 수수료 완전 해부 — 배민·쿠팡이츠·요기요 실제 부담 비교</a></li>
+        <li style="padding:8px 0;border-bottom:1px solid #ffe6d9;"><a href="/blog/posts/delivery-app-bad-review-star-rating-terror-response-guide.html" style="color:#FF6B35;text-decoration:none;font-weight:600;font-size:14px;">별점 테러·악성 리뷰 대응법: 배달앱 사장님 생존 가이드</a></li>
+      </ul>
+    </section>
+
+    <section style="background:#fff8f5;border-radius:16px;padding:24px 28px;margin-top:24px;">
+      <h2 style="font-size:18px;font-weight:800;color:#1a1a1a;margin:0 0 14px;">무료 계산기로 바로 확인하기</h2>
+      <ul style="list-style:none;padding:0;margin:0;">
+        <li style="padding:10px 0;border-bottom:1px solid #ffe6d9;"><a href="/tools/delivery-fee-calculator/" style="color:#FF6B35;text-decoration:none;font-weight:700;font-size:15px;">배달앱 수수료 계산기</a><div style="font-size:13px;color:#777;margin-top:2px;">중개·결제 수수료와 배달비를 빼면 실제로 얼마가 입금되는지 계산합니다</div></li>
+      </ul>
+    </section>
+
+    <!-- 자동 광고(Auto ads)가 배치를 정하므로 유닛을 직접 넣지 않는다. 여백만 확보한다. -->
+    <div class="ad-slot"></div>
+
+    <div class="cta-box">
+      <h3>매일 매출 기록, 30초면 끝!</h3>
+      <p>카드·현금·네이버페이·카카오페이<br>여러 결제수단을 한 화면에서 입력<br>부가세 예상액도 자동으로 계산해드려요</p>
+      <a href="/">지금 무료로 시작하기</a>
+    </div>
+  </main>
+
+  <aside class="sidebar">
+    <div class="sidebar-cta">
+      <h3>매일 매출 기록,<br>30초면 끝!</h3>
+      <p>카드·현금·배달앱 한 번에<br>부가세 예상액도 자동 계산</p>
+      <a href="/">무료로 시작하기</a>
+    </div>
+  </aside>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-links">
+      <a href="/">서비스 홈</a>
+      <a href="/blog/">블로그</a>
+      <a href="/about/">소개</a>
+      <a href="/contact/">문의하기</a>
+      <a href="/blog/about.html">소개 및 문의</a>
+      <a href="/privacy">개인정보처리방침</a>
+      <a href="/terms">이용약관</a>
+    </div>
+    <div class="footer-copy">© 2026 오늘장부. All rights reserved.</div>
+  </div>
+</footer>
+
+</body>
+</html>
