@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>식자재 폐기율 줄이기: 음식점 원가 지키는 실전 재고관리 5단계 | 오늘장부 블로그</title>
+  <meta name="description" content="외식업 적정 식재료비는 매출의 30~35%. 발주·보관·메뉴 설계까지 폐기율을 낮춰 순이익을 지키는 소상공인 실전 재고관리법 5가지를 정리했습니다.">
+  <meta property="og:title" content="식자재 폐기율 줄이기: 음식점 원가 지키는 실전 재고관리 5단계">
+  <meta property="og:description" content="외식업 적정 식재료비는 매출의 30~35%. 발주·보관·메뉴 설계까지 폐기율을 낮춰 순이익을 지키는 소상공인 실전 재고관리법 5가지를 정리했습니다.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://xn--wh1bw0st1gbrb.kr/blog/posts/reduce-food-waste-restaurant-inventory-management.html">
+  <meta property="og:image" content="https://images.pexels.com/photos/8900044/pexels-photo-8900044.jpeg?auto=compress&amp;cs=tinysrgb&amp;fit=crop&amp;h=627&amp;w=1200">
+  <link rel="canonical" href="https://xn--wh1bw0st1gbrb.kr/blog/posts/reduce-food-waste-restaurant-inventory-management.html">
+  <link rel="icon" href="/icons/icon-192.png">
+  <!-- 방문자 분석 (GA4 + Clarity + 네이버). ID는 /analytics.js 상단에서 관리. -->
+  <script defer src="/analytics.js"></script>
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2764893290310463" crossorigin="anonymous"></script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Noto Sans KR', sans-serif; background: #f8f9fa; color: #1a1a1a; line-height: 1.7; }
+    header { background: #fff; border-bottom: 1px solid #eee; position: sticky; top: 0; z-index: 100; }
+    .header-inner { max-width: 1100px; margin: 0 auto; padding: 0 20px; height: 60px; display: flex; align-items: center; justify-content: space-between; }
+    .logo { display: flex; align-items: center; gap: 8px; text-decoration: none; }
+    .logo-icon { width: 32px; height: 32px; background: #FF6B35; border-radius: 8px; display: flex; align-items: center; justify-content: center; color: white; font-weight: 900; font-size: 16px; }
+    .logo-text { font-size: 18px; font-weight: 800; color: #FF6B35; }
+    .logo-sub { font-size: 13px; color: #888; margin-left: 4px; }
+    .header-cta { background: #FF6B35; color: white; border: none; padding: 8px 16px; border-radius: 8px; font-size: 13px; font-weight: 600; cursor: pointer; text-decoration: none; }
+    /* minmax(0, ...): 표처럼 최소폭이 큰 콘텐츠가 그리드 트랙을 밀어내 페이지 전체가
+       가로로 스크롤되는 것을 막는다. 1fr만 쓰면 트랙 최소폭이 auto라 끌려간다. */
+    .wrap { max-width: 1100px; margin: 0 auto; padding: 32px 20px; display: grid; grid-template-columns: minmax(0, 1fr) 300px; gap: 40px; }
+    @media (max-width: 768px) { .wrap { grid-template-columns: minmax(0, 1fr); } .sidebar { display: none; } }
+    article { background: white; border-radius: 20px; overflow: hidden; box-shadow: 0 2px 12px rgba(0,0,0,0.06); }
+    .article-head { padding: 32px 32px 24px; border-bottom: 1px solid #f0f0f0; }
+    .article-cat { font-size: 12px; font-weight: 700; color: #FF6B35; text-transform: uppercase; margin-bottom: 12px; }
+    .article-cat a { color: #FF6B35; text-decoration: none; }
+    .article-title { font-size: clamp(20px, 4vw, 28px); font-weight: 900; line-height: 1.4; color: #1a1a1a; margin-bottom: 16px; }
+    .article-meta { font-size: 13px; color: #aaa; display: flex; gap: 16px; align-items: center; flex-wrap: wrap; }
+    .hero-img { width: 100%; aspect-ratio: 16/9; object-fit: cover; background: #f0f0f0; }
+    .article-body { padding: 32px; }
+    .article-body h2 { font-size: 20px; font-weight: 800; color: #1a1a1a; margin: 32px 0 14px; padding-bottom: 8px; border-bottom: 2px solid #FF6B35; }
+    .article-body h3 { font-size: 16px; font-weight: 700; color: #333; margin: 20px 0 10px; }
+    .article-body p { margin-bottom: 14px; color: #333; font-size: 15px; }
+    .article-body ul, .article-body ol { padding-left: 20px; margin-bottom: 14px; }
+    .article-body li { margin-bottom: 6px; color: #333; font-size: 15px; }
+    article { min-width: 0; }
+    /* 좁은 화면에서는 표만 자기 안에서 가로 스크롤시킨다. min-width:100%가 있어야
+       넓은 화면에서 기존처럼 폭을 꽉 채운다. */
+    .article-body table { display: block; width: max-content; min-width: 100%; max-width: 100%; overflow-x: auto; border-collapse: collapse; margin: 16px 0; font-size: 14px; }
+    .article-body th { background: #FF6B35; color: white; padding: 10px 14px; text-align: left; }
+    .article-body td { padding: 10px 14px; border-bottom: 1px solid #f0f0f0; }
+    .article-body tr:nth-child(even) td { background: #fff8f5; }
+    .article-body img { width: 100%; border-radius: 12px; margin: 16px 0; }
+    .article-body strong { color: #1a1a1a; }
+    .article-body blockquote { background: #fff8f5; border-left: 4px solid #FF6B35; padding: 16px 20px; border-radius: 0 12px 12px 0; margin: 16px 0; font-style: italic; color: #555; }
+    .article-body a { color: #FF6B35; }
+    .tags { padding: 20px 32px; border-top: 1px solid #f0f0f0; display: flex; gap: 8px; flex-wrap: wrap; }
+    .tag { background: #fff3ee; color: #FF6B35; border-radius: 20px; padding: 5px 12px; font-size: 12px; font-weight: 600; text-decoration: none; }
+    .tag:hover { background: #FF6B35; color: white; }
+    .ad-slot { background: #f0f0f0; border-radius: 12px; display: flex; align-items: center; justify-content: center; color: #bbb; font-size: 12px; min-height: 90px; margin: 24px 0; }
+    .cta-box { background: linear-gradient(135deg, #FF6B35, #ff8c42); border-radius: 20px; padding: 32px; text-align: center; color: white; margin-top: 24px; }
+    .cta-box h3 { font-size: 22px; font-weight: 900; margin-bottom: 10px; }
+    .cta-box p { font-size: 14px; opacity: 0.9; line-height: 1.6; margin-bottom: 20px; }
+    .cta-box a { background: white; color: #FF6B35; border-radius: 12px; padding: 13px 28px; font-weight: 800; font-size: 15px; text-decoration: none; display: inline-block; }
+    .nav-links { display: flex; gap: 16px; margin-top: 24px; }
+    .nav-back { color: #FF6B35; text-decoration: none; font-size: 14px; font-weight: 600; }
+    .nav-back::before { content: '\2190 '; }
+    .sidebar-cta { background: linear-gradient(135deg, #FF6B35, #ff8c42); color: white; border-radius: 16px; padding: 24px; text-align: center; position: sticky; top: 80px; }
+    .sidebar-cta h3 { font-size: 16px; font-weight: 900; margin-bottom: 8px; }
+    .sidebar-cta p { font-size: 13px; opacity: 0.9; line-height: 1.5; margin-bottom: 16px; }
+    .sidebar-cta a { background: white; color: #FF6B35; border-radius: 8px; padding: 10px 20px; font-weight: 700; font-size: 14px; text-decoration: none; display: inline-block; }
+    footer { background: #1a1a1a; color: #888; padding: 40px 20px; margin-top: 60px; }
+    .footer-inner { max-width: 1100px; margin: 0 auto; }
+    .footer-links { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 16px; }
+    .footer-links a { color: #888; text-decoration: none; font-size: 13px; }
+    .footer-copy { font-size: 12px; }
+  </style>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "식자재 폐기율 줄이기: 음식점 원가 지키는 실전 재고관리 5단계",
+  "description": "외식업 적정 식재료비는 매출의 30~35%. 발주·보관·메뉴 설계까지 폐기율을 낮춰 순이익을 지키는 소상공인 실전 재고관리법 5가지를 정리했습니다.",
+  "datePublished": "2026-08-23",
+  "dateModified": "2026-08-23",
+  "image": "https://images.pexels.com/photos/8900044/pexels-photo-8900044.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200",
+  "author": {
+    "@type": "Organization",
+    "name": "오늘장부",
+    "url": "https://오늘장부.kr"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "오늘장부",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://xn--wh1bw0st1gbrb.kr/icons/icon-192.png"
+    }
+  },
+  "mainEntityOfPage": "https://xn--wh1bw0st1gbrb.kr/blog/posts/reduce-food-waste-restaurant-inventory-management.html",
+  "keywords": "식자재관리, 폐기율줄이기, 원가절감, 재고관리, 외식업"
+}
+  </script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "식자재 폐기가 세금 처리에서 비용으로 인정되나요?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "음식점 운영 중 발생한 식자재 폐기 손실은 원칙적으로 사업 관련 비용으로 처리할 수 있지만, 폐기 사실을 입증할 수 있는 기록(폐기 일지, 폐기물 처리 영수증 등)이 있어야 합니다. 구체적인 처리 방법은 담당 세무사 또는 국세청 홈택스를 통해 확인하시기 바랍니다."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "냉동 보관하면 폐기 문제가 해결되지 않나요?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "냉동 보관은 유통기한을 연장하지만 만능은 아닙니다. 냉동·해동 반복 시 품질이 저하되고, 일부 채소류는 냉동 후 식감이 크게 떨어져 메뉴 품질에 영향을 줍니다. 냉동 가능한 재료와 그렇지 않은 재료를 미리 구분해두고, 냉동 재료도 라벨에 냉동 날짜를 반드시 표기해야 합니다."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "소량 발주가 유리한가요, 대량 발주가 유리한가요?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "대량 발주는 단가는 낮지만 폐기 위험이 높고, 소량 발주는 폐기는 줄지만 단가가 오릅니다. 매출 패턴이 안정된 재료는 일정 수준 대량 발주, 수요가 불규칙한 재료는 소량 자주 발주하는 혼합 전략이 현실적입니다. 주 1회 재고 실사 결과를 보며 품목별로 발주 주기를 달리 운영하세요."
+      }
+    }
+  ]
+}
+  </script>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <a href="/" class="logo">
+      <div class="logo-icon">장</div>
+      <span class="logo-text">오늘장부</span>
+      <span class="logo-sub">블로그</span>
+    </a>
+    <a href="/" class="header-cta">무료로 시작하기</a>
+  </div>
+</header>
+
+<div class="wrap">
+  <main>
+    <div class="nav-links">
+      <a href="/blog/" class="nav-back">블로그 목록으로</a>
+    </div>
+
+    <!-- 자동 광고(Auto ads)가 배치를 정하므로 유닛을 직접 넣지 않는다. 여백만 확보한다. -->
+    <div class="ad-slot"></div>
+
+    <article>
+      <div class="article-head">
+        <div class="article-cat"><a href="/blog/">매출관리</a></div>
+        <h1 class="article-title">식자재 폐기율 줄이기: 음식점 원가 지키는 실전 재고관리 5단계</h1>
+        <div class="article-meta">
+          <span>오늘장부 편집팀</span>
+          <span>2026년 08월 23일</span>
+        </div>
+      </div>
+      <img src="https://images.pexels.com/photos/8900044/pexels-photo-8900044.jpeg?auto=compress&amp;cs=tinysrgb&amp;fit=crop&amp;h=627&amp;w=1200" alt="식자재 폐기율 줄이기: 음식점 원가 지키는 실전 재고관리 5단계" class="hero-img" loading="lazy">
+      <div class="article-body">
+<p>열심히 팔아도 달에 남는 돈이 없다면, <strong>재고 창고에 쌓이다 버려지는 식자재</strong>를 먼저 들여다봐야 합니다. 외식업에서 식재료비는 통상 매출의 30~35%를 차지합니다. 그런데 여기서 폐기가 5~10%만 줄어도 순이익이 눈에 띄게 달라집니다. 재료값·인건비·임대료가 모두 오른 2026년, 식자재 폐기율을 낮추는 것은 '아끼는 것'이 아니라 <strong>매출 관리의 핵심 전략</strong>입니다.</p>
+
+<h2>왜 폐기율 관리가 매출 관리인가?</h2>
+<p>폐기된 식자재는 매출을 만들지 못한 채 비용으로만 사라집니다. 예를 들어 하루 평균 매출이 50만 원인 식당에서 매일 5만 원어치 재료를 버린다면, 한 달이면 150만 원이 그냥 쓰레기통에 들어가는 셈입니다. 인건비나 임대료는 협상이 어렵지만, <strong>폐기율은 사장님이 직접 줄일 수 있는 가장 빠른 비용 절감 수단</strong>입니다.</p>
+<p>폐기가 늘어나는 주요 원인은 세 가지입니다.</p>
+<ul>
+  <li><strong>과잉 발주</strong> — 혹시 모른다는 심리로 필요 이상 주문</li>
+  <li><strong>보관 실수</strong> — 냉장 온도·보관 위치 미관리로 유통기한 초과</li>
+  <li><strong>메뉴 비효율</strong> — 특정 식자재를 한두 메뉴에만 사용해 재고가 남음</li>
+</ul>
+
+<h2>실전 5단계: 폐기율을 낮추는 재고관리 루틴</h2>
+
+<h3>1단계 — 과거 매출 데이터로 발주량 산출하기</h3>
+<p>감이나 경험에만 의존하지 말고, <strong>최소 4주치 매출 및 판매 메뉴 기록</strong>을 기반으로 발주량을 산출하세요. 주중과 주말, 날씨·행사 여부에 따라 수요가 달라지는 패턴을 파악하면 과잉 발주를 크게 줄일 수 있습니다. 카드·현금·배달앱 매출을 한눈에 확인할 수 있는 <strong>오늘장부</strong> 같은 일매출 기록 앱을 활용하면 요일별·시간대별 매출 패턴을 쉽게 정리할 수 있어 발주 기준을 세우는 데 도움이 됩니다.</p>
+
+<h3>2단계 — 선입선출(FIFO) 원칙 철저히 지키기</h3>
+<p>냉장고·창고 정리에서 가장 기본이지만 가장 자주 깨지는 원칙입니다. <strong>먼저 들어온 재료를 앞에, 새 재료는 뒤에</strong> 배치하고, 유통기한이 짧은 순서로 라벨을 붙여두세요. 주방 동선을 바꾸기 어렵다면 선반 바닥에 날짜 스티커만 붙여도 효과를 볼 수 있습니다.</p>
+
+<h3>3단계 — '데드스톡 위험 재료' 별도 관리</h3>
+<p>유통기한이 3일 이내로 남은 식자재는 별도 코너에 모아두고, 당일 조리 우선 재료로 지정하세요. 이를 '데드스톡 알림 칸'으로 부르며 냉장고 한 단을 지정해두는 방법이 실용적입니다. 직원이 바뀌어도 누구나 확인할 수 있도록 <strong>시각적으로 구분</strong>하는 것이 핵심입니다.</p>
+
+<h3>4단계 — 식자재 공유 메뉴 설계(크로스 유틸리제이션)</h3>
+<p>하나의 재료가 여러 메뉴에 쓰일수록 폐기 위험은 낮아집니다. 예를 들어 양파·대파·달걀처럼 범용성이 높은 재료 중심으로 메뉴를 설계하고, 특정 시즌 재료를 사용하는 메뉴는 <strong>한시 메뉴나 일일 특선</strong>으로 운영하면 재고 소진에 효과적입니다. 반대로 1~2가지 메뉴에만 쓰이는 희귀 식재료는 가급적 소량만 발주하는 것이 안전합니다.</p>
+
+<h3>5단계 — 주 1회 재고 실사 + 발주 검토 루틴화</h3>
+<p>바쁜 일상에서도 <strong>주 1회, 정해진 요일에 10~15분</strong>씩 재고를 직접 확인하는 루틴을 만드세요. 실사 결과를 간단한 메모장이나 앱에 기록하면 한 달 후 어떤 재료가 반복적으로 남는지 패턴이 보입니다. 이 데이터가 쌓이면 다음 달 발주량 조정이 훨씬 쉬워집니다.</p>
+
+<h2>식재료비 원가율 목표치 한눈에 보기</h2>
+<table>
+  <thead>
+    <tr>
+      <th>업종 유형</th>
+      <th>권장 식재료비 원가율</th>
+      <th>관리 포인트</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>한식·국밥·분식</td>
+      <td>30~35%</td>
+      <td>국물 재료·채소 폐기 최소화</td>
+    </tr>
+    <tr>
+      <td>배달 전문점</td>
+      <td>28~33%</td>
+      <td>포장재·배달 수수료 포함 계산 필수</td>
+    </tr>
+    <tr>
+      <td>카페·디저트</td>
+      <td>25~30%</td>
+      <td>유제품·생크림 유통기한 집중 관리</td>
+    </tr>
+    <tr>
+      <td>고깃집·횟집</td>
+      <td>40~50%</td>
+      <td>단가 높은 메인 재료 소진 계획 필수</td>
+    </tr>
+  </tbody>
+</table>
+<p><strong>※ 위 수치는 업계 일반 참고치이며, 실제 적정 원가율은 임대료·인건비 수준에 따라 달라집니다.</strong></p>
+
+<h2>폐기 손실을 매출 숫자로 체감하는 방법</h2>
+<p>폐기율 관리가 막연하게 느껴진다면, 오늘부터 <strong>버린 식자재의 원가를 날짜별로 메모</strong>해보세요. 일주일만 기록해도 "하루 평균 얼마를 버리는지"가 숫자로 보입니다. 오늘장부처럼 일매출을 날짜별로 기록해두면, 매출 대비 식재료비·폐기 비용의 비중을 직관적으로 비교할 수 있어 개선 목표를 세우기가 훨씬 쉬워집니다.</p>
+
+<h2>자주 묻는 질문</h2>
+
+<h3>식자재 폐기가 세금 처리에서 비용으로 인정되나요?</h3>
+<p>음식점 운영 중 발생한 식자재 폐기 손실은 원칙적으로 사업 관련 비용으로 처리할 수 있지만, 폐기 사실을 입증할 수 있는 기록(폐기 일지, 폐기물 처리 영수증 등)이 있어야 합니다. 구체적인 처리 방법은 담당 세무사 또는 국세청 홈택스를 통해 확인하시기 바랍니다.</p>
+
+<h3>냉동 보관하면 폐기 문제가 해결되지 않나요?</h3>
+<p>냉동 보관은 유통기한을 연장하지만 만능은 아닙니다. 냉동·해동 반복 시 품질이 저하되고, 일부 채소류는 냉동 후 식감이 크게 떨어져 메뉴 품질에 영향을 줍니다. 냉동 가능한 재료와 그렇지 않은 재료를 미리 구분해두고, <strong>냉동 재료도 라벨에 냉동 날짜를 반드시 표기</strong>해야 합니다.</p>
+
+<h3>소량 발주가 유리한가요, 대량 발주가 유리한가요?</h3>
+<p>대량 발주는 단가는 낮지만 폐기 위험이 높고, 소량 발주는 폐기는 줄지만 단가가 오릅니다. 매출 패턴이 안정된 재료는 일정 수준 대량 발주, 수요가 불규칙한 재료는 소량 자주 발주하는 <strong>혼합 전략</strong>이 현실적입니다. 주 1회 재고 실사 결과를 보며 품목별로 발주 주기를 달리 운영하세요.</p>
+
+<p>식자재 폐기율을 줄이는 것은 하루아침에 완성되지 않습니다. 하지만 발주 기록 하나, 냉장고 정리 방법 하나를 바꾸는 것부터 시작하면 한 달 뒤 통장 잔액이 달라집니다. 오늘부터 매출과 비용을 꼼꼼히 기록하고 싶은 사장님께는 <a href="https://오늘장부.kr">오늘장부 무료로 시작하기</a>를 추천드립니다.</p>
+
+<p>※ 본 글은 2026년 기준 참고용 정보이며, 정확한 신고·금액은 국세청 홈택스 또는 세무사와 상담하세요.</p>
+      </div>
+      <div class="tags">
+        <a href="/blog/?tag=%EC%8B%9D%EC%9E%90%EC%9E%AC%EA%B4%80%EB%A6%AC" class="tag">식자재관리</a> <a href="/blog/?tag=%ED%8F%90%EA%B8%B0%EC%9C%A8%EC%A4%84%EC%9D%B4%EA%B8%B0" class="tag">폐기율줄이기</a> <a href="/blog/?tag=%EC%9B%90%EA%B0%80%EC%A0%88%EA%B0%90" class="tag">원가절감</a> <a href="/blog/?tag=%EC%9E%AC%EA%B3%A0%EA%B4%80%EB%A6%AC" class="tag">재고관리</a> <a href="/blog/?tag=%EC%99%B8%EC%8B%9D%EC%97%85" class="tag">외식업</a>
+      </div>
+    </article>
+
+    <section style="background:#fff8f5;border-radius:16px;padding:24px 28px;margin-top:24px;">
+      <h2 style="font-size:18px;font-weight:800;color:#1a1a1a;margin:0 0 14px;">함께 보면 좋은 글</h2>
+      <ul style="list-style:none;padding:0;margin:0;">
+        <li style="padding:8px 0;border-bottom:1px solid #ffe6d9;"><a href="/blog/posts/fixed-vs-variable-costs-guide-for-small-business.html" style="color:#FF6B35;text-decoration:none;font-weight:600;font-size:14px;">고정비 변동비 나누는 법 — 사장님 필수 비용 구조 분석</a></li>
+        <li style="padding:8px 0;border-bottom:1px solid #ffe6d9;"><a href="/blog/posts/how-to-read-income-statement-for-small-business.html" style="color:#FF6B35;text-decoration:none;font-weight:600;font-size:14px;">손익계산서 읽는 법: 사장님이 꼭 알아야 할 5가지 숫자</a></li>
+        <li style="padding:8px 0;border-bottom:1px solid #ffe6d9;"><a href="/blog/posts/cost-ratio-calculation-and-reduction.html" style="color:#FF6B35;text-decoration:none;font-weight:600;font-size:14px;">원가율 계산하고 낮추는 법 — 사장님 수익의 첫 단추</a></li>
+        <li style="padding:8px 0;border-bottom:1px solid #ffe6d9;"><a href="/blog/posts/revenue-vs-net-profit-for-small-business.html" style="color:#FF6B35;text-decoration:none;font-weight:600;font-size:14px;">매출과 순이익 헷갈리지 않기 — 사장님이 꼭 알아야 할 차이</a></li>
+      </ul>
+    </section>
+
+    <section style="background:#fff8f5;border-radius:16px;padding:24px 28px;margin-top:24px;">
+      <h2 style="font-size:18px;font-weight:800;color:#1a1a1a;margin:0 0 14px;">무료 계산기로 바로 확인하기</h2>
+      <ul style="list-style:none;padding:0;margin:0;">
+        <li style="padding:10px 0;border-bottom:1px solid #ffe6d9;"><a href="/tools/card-fee-calculator/" style="color:#FF6B35;text-decoration:none;font-weight:700;font-size:15px;">카드수수료 계산기</a><div style="font-size:13px;color:#777;margin-top:2px;">연매출로 우대수수료율 구간을 확인하고 환급 대상인지 알아봅니다</div></li>
+        <li style="padding:10px 0;border-bottom:1px solid #ffe6d9;"><a href="/tools/delivery-fee-calculator/" style="color:#FF6B35;text-decoration:none;font-weight:700;font-size:15px;">배달앱 수수료 계산기</a><div style="font-size:13px;color:#777;margin-top:2px;">중개·결제 수수료와 배달비를 빼면 실제로 얼마가 입금되는지 계산합니다</div></li>
+      </ul>
+    </section>
+
+    <!-- 자동 광고(Auto ads)가 배치를 정하므로 유닛을 직접 넣지 않는다. 여백만 확보한다. -->
+    <div class="ad-slot"></div>
+
+    <div class="cta-box">
+      <h3>매일 매출 기록, 30초면 끝!</h3>
+      <p>카드·현금·네이버페이·카카오페이<br>여러 결제수단을 한 화면에서 입력<br>부가세 예상액도 자동으로 계산해드려요</p>
+      <a href="/">지금 무료로 시작하기</a>
+    </div>
+  </main>
+
+  <aside class="sidebar">
+    <div class="sidebar-cta">
+      <h3>매일 매출 기록,<br>30초면 끝!</h3>
+      <p>카드·현금·배달앱 한 번에<br>부가세 예상액도 자동 계산</p>
+      <a href="/">무료로 시작하기</a>
+    </div>
+  </aside>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-links">
+      <a href="/">서비스 홈</a>
+      <a href="/blog/">블로그</a>
+      <a href="/about/">소개</a>
+      <a href="/contact/">문의하기</a>
+      <a href="/blog/about.html">소개 및 문의</a>
+      <a href="/privacy">개인정보처리방침</a>
+      <a href="/terms">이용약관</a>
+    </div>
+    <div class="footer-copy">© 2026 오늘장부. All rights reserved.</div>
+  </div>
+</footer>
+
+</body>
+</html>
