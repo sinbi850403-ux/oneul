@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>온라인 결제 수수료 구조 완전 정복 — PG·카드·배달앱 한눈에 | 오늘장부 블로그</title>
+  <meta name="description" content="PG사·신용카드·배달앱 수수료 구조를 한눈에 비교 정리. 2026년 최신 영세·중소가맹점 우대수수료율과 절감 전략까지 소상공인 필독.">
+  <meta property="og:title" content="온라인 결제 수수료 구조 완전 정복 — PG·카드·배달앱 한눈에">
+  <meta property="og:description" content="PG사·신용카드·배달앱 수수료 구조를 한눈에 비교 정리. 2026년 최신 영세·중소가맹점 우대수수료율과 절감 전략까지 소상공인 필독.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://xn--wh1bw0st1gbrb.kr/blog/posts/online-payment-fee-structure-guide.html">
+  <meta property="og:image" content="https://images.pexels.com/photos/6613956/pexels-photo-6613956.jpeg?auto=compress&amp;cs=tinysrgb&amp;fit=crop&amp;h=627&amp;w=1200">
+  <link rel="canonical" href="https://xn--wh1bw0st1gbrb.kr/blog/posts/online-payment-fee-structure-guide.html">
+  <link rel="icon" href="/icons/icon-192.png">
+  <!-- 방문자 분석 (GA4 + Clarity + 네이버). ID는 /analytics.js 상단에서 관리. -->
+  <script defer src="/analytics.js"></script>
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2764893290310463" crossorigin="anonymous"></script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Noto Sans KR', sans-serif; background: #f8f9fa; color: #1a1a1a; line-height: 1.7; }
+    header { background: #fff; border-bottom: 1px solid #eee; position: sticky; top: 0; z-index: 100; }
+    .header-inner { max-width: 1100px; margin: 0 auto; padding: 0 20px; height: 60px; display: flex; align-items: center; justify-content: space-between; }
+    .logo { display: flex; align-items: center; gap: 8px; text-decoration: none; }
+    .logo-icon { width: 32px; height: 32px; background: #FF6B35; border-radius: 8px; display: flex; align-items: center; justify-content: center; color: white; font-weight: 900; font-size: 16px; }
+    .logo-text { font-size: 18px; font-weight: 800; color: #FF6B35; }
+    .logo-sub { font-size: 13px; color: #888; margin-left: 4px; }
+    .header-cta { background: #FF6B35; color: white; border: none; padding: 8px 16px; border-radius: 8px; font-size: 13px; font-weight: 600; cursor: pointer; text-decoration: none; }
+    /* minmax(0, ...): 표처럼 최소폭이 큰 콘텐츠가 그리드 트랙을 밀어내 페이지 전체가
+       가로로 스크롤되는 것을 막는다. 1fr만 쓰면 트랙 최소폭이 auto라 끌려간다. */
+    .wrap { max-width: 1100px; margin: 0 auto; padding: 32px 20px; display: grid; grid-template-columns: minmax(0, 1fr) 300px; gap: 40px; }
+    @media (max-width: 768px) { .wrap { grid-template-columns: minmax(0, 1fr); } .sidebar { display: none; } }
+    article { background: white; border-radius: 20px; overflow: hidden; box-shadow: 0 2px 12px rgba(0,0,0,0.06); }
+    .article-head { padding: 32px 32px 24px; border-bottom: 1px solid #f0f0f0; }
+    .article-cat { font-size: 12px; font-weight: 700; color: #FF6B35; text-transform: uppercase; margin-bottom: 12px; }
+    .article-cat a { color: #FF6B35; text-decoration: none; }
+    .article-title { font-size: clamp(20px, 4vw, 28px); font-weight: 900; line-height: 1.4; color: #1a1a1a; margin-bottom: 16px; }
+    .article-meta { font-size: 13px; color: #aaa; display: flex; gap: 16px; align-items: center; flex-wrap: wrap; }
+    .hero-img { width: 100%; aspect-ratio: 16/9; object-fit: cover; background: #f0f0f0; }
+    .article-body { padding: 32px; }
+    .article-body h2 { font-size: 20px; font-weight: 800; color: #1a1a1a; margin: 32px 0 14px; padding-bottom: 8px; border-bottom: 2px solid #FF6B35; }
+    .article-body h3 { font-size: 16px; font-weight: 700; color: #333; margin: 20px 0 10px; }
+    .article-body p { margin-bottom: 14px; color: #333; font-size: 15px; }
+    .article-body ul, .article-body ol { padding-left: 20px; margin-bottom: 14px; }
+    .article-body li { margin-bottom: 6px; color: #333; font-size: 15px; }
+    article { min-width: 0; }
+    /* 좁은 화면에서는 표만 자기 안에서 가로 스크롤시킨다. min-width:100%가 있어야
+       넓은 화면에서 기존처럼 폭을 꽉 채운다. */
+    .article-body table { display: block; width: max-content; min-width: 100%; max-width: 100%; overflow-x: auto; border-collapse: collapse; margin: 16px 0; font-size: 14px; }
+    .article-body th { background: #FF6B35; color: white; padding: 10px 14px; text-align: left; }
+    .article-body td { padding: 10px 14px; border-bottom: 1px solid #f0f0f0; }
+    .article-body tr:nth-child(even) td { background: #fff8f5; }
+    .article-body img { width: 100%; border-radius: 12px; margin: 16px 0; }
+    .article-body strong { color: #1a1a1a; }
+    .article-body blockquote { background: #fff8f5; border-left: 4px solid #FF6B35; padding: 16px 20px; border-radius: 0 12px 12px 0; margin: 16px 0; font-style: italic; color: #555; }
+    .article-body a { color: #FF6B35; }
+    .tags { padding: 20px 32px; border-top: 1px solid #f0f0f0; display: flex; gap: 8px; flex-wrap: wrap; }
+    .tag { background: #fff3ee; color: #FF6B35; border-radius: 20px; padding: 5px 12px; font-size: 12px; font-weight: 600; text-decoration: none; }
+    .tag:hover { background: #FF6B35; color: white; }
+    .ad-slot { background: #f0f0f0; border-radius: 12px; display: flex; align-items: center; justify-content: center; color: #bbb; font-size: 12px; min-height: 90px; margin: 24px 0; }
+    .cta-box { background: linear-gradient(135deg, #FF6B35, #ff8c42); border-radius: 20px; padding: 32px; text-align: center; color: white; margin-top: 24px; }
+    .cta-box h3 { font-size: 22px; font-weight: 900; margin-bottom: 10px; }
+    .cta-box p { font-size: 14px; opacity: 0.9; line-height: 1.6; margin-bottom: 20px; }
+    .cta-box a { background: white; color: #FF6B35; border-radius: 12px; padding: 13px 28px; font-weight: 800; font-size: 15px; text-decoration: none; display: inline-block; }
+    .nav-links { display: flex; gap: 16px; margin-top: 24px; }
+    .nav-back { color: #FF6B35; text-decoration: none; font-size: 14px; font-weight: 600; }
+    .nav-back::before { content: '\2190 '; }
+    .sidebar-cta { background: linear-gradient(135deg, #FF6B35, #ff8c42); color: white; border-radius: 16px; padding: 24px; text-align: center; position: sticky; top: 80px; }
+    .sidebar-cta h3 { font-size: 16px; font-weight: 900; margin-bottom: 8px; }
+    .sidebar-cta p { font-size: 13px; opacity: 0.9; line-height: 1.5; margin-bottom: 16px; }
+    .sidebar-cta a { background: white; color: #FF6B35; border-radius: 8px; padding: 10px 20px; font-weight: 700; font-size: 14px; text-decoration: none; display: inline-block; }
+    footer { background: #1a1a1a; color: #888; padding: 40px 20px; margin-top: 60px; }
+    .footer-inner { max-width: 1100px; margin: 0 auto; }
+    .footer-links { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 16px; }
+    .footer-links a { color: #888; text-decoration: none; font-size: 13px; }
+    .footer-copy { font-size: 12px; }
+  </style>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "온라인 결제 수수료 구조 완전 정복 — PG·카드·배달앱 한눈에",
+  "description": "PG사·신용카드·배달앱 수수료 구조를 한눈에 비교 정리. 2026년 최신 영세·중소가맹점 우대수수료율과 절감 전략까지 소상공인 필독.",
+  "datePublished": "2026-08-25",
+  "dateModified": "2026-08-25",
+  "image": "https://images.pexels.com/photos/6613956/pexels-photo-6613956.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200",
+  "author": {
+    "@type": "Organization",
+    "name": "오늘장부",
+    "url": "https://오늘장부.kr"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "오늘장부",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://xn--wh1bw0st1gbrb.kr/icons/icon-192.png"
+    }
+  },
+  "mainEntityOfPage": "https://xn--wh1bw0st1gbrb.kr/blog/posts/online-payment-fee-structure-guide.html",
+  "keywords": "카드수수료, PG사수수료, 온라인결제, 배달앱수수료, 소상공인"
+}
+  </script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "PG사 수수료와 카드수수료는 별도인가요?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "PG사 수수료는 카드사 수수료를 포함해서 청구되는 경우가 많습니다. 즉, 사장님이 PG사에 내는 수수료 안에 카드사 몫 + PG사 서비스 몫이 함께 포함되어 있습니다. 계약서를 꼼꼼히 확인해 항목별 금액을 파악해 두세요."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "배달앱 수수료도 부가세 신고 시 매입세액 공제가 되나요?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "일반과세자라면 배달앱이 발행한 세금계산서를 통해 매입세액 공제가 가능합니다. 단, 배달앱별 세금계산서 발행 방식이 다를 수 있으므로 각 플랫폼의 정산 내역서와 세금계산서 발행 기준을 반드시 확인하세요. 간이과세자는 공제 방식이 다릅니다."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "영세가맹점 우대수수료율은 자동으로 적용되나요?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "네, 별도 신청 없이 국세청 과세 자료를 기반으로 자동 선정됩니다. 매 반기 선정 결과는 여신금융협회 홈페이지(cardsales.or.kr) 또는 카드사 콜센터에서 확인할 수 있습니다."
+      }
+    }
+  ]
+}
+  </script>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <a href="/" class="logo">
+      <div class="logo-icon">장</div>
+      <span class="logo-text">오늘장부</span>
+      <span class="logo-sub">블로그</span>
+    </a>
+    <a href="/" class="header-cta">무료로 시작하기</a>
+  </div>
+</header>
+
+<div class="wrap">
+  <main>
+    <div class="nav-links">
+      <a href="/blog/" class="nav-back">블로그 목록으로</a>
+    </div>
+
+    <!-- 자동 광고(Auto ads)가 배치를 정하므로 유닛을 직접 넣지 않는다. 여백만 확보한다. -->
+    <div class="ad-slot"></div>
+
+    <article>
+      <div class="article-head">
+        <div class="article-cat"><a href="/blog/">카드수수료</a></div>
+        <h1 class="article-title">온라인 결제 수수료 구조 완전 정복 — PG·카드·배달앱 한눈에</h1>
+        <div class="article-meta">
+          <span>오늘장부 편집팀</span>
+          <span>2026년 08월 25일</span>
+        </div>
+      </div>
+      <img src="https://images.pexels.com/photos/6613956/pexels-photo-6613956.jpeg?auto=compress&amp;cs=tinysrgb&amp;fit=crop&amp;h=627&amp;w=1200" alt="온라인 결제 수수료 구조 완전 정복 — PG·카드·배달앱 한눈에" class="hero-img" loading="lazy">
+      <div class="article-body">
+<p>온라인으로 주문을 받고 결제를 처리하다 보면 매출이 통장에 그대로 들어오지 않는다는 사실을 금세 느끼게 됩니다. PG사 수수료, 카드수수료, 배달앱 중개수수료… 이름도 다르고 구조도 달라서 정확히 얼마가 빠져나가는지 파악하기 어렵습니다. 그런데 이 수수료들의 구조를 제대로 알아야 비용을 통제하고 마진을 지킬 수 있습니다. 이번 글에서는 온라인 결제 수수료의 흐름을 단계별로 짚어 드립니다.</p>
+
+<h2>온라인 결제가 처리되는 구조</h2>
+<p>오프라인 카드 단말기와 달리, 온라인·앱 결제는 고객 → 결제 페이지 → <strong>PG(Payment Gateway)사</strong> → 카드사(또는 은행) → 사장님 계좌 순으로 돈이 흐릅니다. PG사는 이 중간 과정을 처리해주는 대가로 수수료를 가져갑니다. 결국 사장님이 실제로 부담하는 수수료는 크게 세 층으로 나뉩니다.</p>
+<ol>
+  <li><strong>카드사 수수료</strong> — 카드사가 가맹점에게 부과하는 기본 수수료</li>
+  <li><strong>PG사 수수료</strong> — PG사가 결제 중계·정산 서비스 대가로 받는 수수료</li>
+  <li><strong>배달앱 중개수수료</strong> — 배달 플랫폼을 통해 주문이 들어올 경우 추가로 발생하는 비용</li>
+</ol>
+<p>이 세 가지가 겹치면 실질 수수료 부담이 생각보다 훨씬 커질 수 있습니다.</p>
+
+<h2>카드사 우대수수료율 — 2026년 최신 기준</h2>
+<p>신용카드 수수료는 가맹점의 <strong>연간 매출액</strong>에 따라 '영세·중소가맹점 우대수수료율'이 적용됩니다. 매 반기(1월·7월)마다 국세청 과세 자료를 바탕으로 등급이 재산정되며, 2026년 상반기 현재 전체 신용카드가맹점의 약 95.7%가 우대수수료율 혜택을 받고 있습니다.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>연간 매출액 구간</th>
+      <th>신용카드 수수료율</th>
+      <th>체크카드 수수료율</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>3억 원 이하 (영세)</td>
+      <td><strong>0.4%</strong></td>
+      <td><strong>0.15%</strong></td>
+    </tr>
+    <tr>
+      <td>3억 원 초과 ~ 5억 원 이하</td>
+      <td>1.0%</td>
+      <td>0.75%</td>
+    </tr>
+    <tr>
+      <td>5억 원 초과 ~ 10억 원 이하</td>
+      <td>1.15%</td>
+      <td>0.90%</td>
+    </tr>
+    <tr>
+      <td>10억 원 초과 ~ 30억 원 이하</td>
+      <td>1.45%</td>
+      <td>1.15%</td>
+    </tr>
+    <tr>
+      <td>30억 원 초과 (일반가맹점)</td>
+      <td>협의 또는 표준 적용</td>
+      <td>협의 또는 표준 적용</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>PG사를 통해 카드 결제를 받는 <strong>하위가맹점</strong>도 동일한 우대수수료율이 적용됩니다. 단, 신규 개업 후 첫 반기에는 국세청 매출 자료가 없어 일반가맹점 수수료율이 일시 적용될 수 있습니다. 이 경우 반기 선정 이후 우대수수료율을 소급 적용해 차액을 환급받을 수 있으므로, 개업 초기에도 환급 안내를 꼭 확인하세요.</p>
+
+<h2>PG사 수수료 — 카드수수료 위에 붙는 중계 비용</h2>
+<p>PG사는 카드사에 지불하는 수수료에 자신의 서비스 수수료를 얹어서 가맹점에 청구합니다. 국내 온라인 결제 기준으로 PG사 수수료(VAT 별도)는 일반적으로 <strong>2.0~3.5%</strong> 수준이지만, 매출 규모·업종·계약 조건에 따라 달라집니다. 금융감독원에 등록된 PG업체는 150개 이상이지만, 실제 시장은 상위 4~5개 사가 65~70% 이상을 점유하고 있습니다.</p>
+
+<h3>PG사 수수료를 구성하는 항목</h3>
+<ul>
+  <li><strong>카드사 수수료</strong>: PG사가 카드사에 내는 수수료 (위 표 참고)</li>
+  <li><strong>PG 서비스 이용료</strong>: 결제 중계·정산·보안·시스템 유지 대가</li>
+  <li><strong>부가가치세(VAT 10%)</strong>: PG 수수료 자체에도 VAT가 별도 부과됨</li>
+  <li><strong>월 고정비</strong>: 일부 PG사는 월 정액 이용료를 별도 청구하기도 함</li>
+</ul>
+
+<blockquote>예시: 월 매출 500만 원, PG 수수료율 3%일 경우 → 수수료 15만 원 + VAT 1만 5천 원 = 월 16만 5천 원 지출. 연간으로 환산하면 198만 원입니다.</blockquote>
+
+<p>PG사별 정확한 수수료율은 계약 시점과 매출 규모에 따라 협의가 가능하므로, 매출이 일정 수준 이상이면 직접 협상을 시도해보는 것이 좋습니다.</p>
+
+<h2>배달앱 수수료 — 중개수수료 + 숨겨진 비용</h2>
+<p>음식점 사장님이라면 배달앱 수수료를 빼고 온라인 결제 구조를 말할 수 없습니다. 2026년 현재 국내 주요 배달 앱은 매출 규모에 따라 <strong>차등 중개수수료</strong>를 적용하고 있습니다.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>매출 구간</th>
+      <th>배달의민족 / 쿠팡이츠</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>매출 상위 35% (고매출)</td>
+      <td>중개수수료 7.8%</td>
+    </tr>
+    <tr>
+      <td>매출 중위 35~80%</td>
+      <td>중개수수료 6.8%</td>
+    </tr>
+    <tr>
+      <td>매출 하위 20% (영세)</td>
+      <td>중개수수료 2.0%</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>여기서 주의할 점은 <strong>중개수수료가 전부가 아니라는 것</strong>입니다. 실제 사장님이 부담하는 비용에는 다음 항목들이 추가됩니다.</p>
+<ul>
+  <li>배달비 (배달앱 자체 배달 시 플랫폼 부담 또는 가맹점 분담)</li>
+  <li>결제 수수료 (PG 처리 수수료 별도)</li>
+  <li>광고비 (상단 노출을 위한 입찰형·고정형 광고)</li>
+  <li>포장 주문 수수료 (2025년 이후 배민·쿠팡이츠 모두 순차 유료 전환)</li>
+</ul>
+<p>이 항목들을 모두 더하면 실질 수수료 부담이 명목 수수료보다 훨씬 높아집니다. 공공배달앱(예: 땡겨요 등)은 중개수수료를 2%대 수준으로 낮게 책정해 대안으로 주목받고 있습니다.</p>
+
+<h2>수수료, 비용처리와 부가세 신고에서의 취급</h2>
+<p>카드수수료·PG수수료·배달앱 수수료는 모두 사업 관련 <strong>필요경비</strong>로 인정됩니다. 종합소득세 신고 시 비용으로 공제받을 수 있으며, 일반과세자는 PG 수수료에 포함된 VAT를 매입세액으로 공제받는 것도 가능합니다. 단, 간이과세자는 세금계산서 수취 및 공제 방식이 다르므로 본인의 과세 유형을 먼저 확인하는 것이 중요합니다.</p>
+<p>카드·현금·배달앱 매출이 채널별로 흩어져 있으면 정확한 수수료 파악 자체가 어렵습니다. <strong>오늘장부</strong>처럼 카드·현금·배달앱 매출을 한 화면에서 통합 기록하는 앱을 활용하면, 채널별 수수료를 빠짐없이 추적하고 부가세 예상액도 미리 파악할 수 있어 연말 세금 폭탄을 예방하는 데 도움이 됩니다.</p>
+
+<h2>수수료 부담 줄이는 실전 전략 5가지</h2>
+<ol>
+  <li><strong>반기마다 우대수수료율 확인</strong>: 매년 2월·8월경 여신금융협회(cardsales.or.kr) 또는 카드사 콜센터에서 내 등급을 확인하세요.</li>
+  <li><strong>신규 개업 후 환급 챙기기</strong>: 개업 첫 반기에 일반 수수료를 냈다면 차기 선정 시 소급 환급받을 수 있습니다.</li>
+  <li><strong>PG사 협상</strong>: 월 매출이 일정 수준을 넘으면 PG 수수료율 인하를 직접 요청해볼 수 있습니다.</li>
+  <li><strong>배달앱 채널 분산</strong>: 단일 플랫폼 의존도를 낮추고 공공배달앱, 자체 주문 채널을 병행하면 수수료 부담을 분산할 수 있습니다.</li>
+  <li><strong>체크카드 결제 안내</strong>: 신용카드 대비 체크카드 수수료율이 낮으므로, 현장 결제가 가능하다면 체크카드를 안내하는 것도 방법입니다.</li>
+</ol>
+
+<p>수수료 구조를 꿰고 있어야 실제 순이익을 제대로 계산할 수 있습니다. <a href="https://오늘장부.kr">오늘장부 무료로 시작하기</a>로 매출 채널별 수수료를 한눈에 관리해 보세요.</p>
+
+<h2>자주 묻는 질문</h2>
+
+<h3>PG사 수수료와 카드수수료는 별도인가요?</h3>
+<p>PG사 수수료는 카드사 수수료를 포함해서 청구되는 경우가 많습니다. 즉, 사장님이 PG사에 내는 수수료 안에 카드사 몫 + PG사 서비스 몫이 함께 포함되어 있습니다. 계약서를 꼼꼼히 확인해 항목별 금액을 파악해 두세요.</p>
+
+<h3>배달앱 수수료도 부가세 신고 시 매입세액 공제가 되나요?</h3>
+<p>일반과세자라면 배달앱이 발행한 세금계산서를 통해 매입세액 공제가 가능합니다. 단, 배달앱별 세금계산서 발행 방식이 다를 수 있으므로 각 플랫폼의 정산 내역서와 세금계산서 발행 기준을 반드시 확인하세요. 간이과세자는 공제 방식이 다릅니다.</p>
+
+<h3>영세가맹점 우대수수료율은 자동으로 적용되나요?</h3>
+<p>네, 별도 신청 없이 국세청 과세 자료를 기반으로 자동 선정됩니다. 매 반기 선정 결과는 여신금융협회 홈페이지(cardsales.or.kr) 또는 카드사 콜센터에서 확인할 수 있습니다.</p>
+
+<p>※ 본 글은 2026년 기준 참고용 정보이며, 정확한 신고·금액은 국세청 홈택스 또는 세무사와 상담하세요.</p>
+      </div>
+      <div class="tags">
+        <a href="/blog/?tag=%EC%B9%B4%EB%93%9C%EC%88%98%EC%88%98%EB%A3%8C" class="tag">카드수수료</a> <a href="/blog/?tag=PG%EC%82%AC%EC%88%98%EC%88%98%EB%A3%8C" class="tag">PG사수수료</a> <a href="/blog/?tag=%EC%98%A8%EB%9D%BC%EC%9D%B8%EA%B2%B0%EC%A0%9C" class="tag">온라인결제</a> <a href="/blog/?tag=%EB%B0%B0%EB%8B%AC%EC%95%B1%EC%88%98%EC%88%98%EB%A3%8C" class="tag">배달앱수수료</a> <a href="/blog/?tag=%EC%86%8C%EC%83%81%EA%B3%B5%EC%9D%B8" class="tag">소상공인</a>
+      </div>
+    </article>
+
+    <section style="background:#fff8f5;border-radius:16px;padding:24px 28px;margin-top:24px;">
+      <h2 style="font-size:18px;font-weight:800;color:#1a1a1a;margin:0 0 14px;">함께 보면 좋은 글</h2>
+      <ul style="list-style:none;padding:0;margin:0;">
+        <li style="padding:8px 0;border-bottom:1px solid #ffe6d9;"><a href="/blog/posts/check-card-credit-card-fee-difference.html" style="color:#FF6B35;text-decoration:none;font-weight:600;font-size:14px;">체크카드 신용카드 수수료 차이, 사장님이 꼭 알아야 할 모든 것</a></li>
+        <li style="padding:8px 0;border-bottom:1px solid #ffe6d9;"><a href="/blog/posts/pg-payment-gateway-fee-guide-for-small-business.html" style="color:#FF6B35;text-decoration:none;font-weight:600;font-size:14px;">PG사 결제대행수수료 완전정복 — 사장님이 꼭 알아야 할 구조와 절약법</a></li>
+        <li style="padding:8px 0;border-bottom:1px solid #ffe6d9;"><a href="/blog/posts/overseas-card-payment-fee-settlement-guide.html" style="color:#FF6B35;text-decoration:none;font-weight:600;font-size:14px;">해외카드 결제 수수료와 정산, 사장님이 꼭 알아야 할 모든 것</a></li>
+        <li style="padding:8px 0;border-bottom:1px solid #ffe6d9;"><a href="/blog/posts/card-slip-retention-period-5-years.html" style="color:#FF6B35;text-decoration:none;font-weight:600;font-size:14px;">카드 전표 보관 의무 기간, 사장님이 꼭 알아야 할 5년의 법칙</a></li>
+      </ul>
+    </section>
+
+    <section style="background:#fff8f5;border-radius:16px;padding:24px 28px;margin-top:24px;">
+      <h2 style="font-size:18px;font-weight:800;color:#1a1a1a;margin:0 0 14px;">무료 계산기로 바로 확인하기</h2>
+      <ul style="list-style:none;padding:0;margin:0;">
+        <li style="padding:10px 0;border-bottom:1px solid #ffe6d9;"><a href="/tools/card-fee-calculator/" style="color:#FF6B35;text-decoration:none;font-weight:700;font-size:15px;">카드수수료 계산기</a><div style="font-size:13px;color:#777;margin-top:2px;">연매출로 우대수수료율 구간을 확인하고 환급 대상인지 알아봅니다</div></li>
+      </ul>
+    </section>
+
+    <!-- 자동 광고(Auto ads)가 배치를 정하므로 유닛을 직접 넣지 않는다. 여백만 확보한다. -->
+    <div class="ad-slot"></div>
+
+    <div class="cta-box">
+      <h3>매일 매출 기록, 30초면 끝!</h3>
+      <p>카드·현금·네이버페이·카카오페이<br>여러 결제수단을 한 화면에서 입력<br>부가세 예상액도 자동으로 계산해드려요</p>
+      <a href="/">지금 무료로 시작하기</a>
+    </div>
+  </main>
+
+  <aside class="sidebar">
+    <div class="sidebar-cta">
+      <h3>매일 매출 기록,<br>30초면 끝!</h3>
+      <p>카드·현금·배달앱 한 번에<br>부가세 예상액도 자동 계산</p>
+      <a href="/">무료로 시작하기</a>
+    </div>
+  </aside>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-links">
+      <a href="/">서비스 홈</a>
+      <a href="/blog/">블로그</a>
+      <a href="/about/">소개</a>
+      <a href="/contact/">문의하기</a>
+      <a href="/blog/about.html">소개 및 문의</a>
+      <a href="/privacy">개인정보처리방침</a>
+      <a href="/terms">이용약관</a>
+    </div>
+    <div class="footer-copy">© 2026 오늘장부. All rights reserved.</div>
+  </div>
+</footer>
+
+</body>
+</html>
