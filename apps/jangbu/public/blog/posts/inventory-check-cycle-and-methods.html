@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>재고 조사 주기와 방법 — 사장님이 꼭 알아야 할 실전 가이드 | 오늘장부 블로그</title>
+  <meta name="description" content="소상공인이 직접 써먹을 수 있는 재고 조사 주기 설정법과 전수조사·순환실사 방법, 장부 차이 처리까지 실전 노하우를 정리했습니다.">
+  <meta property="og:title" content="재고 조사 주기와 방법 — 사장님이 꼭 알아야 할 실전 가이드">
+  <meta property="og:description" content="소상공인이 직접 써먹을 수 있는 재고 조사 주기 설정법과 전수조사·순환실사 방법, 장부 차이 처리까지 실전 노하우를 정리했습니다.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://xn--wh1bw0st1gbrb.kr/blog/posts/inventory-check-cycle-and-methods.html">
+  <meta property="og:image" content="https://images.pexels.com/photos/13758314/pexels-photo-13758314.jpeg?auto=compress&amp;cs=tinysrgb&amp;fit=crop&amp;h=627&amp;w=1200">
+  <link rel="canonical" href="https://xn--wh1bw0st1gbrb.kr/blog/posts/inventory-check-cycle-and-methods.html">
+  <link rel="icon" href="/icons/icon-192.png">
+  <!-- 방문자 분석 (GA4 + Clarity + 네이버). ID는 /analytics.js 상단에서 관리. -->
+  <script defer src="/analytics.js"></script>
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2764893290310463" crossorigin="anonymous"></script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Noto Sans KR', sans-serif; background: #f8f9fa; color: #1a1a1a; line-height: 1.7; }
+    header { background: #fff; border-bottom: 1px solid #eee; position: sticky; top: 0; z-index: 100; }
+    .header-inner { max-width: 1100px; margin: 0 auto; padding: 0 20px; height: 60px; display: flex; align-items: center; justify-content: space-between; }
+    .logo { display: flex; align-items: center; gap: 8px; text-decoration: none; }
+    .logo-icon { width: 32px; height: 32px; background: #FF6B35; border-radius: 8px; display: flex; align-items: center; justify-content: center; color: white; font-weight: 900; font-size: 16px; }
+    .logo-text { font-size: 18px; font-weight: 800; color: #FF6B35; }
+    .logo-sub { font-size: 13px; color: #888; margin-left: 4px; }
+    .header-cta { background: #FF6B35; color: white; border: none; padding: 8px 16px; border-radius: 8px; font-size: 13px; font-weight: 600; cursor: pointer; text-decoration: none; }
+    /* minmax(0, ...): 표처럼 최소폭이 큰 콘텐츠가 그리드 트랙을 밀어내 페이지 전체가
+       가로로 스크롤되는 것을 막는다. 1fr만 쓰면 트랙 최소폭이 auto라 끌려간다. */
+    .wrap { max-width: 1100px; margin: 0 auto; padding: 32px 20px; display: grid; grid-template-columns: minmax(0, 1fr) 300px; gap: 40px; }
+    @media (max-width: 768px) { .wrap { grid-template-columns: minmax(0, 1fr); } .sidebar { display: none; } }
+    article { background: white; border-radius: 20px; overflow: hidden; box-shadow: 0 2px 12px rgba(0,0,0,0.06); }
+    .article-head { padding: 32px 32px 24px; border-bottom: 1px solid #f0f0f0; }
+    .article-cat { font-size: 12px; font-weight: 700; color: #FF6B35; text-transform: uppercase; margin-bottom: 12px; }
+    .article-cat a { color: #FF6B35; text-decoration: none; }
+    .article-title { font-size: clamp(20px, 4vw, 28px); font-weight: 900; line-height: 1.4; color: #1a1a1a; margin-bottom: 16px; }
+    .article-meta { font-size: 13px; color: #aaa; display: flex; gap: 16px; align-items: center; flex-wrap: wrap; }
+    .hero-img { width: 100%; aspect-ratio: 16/9; object-fit: cover; background: #f0f0f0; }
+    .article-body { padding: 32px; }
+    .article-body h2 { font-size: 20px; font-weight: 800; color: #1a1a1a; margin: 32px 0 14px; padding-bottom: 8px; border-bottom: 2px solid #FF6B35; }
+    .article-body h3 { font-size: 16px; font-weight: 700; color: #333; margin: 20px 0 10px; }
+    .article-body p { margin-bottom: 14px; color: #333; font-size: 15px; }
+    .article-body ul, .article-body ol { padding-left: 20px; margin-bottom: 14px; }
+    .article-body li { margin-bottom: 6px; color: #333; font-size: 15px; }
+    article { min-width: 0; }
+    /* 좁은 화면에서는 표만 자기 안에서 가로 스크롤시킨다. min-width:100%가 있어야
+       넓은 화면에서 기존처럼 폭을 꽉 채운다. */
+    .article-body table { display: block; width: max-content; min-width: 100%; max-width: 100%; overflow-x: auto; border-collapse: collapse; margin: 16px 0; font-size: 14px; }
+    .article-body th { background: #FF6B35; color: white; padding: 10px 14px; text-align: left; }
+    .article-body td { padding: 10px 14px; border-bottom: 1px solid #f0f0f0; }
+    .article-body tr:nth-child(even) td { background: #fff8f5; }
+    .article-body img { width: 100%; border-radius: 12px; margin: 16px 0; }
+    .article-body strong { color: #1a1a1a; }
+    .article-body blockquote { background: #fff8f5; border-left: 4px solid #FF6B35; padding: 16px 20px; border-radius: 0 12px 12px 0; margin: 16px 0; font-style: italic; color: #555; }
+    .article-body a { color: #FF6B35; }
+    .tags { padding: 20px 32px; border-top: 1px solid #f0f0f0; display: flex; gap: 8px; flex-wrap: wrap; }
+    .tag { background: #fff3ee; color: #FF6B35; border-radius: 20px; padding: 5px 12px; font-size: 12px; font-weight: 600; text-decoration: none; }
+    .tag:hover { background: #FF6B35; color: white; }
+    .ad-slot { background: #f0f0f0; border-radius: 12px; display: flex; align-items: center; justify-content: center; color: #bbb; font-size: 12px; min-height: 90px; margin: 24px 0; }
+    .cta-box { background: linear-gradient(135deg, #FF6B35, #ff8c42); border-radius: 20px; padding: 32px; text-align: center; color: white; margin-top: 24px; }
+    .cta-box h3 { font-size: 22px; font-weight: 900; margin-bottom: 10px; }
+    .cta-box p { font-size: 14px; opacity: 0.9; line-height: 1.6; margin-bottom: 20px; }
+    .cta-box a { background: white; color: #FF6B35; border-radius: 12px; padding: 13px 28px; font-weight: 800; font-size: 15px; text-decoration: none; display: inline-block; }
+    .nav-links { display: flex; gap: 16px; margin-top: 24px; }
+    .nav-back { color: #FF6B35; text-decoration: none; font-size: 14px; font-weight: 600; }
+    .nav-back::before { content: '\2190 '; }
+    .sidebar-cta { background: linear-gradient(135deg, #FF6B35, #ff8c42); color: white; border-radius: 16px; padding: 24px; text-align: center; position: sticky; top: 80px; }
+    .sidebar-cta h3 { font-size: 16px; font-weight: 900; margin-bottom: 8px; }
+    .sidebar-cta p { font-size: 13px; opacity: 0.9; line-height: 1.5; margin-bottom: 16px; }
+    .sidebar-cta a { background: white; color: #FF6B35; border-radius: 8px; padding: 10px 20px; font-weight: 700; font-size: 14px; text-decoration: none; display: inline-block; }
+    footer { background: #1a1a1a; color: #888; padding: 40px 20px; margin-top: 60px; }
+    .footer-inner { max-width: 1100px; margin: 0 auto; }
+    .footer-links { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 16px; }
+    .footer-links a { color: #888; text-decoration: none; font-size: 13px; }
+    .footer-copy { font-size: 12px; }
+  </style>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "재고 조사 주기와 방법 — 사장님이 꼭 알아야 할 실전 가이드",
+  "description": "소상공인이 직접 써먹을 수 있는 재고 조사 주기 설정법과 전수조사·순환실사 방법, 장부 차이 처리까지 실전 노하우를 정리했습니다.",
+  "datePublished": "2026-08-26",
+  "dateModified": "2026-08-26",
+  "image": "https://images.pexels.com/photos/13758314/pexels-photo-13758314.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200",
+  "author": {
+    "@type": "Organization",
+    "name": "오늘장부",
+    "url": "https://오늘장부.kr"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "오늘장부",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://xn--wh1bw0st1gbrb.kr/icons/icon-192.png"
+    }
+  },
+  "mainEntityOfPage": "https://xn--wh1bw0st1gbrb.kr/blog/posts/inventory-check-cycle-and-methods.html",
+  "keywords": "재고관리, 재고조사, 매출관리, 소상공인"
+}
+  </script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "재고 조사를 꼭 영업 종료 후에 해야 하나요?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "전수조사는 입출고가 멈춘 마감 후나 쉬는 날에 하는 것이 정확하지만, 순환실사나 스팟 체크는 영업 중에도 할 수 있습니다. 조사 시작 시점의 수량을 '기준값'으로 고정하고, 조사 완료까지 해당 품목의 입출고를 잠시 보류하거나 별도 메모하면 됩니다."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "재고 조사 결과를 반드시 회계에 반영해야 하나요?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "종합소득세 신고 시 매출원가를 '기초재고 + 매입 − 기말재고'로 계산하기 때문에, 기말재고가 부정확하면 원가가 왜곡되고 세금도 달라집니다. 연 1회라도 실사를 통해 기말재고를 정확히 잡아 두어야 신고 오류를 막을 수 있습니다."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "소규모 1인 가게도 재고 조사를 해야 하나요?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "규모와 무관하게 재고가 있는 업종이라면 해야 합니다. 혼자 운영할 경우 전수조사 시 카운트 오류가 생기기 쉬우니, 조사 전날 입고를 마무리하고 당일 판매를 최소화한 뒤 영업 종료 후 진행하는 것이 현실적입니다. 품목 수가 적다면 월 1회 30분이면 충분합니다."
+      }
+    }
+  ]
+}
+  </script>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <a href="/" class="logo">
+      <div class="logo-icon">장</div>
+      <span class="logo-text">오늘장부</span>
+      <span class="logo-sub">블로그</span>
+    </a>
+    <a href="/" class="header-cta">무료로 시작하기</a>
+  </div>
+</header>
+
+<div class="wrap">
+  <main>
+    <div class="nav-links">
+      <a href="/blog/" class="nav-back">블로그 목록으로</a>
+    </div>
+
+    <!-- 자동 광고(Auto ads)가 배치를 정하므로 유닛을 직접 넣지 않는다. 여백만 확보한다. -->
+    <div class="ad-slot"></div>
+
+    <article>
+      <div class="article-head">
+        <div class="article-cat"><a href="/blog/">매출관리</a></div>
+        <h1 class="article-title">재고 조사 주기와 방법 — 사장님이 꼭 알아야 할 실전 가이드</h1>
+        <div class="article-meta">
+          <span>오늘장부 편집팀</span>
+          <span>2026년 08월 26일</span>
+        </div>
+      </div>
+      <img src="https://images.pexels.com/photos/13758314/pexels-photo-13758314.jpeg?auto=compress&amp;cs=tinysrgb&amp;fit=crop&amp;h=627&amp;w=1200" alt="재고 조사 주기와 방법 — 사장님이 꼭 알아야 할 실전 가이드" class="hero-img" loading="lazy">
+      <div class="article-body">
+<p>월말이 다가오면 '재고가 맞는지 한번 세봐야 하는데…' 하고 생각만 하다가 결국 넘어가 버리는 사장님들이 많습니다. 하지만 재고 조사는 단순히 물건 수를 세는 작업이 아닙니다. <strong>실제로 팔린 것과 장부에 기록된 것이 일치하는지 확인하는 경영 점검</strong>이자, 종합소득세·부가세 신고 때 비용 처리의 근거 자료가 됩니다. 지금부터 업종별 적정 주기부터 현장에서 바로 쓸 수 있는 방법까지 단계별로 정리해 드리겠습니다.</p>
+
+<h2>재고 조사를 왜 꼭 해야 하나요?</h2>
+<p>장부(또는 POS·앱)에 기록된 재고와 진열대·창고에 실제로 있는 재고는 시간이 지날수록 벌어집니다. 대표적인 원인은 세 가지입니다.</p>
+<ul>
+  <li><strong>파손·유통기한 만료</strong> — 식품·화장품처럼 소비기한이 있는 상품은 판매 전에 손실이 납니다.</li>
+  <li><strong>분실·도난</strong> — 소매업 현장에서는 고객 절도(쇼플리프팅)와 내부 실수가 꾸준히 발생합니다.</li>
+  <li><strong>입출고 기록 오류</strong> — 바쁜 시간대에 수기로 적다 보면 수량 오기가 쌓입니다.</li>
+</ul>
+<p>이렇게 생긴 <strong>재고 차이(장부재고 − 실재고)를 '재고감모손실'</strong>이라고 합니다. 이 금액은 종합소득세 신고 때 필요경비로 인정받을 수 있는 항목이므로, 정기적인 재고 조사를 통해 근거를 남겨 두는 것이 절세에도 유리합니다. 단, 손실로 인정받으려면 단순 추정이 아닌 실사 기록이 뒷받침되어야 합니다.</p>
+
+<h2>업종별 권장 재고 조사 주기</h2>
+<p>모든 가게에 똑같은 주기가 맞지는 않습니다. <strong>상품의 회전율·유통기한·단가</strong>에 따라 아래처럼 달리 적용하세요.</p>
+<table>
+  <thead>
+    <tr>
+      <th>업종 예시</th>
+      <th>권장 주기</th>
+      <th>이유</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>편의점·슈퍼마켓</td>
+      <td>월 1회 + 고회전 품목 주 1회</td>
+      <td>SKU 수가 많고 도난·유통기한 손실 빈발</td>
+    </tr>
+    <tr>
+      <td>식당·카페 (식재료)</td>
+      <td>주 1~2회</td>
+      <td>유통기한 짧고 원가율 직결</td>
+    </tr>
+    <tr>
+      <td>의류·잡화 소매</td>
+      <td>분기 1회 (시즌 전후)</td>
+      <td>시즌 재고 파악으로 할인·반품 전략 수립</td>
+    </tr>
+    <tr>
+      <td>문구·생활용품</td>
+      <td>월 1회</td>
+      <td>단가 낮고 품목 다양, 소손 누적 주의</td>
+    </tr>
+    <tr>
+      <td>화장품·건강기능식품</td>
+      <td>월 1회</td>
+      <td>유통기한·로트 관리 필수</td>
+    </tr>
+  </tbody>
+</table>
+<p>식재료처럼 매일 변동이 큰 품목은 <strong>'일일 마감 체크'</strong>를 별도로 두고, 전체 재고 정합성 확인은 월 1회로 구분하면 효율적입니다.</p>
+
+<h2>재고 조사 방법 3가지</h2>
+<h3>① 전수조사 (Full Physical Count)</h3>
+<p>영업을 잠시 중단하거나 마감 후 매장 내 모든 품목을 빠짐없이 세는 방식입니다. 가장 정확하지만 시간이 많이 걸립니다. <strong>반기(6개월) 또는 연 1회 반드시 실시</strong>하고, 부가세 확정신고(1월·7월) 전후에 맞추면 세무 자료로도 바로 활용할 수 있습니다.</p>
+<ol>
+  <li>재고 리스트(품목·규격·위치)를 미리 출력하거나 스프레드시트로 준비</li>
+  <li>2인 1조로 한 명은 세고 한 명은 기록 — 오기를 줄이는 핵심</li>
+  <li>차이가 나는 품목은 즉시 재카운트, 최소 2회 확인 후 확정</li>
+  <li>결과를 장부(또는 앱)에 반영하고 감모손실 금액 메모</li>
+</ol>
+
+<h3>② 순환실사 (Cycle Count)</h3>
+<p>전체 품목을 몇 개 그룹으로 나눠 매주 또는 매월 순서대로 돌아가며 조사하는 방법입니다. <strong>영업을 멈추지 않아도 되고 인력 부담이 적어</strong> 품목 수가 많은 편의점형 매장에 적합합니다. 연간 전 품목을 최소 1회 실사하는 것을 목표로 일정을 짭니다.</p>
+
+<h3>③ 스팟 체크 (Spot Check)</h3>
+<p>고가 품목, 분실이 잦은 품목, 유통기한 임박 상품만 집중적으로 수시 점검하는 방식입니다. 순환실사의 보조 수단으로 쓰거나, 이상 징후(매출 대비 원가 급등 등)가 느껴질 때 즉시 투입합니다.</p>
+
+<h2>재고 조사 결과 처리 — 차이가 났을 때</h2>
+<p>실사 후 장부와 실재고가 다를 때는 아래 순서로 처리하세요.</p>
+<ol>
+  <li><strong>원인 파악</strong> — 파손·유통기한·오기·도난 중 어느 쪽인지 기록</li>
+  <li><strong>장부 조정</strong> — 실재고 기준으로 시스템·장부를 수정</li>
+  <li><strong>손실 근거 보관</strong> — 사진, 폐기 확인서, 실사표를 5년 이상 보관 (세무조사 대비)</li>
+  <li><strong>재발 방지 조치</strong> — 원인이 입출고 오기라면 기록 절차를 단순화, 도난이라면 진열 방식 조정</li>
+</ol>
+<p>재고감모손실은 <strong>사업소득 계산 시 매출원가에 포함되어 소득세 과세표준을 낮추는 효과</strong>가 있습니다. 단, 근거 서류 없이 임의로 입력하면 세무조사 시 부인될 수 있으므로 반드시 실사 기록을 갖추어야 합니다.</p>
+
+<h2>재고 조사를 더 쉽게 만드는 도구 활용법</h2>
+<p>스마트폰 카메라로 바코드를 스캔하고 수량을 입력하는 앱을 쓰면 수기 오기를 크게 줄일 수 있습니다. 재고 조사와 함께 <strong>매일 매출을 정확히 기록하는 것도 중요</strong>한데, 카드·현금·배달앱 매출을 한 번에 집계하고 부가세 예상액을 자동으로 보여주는 <strong>오늘장부</strong>를 활용하면 매출과 재고 변동을 함께 모니터링하는 데 도움이 됩니다. 재고 조사 후 장부를 수정할 때도 당일 매출 기록이 정확하게 쌓여 있어야 원가율 계산이 제대로 나옵니다.</p>
+
+<h2>자주 묻는 질문</h2>
+<h3>재고 조사를 꼭 영업 종료 후에 해야 하나요?</h3>
+<p>전수조사는 입출고가 멈춘 마감 후나 쉬는 날에 하는 것이 정확하지만, 순환실사나 스팟 체크는 영업 중에도 할 수 있습니다. 조사 시작 시점의 수량을 '기준값'으로 고정하고, 조사 완료까지 해당 품목의 입출고를 잠시 보류하거나 별도 메모하면 됩니다.</p>
+
+<h3>재고 조사 결과를 반드시 회계에 반영해야 하나요?</h3>
+<p>종합소득세 신고 시 매출원가를 '기초재고 + 매입 − 기말재고'로 계산하기 때문에, 기말재고가 부정확하면 원가가 왜곡되고 세금도 달라집니다. 연 1회라도 실사를 통해 기말재고를 정확히 잡아 두어야 신고 오류를 막을 수 있습니다.</p>
+
+<h3>소규모 1인 가게도 재고 조사를 해야 하나요?</h3>
+<p>규모와 무관하게 재고가 있는 업종이라면 해야 합니다. 혼자 운영할 경우 전수조사 시 카운트 오류가 생기기 쉬우니, 조사 전날 입고를 마무리하고 당일 판매를 최소화한 뒤 영업 종료 후 진행하는 것이 현실적입니다. 품목 수가 적다면 월 1회 30분이면 충분합니다.</p>
+
+<p>재고 관리의 시작은 <strong>매출 기록의 정확성</strong>입니다. 하루하루 매출이 정확하게 쌓여야 월말 재고 조사 결과도 의미 있는 데이터가 됩니다. 오늘부터 매출 기록 습관을 만들고 싶다면 <a href="https://오늘장부.kr">오늘장부 무료로 시작하기</a>를 통해 간편하게 시작해 보세요.</p>
+
+<p>※ 본 글은 2026년 기준 참고용 정보이며, 정확한 신고·금액은 국세청 홈택스 또는 세무사와 상담하세요.</p>
+      </div>
+      <div class="tags">
+        <a href="/blog/?tag=%EC%9E%AC%EA%B3%A0%EA%B4%80%EB%A6%AC" class="tag">재고관리</a> <a href="/blog/?tag=%EC%9E%AC%EA%B3%A0%EC%A1%B0%EC%82%AC" class="tag">재고조사</a> <a href="/blog/?tag=%EB%A7%A4%EC%B6%9C%EA%B4%80%EB%A6%AC" class="tag">매출관리</a> <a href="/blog/?tag=%EC%86%8C%EC%83%81%EA%B3%B5%EC%9D%B8" class="tag">소상공인</a>
+      </div>
+    </article>
+
+    <section style="background:#fff8f5;border-radius:16px;padding:24px 28px;margin-top:24px;">
+      <h2 style="font-size:18px;font-weight:800;color:#1a1a1a;margin:0 0 14px;">함께 보면 좋은 글</h2>
+      <ul style="list-style:none;padding:0;margin:0;">
+        <li style="padding:8px 0;border-bottom:1px solid #ffe6d9;"><a href="/blog/posts/reduce-food-waste-restaurant-inventory-management.html" style="color:#FF6B35;text-decoration:none;font-weight:600;font-size:14px;">식자재 폐기율 줄이기: 음식점 원가 지키는 실전 재고관리 5단계</a></li>
+        <li style="padding:8px 0;border-bottom:1px solid #ffe6d9;"><a href="/blog/posts/fixed-vs-variable-costs-guide-for-small-business.html" style="color:#FF6B35;text-decoration:none;font-weight:600;font-size:14px;">고정비 변동비 나누는 법 — 사장님 필수 비용 구조 분석</a></li>
+        <li style="padding:8px 0;border-bottom:1px solid #ffe6d9;"><a href="/blog/posts/how-to-read-income-statement-for-small-business.html" style="color:#FF6B35;text-decoration:none;font-weight:600;font-size:14px;">손익계산서 읽는 법: 사장님이 꼭 알아야 할 5가지 숫자</a></li>
+        <li style="padding:8px 0;border-bottom:1px solid #ffe6d9;"><a href="/blog/posts/cost-ratio-calculation-and-reduction.html" style="color:#FF6B35;text-decoration:none;font-weight:600;font-size:14px;">원가율 계산하고 낮추는 법 — 사장님 수익의 첫 단추</a></li>
+      </ul>
+    </section>
+
+    <section style="background:#fff8f5;border-radius:16px;padding:24px 28px;margin-top:24px;">
+      <h2 style="font-size:18px;font-weight:800;color:#1a1a1a;margin:0 0 14px;">무료 계산기로 바로 확인하기</h2>
+      <ul style="list-style:none;padding:0;margin:0;">
+        <li style="padding:10px 0;border-bottom:1px solid #ffe6d9;"><a href="/tools/card-fee-calculator/" style="color:#FF6B35;text-decoration:none;font-weight:700;font-size:15px;">카드수수료 계산기</a><div style="font-size:13px;color:#777;margin-top:2px;">연매출로 우대수수료율 구간을 확인하고 환급 대상인지 알아봅니다</div></li>
+        <li style="padding:10px 0;border-bottom:1px solid #ffe6d9;"><a href="/tools/delivery-fee-calculator/" style="color:#FF6B35;text-decoration:none;font-weight:700;font-size:15px;">배달앱 수수료 계산기</a><div style="font-size:13px;color:#777;margin-top:2px;">중개·결제 수수료와 배달비를 빼면 실제로 얼마가 입금되는지 계산합니다</div></li>
+      </ul>
+    </section>
+
+    <!-- 자동 광고(Auto ads)가 배치를 정하므로 유닛을 직접 넣지 않는다. 여백만 확보한다. -->
+    <div class="ad-slot"></div>
+
+    <div class="cta-box">
+      <h3>매일 매출 기록, 30초면 끝!</h3>
+      <p>카드·현금·네이버페이·카카오페이<br>여러 결제수단을 한 화면에서 입력<br>부가세 예상액도 자동으로 계산해드려요</p>
+      <a href="/">지금 무료로 시작하기</a>
+    </div>
+  </main>
+
+  <aside class="sidebar">
+    <div class="sidebar-cta">
+      <h3>매일 매출 기록,<br>30초면 끝!</h3>
+      <p>카드·현금·배달앱 한 번에<br>부가세 예상액도 자동 계산</p>
+      <a href="/">무료로 시작하기</a>
+    </div>
+  </aside>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-links">
+      <a href="/">서비스 홈</a>
+      <a href="/blog/">블로그</a>
+      <a href="/about/">소개</a>
+      <a href="/contact/">문의하기</a>
+      <a href="/blog/about.html">소개 및 문의</a>
+      <a href="/privacy">개인정보처리방침</a>
+      <a href="/terms">이용약관</a>
+    </div>
+    <div class="footer-copy">© 2026 오늘장부. All rights reserved.</div>
+  </div>
+</footer>
+
+</body>
+</html>
