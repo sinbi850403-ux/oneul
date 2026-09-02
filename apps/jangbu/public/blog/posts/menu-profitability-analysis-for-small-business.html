@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>메뉴별 수익성 따져보기 — 잘 팔리는 메뉴가 돈 버는 메뉴는 아닙니다 | 오늘장부 블로그</title>
+  <meta name="description" content="매출이 높아도 남는 게 없다면? 원가율·카드수수료·배달앱 수수료까지 반영한 메뉴별 실수익 계산법을 단계별로 정리했습니다.">
+  <meta property="og:title" content="메뉴별 수익성 따져보기 — 잘 팔리는 메뉴가 돈 버는 메뉴는 아닙니다">
+  <meta property="og:description" content="매출이 높아도 남는 게 없다면? 원가율·카드수수료·배달앱 수수료까지 반영한 메뉴별 실수익 계산법을 단계별로 정리했습니다.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://xn--wh1bw0st1gbrb.kr/blog/posts/menu-profitability-analysis-for-small-business.html">
+  <meta property="og:image" content="https://images.pexels.com/photos/941193/pexels-photo-941193.jpeg?auto=compress&amp;cs=tinysrgb&amp;fit=crop&amp;h=627&amp;w=1200">
+  <link rel="canonical" href="https://xn--wh1bw0st1gbrb.kr/blog/posts/menu-profitability-analysis-for-small-business.html">
+  <link rel="icon" href="/icons/icon-192.png">
+  <!-- 방문자 분석 (GA4 + Clarity + 네이버). ID는 /analytics.js 상단에서 관리. -->
+  <script defer src="/analytics.js"></script>
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2764893290310463" crossorigin="anonymous"></script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Noto Sans KR', sans-serif; background: #f8f9fa; color: #1a1a1a; line-height: 1.7; }
+    header { background: #fff; border-bottom: 1px solid #eee; position: sticky; top: 0; z-index: 100; }
+    .header-inner { max-width: 1100px; margin: 0 auto; padding: 0 20px; height: 60px; display: flex; align-items: center; justify-content: space-between; }
+    .logo { display: flex; align-items: center; gap: 8px; text-decoration: none; }
+    .logo-icon { width: 32px; height: 32px; background: #FF6B35; border-radius: 8px; display: flex; align-items: center; justify-content: center; color: white; font-weight: 900; font-size: 16px; }
+    .logo-text { font-size: 18px; font-weight: 800; color: #FF6B35; }
+    .logo-sub { font-size: 13px; color: #888; margin-left: 4px; }
+    .header-cta { background: #FF6B35; color: white; border: none; padding: 8px 16px; border-radius: 8px; font-size: 13px; font-weight: 600; cursor: pointer; text-decoration: none; }
+    /* minmax(0, ...): 표처럼 최소폭이 큰 콘텐츠가 그리드 트랙을 밀어내 페이지 전체가
+       가로로 스크롤되는 것을 막는다. 1fr만 쓰면 트랙 최소폭이 auto라 끌려간다. */
+    .wrap { max-width: 1100px; margin: 0 auto; padding: 32px 20px; display: grid; grid-template-columns: minmax(0, 1fr) 300px; gap: 40px; }
+    @media (max-width: 768px) { .wrap { grid-template-columns: minmax(0, 1fr); } .sidebar { display: none; } }
+    article { background: white; border-radius: 20px; overflow: hidden; box-shadow: 0 2px 12px rgba(0,0,0,0.06); }
+    .article-head { padding: 32px 32px 24px; border-bottom: 1px solid #f0f0f0; }
+    .article-cat { font-size: 12px; font-weight: 700; color: #FF6B35; text-transform: uppercase; margin-bottom: 12px; }
+    .article-cat a { color: #FF6B35; text-decoration: none; }
+    .article-title { font-size: clamp(20px, 4vw, 28px); font-weight: 900; line-height: 1.4; color: #1a1a1a; margin-bottom: 16px; }
+    .article-meta { font-size: 13px; color: #aaa; display: flex; gap: 16px; align-items: center; flex-wrap: wrap; }
+    .hero-img { width: 100%; aspect-ratio: 16/9; object-fit: cover; background: #f0f0f0; }
+    .article-body { padding: 32px; }
+    .article-body h2 { font-size: 20px; font-weight: 800; color: #1a1a1a; margin: 32px 0 14px; padding-bottom: 8px; border-bottom: 2px solid #FF6B35; }
+    .article-body h3 { font-size: 16px; font-weight: 700; color: #333; margin: 20px 0 10px; }
+    .article-body p { margin-bottom: 14px; color: #333; font-size: 15px; }
+    .article-body ul, .article-body ol { padding-left: 20px; margin-bottom: 14px; }
+    .article-body li { margin-bottom: 6px; color: #333; font-size: 15px; }
+    article { min-width: 0; }
+    /* 좁은 화면에서는 표만 자기 안에서 가로 스크롤시킨다. min-width:100%가 있어야
+       넓은 화면에서 기존처럼 폭을 꽉 채운다. */
+    .article-body table { display: block; width: max-content; min-width: 100%; max-width: 100%; overflow-x: auto; border-collapse: collapse; margin: 16px 0; font-size: 14px; }
+    .article-body th { background: #FF6B35; color: white; padding: 10px 14px; text-align: left; }
+    .article-body td { padding: 10px 14px; border-bottom: 1px solid #f0f0f0; }
+    .article-body tr:nth-child(even) td { background: #fff8f5; }
+    .article-body img { width: 100%; border-radius: 12px; margin: 16px 0; }
+    .article-body strong { color: #1a1a1a; }
+    .article-body blockquote { background: #fff8f5; border-left: 4px solid #FF6B35; padding: 16px 20px; border-radius: 0 12px 12px 0; margin: 16px 0; font-style: italic; color: #555; }
+    .article-body a { color: #FF6B35; }
+    .tags { padding: 20px 32px; border-top: 1px solid #f0f0f0; display: flex; gap: 8px; flex-wrap: wrap; }
+    .tag { background: #fff3ee; color: #FF6B35; border-radius: 20px; padding: 5px 12px; font-size: 12px; font-weight: 600; text-decoration: none; }
+    .tag:hover { background: #FF6B35; color: white; }
+    .ad-slot { background: #f0f0f0; border-radius: 12px; display: flex; align-items: center; justify-content: center; color: #bbb; font-size: 12px; min-height: 90px; margin: 24px 0; }
+    .cta-box { background: linear-gradient(135deg, #FF6B35, #ff8c42); border-radius: 20px; padding: 32px; text-align: center; color: white; margin-top: 24px; }
+    .cta-box h3 { font-size: 22px; font-weight: 900; margin-bottom: 10px; }
+    .cta-box p { font-size: 14px; opacity: 0.9; line-height: 1.6; margin-bottom: 20px; }
+    .cta-box a { background: white; color: #FF6B35; border-radius: 12px; padding: 13px 28px; font-weight: 800; font-size: 15px; text-decoration: none; display: inline-block; }
+    .nav-links { display: flex; gap: 16px; margin-top: 24px; }
+    .nav-back { color: #FF6B35; text-decoration: none; font-size: 14px; font-weight: 600; }
+    .nav-back::before { content: '\2190 '; }
+    .sidebar-cta { background: linear-gradient(135deg, #FF6B35, #ff8c42); color: white; border-radius: 16px; padding: 24px; text-align: center; position: sticky; top: 80px; }
+    .sidebar-cta h3 { font-size: 16px; font-weight: 900; margin-bottom: 8px; }
+    .sidebar-cta p { font-size: 13px; opacity: 0.9; line-height: 1.5; margin-bottom: 16px; }
+    .sidebar-cta a { background: white; color: #FF6B35; border-radius: 8px; padding: 10px 20px; font-weight: 700; font-size: 14px; text-decoration: none; display: inline-block; }
+    footer { background: #1a1a1a; color: #888; padding: 40px 20px; margin-top: 60px; }
+    .footer-inner { max-width: 1100px; margin: 0 auto; }
+    .footer-links { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 16px; }
+    .footer-links a { color: #888; text-decoration: none; font-size: 13px; }
+    .footer-copy { font-size: 12px; }
+  </style>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "메뉴별 수익성 따져보기 — 잘 팔리는 메뉴가 돈 버는 메뉴는 아닙니다",
+  "description": "매출이 높아도 남는 게 없다면? 원가율·카드수수료·배달앱 수수료까지 반영한 메뉴별 실수익 계산법을 단계별로 정리했습니다.",
+  "datePublished": "2026-09-02",
+  "dateModified": "2026-09-02",
+  "image": "https://images.pexels.com/photos/941193/pexels-photo-941193.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200",
+  "author": {
+    "@type": "Organization",
+    "name": "오늘장부",
+    "url": "https://오늘장부.kr"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "오늘장부",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://xn--wh1bw0st1gbrb.kr/icons/icon-192.png"
+    }
+  },
+  "mainEntityOfPage": "https://xn--wh1bw0st1gbrb.kr/blog/posts/menu-profitability-analysis-for-small-business.html",
+  "keywords": "메뉴수익성, 원가율계산, 매출관리, 소상공인"
+}
+  </script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "원가율 계산 때 포장재·소모품도 포함해야 하나요?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "엄밀히 말하면 포함하는 것이 정확합니다. 포장 용기·비닐백·소스 등 주문 1건당 발생하는 변동 비용은 재료비에 합산하면 더 현실적인 원가율이 나옵니다. 특히 배달 전용 메뉴는 포장재 비용이 의외로 크니 빠뜨리지 마세요."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "배달 채널 메뉴 가격을 홀보다 높게 받아도 되나요?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "네, 가능합니다. 배달 채널의 플랫폼 수수료와 배달비를 반영해 홀보다 10~15% 높은 가격을 설정하는 것은 합리적인 원가 관리 전략입니다. 다만 소비자 가격 비교 앱 등을 통해 인지도가 높아진 만큼, 가격 차이가 너무 크면 고객 불만으로 이어질 수 있으니 채널별 가격을 명확히 구분해 안내하는 것이 좋습니다."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "카드수수료 우대가 적용되는지 어떻게 확인하나요?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "여신금융협회 가맹점 매출거래정보 통합조회 시스템(PC·모바일 웹 cardsales.or.kr, 모바일 앱 '카드매출조회')에서 본인 사업자 번호로 조회하면 현재 적용 수수료율을 바로 확인할 수 있습니다. 매반기(2월·8월)마다 갱신되므로 정기적으로 확인하세요."
+      }
+    }
+  ]
+}
+  </script>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <a href="/" class="logo">
+      <div class="logo-icon">장</div>
+      <span class="logo-text">오늘장부</span>
+      <span class="logo-sub">블로그</span>
+    </a>
+    <a href="/" class="header-cta">무료로 시작하기</a>
+  </div>
+</header>
+
+<div class="wrap">
+  <main>
+    <div class="nav-links">
+      <a href="/blog/" class="nav-back">블로그 목록으로</a>
+    </div>
+
+    <!-- 자동 광고(Auto ads)가 배치를 정하므로 유닛을 직접 넣지 않는다. 여백만 확보한다. -->
+    <div class="ad-slot"></div>
+
+    <article>
+      <div class="article-head">
+        <div class="article-cat"><a href="/blog/">매출관리</a></div>
+        <h1 class="article-title">메뉴별 수익성 따져보기 — 잘 팔리는 메뉴가 돈 버는 메뉴는 아닙니다</h1>
+        <div class="article-meta">
+          <span>오늘장부 편집팀</span>
+          <span>2026년 09월 02일</span>
+        </div>
+      </div>
+      <img src="https://images.pexels.com/photos/941193/pexels-photo-941193.jpeg?auto=compress&amp;cs=tinysrgb&amp;fit=crop&amp;h=627&amp;w=1200" alt="메뉴별 수익성 따져보기 — 잘 팔리는 메뉴가 돈 버는 메뉴는 아닙니다" class="hero-img" loading="lazy">
+      <div class="article-body">
+<p>"이 메뉴가 하루에 30그릇이나 나가는데 왜 통장엔 돈이 없지?" 많은 사장님이 겪는 딜레마입니다. 장사가 바쁘다고 느끼지만 순이익이 안 보일 때, 대부분의 원인은 <strong>메뉴별 수익성 계산 없이 '팔리는 메뉴'에만 집중한 것</strong>에 있습니다. 이번 글에서는 원가율부터 카드수수료, 배달앱 수수료까지 실제 비용을 반영해 메뉴별 진짜 수익을 파악하는 방법을 단계별로 알려드립니다.</p>
+
+<h2>1단계 — 메뉴별 원가율부터 계산하세요</h2>
+<p>수익성 분석의 출발점은 <strong>원가율(食材費 비율)</strong>입니다. 계산식은 단순합니다.</p>
+<blockquote>원가율(%) = 재료비 ÷ 판매가 × 100</blockquote>
+<p>예를 들어 판매가 9,000원짜리 된장찌개의 재료비가 2,700원이면 원가율은 30%입니다. 업종별로 허용 가능한 원가율은 다소 다르지만, 일반적으로 외식업은 <strong>원가율 30~35% 이내</strong>를 목표로 삼는 것이 일반적입니다. 35%를 넘기 시작하면 인건비·임차료 등 고정비를 충당하기 어려워집니다.</p>
+<p>원가율만 보고 끝내면 안 됩니다. <strong>메뉴 하나당 공헌이익(판매가 − 변동비)</strong>도 함께 봐야 합니다. 원가율이 낮더라도 판매가 자체가 낮으면 절대 금액 기여도가 작기 때문입니다.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>메뉴</th>
+      <th>판매가</th>
+      <th>재료비</th>
+      <th>원가율</th>
+      <th>공헌이익(건당)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>된장찌개</td>
+      <td>9,000원</td>
+      <td>2,700원</td>
+      <td>30%</td>
+      <td>6,300원</td>
+    </tr>
+    <tr>
+      <td>삼겹살(1인분)</td>
+      <td>14,000원</td>
+      <td>6,300원</td>
+      <td>45%</td>
+      <td>7,700원</td>
+    </tr>
+    <tr>
+      <td>음료(아메리카노)</td>
+      <td>4,500원</td>
+      <td>450원</td>
+      <td>10%</td>
+      <td>4,050원</td>
+    </tr>
+  </tbody>
+</table>
+<p>위 예시에서 삼겹살은 원가율이 45%로 높지만, 건당 공헌이익은 가장 큽니다. 반대로 원가율이 낮은 음료는 건당 기여액이 작으므로 회전율(판매 수량)이 뒷받침되어야 의미 있는 수익을 냅니다.</p>
+
+<h2>2단계 — 결제 수단별 수수료를 비용으로 잡으세요</h2>
+<p>메뉴 원가만 계산하고 결제 수수료를 빠뜨리는 사장님이 많습니다. 카드로 결제가 들어오면 카드사에 수수료를 내야 하는데, 이 금액이 쌓이면 무시 못 할 규모가 됩니다.</p>
+<p>2026년 현재 금융위원회가 적용 중인 영세·중소가맹점 우대수수료율은 다음과 같습니다.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>연매출 구간</th>
+      <th>신용카드 수수료율</th>
+      <th>체크카드 수수료율</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>3억 원 이하 (영세)</td>
+      <td>0.4%</td>
+      <td>0.15%</td>
+    </tr>
+    <tr>
+      <td>3억 초과 ~ 5억 이하 (중소 1)</td>
+      <td>1.0%</td>
+      <td>0.75%</td>
+    </tr>
+    <tr>
+      <td>5억 초과 ~ 10억 이하 (중소 2)</td>
+      <td>1.15%</td>
+      <td>0.90%</td>
+    </tr>
+    <tr>
+      <td>10억 초과 ~ 30억 이하 (중소 3)</td>
+      <td>1.45%</td>
+      <td>1.15%</td>
+    </tr>
+  </tbody>
+</table>
+<p>연매출 3억 이하 영세가맹점이라면 신용카드 수수료가 판매가의 0.4%에 불과하지만, 매출이 올라가 중소 구간에 진입하면 수수료 부담도 함께 커집니다. 메뉴별 수익 계산 시 반드시 내 가게의 매출 구간에 맞는 수수료율을 대입하세요. 본인의 적용 수수료율은 여신금융협회 가맹점 매출거래정보 통합조회 시스템(cardsales.or.kr)에서 확인할 수 있습니다.</p>
+
+<h2>3단계 — 배달앱 메뉴라면 플랫폼 수수료도 빼야 합니다</h2>
+<p>배달 채널은 오프라인보다 체감 수수료가 훨씬 높습니다. 2026년 현재 배달의민족·쿠팡이츠는 매출 구간에 따라 <strong>약 2.0~7.8%의 중개 수수료</strong>를 적용하며, 요기요는 구조에 따라 <strong>최저 4.7%~최대 9.7%</strong> 수준입니다. 여기에 업주 부담 배달비와 상위 노출 광고비까지 포함하면 실질 비용은 명목 수수료보다 훨씬 커집니다.</p>
+<p>배달 전용 메뉴를 만들거나 배달가와 매장가를 달리 책정하는 가게들이 늘어난 이유가 바로 이 때문입니다. <strong>배달앱 판매가 = 재료비 + 플랫폼 수수료 + 배달비 + 이익</strong>으로 역산해 가격을 설정해야 실제로 남는 장사가 됩니다.</p>
+
+<h2>4단계 — 메뉴별 수익성 표로 정리해 보세요</h2>
+<p>아래처럼 메뉴별로 채널(홀·배달)과 결제 수단을 구분해 순수익을 적어두면 어느 메뉴에 집중할지 방향이 보입니다.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>메뉴</th>
+      <th>채널</th>
+      <th>판매가</th>
+      <th>재료비</th>
+      <th>플랫폼·카드 수수료(예시)</th>
+      <th>예상 순마진</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>된장찌개</td>
+      <td>홀(카드)</td>
+      <td>9,000원</td>
+      <td>2,700원</td>
+      <td>36원 (0.4%)</td>
+      <td>약 6,264원</td>
+    </tr>
+    <tr>
+      <td>된장찌개</td>
+      <td>배달앱</td>
+      <td>10,000원</td>
+      <td>2,700원</td>
+      <td>약 680원 (6.8%)</td>
+      <td>약 6,620원</td>
+    </tr>
+    <tr>
+      <td>삼겹살 1인</td>
+      <td>홀(카드)</td>
+      <td>14,000원</td>
+      <td>6,300원</td>
+      <td>56원 (0.4%)</td>
+      <td>약 7,644원</td>
+    </tr>
+  </tbody>
+</table>
+<p>※ 위 표의 카드수수료는 연매출 3억 이하 영세가맹점 기준 예시이며, 인건비·임차료 등 고정비는 별도입니다. 실제 적용 수수료율에 맞춰 재계산하세요.</p>
+<p>이런 분석을 매달 꾸준히 하기 어렵다면 <strong>오늘장부</strong>처럼 카드·현금·배달앱 매출을 채널별로 한 번에 기록하고 부가세 예상액까지 자동으로 잡아주는 앱을 활용하면 훨씬 편리합니다.</p>
+
+<h2>5단계 — '효자 메뉴'와 '미끼 메뉴'를 구분하세요</h2>
+<p>수익성 분석이 끝나면 메뉴를 역할별로 구분해 보세요.</p>
+<ul>
+  <li><strong>효자 메뉴(Cash Cow)</strong> — 원가율이 낮고 공헌이익이 높은 메뉴. 가격을 쉽게 내리지 않아야 하며, 재주문율·추천 마케팅의 핵심입니다.</li>
+  <li><strong>미끼 메뉴(Traffic Driver)</strong> — 객단가는 낮지만 방문 유인 효과가 큰 메뉴. 마진이 낮으므로 묶음 판매·업셀링 전략으로 보완해야 합니다.</li>
+  <li><strong>적자 메뉴</strong> — 재료비가 높고 회전율도 낮은 메뉴. 가격 인상, 식재료 조정, 또는 메뉴판에서 제거를 검토해야 합니다.</li>
+</ul>
+<p>실제로 메뉴판 항목 수를 줄이고 효자 메뉴에 집중했을 때 전체 식재료 낭비가 줄고 순이익이 늘었다는 사례는 외식 컨설팅 현장에서 흔히 볼 수 있습니다.</p>
+
+<h2>6단계 — 월 1회 정기 점검 루틴을 만드세요</h2>
+<p>수익성 분석은 한 번 해두고 잊어버리면 의미가 없습니다. 식재료 가격은 매달 변하고, 배달앱 수수료 정책도 바뀝니다. 최소 <strong>월 1회, 가능하면 주 1회</strong>는 채널별·메뉴별 매출과 비용을 점검하는 루틴을 갖추세요. 기록이 쌓일수록 계절 수요, 요일별 패턴, 인기 메뉴 변화까지 눈에 들어오고 가격·원가 조정 타이밍을 정확히 잡을 수 있습니다.</p>
+<p>바쁜 사장님께는 매일 30초면 일매출을 기록할 수 있는 <a href="https://오늘장부.kr">오늘장부 무료로 시작하기</a>를 권해드립니다. 카드·현금·배달앱 매출을 채널별로 자동 집계해 주어 월말에 수익성 표를 만들 때 데이터를 따로 모을 필요가 없습니다.</p>
+
+<h2>자주 묻는 질문</h2>
+
+<h3>원가율 계산 때 포장재·소모품도 포함해야 하나요?</h3>
+<p>엄밀히 말하면 포함하는 것이 정확합니다. 포장 용기·비닐백·소스 등 주문 1건당 발생하는 변동 비용은 재료비에 합산하면 더 현실적인 원가율이 나옵니다. 특히 배달 전용 메뉴는 포장재 비용이 의외로 크니 빠뜨리지 마세요.</p>
+
+<h3>배달 채널 메뉴 가격을 홀보다 높게 받아도 되나요?</h3>
+<p>네, 가능합니다. 배달 채널의 플랫폼 수수료와 배달비를 반영해 홀보다 10~15% 높은 가격을 설정하는 것은 합리적인 원가 관리 전략입니다. 다만 소비자 가격 비교 앱 등을 통해 인지도가 높아진 만큼, 가격 차이가 너무 크면 고객 불만으로 이어질 수 있으니 채널별 가격을 명확히 구분해 안내하는 것이 좋습니다.</p>
+
+<h3>카드수수료 우대가 적용되는지 어떻게 확인하나요?</h3>
+<p>여신금융협회 가맹점 매출거래정보 통합조회 시스템(PC·모바일 웹 cardsales.or.kr, 모바일 앱 '카드매출조회')에서 본인 사업자 번호로 조회하면 현재 적용 수수료율을 바로 확인할 수 있습니다. 매반기(2월·8월)마다 갱신되므로 정기적으로 확인하세요.</p>
+
+<p>※ 본 글은 2026년 기준 참고용 정보이며, 정확한 신고·금액은 국세청 홈택스 또는 세무사와 상담하세요.</p>
+      </div>
+      <div class="tags">
+        <a href="/blog/?tag=%EB%A9%94%EB%89%B4%EC%88%98%EC%9D%B5%EC%84%B1" class="tag">메뉴수익성</a> <a href="/blog/?tag=%EC%9B%90%EA%B0%80%EC%9C%A8%EA%B3%84%EC%82%B0" class="tag">원가율계산</a> <a href="/blog/?tag=%EB%A7%A4%EC%B6%9C%EA%B4%80%EB%A6%AC" class="tag">매출관리</a> <a href="/blog/?tag=%EC%86%8C%EC%83%81%EA%B3%B5%EC%9D%B8" class="tag">소상공인</a>
+      </div>
+    </article>
+
+    <section style="background:#fff8f5;border-radius:16px;padding:24px 28px;margin-top:24px;">
+      <h2 style="font-size:18px;font-weight:800;color:#1a1a1a;margin:0 0 14px;">함께 보면 좋은 글</h2>
+      <ul style="list-style:none;padding:0;margin:0;">
+        <li style="padding:8px 0;border-bottom:1px solid #ffe6d9;"><a href="/blog/posts/why-revenue-grows-but-bank-account-empties.html" style="color:#FF6B35;text-decoration:none;font-weight:600;font-size:14px;">매출은 느는데 통장이 비는 이유 — 사장님 돈을 먹는 5가지 구멍</a></li>
+        <li style="padding:8px 0;border-bottom:1px solid #ffe6d9;"><a href="/blog/posts/inventory-check-cycle-and-methods.html" style="color:#FF6B35;text-decoration:none;font-weight:600;font-size:14px;">재고 조사 주기와 방법 — 사장님이 꼭 알아야 할 실전 가이드</a></li>
+        <li style="padding:8px 0;border-bottom:1px solid #ffe6d9;"><a href="/blog/posts/reduce-food-waste-restaurant-inventory-management.html" style="color:#FF6B35;text-decoration:none;font-weight:600;font-size:14px;">식자재 폐기율 줄이기: 음식점 원가 지키는 실전 재고관리 5단계</a></li>
+        <li style="padding:8px 0;border-bottom:1px solid #ffe6d9;"><a href="/blog/posts/fixed-vs-variable-costs-guide-for-small-business.html" style="color:#FF6B35;text-decoration:none;font-weight:600;font-size:14px;">고정비 변동비 나누는 법 — 사장님 필수 비용 구조 분석</a></li>
+      </ul>
+    </section>
+
+    <section style="background:#fff8f5;border-radius:16px;padding:24px 28px;margin-top:24px;">
+      <h2 style="font-size:18px;font-weight:800;color:#1a1a1a;margin:0 0 14px;">무료 계산기로 바로 확인하기</h2>
+      <ul style="list-style:none;padding:0;margin:0;">
+        <li style="padding:10px 0;border-bottom:1px solid #ffe6d9;"><a href="/tools/card-fee-calculator/" style="color:#FF6B35;text-decoration:none;font-weight:700;font-size:15px;">카드수수료 계산기</a><div style="font-size:13px;color:#777;margin-top:2px;">연매출로 우대수수료율 구간을 확인하고 환급 대상인지 알아봅니다</div></li>
+        <li style="padding:10px 0;border-bottom:1px solid #ffe6d9;"><a href="/tools/delivery-fee-calculator/" style="color:#FF6B35;text-decoration:none;font-weight:700;font-size:15px;">배달앱 수수료 계산기</a><div style="font-size:13px;color:#777;margin-top:2px;">중개·결제 수수료와 배달비를 빼면 실제로 얼마가 입금되는지 계산합니다</div></li>
+      </ul>
+    </section>
+
+    <!-- 자동 광고(Auto ads)가 배치를 정하므로 유닛을 직접 넣지 않는다. 여백만 확보한다. -->
+    <div class="ad-slot"></div>
+
+    <div class="cta-box">
+      <h3>매일 매출 기록, 30초면 끝!</h3>
+      <p>카드·현금·네이버페이·카카오페이<br>여러 결제수단을 한 화면에서 입력<br>부가세 예상액도 자동으로 계산해드려요</p>
+      <a href="/">지금 무료로 시작하기</a>
+    </div>
+  </main>
+
+  <aside class="sidebar">
+    <div class="sidebar-cta">
+      <h3>매일 매출 기록,<br>30초면 끝!</h3>
+      <p>카드·현금·배달앱 한 번에<br>부가세 예상액도 자동 계산</p>
+      <a href="/">무료로 시작하기</a>
+    </div>
+  </aside>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-links">
+      <a href="/">서비스 홈</a>
+      <a href="/blog/">블로그</a>
+      <a href="/about/">소개</a>
+      <a href="/contact/">문의하기</a>
+      <a href="/blog/about.html">소개 및 문의</a>
+      <a href="/privacy">개인정보처리방침</a>
+      <a href="/terms">이용약관</a>
+    </div>
+    <div class="footer-copy">© 2026 오늘장부. All rights reserved.</div>
+  </div>
+</footer>
+
+</body>
+</html>

@@ -1,5 +1,20 @@
 [
   {
+    "slug": "menu-profitability-analysis-for-small-business",
+    "title": "메뉴별 수익성 따져보기 — 잘 팔리는 메뉴가 돈 버는 메뉴는 아닙니다",
+    "description": "매출이 높아도 남는 게 없다면? 원가율·카드수수료·배달앱 수수료까지 반영한 메뉴별 실수익 계산법을 단계별로 정리했습니다.",
+    "category": "매출관리",
+    "date": "2026-09-02",
+    "thumb": "https://images.pexels.com/photos/941193/pexels-photo-941193.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200",
+    "tags": [
+      "메뉴수익성",
+      "원가율계산",
+      "매출관리",
+      "소상공인"
+    ],
+    "keyword": "메뉴별 수익성 따져보기"
+  },
+  {
     "slug": "pg-settlement-failure-response-guide",
     "title": "결제대행(PG) 미정산 사고 났을 때 사장님 대응 완전 가이드",
     "description": "티메프 사태로 드러난 PG사 미정산 위험, 실제로 정산이 안 될 때 즉시 해야 할 조치부터 세금 처리·정부 지원 신청까지 소상공인 실전 대응법을 정리했습니다.",
