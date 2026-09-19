@@ -256,7 +256,7 @@
       "destination": "/api/$1"
     },
     {
-      "source": "/(login|reset-password|onboarding|privacy|terms|input|calendar|history|tax|board|settings)",
+      "source": "/(login|reset-password|onboarding|input|calendar|history|tax|board|settings)",
       "destination": "/"
     },
     {
