@@ -228,4 +228,76 @@ export const keywords = [
   { keyword: '취업규칙 만들어야 하는 기준', category: '직원관리', imageQuery: 'company rulebook' },
   { keyword: '직장 내 괴롭힘 신고 들어오면', category: '직원관리', imageQuery: 'workplace conflict meeting' },
   { keyword: '퇴직연금 가입 의무', category: '직원관리', imageQuery: 'retirement pension savings' },
+
+  // ── 3차 주제 (2차까지 소진 후 추가) ──────────────────────────────
+  // ── 매출관리 ── 수익구조·가격·마케팅 영역 보강
+  { keyword: '배달 vs 홀 수익성 직접 비교', category: '매출관리', imageQuery: 'delivery versus dine in restaurant' },
+  { keyword: '메뉴 가격 올리는 시점 판단법', category: '매출관리', imageQuery: 'price increase menu board' },
+  { keyword: '점심 vs 저녁 매출 분석 활용', category: '매출관리', imageQuery: 'lunch dinner restaurant peak' },
+  { keyword: '홀 회전율 높이는 현실 방법', category: '매출관리', imageQuery: 'busy restaurant table turnover' },
+  { keyword: '테이크아웃 비중 늘려 수익 개선', category: '매출관리', imageQuery: 'takeout coffee cup counter' },
+  { keyword: '공휴일 매출 예측과 준비', category: '매출관리', imageQuery: 'holiday planning calendar' },
+  { keyword: 'SNS 마케팅 매출 기여 측정', category: '매출관리', imageQuery: 'social media marketing phone' },
+  { keyword: '타임세일 효과와 매출 변화', category: '매출관리', imageQuery: 'time sale sign store' },
+  { keyword: '기온과 매출 상관관계 활용', category: '매출관리', imageQuery: 'weather thermometer cafe' },
+  { keyword: '카카오 주문하기 vs 배달앱 매출 비교', category: '매출관리', imageQuery: 'kakao order app comparison' },
+
+  // ── 부가세/세금 ── 특수 상황·고급 신고 영역 보강
+  { keyword: '의제매입세액 공제 음식점 활용', category: '부가세/세금', imageQuery: 'food ingredient tax deduction' },
+  { keyword: '사업장 두 곳 이상 부가세 처리', category: '부가세/세금', imageQuery: 'multiple stores tax filing' },
+  { keyword: '간이과세자 신용카드 매출세액공제', category: '부가세/세금', imageQuery: 'simplified taxpayer card' },
+  { keyword: '전자세금계산서 지연발급 가산세', category: '부가세/세금', imageQuery: 'late invoice penalty document' },
+  { keyword: '업종 변경할 때 세금 처리', category: '부가세/세금', imageQuery: 'business change document' },
+  { keyword: '수입 물품 구매 시 부가세 납부', category: '부가세/세금', imageQuery: 'import goods customs tax' },
+  { keyword: '소규모 법인 법인세 신고 방법', category: '부가세/세금', imageQuery: 'corporation tax small business' },
+  { keyword: '상가 임대사업자 세금 처리', category: '부가세/세금', imageQuery: 'commercial rental property tax' },
+
+  // ── 절세꿀팁 ── 고용·공제 심화 영역 보강
+  { keyword: '고용증대 세액공제 신청 방법', category: '절세꿀팁', imageQuery: 'hiring employees tax credit' },
+  { keyword: '전통시장 소상공인 세제 혜택', category: '절세꿀팁', imageQuery: 'traditional market store' },
+  { keyword: '청년창업 세액감면 5년 혜택', category: '절세꿀팁', imageQuery: 'young entrepreneur startup' },
+  { keyword: '상생협력 세액공제 활용법', category: '절세꿀팁', imageQuery: 'business cooperation handshake' },
+  { keyword: '결손금 이월공제로 세금 줄이기', category: '절세꿀팁', imageQuery: 'tax loss carryforward' },
+  { keyword: '사업장 화재·수해 재해손실 공제', category: '절세꿀팁', imageQuery: 'fire flood disaster insurance' },
+  { keyword: '집과 사업장 겸용 지출 분리 신고', category: '절세꿀팁', imageQuery: 'home office expense split' },
+  { keyword: '세금 체납 시 벌어지는 일들', category: '절세꿀팁', imageQuery: 'tax delinquency notice' },
+
+  // ── 배달앱 ── 운영·플랫폼 다양화 영역 보강
+  { keyword: '카카오주문하기 입점 방법과 수수료', category: '배달앱', imageQuery: 'kakao order platform store' },
+  { keyword: '요기요 수수료 2026 최신 정리', category: '배달앱', imageQuery: 'yogiyo delivery app fee' },
+  { keyword: '배달 전용 브랜드 만드는 방법', category: '배달앱', imageQuery: 'ghost kitchen brand' },
+  { keyword: '배달앱 음식 사진 잘 찍는 법', category: '배달앱', imageQuery: 'food photography restaurant' },
+  { keyword: '배달 용기 비용 원가 계산', category: '배달앱', imageQuery: 'food container packaging cost' },
+  { keyword: '배달 성수기 미리 준비하기', category: '배달앱', imageQuery: 'busy delivery peak season' },
+  { keyword: '배달 컴플레인·환불 대응 매뉴얼', category: '배달앱', imageQuery: 'customer complaint phone' },
+  { keyword: '쿠팡이츠 입점 방법과 주의사항', category: '배달앱', imageQuery: 'coupang eats delivery' },
+
+  // ── 카드수수료 ── 결제 인프라·분쟁 영역 보강
+  { keyword: '결제 취소 시 수수료 환급되나', category: '카드수수료', imageQuery: 'refund payment terminal' },
+  { keyword: '밴사와 PG사 차이 완전정리', category: '카드수수료', imageQuery: 'van pg payment gateway' },
+  { keyword: '온라인 결제 수수료 구조 이해', category: '카드수수료', imageQuery: 'online payment fee structure' },
+  { keyword: '무이자할부 비용 누가 부담하나', category: '카드수수료', imageQuery: 'installment card interest' },
+  { keyword: '소액 결제 카드 거절 법적으로 가능?', category: '카드수수료', imageQuery: 'small payment card refusal' },
+  { keyword: '키오스크 설치 카드 수수료 구조', category: '카드수수료', imageQuery: 'kiosk card payment fee' },
+  { keyword: '결제 대행 미정산 사고 대응법', category: '카드수수료', imageQuery: 'payment settlement problem' },
+
+  // ── 사업자등록 ── 인허가·창업 준비 영역 보강
+  { keyword: '식품위생교육 온라인 이수 방법', category: '사업자등록', imageQuery: 'food safety hygiene training' },
+  { keyword: '창업 전 상권 분석하는 방법', category: '사업자등록', imageQuery: 'market research location' },
+  { keyword: '숙박업 신고와 인허가 절차', category: '사업자등록', imageQuery: 'accommodation permit hotel' },
+  { keyword: '소방 시설 검사와 영업 허가', category: '사업자등록', imageQuery: 'fire safety inspection store' },
+  { keyword: '무인매장 창업 인허가 절차', category: '사업자등록', imageQuery: 'unmanned store kiosk setup' },
+  { keyword: '점포 권리금 계약 전 체크리스트', category: '사업자등록', imageQuery: 'store lease key handover' },
+  { keyword: '소상공인 확인서 발급 방법', category: '사업자등록', imageQuery: 'small business certificate' },
+  { keyword: '상호 정할 때 상표권 미리 확인', category: '사업자등록', imageQuery: 'trademark check brand' },
+
+  // ── 직원관리 ── 법정의무·특수 고용 영역 보강
+  { keyword: '출산휴가·육아휴직 소상공인 지원금', category: '직원관리', imageQuery: 'maternity leave small business' },
+  { keyword: '외국인 근로자 고용허가제 절차', category: '직원관리', imageQuery: 'foreign worker employment permit' },
+  { keyword: '직원 징계·해고 서면 절차', category: '직원관리', imageQuery: 'employee dismissal document' },
+  { keyword: '파견 도급 근로자 사장님 책임', category: '직원관리', imageQuery: 'outsourced contractor work' },
+  { keyword: '직장 내 괴롭힘 신고 접수 대응', category: '직원관리', imageQuery: 'workplace harassment report' },
+  { keyword: '청소년 알바 고용 시 주의사항', category: '직원관리', imageQuery: 'teenager part time permit' },
+  { keyword: '특수형태 근로자 산재보험 적용', category: '직원관리', imageQuery: 'gig worker insurance' },
+  { keyword: '법정의무교육 5가지 사장님 체크', category: '직원관리', imageQuery: 'mandatory training checklist' },
 ]
