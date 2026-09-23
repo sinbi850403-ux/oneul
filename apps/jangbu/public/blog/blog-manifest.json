@@ -1,5 +1,20 @@
 [
   {
+    "slug": "multi-location-vat-processing",
+    "title": "사업장 두 곳 이상 부가세, 이렇게 처리하세요",
+    "description": "가게가 두 곳 이상이라면 부가세 신고는 어떻게 해야 할까요? 사업장별 신고 원칙부터 주사업장 총괄납부·사업자단위과세까지 소상공인을 위한 실전 정리.",
+    "category": "부가세/세금",
+    "date": "2026-09-23",
+    "thumb": "https://images.pexels.com/photos/8962451/pexels-photo-8962451.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200",
+    "tags": [
+      "부가세",
+      "사업자단위과세",
+      "주사업장총괄납부",
+      "다중사업장"
+    ],
+    "keyword": "사업장 두 곳 이상 부가세 처리"
+  },
+  {
     "slug": "delivery-vs-dine-in-profitability-comparison",
     "title": "배달 vs 홀 수익성 직접 비교 — 사장님이 꼭 알아야 할 숫자",
     "description": "배달앱 수수료·배달비부터 홀 임차료·카드수수료까지, 2026년 기준 비용 구조를 채널별로 비교해 실제 수익을 따져봅니다.",
