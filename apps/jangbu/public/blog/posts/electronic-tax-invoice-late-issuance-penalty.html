@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>전자세금계산서 지연발급 가산세, 얼마나 나올까? | 오늘장부 블로그</title>
+  <meta name="description" content="전자세금계산서 발급기한을 놓쳤다면? 지연발급·미발급·지연전송 가산세율과 확정신고기한 기준, 실전 절세 체크리스트까지 한눈에 정리했습니다.">
+  <meta property="og:title" content="전자세금계산서 지연발급 가산세, 얼마나 나올까?">
+  <meta property="og:description" content="전자세금계산서 발급기한을 놓쳤다면? 지연발급·미발급·지연전송 가산세율과 확정신고기한 기준, 실전 절세 체크리스트까지 한눈에 정리했습니다.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://xn--wh1bw0st1gbrb.kr/blog/posts/electronic-tax-invoice-late-issuance-penalty.html">
+  <meta property="og:image" content="https://images.pexels.com/photos/7111490/pexels-photo-7111490.jpeg?auto=compress&amp;cs=tinysrgb&amp;fit=crop&amp;h=627&amp;w=1200">
+  <link rel="canonical" href="https://xn--wh1bw0st1gbrb.kr/blog/posts/electronic-tax-invoice-late-issuance-penalty.html">
+  <link rel="icon" href="/icons/icon-192.png">
+  <!-- 방문자 분석 (GA4 + Clarity + 네이버). ID는 /analytics.js 상단에서 관리. -->
+  <script defer src="/analytics.js"></script>
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2764893290310463" crossorigin="anonymous"></script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Noto Sans KR', sans-serif; background: #f8f9fa; color: #1a1a1a; line-height: 1.7; }
+    header { background: #fff; border-bottom: 1px solid #eee; position: sticky; top: 0; z-index: 100; }
+    .header-inner { max-width: 1100px; margin: 0 auto; padding: 0 20px; height: 60px; display: flex; align-items: center; justify-content: space-between; }
+    .logo { display: flex; align-items: center; gap: 8px; text-decoration: none; }
+    .logo-icon { width: 32px; height: 32px; background: #FF6B35; border-radius: 8px; display: flex; align-items: center; justify-content: center; color: white; font-weight: 900; font-size: 16px; }
+    .logo-text { font-size: 18px; font-weight: 800; color: #FF6B35; }
+    .logo-sub { font-size: 13px; color: #888; margin-left: 4px; }
+    .header-cta { background: #FF6B35; color: white; border: none; padding: 8px 16px; border-radius: 8px; font-size: 13px; font-weight: 600; cursor: pointer; text-decoration: none; }
+    /* minmax(0, ...): 표처럼 최소폭이 큰 콘텐츠가 그리드 트랙을 밀어내 페이지 전체가
+       가로로 스크롤되는 것을 막는다. 1fr만 쓰면 트랙 최소폭이 auto라 끌려간다. */
+    .wrap { max-width: 1100px; margin: 0 auto; padding: 32px 20px; display: grid; grid-template-columns: minmax(0, 1fr) 300px; gap: 40px; }
+    @media (max-width: 768px) { .wrap { grid-template-columns: minmax(0, 1fr); } .sidebar { display: none; } }
+    article { background: white; border-radius: 20px; overflow: hidden; box-shadow: 0 2px 12px rgba(0,0,0,0.06); }
+    .article-head { padding: 32px 32px 24px; border-bottom: 1px solid #f0f0f0; }
+    .article-cat { font-size: 12px; font-weight: 700; color: #FF6B35; text-transform: uppercase; margin-bottom: 12px; }
+    .article-cat a { color: #FF6B35; text-decoration: none; }
+    .article-title { font-size: clamp(20px, 4vw, 28px); font-weight: 900; line-height: 1.4; color: #1a1a1a; margin-bottom: 16px; }
+    .article-meta { font-size: 13px; color: #aaa; display: flex; gap: 16px; align-items: center; flex-wrap: wrap; }
+    .hero-img { width: 100%; aspect-ratio: 16/9; object-fit: cover; background: #f0f0f0; }
+    .article-body { padding: 32px; }
+    .article-body h2 { font-size: 20px; font-weight: 800; color: #1a1a1a; margin: 32px 0 14px; padding-bottom: 8px; border-bottom: 2px solid #FF6B35; }
+    .article-body h3 { font-size: 16px; font-weight: 700; color: #333; margin: 20px 0 10px; }
+    .article-body p { margin-bottom: 14px; color: #333; font-size: 15px; }
+    .article-body ul, .article-body ol { padding-left: 20px; margin-bottom: 14px; }
+    .article-body li { margin-bottom: 6px; color: #333; font-size: 15px; }
+    article { min-width: 0; }
+    /* 좁은 화면에서는 표만 자기 안에서 가로 스크롤시킨다. min-width:100%가 있어야
+       넓은 화면에서 기존처럼 폭을 꽉 채운다. */
+    .article-body table { display: block; width: max-content; min-width: 100%; max-width: 100%; overflow-x: auto; border-collapse: collapse; margin: 16px 0; font-size: 14px; }
+    .article-body th { background: #FF6B35; color: white; padding: 10px 14px; text-align: left; }
+    .article-body td { padding: 10px 14px; border-bottom: 1px solid #f0f0f0; }
+    .article-body tr:nth-child(even) td { background: #fff8f5; }
+    .article-body img { width: 100%; border-radius: 12px; margin: 16px 0; }
+    .article-body strong { color: #1a1a1a; }
+    .article-body blockquote { background: #fff8f5; border-left: 4px solid #FF6B35; padding: 16px 20px; border-radius: 0 12px 12px 0; margin: 16px 0; font-style: italic; color: #555; }
+    .article-body a { color: #FF6B35; }
+    .tags { padding: 20px 32px; border-top: 1px solid #f0f0f0; display: flex; gap: 8px; flex-wrap: wrap; }
+    .tag { background: #fff3ee; color: #FF6B35; border-radius: 20px; padding: 5px 12px; font-size: 12px; font-weight: 600; text-decoration: none; }
+    .tag:hover { background: #FF6B35; color: white; }
+    .ad-slot { background: #f0f0f0; border-radius: 12px; display: flex; align-items: center; justify-content: center; color: #bbb; font-size: 12px; min-height: 90px; margin: 24px 0; }
+    .cta-box { background: linear-gradient(135deg, #FF6B35, #ff8c42); border-radius: 20px; padding: 32px; text-align: center; color: white; margin-top: 24px; }
+    .cta-box h3 { font-size: 22px; font-weight: 900; margin-bottom: 10px; }
+    .cta-box p { font-size: 14px; opacity: 0.9; line-height: 1.6; margin-bottom: 20px; }
+    .cta-box a { background: white; color: #FF6B35; border-radius: 12px; padding: 13px 28px; font-weight: 800; font-size: 15px; text-decoration: none; display: inline-block; }
+    .nav-links { display: flex; gap: 16px; margin-top: 24px; }
+    .nav-back { color: #FF6B35; text-decoration: none; font-size: 14px; font-weight: 600; }
+    .nav-back::before { content: '\2190 '; }
+    .sidebar-cta { background: linear-gradient(135deg, #FF6B35, #ff8c42); color: white; border-radius: 16px; padding: 24px; text-align: center; position: sticky; top: 80px; }
+    .sidebar-cta h3 { font-size: 16px; font-weight: 900; margin-bottom: 8px; }
+    .sidebar-cta p { font-size: 13px; opacity: 0.9; line-height: 1.5; margin-bottom: 16px; }
+    .sidebar-cta a { background: white; color: #FF6B35; border-radius: 8px; padding: 10px 20px; font-weight: 700; font-size: 14px; text-decoration: none; display: inline-block; }
+    footer { background: #1a1a1a; color: #888; padding: 40px 20px; margin-top: 60px; }
+    .footer-inner { max-width: 1100px; margin: 0 auto; }
+    .footer-links { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 16px; }
+    .footer-links a { color: #888; text-decoration: none; font-size: 13px; }
+    .footer-copy { font-size: 12px; }
+  </style>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "전자세금계산서 지연발급 가산세, 얼마나 나올까?",
+  "description": "전자세금계산서 발급기한을 놓쳤다면? 지연발급·미발급·지연전송 가산세율과 확정신고기한 기준, 실전 절세 체크리스트까지 한눈에 정리했습니다.",
+  "datePublished": "2026-09-25",
+  "dateModified": "2026-09-25",
+  "image": "https://images.pexels.com/photos/7111490/pexels-photo-7111490.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200",
+  "author": {
+    "@type": "Organization",
+    "name": "오늘장부",
+    "url": "https://오늘장부.kr"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "오늘장부",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://xn--wh1bw0st1gbrb.kr/icons/icon-192.png"
+    }
+  },
+  "mainEntityOfPage": "https://xn--wh1bw0st1gbrb.kr/blog/posts/electronic-tax-invoice-late-issuance-penalty.html",
+  "keywords": "전자세금계산서, 가산세, 부가세, 소상공인세금"
+}
+  </script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "발급기한을 며칠 넘겼는데, 지금이라도 발급하면 가산세가 줄어드나요?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "네, 확정신고기한(상반기 7월 25일, 하반기 다음 해 1월 25일) 이내라면 지연발급 가산세 1%만 적용됩니다. 그 기한을 넘기면 미발급 가산세 2%로 올라가니, 늦었다고 포기하지 말고 최대한 빨리 발급하는 것이 유리합니다."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "전자세금계산서 발급은 했는데 국세청 전송을 빠뜨렸어요. 어떻게 되나요?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "발급일 다음날까지 전송하지 않으면 지연전송 가산세(0.3%)가 부과됩니다. 확정신고기한까지도 전송하지 않으면 미전송 가산세 0.5%가 적용됩니다. 홈택스나 공인 발급 시스템을 이용하면 발급과 동시에 자동 전송되므로 이를 활용하는 것이 가장 안전합니다."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "공급받는 자(매입자)도 가산세를 내야 하나요?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "공급자가 늦게 발급해서 매입자가 다음 달 10일 이후에 수취하게 된 경우, 매입자에게도 지연수취 가산세 0.5%가 부과될 수 있습니다. 다만 확정신고기한 이내에 수취했다면 매입세액 공제는 가능합니다. 확정신고기한을 넘기면 매입세액 공제 자체가 불가능해지니, 거래처에 발급을 적극적으로 요청하는 것이 중요합니다."
+      }
+    }
+  ]
+}
+  </script>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <a href="/" class="logo">
+      <div class="logo-icon">장</div>
+      <span class="logo-text">오늘장부</span>
+      <span class="logo-sub">블로그</span>
+    </a>
+    <a href="/" class="header-cta">무료로 시작하기</a>
+  </div>
+</header>
+
+<div class="wrap">
+  <main>
+    <div class="nav-links">
+      <a href="/blog/" class="nav-back">블로그 목록으로</a>
+    </div>
+
+    <!-- 자동 광고(Auto ads)가 배치를 정하므로 유닛을 직접 넣지 않는다. 여백만 확보한다. -->
+    <div class="ad-slot"></div>
+
+    <article>
+      <div class="article-head">
+        <div class="article-cat"><a href="/blog/">부가세/세금</a></div>
+        <h1 class="article-title">전자세금계산서 지연발급 가산세, 얼마나 나올까?</h1>
+        <div class="article-meta">
+          <span>오늘장부 편집팀</span>
+          <span>2026년 09월 25일</span>
+        </div>
+      </div>
+      <img src="https://images.pexels.com/photos/7111490/pexels-photo-7111490.jpeg?auto=compress&amp;cs=tinysrgb&amp;fit=crop&amp;h=627&amp;w=1200" alt="전자세금계산서 지연발급 가산세, 얼마나 나올까?" class="hero-img" loading="lazy">
+      <div class="article-body">
+<p>열심히 거래를 마쳤는데 세금계산서 발급일을 하루 놓쳤다는 사실을 뒤늦게 알게 된 적 있으신가요? 아니면 발급은 했는데 국세청 전송을 빠뜨렸다거나요. 이런 사소해 보이는 실수가 <strong>공급가액의 1%~2% 가산세</strong>로 이어질 수 있습니다. 전자세금계산서 지연발급 가산세는 구조가 복잡하기 때문에, 기한별로 정확히 파악해두어야 불필요한 세금을 막을 수 있습니다.</p>
+
+<h2>전자세금계산서, 누가 의무발급 대상인가요?</h2>
+<p>우선 내가 의무발급 대상인지부터 확인해야 합니다. <strong>법인사업자</strong>는 규모에 관계없이 100% 전자세금계산서를 발급해야 합니다. <strong>개인사업자</strong>는 직전 연도 과세·면세 공급가액 합계가 <strong>8,000만 원 이상</strong>이면 의무발급 대상입니다. 의무 적용 시점은 해당 기준을 충족한 해의 다음 해 제2기 과세기간(7월 1일)부터입니다. 예를 들어 2024년 매출이 8,000만 원 이상이었던 개인사업자는 2025년 7월 1일부터 전자세금계산서를 반드시 발급해야 합니다. 의무발급 기준은 매년 단계적으로 낮아져왔기 때문에, 올해 처음 대상이 된 사장님도 많습니다.</p>
+
+<h2>발급기한은 언제까지인가요?</h2>
+<p>전자세금계산서는 재화나 용역을 공급한 날(공급시기)이 속하는 달의 <strong>다음 달 10일</strong>까지 발급해야 합니다. 발급기한이 토요일이나 공휴일이면 바로 다음 영업일까지 발급하면 됩니다. 예를 들어 3월에 거래가 발생했다면, 4월 10일(영업일 기준)이 발급 마감입니다. 발급 후에는 <strong>발급일 다음날까지</strong> 국세청에 전송해야 전송 의무도 충족됩니다. 홈택스나 공식 세금계산서 발급 프로그램을 이용하면 발급과 동시에 자동으로 전송됩니다.</p>
+
+<h2>지연발급·미발급·지연전송 가산세, 핵심 정리</h2>
+<p>가산세는 크게 <strong>발급 위반</strong>과 <strong>전송 위반</strong>으로 나뉩니다. 그리고 발급 위반 중에서도 '지연발급'인지 '미발급'인지에 따라 가산세율이 다릅니다. 기준선은 해당 거래가 속하는 <strong>과세기간의 확정신고기한</strong>입니다. 상반기(1~6월) 거래는 7월 25일, 하반기(7~12월) 거래는 다음 해 1월 25일이 기준입니다.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>위반 유형</th>
+      <th>시점 기준</th>
+      <th>가산세율(공급가액 대비)</th>
+      <th>매입세액 공제 여부</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>지연발급 (공급자)</td>
+      <td>다음 달 10일 초과 ~ 확정신고기한 이내 발급</td>
+      <td><strong>1%</strong></td>
+      <td>공제 가능</td>
+    </tr>
+    <tr>
+      <td>미발급 (공급자)</td>
+      <td>확정신고기한까지도 미발급</td>
+      <td><strong>2%</strong></td>
+      <td>공제 불가</td>
+    </tr>
+    <tr>
+      <td>지연수취 (공급받는자)</td>
+      <td>다음 달 10일 초과 ~ 확정신고기한 이내 수취</td>
+      <td><strong>0.5%</strong></td>
+      <td>공제 가능</td>
+    </tr>
+    <tr>
+      <td>지연전송 (공급자)</td>
+      <td>발급일 다음날 초과 ~ 확정신고기한 이내 전송</td>
+      <td><strong>0.3%</strong></td>
+      <td>해당 없음</td>
+    </tr>
+    <tr>
+      <td>미전송 (공급자)</td>
+      <td>확정신고기한까지도 미전송</td>
+      <td><strong>0.5%</strong></td>
+      <td>해당 없음</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>중요한 점은, <strong>발급 위반 가산세가 적용되는 경우에는 전송 위반 가산세를 중복으로 부과하지 않습니다.</strong> 즉, 발급 자체를 늦게 했다면 지연발급 가산세(1%)만 내면 되고, 전송 지연 가산세(0.3%)는 별도로 추가되지 않습니다.</p>
+
+<h2>주의! 6월·12월 거래는 더 위험합니다</h2>
+<p>과세기간의 마지막 달인 <strong>6월과 12월 거래</strong>는 특히 주의가 필요합니다. 발급기한인 '다음 달 10일'(각각 7월 10일, 다음 해 1월 10일)이 이미 새로운 과세기간에 해당되기 때문에, 자칫하면 지연발급이 아니라 곧바로 <strong>미발급(가산세 2%)</strong>으로 처리될 수 있습니다. 예를 들어 12월 거래를 다음 해 1월 25일 이후에 발급했다면, 지연발급 구간 없이 바로 미발급 가산세 2%가 적용됩니다. 연말·상반기 마감 시기에는 특히 꼼꼼히 확인하세요.</p>
+
+<h2>실전 예시로 계산해보기</h2>
+<p>공급가액 1,000만 원 거래를 예로 들어볼게요.</p>
+<ul>
+  <li><strong>다음 달 10일까지 발급</strong> → 가산세 없음</li>
+  <li><strong>다음 달 11일 ~ 확정신고기한 이내 발급 (지연발급)</strong> → 1,000만 원 × 1% = <strong>10만 원</strong></li>
+  <li><strong>확정신고기한 이후에도 미발급</strong> → 1,000만 원 × 2% = <strong>20만 원</strong> + 매입세액 공제 불가</li>
+  <li><strong>발급은 했지만 전송 지연</strong> → 1,000만 원 × 0.3% = <strong>3만 원</strong></li>
+</ul>
+<p>가산세는 부가가치세 신고 시 함께 납부합니다. 별도 고지서가 오지 않더라도 신고 의무가 있으므로, 스스로 계산해서 신고해야 합니다.</p>
+
+<h2>가산세 한도와 세액공제 혜택도 알아두세요</h2>
+<p>가산세에는 한도가 있습니다. 중소기업에 해당하는 사업자라면 의무 위반 종류별로 각각 <strong>5,000만 원</strong>이 상한선입니다. 단, 고의적 위반은 한도 없이 부과될 수 있으니 주의하세요. 반대로, 전자세금계산서를 성실하게 발급하면 혜택도 있습니다. 직전 연도 공급가액이 3억 원 미만인 개인 일반과세자는 건당 200원, 연간 최대 100만 원까지 <strong>전자세금계산서 발급세액공제</strong>를 받을 수 있습니다.</p>
+
+<h2>발급 누락을 막는 실전 체크리스트</h2>
+<ol>
+  <li><strong>거래 발생 즉시 기록</strong> — 월말에 몰아서 처리하면 누락 위험이 커집니다.</li>
+  <li><strong>발급기한 달력 표시</strong> — 매월 10일을 발급 마감일로 설정해두세요.</li>
+  <li><strong>홈택스 자동전송 확인</strong> — 발급 후 국세청 전송 여부를 반드시 확인하세요.</li>
+  <li><strong>6월·12월 거래 우선처리</strong> — 과세기간 마지막 달 거래는 최우선으로 챙기세요.</li>
+  <li><strong>일매출 앱 활용</strong> — <strong>오늘장부</strong> 같은 앱으로 카드·현금·배달앱 매출을 매일 기록해두면 세금계산서 발급 누락을 줄일 수 있습니다. 거래 건별 매출 흐름이 한눈에 보이니까요.</li>
+</ol>
+
+<h2>자주 묻는 질문</h2>
+
+<h3>발급기한을 며칠 넘겼는데, 지금이라도 발급하면 가산세가 줄어드나요?</h3>
+<p>네, 확정신고기한(상반기 7월 25일, 하반기 다음 해 1월 25일) 이내라면 지연발급 가산세 1%만 적용됩니다. 그 기한을 넘기면 미발급 가산세 2%로 올라가니, 늦었다고 포기하지 말고 최대한 빨리 발급하는 것이 유리합니다.</p>
+
+<h3>전자세금계산서 발급은 했는데 국세청 전송을 빠뜨렸어요. 어떻게 되나요?</h3>
+<p>발급일 다음날까지 전송하지 않으면 지연전송 가산세(0.3%)가 부과됩니다. 확정신고기한까지도 전송하지 않으면 미전송 가산세 0.5%가 적용됩니다. 홈택스나 공인 발급 시스템을 이용하면 발급과 동시에 자동 전송되므로 이를 활용하는 것이 가장 안전합니다.</p>
+
+<h3>공급받는 자(매입자)도 가산세를 내야 하나요?</h3>
+<p>공급자가 늦게 발급해서 매입자가 다음 달 10일 이후에 수취하게 된 경우, 매입자에게도 지연수취 가산세 0.5%가 부과될 수 있습니다. 다만 확정신고기한 이내에 수취했다면 매입세액 공제는 가능합니다. 확정신고기한을 넘기면 매입세액 공제 자체가 불가능해지니, 거래처에 발급을 적극적으로 요청하는 것이 중요합니다.</p>
+
+<p>세금계산서 발급 누락은 사소한 실수처럼 보이지만, 공급가액 규모가 클수록 가산세 부담도 기하급수적으로 커집니다. 매출 흐름을 매일 체계적으로 기록하고 부가세 예상액을 미리 파악하고 싶다면, <a href="https://오늘장부.kr">오늘장부 무료로 시작하기</a>를 통해 카드·현금·배달앱 매출을 한 번에 관리해보세요.</p>
+
+<p>※ 본 글은 2026년 기준 참고용 정보이며, 정확한 신고·금액은 국세청 홈택스 또는 세무사와 상담하세요.</p>
+      </div>
+      <div class="tags">
+        <a href="/blog/?tag=%EC%A0%84%EC%9E%90%EC%84%B8%EA%B8%88%EA%B3%84%EC%82%B0%EC%84%9C" class="tag">전자세금계산서</a> <a href="/blog/?tag=%EA%B0%80%EC%82%B0%EC%84%B8" class="tag">가산세</a> <a href="/blog/?tag=%EB%B6%80%EA%B0%80%EC%84%B8" class="tag">부가세</a> <a href="/blog/?tag=%EC%86%8C%EC%83%81%EA%B3%B5%EC%9D%B8%EC%84%B8%EA%B8%88" class="tag">소상공인세금</a>
+      </div>
+    </article>
+
+    <section style="background:#fff8f5;border-radius:16px;padding:24px 28px;margin-top:24px;">
+      <h2 style="font-size:18px;font-weight:800;color:#1a1a1a;margin:0 0 14px;">함께 보면 좋은 글</h2>
+      <ul style="list-style:none;padding:0;margin:0;">
+        <li style="padding:8px 0;border-bottom:1px solid #ffe6d9;"><a href="/blog/posts/multi-location-vat-processing.html" style="color:#FF6B35;text-decoration:none;font-weight:600;font-size:14px;">사업장 두 곳 이상 부가세, 이렇게 처리하세요</a></li>
+        <li style="padding:8px 0;border-bottom:1px solid #ffe6d9;"><a href="/blog/posts/restaurant-deemed-input-vat-credit-guide.html" style="color:#FF6B35;text-decoration:none;font-weight:600;font-size:14px;">의제매입세액공제 음식점 완벽 활용법 — 식재료비로 부가세 줄이기</a></li>
+        <li style="padding:8px 0;border-bottom:1px solid #ffe6d9;"><a href="/blog/posts/vat-input-tax-non-deductible-items.html" style="color:#FF6B35;text-decoration:none;font-weight:600;font-size:14px;">매입세액공제 불공제 항목 총정리 — 사장님이 놓치면 손해 보는 7가지</a></li>
+        <li style="padding:8px 0;border-bottom:1px solid #ffe6d9;"><a href="/blog/posts/sincere-report-confirmation-target-criteria.html" style="color:#FF6B35;text-decoration:none;font-weight:600;font-size:14px;">성실신고확인제도 대상 기준, 우리 가게도 해당될까?</a></li>
+      </ul>
+    </section>
+
+    <section style="background:#fff8f5;border-radius:16px;padding:24px 28px;margin-top:24px;">
+      <h2 style="font-size:18px;font-weight:800;color:#1a1a1a;margin:0 0 14px;">무료 계산기로 바로 확인하기</h2>
+      <ul style="list-style:none;padding:0;margin:0;">
+        <li style="padding:10px 0;border-bottom:1px solid #ffe6d9;"><a href="/tools/vat-simplified-calculator/" style="color:#FF6B35;text-decoration:none;font-weight:700;font-size:15px;">간이과세자 부가세 계산기</a><div style="font-size:13px;color:#777;margin-top:2px;">업종별 부가가치율로 납부세액을 계산하고 납부의무 면제 대상인지 확인합니다</div></li>
+      </ul>
+    </section>
+
+    <!-- 자동 광고(Auto ads)가 배치를 정하므로 유닛을 직접 넣지 않는다. 여백만 확보한다. -->
+    <div class="ad-slot"></div>
+
+    <div class="cta-box">
+      <h3>매일 매출 기록, 30초면 끝!</h3>
+      <p>카드·현금·네이버페이·카카오페이<br>여러 결제수단을 한 화면에서 입력<br>부가세 예상액도 자동으로 계산해드려요</p>
+      <a href="/">지금 무료로 시작하기</a>
+    </div>
+  </main>
+
+  <aside class="sidebar">
+    <div class="sidebar-cta">
+      <h3>매일 매출 기록,<br>30초면 끝!</h3>
+      <p>카드·현금·배달앱 한 번에<br>부가세 예상액도 자동 계산</p>
+      <a href="/">무료로 시작하기</a>
+    </div>
+  </aside>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-links">
+      <a href="/">서비스 홈</a>
+      <a href="/blog/">블로그</a>
+      <a href="/about/">소개</a>
+      <a href="/contact/">문의하기</a>
+      <a href="/blog/about.html">소개 및 문의</a>
+      <a href="/privacy">개인정보처리방침</a>
+      <a href="/terms">이용약관</a>
+    </div>
+    <div class="footer-copy">© 2026 오늘장부. All rights reserved.</div>
+  </div>
+</footer>
+
+</body>
+</html>
