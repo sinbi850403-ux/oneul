@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>점심 vs 저녁 매출 분석으로 순이익 끌어올리는 법 | 오늘장부 블로그</title>
+  <meta name="description" content="점심과 저녁 매출을 비교·분석하면 인건비·재료비·카드수수료·부가세까지 절감 포인트가 보입니다. 시간대별 데이터로 진짜 돈 되는 타임대를 찾아보세요.">
+  <meta property="og:title" content="점심 vs 저녁 매출 분석으로 순이익 끌어올리는 법">
+  <meta property="og:description" content="점심과 저녁 매출을 비교·분석하면 인건비·재료비·카드수수료·부가세까지 절감 포인트가 보입니다. 시간대별 데이터로 진짜 돈 되는 타임대를 찾아보세요.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://xn--wh1bw0st1gbrb.kr/blog/posts/lunch-vs-dinner-sales-analysis-guide.html">
+  <meta property="og:image" content="https://images.pexels.com/photos/10480253/pexels-photo-10480253.jpeg?auto=compress&amp;cs=tinysrgb&amp;fit=crop&amp;h=627&amp;w=1200">
+  <link rel="canonical" href="https://xn--wh1bw0st1gbrb.kr/blog/posts/lunch-vs-dinner-sales-analysis-guide.html">
+  <link rel="icon" href="/icons/icon-192.png">
+  <!-- 방문자 분석 (GA4 + Clarity + 네이버). ID는 /analytics.js 상단에서 관리. -->
+  <script defer src="/analytics.js"></script>
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2764893290310463" crossorigin="anonymous"></script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Noto Sans KR', sans-serif; background: #f8f9fa; color: #1a1a1a; line-height: 1.7; }
+    header { background: #fff; border-bottom: 1px solid #eee; position: sticky; top: 0; z-index: 100; }
+    .header-inner { max-width: 1100px; margin: 0 auto; padding: 0 20px; height: 60px; display: flex; align-items: center; justify-content: space-between; }
+    .logo { display: flex; align-items: center; gap: 8px; text-decoration: none; }
+    .logo-icon { width: 32px; height: 32px; background: #FF6B35; border-radius: 8px; display: flex; align-items: center; justify-content: center; color: white; font-weight: 900; font-size: 16px; }
+    .logo-text { font-size: 18px; font-weight: 800; color: #FF6B35; }
+    .logo-sub { font-size: 13px; color: #888; margin-left: 4px; }
+    .header-cta { background: #FF6B35; color: white; border: none; padding: 8px 16px; border-radius: 8px; font-size: 13px; font-weight: 600; cursor: pointer; text-decoration: none; }
+    /* minmax(0, ...): 표처럼 최소폭이 큰 콘텐츠가 그리드 트랙을 밀어내 페이지 전체가
+       가로로 스크롤되는 것을 막는다. 1fr만 쓰면 트랙 최소폭이 auto라 끌려간다. */
+    .wrap { max-width: 1100px; margin: 0 auto; padding: 32px 20px; display: grid; grid-template-columns: minmax(0, 1fr) 300px; gap: 40px; }
+    @media (max-width: 768px) { .wrap { grid-template-columns: minmax(0, 1fr); } .sidebar { display: none; } }
+    article { background: white; border-radius: 20px; overflow: hidden; box-shadow: 0 2px 12px rgba(0,0,0,0.06); }
+    .article-head { padding: 32px 32px 24px; border-bottom: 1px solid #f0f0f0; }
+    .article-cat { font-size: 12px; font-weight: 700; color: #FF6B35; text-transform: uppercase; margin-bottom: 12px; }
+    .article-cat a { color: #FF6B35; text-decoration: none; }
+    .article-title { font-size: clamp(20px, 4vw, 28px); font-weight: 900; line-height: 1.4; color: #1a1a1a; margin-bottom: 16px; }
+    .article-meta { font-size: 13px; color: #aaa; display: flex; gap: 16px; align-items: center; flex-wrap: wrap; }
+    .hero-img { width: 100%; aspect-ratio: 16/9; object-fit: cover; background: #f0f0f0; }
+    .article-body { padding: 32px; }
+    .article-body h2 { font-size: 20px; font-weight: 800; color: #1a1a1a; margin: 32px 0 14px; padding-bottom: 8px; border-bottom: 2px solid #FF6B35; }
+    .article-body h3 { font-size: 16px; font-weight: 700; color: #333; margin: 20px 0 10px; }
+    .article-body p { margin-bottom: 14px; color: #333; font-size: 15px; }
+    .article-body ul, .article-body ol { padding-left: 20px; margin-bottom: 14px; }
+    .article-body li { margin-bottom: 6px; color: #333; font-size: 15px; }
+    article { min-width: 0; }
+    /* 좁은 화면에서는 표만 자기 안에서 가로 스크롤시킨다. min-width:100%가 있어야
+       넓은 화면에서 기존처럼 폭을 꽉 채운다. */
+    .article-body table { display: block; width: max-content; min-width: 100%; max-width: 100%; overflow-x: auto; border-collapse: collapse; margin: 16px 0; font-size: 14px; }
+    .article-body th { background: #FF6B35; color: white; padding: 10px 14px; text-align: left; }
+    .article-body td { padding: 10px 14px; border-bottom: 1px solid #f0f0f0; }
+    .article-body tr:nth-child(even) td { background: #fff8f5; }
+    .article-body img { width: 100%; border-radius: 12px; margin: 16px 0; }
+    .article-body strong { color: #1a1a1a; }
+    .article-body blockquote { background: #fff8f5; border-left: 4px solid #FF6B35; padding: 16px 20px; border-radius: 0 12px 12px 0; margin: 16px 0; font-style: italic; color: #555; }
+    .article-body a { color: #FF6B35; }
+    .tags { padding: 20px 32px; border-top: 1px solid #f0f0f0; display: flex; gap: 8px; flex-wrap: wrap; }
+    .tag { background: #fff3ee; color: #FF6B35; border-radius: 20px; padding: 5px 12px; font-size: 12px; font-weight: 600; text-decoration: none; }
+    .tag:hover { background: #FF6B35; color: white; }
+    .ad-slot { background: #f0f0f0; border-radius: 12px; display: flex; align-items: center; justify-content: center; color: #bbb; font-size: 12px; min-height: 90px; margin: 24px 0; }
+    .cta-box { background: linear-gradient(135deg, #FF6B35, #ff8c42); border-radius: 20px; padding: 32px; text-align: center; color: white; margin-top: 24px; }
+    .cta-box h3 { font-size: 22px; font-weight: 900; margin-bottom: 10px; }
+    .cta-box p { font-size: 14px; opacity: 0.9; line-height: 1.6; margin-bottom: 20px; }
+    .cta-box a { background: white; color: #FF6B35; border-radius: 12px; padding: 13px 28px; font-weight: 800; font-size: 15px; text-decoration: none; display: inline-block; }
+    .nav-links { display: flex; gap: 16px; margin-top: 24px; }
+    .nav-back { color: #FF6B35; text-decoration: none; font-size: 14px; font-weight: 600; }
+    .nav-back::before { content: '\2190 '; }
+    .sidebar-cta { background: linear-gradient(135deg, #FF6B35, #ff8c42); color: white; border-radius: 16px; padding: 24px; text-align: center; position: sticky; top: 80px; }
+    .sidebar-cta h3 { font-size: 16px; font-weight: 900; margin-bottom: 8px; }
+    .sidebar-cta p { font-size: 13px; opacity: 0.9; line-height: 1.5; margin-bottom: 16px; }
+    .sidebar-cta a { background: white; color: #FF6B35; border-radius: 8px; padding: 10px 20px; font-weight: 700; font-size: 14px; text-decoration: none; display: inline-block; }
+    footer { background: #1a1a1a; color: #888; padding: 40px 20px; margin-top: 60px; }
+    .footer-inner { max-width: 1100px; margin: 0 auto; }
+    .footer-links { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 16px; }
+    .footer-links a { color: #888; text-decoration: none; font-size: 13px; }
+    .footer-copy { font-size: 12px; }
+  </style>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "점심 vs 저녁 매출 분석으로 순이익 끌어올리는 법",
+  "description": "점심과 저녁 매출을 비교·분석하면 인건비·재료비·카드수수료·부가세까지 절감 포인트가 보입니다. 시간대별 데이터로 진짜 돈 되는 타임대를 찾아보세요.",
+  "datePublished": "2026-09-27",
+  "dateModified": "2026-09-27",
+  "image": "https://images.pexels.com/photos/10480253/pexels-photo-10480253.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200",
+  "author": {
+    "@type": "Organization",
+    "name": "오늘장부",
+    "url": "https://오늘장부.kr"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "오늘장부",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://xn--wh1bw0st1gbrb.kr/icons/icon-192.png"
+    }
+  },
+  "mainEntityOfPage": "https://xn--wh1bw0st1gbrb.kr/blog/posts/lunch-vs-dinner-sales-analysis-guide.html",
+  "keywords": "매출관리, 점심저녁매출, 소상공인전략, 부가세절감"
+}
+  </script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "배달앱 매출은 점심·저녁 매출에 포함시켜야 하나요?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "네, 포함해야 합니다. 배달앱 매출도 부가세 신고 대상 매출에 포함되며, 카드수수료율 산정 기준 연매출에도 반영됩니다. 다만 배달앱 중개수수료와 결제수수료가 차감되므로, 배달앱 정산 내역서의 '정산 금액'이 아닌 '총 주문금액(VAT 포함)'을 기준으로 매출을 기록하고, 수수료는 별도 비용으로 관리하는 것이 정확합니다."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "점심만 영업하면 간이과세자가 유리한가요?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "점심만 영업해 연매출이 낮아지면 간이과세자 유지 또는 전환 가능성이 높아집니다. 간이과세자는 세금계산서 발행이 제한되고 매입세액 공제 방식이 달라져 일부 거래에서 불리할 수 있습니다. 연매출 규모 변화가 예상될 때는 세무사와 미리 상담해 어느 과세 형태가 유리한지 확인하세요."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "시간대별 매출을 기록할 때 현금 매출을 빠뜨리기 쉬운데 어떻게 하나요?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "현금 매출은 카드처럼 자동 집계되지 않아 누락되기 쉽습니다. 영업 마감 후 매일 현금 실사를 하고, 당일 현금 매출을 바로 앱에 입력하는 루틴을 만드는 것이 가장 효과적입니다. 현금영수증 발급 내역을 함께 체크하면 누락을 줄일 수 있습니다."
+      }
+    }
+  ]
+}
+  </script>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <a href="/" class="logo">
+      <div class="logo-icon">장</div>
+      <span class="logo-text">오늘장부</span>
+      <span class="logo-sub">블로그</span>
+    </a>
+    <a href="/" class="header-cta">무료로 시작하기</a>
+  </div>
+</header>
+
+<div class="wrap">
+  <main>
+    <div class="nav-links">
+      <a href="/blog/" class="nav-back">블로그 목록으로</a>
+    </div>
+
+    <!-- 자동 광고(Auto ads)가 배치를 정하므로 유닛을 직접 넣지 않는다. 여백만 확보한다. -->
+    <div class="ad-slot"></div>
+
+    <article>
+      <div class="article-head">
+        <div class="article-cat"><a href="/blog/">매출관리</a></div>
+        <h1 class="article-title">점심 vs 저녁 매출 분석으로 순이익 끌어올리는 법</h1>
+        <div class="article-meta">
+          <span>오늘장부 편집팀</span>
+          <span>2026년 09월 27일</span>
+        </div>
+      </div>
+      <img src="https://images.pexels.com/photos/10480253/pexels-photo-10480253.jpeg?auto=compress&amp;cs=tinysrgb&amp;fit=crop&amp;h=627&amp;w=1200" alt="점심 vs 저녁 매출 분석으로 순이익 끌어올리는 법" class="hero-img" loading="lazy">
+      <div class="article-body">
+<h2>"점심이 바쁜데 왜 통장엔 돈이 없을까?"</h2><p>식당·카페·분식집 사장님들이 가장 많이 하는 말 중 하나입니다. 점심 피크 때 정신없이 돌아갔는데 월말에 손에 남는 돈이 없다면, <strong>매출의 양이 아니라 질</strong>을 들여다볼 때입니다. 점심과 저녁 매출을 따로 떼어 분석하면 인건비·재료비·카드수수료·부가세 예상액까지 한눈에 정리되고, 어느 타임대에 영업 에너지를 집중해야 할지 명확한 답이 나옵니다.</p><h2>점심 vs 저녁, 어떻게 다른가</h2><p>같은 하루 매출이라도 점심과 저녁은 구조가 다릅니다. 점심은 회전율이 높지만 객단가가 낮고, 저녁은 체류 시간이 길고 주류·사이드 메뉴 추가 주문이 붙어 객단가가 높습니다. 배달 주문 비중도 타임대별로 갈립니다. 점심은 직장 밀집 상권에서 배달보다 방문이 많고, 저녁은 주거 상권에서 배달앱 비중이 급격히 오릅니다.</p><table><thead><tr><th>구분</th><th>점심(11~14시)</th><th>저녁(17~21시)</th></tr></thead><tbody><tr><td>평균 객단가</td><td>상대적으로 낮음</td><td>상대적으로 높음</td></tr><tr><td>회전율</td><td>빠름(30~45분)</td><td>느림(60~90분)</td></tr><tr><td>결제 수단</td><td>카드·페이 중심</td><td>카드+현금 혼재</td></tr><tr><td>배달 비중</td><td>직장 상권: 낮음</td><td>주거 상권: 높음</td></tr><tr><td>인건비 피크</td><td>오전 준비+점심</td><td>저녁 영업 전후</td></tr></tbody></table><h2>시간대별 매출 분석, 어디서부터 시작할까</h2><p>가장 먼저 할 일은 <strong>최소 4주치 데이터</strong>를 모으는 것입니다. 카드 단말기 보고서, 배달앱 정산 내역, 현금 메모를 각각 합산해 점심·저녁 매출을 분리합니다. 수기로 하면 한 달도 못 버티는 경우가 많습니다. <strong>오늘장부</strong> 같은 일매출 기록 앱을 쓰면 카드·현금·배달앱 매출을 한 곳에 입력하고 시간대별로 흐름을 확인하기 훨씬 수월합니다.</p><p>4주 데이터가 쌓이면 아래 세 가지 지표를 계산해 보세요.</p><ol><li><strong>타임대별 매출 비중(%)</strong> — 점심과 저녁 중 어느 쪽이 전체 매출의 더 큰 비중을 차지하는지</li><li><strong>건당 평균 매출(객단가)</strong> — 총매출 ÷ 결제 건수. 타임대별로 비교합니다.</li><li><strong>시간당 매출(매출 효율)</strong> — 영업 시간 대비 매출. 점심 3시간과 저녁 4시간을 같은 기준으로 비교할 수 있습니다.</li></ol><h2>분석 결과별 실전 대응 전략</h2><h3>점심 매출이 압도적으로 높다면</h3><p>점심에 매출이 몰린다면 오후 브레이크 타임과 저녁 영업을 과감히 단축하거나 조정하는 것도 방법입니다. 저녁 타임 알바를 줄이면 인건비가 줄고, 재료 손실도 감소합니다. 단, 주휴수당·최저임금 기준은 근로 계약 형태에 따라 달라지니 근로계약서 작성 시 노무사 확인을 권장합니다.</p><h3>저녁 매출이 더 높다면</h3><p>저녁 객단가가 높은 구조라면 <strong>메뉴 업셀링</strong>(사이드·주류·세트 구성)과 테이블 회전율 관리가 핵심입니다. 또한 저녁 배달 비중이 크다면 배달앱 수수료(통상 중개수수료 외에 결제수수료 별도)를 반드시 순매출에서 차감해 실수익을 계산해야 합니다.</p><h3>점심·저녁 균형이 비슷하다면</h3><p>어느 타임대도 특별히 강점이 없는 경우, 요일별 분석으로 한 단계 더 파고듭니다. 화·수요일 점심이 유독 약하다면 해당 요일 재료 구매량을 줄이거나, 세트 할인으로 객단가를 보완하는 전략을 시도할 수 있습니다.</p><h2>카드수수료·부가세, 매출 타임대 분석과 연결하면 절세 포인트가 보인다</h2><p>매출 분석은 단순히 "어느 시간이 바쁜가"에서 그치지 않습니다. 연간 매출 규모가 결정되면 카드수수료율 구간과 부가세 신고 방식이 달라지기 때문입니다.</p><p>2026년 기준, 영세·중소 신용카드가맹점 우대수수료율은 <strong>연매출 3억 원 이하 영세 가맹점 신용카드 0.4%, 체크카드 0.15%</strong>이며, 연매출 3억~30억 원 구간의 중소 가맹점은 신용카드 1.0~1.45%, 체크카드 0.75~1.15%가 적용됩니다. 매반기 금융위원회가 선정하므로, 매출 규모가 구간 경계에 걸려 있다면 연 매출 누적을 월별로 추적하는 것이 중요합니다.</p><p>부가세 신고도 마찬가지입니다. 일반과세자는 연 2회(1기: 7월, 2기: 다음 해 1월), 간이과세자는 연 1회(다음 해 1월) 신고합니다. 점심·저녁 매출 데이터를 꾸준히 기록해 두면 신고 시즌에 매출 집계가 빠르고, 과세기간별 매출을 기준으로 <strong>부가세 예상액을 미리 적립</strong>하는 습관을 들일 수 있습니다. <strong>오늘장부</strong>는 일 매출을 입력할 때 부가세 예상액을 자동으로 계산해 주므로, 신고 직전에 세금 마련에 허덕이는 상황을 예방할 수 있습니다.</p><h2>매출 분석 루틴 만들기: 월 1회 30분이면 충분합니다</h2><p>복잡하게 생각할 필요 없습니다. 매달 말일 30분만 투자해 아래 순서로 점검하세요.</p><ul><li><strong>1단계</strong> — 이번 달 점심/저녁 매출 합계·건수 확인</li><li><strong>2단계</strong> — 전월 대비 증감, 요일별 강·약점 파악</li><li><strong>3단계</strong> — 재료비·인건비 지출이 매출 증감과 어떻게 연동됐는지 대조</li><li><strong>4단계</strong> — 다음 달 메뉴·운영 시간·인력 조정안 메모</li></ul><p>이 루틴을 3개월만 지속하면 "그냥 바빴던 달"과 "실제로 남는 달"이 무엇이 달랐는지 데이터로 보이기 시작합니다.</p><h2>자주 묻는 질문</h2><h3>배달앱 매출은 점심·저녁 매출에 포함시켜야 하나요?</h3><p>네, 포함해야 합니다. 배달앱 매출도 부가세 신고 대상 매출에 포함되며, 카드수수료율 산정 기준 연매출에도 반영됩니다. 다만 배달앱 중개수수료와 결제수수료가 차감되므로, 배달앱 정산 내역서의 '정산 금액'이 아닌 '총 주문금액(VAT 포함)'을 기준으로 매출을 기록하고, 수수료는 별도 비용으로 관리하는 것이 정확합니다.</p><h3>점심만 영업하면 간이과세자가 유리한가요?</h3><p>점심만 영업해 연매출이 낮아지면 간이과세자 유지 또는 전환 가능성이 높아집니다. 간이과세자는 세금계산서 발행이 제한되고 매입세액 공제 방식이 달라져 일부 거래에서 불리할 수 있습니다. 연매출 규모 변화가 예상될 때는 세무사와 미리 상담해 어느 과세 형태가 유리한지 확인하세요.</p><h3>시간대별 매출을 기록할 때 현금 매출을 빠뜨리기 쉬운데 어떻게 하나요?</h3><p>현금 매출은 카드처럼 자동 집계되지 않아 누락되기 쉽습니다. 영업 마감 후 매일 현금 실사를 하고, 당일 현금 매출을 바로 앱에 입력하는 루틴을 만드는 것이 가장 효과적입니다. 현금영수증 발급 내역을 함께 체크하면 누락을 줄일 수 있습니다.</p><p>점심과 저녁, 두 타임대를 비교하는 것만으로도 사장님 가게의 수익 구조가 훨씬 선명하게 보입니다. 오늘부터 매출 기록을 시작하고 싶다면 <a href="https://오늘장부.kr">오늘장부 무료로 시작하기</a>에서 바로 확인해 보세요.</p><p>※ 본 글은 2026년 기준 참고용 정보이며, 정확한 신고·금액은 국세청 홈택스 또는 세무사와 상담하세요.</p>
+      </div>
+      <div class="tags">
+        <a href="/blog/?tag=%EB%A7%A4%EC%B6%9C%EA%B4%80%EB%A6%AC" class="tag">매출관리</a> <a href="/blog/?tag=%EC%A0%90%EC%8B%AC%EC%A0%80%EB%85%81%EB%A7%A4%EC%B6%9C" class="tag">점심저녁매출</a> <a href="/blog/?tag=%EC%86%8C%EC%83%81%EA%B3%B5%EC%9D%B8%EC%A0%84%EB%9E%B5" class="tag">소상공인전략</a> <a href="/blog/?tag=%EB%B6%80%EA%B0%80%EC%84%B8%EC%A0%88%EA%B0%90" class="tag">부가세절감</a>
+      </div>
+    </article>
+
+    <section style="background:#fff8f5;border-radius:16px;padding:24px 28px;margin-top:24px;">
+      <h2 style="font-size:18px;font-weight:800;color:#1a1a1a;margin:0 0 14px;">함께 보면 좋은 글</h2>
+      <ul style="list-style:none;padding:0;margin:0;">
+        <li style="padding:8px 0;border-bottom:1px solid #ffe6d9;"><a href="/blog/posts/menu-price-increase-timing-guide.html" style="color:#FF6B35;text-decoration:none;font-weight:600;font-size:14px;">메뉴 가격 올리는 시점 판단법 — 사장님이 꼭 알아야 할 5가지 신호</a></li>
+        <li style="padding:8px 0;border-bottom:1px solid #ffe6d9;"><a href="/blog/posts/delivery-vs-dine-in-profitability-comparison.html" style="color:#FF6B35;text-decoration:none;font-weight:600;font-size:14px;">배달 vs 홀 수익성 직접 비교 — 사장님이 꼭 알아야 할 숫자</a></li>
+        <li style="padding:8px 0;border-bottom:1px solid #ffe6d9;"><a href="/blog/posts/vat-reserve-money-management-tips.html" style="color:#FF6B35;text-decoration:none;font-weight:600;font-size:14px;">부가세 낼 돈 미리 떼어두기 — 사장님 통장 쪼개기 실전법</a></li>
+        <li style="padding:8px 0;border-bottom:1px solid #ffe6d9;"><a href="/blog/posts/menu-profitability-analysis-for-small-business.html" style="color:#FF6B35;text-decoration:none;font-weight:600;font-size:14px;">메뉴별 수익성 따져보기 — 잘 팔리는 메뉴가 돈 버는 메뉴는 아닙니다</a></li>
+      </ul>
+    </section>
+
+    <section style="background:#fff8f5;border-radius:16px;padding:24px 28px;margin-top:24px;">
+      <h2 style="font-size:18px;font-weight:800;color:#1a1a1a;margin:0 0 14px;">무료 계산기로 바로 확인하기</h2>
+      <ul style="list-style:none;padding:0;margin:0;">
+        <li style="padding:10px 0;border-bottom:1px solid #ffe6d9;"><a href="/tools/card-fee-calculator/" style="color:#FF6B35;text-decoration:none;font-weight:700;font-size:15px;">카드수수료 계산기</a><div style="font-size:13px;color:#777;margin-top:2px;">연매출로 우대수수료율 구간을 확인하고 환급 대상인지 알아봅니다</div></li>
+        <li style="padding:10px 0;border-bottom:1px solid #ffe6d9;"><a href="/tools/delivery-fee-calculator/" style="color:#FF6B35;text-decoration:none;font-weight:700;font-size:15px;">배달앱 수수료 계산기</a><div style="font-size:13px;color:#777;margin-top:2px;">중개·결제 수수료와 배달비를 빼면 실제로 얼마가 입금되는지 계산합니다</div></li>
+      </ul>
+    </section>
+
+    <!-- 자동 광고(Auto ads)가 배치를 정하므로 유닛을 직접 넣지 않는다. 여백만 확보한다. -->
+    <div class="ad-slot"></div>
+
+    <div class="cta-box">
+      <h3>매일 매출 기록, 30초면 끝!</h3>
+      <p>카드·현금·네이버페이·카카오페이<br>여러 결제수단을 한 화면에서 입력<br>부가세 예상액도 자동으로 계산해드려요</p>
+      <a href="/">지금 무료로 시작하기</a>
+    </div>
+  </main>
+
+  <aside class="sidebar">
+    <div class="sidebar-cta">
+      <h3>매일 매출 기록,<br>30초면 끝!</h3>
+      <p>카드·현금·배달앱 한 번에<br>부가세 예상액도 자동 계산</p>
+      <a href="/">무료로 시작하기</a>
+    </div>
+  </aside>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-links">
+      <a href="/">서비스 홈</a>
+      <a href="/blog/">블로그</a>
+      <a href="/about/">소개</a>
+      <a href="/contact/">문의하기</a>
+      <a href="/blog/about.html">소개 및 문의</a>
+      <a href="/privacy">개인정보처리방침</a>
+      <a href="/terms">이용약관</a>
+    </div>
+    <div class="footer-copy">© 2026 오늘장부. All rights reserved.</div>
+  </div>
+</footer>
+
+</body>
+</html>
