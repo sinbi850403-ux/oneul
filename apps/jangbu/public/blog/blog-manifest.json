@@ -1,5 +1,21 @@
 [
   {
+    "slug": "kiosk-card-fee-structure-guide",
+    "title": "키오스크 설치 카드 수수료 구조 완전 정리",
+    "description": "키오스크 도입 시 알아야 할 카드 수수료 구조(VAN·PG 차이, 영세·중소 우대수수료율, 숨은 비용)를 소상공인 눈높이로 완전 정리했습니다.",
+    "category": "카드수수료",
+    "date": "2026-09-29",
+    "thumb": "https://images.pexels.com/photos/4968635/pexels-photo-4968635.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200",
+    "tags": [
+      "카드수수료",
+      "키오스크",
+      "VAN",
+      "PG",
+      "우대수수료"
+    ],
+    "keyword": "키오스크 설치 카드 수수료 구조"
+  },
+  {
     "slug": "delivery-container-cost-calculation",
     "title": "배달 용기 비용, 원가에 제대로 넣고 있나요?",
     "description": "배달 용기·포장재 비용을 원가에 빠뜨리면 수익이 착시된다. 메뉴별 포장비 계산법, 원가율 반영 방법, 세금 처리까지 사장님이 바로 쓸 수 있는 실전 가이드.",
