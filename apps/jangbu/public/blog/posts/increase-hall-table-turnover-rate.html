@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>홀 회전율 높이는 현실 방법 — 테이블 그대로 매출 올리기 | 오늘장부 블로그</title>
+  <meta name="description" content="공간 확장 없이 같은 테이블로 더 많은 손님을 받는 홀 회전율 향상 전략. 동선·메뉴·주문 시스템까지 사장님이 오늘 바로 적용할 수 있는 실전 방법을 정리했습니다.">
+  <meta property="og:title" content="홀 회전율 높이는 현실 방법 — 테이블 그대로 매출 올리기">
+  <meta property="og:description" content="공간 확장 없이 같은 테이블로 더 많은 손님을 받는 홀 회전율 향상 전략. 동선·메뉴·주문 시스템까지 사장님이 오늘 바로 적용할 수 있는 실전 방법을 정리했습니다.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://xn--wh1bw0st1gbrb.kr/blog/posts/increase-hall-table-turnover-rate.html">
+  <meta property="og:image" content="https://images.pexels.com/photos/9756153/pexels-photo-9756153.jpeg?auto=compress&amp;cs=tinysrgb&amp;fit=crop&amp;h=627&amp;w=1200">
+  <link rel="canonical" href="https://xn--wh1bw0st1gbrb.kr/blog/posts/increase-hall-table-turnover-rate.html">
+  <link rel="icon" href="/icons/icon-192.png">
+  <!-- 방문자 분석 (GA4 + Clarity + 네이버). ID는 /analytics.js 상단에서 관리. -->
+  <script defer src="/analytics.js"></script>
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2764893290310463" crossorigin="anonymous"></script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Noto Sans KR', sans-serif; background: #f8f9fa; color: #1a1a1a; line-height: 1.7; }
+    header { background: #fff; border-bottom: 1px solid #eee; position: sticky; top: 0; z-index: 100; }
+    .header-inner { max-width: 1100px; margin: 0 auto; padding: 0 20px; height: 60px; display: flex; align-items: center; justify-content: space-between; }
+    .logo { display: flex; align-items: center; gap: 8px; text-decoration: none; }
+    .logo-icon { width: 32px; height: 32px; background: #FF6B35; border-radius: 8px; display: flex; align-items: center; justify-content: center; color: white; font-weight: 900; font-size: 16px; }
+    .logo-text { font-size: 18px; font-weight: 800; color: #FF6B35; }
+    .logo-sub { font-size: 13px; color: #888; margin-left: 4px; }
+    .header-cta { background: #FF6B35; color: white; border: none; padding: 8px 16px; border-radius: 8px; font-size: 13px; font-weight: 600; cursor: pointer; text-decoration: none; }
+    /* minmax(0, ...): 표처럼 최소폭이 큰 콘텐츠가 그리드 트랙을 밀어내 페이지 전체가
+       가로로 스크롤되는 것을 막는다. 1fr만 쓰면 트랙 최소폭이 auto라 끌려간다. */
+    .wrap { max-width: 1100px; margin: 0 auto; padding: 32px 20px; display: grid; grid-template-columns: minmax(0, 1fr) 300px; gap: 40px; }
+    @media (max-width: 768px) { .wrap { grid-template-columns: minmax(0, 1fr); } .sidebar { display: none; } }
+    article { background: white; border-radius: 20px; overflow: hidden; box-shadow: 0 2px 12px rgba(0,0,0,0.06); }
+    .article-head { padding: 32px 32px 24px; border-bottom: 1px solid #f0f0f0; }
+    .article-cat { font-size: 12px; font-weight: 700; color: #FF6B35; text-transform: uppercase; margin-bottom: 12px; }
+    .article-cat a { color: #FF6B35; text-decoration: none; }
+    .article-title { font-size: clamp(20px, 4vw, 28px); font-weight: 900; line-height: 1.4; color: #1a1a1a; margin-bottom: 16px; }
+    .article-meta { font-size: 13px; color: #aaa; display: flex; gap: 16px; align-items: center; flex-wrap: wrap; }
+    .hero-img { width: 100%; aspect-ratio: 16/9; object-fit: cover; background: #f0f0f0; }
+    .article-body { padding: 32px; }
+    .article-body h2 { font-size: 20px; font-weight: 800; color: #1a1a1a; margin: 32px 0 14px; padding-bottom: 8px; border-bottom: 2px solid #FF6B35; }
+    .article-body h3 { font-size: 16px; font-weight: 700; color: #333; margin: 20px 0 10px; }
+    .article-body p { margin-bottom: 14px; color: #333; font-size: 15px; }
+    .article-body ul, .article-body ol { padding-left: 20px; margin-bottom: 14px; }
+    .article-body li { margin-bottom: 6px; color: #333; font-size: 15px; }
+    article { min-width: 0; }
+    /* 좁은 화면에서는 표만 자기 안에서 가로 스크롤시킨다. min-width:100%가 있어야
+       넓은 화면에서 기존처럼 폭을 꽉 채운다. */
+    .article-body table { display: block; width: max-content; min-width: 100%; max-width: 100%; overflow-x: auto; border-collapse: collapse; margin: 16px 0; font-size: 14px; }
+    .article-body th { background: #FF6B35; color: white; padding: 10px 14px; text-align: left; }
+    .article-body td { padding: 10px 14px; border-bottom: 1px solid #f0f0f0; }
+    .article-body tr:nth-child(even) td { background: #fff8f5; }
+    .article-body img { width: 100%; border-radius: 12px; margin: 16px 0; }
+    .article-body strong { color: #1a1a1a; }
+    .article-body blockquote { background: #fff8f5; border-left: 4px solid #FF6B35; padding: 16px 20px; border-radius: 0 12px 12px 0; margin: 16px 0; font-style: italic; color: #555; }
+    .article-body a { color: #FF6B35; }
+    .tags { padding: 20px 32px; border-top: 1px solid #f0f0f0; display: flex; gap: 8px; flex-wrap: wrap; }
+    .tag { background: #fff3ee; color: #FF6B35; border-radius: 20px; padding: 5px 12px; font-size: 12px; font-weight: 600; text-decoration: none; }
+    .tag:hover { background: #FF6B35; color: white; }
+    .ad-slot { background: #f0f0f0; border-radius: 12px; display: flex; align-items: center; justify-content: center; color: #bbb; font-size: 12px; min-height: 90px; margin: 24px 0; }
+    .cta-box { background: linear-gradient(135deg, #FF6B35, #ff8c42); border-radius: 20px; padding: 32px; text-align: center; color: white; margin-top: 24px; }
+    .cta-box h3 { font-size: 22px; font-weight: 900; margin-bottom: 10px; }
+    .cta-box p { font-size: 14px; opacity: 0.9; line-height: 1.6; margin-bottom: 20px; }
+    .cta-box a { background: white; color: #FF6B35; border-radius: 12px; padding: 13px 28px; font-weight: 800; font-size: 15px; text-decoration: none; display: inline-block; }
+    .nav-links { display: flex; gap: 16px; margin-top: 24px; }
+    .nav-back { color: #FF6B35; text-decoration: none; font-size: 14px; font-weight: 600; }
+    .nav-back::before { content: '\2190 '; }
+    .sidebar-cta { background: linear-gradient(135deg, #FF6B35, #ff8c42); color: white; border-radius: 16px; padding: 24px; text-align: center; position: sticky; top: 80px; }
+    .sidebar-cta h3 { font-size: 16px; font-weight: 900; margin-bottom: 8px; }
+    .sidebar-cta p { font-size: 13px; opacity: 0.9; line-height: 1.5; margin-bottom: 16px; }
+    .sidebar-cta a { background: white; color: #FF6B35; border-radius: 8px; padding: 10px 20px; font-weight: 700; font-size: 14px; text-decoration: none; display: inline-block; }
+    footer { background: #1a1a1a; color: #888; padding: 40px 20px; margin-top: 60px; }
+    .footer-inner { max-width: 1100px; margin: 0 auto; }
+    .footer-links { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 16px; }
+    .footer-links a { color: #888; text-decoration: none; font-size: 13px; }
+    .footer-copy { font-size: 12px; }
+  </style>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "홀 회전율 높이는 현실 방법 — 테이블 그대로 매출 올리기",
+  "description": "공간 확장 없이 같은 테이블로 더 많은 손님을 받는 홀 회전율 향상 전략. 동선·메뉴·주문 시스템까지 사장님이 오늘 바로 적용할 수 있는 실전 방법을 정리했습니다.",
+  "datePublished": "2026-09-30",
+  "dateModified": "2026-09-30",
+  "image": "https://images.pexels.com/photos/9756153/pexels-photo-9756153.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200",
+  "author": {
+    "@type": "Organization",
+    "name": "오늘장부",
+    "url": "https://오늘장부.kr"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "오늘장부",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://xn--wh1bw0st1gbrb.kr/icons/icon-192.png"
+    }
+  },
+  "mainEntityOfPage": "https://xn--wh1bw0st1gbrb.kr/blog/posts/increase-hall-table-turnover-rate.html",
+  "keywords": "홀회전율, 매출관리, 식당운영, 소상공인"
+}
+  </script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "회전율을 높이면 손님이 쫓겨나는 느낌을 받지 않을까요?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "주문·서빙·계산 속도를 높이는 것이지, 손님을 재촉하는 것이 아닙니다. 음식이 빨리 나오고 계산이 편리하면 오히려 고객 만족도가 올라가는 경우가 많습니다. 다만 고기·술자리처럼 체류 시간이 매출에 직결되는 업종은 회전율보다 추가 주문 유도에 집중하는 편이 낫습니다."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "소규모 1인 운영 매장도 효과가 있나요?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "오히려 1인 운영일수록 효과가 큽니다. QR 주문·셀프 물·선불 결제만 도입해도 홀과 주방을 혼자 오가는 부담이 크게 줄어들고, 테이블 세팅 시간도 단축됩니다. 동선을 최소화하는 사전 준비 루틴을 만드는 것이 첫 번째 과제입니다."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "테이블오더·키오스크 초기 비용이 부담되는데 대안이 있나요?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "QR 주문 스티커는 월 몇만 원대 구독형 서비스도 있어 초기 투자 부담이 낮습니다. 우선 테이블마다 수기 주문서를 비치해 손님이 직접 체크하게 하는 방법부터 시작할 수 있습니다. 기술 도입보다 동선·세팅·메뉴 슬림화 같은 '무비용 개선'을 먼저 적용하고, 효과를 확인한 뒤 장비 투자를 결정하는 순서가 현실적입니다."
+      }
+    }
+  ]
+}
+  </script>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <a href="/" class="logo">
+      <div class="logo-icon">장</div>
+      <span class="logo-text">오늘장부</span>
+      <span class="logo-sub">블로그</span>
+    </a>
+    <a href="/" class="header-cta">무료로 시작하기</a>
+  </div>
+</header>
+
+<div class="wrap">
+  <main>
+    <div class="nav-links">
+      <a href="/blog/" class="nav-back">블로그 목록으로</a>
+    </div>
+
+    <!-- 자동 광고(Auto ads)가 배치를 정하므로 유닛을 직접 넣지 않는다. 여백만 확보한다. -->
+    <div class="ad-slot"></div>
+
+    <article>
+      <div class="article-head">
+        <div class="article-cat"><a href="/blog/">매출관리</a></div>
+        <h1 class="article-title">홀 회전율 높이는 현실 방법 — 테이블 그대로 매출 올리기</h1>
+        <div class="article-meta">
+          <span>오늘장부 편집팀</span>
+          <span>2026년 09월 30일</span>
+        </div>
+      </div>
+      <img src="https://images.pexels.com/photos/9756153/pexels-photo-9756153.jpeg?auto=compress&amp;cs=tinysrgb&amp;fit=crop&amp;h=627&amp;w=1200" alt="홀 회전율 높이는 현실 방법 — 테이블 그대로 매출 올리기" class="hero-img" loading="lazy">
+      <div class="article-body">
+<p>테이블 10개짜리 매장이 하루에 테이블당 손님을 딱 한 팀씩만 받는다면, 하루 최대 고객은 10팀에 그칩니다. 그런데 같은 테이블로 점심·저녁 각 2회전씩만 돌려도 40팀으로 늘어납니다. <strong>공간 투자 없이 매출을 2~4배까지 끌어올릴 수 있는 핵심 레버가 바로 회전율</strong>입니다. 외식업 매출 공식은 단순합니다.</p>
+
+<blockquote>매출 = 테이블 수 × 회전율 × 객단가</blockquote>
+
+<p>테이블을 늘리거나 객단가를 올리는 건 쉽지 않습니다. 그러나 회전율은 운영 방식을 바꾸는 것만으로 오늘 당장 개선이 가능합니다. 단, 회전율을 무리하게 높이다 고객 경험이 나빠지면 재방문율이 떨어지니, 손님이 불편하지 않은 범위에서 구조적으로 접근하는 것이 핵심입니다.</p>
+
+<h2>회전율 저하, 어디서 시간이 새는가</h2>
+<p>손님이 자리를 차지하는 총 체류 시간은 크게 네 단계로 나뉩니다. 각 단계에서 5분씩만 줄여도 테이블 하나가 하루에 1~2회전 더 돌아갑니다.</p>
+<table>
+  <thead>
+    <tr><th>단계</th><th>시간 낭비 원인</th><th>개선 방향</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>① 착석 → 주문</td><td>메뉴판 탐색, 직원 호출 대기</td><td>QR·태블릿 주문, 간결한 메뉴 구성</td></tr>
+    <tr><td>② 주문 → 서빙</td><td>조리 병목, 복잡한 메뉴</td><td>피크타임 메뉴 제한, 사전 조리 세팅</td></tr>
+    <tr><td>③ 식사 중</td><td>추가 주문·리필 대기</td><td>셀프 물·반찬 구역, 빠른 중간 응대</td></tr>
+    <tr><td>④ 계산 → 퇴장</td><td>계산 줄, 테이블 정리 지연</td><td>선불·QR결제, 신속 세팅 프로세스</td></tr>
+  </tbody>
+</table>
+
+<h2>① 주문 속도를 구조로 해결한다</h2>
+<p>직원이 테이블을 순회하며 주문을 받는 방식은 피크타임에 병목을 만듭니다. <strong>QR 코드 주문, 태블릿 오더, 또는 테이블 위 주문서</strong>를 활용하면 손님이 앉자마자 스스로 메뉴를 고를 수 있어 '주문 대기 시간'이 사실상 제로에 가까워집니다.</p>
+<ul>
+  <li><strong>QR 주문:</strong> 별도 장비 없이 스티커만 붙이면 되어 초기 비용이 낮습니다.</li>
+  <li><strong>태블릿 오더:</strong> 사진과 상세 설명으로 메뉴 고민 시간을 줄이고, 추가 주문도 직원 호출 없이 가능합니다.</li>
+  <li><strong>메뉴 슬림화:</strong> 점심 피크에는 메뉴를 3~5가지로 제한하면 고객의 결정 시간과 주방 조리 시간이 동시에 줄어듭니다.</li>
+</ul>
+
+<h2>② 사전 준비와 동선이 결정적이다</h2>
+<p>매출이 높은 매장의 공통점은 <strong>손님이 앉는 순간 즉각 응대가 가능한 사전 세팅</strong>에 있습니다. 기물이 부족해 테이블 세팅이 늦어지면 그 자체가 회전율을 갉아먹습니다.</p>
+<ul>
+  <li>그릇·수저 등 기물을 여유 있게 확보해 설거지 주기와 테이블 회전 주기가 겹치지 않게 합니다.</li>
+  <li><strong>풀 핸즈 인 / 풀 핸즈 아웃(Full Hands In/Out)</strong> 원칙: 홀에서 주방 오갈 때 빈손으로 다니지 않습니다. 나올 때는 새 음식을, 들어올 때는 빈 그릇을 들고 이동하면 동선이 절반으로 줄어듭니다.</li>
+  <li>피크타임 전 반찬·소스·물 등을 미리 세팅해두면 식사 중 직원 호출 빈도가 줄어듭니다.</li>
+</ul>
+
+<h2>③ 계산 병목을 없애라</h2>
+<p>식사를 마친 손님이 계산을 기다리는 동안 테이블은 이미 '죽은 자리'입니다. <strong>선불제(주문 시 바로 결제), QR 간편결제, 또는 계산대 키오스크</strong>를 도입하면 계산 단계에서 생기는 2~5분 공백을 없앨 수 있습니다. 특히 점심 단체 손님이 많은 매장에서 효과가 큽니다.</p>
+
+<h2>④ 피크타임 데이터로 회전율을 점검한다</h2>
+<p>회전율을 높이려면 먼저 현재 회전율이 얼마인지 알아야 합니다. 계산식은 간단합니다.</p>
+<blockquote>회전율 = 하루 총 방문 고객 수 ÷ 좌석 수</blockquote>
+<p>예를 들어 20석 매장에서 하루 60명이 다녀갔다면 회전율은 3입니다. 이 수치를 요일별·시간대별로 쌓아두면 어느 타임에 병목이 생기는지, 어느 요일에 한산한지가 보입니다. <strong>오늘장부</strong>처럼 카드·현금·배달 매출을 한 번에 기록하는 앱을 활용하면 시간대별 매출 흐름을 쉽게 파악할 수 있어, 회전율 관리의 기초 데이터로 쓸 수 있습니다.</p>
+
+<h2>⑤ 대기 고객을 이탈 없이 잡아두는 법</h2>
+<p>회전율이 오르면 인기 시간대에 대기가 생깁니다. 대기 고객을 그냥 세워두면 이탈합니다.</p>
+<ol>
+  <li><strong>예약·웨이팅 앱 도입:</strong> 손님이 번호표 없이 대기열에 등록하고 연락을 받을 수 있어, 근처에서 기다리다 입장합니다.</li>
+  <li><strong>대기 중 메뉴 선택:</strong> 대기 명단 등록 시 QR로 메뉴를 미리 고르게 하면 착석 직후 주문이 가능해 체류 시간이 단축됩니다.</li>
+  <li><strong>소셜 증거 활용:</strong> 대기 줄 자체가 맛집 신호가 되므로, SNS 태깅 유도·포토존 설치 등으로 브랜드 자산으로 전환합니다.</li>
+</ol>
+
+<h2>⑥ 업종별 현실적인 회전율 목표</h2>
+<p>회전율은 업종과 객단가에 따라 적정 수준이 다릅니다. 무조건 높다고 좋은 것이 아니라 <strong>객단가와의 균형</strong>이 핵심입니다.</p>
+<table>
+  <thead>
+    <tr><th>업종</th><th>현실적 일일 회전율 목표</th><th>비고</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>분식·김밥·국수류</td><td>점심 3~4회전</td><td>체류 시간 30분 내외, 셀프서비스 적합</td></tr>
+    <tr><td>한식 백반·정식</td><td>점심 2~3회전</td><td>반찬 구성이 세팅 속도에 영향</td></tr>
+    <tr><td>고기집·구이류</td><td>저녁 1.5~2회전</td><td>조리 시간 길어 무리한 회전 역효과</td></tr>
+    <tr><td>카페·디저트</td><td>2~4회전</td><td>한산 시간대 좌석 제한 또는 테이크아웃 유도 병행</td></tr>
+  </tbody>
+</table>
+<p>외식업체의 평균 영업이익률은 한 자릿수 수준인 것으로 조사되고 있어, 회전율 0.5 향상이 수익성에 미치는 영향이 상당합니다. 공간 임차료·인건비는 고정비이므로, 회전율이 오를수록 고정비 부담이 분산됩니다.</p>
+
+<h2>매출 흐름을 숫자로 관리하세요</h2>
+<p>회전율 개선의 결과는 반드시 매출 데이터로 확인해야 합니다. 운영 방식을 바꿨는데도 매출이 제자리라면 객단가나 객수 자체를 점검해야 합니다. <strong>카드·현금·배달앱 매출을 날짜별로 한 번에 기록하고, 부가세 예상액까지 자동으로 확인하고 싶다면</strong> <a href="https://오늘장부.kr">오늘장부 무료로 시작하기</a>를 활용해보세요. 일매출 기록 습관이 생기면 회전율·객단가 변화가 수치로 보이기 시작합니다.</p>
+
+<h2>자주 묻는 질문</h2>
+
+<h3>회전율을 높이면 손님이 쫓겨나는 느낌을 받지 않을까요?</h3>
+<p>주문·서빙·계산 속도를 높이는 것이지, 손님을 재촉하는 것이 아닙니다. 음식이 빨리 나오고 계산이 편리하면 오히려 고객 만족도가 올라가는 경우가 많습니다. 다만 고기·술자리처럼 체류 시간이 매출에 직결되는 업종은 회전율보다 추가 주문 유도에 집중하는 편이 낫습니다.</p>
+
+<h3>소규모 1인 운영 매장도 효과가 있나요?</h3>
+<p>오히려 1인 운영일수록 효과가 큽니다. QR 주문·셀프 물·선불 결제만 도입해도 홀과 주방을 혼자 오가는 부담이 크게 줄어들고, 테이블 세팅 시간도 단축됩니다. 동선을 최소화하는 사전 준비 루틴을 만드는 것이 첫 번째 과제입니다.</p>
+
+<h3>테이블오더·키오스크 초기 비용이 부담되는데 대안이 있나요?</h3>
+<p>QR 주문 스티커는 월 몇만 원대 구독형 서비스도 있어 초기 투자 부담이 낮습니다. 우선 테이블마다 수기 주문서를 비치해 손님이 직접 체크하게 하는 방법부터 시작할 수 있습니다. 기술 도입보다 동선·세팅·메뉴 슬림화 같은 '무비용 개선'을 먼저 적용하고, 효과를 확인한 뒤 장비 투자를 결정하는 순서가 현실적입니다.</p>
+
+<p>※ 본 글은 2026년 기준 참고용 정보이며, 정확한 신고·금액은 국세청 홈택스 또는 세무사와 상담하세요.</p>
+      </div>
+      <div class="tags">
+        <a href="/blog/?tag=%ED%99%80%ED%9A%8C%EC%A0%84%EC%9C%A8" class="tag">홀회전율</a> <a href="/blog/?tag=%EB%A7%A4%EC%B6%9C%EA%B4%80%EB%A6%AC" class="tag">매출관리</a> <a href="/blog/?tag=%EC%8B%9D%EB%8B%B9%EC%9A%B4%EC%98%81" class="tag">식당운영</a> <a href="/blog/?tag=%EC%86%8C%EC%83%81%EA%B3%B5%EC%9D%B8" class="tag">소상공인</a>
+      </div>
+    </article>
+
+    <section style="background:#fff8f5;border-radius:16px;padding:24px 28px;margin-top:24px;">
+      <h2 style="font-size:18px;font-weight:800;color:#1a1a1a;margin:0 0 14px;">함께 보면 좋은 글</h2>
+      <ul style="list-style:none;padding:0;margin:0;">
+        <li style="padding:8px 0;border-bottom:1px solid #ffe6d9;"><a href="/blog/posts/lunch-vs-dinner-sales-analysis-guide.html" style="color:#FF6B35;text-decoration:none;font-weight:600;font-size:14px;">점심 vs 저녁 매출 분석으로 순이익 끌어올리는 법</a></li>
+        <li style="padding:8px 0;border-bottom:1px solid #ffe6d9;"><a href="/blog/posts/menu-price-increase-timing-guide.html" style="color:#FF6B35;text-decoration:none;font-weight:600;font-size:14px;">메뉴 가격 올리는 시점 판단법 — 사장님이 꼭 알아야 할 5가지 신호</a></li>
+        <li style="padding:8px 0;border-bottom:1px solid #ffe6d9;"><a href="/blog/posts/delivery-vs-dine-in-profitability-comparison.html" style="color:#FF6B35;text-decoration:none;font-weight:600;font-size:14px;">배달 vs 홀 수익성 직접 비교 — 사장님이 꼭 알아야 할 숫자</a></li>
+        <li style="padding:8px 0;border-bottom:1px solid #ffe6d9;"><a href="/blog/posts/vat-reserve-money-management-tips.html" style="color:#FF6B35;text-decoration:none;font-weight:600;font-size:14px;">부가세 낼 돈 미리 떼어두기 — 사장님 통장 쪼개기 실전법</a></li>
+      </ul>
+    </section>
+
+    <section style="background:#fff8f5;border-radius:16px;padding:24px 28px;margin-top:24px;">
+      <h2 style="font-size:18px;font-weight:800;color:#1a1a1a;margin:0 0 14px;">무료 계산기로 바로 확인하기</h2>
+      <ul style="list-style:none;padding:0;margin:0;">
+        <li style="padding:10px 0;border-bottom:1px solid #ffe6d9;"><a href="/tools/card-fee-calculator/" style="color:#FF6B35;text-decoration:none;font-weight:700;font-size:15px;">카드수수료 계산기</a><div style="font-size:13px;color:#777;margin-top:2px;">연매출로 우대수수료율 구간을 확인하고 환급 대상인지 알아봅니다</div></li>
+        <li style="padding:10px 0;border-bottom:1px solid #ffe6d9;"><a href="/tools/delivery-fee-calculator/" style="color:#FF6B35;text-decoration:none;font-weight:700;font-size:15px;">배달앱 수수료 계산기</a><div style="font-size:13px;color:#777;margin-top:2px;">중개·결제 수수료와 배달비를 빼면 실제로 얼마가 입금되는지 계산합니다</div></li>
+      </ul>
+    </section>
+
+    <!-- 자동 광고(Auto ads)가 배치를 정하므로 유닛을 직접 넣지 않는다. 여백만 확보한다. -->
+    <div class="ad-slot"></div>
+
+    <div class="cta-box">
+      <h3>매일 매출 기록, 30초면 끝!</h3>
+      <p>카드·현금·네이버페이·카카오페이<br>여러 결제수단을 한 화면에서 입력<br>부가세 예상액도 자동으로 계산해드려요</p>
+      <a href="/">지금 무료로 시작하기</a>
+    </div>
+  </main>
+
+  <aside class="sidebar">
+    <div class="sidebar-cta">
+      <h3>매일 매출 기록,<br>30초면 끝!</h3>
+      <p>카드·현금·배달앱 한 번에<br>부가세 예상액도 자동 계산</p>
+      <a href="/">무료로 시작하기</a>
+    </div>
+  </aside>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-links">
+      <a href="/">서비스 홈</a>
+      <a href="/blog/">블로그</a>
+      <a href="/about/">소개</a>
+      <a href="/contact/">문의하기</a>
+      <a href="/blog/about.html">소개 및 문의</a>
+      <a href="/privacy">개인정보처리방침</a>
+      <a href="/terms">이용약관</a>
+    </div>
+    <div class="footer-copy">© 2026 오늘장부. All rights reserved.</div>
+  </div>
+</footer>
+
+</body>
+</html>
