@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>테이크아웃 비중 늘려 수익 확 개선하는 실전 전략 | 오늘장부 블로그</title>
+  <meta name="description" content="배달앱 수수료와 홀 인건비에 치이는 사장님이라면 테이크아웃 비중을 전략적으로 높이는 것만으로도 순이익이 달라집니다. 매출 구조 분석부터 실행 팁까지 총정리.">
+  <meta property="og:title" content="테이크아웃 비중 늘려 수익 확 개선하는 실전 전략">
+  <meta property="og:description" content="배달앱 수수료와 홀 인건비에 치이는 사장님이라면 테이크아웃 비중을 전략적으로 높이는 것만으로도 순이익이 달라집니다. 매출 구조 분석부터 실행 팁까지 총정리.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://xn--wh1bw0st1gbrb.kr/blog/posts/increase-takeout-ratio-improve-profit.html">
+  <meta property="og:image" content="https://images.pexels.com/photos/9544542/pexels-photo-9544542.jpeg?auto=compress&amp;cs=tinysrgb&amp;fit=crop&amp;h=627&amp;w=1200">
+  <link rel="canonical" href="https://xn--wh1bw0st1gbrb.kr/blog/posts/increase-takeout-ratio-improve-profit.html">
+  <link rel="icon" href="/icons/icon-192.png">
+  <!-- 방문자 분석 (GA4 + Clarity + 네이버). ID는 /analytics.js 상단에서 관리. -->
+  <script defer src="/analytics.js"></script>
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2764893290310463" crossorigin="anonymous"></script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Noto Sans KR', sans-serif; background: #f8f9fa; color: #1a1a1a; line-height: 1.7; }
+    header { background: #fff; border-bottom: 1px solid #eee; position: sticky; top: 0; z-index: 100; }
+    .header-inner { max-width: 1100px; margin: 0 auto; padding: 0 20px; height: 60px; display: flex; align-items: center; justify-content: space-between; }
+    .logo { display: flex; align-items: center; gap: 8px; text-decoration: none; }
+    .logo-icon { width: 32px; height: 32px; background: #FF6B35; border-radius: 8px; display: flex; align-items: center; justify-content: center; color: white; font-weight: 900; font-size: 16px; }
+    .logo-text { font-size: 18px; font-weight: 800; color: #FF6B35; }
+    .logo-sub { font-size: 13px; color: #888; margin-left: 4px; }
+    .header-cta { background: #FF6B35; color: white; border: none; padding: 8px 16px; border-radius: 8px; font-size: 13px; font-weight: 600; cursor: pointer; text-decoration: none; }
+    /* minmax(0, ...): 표처럼 최소폭이 큰 콘텐츠가 그리드 트랙을 밀어내 페이지 전체가
+       가로로 스크롤되는 것을 막는다. 1fr만 쓰면 트랙 최소폭이 auto라 끌려간다. */
+    .wrap { max-width: 1100px; margin: 0 auto; padding: 32px 20px; display: grid; grid-template-columns: minmax(0, 1fr) 300px; gap: 40px; }
+    @media (max-width: 768px) { .wrap { grid-template-columns: minmax(0, 1fr); } .sidebar { display: none; } }
+    article { background: white; border-radius: 20px; overflow: hidden; box-shadow: 0 2px 12px rgba(0,0,0,0.06); }
+    .article-head { padding: 32px 32px 24px; border-bottom: 1px solid #f0f0f0; }
+    .article-cat { font-size: 12px; font-weight: 700; color: #FF6B35; text-transform: uppercase; margin-bottom: 12px; }
+    .article-cat a { color: #FF6B35; text-decoration: none; }
+    .article-title { font-size: clamp(20px, 4vw, 28px); font-weight: 900; line-height: 1.4; color: #1a1a1a; margin-bottom: 16px; }
+    .article-meta { font-size: 13px; color: #aaa; display: flex; gap: 16px; align-items: center; flex-wrap: wrap; }
+    .hero-img { width: 100%; aspect-ratio: 16/9; object-fit: cover; background: #f0f0f0; }
+    .article-body { padding: 32px; }
+    .article-body h2 { font-size: 20px; font-weight: 800; color: #1a1a1a; margin: 32px 0 14px; padding-bottom: 8px; border-bottom: 2px solid #FF6B35; }
+    .article-body h3 { font-size: 16px; font-weight: 700; color: #333; margin: 20px 0 10px; }
+    .article-body p { margin-bottom: 14px; color: #333; font-size: 15px; }
+    .article-body ul, .article-body ol { padding-left: 20px; margin-bottom: 14px; }
+    .article-body li { margin-bottom: 6px; color: #333; font-size: 15px; }
+    article { min-width: 0; }
+    /* 좁은 화면에서는 표만 자기 안에서 가로 스크롤시킨다. min-width:100%가 있어야
+       넓은 화면에서 기존처럼 폭을 꽉 채운다. */
+    .article-body table { display: block; width: max-content; min-width: 100%; max-width: 100%; overflow-x: auto; border-collapse: collapse; margin: 16px 0; font-size: 14px; }
+    .article-body th { background: #FF6B35; color: white; padding: 10px 14px; text-align: left; }
+    .article-body td { padding: 10px 14px; border-bottom: 1px solid #f0f0f0; }
+    .article-body tr:nth-child(even) td { background: #fff8f5; }
+    .article-body img { width: 100%; border-radius: 12px; margin: 16px 0; }
+    .article-body strong { color: #1a1a1a; }
+    .article-body blockquote { background: #fff8f5; border-left: 4px solid #FF6B35; padding: 16px 20px; border-radius: 0 12px 12px 0; margin: 16px 0; font-style: italic; color: #555; }
+    .article-body a { color: #FF6B35; }
+    .tags { padding: 20px 32px; border-top: 1px solid #f0f0f0; display: flex; gap: 8px; flex-wrap: wrap; }
+    .tag { background: #fff3ee; color: #FF6B35; border-radius: 20px; padding: 5px 12px; font-size: 12px; font-weight: 600; text-decoration: none; }
+    .tag:hover { background: #FF6B35; color: white; }
+    .ad-slot { background: #f0f0f0; border-radius: 12px; display: flex; align-items: center; justify-content: center; color: #bbb; font-size: 12px; min-height: 90px; margin: 24px 0; }
+    .cta-box { background: linear-gradient(135deg, #FF6B35, #ff8c42); border-radius: 20px; padding: 32px; text-align: center; color: white; margin-top: 24px; }
+    .cta-box h3 { font-size: 22px; font-weight: 900; margin-bottom: 10px; }
+    .cta-box p { font-size: 14px; opacity: 0.9; line-height: 1.6; margin-bottom: 20px; }
+    .cta-box a { background: white; color: #FF6B35; border-radius: 12px; padding: 13px 28px; font-weight: 800; font-size: 15px; text-decoration: none; display: inline-block; }
+    .nav-links { display: flex; gap: 16px; margin-top: 24px; }
+    .nav-back { color: #FF6B35; text-decoration: none; font-size: 14px; font-weight: 600; }
+    .nav-back::before { content: '\2190 '; }
+    .sidebar-cta { background: linear-gradient(135deg, #FF6B35, #ff8c42); color: white; border-radius: 16px; padding: 24px; text-align: center; position: sticky; top: 80px; }
+    .sidebar-cta h3 { font-size: 16px; font-weight: 900; margin-bottom: 8px; }
+    .sidebar-cta p { font-size: 13px; opacity: 0.9; line-height: 1.5; margin-bottom: 16px; }
+    .sidebar-cta a { background: white; color: #FF6B35; border-radius: 8px; padding: 10px 20px; font-weight: 700; font-size: 14px; text-decoration: none; display: inline-block; }
+    footer { background: #1a1a1a; color: #888; padding: 40px 20px; margin-top: 60px; }
+    .footer-inner { max-width: 1100px; margin: 0 auto; }
+    .footer-links { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 16px; }
+    .footer-links a { color: #888; text-decoration: none; font-size: 13px; }
+    .footer-copy { font-size: 12px; }
+  </style>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "테이크아웃 비중 늘려 수익 확 개선하는 실전 전략",
+  "description": "배달앱 수수료와 홀 인건비에 치이는 사장님이라면 테이크아웃 비중을 전략적으로 높이는 것만으로도 순이익이 달라집니다. 매출 구조 분석부터 실행 팁까지 총정리.",
+  "datePublished": "2026-10-02",
+  "dateModified": "2026-10-02",
+  "image": "https://images.pexels.com/photos/9544542/pexels-photo-9544542.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200",
+  "author": {
+    "@type": "Organization",
+    "name": "오늘장부",
+    "url": "https://오늘장부.kr"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "오늘장부",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://xn--wh1bw0st1gbrb.kr/icons/icon-192.png"
+    }
+  },
+  "mainEntityOfPage": "https://xn--wh1bw0st1gbrb.kr/blog/posts/increase-takeout-ratio-improve-profit.html",
+  "keywords": "테이크아웃, 매출관리, 수익개선, 소상공인"
+}
+  </script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "테이크아웃 매출도 부가세를 내야 하나요?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "네. 음식점 테이크아웃은 홀 매출과 동일하게 부가세 10% 과세 대상입니다. 다만 면세 식자재 구매 비용에 대해 의제매입세액공제를 받으면 실질 세 부담을 줄일 수 있습니다. 정확한 적용 여부는 세무사에게 확인하세요."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "배달 채널을 끊고 테이크아웃만 해야 하나요?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "그럴 필요는 없습니다. 배달은 신규 고객 유입 창구 역할을 하므로, 배달을 유지하면서 테이크아웃 비중을 점진적으로 높이는 방식이 현실적입니다. 채널별 매출 데이터를 쌓아가며 균형을 조정해 나가세요."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "포장 용기 비용이 오히려 수익을 깎지 않나요?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "일회용 용기 단가가 올라간 것은 사실이지만, 배달앱 수수료를 없애거나 서빙 인건비를 줄이는 효과가 훨씬 크게 작용하는 경우가 많습니다. 정확히 판단하려면 채널별 순이익을 직접 계산해 비교해 보는 것이 가장 좋습니다."
+      }
+    }
+  ]
+}
+  </script>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <a href="/" class="logo">
+      <div class="logo-icon">장</div>
+      <span class="logo-text">오늘장부</span>
+      <span class="logo-sub">블로그</span>
+    </a>
+    <a href="/" class="header-cta">무료로 시작하기</a>
+  </div>
+</header>
+
+<div class="wrap">
+  <main>
+    <div class="nav-links">
+      <a href="/blog/" class="nav-back">블로그 목록으로</a>
+    </div>
+
+    <!-- 자동 광고(Auto ads)가 배치를 정하므로 유닛을 직접 넣지 않는다. 여백만 확보한다. -->
+    <div class="ad-slot"></div>
+
+    <article>
+      <div class="article-head">
+        <div class="article-cat"><a href="/blog/">매출관리</a></div>
+        <h1 class="article-title">테이크아웃 비중 늘려 수익 확 개선하는 실전 전략</h1>
+        <div class="article-meta">
+          <span>오늘장부 편집팀</span>
+          <span>2026년 10월 02일</span>
+        </div>
+      </div>
+      <img src="https://images.pexels.com/photos/9544542/pexels-photo-9544542.jpeg?auto=compress&amp;cs=tinysrgb&amp;fit=crop&amp;h=627&amp;w=1200" alt="테이크아웃 비중 늘려 수익 확 개선하는 실전 전략" class="hero-img" loading="lazy">
+      <div class="article-body">
+<p>배달앱 수수료에 광고비까지 얹히면 주문 한 건당 실제로 손에 남는 돈이 생각보다 적습니다. 홀 매출은 테이블 회전이 받쳐줘야 하고 인건비도 만만치 않죠. 이럴 때 <strong>테이크아웃 비중 늘리기</strong>는 가장 현실적인 수익 개선 카드 중 하나입니다. 왜 유리한지, 어떻게 실행해야 하는지 핵심만 정리했습니다.</p>
+
+<h2>테이크아웃이 이익률에 유리한 이유</h2>
+
+<p>테이크아웃이 홀·배달 대비 이익률이 높은 이유는 세 가지입니다.</p>
+
+<ul>
+  <li><strong>배달앱 수수료 없음</strong>: 배달앱은 중개수수료·광고비·결제수수료가 복합적으로 발생합니다. 테이크아웃은 이 비용이 원천적으로 없습니다.</li>
+  <li><strong>홀 대비 인건비·소모품 절감</strong>: 서빙 인력, 테이블 세팅, 수저·물 등 소모품 비용이 줄어듭니다.</li>
+  <li><strong>테이블 회전율 제약 없음</strong>: 홀이 꽉 차도 포장 주문은 추가로 받을 수 있어 피크타임 기회 손실을 줄입니다.</li>
+</ul>
+
+<p>물론 포장 용기 비용이 추가되고 카드 수수료는 그대로입니다. 하지만 카드수수료는 연매출 규모에 따라 우대율이 적용되므로 생각보다 부담이 크지 않습니다.</p>
+
+<h2>2026년 상반기 카드수수료 우대율 확인하기</h2>
+
+<p>2026년 2월 14일부터 적용되는 영세·중소가맹점 우대수수료율입니다. 테이크아웃 카드 결제에도 동일하게 적용됩니다.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>연매출 구간</th>
+      <th>신용카드</th>
+      <th>체크카드</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>3억원 이하 (영세)</td>
+      <td>0.40%</td>
+      <td>0.15%</td>
+    </tr>
+    <tr>
+      <td>3억~5억원 (중소)</td>
+      <td>1.00%</td>
+      <td>0.75%</td>
+    </tr>
+    <tr>
+      <td>5억~10억원 (중소)</td>
+      <td>1.15%</td>
+      <td>0.90%</td>
+    </tr>
+    <tr>
+      <td>10억~30억원 (중소)</td>
+      <td>1.45%</td>
+      <td>1.15%</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>연매출 3억 이하 영세 가맹점은 신용카드 기준 0.40%에 불과합니다. 적용 수수료율은 여신금융협회 또는 각 카드사 콜센터에서 확인할 수 있습니다.</p>
+
+<h2>테이크아웃 비중, 이렇게 높이세요</h2>
+
+<h3>① 포장 주문 접수 채널을 만들어라</h3>
+<ul>
+  <li><strong>네이버 스마트플레이스 포장 주문</strong>: 포장·방문픽업 기능을 활성화하면 앱 없이 바로 주문 가능합니다.</li>
+  <li><strong>카카오톡 채널·인스타그램 DM</strong>: 별도 수수료 없이 단골 고객의 예약 포장 주문을 받을 수 있습니다.</li>
+  <li><strong>매장 안내판</strong>: 입구에 '포장 가능·픽업 혜택' 문구 하나만 붙여도 홀 대기 손님을 포장으로 전환할 수 있습니다.</li>
+</ul>
+
+<h3>② 마진 좋은 메뉴로 포장 세트를 구성하라</h3>
+<p>포장해도 품질이 유지되고 마진율이 높은 메뉴를 선별해 '2인 런치 포장 세트'처럼 묶어 팔면 객단가가 올라가고 재료 손실도 줄어듭니다. 전체 메뉴를 다 포장 가능하게 할 필요는 없습니다.</p>
+
+<h3>③ 픽업 시간을 분산해 주방 과부하를 막아라</h3>
+<p>예약 픽업 시간을 15~30분 단위로 나누어 안내하세요. 피크타임 집중을 막고 재료 낭비·품절도 줄일 수 있습니다.</p>
+
+<h2>채널별 매출을 따로 봐야 전략이 보인다</h2>
+
+<p>테이크아웃 전략이 실제로 효과 있는지 확인하려면 홀·테이크아웃·배달 채널별 매출을 따로 집계해야 합니다. 카드·현금·배달앱 정산을 한 화면에서 통합하고 부가세 예상액까지 자동 계산해 주는 <strong>오늘장부</strong>를 활용하면, 채널별 기여도를 한눈에 파악하고 다음 달 전략을 세우는 데 바로 도움이 됩니다.</p>
+
+<h2>테이크아웃과 부가세, 놓치지 말아야 할 포인트</h2>
+
+<p>음식점은 홀이든 테이크아웃이든 <strong>부가세 10% 과세 대상</strong>입니다. 테이크아웃이라고 면세되지는 않습니다. 다만 면세 농·축·수산물 식자재를 구입한 경우 <strong>의제매입세액공제</strong>로 납부 세액을 줄일 수 있습니다.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>구분</th>
+      <th>공제율</th>
+      <th>환산 공제율</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>개인 음식점 (과세표준 2억 이하)</td>
+      <td>9/109</td>
+      <td>약 8.26%</td>
+    </tr>
+    <tr>
+      <td>개인 음식점 (과세표준 2억 초과)</td>
+      <td>8/108</td>
+      <td>약 7.41%</td>
+    </tr>
+    <tr>
+      <td>법인 음식점</td>
+      <td>6/106</td>
+      <td>약 5.66%</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>테이크아웃 매출이 늘어 과세표준이 2억원을 넘어서면 공제율 구간이 바뀔 수 있으니, 반기별 매출 흐름을 미리 점검하는 것이 좋습니다. 정확한 공제 한도와 신고 일정은 홈택스 또는 세무사에게 확인하세요.</p>
+
+<h2>실행 체크리스트</h2>
+
+<ol>
+  <li>현재 홀·테이크아웃·배달 채널별 매출 비중 파악하기</li>
+  <li>마진율 높고 포장 품질 유지되는 메뉴 선별하기</li>
+  <li>포장 주문 접수 채널 1~2개 정비하기</li>
+  <li>포장 용기 단가 vs. 절감 수수료 비교하기</li>
+  <li>픽업 시간대 분산 운영으로 주방 부하 관리하기</li>
+  <li>채널별 매출을 매일 기록해 월 단위로 비교하기</li>
+</ol>
+
+<p>데이터 없이 감으로 운영하면 어느 채널이 실제로 이익을 내는지 알 수 없습니다. 오늘부터 하루 매출 기록을 시작해보세요. <a href="https://오늘장부.kr">오늘장부 무료로 시작하기</a></p>
+
+<h2>자주 묻는 질문</h2>
+
+<h3>테이크아웃 매출도 부가세를 내야 하나요?</h3>
+<p>네. 음식점 테이크아웃은 홀 매출과 동일하게 부가세 10% 과세 대상입니다. 다만 면세 식자재 구매 비용에 대해 의제매입세액공제를 받으면 실질 세 부담을 줄일 수 있습니다. 정확한 적용 여부는 세무사에게 확인하세요.</p>
+
+<h3>배달 채널을 끊고 테이크아웃만 해야 하나요?</h3>
+<p>그럴 필요는 없습니다. 배달은 신규 고객 유입 창구 역할을 하므로, 배달을 유지하면서 테이크아웃 비중을 점진적으로 높이는 방식이 현실적입니다. 채널별 매출 데이터를 쌓아가며 균형을 조정해 나가세요.</p>
+
+<h3>포장 용기 비용이 오히려 수익을 깎지 않나요?</h3>
+<p>일회용 용기 단가가 올라간 것은 사실이지만, 배달앱 수수료를 없애거나 서빙 인건비를 줄이는 효과가 훨씬 크게 작용하는 경우가 많습니다. 정확히 판단하려면 채널별 순이익을 직접 계산해 비교해 보는 것이 가장 좋습니다.</p>
+
+<p>※ 본 글은 2026년 기준 참고용 정보이며, 정확한 신고·금액은 국세청 홈택스 또는 세무사와 상담하세요.</p>
+      </div>
+      <div class="tags">
+        <a href="/blog/?tag=%ED%85%8C%EC%9D%B4%ED%81%AC%EC%95%84%EC%9B%83" class="tag">테이크아웃</a> <a href="/blog/?tag=%EB%A7%A4%EC%B6%9C%EA%B4%80%EB%A6%AC" class="tag">매출관리</a> <a href="/blog/?tag=%EC%88%98%EC%9D%B5%EA%B0%9C%EC%84%A0" class="tag">수익개선</a> <a href="/blog/?tag=%EC%86%8C%EC%83%81%EA%B3%B5%EC%9D%B8" class="tag">소상공인</a>
+      </div>
+    </article>
+
+    <section style="background:#fff8f5;border-radius:16px;padding:24px 28px;margin-top:24px;">
+      <h2 style="font-size:18px;font-weight:800;color:#1a1a1a;margin:0 0 14px;">함께 보면 좋은 글</h2>
+      <ul style="list-style:none;padding:0;margin:0;">
+        <li style="padding:8px 0;border-bottom:1px solid #ffe6d9;"><a href="/blog/posts/increase-hall-table-turnover-rate.html" style="color:#FF6B35;text-decoration:none;font-weight:600;font-size:14px;">홀 회전율 높이는 현실 방법 — 테이블 그대로 매출 올리기</a></li>
+        <li style="padding:8px 0;border-bottom:1px solid #ffe6d9;"><a href="/blog/posts/lunch-vs-dinner-sales-analysis-guide.html" style="color:#FF6B35;text-decoration:none;font-weight:600;font-size:14px;">점심 vs 저녁 매출 분석으로 순이익 끌어올리는 법</a></li>
+        <li style="padding:8px 0;border-bottom:1px solid #ffe6d9;"><a href="/blog/posts/menu-price-increase-timing-guide.html" style="color:#FF6B35;text-decoration:none;font-weight:600;font-size:14px;">메뉴 가격 올리는 시점 판단법 — 사장님이 꼭 알아야 할 5가지 신호</a></li>
+        <li style="padding:8px 0;border-bottom:1px solid #ffe6d9;"><a href="/blog/posts/delivery-vs-dine-in-profitability-comparison.html" style="color:#FF6B35;text-decoration:none;font-weight:600;font-size:14px;">배달 vs 홀 수익성 직접 비교 — 사장님이 꼭 알아야 할 숫자</a></li>
+      </ul>
+    </section>
+
+    <section style="background:#fff8f5;border-radius:16px;padding:24px 28px;margin-top:24px;">
+      <h2 style="font-size:18px;font-weight:800;color:#1a1a1a;margin:0 0 14px;">무료 계산기로 바로 확인하기</h2>
+      <ul style="list-style:none;padding:0;margin:0;">
+        <li style="padding:10px 0;border-bottom:1px solid #ffe6d9;"><a href="/tools/card-fee-calculator/" style="color:#FF6B35;text-decoration:none;font-weight:700;font-size:15px;">카드수수료 계산기</a><div style="font-size:13px;color:#777;margin-top:2px;">연매출로 우대수수료율 구간을 확인하고 환급 대상인지 알아봅니다</div></li>
+        <li style="padding:10px 0;border-bottom:1px solid #ffe6d9;"><a href="/tools/delivery-fee-calculator/" style="color:#FF6B35;text-decoration:none;font-weight:700;font-size:15px;">배달앱 수수료 계산기</a><div style="font-size:13px;color:#777;margin-top:2px;">중개·결제 수수료와 배달비를 빼면 실제로 얼마가 입금되는지 계산합니다</div></li>
+      </ul>
+    </section>
+
+    <!-- 자동 광고(Auto ads)가 배치를 정하므로 유닛을 직접 넣지 않는다. 여백만 확보한다. -->
+    <div class="ad-slot"></div>
+
+    <div class="cta-box">
+      <h3>매일 매출 기록, 30초면 끝!</h3>
+      <p>카드·현금·네이버페이·카카오페이<br>여러 결제수단을 한 화면에서 입력<br>부가세 예상액도 자동으로 계산해드려요</p>
+      <a href="/">지금 무료로 시작하기</a>
+    </div>
+  </main>
+
+  <aside class="sidebar">
+    <div class="sidebar-cta">
+      <h3>매일 매출 기록,<br>30초면 끝!</h3>
+      <p>카드·현금·배달앱 한 번에<br>부가세 예상액도 자동 계산</p>
+      <a href="/">무료로 시작하기</a>
+    </div>
+  </aside>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-links">
+      <a href="/">서비스 홈</a>
+      <a href="/blog/">블로그</a>
+      <a href="/about/">소개</a>
+      <a href="/contact/">문의하기</a>
+      <a href="/blog/about.html">소개 및 문의</a>
+      <a href="/privacy">개인정보처리방침</a>
+      <a href="/terms">이용약관</a>
+    </div>
+    <div class="footer-copy">© 2026 오늘장부. All rights reserved.</div>
+  </div>
+</footer>
+
+</body>
+</html>
