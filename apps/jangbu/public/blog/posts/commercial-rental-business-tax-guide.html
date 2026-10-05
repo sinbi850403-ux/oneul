@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>상가 임대사업자 세금 처리 완전 정리 — 부가세·종소세·절세까지 | 오늘장부 블로그</title>
+  <meta name="description" content="상가를 임대하는 사장님이 꼭 알아야 할 부가세 신고, 간주임대료 계산법, 종합소득세 필요경비까지 2026년 기준으로 한 번에 정리했습니다.">
+  <meta property="og:title" content="상가 임대사업자 세금 처리 완전 정리 — 부가세·종소세·절세까지">
+  <meta property="og:description" content="상가를 임대하는 사장님이 꼭 알아야 할 부가세 신고, 간주임대료 계산법, 종합소득세 필요경비까지 2026년 기준으로 한 번에 정리했습니다.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://xn--wh1bw0st1gbrb.kr/blog/posts/commercial-rental-business-tax-guide.html">
+  <meta property="og:image" content="https://images.pexels.com/photos/6588648/pexels-photo-6588648.jpeg?auto=compress&amp;cs=tinysrgb&amp;fit=crop&amp;h=627&amp;w=1200">
+  <link rel="canonical" href="https://xn--wh1bw0st1gbrb.kr/blog/posts/commercial-rental-business-tax-guide.html">
+  <link rel="icon" href="/icons/icon-192.png">
+  <!-- 방문자 분석 (GA4 + Clarity + 네이버). ID는 /analytics.js 상단에서 관리. -->
+  <script defer src="/analytics.js"></script>
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2764893290310463" crossorigin="anonymous"></script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Noto Sans KR', sans-serif; background: #f8f9fa; color: #1a1a1a; line-height: 1.7; }
+    header { background: #fff; border-bottom: 1px solid #eee; position: sticky; top: 0; z-index: 100; }
+    .header-inner { max-width: 1100px; margin: 0 auto; padding: 0 20px; height: 60px; display: flex; align-items: center; justify-content: space-between; }
+    .logo { display: flex; align-items: center; gap: 8px; text-decoration: none; }
+    .logo-icon { width: 32px; height: 32px; background: #FF6B35; border-radius: 8px; display: flex; align-items: center; justify-content: center; color: white; font-weight: 900; font-size: 16px; }
+    .logo-text { font-size: 18px; font-weight: 800; color: #FF6B35; }
+    .logo-sub { font-size: 13px; color: #888; margin-left: 4px; }
+    .header-cta { background: #FF6B35; color: white; border: none; padding: 8px 16px; border-radius: 8px; font-size: 13px; font-weight: 600; cursor: pointer; text-decoration: none; }
+    /* minmax(0, ...): 표처럼 최소폭이 큰 콘텐츠가 그리드 트랙을 밀어내 페이지 전체가
+       가로로 스크롤되는 것을 막는다. 1fr만 쓰면 트랙 최소폭이 auto라 끌려간다. */
+    .wrap { max-width: 1100px; margin: 0 auto; padding: 32px 20px; display: grid; grid-template-columns: minmax(0, 1fr) 300px; gap: 40px; }
+    @media (max-width: 768px) { .wrap { grid-template-columns: minmax(0, 1fr); } .sidebar { display: none; } }
+    article { background: white; border-radius: 20px; overflow: hidden; box-shadow: 0 2px 12px rgba(0,0,0,0.06); }
+    .article-head { padding: 32px 32px 24px; border-bottom: 1px solid #f0f0f0; }
+    .article-cat { font-size: 12px; font-weight: 700; color: #FF6B35; text-transform: uppercase; margin-bottom: 12px; }
+    .article-cat a { color: #FF6B35; text-decoration: none; }
+    .article-title { font-size: clamp(20px, 4vw, 28px); font-weight: 900; line-height: 1.4; color: #1a1a1a; margin-bottom: 16px; }
+    .article-meta { font-size: 13px; color: #aaa; display: flex; gap: 16px; align-items: center; flex-wrap: wrap; }
+    .hero-img { width: 100%; aspect-ratio: 16/9; object-fit: cover; background: #f0f0f0; }
+    .article-body { padding: 32px; }
+    .article-body h2 { font-size: 20px; font-weight: 800; color: #1a1a1a; margin: 32px 0 14px; padding-bottom: 8px; border-bottom: 2px solid #FF6B35; }
+    .article-body h3 { font-size: 16px; font-weight: 700; color: #333; margin: 20px 0 10px; }
+    .article-body p { margin-bottom: 14px; color: #333; font-size: 15px; }
+    .article-body ul, .article-body ol { padding-left: 20px; margin-bottom: 14px; }
+    .article-body li { margin-bottom: 6px; color: #333; font-size: 15px; }
+    article { min-width: 0; }
+    /* 좁은 화면에서는 표만 자기 안에서 가로 스크롤시킨다. min-width:100%가 있어야
+       넓은 화면에서 기존처럼 폭을 꽉 채운다. */
+    .article-body table { display: block; width: max-content; min-width: 100%; max-width: 100%; overflow-x: auto; border-collapse: collapse; margin: 16px 0; font-size: 14px; }
+    .article-body th { background: #FF6B35; color: white; padding: 10px 14px; text-align: left; }
+    .article-body td { padding: 10px 14px; border-bottom: 1px solid #f0f0f0; }
+    .article-body tr:nth-child(even) td { background: #fff8f5; }
+    .article-body img { width: 100%; border-radius: 12px; margin: 16px 0; }
+    .article-body strong { color: #1a1a1a; }
+    .article-body blockquote { background: #fff8f5; border-left: 4px solid #FF6B35; padding: 16px 20px; border-radius: 0 12px 12px 0; margin: 16px 0; font-style: italic; color: #555; }
+    .article-body a { color: #FF6B35; }
+    .tags { padding: 20px 32px; border-top: 1px solid #f0f0f0; display: flex; gap: 8px; flex-wrap: wrap; }
+    .tag { background: #fff3ee; color: #FF6B35; border-radius: 20px; padding: 5px 12px; font-size: 12px; font-weight: 600; text-decoration: none; }
+    .tag:hover { background: #FF6B35; color: white; }
+    .ad-slot { background: #f0f0f0; border-radius: 12px; display: flex; align-items: center; justify-content: center; color: #bbb; font-size: 12px; min-height: 90px; margin: 24px 0; }
+    .cta-box { background: linear-gradient(135deg, #FF6B35, #ff8c42); border-radius: 20px; padding: 32px; text-align: center; color: white; margin-top: 24px; }
+    .cta-box h3 { font-size: 22px; font-weight: 900; margin-bottom: 10px; }
+    .cta-box p { font-size: 14px; opacity: 0.9; line-height: 1.6; margin-bottom: 20px; }
+    .cta-box a { background: white; color: #FF6B35; border-radius: 12px; padding: 13px 28px; font-weight: 800; font-size: 15px; text-decoration: none; display: inline-block; }
+    .nav-links { display: flex; gap: 16px; margin-top: 24px; }
+    .nav-back { color: #FF6B35; text-decoration: none; font-size: 14px; font-weight: 600; }
+    .nav-back::before { content: '\2190 '; }
+    .sidebar-cta { background: linear-gradient(135deg, #FF6B35, #ff8c42); color: white; border-radius: 16px; padding: 24px; text-align: center; position: sticky; top: 80px; }
+    .sidebar-cta h3 { font-size: 16px; font-weight: 900; margin-bottom: 8px; }
+    .sidebar-cta p { font-size: 13px; opacity: 0.9; line-height: 1.5; margin-bottom: 16px; }
+    .sidebar-cta a { background: white; color: #FF6B35; border-radius: 8px; padding: 10px 20px; font-weight: 700; font-size: 14px; text-decoration: none; display: inline-block; }
+    footer { background: #1a1a1a; color: #888; padding: 40px 20px; margin-top: 60px; }
+    .footer-inner { max-width: 1100px; margin: 0 auto; }
+    .footer-links { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 16px; }
+    .footer-links a { color: #888; text-decoration: none; font-size: 13px; }
+    .footer-copy { font-size: 12px; }
+  </style>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "상가 임대사업자 세금 처리 완전 정리 — 부가세·종소세·절세까지",
+  "description": "상가를 임대하는 사장님이 꼭 알아야 할 부가세 신고, 간주임대료 계산법, 종합소득세 필요경비까지 2026년 기준으로 한 번에 정리했습니다.",
+  "datePublished": "2026-10-05",
+  "dateModified": "2026-10-05",
+  "image": "https://images.pexels.com/photos/6588648/pexels-photo-6588648.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200",
+  "author": {
+    "@type": "Organization",
+    "name": "오늘장부",
+    "url": "https://오늘장부.kr"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "오늘장부",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://xn--wh1bw0st1gbrb.kr/icons/icon-192.png"
+    }
+  },
+  "mainEntityOfPage": "https://xn--wh1bw0st1gbrb.kr/blog/posts/commercial-rental-business-tax-guide.html",
+  "keywords": "상가임대사업자, 부가세신고, 간주임대료, 종합소득세, 임대사업자세금"
+}
+  </script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "상가 임대료에 부가세 10%를 꼭 받아야 하나요?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "일반과세 사업자라면 임차인으로부터 임대료의 10%를 부가세로 거래징수하고, 세금계산서를 발행해야 합니다. 임차인이 사업자인 경우 매입세액 공제를 위해 세금계산서를 요구하는 것이 일반적입니다. 부가세를 별도로 받지 않고 월세에 포함해 받았더라도, 그 금액 안에 부가세가 포함된 것으로 보아 납부 의무가 발생합니다."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "보증금 없이 월세만 받으면 간주임대료는 없는 건가요?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "맞습니다. 간주임대료는 임차인으로부터 받은 보증금(전세금 포함)이 있을 때만 발생합니다. 월세만 받고 보증금이 전혀 없다면 간주임대료는 계산하지 않아도 됩니다."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "임대 건물 수리비를 경비로 처리하려면 어떻게 해야 하나요?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "수리·보수 업체로부터 세금계산서 또는 현금영수증을 반드시 받아야 합니다. 이 증빙이 있어야 부가세 매입세액 공제(일반과세자)와 종합소득세 필요경비 처리가 동시에 가능합니다. 간이영수증이나 무증빙 현금 지급은 나중에 소명하기 어려우니 주의하세요."
+      }
+    }
+  ]
+}
+  </script>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <a href="/" class="logo">
+      <div class="logo-icon">장</div>
+      <span class="logo-text">오늘장부</span>
+      <span class="logo-sub">블로그</span>
+    </a>
+    <a href="/" class="header-cta">무료로 시작하기</a>
+  </div>
+</header>
+
+<div class="wrap">
+  <main>
+    <div class="nav-links">
+      <a href="/blog/" class="nav-back">블로그 목록으로</a>
+    </div>
+
+    <!-- 자동 광고(Auto ads)가 배치를 정하므로 유닛을 직접 넣지 않는다. 여백만 확보한다. -->
+    <div class="ad-slot"></div>
+
+    <article>
+      <div class="article-head">
+        <div class="article-cat"><a href="/blog/">부가세/세금</a></div>
+        <h1 class="article-title">상가 임대사업자 세금 처리 완전 정리 — 부가세·종소세·절세까지</h1>
+        <div class="article-meta">
+          <span>오늘장부 편집팀</span>
+          <span>2026년 10월 05일</span>
+        </div>
+      </div>
+      <img src="https://images.pexels.com/photos/6588648/pexels-photo-6588648.jpeg?auto=compress&amp;cs=tinysrgb&amp;fit=crop&amp;h=627&amp;w=1200" alt="상가 임대사업자 세금 처리 완전 정리 — 부가세·종소세·절세까지" class="hero-img" loading="lazy">
+      <div class="article-body">
+<p>상가 건물을 임대해 월세를 받고 있다면, 단순히 '임대료 받는 사람'이 아니라 엄연한 <strong>과세 사업자</strong>입니다. 부가가치세 신고, 간주임대료 계산, 종합소득세 신고까지 — 놓치면 가산세가 붙고 챙기면 합법적으로 세금을 줄일 수 있습니다. 2026년 기준으로 상가 임대사업자가 반드시 알아야 할 세금 처리 흐름을 처음부터 끝까지 정리합니다.</p>
+
+<h2>① 상가 임대는 부가세 과세 대상입니다</h2>
+
+<p>먼저 구분부터 명확히 해야 합니다. <strong>주택 임대는 부가세 면세</strong>, <strong>상가·오피스텔(업무용)·공장·창고 등 비주거용 부동산 임대는 부가세 과세</strong> 대상입니다. 상가를 임대하는 순간 부가세 신고 의무가 생깁니다.</p>
+
+<h3>일반과세자 vs 간이과세자 — 어디에 해당할까?</h3>
+
+<p>부동산 임대업은 일반 업종과 기준이 다릅니다. 2026년 기준으로 연간 공급대가(임대료+부가세 포함 금액)가 <strong>4,800만 원 미만</strong>이면 간이과세 적용이 가능하고, <strong>1억 400만 원 이상</strong>이면 일반과세자로 분류됩니다.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>구분</th>
+      <th>기준 (연 공급대가)</th>
+      <th>세금 계산 방식</th>
+      <th>세금계산서 발행</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>일반과세자</td>
+      <td>1억 400만 원 이상</td>
+      <td>매출세액(10%) − 매입세액</td>
+      <td>의무 발행</td>
+    </tr>
+    <tr>
+      <td>간이과세자</td>
+      <td>4,800만 원 미만 (임대업 기준)</td>
+      <td>공급대가 × 부가가치율(40%) × 10%</td>
+      <td>발행 가능 (단, 연 매출 4,800만 원 미만은 납부 면제)</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>임차인이 사업자라면 세금계산서를 요청하는 경우가 많습니다. 일반과세자로 등록된 상가 임대사업자는 매달 또는 분기별로 세금계산서를 발행하고, 부가세를 거래징수해 신고·납부해야 합니다.</p>
+
+<h2>② 부가세 신고 일정 — 언제, 몇 번 해야 하나?</h2>
+
+<p>개인 일반과세 상가 임대사업자는 <strong>연 2회 확정신고</strong>를 합니다. 예정신고 대신 예정고지(고지서로 납부)를 받는 것이 일반적입니다.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>구분</th>
+      <th>과세 기간</th>
+      <th>신고·납부 기한</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1기 확정신고</td>
+      <td>1월 1일 ~ 6월 30일</td>
+      <td>7월 25일까지 (공휴일 시 다음 영업일)</td>
+    </tr>
+    <tr>
+      <td>2기 확정신고</td>
+      <td>7월 1일 ~ 12월 31일</td>
+      <td>다음 해 1월 25일까지</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>2026년 1기 확정신고 기한은 <strong>7월 27일(월)</strong>까지입니다(7월 25일이 토요일이므로 연장). 기한을 하루라도 넘기면 무신고·납부불성실 가산세가 붙으므로 반드시 일정을 캘린더에 표시해 두세요.</p>
+
+<h2>③ 보증금에도 세금이 붙는다 — 간주임대료 계산법</h2>
+
+<p>많은 임대사업자가 놓치는 항목이 바로 <strong>간주임대료</strong>입니다. 월세뿐 아니라 임차인으로부터 받은 <strong>보증금도 이자 상당액만큼 임대료로 간주</strong>되어 부가세·종합소득세 과세 대상이 됩니다.</p>
+
+<blockquote>간주임대료 = 임대보증금 × 정기예금이자율(3.1%) × (과세대상 일수 ÷ 365)</blockquote>
+
+<p>2026년 적용 이자율은 <strong>3.1%</strong>로, 전년도 3.5%에서 0.4%p 인하됐습니다. 주택 임대와 달리 상가는 보증금 3억 원 공제 없이 <strong>보증금 전액</strong>이 계산 대상이므로 주의가 필요합니다.</p>
+
+<p><strong>예시:</strong> 보증금 5,000만 원, 과세기간 181일(1기) → 간주임대료 ≒ 769,000원 → 부가세 ≒ 76,900원</p>
+
+<h2>④ 종합소득세 — 절세의 핵심, 필요경비 챙기기</h2>
+
+<p>부가세와 별개로, 매년 5월에는 <strong>종합소득세</strong>를 신고해야 합니다. 임대 수입(월세+간주임대료)에서 <strong>필요경비를 최대한 공제</strong>하는 것이 합법적 절세의 핵심입니다.</p>
+
+<h3>임대사업자가 챙길 수 있는 주요 필요경비</h3>
+
+<ul>
+  <li><strong>건물 감가상각비</strong>: 철근콘크리트 구조 40년, 벽돌 구조 30년 기준 정액법 적용. 매년 자동으로 경비 처리 가능.</li>
+  <li><strong>재산세·종합부동산세</strong>: 사업용 부동산에 부과된 세금 전액 필요경비 인정.</li>
+  <li><strong>대출 이자비용</strong>: 임대 건물 구입 시 발생한 담보대출 이자는 필요경비 처리 가능.</li>
+  <li><strong>수선유지비·관리비</strong>: 건물 유지·보수를 위한 실제 지출비용.</li>
+  <li><strong>공인중개사 수수료</strong>: 임차인 구하기 위해 지급한 중개보수.</li>
+  <li><strong>보증보험료·화재보험료</strong>: 임대사업 관련 보험료.</li>
+</ul>
+
+<p>영수증·세금계산서·계좌이체 내역 등 증빙을 미리 모아 두는 습관이 중요합니다. 평소 매출·비용을 꼼꼼히 기록하지 않으면 신고 시즌에 한꺼번에 찾아야 해서 빠뜨리기 쉽습니다. <strong>오늘장부</strong>처럼 일별 매출과 지출을 스마트폰으로 바로 기록하는 앱을 활용하면 연말 신고 때 증빙 누락을 크게 줄일 수 있습니다.</p>
+
+<h3>부동산임대업 결손금 통산 제한 — 꼭 알아야 할 함정</h3>
+
+<p>임대업에서 발생한 결손금(손실)은 다른 소득(근로소득·사업소득 등)과 합산해 세금을 줄이는 것이 <strong>원칙적으로 제한</strong>됩니다(소득세법상 부동산임대업 결손금 통산 배제). 임대 건물을 새로 매입하거나 리모델링 초기에 비용이 많이 발생할 때 유의해야 합니다.</p>
+
+<h2>⑤ 한눈에 보는 상가 임대사업자 세금 캘린더</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>시기</th>
+      <th>해야 할 일</th>
+      <th>비고</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1월 25일까지</td>
+      <td>부가세 2기 확정신고·납부</td>
+      <td>전년 7~12월분</td>
+    </tr>
+    <tr>
+      <td>4월 (예정고지)</td>
+      <td>부가세 1기 예정고지 납부</td>
+      <td>고지서 수령 후 납부</td>
+    </tr>
+    <tr>
+      <td>5월 31일까지</td>
+      <td>종합소득세 확정신고·납부</td>
+      <td>전년도 임대소득 합산 신고</td>
+    </tr>
+    <tr>
+      <td>7월 25일까지</td>
+      <td>부가세 1기 확정신고·납부</td>
+      <td>당해 1~6월분 (공휴일 시 연장)</td>
+    </tr>
+    <tr>
+      <td>10월 (예정고지)</td>
+      <td>부가세 2기 예정고지 납부</td>
+      <td>고지서 수령 후 납부</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2>⑥ 사업자등록, 반드시 해야 하나요?</h2>
+
+<p>상가를 임대하기 시작한 날로부터 <strong>20일 이내에 사업자등록</strong>을 해야 합니다(부가가치세법). 미등록 시 공급가액의 1%에 해당하는 미등록 가산세가 부과되고, 그 기간 매입세액 공제도 받을 수 없습니다. 처음에 귀찮더라도 사업자등록은 반드시 먼저 처리하세요.</p>
+
+<p>매출·비용 관리는 처음부터 체계적으로 해야 신고 시즌이 편합니다. <a href="https://오늘장부.kr">오늘장부 무료로 시작하기</a>로 임대 수입과 관련 경비를 날짜별로 기록해 두면, 부가세·종합소득세 신고 때 데이터를 바로 활용할 수 있습니다.</p>
+
+<h2>자주 묻는 질문</h2>
+
+<h3>상가 임대료에 부가세 10%를 꼭 받아야 하나요?</h3>
+<p>일반과세 사업자라면 임차인으로부터 임대료의 10%를 부가세로 거래징수하고, 세금계산서를 발행해야 합니다. 임차인이 사업자인 경우 매입세액 공제를 위해 세금계산서를 요구하는 것이 일반적입니다. 부가세를 별도로 받지 않고 월세에 포함해 받았더라도, 그 금액 안에 부가세가 포함된 것으로 보아 납부 의무가 발생합니다.</p>
+
+<h3>보증금 없이 월세만 받으면 간주임대료는 없는 건가요?</h3>
+<p>맞습니다. 간주임대료는 임차인으로부터 받은 보증금(전세금 포함)이 있을 때만 발생합니다. 월세만 받고 보증금이 전혀 없다면 간주임대료는 계산하지 않아도 됩니다.</p>
+
+<h3>임대 건물 수리비를 경비로 처리하려면 어떻게 해야 하나요?</h3>
+<p>수리·보수 업체로부터 <strong>세금계산서 또는 현금영수증</strong>을 반드시 받아야 합니다. 이 증빙이 있어야 부가세 매입세액 공제(일반과세자)와 종합소득세 필요경비 처리가 동시에 가능합니다. 간이영수증이나 무증빙 현금 지급은 나중에 소명하기 어려우니 주의하세요.</p>
+
+<p>※ 본 글은 2026년 기준 참고용 정보이며, 정확한 신고·금액은 국세청 홈택스 또는 세무사와 상담하세요.</p>
+      </div>
+      <div class="tags">
+        <a href="/blog/?tag=%EC%83%81%EA%B0%80%EC%9E%84%EB%8C%80%EC%82%AC%EC%97%85%EC%9E%90" class="tag">상가임대사업자</a> <a href="/blog/?tag=%EB%B6%80%EA%B0%80%EC%84%B8%EC%8B%A0%EA%B3%A0" class="tag">부가세신고</a> <a href="/blog/?tag=%EA%B0%84%EC%A3%BC%EC%9E%84%EB%8C%80%EB%A3%8C" class="tag">간주임대료</a> <a href="/blog/?tag=%EC%A2%85%ED%95%A9%EC%86%8C%EB%93%9D%EC%84%B8" class="tag">종합소득세</a> <a href="/blog/?tag=%EC%9E%84%EB%8C%80%EC%82%AC%EC%97%85%EC%9E%90%EC%84%B8%EA%B8%88" class="tag">임대사업자세금</a>
+      </div>
+    </article>
+
+    <section style="background:#fff8f5;border-radius:16px;padding:24px 28px;margin-top:24px;">
+      <h2 style="font-size:18px;font-weight:800;color:#1a1a1a;margin:0 0 14px;">함께 보면 좋은 글</h2>
+      <ul style="list-style:none;padding:0;margin:0;">
+        <li style="padding:8px 0;border-bottom:1px solid #ffe6d9;"><a href="/blog/posts/small-corporation-tax-filing-guide-2026.html" style="color:#FF6B35;text-decoration:none;font-weight:600;font-size:14px;">소규모 법인 법인세 신고 방법 완전 정리 (2026년 기준)</a></li>
+        <li style="padding:8px 0;border-bottom:1px solid #ffe6d9;"><a href="/blog/posts/import-goods-vat-payment-guide-for-small-business.html" style="color:#FF6B35;text-decoration:none;font-weight:600;font-size:14px;">수입 물품 구매 시 부가세 납부, 사장님이 꼭 알아야 할 것</a></li>
+        <li style="padding:8px 0;border-bottom:1px solid #ffe6d9;"><a href="/blog/posts/business-type-change-tax-guide.html" style="color:#FF6B35;text-decoration:none;font-weight:600;font-size:14px;">업종 변경할 때 세금 처리, 놓치면 가산세 맞는다</a></li>
+        <li style="padding:8px 0;border-bottom:1px solid #ffe6d9;"><a href="/blog/posts/electronic-tax-invoice-late-issuance-penalty.html" style="color:#FF6B35;text-decoration:none;font-weight:600;font-size:14px;">전자세금계산서 지연발급 가산세, 얼마나 나올까?</a></li>
+      </ul>
+    </section>
+
+    <section style="background:#fff8f5;border-radius:16px;padding:24px 28px;margin-top:24px;">
+      <h2 style="font-size:18px;font-weight:800;color:#1a1a1a;margin:0 0 14px;">무료 계산기로 바로 확인하기</h2>
+      <ul style="list-style:none;padding:0;margin:0;">
+        <li style="padding:10px 0;border-bottom:1px solid #ffe6d9;"><a href="/tools/vat-simplified-calculator/" style="color:#FF6B35;text-decoration:none;font-weight:700;font-size:15px;">간이과세자 부가세 계산기</a><div style="font-size:13px;color:#777;margin-top:2px;">업종별 부가가치율로 납부세액을 계산하고 납부의무 면제 대상인지 확인합니다</div></li>
+      </ul>
+    </section>
+
+    <!-- 자동 광고(Auto ads)가 배치를 정하므로 유닛을 직접 넣지 않는다. 여백만 확보한다. -->
+    <div class="ad-slot"></div>
+
+    <div class="cta-box">
+      <h3>매일 매출 기록, 30초면 끝!</h3>
+      <p>카드·현금·네이버페이·카카오페이<br>여러 결제수단을 한 화면에서 입력<br>부가세 예상액도 자동으로 계산해드려요</p>
+      <a href="/">지금 무료로 시작하기</a>
+    </div>
+  </main>
+
+  <aside class="sidebar">
+    <div class="sidebar-cta">
+      <h3>매일 매출 기록,<br>30초면 끝!</h3>
+      <p>카드·현금·배달앱 한 번에<br>부가세 예상액도 자동 계산</p>
+      <a href="/">무료로 시작하기</a>
+    </div>
+  </aside>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-links">
+      <a href="/">서비스 홈</a>
+      <a href="/blog/">블로그</a>
+      <a href="/about/">소개</a>
+      <a href="/contact/">문의하기</a>
+      <a href="/blog/about.html">소개 및 문의</a>
+      <a href="/privacy">개인정보처리방침</a>
+      <a href="/terms">이용약관</a>
+    </div>
+    <div class="footer-copy">© 2026 오늘장부. All rights reserved.</div>
+  </div>
+</footer>
+
+</body>
+</html>
