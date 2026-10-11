@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>기온과 매출 상관관계 활용법 — 날씨로 매출 예측하는 사장님 전략 | 오늘장부 블로그</title>
+  <meta name="description" content="기온 1도 변화가 편의점 하루 매출 1만 원 이상을 움직입니다. 업종별 임계온도와 날씨 경영 실전 노하우로 재고·인력·프로모션을 한발 앞서 준비하세요.">
+  <meta property="og:title" content="기온과 매출 상관관계 활용법 — 날씨로 매출 예측하는 사장님 전략">
+  <meta property="og:description" content="기온 1도 변화가 편의점 하루 매출 1만 원 이상을 움직입니다. 업종별 임계온도와 날씨 경영 실전 노하우로 재고·인력·프로모션을 한발 앞서 준비하세요.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://xn--wh1bw0st1gbrb.kr/blog/posts/temperature-sales-correlation-strategy.html">
+  <meta property="og:image" content="https://images.pexels.com/photos/33034449/pexels-photo-33034449.jpeg?auto=compress&amp;cs=tinysrgb&amp;fit=crop&amp;h=627&amp;w=1200">
+  <link rel="canonical" href="https://xn--wh1bw0st1gbrb.kr/blog/posts/temperature-sales-correlation-strategy.html">
+  <link rel="icon" href="/icons/icon-192.png">
+  <!-- 방문자 분석 (GA4 + Clarity + 네이버). ID는 /analytics.js 상단에서 관리. -->
+  <script defer src="/analytics.js"></script>
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2764893290310463" crossorigin="anonymous"></script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Noto Sans KR', sans-serif; background: #f8f9fa; color: #1a1a1a; line-height: 1.7; }
+    header { background: #fff; border-bottom: 1px solid #eee; position: sticky; top: 0; z-index: 100; }
+    .header-inner { max-width: 1100px; margin: 0 auto; padding: 0 20px; height: 60px; display: flex; align-items: center; justify-content: space-between; }
+    .logo { display: flex; align-items: center; gap: 8px; text-decoration: none; }
+    .logo-icon { width: 32px; height: 32px; background: #FF6B35; border-radius: 8px; display: flex; align-items: center; justify-content: center; color: white; font-weight: 900; font-size: 16px; }
+    .logo-text { font-size: 18px; font-weight: 800; color: #FF6B35; }
+    .logo-sub { font-size: 13px; color: #888; margin-left: 4px; }
+    .header-cta { background: #FF6B35; color: white; border: none; padding: 8px 16px; border-radius: 8px; font-size: 13px; font-weight: 600; cursor: pointer; text-decoration: none; }
+    /* minmax(0, ...): 표처럼 최소폭이 큰 콘텐츠가 그리드 트랙을 밀어내 페이지 전체가
+       가로로 스크롤되는 것을 막는다. 1fr만 쓰면 트랙 최소폭이 auto라 끌려간다. */
+    .wrap { max-width: 1100px; margin: 0 auto; padding: 32px 20px; display: grid; grid-template-columns: minmax(0, 1fr) 300px; gap: 40px; }
+    @media (max-width: 768px) { .wrap { grid-template-columns: minmax(0, 1fr); } .sidebar { display: none; } }
+    article { background: white; border-radius: 20px; overflow: hidden; box-shadow: 0 2px 12px rgba(0,0,0,0.06); }
+    .article-head { padding: 32px 32px 24px; border-bottom: 1px solid #f0f0f0; }
+    .article-cat { font-size: 12px; font-weight: 700; color: #FF6B35; text-transform: uppercase; margin-bottom: 12px; }
+    .article-cat a { color: #FF6B35; text-decoration: none; }
+    .article-title { font-size: clamp(20px, 4vw, 28px); font-weight: 900; line-height: 1.4; color: #1a1a1a; margin-bottom: 16px; }
+    .article-meta { font-size: 13px; color: #aaa; display: flex; gap: 16px; align-items: center; flex-wrap: wrap; }
+    .hero-img { width: 100%; aspect-ratio: 16/9; object-fit: cover; background: #f0f0f0; }
+    .article-body { padding: 32px; }
+    .article-body h2 { font-size: 20px; font-weight: 800; color: #1a1a1a; margin: 32px 0 14px; padding-bottom: 8px; border-bottom: 2px solid #FF6B35; }
+    .article-body h3 { font-size: 16px; font-weight: 700; color: #333; margin: 20px 0 10px; }
+    .article-body p { margin-bottom: 14px; color: #333; font-size: 15px; }
+    .article-body ul, .article-body ol { padding-left: 20px; margin-bottom: 14px; }
+    .article-body li { margin-bottom: 6px; color: #333; font-size: 15px; }
+    article { min-width: 0; }
+    /* 좁은 화면에서는 표만 자기 안에서 가로 스크롤시킨다. min-width:100%가 있어야
+       넓은 화면에서 기존처럼 폭을 꽉 채운다. */
+    .article-body table { display: block; width: max-content; min-width: 100%; max-width: 100%; overflow-x: auto; border-collapse: collapse; margin: 16px 0; font-size: 14px; }
+    .article-body th { background: #FF6B35; color: white; padding: 10px 14px; text-align: left; }
+    .article-body td { padding: 10px 14px; border-bottom: 1px solid #f0f0f0; }
+    .article-body tr:nth-child(even) td { background: #fff8f5; }
+    .article-body img { width: 100%; border-radius: 12px; margin: 16px 0; }
+    .article-body strong { color: #1a1a1a; }
+    .article-body blockquote { background: #fff8f5; border-left: 4px solid #FF6B35; padding: 16px 20px; border-radius: 0 12px 12px 0; margin: 16px 0; font-style: italic; color: #555; }
+    .article-body a { color: #FF6B35; }
+    .tags { padding: 20px 32px; border-top: 1px solid #f0f0f0; display: flex; gap: 8px; flex-wrap: wrap; }
+    .tag { background: #fff3ee; color: #FF6B35; border-radius: 20px; padding: 5px 12px; font-size: 12px; font-weight: 600; text-decoration: none; }
+    .tag:hover { background: #FF6B35; color: white; }
+    .ad-slot { background: #f0f0f0; border-radius: 12px; display: flex; align-items: center; justify-content: center; color: #bbb; font-size: 12px; min-height: 90px; margin: 24px 0; }
+    .cta-box { background: linear-gradient(135deg, #FF6B35, #ff8c42); border-radius: 20px; padding: 32px; text-align: center; color: white; margin-top: 24px; }
+    .cta-box h3 { font-size: 22px; font-weight: 900; margin-bottom: 10px; }
+    .cta-box p { font-size: 14px; opacity: 0.9; line-height: 1.6; margin-bottom: 20px; }
+    .cta-box a { background: white; color: #FF6B35; border-radius: 12px; padding: 13px 28px; font-weight: 800; font-size: 15px; text-decoration: none; display: inline-block; }
+    .nav-links { display: flex; gap: 16px; margin-top: 24px; }
+    .nav-back { color: #FF6B35; text-decoration: none; font-size: 14px; font-weight: 600; }
+    .nav-back::before { content: '\2190 '; }
+    .sidebar-cta { background: linear-gradient(135deg, #FF6B35, #ff8c42); color: white; border-radius: 16px; padding: 24px; text-align: center; position: sticky; top: 80px; }
+    .sidebar-cta h3 { font-size: 16px; font-weight: 900; margin-bottom: 8px; }
+    .sidebar-cta p { font-size: 13px; opacity: 0.9; line-height: 1.5; margin-bottom: 16px; }
+    .sidebar-cta a { background: white; color: #FF6B35; border-radius: 8px; padding: 10px 20px; font-weight: 700; font-size: 14px; text-decoration: none; display: inline-block; }
+    footer { background: #1a1a1a; color: #888; padding: 40px 20px; margin-top: 60px; }
+    .footer-inner { max-width: 1100px; margin: 0 auto; }
+    .footer-links { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 16px; }
+    .footer-links a { color: #888; text-decoration: none; font-size: 13px; }
+    .footer-copy { font-size: 12px; }
+  </style>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "기온과 매출 상관관계 활용법 — 날씨로 매출 예측하는 사장님 전략",
+  "description": "기온 1도 변화가 편의점 하루 매출 1만 원 이상을 움직입니다. 업종별 임계온도와 날씨 경영 실전 노하우로 재고·인력·프로모션을 한발 앞서 준비하세요.",
+  "datePublished": "2026-10-11",
+  "dateModified": "2026-10-11",
+  "image": "https://images.pexels.com/photos/33034449/pexels-photo-33034449.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200",
+  "author": {
+    "@type": "Organization",
+    "name": "오늘장부",
+    "url": "https://오늘장부.kr"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "오늘장부",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://xn--wh1bw0st1gbrb.kr/icons/icon-192.png"
+    }
+  },
+  "mainEntityOfPage": "https://xn--wh1bw0st1gbrb.kr/blog/posts/temperature-sales-correlation-strategy.html",
+  "keywords": "날씨경영, 매출관리, 기온매출상관관계, 소상공인전략"
+}
+  </script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "날씨 말고 어떤 외부 요인이 매출에 영향을 주나요?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "기온 외에도 강수량(비·눈), 요일, 공휴일·명절, 주변 유동인구 변화가 대표적입니다. 연구에 따르면 공휴일과 명절 사이에 낀 평일은 매출이 유의미하게 감소하는 경향이 있습니다. 가능하다면 '날씨 + 요일 + 공휴일' 세 가지를 함께 기록해 복합적으로 분석하면 더 정확한 예측이 가능합니다."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "업종마다 기온 영향이 다른가요? 내 업종이 날씨에 민감한지 어떻게 알죠?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "음식·음료·편의점·의류는 날씨 민감도가 높은 대표 업종입니다. 반면 학원·세탁·수선 등 생활서비스는 날씨 영향이 상대적으로 낮습니다. 내 업종의 민감도는 과거 매출 데이터와 기온 데이터를 3개월 이상 비교해보면 직접 확인할 수 있습니다. 상관관계 계수가 0.4 이상이면 날씨 경영 전략을 적극 도입할 만합니다."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "날씨 예보는 어디서 무료로 보나요?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "기상청 공식 앱 '날씨' 또는 기상청 홈페이지(weather.go.kr)에서 동네별 주간 기온 예보를 무료로 확인할 수 있습니다. 과거 날씨 데이터도 기상청 기상자료개방포털(data.kma.go.kr)에서 지역·날짜별로 무료 다운로드가 가능합니다."
+      }
+    }
+  ]
+}
+  </script>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <a href="/" class="logo">
+      <div class="logo-icon">장</div>
+      <span class="logo-text">오늘장부</span>
+      <span class="logo-sub">블로그</span>
+    </a>
+    <a href="/" class="header-cta">무료로 시작하기</a>
+  </div>
+</header>
+
+<div class="wrap">
+  <main>
+    <div class="nav-links">
+      <a href="/blog/" class="nav-back">블로그 목록으로</a>
+    </div>
+
+    <!-- 자동 광고(Auto ads)가 배치를 정하므로 유닛을 직접 넣지 않는다. 여백만 확보한다. -->
+    <div class="ad-slot"></div>
+
+    <article>
+      <div class="article-head">
+        <div class="article-cat"><a href="/blog/">매출관리</a></div>
+        <h1 class="article-title">기온과 매출 상관관계 활용법 — 날씨로 매출 예측하는 사장님 전략</h1>
+        <div class="article-meta">
+          <span>오늘장부 편집팀</span>
+          <span>2026년 10월 11일</span>
+        </div>
+      </div>
+      <img src="https://images.pexels.com/photos/33034449/pexels-photo-33034449.jpeg?auto=compress&amp;cs=tinysrgb&amp;fit=crop&amp;h=627&amp;w=1200" alt="기온과 매출 상관관계 활용법 — 날씨로 매출 예측하는 사장님 전략" class="hero-img" loading="lazy">
+      <div class="article-body">
+<p>"오늘 왜 이렇게 손님이 없지?" 사장님 대부분은 매출이 꺾이면 가장 먼저 서비스나 메뉴를 의심합니다. 하지만 국내외 유통·외식 데이터가 공통으로 가리키는 첫 번째 원인은 <strong>날씨, 그 중에서도 기온</strong>입니다. 편의점 세븐일레븐이 서울 점포 1년치 데이터를 분석한 결과, 기온이 1도 오르내릴 때마다 하루 매출이 평균 약 1만 1,000원씩 변동했습니다. 특히 기온 11~20도 구간에서는 1도 차이가 약 1만 8,500원의 매출 격차를 만들어냈습니다. 기온은 '날씨'라는 막연한 변수가 아니라, 사장님이 당장 경영에 써먹을 수 있는 <strong>숫자로 된 신호</strong>입니다.</p>
+
+<h2>왜 기온이 매출을 움직이는가</h2>
+<p>소비자의 구매 동기는 불편함과 욕구에서 시작됩니다. 더우면 시원한 것이 필요하고, 추우면 따뜻한 것이 필요합니다. 기온은 이 '불편함'의 강도를 수치로 보여주는 가장 단순하고 강력한 지표입니다. 대기업 유통사들이 기상 데이터를 구매해 발주·프로모션에 활용한 지 오래됐지만, 소상공인 대부분은 여전히 '경험'과 '직감'에만 의존하는 것이 현실입니다. 날씨 빅데이터를 딥러닝으로 분석한 연구에서도 날씨·유동인구·매출 데이터를 결합하면 3일 후 매출을 높은 정확도(RMSE 0.076 수준)로 예측할 수 있음이 확인됐습니다. 즉, <strong>기온 예보를 보고 내일 재고를 조정하는 것</strong>이 데이터적으로 충분히 근거 있는 전략입니다.</p>
+
+<h2>업종별 '임계온도' — 내 가게는 몇 도부터 달라지나</h2>
+<p>기온에 따른 매출 반응은 업종마다 다릅니다. 자신의 업종에 맞는 임계온도를 파악하는 것이 날씨 경영의 첫걸음입니다.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>업종</th>
+      <th>핵심 임계온도</th>
+      <th>매출 변화 패턴</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>편의점·슈퍼</td>
+      <td>19도↑ / 11도↓</td>
+      <td>19도 이상: 음료·아이스 급증(4도 상승마다 약 26%↑) / 한파 시: 핫팩·어묵·핫음료 폭증</td>
+    </tr>
+    <tr>
+      <td>카페·음료</td>
+      <td>15도 / 23도</td>
+      <td>15도 이하: 핫 음료 비중 급증 / 23도 이상: 아이스 드링크 최고 수요</td>
+    </tr>
+    <tr>
+      <td>음식점(냉면·국밥류)</td>
+      <td>25도 / 5도</td>
+      <td>25도↑: 냉면·냉면류 주문 폭증 / 5도↓: 국밥·탕류·찜류 수요 급등</td>
+    </tr>
+    <tr>
+      <td>의류·잡화</td>
+      <td>11도·16도</td>
+      <td>11월 기온이 낮을수록 겨울 의류 전체 매출 증가, 봄은 4월 기온이 관건</td>
+    </tr>
+    <tr>
+      <td>배달 전문</td>
+      <td>영하권·30도↑</td>
+      <td>혹한·폭염 시 외출 기피로 배달 주문 건수 급증하는 경향</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>위 수치는 업계 평균이므로, <strong>내 가게의 정확한 임계온도</strong>는 최소 3개월치 일별 매출과 그날의 최고·최저 기온을 나란히 놓고 직접 비교해야 합니다. 직접 비교가 어렵다면 <strong>오늘장부</strong>처럼 일매출을 날짜별로 기록하는 앱을 쓰면 데이터를 쌓기가 훨씬 쉬워집니다.</p>
+
+<h2>실전 날씨 경영 3단계</h2>
+
+<h3>1단계 — 일매출 데이터를 먼저 쌓아라</h3>
+<p>날씨 경영의 출발점은 '비교할 과거 데이터'입니다. 카드 매출, 현금 매출, 배달앱 매출을 제각각 확인해서는 날씨별 패턴을 파악하기 어렵습니다. 카드·현금·배달앱 매출을 하나로 합산해 날짜별로 기록해두면, 나중에 기상청 과거 기온 자료와 엑셀 한 장으로 간단히 상관관계를 확인할 수 있습니다. 3개월이면 계절 특성이 드러나고, 6개월이면 같은 기온대에서의 매출 패턴이 뚜렷이 보입니다.</p>
+
+<h3>2단계 — 주간 날씨 예보로 발주·인력을 미리 조정하라</h3>
+<p>기상청 날씨 앱이나 기상청 공식 사이트에서 주간 기온 예보를 확인하는 것을 월요일 아침 루틴으로 만드세요. 예를 들어 이번 주 수요일부터 기온이 30도를 넘는다고 예보된다면, 음료·빙과류 발주량을 20~30% 늘리고, 수요일 저녁 피크 인력을 한 명 더 확보해두는 식입니다. 반대로 갑자기 기온이 뚝 떨어지는 날에는 따뜻한 메뉴·상품을 전면에 배치하는 것만으로도 매출 방어가 됩니다. 실제로 날씨 예보를 활용해 재료를 미리 구입한 한 김밥 전문점의 경우 원가 절감과 함께 월 150만 원 수준의 매출 증대 효과를 거뒀다는 사례가 보고된 바 있습니다.</p>
+
+<h3>3단계 — 날씨 연동 프로모션으로 방문을 유도하라</h3>
+<p>날씨는 단순한 참고 지표를 넘어 <strong>마케팅 트리거</strong>로 쓸 수 있습니다.</p>
+<ul>
+  <li><strong>기온 연동 할인:</strong> "오늘 최고기온 35도 이상이면 아이스아메리카노 500원 할인" — 고객이 날씨를 가게와 연결짓게 만드는 효과</li>
+  <li><strong>우천 시 특별 메뉴 전면 배치:</strong> 비 오는 날 파전·부침개·막걸리 세트를 간판 메뉴로 올리면 자연스러운 업셀링</li>
+  <li><strong>SNS 날씨 게시물:</strong> "오늘처럼 더운 날엔 이거죠" 식의 날씨 연계 콘텐츠는 공감을 얻기 쉬워 도달률이 높음</li>
+  <li><strong>혹한·폭염 배달 프로모션:</strong> 외출이 꺼려지는 날 배달 최소 금액 할인 또는 음료 무료 증정으로 주문을 유도</li>
+</ul>
+
+<h2>내 가게 날씨-매출 표 만들기 (간단 방법)</h2>
+<ol>
+  <li>일매출 기록 앱(또는 메모장)에서 지난 1개월 일별 합산 매출을 꺼낸다.</li>
+  <li>기상청 과거 날씨 조회(weather.go.kr)에서 같은 기간 일별 최고기온을 내려받는다.</li>
+  <li>엑셀에 날짜·매출·최고기온 3열로 붙여 넣고 산점도 차트를 그린다.</li>
+  <li>기온 구간(예: 15도 미만 / 15~25도 / 25도 초과)별 평균 매출을 비교한다.</li>
+  <li>기울기(상관관계)가 확인되면 그 임계점을 발주·인력 기준으로 활용한다.</li>
+</ol>
+
+<p>이 작업이 처음에는 번거롭게 느껴질 수 있지만, <a href="https://오늘장부.kr">오늘장부 무료로 시작하기</a>처럼 카드·현금·배달앱 매출을 날마다 한 곳에 모아주는 앱을 활용하면 데이터 수집 단계가 훨씬 간단해집니다. 매일 2분씩 기록한 습관이 3개월 후에는 '우리 가게만의 날씨 매출 공식'으로 돌아옵니다.</p>
+
+<h2>자주 묻는 질문</h2>
+
+<h3>날씨 말고 어떤 외부 요인이 매출에 영향을 주나요?</h3>
+<p>기온 외에도 강수량(비·눈), 요일, 공휴일·명절, 주변 유동인구 변화가 대표적입니다. 연구에 따르면 공휴일과 명절 사이에 낀 평일은 매출이 유의미하게 감소하는 경향이 있습니다. 가능하다면 '날씨 + 요일 + 공휴일' 세 가지를 함께 기록해 복합적으로 분석하면 더 정확한 예측이 가능합니다.</p>
+
+<h3>업종마다 기온 영향이 다른가요? 내 업종이 날씨에 민감한지 어떻게 알죠?</h3>
+<p>음식·음료·편의점·의류는 날씨 민감도가 높은 대표 업종입니다. 반면 학원·세탁·수선 등 생활서비스는 날씨 영향이 상대적으로 낮습니다. 내 업종의 민감도는 과거 매출 데이터와 기온 데이터를 3개월 이상 비교해보면 직접 확인할 수 있습니다. 상관관계 계수가 0.4 이상이면 날씨 경영 전략을 적극 도입할 만합니다.</p>
+
+<h3>날씨 예보는 어디서 무료로 보나요?</h3>
+<p>기상청 공식 앱 '날씨' 또는 기상청 홈페이지(weather.go.kr)에서 동네별 주간 기온 예보를 무료로 확인할 수 있습니다. 과거 날씨 데이터도 기상청 기상자료개방포털(data.kma.go.kr)에서 지역·날짜별로 무료 다운로드가 가능합니다.</p>
+
+<p>※ 본 글은 2026년 기준 참고용 정보이며, 정확한 신고·금액은 국세청 홈택스 또는 세무사와 상담하세요.</p>
+      </div>
+      <div class="tags">
+        <a href="/blog/?tag=%EB%82%A0%EC%94%A8%EA%B2%BD%EC%98%81" class="tag">날씨경영</a> <a href="/blog/?tag=%EB%A7%A4%EC%B6%9C%EA%B4%80%EB%A6%AC" class="tag">매출관리</a> <a href="/blog/?tag=%EA%B8%B0%EC%98%A8%EB%A7%A4%EC%B6%9C%EC%83%81%EA%B4%80%EA%B4%80%EA%B3%84" class="tag">기온매출상관관계</a> <a href="/blog/?tag=%EC%86%8C%EC%83%81%EA%B3%B5%EC%9D%B8%EC%A0%84%EB%9E%B5" class="tag">소상공인전략</a>
+      </div>
+    </article>
+
+    <section style="background:#fff8f5;border-radius:16px;padding:24px 28px;margin-top:24px;">
+      <h2 style="font-size:18px;font-weight:800;color:#1a1a1a;margin:0 0 14px;">함께 보면 좋은 글</h2>
+      <ul style="list-style:none;padding:0;margin:0;">
+        <li style="padding:8px 0;border-bottom:1px solid #ffe6d9;"><a href="/blog/posts/time-sale-effect-revenue-change-for-self-employed.html" style="color:#FF6B35;text-decoration:none;font-weight:600;font-size:14px;">타임세일 효과와 매출 변화: 사장님이 꼭 알아야 할 실전 전략</a></li>
+        <li style="padding:8px 0;border-bottom:1px solid #ffe6d9;"><a href="/blog/posts/sns-marketing-revenue-measurement-guide.html" style="color:#FF6B35;text-decoration:none;font-weight:600;font-size:14px;">SNS 마케팅 매출 기여 측정, 사장님이 꼭 알아야 할 실전 가이드</a></li>
+        <li style="padding:8px 0;border-bottom:1px solid #ffe6d9;"><a href="/blog/posts/holiday-sales-forecast-preparation-guide.html" style="color:#FF6B35;text-decoration:none;font-weight:600;font-size:14px;">공휴일 매출 예측과 준비: 사장님을 위한 실전 가이드</a></li>
+        <li style="padding:8px 0;border-bottom:1px solid #ffe6d9;"><a href="/blog/posts/increase-takeout-ratio-improve-profit.html" style="color:#FF6B35;text-decoration:none;font-weight:600;font-size:14px;">테이크아웃 비중 늘려 수익 확 개선하는 실전 전략</a></li>
+      </ul>
+    </section>
+
+    <section style="background:#fff8f5;border-radius:16px;padding:24px 28px;margin-top:24px;">
+      <h2 style="font-size:18px;font-weight:800;color:#1a1a1a;margin:0 0 14px;">무료 계산기로 바로 확인하기</h2>
+      <ul style="list-style:none;padding:0;margin:0;">
+        <li style="padding:10px 0;border-bottom:1px solid #ffe6d9;"><a href="/tools/card-fee-calculator/" style="color:#FF6B35;text-decoration:none;font-weight:700;font-size:15px;">카드수수료 계산기</a><div style="font-size:13px;color:#777;margin-top:2px;">연매출로 우대수수료율 구간을 확인하고 환급 대상인지 알아봅니다</div></li>
+        <li style="padding:10px 0;border-bottom:1px solid #ffe6d9;"><a href="/tools/delivery-fee-calculator/" style="color:#FF6B35;text-decoration:none;font-weight:700;font-size:15px;">배달앱 수수료 계산기</a><div style="font-size:13px;color:#777;margin-top:2px;">중개·결제 수수료와 배달비를 빼면 실제로 얼마가 입금되는지 계산합니다</div></li>
+      </ul>
+    </section>
+
+    <!-- 자동 광고(Auto ads)가 배치를 정하므로 유닛을 직접 넣지 않는다. 여백만 확보한다. -->
+    <div class="ad-slot"></div>
+
+    <div class="cta-box">
+      <h3>매일 매출 기록, 30초면 끝!</h3>
+      <p>카드·현금·네이버페이·카카오페이<br>여러 결제수단을 한 화면에서 입력<br>부가세 예상액도 자동으로 계산해드려요</p>
+      <a href="/">지금 무료로 시작하기</a>
+    </div>
+  </main>
+
+  <aside class="sidebar">
+    <div class="sidebar-cta">
+      <h3>매일 매출 기록,<br>30초면 끝!</h3>
+      <p>카드·현금·배달앱 한 번에<br>부가세 예상액도 자동 계산</p>
+      <a href="/">무료로 시작하기</a>
+    </div>
+  </aside>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-links">
+      <a href="/">서비스 홈</a>
+      <a href="/blog/">블로그</a>
+      <a href="/about/">소개</a>
+      <a href="/contact/">문의하기</a>
+      <a href="/blog/about.html">소개 및 문의</a>
+      <a href="/privacy">개인정보처리방침</a>
+      <a href="/terms">이용약관</a>
+    </div>
+    <div class="footer-copy">© 2026 오늘장부. All rights reserved.</div>
+  </div>
+</footer>
+
+</body>
+</html>

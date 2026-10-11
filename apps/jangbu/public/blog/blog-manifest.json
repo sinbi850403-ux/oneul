@@ -1,5 +1,20 @@
 [
   {
+    "slug": "temperature-sales-correlation-strategy",
+    "title": "기온과 매출 상관관계 활용법 — 날씨로 매출 예측하는 사장님 전략",
+    "description": "기온 1도 변화가 편의점 하루 매출 1만 원 이상을 움직입니다. 업종별 임계온도와 날씨 경영 실전 노하우로 재고·인력·프로모션을 한발 앞서 준비하세요.",
+    "category": "매출관리",
+    "date": "2026-10-11",
+    "thumb": "https://images.pexels.com/photos/33034449/pexels-photo-33034449.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200",
+    "tags": [
+      "날씨경영",
+      "매출관리",
+      "기온매출상관관계",
+      "소상공인전략"
+    ],
+    "keyword": "기온과 매출 상관관계 활용"
+  },
+  {
     "slug": "time-sale-effect-revenue-change-for-self-employed",
     "title": "타임세일 효과와 매출 변화: 사장님이 꼭 알아야 할 실전 전략",
     "description": "배달앱·오프라인 타임세일이 매출에 미치는 실제 효과와 수익성 함정, 소상공인이 타임세일을 올바르게 설계하고 매출을 관리하는 실전 방법을 담았습니다.",
