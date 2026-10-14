@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>카카오 주문하기 vs 배달앱 매출 비교: 수수료·세금 어디가 유리할까? | 오늘장부 블로그</title>
+  <meta name="description" content="카카오 주문하기와 배달의민족·쿠팡이츠 등 배달앱의 수수료 구조, 실수령 매출, 부가세 신고 방식까지 사장님이 바로 써먹을 수 있도록 항목별로 비교했습니다.">
+  <meta property="og:title" content="카카오 주문하기 vs 배달앱 매출 비교: 수수료·세금 어디가 유리할까?">
+  <meta property="og:description" content="카카오 주문하기와 배달의민족·쿠팡이츠 등 배달앱의 수수료 구조, 실수령 매출, 부가세 신고 방식까지 사장님이 바로 써먹을 수 있도록 항목별로 비교했습니다.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://xn--wh1bw0st1gbrb.kr/blog/posts/kakao-order-vs-delivery-app-revenue-comparison.html">
+  <meta property="og:image" content="https://images.pexels.com/photos/5077067/pexels-photo-5077067.jpeg?auto=compress&amp;cs=tinysrgb&amp;fit=crop&amp;h=627&amp;w=1200">
+  <link rel="canonical" href="https://xn--wh1bw0st1gbrb.kr/blog/posts/kakao-order-vs-delivery-app-revenue-comparison.html">
+  <link rel="icon" href="/icons/icon-192.png">
+  <!-- 방문자 분석 (GA4 + Clarity + 네이버). ID는 /analytics.js 상단에서 관리. -->
+  <script defer src="/analytics.js"></script>
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2764893290310463" crossorigin="anonymous"></script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Noto Sans KR', sans-serif; background: #f8f9fa; color: #1a1a1a; line-height: 1.7; }
+    header { background: #fff; border-bottom: 1px solid #eee; position: sticky; top: 0; z-index: 100; }
+    .header-inner { max-width: 1100px; margin: 0 auto; padding: 0 20px; height: 60px; display: flex; align-items: center; justify-content: space-between; }
+    .logo { display: flex; align-items: center; gap: 8px; text-decoration: none; }
+    .logo-icon { width: 32px; height: 32px; background: #FF6B35; border-radius: 8px; display: flex; align-items: center; justify-content: center; color: white; font-weight: 900; font-size: 16px; }
+    .logo-text { font-size: 18px; font-weight: 800; color: #FF6B35; }
+    .logo-sub { font-size: 13px; color: #888; margin-left: 4px; }
+    .header-cta { background: #FF6B35; color: white; border: none; padding: 8px 16px; border-radius: 8px; font-size: 13px; font-weight: 600; cursor: pointer; text-decoration: none; }
+    /* minmax(0, ...): 표처럼 최소폭이 큰 콘텐츠가 그리드 트랙을 밀어내 페이지 전체가
+       가로로 스크롤되는 것을 막는다. 1fr만 쓰면 트랙 최소폭이 auto라 끌려간다. */
+    .wrap { max-width: 1100px; margin: 0 auto; padding: 32px 20px; display: grid; grid-template-columns: minmax(0, 1fr) 300px; gap: 40px; }
+    @media (max-width: 768px) { .wrap { grid-template-columns: minmax(0, 1fr); } .sidebar { display: none; } }
+    article { background: white; border-radius: 20px; overflow: hidden; box-shadow: 0 2px 12px rgba(0,0,0,0.06); }
+    .article-head { padding: 32px 32px 24px; border-bottom: 1px solid #f0f0f0; }
+    .article-cat { font-size: 12px; font-weight: 700; color: #FF6B35; text-transform: uppercase; margin-bottom: 12px; }
+    .article-cat a { color: #FF6B35; text-decoration: none; }
+    .article-title { font-size: clamp(20px, 4vw, 28px); font-weight: 900; line-height: 1.4; color: #1a1a1a; margin-bottom: 16px; }
+    .article-meta { font-size: 13px; color: #aaa; display: flex; gap: 16px; align-items: center; flex-wrap: wrap; }
+    .hero-img { width: 100%; aspect-ratio: 16/9; object-fit: cover; background: #f0f0f0; }
+    .article-body { padding: 32px; }
+    .article-body h2 { font-size: 20px; font-weight: 800; color: #1a1a1a; margin: 32px 0 14px; padding-bottom: 8px; border-bottom: 2px solid #FF6B35; }
+    .article-body h3 { font-size: 16px; font-weight: 700; color: #333; margin: 20px 0 10px; }
+    .article-body p { margin-bottom: 14px; color: #333; font-size: 15px; }
+    .article-body ul, .article-body ol { padding-left: 20px; margin-bottom: 14px; }
+    .article-body li { margin-bottom: 6px; color: #333; font-size: 15px; }
+    article { min-width: 0; }
+    /* 좁은 화면에서는 표만 자기 안에서 가로 스크롤시킨다. min-width:100%가 있어야
+       넓은 화면에서 기존처럼 폭을 꽉 채운다. */
+    .article-body table { display: block; width: max-content; min-width: 100%; max-width: 100%; overflow-x: auto; border-collapse: collapse; margin: 16px 0; font-size: 14px; }
+    .article-body th { background: #FF6B35; color: white; padding: 10px 14px; text-align: left; }
+    .article-body td { padding: 10px 14px; border-bottom: 1px solid #f0f0f0; }
+    .article-body tr:nth-child(even) td { background: #fff8f5; }
+    .article-body img { width: 100%; border-radius: 12px; margin: 16px 0; }
+    .article-body strong { color: #1a1a1a; }
+    .article-body blockquote { background: #fff8f5; border-left: 4px solid #FF6B35; padding: 16px 20px; border-radius: 0 12px 12px 0; margin: 16px 0; font-style: italic; color: #555; }
+    .article-body a { color: #FF6B35; }
+    .tags { padding: 20px 32px; border-top: 1px solid #f0f0f0; display: flex; gap: 8px; flex-wrap: wrap; }
+    .tag { background: #fff3ee; color: #FF6B35; border-radius: 20px; padding: 5px 12px; font-size: 12px; font-weight: 600; text-decoration: none; }
+    .tag:hover { background: #FF6B35; color: white; }
+    .ad-slot { background: #f0f0f0; border-radius: 12px; display: flex; align-items: center; justify-content: center; color: #bbb; font-size: 12px; min-height: 90px; margin: 24px 0; }
+    .cta-box { background: linear-gradient(135deg, #FF6B35, #ff8c42); border-radius: 20px; padding: 32px; text-align: center; color: white; margin-top: 24px; }
+    .cta-box h3 { font-size: 22px; font-weight: 900; margin-bottom: 10px; }
+    .cta-box p { font-size: 14px; opacity: 0.9; line-height: 1.6; margin-bottom: 20px; }
+    .cta-box a { background: white; color: #FF6B35; border-radius: 12px; padding: 13px 28px; font-weight: 800; font-size: 15px; text-decoration: none; display: inline-block; }
+    .nav-links { display: flex; gap: 16px; margin-top: 24px; }
+    .nav-back { color: #FF6B35; text-decoration: none; font-size: 14px; font-weight: 600; }
+    .nav-back::before { content: '\2190 '; }
+    .sidebar-cta { background: linear-gradient(135deg, #FF6B35, #ff8c42); color: white; border-radius: 16px; padding: 24px; text-align: center; position: sticky; top: 80px; }
+    .sidebar-cta h3 { font-size: 16px; font-weight: 900; margin-bottom: 8px; }
+    .sidebar-cta p { font-size: 13px; opacity: 0.9; line-height: 1.5; margin-bottom: 16px; }
+    .sidebar-cta a { background: white; color: #FF6B35; border-radius: 8px; padding: 10px 20px; font-weight: 700; font-size: 14px; text-decoration: none; display: inline-block; }
+    footer { background: #1a1a1a; color: #888; padding: 40px 20px; margin-top: 60px; }
+    .footer-inner { max-width: 1100px; margin: 0 auto; }
+    .footer-links { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 16px; }
+    .footer-links a { color: #888; text-decoration: none; font-size: 13px; }
+    .footer-copy { font-size: 12px; }
+  </style>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "카카오 주문하기 vs 배달앱 매출 비교: 수수료·세금 어디가 유리할까?",
+  "description": "카카오 주문하기와 배달의민족·쿠팡이츠 등 배달앱의 수수료 구조, 실수령 매출, 부가세 신고 방식까지 사장님이 바로 써먹을 수 있도록 항목별로 비교했습니다.",
+  "datePublished": "2026-10-14",
+  "dateModified": "2026-10-14",
+  "image": "https://images.pexels.com/photos/5077067/pexels-photo-5077067.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200",
+  "author": {
+    "@type": "Organization",
+    "name": "오늘장부",
+    "url": "https://오늘장부.kr"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "오늘장부",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://xn--wh1bw0st1gbrb.kr/icons/icon-192.png"
+    }
+  },
+  "mainEntityOfPage": "https://xn--wh1bw0st1gbrb.kr/blog/posts/kakao-order-vs-delivery-app-revenue-comparison.html",
+  "keywords": "카카오주문하기, 배달앱수수료, 매출관리, 소상공인세금"
+}
+  </script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "배달앱 수수료도 비용으로 세금 처리가 되나요?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "네, 배달앱 중개수수료와 결제수수료는 사업 관련 비용으로 처리할 수 있습니다. 배달앱사가 발행한 세금계산서를 수취하면 부가세 매입세액 공제도 가능합니다. 정확한 적용 방법은 세무사 또는 국세청 홈택스에서 확인하세요."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "카카오 채널 자체 주문도 현금영수증·카드 매출 신고를 해야 하나요?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "네, 결제 수단에 관계없이 사업 매출은 모두 신고 대상입니다. 카카오페이로 결제된 금액도 과세 매출로 신고해야 하며, 카카오페이 가맹 내역서를 증빙자료로 보관하세요."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "배달앱 수수료가 계속 바뀌는데 어떻게 추적하나요?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "배달의민족·요기요·쿠팡이츠 등 각 플랫폼은 상생 협약, 법 개정, 자체 정책 변경 등으로 수수료를 수시로 조정합니다. 각 앱의 사장님 공지사항 또는 정산 내역서를 정기적으로 확인하고, 월별 수수료 비율을 직접 계산해 기록해 두는 것이 가장 정확합니다."
+      }
+    }
+  ]
+}
+  </script>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <a href="/" class="logo">
+      <div class="logo-icon">장</div>
+      <span class="logo-text">오늘장부</span>
+      <span class="logo-sub">블로그</span>
+    </a>
+    <a href="/" class="header-cta">무료로 시작하기</a>
+  </div>
+</header>
+
+<div class="wrap">
+  <main>
+    <div class="nav-links">
+      <a href="/blog/" class="nav-back">블로그 목록으로</a>
+    </div>
+
+    <!-- 자동 광고(Auto ads)가 배치를 정하므로 유닛을 직접 넣지 않는다. 여백만 확보한다. -->
+    <div class="ad-slot"></div>
+
+    <article>
+      <div class="article-head">
+        <div class="article-cat"><a href="/blog/">매출관리</a></div>
+        <h1 class="article-title">카카오 주문하기 vs 배달앱 매출 비교: 수수료·세금 어디가 유리할까?</h1>
+        <div class="article-meta">
+          <span>오늘장부 편집팀</span>
+          <span>2026년 10월 14일</span>
+        </div>
+      </div>
+      <img src="https://images.pexels.com/photos/5077067/pexels-photo-5077067.jpeg?auto=compress&amp;cs=tinysrgb&amp;fit=crop&amp;h=627&amp;w=1200" alt="카카오 주문하기 vs 배달앱 매출 비교: 수수료·세금 어디가 유리할까?" class="hero-img" loading="lazy">
+      <div class="article-body">
+<p>배달 주문을 받는 방법이 다양해지면서 '어느 채널이 실제로 남는 장사인가'라는 질문이 많아지고 있습니다. 배달의민족·쿠팡이츠 같은 전통적인 배달앱 외에, 카카오톡 채널(플러스친구)을 통한 자체 주문 경로인 <strong>카카오 주문하기</strong>도 선택지로 떠오르고 있습니다. 단순히 '수수료가 낮다'는 말만 듣고 결정하면 안 됩니다. 수수료뿐 아니라 노출 트래픽, 결제 수수료, 부가세 처리 방식까지 종합적으로 따져야 사장님 손에 실제로 남는 돈을 정확히 알 수 있습니다.</p>
+
+<h2>배달앱 수수료 구조: 생각보다 복잡하다</h2>
+<p>배달의민족은 2025년 2월부터 상생 요금제를 시행하면서 배민1플러스 기준 중개수수료를 기존 9.8%에서 <strong>매출 규모에 따라 2.0%~7.8%로 차등 적용</strong>하고 있습니다. 상위 35% 이상 매장은 7.8%, 하위 20% 매장은 2.0%가 적용됩니다(부가세 별도). 다만 배달비(건당 1,900원~3,400원)와 결제 수수료(약 2~3%), 광고비(울트라콜, 오픈리스트 등)는 별도입니다.</p>
+<p>참여연대가 분석한 실태보고서에 따르면, 서울·경기·부산 입점업체의 2024년 기준 총수수료(중개 + 결제 + 배달비 합산)는 줄곧 20%대를 유지했습니다. 경기 지역 분식집의 경우 중개 7.80% + 결제 2.41% + 배달비 16.18% = <strong>총 26.39%</strong>에 달한 사례도 있습니다. 1만 5,000원짜리 주문 한 건에 약 4,500원이 플랫폼 비용으로 나가는 구조입니다.</p>
+<p>요기요와 쿠팡이츠는 별도의 중개수수료 체계를 운영하고 있으며, 각 플랫폼 공식 공지 또는 입점 계약서에서 최신 수수료를 반드시 확인하세요.</p>
+
+<h2>카카오 주문하기란 무엇인가?</h2>
+<p>카카오 주문하기는 크게 두 가지 형태로 이해할 수 있습니다.</p>
+<ul>
+  <li><strong>카카오톡 채널(플러스친구) 기반 자체 주문:</strong> 매장이 카카오톡 채널을 개설하고, 카카오 주문 솔루션(외부 POS·주문 연동 솔루션 포함)으로 직접 주문을 받는 방식. 플랫폼 중개수수료 없이 결제 수수료(카카오페이 등)만 발생하는 구조에 가깝습니다.</li>
+  <li><strong>카카오톡 내 '주문하기 by 요기요':</strong> 카카오가 자체 운영하던 배달 주문 서비스를 요기요 운영사에 이관한 형태로, 카카오톡 더보기 탭에서 음식을 주문하는 서비스입니다. 이 경우 실질적으로 요기요의 수수료 체계가 적용됩니다.</li>
+</ul>
+<p>따라서 '카카오 주문하기'라는 표현이 어느 방식을 가리키는지에 따라 비용 구조가 크게 달라집니다. 본 글에서는 <strong>카카오톡 채널을 통해 직접 주문을 받는 자체 주문 방식</strong>과 기존 배달앱을 비교하는 데 초점을 맞춥니다.</p>
+
+<h2>수수료 항목별 비교</h2>
+<table>
+  <thead>
+    <tr>
+      <th>항목</th>
+      <th>배달앱(배민1플러스 기준)</th>
+      <th>카카오 채널 자체 주문</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>중개(플랫폼) 수수료</td>
+      <td>2.0%~7.8% (매출 규모 차등)</td>
+      <td>없음 (자체 채널 운영 시)</td>
+    </tr>
+    <tr>
+      <td>결제 수수료</td>
+      <td>약 2~3% (결제사 별도)</td>
+      <td>카카오페이 등 결제수단별 수수료</td>
+    </tr>
+    <tr>
+      <td>배달비(업주 부담)</td>
+      <td>건당 1,900원~3,400원</td>
+      <td>자체 배달 또는 외부 배달대행 이용</td>
+    </tr>
+    <tr>
+      <td>광고비</td>
+      <td>울트라콜·오픈리스트 등 별도</td>
+      <td>카카오 채널 광고 선택 운영</td>
+    </tr>
+    <tr>
+      <td>신규 고객 유입</td>
+      <td>플랫폼 트래픽(수백만 MAU)</td>
+      <td>기존 단골·채널 친구 위주</td>
+    </tr>
+    <tr>
+      <td>브랜딩·재주문 유도</td>
+      <td>제한적 (플랫폼 내 경쟁)</td>
+      <td>알림톡·쿠폰 직접 발송 가능</td>
+    </tr>
+  </tbody>
+</table>
+<p>수수료 숫자만 보면 카카오 채널 자체 주문이 유리해 보입니다. 그러나 배달앱은 <strong>신규 고객 유입 트래픽</strong>을 제공한다는 점을 간과해서는 안 됩니다. 매장을 처음 알리는 단계, 혹은 상권 내 경쟁이 치열한 업종이라면 배달앱의 노출 효과가 마케팅비 이상의 가치를 줄 수 있습니다.</p>
+
+<h2>실수령 매출로 계산해보면</h2>
+<p>예시로 월 주문 500건, 평균 주문금액 2만 원(총 매출 1,000만 원) 가정:</p>
+<ol>
+  <li><strong>배달앱(배민1플러스, 상위 35% 적용):</strong><br>
+    중개수수료 7.8% = 78만 원 / 결제수수료 약 2.5% = 25만 원 / 배달비 건당 2,500원 × 500건 = 125만 원<br>
+    → <strong>플랫폼 비용 합계 약 228만 원</strong> (매출 대비 약 22.8%)
+  </li>
+  <li><strong>카카오 채널 자체 주문(배달대행 이용):</strong><br>
+    중개수수료 0원 / 결제수수료 약 1.5~2.5% = 15~25만 원 / 배달대행비 건당 약 3,000~4,000원 × 500건 = 150~200만 원<br>
+    → <strong>총 비용 합계 약 165~225만 원</strong> (매출 대비 약 16.5~22.5%)
+  </li>
+</ol>
+<p>숫자상 큰 차이가 없어 보이지만, 자체 주문은 <strong>고객 DB를 직접 확보</strong>하고 재방문을 유도할 수 있어 장기적으로 유리할 수 있습니다. 반면 신규 주문이 줄어드는 리스크도 감수해야 합니다. 실제 내 매장 수치로 계산해야 의미 있는 비교가 가능합니다.</p>
+
+<h2>세금(부가세) 처리 — 채널마다 다르다</h2>
+<p>배달앱을 통한 매출은 <strong>과세 매출</strong>로 부가세 신고 대상입니다. 배달앱사가 발행하는 정산 내역서를 기준으로 매출을 집계해야 하며, 플랫폼 수수료(중개·결제)는 공급받는 용역에 해당하므로 세금계산서를 수취하면 <strong>매입세액 공제</strong>를 받을 수 있습니다.</p>
+<p>카카오 채널 자체 주문도 동일하게 과세 매출이며, 카카오페이 등 결제 수단별 매출 합산을 별도로 관리해야 합니다. 다채널로 주문을 받다 보면 카드 매출, 배달앱 정산, 자체 채널 결제가 뒤섞여 부가세 신고 때 혼란이 생기기 쉽습니다.</p>
+<p>이런 경우 <strong>오늘장부</strong>처럼 카드·현금·배달앱 매출을 채널별로 한 번에 기록하고 부가세 예상액을 자동으로 계산해주는 앱을 활용하면 실수를 줄이고 신고 준비 시간을 크게 아낄 수 있습니다.</p>
+
+<h2>어떤 채널을 선택할까? — 매장 상황별 판단 기준</h2>
+<ul>
+  <li><strong>신규 오픈·고객 유입이 절실한 경우:</strong> 배달앱 우선 유지. 자체 채널만 운영하면 주문량이 급감할 수 있습니다.</li>
+  <li><strong>단골 비율이 높은 업종(반찬·도시락 등):</strong> 카카오 채널 자체 주문 시 수수료 절감 + 알림톡 재구매 유도 효과가 뚜렷합니다.</li>
+  <li><strong>의존도를 낮추고 싶은 경우:</strong> 배달앱을 유지하면서 카카오 채널을 병행해 단골을 자체 채널로 서서히 전환하는 투 트랙 전략이 현실적입니다.</li>
+  <li><strong>수수료 부담이 극심한 경우:</strong> 총매출 대비 플랫폼 비용이 25%를 넘는다면, 자체 채널 전환 비용(솔루션 도입비·마케팅비)과 비교해 손익분기점을 따져보세요.</li>
+</ul>
+
+<h2>매출 채널이 늘수록 정산 관리가 핵심이다</h2>
+<p>배달앱과 카카오 채널을 동시에 운영하면 정산 주기도 다르고, 수수료 공제 방식도 달라 '총매출은 높은데 통장에 돈이 없다'는 상황이 생깁니다. 매출 채널별로 실수령액을 매일 기록하는 습관이 필수입니다. <a href="https://오늘장부.kr">오늘장부 무료로 시작하기</a>를 통해 카드·현금·배달앱 정산을 한 화면에서 관리하고, 다음 부가세 신고 때 당황하지 마세요.</p>
+
+<h2>자주 묻는 질문</h2>
+
+<h3>배달앱 수수료도 비용으로 세금 처리가 되나요?</h3>
+<p>네, 배달앱 중개수수료와 결제수수료는 사업 관련 비용으로 처리할 수 있습니다. 배달앱사가 발행한 세금계산서를 수취하면 부가세 매입세액 공제도 가능합니다. 정확한 적용 방법은 세무사 또는 국세청 홈택스에서 확인하세요.</p>
+
+<h3>카카오 채널 자체 주문도 현금영수증·카드 매출 신고를 해야 하나요?</h3>
+<p>네, 결제 수단에 관계없이 사업 매출은 모두 신고 대상입니다. 카카오페이로 결제된 금액도 과세 매출로 신고해야 하며, 카카오페이 가맹 내역서를 증빙자료로 보관하세요.</p>
+
+<h3>배달앱 수수료가 계속 바뀌는데 어떻게 추적하나요?</h3>
+<p>배달의민족·요기요·쿠팡이츠 등 각 플랫폼은 상생 협약, 법 개정, 자체 정책 변경 등으로 수수료를 수시로 조정합니다. 각 앱의 사장님 공지사항 또는 정산 내역서를 정기적으로 확인하고, 월별 수수료 비율을 직접 계산해 기록해 두는 것이 가장 정확합니다.</p>
+
+<p>※ 본 글은 2026년 기준 참고용 정보이며, 정확한 신고·금액은 국세청 홈택스 또는 세무사와 상담하세요.</p>
+      </div>
+      <div class="tags">
+        <a href="/blog/?tag=%EC%B9%B4%EC%B9%B4%EC%98%A4%EC%A3%BC%EB%AC%B8%ED%95%98%EA%B8%B0" class="tag">카카오주문하기</a> <a href="/blog/?tag=%EB%B0%B0%EB%8B%AC%EC%95%B1%EC%88%98%EC%88%98%EB%A3%8C" class="tag">배달앱수수료</a> <a href="/blog/?tag=%EB%A7%A4%EC%B6%9C%EA%B4%80%EB%A6%AC" class="tag">매출관리</a> <a href="/blog/?tag=%EC%86%8C%EC%83%81%EA%B3%B5%EC%9D%B8%EC%84%B8%EA%B8%88" class="tag">소상공인세금</a>
+      </div>
+    </article>
+
+    <section style="background:#fff8f5;border-radius:16px;padding:24px 28px;margin-top:24px;">
+      <h2 style="font-size:18px;font-weight:800;color:#1a1a1a;margin:0 0 14px;">함께 보면 좋은 글</h2>
+      <ul style="list-style:none;padding:0;margin:0;">
+        <li style="padding:8px 0;border-bottom:1px solid #ffe6d9;"><a href="/blog/posts/temperature-sales-correlation-strategy.html" style="color:#FF6B35;text-decoration:none;font-weight:600;font-size:14px;">기온과 매출 상관관계 활용법 — 날씨로 매출 예측하는 사장님 전략</a></li>
+        <li style="padding:8px 0;border-bottom:1px solid #ffe6d9;"><a href="/blog/posts/time-sale-effect-revenue-change-for-self-employed.html" style="color:#FF6B35;text-decoration:none;font-weight:600;font-size:14px;">타임세일 효과와 매출 변화: 사장님이 꼭 알아야 할 실전 전략</a></li>
+        <li style="padding:8px 0;border-bottom:1px solid #ffe6d9;"><a href="/blog/posts/sns-marketing-revenue-measurement-guide.html" style="color:#FF6B35;text-decoration:none;font-weight:600;font-size:14px;">SNS 마케팅 매출 기여 측정, 사장님이 꼭 알아야 할 실전 가이드</a></li>
+        <li style="padding:8px 0;border-bottom:1px solid #ffe6d9;"><a href="/blog/posts/holiday-sales-forecast-preparation-guide.html" style="color:#FF6B35;text-decoration:none;font-weight:600;font-size:14px;">공휴일 매출 예측과 준비: 사장님을 위한 실전 가이드</a></li>
+      </ul>
+    </section>
+
+    <section style="background:#fff8f5;border-radius:16px;padding:24px 28px;margin-top:24px;">
+      <h2 style="font-size:18px;font-weight:800;color:#1a1a1a;margin:0 0 14px;">무료 계산기로 바로 확인하기</h2>
+      <ul style="list-style:none;padding:0;margin:0;">
+        <li style="padding:10px 0;border-bottom:1px solid #ffe6d9;"><a href="/tools/card-fee-calculator/" style="color:#FF6B35;text-decoration:none;font-weight:700;font-size:15px;">카드수수료 계산기</a><div style="font-size:13px;color:#777;margin-top:2px;">연매출로 우대수수료율 구간을 확인하고 환급 대상인지 알아봅니다</div></li>
+        <li style="padding:10px 0;border-bottom:1px solid #ffe6d9;"><a href="/tools/delivery-fee-calculator/" style="color:#FF6B35;text-decoration:none;font-weight:700;font-size:15px;">배달앱 수수료 계산기</a><div style="font-size:13px;color:#777;margin-top:2px;">중개·결제 수수료와 배달비를 빼면 실제로 얼마가 입금되는지 계산합니다</div></li>
+      </ul>
+    </section>
+
+    <!-- 자동 광고(Auto ads)가 배치를 정하므로 유닛을 직접 넣지 않는다. 여백만 확보한다. -->
+    <div class="ad-slot"></div>
+
+    <div class="cta-box">
+      <h3>매일 매출 기록, 30초면 끝!</h3>
+      <p>카드·현금·네이버페이·카카오페이<br>여러 결제수단을 한 화면에서 입력<br>부가세 예상액도 자동으로 계산해드려요</p>
+      <a href="/">지금 무료로 시작하기</a>
+    </div>
+  </main>
+
+  <aside class="sidebar">
+    <div class="sidebar-cta">
+      <h3>매일 매출 기록,<br>30초면 끝!</h3>
+      <p>카드·현금·배달앱 한 번에<br>부가세 예상액도 자동 계산</p>
+      <a href="/">무료로 시작하기</a>
+    </div>
+  </aside>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-links">
+      <a href="/">서비스 홈</a>
+      <a href="/blog/">블로그</a>
+      <a href="/about/">소개</a>
+      <a href="/contact/">문의하기</a>
+      <a href="/blog/about.html">소개 및 문의</a>
+      <a href="/privacy">개인정보처리방침</a>
+      <a href="/terms">이용약관</a>
+    </div>
+    <div class="footer-copy">© 2026 오늘장부. All rights reserved.</div>
+  </div>
+</footer>
+
+</body>
+</html>
